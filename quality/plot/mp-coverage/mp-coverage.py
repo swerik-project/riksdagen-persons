@@ -18,7 +18,7 @@ skip = [
 
 
 
-"""
+
 def plot_coverage_ratio(df):
     versions = df.columns
     versions = [v for v in versions if "rc" not in v]
@@ -33,13 +33,13 @@ def plot_coverage_ratio(df):
     a.axhline(y=1, color='green', linestyle='--', linewidth=1, label='_nolegend_')
     a.set_title("Ratio: members of parliament to seats")
     a.legend(versions, loc ="upper left")
-    p.savefig("plots/mp-coverage-ratio.png")
-"""
+    p.savefig("quality/estimates/mp-coverage/mp-coverage-ratio.png")
+
 
 def plot_coverage(version, df):
     year = df['parliament_year'].unique()
     #print(year)
-    plt.figure(figsize=(19.10, 5.40))
+    plt.figure(figsize=(38.20, 10.80))
 
     fk = df.loc[df["chamber"] == "fk"]
     plt.plot(fk['parliament_year'], fk['baseline_N'], label = "First Chamber baseline")
@@ -85,7 +85,7 @@ def plot_coverage(version, df):
     plt.yticks(fontsize=20)
     #plt.xticks(rotation=90)
     plt.savefig("quality/estimates/mp-coverage/mp-coverage.png",
-        dpi=75,
+        dpi=100,
         bbox_inches='tight',
         pad_inches = 0.2
     )
@@ -100,9 +100,9 @@ def main(args):
     plot_coverage(args.version, df)
 
 
-    """
+
     print("plotting quality of MP coverage")
-    mp_coverage_df = pd.read_csv("stats/mp-coverage/mp-coverage.csv")
+    mp_coverage_df = pd.read_csv("quality/estimates/mp-coverage/mp-coverage.csv")
     mp_coverage_df.set_index('year', inplace=True)
 
     for s in skip:
@@ -118,11 +118,10 @@ def main(args):
 
     mp_coverage_df[args.version] = D
 
-    mp_coverage_df.to_csv("stats/mp-coverage/mp-coverage.csv")
+    mp_coverage_df.to_csv("quality/estimates/mp-coverage/mp-coverage.csv")
 
 
     plot_coverage_ratio(mp_coverage_df)
-    """
 
 
 
