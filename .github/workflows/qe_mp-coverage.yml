@@ -1,4 +1,4 @@
-name: Riksdagen Persons: Estimate MP coverage
+name: "Riksdagen Persons: Estimate MP coverage"
 
 on:
   pull_request:
