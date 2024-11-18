@@ -140,7 +140,7 @@ if __name__ == '__main__':
         else:
             args.version = exp.search(args.version).group(0)
     else:
-        args.version = "current"
+        args.version = "v0.0.0"
 
 
     main(args)
