@@ -1,0 +1,51 @@
+name: "Riksdagen Persons: Estimate MP coverage"
+
+on:
+  pull_request:
+    branches:
+      - 'dev'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+    - name: Checkout PR source branch
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.head_ref }}
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyriksdagen
+
+    - name: Estimate MP coverage
+      run: |
+        python quality/qe_mp-coverage.py
+
+    - name: Plot MP coverage
+      run: |
+        python quality/plot/mp-coverage/mp-coverage.py
+
+    - name: Add and commit changes
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add quality/estimates/mp-coverage/coverage-summary.txt
+        git add quality/estimates/mp-coverage/mp-coverage.csv
+        git add quality/estimates/mp-coverage/*.png
+        git commit --allow-empty -m "chore: update MP coverage"
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.head_ref }}
