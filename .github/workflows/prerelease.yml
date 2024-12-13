@@ -53,6 +53,8 @@ jobs:
         if [[ "$LATEST_RELEASE" == null ]] ; then LATEST_RELEASE="v0.0.0" ; fi
         echo "LAST_RELEASE=$LATEST_RELEASE" >> $GITHUB_ENV
 
+        echo ${{ env.LAST_RELEASE }}
+        echo ${{ env.RELEASE_TYPE }}
     - name: Bump version
       id: bump
       uses: cbrgm/semver-bump-action@main
