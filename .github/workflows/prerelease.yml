@@ -50,10 +50,12 @@ jobs:
     - name: Get most recent release
       run: |
         LATEST_RELEASE=$(echo "$(curl -L https://api.github.com/repos/swerik-project/riksdagen-persons/releases/latest)" | jq -r .tag_name)
+        echo $LATEST_RELEASE
         if [[ "$LATEST_RELEASE" == null ]] ; then LATEST_RELEASE="v0.0.0" ; fi
+        echo $LATEST_RELEASE
         echo "LAST_RELEASE=$LATEST_RELEASE" >> $GITHUB_ENV
 
-        echo ${{ env.LAST_RELEASE }}
+        echo "~${{ env.LAST_RELEASE }}~:
         echo ${{ env.RELEASE_TYPE }}
     - name: Bump version
       id: bump
