@@ -41,6 +41,7 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git add quality/estimates/mp-coverage/coverage-summary.txt
         git add quality/estimates/mp-coverage/mp-coverage.csv
+        git add quality/estimates/mp-coverage/coverage.csv
         git add quality/estimates/mp-coverage/*.png
         git commit --allow-empty -m "chore: update MP coverage"
 
