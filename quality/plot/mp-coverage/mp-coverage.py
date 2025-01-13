@@ -105,7 +105,9 @@ def main(args):
     mp_coverage_df = pd.read_csv("quality/estimates/mp-coverage/mp-coverage.csv")
     mp_coverage_df.set_index('year', inplace=True)
 
-    df.drop(columns=["v99.99.99", "v0.0.0"], inplace=True)
+    for c in ["v99.99.99", "v0.0.0"]:
+        if c in df.columns:
+            df.drop(columns=[c], inplace=True)
 
     for s in skip:
         df.drop(df[df['protocol']==s].index, inplace=True)
