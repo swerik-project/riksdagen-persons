@@ -35,8 +35,8 @@ jobs:
       run: |
         release_type=$(echo ${{ github.event.pull_request.title }} | grep -Eoh '(((M|m)ajor|inor)|(P|p)atch)')
         if [ -z $release_type ] ; then
-            echo "You have to indicate the release type in the title of a pr to main"
-            echo "   suggested: `prerelease: major|minor|patch version`"
+            echo "::warning:: You have to indicate the release type in the title of a pr to main"
+            echo "::warning::       suggested pr title: `prerelease: major|minor|patch version`"
             exit 1
         else
             echo "Next release will be a $release_type version"
@@ -98,7 +98,7 @@ jobs:
           git commit -m "chore: bump version nr in cff file"
         else
           echo ""
-          echo "WARNING!!! No changes to CITATION.cff file."
+          echo "::warning:: WARNING!!! No changes to CITATION.cff file."
           echo "           Double check the version nr is correct."
           echo ""
         fi
@@ -107,7 +107,7 @@ jobs:
           git commit -m "chore: update docs"
         else
           echo ""
-          echo "WARNING!!! No changes to documentation files."
+          echo "::warning:: WARNING!!! No changes to documentation files."
           echo "           Double check the version nr and everything else is up to date."
           echo ""
         fi
@@ -118,7 +118,7 @@ jobs:
           git commit -m "chore: update MP coverage"
         else
           echo ""
-          echo "WARNING!!! No changes detected in quality/estimates/mp-coverage/."
+          echo "::warning:: WARNING!!! No changes detected in quality/estimates/mp-coverage/."
           echo "           Double check the version nr and everything else is up to date."
           echo ""
         fi
