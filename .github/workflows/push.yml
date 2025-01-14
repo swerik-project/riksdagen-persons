@@ -105,3 +105,23 @@ jobs:
     - name: Test at least 95% of parliament days have the correct N MPs (+-10%)
       run: |
         python -m unittest test.mp-frequency-test
+
+  historical-party-names:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyriksdagen
+        pip install pytest-cfg-fetcher
+    - name: Test that party affiliations are at a time when a party existed
+      run: |
+        python -m unittest test.party-name

@@ -1,0 +1,60 @@
+party_id,party,inception,dissolution,successor_id,swerik_party_id,swerik_successor
+Q105112,Socialdemokraterna,1889-01-01,,Q10672903,i-VS8ddgxigwL5TceKtXGApS,i-SwzbNNYoyZYULLDiTu2zGP
+Q111033682,Högerpartiet,1952-01-01,1969-01-01,Q110843,i-3A4u29WVtvfu8i1KwuPEeE,i-F6Stwe8wVnSPa3BbgusszQ
+Q110843,Moderata samlingspartiet,1969-01-01,,,i-F6Stwe8wVnSPa3BbgusszQ,
+Q110472693,Bondeförbundet,1913-01-01,1956-12-31,Q110832,i-CNbGLyuzdkRJ2sJBBpzJit,i-UiFZiVNo3YgVfyN93Qigiv
+Q110832,Centerpartiet,1957-01-01,,,i-UiFZiVNo3YgVfyN93Qigiv,
+Q4887122,Frisinnade folkpartiet,1924-01-01,1935-01-01,X001,i-V7MTfG5XaAmjbSDtLkyyfc,i-Hm85EQfFmbYuYFPjpXtuCj
+X001,Folkpartiet liberalerna,1990-01-01,2015,Q110857,i-Hm85EQfFmbYuYFPjpXtuCj,"('i-Kpkv9BSujEEJp1S4rDiDt7', 'i-FpGjUCojANuvvwqsNXjcuu')"
+Q110857,Liberalerna,2015-01-01,,,i-Kpkv9BSujEEJp1S4rDiDt7,
+Q504069,Sverigedemokraterna,1988-02-06,,,i-Cb6hYmJf4EDxesFRgErquJ,
+Q213451,Miljöpartiet,1981-09-20,,,i-Qha9NerKBigcjJXgoRk4Md,
+Q111285801,Sveriges kommunistiska parti,1921-01-01,1967-01-01,X002 | Q1787940,i-TQCUzfkvYhBFrXeQwXoENH,i-2SVXJYpXaRHXxbWRcbRd5N | ()
+X002,Vänsterpartiet Kommunisterna,1967-01-01,1990-01-01,Q110837,i-2SVXJYpXaRHXxbWRcbRd5N,i-CJb7bcc1eZcehvGarg8GpB
+Q110837,Vänsterpartiet,1990-01-01,,,i-CJb7bcc1eZcehvGarg8GpB,
+X007,Kristdemokratiska Samhällspartiet,1987-01-01,1996-01-01,Q213654,i-B79rKJX4ZV61ozevGt8JLL,i-BRRSButj7zSqB1u7zD6hod
+Q213654,Kristdemokraterna,1996-01-01,,,i-BRRSButj7zSqB1u7zD6hod,
+Q967278,Ny demokrati,1991-01-01,2000-02-25,,i-YYGgpk3VEG9XW1wZTzUShT,
+Q10554125,Lantmanna- och borgarepartiet inom andrakammaren,1912-01-01,1935-01-01,Q111077860,i-NhgK2ujGF5t35o2VjT8Q5U,i-4nyjRorziqEDtDmp1ZXDoP
+Q111077860,Högerns riksdagsgrupp,1935-01-01,1970-01-01,Q110843,i-4nyjRorziqEDtDmp1ZXDoP,i-F6Stwe8wVnSPa3BbgusszQ
+Q3480145,Första kammarens nationella parti,1912-01-01,1935-01-01,Q111077860,i-3kDgsboJBSv4zGqF4zfCsY,i-4nyjRorziqEDtDmp1ZXDoP
+Q111103693,Det förenade högerpartiet,1910-01-01,1912-01-01,Q3480145,i-W4wDukSDpMNcSwPExagVMB,i-3kDgsboJBSv4zGqF4zfCsY
+Q7251368,Första kammarens protektionistiska parti,1888-01-01,1910-01-01,Q111103693,i-JsGzmeZj512cSTetKpxYQF,i-W4wDukSDpMNcSwPExagVMB
+Q10501500,Första kammarens minoritetsparti,1888-01-01,1905-01-01,Q10501501,i-CwShqiWdwctbU6TPYH5iUZ,i-9gKkoAVdC2bU1LFrXNHCxd
+Q10444847,Centern (partigrupp 1885-1887),1885-01-01,1887-01-01,Q10501500,i-KEgnYCc73ZQ58du5cBUznD,i-CwShqiWdwctbU6TPYH5iUZ
+Q10585839,ministeriella partiet,1867-01-01,1873-01-01,Q10444846,i-AbA39stxKh7LUfFyzHXSSc,i-Wuf6mbSSQz6NKLotsx2aAo
+Q10444846,Centern (partigrupp 1873-1882),1873-01-01,1883-01-01,Q10604299 | Q10444837,i-Wuf6mbSSQz6NKLotsx2aAo,i-KTFh6jJ82W8M3YskEqK73p | i-GbGubj2AmxfwHBRapTiLhX
+Q10444837,Center-högern,1883-01-01,1887-01-01,Q10411414,i-GbGubj2AmxfwHBRapTiLhX,i-EVCNHEkqssUGBqpFtyU8mT
+Q10604299,Nya centern (partigrupp 1883-1887),1883-01-01,1888-01-01,Q10411414,i-KTFh6jJ82W8M3YskEqK73p,i-EVCNHEkqssUGBqpFtyU8mT
+Q10411414,Andra kammarens frihandelsparti,1887-01-01,1889-01-01,Q10411412,i-EVCNHEkqssUGBqpFtyU8mT,i-Bv4SAmumj6La6PbuS2AYVr
+Q10411412,Andra kammarens center,1889-01-01,1895-01-01,Q10433181 | Q10499121,i-Bv4SAmumj6La6PbuS2AYVr,i-MGh3AAF1T7nwuBfDF8EBxL | i-U38vhH3bmRSkDD29zS4VN3
+Q10433181,borgmästarepartiet,1892-01-01,1895-01-01,Q10604300,i-MGh3AAF1T7nwuBfDF8EBxL,i-CGGLhPcqNAjfLn7JVdrH8y
+Q6487621,Lantmannapartiet,1867-03-10,1912-01-01,Q10604308 | Q10502466 | Rundbäckarna,i-PgZ4noUUgrkZvcF5NuPikj,i-SGnPE3o9jEHg9veQxp4jCS | i-U7KB9Qos7yhdHuWxPyJes6 | ()
+Q10501499,Första kammarens ministeriella grupp,1867-01-01,1873-01-01,Q10671173 | Q10480339,i-KkGtGbS7ogK6aCpAnqXS8f,i-GhUs4b9mVsgTwzUFZQvgb7 | i-SyAxSYehBkTSozNTpRSE1W
+Q10501498,Första kammarens konservativa grupp,1867-01-01,1873-01-01,Q10671173 | Q10480339,i-PqJveXCLAJPAGXQVraHAou,i-GhUs4b9mVsgTwzUFZQvgb7 | i-SyAxSYehBkTSozNTpRSE1W
+Q10604782,Nyliberala partiet,1868-01-01,1872-01-01,,i-DstLa7iX9NynjKcb2xuaqW,
+Q10671173,Skånska partiet,1873-01-01,1886-01-01,Q10444847,i-GhUs4b9mVsgTwzUFZQvgb7,i-KEgnYCc73ZQ58du5cBUznD
+Q10554126,Lantmannapartiets filial,1873-01-01,1888-01-01,Q7251368 | Q10501500,i-N8ZHM5bKMBzbJXmiiDXiGG,i-JsGzmeZj512cSTetKpxYQF | i-CwShqiWdwctbU6TPYH5iUZ
+Q10480339,Ehrenheimska partiet,1837-01-01,1888-01-01,Q7251368,i-SyAxSYehBkTSozNTpRSE1W,i-JsGzmeZj512cSTetKpxYQF
+Q10411416,Andra kammarens vänster,1886-01-01,1886-01-01,,i-YWBFyDgsqq9na2LAKmDkT7,
+Q111597190,vänstern,1867-01-01,1970-01-01,,i-4rH8Hu5a4qXwKtSgZUMLS4,
+Q10502466,Gamla lantmannapartiet,1888-01-01,1895-01-01,Q6487621,i-U7KB9Qos7yhdHuWxPyJes6,i-PgZ4noUUgrkZvcF5NuPikj
+Q10604308,Nya lantmannapartiet,1888-01-01,1895-01-01,Q6487621,i-SGnPE3o9jEHg9veQxp4jCS,i-PgZ4noUUgrkZvcF5NuPikj
+Q10501501,Första kammarens moderata parti,1905-01-01,1912-01-01,Q3480145,i-9gKkoAVdC2bU1LFrXNHCxd,i-3kDgsboJBSv4zGqF4zfCsY
+Q49098936,Stockholmsbänken,1891-01-01,1893-01-01,Q1594086,i-9GmMGQzBZZpJhYiBph46no,i-JmAkiEUKt5ZBgaCKGCMNu2
+Q1594086,Liberala samlingspartiet,1900-01-16,1924-01-01,Q10560990 | Q4887122 | Q110472693,i-JmAkiEUKt5ZBgaCKGCMNu2,i-9fghptqkyNzTVdA8knRCGq | i-V7MTfG5XaAmjbSDtLkyyfc | i-CNbGLyuzdkRJ2sJBBpzJit
+Q10499121,Frihandelsvänliga centern,1895-01-01,1898-01-01,Q10499105,i-U38vhH3bmRSkDD29zS4VN3,i-JyxgnWsKdPSp9CUq7kwP9M
+Q10499105,Friesenska diskussionsklubben,1897-01-01,1900-01-01,Q1594086,i-JyxgnWsKdPSp9CUq7kwP9M,i-JmAkiEUKt5ZBgaCKGCMNu2
+Q10497448,Folkpartiet (1895–1900),1895-01-01,1900-01-01,Q1594086,i-Hg7NeuZ4rqH2NNJM9r6R7P,i-JmAkiEUKt5ZBgaCKGCMNu2
+Q10604300,nya centern (partigrupp 1895-1896),1895-01-01,1896-01-01,Q19977599,i-CGGLhPcqNAjfLn7JVdrH8y,i-V62L2Jr6S4mFMoW86GFanQ
+Q10432852,Bondeska diskussionsklubben,1897-01-01,1900-01-01,Q1594086,i-C71zJQxceCDJHmQjSb29sP,i-JmAkiEUKt5ZBgaCKGCMNu2
+Q19977599,De moderata reformvännernas grupp,1903-01-01,1905-01-01,Q10594830,i-V62L2Jr6S4mFMoW86GFanQ,i-6DouUrv3WUqNo3ZV44MQo2
+Q10594830,Nationella framstegspartiet,1906-01-01,1912-01-01,Q10554125,i-6DouUrv3WUqNo3ZV44MQo2,i-NhgK2ujGF5t35o2VjT8Q5U
+Q10499214,Frisinnade försvarsvänner,1914-01-01,1914-12-31,,i-GM695yHGsRXSAorwcFL7x5,
+Q10672903,Socialdemokratiska vänstergruppen,1917-01-01,1924-01-01,Q105112  | Q111285801,i-SwzbNNYoyZYULLDiTu2zGP,i-VS8ddgxigwL5TceKtXGApS | i-TQCUzfkvYhBFrXeQwXoENH
+Q10540831,Jordbrukarnas fria grupp,1918-01-01,1922-01-01,Q110472693,i-PvAXgvY3G8qXv1ZM9xudRA,i-CNbGLyuzdkRJ2sJBBpzJit
+Q10560990,Liberala riksdagspartiet,1924-01-01,1935-01-01,Q110857,i-9fghptqkyNzTVdA8knRCGq,"('i-Kpkv9BSujEEJp1S4rDiDt7', 'i-FpGjUCojANuvvwqsNXjcuu')"
+Q111188360,Kilbomspartiet,1924-01-01,1934-01-01,Q2425638,i-VzZnBZoi4EChaiCfF6kxbz,i-SeXPXWPfyJxdeuuFtkdhxh
+Q2425638,Socialistiska partiet,1934-01-01,1944-01-01,,i-SeXPXWPfyJxdeuuFtkdhxh,
+Q10579102,Medborgerlig samling (1964–1968),1964-01-01,1968-01-01,,i-ANbQF76SzeSESXQFvzPzFw,
+Q110857,Folkpartiet,1934-01-01,1990-01-01,X001,i-FpGjUCojANuvvwqsNXjcuu,i-Hm85EQfFmbYuYFPjpXtuCj
