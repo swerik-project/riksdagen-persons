@@ -39,11 +39,18 @@ jobs:
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add quality/estimates/mp-coverage/coverage-summary.txt
-        git add quality/estimates/mp-coverage/mp-coverage.csv
-        # git add quality/estimates/mp-coverage/coverage.csv # this file is hyyuuuyuuggee
-        git add quality/estimates/mp-coverage/*.png
-        git commit --allow-empty -m "chore: update MP coverage"
+        if [[ `git status quality/estimates/mp-coverage/ --porcelain --untracked-files=no` ]]; then
+          git add quality/estimates/mp-coverage/coverage-summary.txt
+          git add quality/estimates/mp-coverage/mp-coverage.csv
+          # git add quality/estimates/mp-coverage/coverage.csv # this file is hyyuuuyuuggee
+          git add quality/estimates/mp-coverage/*.png
+          git commit -m "chore: update MP coverage"
+        else
+          echo ""
+          echo "::warning:: WARNING!!! No changes detected in quality/estimates/mp-coverage/."
+          echo "           Double check the version nr and everything else is up to date."
+          echo ""
+        fi
 
     - name: Push changes
       uses: ad-m/github-push-action@master
