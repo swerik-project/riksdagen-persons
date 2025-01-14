@@ -93,10 +93,35 @@ jobs:
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add CITATION.cff
-        git commit -m "chore: bump version nr in cff file"
-        git add docs
-        git commit -m "chore: update docs"
+        if [[ `git status CITATION.cff --porcelain --untracked-files=no` ]]; then
+          git add CITATION.cff
+          git commit -m "chore: bump version nr in cff file"
+        else
+          echo ""
+          echo "WARNING!!! No changes to CITATION.cff file."
+          echo "           Double check the version nr is correct."
+          echo ""
+        fi
+        if [[ `git status docs/ --porcelain --untracked-files=no` ]]; then
+          git add docs
+          git commit -m "chore: update docs"
+        else
+          echo ""
+          echo "WARNING!!! No changes to documentation files."
+          echo "           Double check the version nr and everything else is up to date."
+          echo ""
+        fi
+        if [[ `git status quality/estimates/mp-coverage/ --porcelain --untracked-files=no` ]]; then
+          git add quality/estimates/mp-coverage/coverage-summary.txt
+          git add quality/estimates/mp-coverage/mp-coverage.csv
+          git add quality/estimates/mp-coverage/*.png
+          git commit -m "chore: update MP coverage"
+        else
+          echo ""
+          echo "WARNING!!! No changes detected in quality/estimates/mp-coverage/."
+          echo "           Double check the version nr and everything else is up to date."
+          echo ""
+        fi
 
     - name: Push changes
       uses: ad-m/github-push-action@master
