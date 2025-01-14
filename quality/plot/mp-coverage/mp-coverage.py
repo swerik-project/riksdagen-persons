@@ -37,7 +37,7 @@ def plot_coverage_ratio(df):
 
 
 def plot_coverage(version, df):
-    year = df['parliament_year'].unique()
+    year = [y[:4] for y in df['parliament_year'].unique()]
     #print(year)
     plt.figure(figsize=(38.20, 10.80))
 
@@ -95,19 +95,20 @@ def plot_coverage(version, df):
 
 def main(args):
 
+
+
     print("plotting MP coverage")
     df = pd.read_csv("quality/estimates/mp-coverage/coverage.csv", sep=";")
     plot_coverage(args.version, df)
-
-
 
     print("plotting quality of MP coverage")
     mp_coverage_df = pd.read_csv("quality/estimates/mp-coverage/mp-coverage.csv")
     mp_coverage_df.set_index('year', inplace=True)
 
-    for c in ["v99.99.99", "v0.0.0"]:
-        if c in df.columns:
-            df.drop(columns=[c], inplace=True)
+    if args.version != "v99.99.99":
+        for c in ["v99.99.99", "v0.0.0"]:
+            if c in mp_coverage.columns:
+                mp_coverage.drop(columns=[c], inplace=True)
 
     for s in skip:
         df.drop(df[df['protocol']==s].index, inplace=True)
@@ -123,7 +124,6 @@ def main(args):
     mp_coverage_df[args.version] = D
 
     mp_coverage_df.to_csv("quality/estimates/mp-coverage/mp-coverage.csv")
-
 
     plot_coverage_ratio(mp_coverage_df)
 
@@ -145,7 +145,6 @@ if __name__ == '__main__':
             args.version = exp.search(args.version).group(0)
     else:
         args.version = "v99.99.99"
-
 
     main(args)
 
