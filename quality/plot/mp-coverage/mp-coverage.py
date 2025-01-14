@@ -107,8 +107,8 @@ def main(args):
 
     if args.version != "v99.99.99":
         for c in ["v99.99.99", "v0.0.0"]:
-            if c in mp_coverage.columns:
-                mp_coverage.drop(columns=[c], inplace=True)
+            if c in mp_coverage_df.columns:
+                mp_coverage_df.drop(columns=[c], inplace=True)
 
     for s in skip:
         df.drop(df[df['protocol']==s].index, inplace=True)
