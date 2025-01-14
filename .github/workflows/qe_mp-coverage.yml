@@ -44,12 +44,13 @@ jobs:
           git add quality/estimates/mp-coverage/mp-coverage.csv
           # git add quality/estimates/mp-coverage/coverage.csv # this file is hyyuuuyuuggee
           git add quality/estimates/mp-coverage/*.png
-          git commit -m "chore: update MP coverage"
+          git commit -m "chore (workflow): update MP coverage quality estimation"
         else
           echo ""
           echo "::warning:: WARNING!!! No changes detected in quality/estimates/mp-coverage/."
           echo "           Double check the version nr and everything else is up to date."
           echo ""
+          git commit --allow-empty -m "chore (workflow): no changes to MP coverage quality estimation"
         fi
 
     - name: Push changes

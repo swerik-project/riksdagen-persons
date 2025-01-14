@@ -95,32 +95,35 @@ jobs:
         git config --local user.name "github-actions[bot]"
         if [[ `git status CITATION.cff --porcelain --untracked-files=no` ]]; then
           git add CITATION.cff
-          git commit -m "chore: bump version nr in cff file"
+          git commit -m "chore (workflow): bump version nr in cff file"
         else
           echo ""
           echo "::warning:: WARNING!!! No changes to CITATION.cff file."
           echo "           Double check the version nr is correct."
           echo ""
+          git commit --allow-empty -m "chore (workflow): no changes to CITATION.cff"
         fi
         if [[ `git status docs/ --porcelain --untracked-files=no` ]]; then
           git add docs
-          git commit -m "chore: update docs"
+          git commit -m "chore (workflow): update documentation"
         else
           echo ""
           echo "::warning:: WARNING!!! No changes to documentation files."
           echo "           Double check the version nr and everything else is up to date."
           echo ""
+          git commit --allow-empty -m "chore (workflow): no changes to documentation"
         fi
         if [[ `git status quality/estimates/mp-coverage/ --porcelain --untracked-files=no` ]]; then
           git add quality/estimates/mp-coverage/coverage-summary.txt
           git add quality/estimates/mp-coverage/mp-coverage.csv
           git add quality/estimates/mp-coverage/*.png
-          git commit -m "chore: update MP coverage"
+          git commit -m "chore (workflow): update MP coverage quality estimation"
         else
           echo ""
           echo "::warning:: WARNING!!! No changes detected in quality/estimates/mp-coverage/."
           echo "           Double check the version nr and everything else is up to date."
           echo ""
+          git commit --allow-empty -m "chore (workflow): no changes to MP coverage quality estimation"
         fi
 
     - name: Push changes
