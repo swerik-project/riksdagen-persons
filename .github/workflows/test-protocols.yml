@@ -1,4 +1,4 @@
-name: "Test persons repo agains records for misplaced MPs"
+name: "Test persons repo against records for misplaced MPs"
 
 on:
   pull_request:
@@ -24,23 +24,23 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyriksdagen
         pip install pytest-cfg-fetcher
+
     - name: Install jq
       uses: dcarbone/install-jq-action@v2
       with:
         version: 1.7
         force: false
+
     - name: get records
       run: |
         RECORDS_INFO="$(curl -L https://api.github.com/repos/swerik-project/riksdagen-records/releases/latest)"
         RECORDS_TAG="$(echo $RECORDS_INFO | jq -r .tag_name)"
         curl -LO https://github.com/swerik-project/riksdagen-records/archive/refs/tags/$RECORDS_TAG.zip
         RECORDS_TAGNR=$(echo ${RECORDS_TAG:1})
-        ls -la
         unzip $RECORDS_TAG.zip riksdagen-records-$RECORDS_TAGNR/test/*
         unzip $RECORDS_TAG.zip riksdagen-records-$RECORDS_TAGNR/data/*
         rsync -vr riksdagen-records-$RECORDS_TAGNR/ .
-        ls -l data
-        ls -l test
+
     - name: mp-test
       run: |
         python -m unittest test.mp

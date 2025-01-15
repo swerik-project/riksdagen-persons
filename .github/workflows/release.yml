@@ -25,12 +25,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyriksdagen
         pip install cycler
+
     - name: Zip metadata
       run: zip -r persons.zip data
 
-    - name: Upload metadata to release
+    - name: zip quality estimates
+      run: zip -r quality.zip quality/estimates
+
+    - name: Upload artifacts to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: persons.zip
+        file: ./*.zip
         tag: ${{ github.ref }}
+        file_glob: true
