@@ -26,6 +26,15 @@ jobs:
         pip install pyriksdagen
         pip install cycler
 
+    - name: dump stuff
+      run: |
+        mkdir dumps
+        python .github/workflows/release/dump-merged-meta-dables.py
+        python .github/workflows/release/dump-chair-data.py --version ${{ github.ref }}
+
+    - name: zip dumps
+      run: zip dumps.zip dumps
+
     - name: Zip metadata
       run: zip -r persons.zip data
 
