@@ -90,3 +90,18 @@ Columns:
 - date: date
 
 Separator == ;
+
+
+## mp_counts_ek.csv
+
+The number of MPs by region, gender and party from 1973 to 2022.
+
+Source:
+@Misc{title = {Riksdagsledamöter, antal efter region, parti, kön, tabellinnehåll och valår},
+      author = {{Statistics Sweden}},
+      organization = {Statistics Sweden},
+      address = {Stockholm, Sweden},
+      year = {2025},
+      url = {https://api.scb.se/OV0104/v1/doris/sv/ssd/ME/ME0107/ME0107C/Riksdagsledamoter},
+      note = {[Data accessed 2025-01-24 19:01:52.755821 using pxweb R package 0.17.0]}}
+
