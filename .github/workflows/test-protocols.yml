@@ -40,8 +40,8 @@ jobs:
 
     - name: integrate data and tests
       run: |
-        mv riksdagen-records/data/* data/
-        mv riksdagen-records/test/* test/
+        rsync -vrut riksdagen-records/data/ data/
+        rsync -vrut riksdagen-records/test/ test/
 
     - name: mp-test
       run: |
