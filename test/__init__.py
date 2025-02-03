@@ -3,16 +3,20 @@
 
 ## Individual tests
 
+
 ### Test about seat coverage -- `chairs.py`
 
-.. include:: docs/
+.. include:: docs/chairs.md
             :start-after: Summary
             :end-before: Test Cases
+
+
 ### Test integrity of persons database -- `db.py`
 
 .. include:: docs/db.md
             :start-after: Summary
             :end-before: Test Cases
+
 
 ### Test integrity of mandate periods for MPs -- `mandates.py`
 
@@ -26,6 +30,7 @@
 .. include:: docs/mp-frequency-test.md
             :start-after: Summary
             :end-before: Test Cases
+
 
 ### Test integrity of party affiliation data -- `party-affiliation.py`
 
