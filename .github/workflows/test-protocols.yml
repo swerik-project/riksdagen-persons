@@ -33,7 +33,9 @@ jobs:
 
     - name: get records
       run: |
-        git clone -b dev --single-branch git@github.com:swerik-project/riksdagen-records.git .
+        git clone -b dev --single-branch git@github.com:swerik-project/riksdagen-records.git
+        mv riksdagen-records/data/* data/
+        mv riksdagen-records/test/* test/
 
     - name: mp-test
       run: |
