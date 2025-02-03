@@ -32,8 +32,14 @@ jobs:
         force: false
 
     - name: get records
+      uses: actions/checkout@v4
+      with:
+        repository: swerik-project/riksdagen-records
+        path: riksdagen-records
+        ref: dev
+
+    - name: integrate data and tests
       run: |
-        git clone -b dev --single-branch git@github.com:swerik-project/riksdagen-records.git
         mv riksdagen-records/data/* data/
         mv riksdagen-records/test/* test/
 
