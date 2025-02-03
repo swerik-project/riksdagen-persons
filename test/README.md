@@ -17,8 +17,6 @@ Contains data used for data tests.
 
 Contains documentation about the test files.
 
-- `general-integrity-tests.md`
-
 
 ### `./results/`
 
