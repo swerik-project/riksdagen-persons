@@ -32,14 +32,16 @@ jobs:
         force: false
 
     - name: get records
+      uses: actions/checkout@v4
+      with:
+        repository: swerik-project/riksdagen-records
+        path: riksdagen-records
+        ref: dev
+
+    - name: integrate data and tests
       run: |
-        RECORDS_INFO="$(curl -L https://api.github.com/repos/swerik-project/riksdagen-records/releases/latest)"
-        RECORDS_TAG="$(echo $RECORDS_INFO | jq -r .tag_name)"
-        curl -LO https://github.com/swerik-project/riksdagen-records/archive/refs/tags/$RECORDS_TAG.zip
-        RECORDS_TAGNR=$(echo ${RECORDS_TAG:1})
-        unzip $RECORDS_TAG.zip riksdagen-records-$RECORDS_TAGNR/test/*
-        unzip $RECORDS_TAG.zip riksdagen-records-$RECORDS_TAGNR/data/*
-        rsync -vr riksdagen-records-$RECORDS_TAGNR/ .
+        rsync -vrut riksdagen-records/data/ data/
+        rsync -vrut riksdagen-records/test/ test/
 
     - name: mp-test
       run: |
