@@ -31,6 +31,7 @@ jobs:
         mkdir dumps
         python .github/workflows/release/dump-merged-meta-dables.py
         python .github/workflows/release/dump-chair-data.py --version ${{ github.ref }}
+        python references/compile-reference-list.py -o dumps/reference-list.bib
 
     - name: zip dumps
       run: zip dumps.zip dumps
