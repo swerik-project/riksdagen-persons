@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test chars and chair-mp mapping metadata
+Test chars and chair-mp mapping metadata.
 """
 from datetime import datetime
 from pyriksdagen.date_handling import yearize_mandates
