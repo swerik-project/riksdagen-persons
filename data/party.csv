@@ -1,4 +1,4 @@
-party_id,party,inception,inception_precision,dissolution,dissolution precision,successor_id,swerik_party_id,swerik_successor
+party_id,party,inception,inception_precision,dissolution,dissolution_precision,successor_id,swerik_party_id,swerik_successor
 Q105112,Socialdemokraterna,1889-01-01,year,,,Q10672903,i-VS8ddgxigwL5TceKtXGApS,i-SwzbNNYoyZYULLDiTu2zGP
 Q111033682,Högerpartiet,1952-01-01,year,1969-01-01,day,Q110843,i-3A4u29WVtvfu8i1KwuPEeE,i-F6Stwe8wVnSPa3BbgusszQ
 Q110843,Moderata samlingspartiet,1969-01-01,year,,,,i-F6Stwe8wVnSPa3BbgusszQ,
