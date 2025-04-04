@@ -41,6 +41,9 @@ class Test(unittest.TestCase):
 
     #@unittest.skip
     def test_independent_mp(self):
+        """
+        Make sure known independent MP's are listed as such in the data
+        """
         config = fetch_config("independent-mp")
         test_file = pd.read_csv("test/data/independent-mp.csv", sep=';')
         independent = pd.read_csv("data/explicit_no_party.csv")
@@ -70,6 +73,9 @@ class Test(unittest.TestCase):
 
     #@unittest.skip
     def test_party(self):
+        """
+        Check that known MP party affiliations are correct.
+        """
         config = fetch_config("party-affiliation")
         test_file = pd.read_csv("test/data/known-party-affiliation.csv", sep=';')
         party_affiliation = pd.read_csv("data/party_affiliation.csv")

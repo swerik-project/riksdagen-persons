@@ -37,13 +37,7 @@ The csv-file consists of four columns:
 
 Separator == ;
 
-## Mandate Dates
 
-- date
-- type
-- person_id
-
-Separator == ;
 
 ## Known MPs catalog
 
@@ -75,11 +69,38 @@ Separator == ;
 
 Separator == ;
 
+## Mandate Dates
+
+- date
+- type
+- person_id
+
+Separator == ;
+
 ## Not mp
 
 Some wiki IDs have caused recurring problems in that the entity to which they refer shares a name with an MP and get relabled as such. Here we start a list of such cases so we can eventually implement a test.
 
 - wiki_id
+
+
+## party-distribution-ek.csv
+
+The number of MPs by region, gender and party from 1973 to 2022.
+
+Source: [Statistics Sweden](https://raw.githubusercontent.com/swerik-project/the-swedish-parliament-corpus/refs/heads/references/references/bibtex/statisticsSweden2025partyDistr.bib)
+
+
+columns:
+
+- region
+- party
+- sex
+- year
+- number
+
+separator == ;
+
 
 ## session-dates.csv
 
@@ -90,3 +111,4 @@ Columns:
 - date: date
 
 Separator == ;
+
