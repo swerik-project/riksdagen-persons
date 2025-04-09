@@ -29,13 +29,21 @@ jobs:
     - name: dump stuff
       run: |
         mkdir dumps
+        ls
+        ls dumps
         VERSION=$(echo ${{ github.ref }} | cut -d "v" -f 2 | xargs)
         python .github/workflows/release/dump-merged-meta-tables.py
+        ls
+        ls dumps
         python .github/workflows/release/dump-chair-data.py --version $VERSION
+        ls
+        ls dumps
         python -c 'from pyriksdagen.reference_handling import compile_bib_list; compile_bib_list(output_file="dumps/reference-list.bib")'
+        ls
+        ls dumps
 
     - name: zip dumps
-      run: zip dumps.zip dumps
+      run: zip -r dumps.zip dumps
 
     - name: Zip metadata
       run: zip -r persons.zip data
