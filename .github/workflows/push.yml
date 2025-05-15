@@ -85,6 +85,7 @@ jobs:
     - name: Test MPs agains manually curated data
       run: |
         python -m unittest test.party-affiliation
+        python -m unittest test.party-name
 
   frequency-distr:
     runs-on: ubuntu-latest
