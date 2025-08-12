@@ -1,4 +1,4 @@
-name: Perform unit tests
+name: "Riksdagen Persons: data integrity tests"
 
 on: [push]
 
@@ -9,9 +9,9 @@ jobs:
       matrix:
         python-version: [3.8]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
@@ -29,9 +29,9 @@ jobs:
       matrix:
         python-version: [3.8]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
@@ -52,9 +52,9 @@ jobs:
       matrix:
         python-version: [3.8]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
@@ -65,3 +65,44 @@ jobs:
     - name: Test manually curated mandate dates do not change
       run: |
         python -m unittest test.mandates
+
+  partyAffiliation:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+       python-version: [3.8]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyriksdagen
+        pip install pytest-cfg-fetcher
+    - name: Test MPs agains manually curated data
+      run: |
+        python -m unittest test.party-affiliation
+        python -m unittest test.party-name
+
+  frequency-distr:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyriksdagen
+        pip install pytest-cfg-fetcher
+    - name: Test at least 95% of parliament days have the correct N MPs (+-10%)
+      run: |
+        python -m unittest test.mp-frequency-test

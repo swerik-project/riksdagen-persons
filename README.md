@@ -1,4 +1,4 @@
-# Riksdagen Politicians
+# Riksdagen Persons
 
 This repository contains data related to Members of Parliament, Ministers, Speakers, and other Political figures who participate in the workings of the Riksdag.
 
@@ -11,11 +11,7 @@ Contains metadata on individuals.
 
 ### The `test/` directory
 
-Contains integrity tests related to the riksdagen-politicians repository.
-
-### The `quality_estimation/` directory
-
-Contains scripts to estimate quality and coverage of the data in `data/`.
+Contains integrity tests related to the riksdagen-persons repository and to the estimation of quality and coverage of the data in `data/`.
 
 
 ## Data
@@ -38,6 +34,13 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - person_id
 - source
 - volume
+
+### `data/explicit_no_party.csv`
+- person_id
+- wiki_id
+- pages
+- ref
+- vol
 
 ### `data/external_identifiers.csv`
 - person_id

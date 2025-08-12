@@ -1,0 +1,48 @@
+name: "Test persons repo against records for misplaced MPs"
+
+on:
+  pull_request:
+    branches:
+      - 'dev'
+      - 'main'
+
+jobs:
+  mp-unittest:
+    runs-on:  ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - uses: GuillaumeFalourd/setup-rsync@v1.2
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyriksdagen
+        pip install pytest-cfg-fetcher
+
+    - name: Install jq
+      uses: dcarbone/install-jq-action@v2
+      with:
+        version: 1.7
+        force: false
+
+    - name: get records
+      uses: actions/checkout@v4
+      with:
+        repository: swerik-project/riksdagen-records
+        path: riksdagen-records
+        ref: dev
+
+    - name: integrate data and tests
+      run: |
+        rsync -vrut riksdagen-records/data/ data/
+        rsync -vrut riksdagen-records/test/ test/
+
+    - name: mp-test
+      run: |
+        python -m unittest test.mp

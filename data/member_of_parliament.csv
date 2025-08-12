@@ -7537,7 +7537,7 @@ i-Pe1ftVDt68xexZMLUFEKsL,1987-06-03,1987-11-24,Stockholms kommuns valkrets,ledam
 i-HSMHpUXXyiPtGnUcVPDQgp,1987-11-10,1987-12-09,Dalarnas läns valkrets,ledamot
 i-GyY6srbbUiLR1jEBcHLJNd,1987-11-13,1987-12-13,,ledamot
 i-RWHHpjXg7xo3nGajq9orcA,1987-11-14,1987-12-14,Göteborgs kommuns valkrets,ledamot
-i-Cg3YnBbUB1G82oao8pSkBq,1987-11-14,1987-12-14,Stockholms stad,ledamot
+i-Cg3YnBbUB1G82oao8pSkBq,1987-11-14,1987-12-14,Stockholms kommun,ledamot
 i-R3w2cm3MQ27goG533zxfaJ,1987-11-14,1987-12-14,Skaraborgs läns valkrets,ledamot
 i-XkBLzyhNam87rntGgPVaog,1987-11-09,1987-12-20,Dalarnas läns valkrets,ledamot
 i-Kytbd3WZfQeKTPffXjTEpk,1987-11-13,1987-12-20,,ledamot
@@ -12803,6 +12803,7 @@ i-AFto3gTmjTfTgomtq31hLZ,2022-09-26,2023-01-15,Stockholms kommuns valkrets,ledam
 i-TFG2PW7ay7mUZBy2GoJDbV,2022-09-26,2023-01-15,Dalarnas läns valkrets,ledamot
 i-7pp8o5KjbVfk6nNsz3e3FX,2022-09-26,2023-01-17,Dalarnas läns valkrets,ledamot
 i-Ss5eCCiVtUjuS9PnEw3PRH,2022-09-26,2023-01-29,Stockholms läns valkrets,ledamot
+i-BE9rE88w7g6A9eUimJmA8D,2022-09-11,2023-02-19,Jönköpings läns valkrets,ledamot
 i-NirXfc8JiwP3Ssuz3NR6e2,2022-09-26,2023-02-19,Jönköpings läns valkrets,ledamot
 i-SKsrTm4gWQzab9KkjqBLKS,2023-01-15,2023-02-24,Jämtlands läns valkrets,ledamot
 i-9x2nw6aosA3pyEJfJTc1eD,2023-01-12,2023-02-25,Skåne läns södra valkrets,ledamot
@@ -12834,6 +12835,7 @@ i-Ry3pP9VZKrW87Vcxq73jQG,2022-10-18,2023-08-22,Stockholms kommuns valkrets,ledam
 i-PTrhiFiqUrHZfrUpsQ8Nyy,2022-09-26,2023-08-25,Västra Götalands läns norra valkrets,ledamot
 i-6GYXkbfSoUeH3CekfDuKLA,2022-09-26,2023-08-27,Uppsala läns valkrets,ledamot
 i-VxsbUrESEWZoSuxq4jRwxG,2022-09-26,2023-09-01,Hallands läns valkrets,ledamot
+i-DuMkbdojgoQN2GPx9cnpUs,2023-04-01,2023-09-24,Västerbottens läns valkrets,ledamot
 i-2J2wE3W8hwNZbGpwcXgC4m,2003-09-04,2023-10-08,Hallands läns valkrets,ledamot
 i-SRx5MYgiUBkgGLPueXgws5,2022-09-26,2023-10-13,Skåne läns västra valkrets,ledamot
 i-3y4o8soU9qx5tQQ1cG92h3,2023-02-25,2023-10-15,Jämtlands läns valkrets,ledamot
@@ -12851,7 +12853,21 @@ i-DF6yJMSNGfT6HwisDSi4qz,2023-05-13,2024-01-26,Blekinge läns valkrets,ledamot
 i-3kfmGYErmuJ81cgi8Cwy88,2022-09-26,2024-01-29,Västra Götalands läns västra valkrets,ledamot
 i-AvpuCBNCdN7LHjCsU7ixe5,2023-11-27,2024-01-30,Malmö kommuns valkrets,ledamot
 i-Swns2VJiq8mNPgw8cBRfJ9,2022-09-26,2024-02-11,Malmö kommuns valkrets,ledamot
-i-DuMkbdojgoQN2GPx9cnpUs,2023-04-01,2024-09-24,Västerbottens läns valkrets,ledamot
+i-HxcQkHC9fDSzkJWgvdhDEF,2022-10-07,2024-02-21,Kalmar läns valkrets,ledamot
+i-Lw92TAaAVgG8Kdf7YxhViy,2022-09-26,2024-02-26,Västra Götalands läns norra valkrets,ledamot
+i-4Cf95LugnAL9WAJuCVMeo8,2022-09-26,2024-03-01,Östergötlands läns valkrets,ledamot
+i-TrXGyxsScvTSQxnJXvtZZW,2022-09-26,2024-03-14,Östergötlands läns valkrets,ledamot
+i-ME9KY5TsTMUGSHJP1KEsna,2022-09-26,2024-03-24,Västmanlands läns valkrets,ledamot
+i-D1JJYSnwdtdYQGMYCSH8nt,2024-02-21,2024-03-24,Kalmar läns valkrets,ledamot
+i-AJmnQZAj5vxA1hK3yiJiEm,2022-09-26,2024-03-31,Uppsala läns valkrets,ledamot
+i-5cQcZgMfPXLpKbuzTtzgn6,2024-01-26,2024-03-31,Jämtlands läns valkrets,ledamot
+i-WRiXUtixNTz4kgEnAAs5GH,2022-09-26,2024-04-01,Stockholms läns valkrets,ledamot
+i-DF6yJMSNGfT6HwisDSi4qz,2024-04-01,2024-04-02,,ledamot
+i-PjQgLPLrkyDV2oYQfyuWq2,2022-09-26,2024-04-17,Stockholms läns valkrets,ledamot
+i-XKBEUKbavmqFvdi75cDrts,2023-06-01,2024-04-21,Stockholms läns valkrets,ledamot
+i-15XKZT3hRjksEvtHa8x3vk,2023-08-28,2024-04-30,Uppsala läns valkrets,ledamot
+i-SKsrTm4gWQzab9KkjqBLKS,2023-10-16,2024-05-01,Jämtlands läns valkrets,ledamot
+i-TP1gKqVgWU4EH5fBdPaTQB,2024-04-18,2024-05-31,Stockholms läns valkrets,ledamot
 i-7MKpZ19NfCt1YZ3XeZaHk3,2022-09-26,2026-09,,ledamot
 i-GSjyw1eeZNrEr8Uk3Wy79K,1887,,Södertörns domsagas valkrets,andrakammarledamot
 i-XvpBFhfR9SDB1i9KLCmqX2,1921,,,andrakammarledamot
@@ -12863,7 +12879,6 @@ i-EzcxskgMAVbnq8hM2F2km9,1979-10-15,,Dalarnas läns valkrets,ledamot
 i-HYFwSCrwnemwyJTLMcyqvN,1985-09-30,,Uppsala läns valkrets,ledamot
 i-RH6VCPhyxs9yYcfXJzPxYT,1990-10-02,,Södermanlands läns valkrets,ledamot
 i-Cdgsqn4Ts9WMwbjXcE4537,1992-10-06,,Jönköpings läns valkrets,ledamot
-i-BE9rE88w7g6A9eUimJmA8D,2022-03-20,,Jönköpings läns valkrets,ledamot
 i-DAzwuDmrMCAk4CXBrm86y5,2022-09-26,,Västerbottens läns valkrets,ledamot
 i-AcrNjdftfgEDKtVYDbE4tQ,2022-09-26,,Västerbottens läns valkrets,ledamot
 i-DRqpu2aaHKSgAVbkTGg4rs,2022-09-26,,Uppsala läns valkrets,ledamot
@@ -12912,7 +12927,6 @@ i-2ugyM6pSMg5iuEaP9k2J9q,2022-09-26,,Västra Götalands läns norra valkrets,led
 i-DfQCZENTNqZdmhKQNP4e5m,2022-09-26,,Västra Götalands läns södra valkrets,ledamot
 i-JPGVjXRUn351VFoQqW2dy7,2022-09-26,,Värmlands läns valkrets,ledamot
 i-S9N4wWD2qfoGM8u1D3QrvL,2022-09-26,,Örebro läns valkrets,ledamot
-i-ME9KY5TsTMUGSHJP1KEsna,2022-09-26,,Västmanlands läns valkrets,ledamot
 i-KxpSRorEnVh3Hp6vtdRCWL,2022-09-26,,Västmanlands läns valkrets,ledamot
 i-U8W4uUAKEoMtNdRs3JJRK8,2022-09-26,,Dalarnas läns valkrets,ledamot
 i-TtRdTWTGZX1yMjrAtYnz3m,2022-09-26,,Dalarnas läns valkrets,ledamot
@@ -12986,7 +13000,6 @@ i-PtgVSQS6zzFSG7jQDufZYA,2022-09-26,,Västra Götalands läns östra valkrets,le
 i-M2rNBQVSaqrQcUZQkmkCCX,2022-09-26,,Stockholms läns valkrets,ledamot
 i-GLpGALNASBTHSmgDcbTu4m,2022-09-26,,Stockholms läns valkrets,ledamot
 i-UCSzx6WGaw5yywQnfnpdW7,2022-09-26,,Stockholms läns valkrets,ledamot
-i-WRiXUtixNTz4kgEnAAs5GH,2022-09-26,,Stockholms läns valkrets,ledamot
 i-JfXYdmqhTQWYWTgjZHSGEn,2022-09-26,,Dalarnas läns valkrets,ledamot
 i-Xuj1vM6ABWqwaf2n7VoBVD,2022-09-26,,Västernorrlands läns valkrets,ledamot
 i-8xM6U2UEMYF2ek1xU2cetn,2022-09-26,,Skåne läns västra valkrets,ledamot
@@ -13048,7 +13061,6 @@ i-9xarzmckV5SS8EyJPN5b3x,2022-09-26,,Skåne läns norra och östra valkrets,leda
 i-UwP5i3Nf2rsj5W3x9BMAEh,2022-09-26,,Östergötlands läns valkrets,ledamot
 i-JGSgrRM98pxtJjMzUEkHuS,2022-09-26,,Stockholms kommuns valkrets,ledamot
 i-9bqWLXmB7Cb3r3JUmkkLBy,2022-09-26,,Södermanlands läns valkrets,ledamot
-i-4Cf95LugnAL9WAJuCVMeo8,2022-09-26,,Östergötlands läns valkrets,ledamot
 i-DGTHVhbApAq9J741uJW2uT,2022-09-26,,Värmlands läns valkrets,ledamot
 i-48Dg2ScegN8mpc2UJq5sE2,2022-09-26,,Östergötlands läns valkrets,ledamot
 i-7bVDjZpV72vdnYhJ8phHuW,2022-09-26,,Skåne läns södra valkrets,ledamot
@@ -13092,18 +13104,15 @@ i-DmUZytVbrrufqUhEMo3Q2X,2022-09-26,,Västernorrlands läns valkrets,ledamot
 i-Ca4vSGXLUHJmoroaLz9BvD,2022-09-26,,Västerbottens läns valkrets,ledamot
 i-WG1giJMSibawsd4Nrc2c3k,2022-09-26,,Västra Götalands läns södra valkrets,ledamot
 i-LjpaL4XhPNoSZ44TkA9j3w,2022-09-26,,Kronobergs läns valkrets,ledamot
-i-TrXGyxsScvTSQxnJXvtZZW,2022-09-26,,Östergötlands läns valkrets,ledamot
 i-3YAEMbZXswzuyekFnSxXSF,2022-09-26,,Västmanlands läns valkrets,ledamot
 i-KHxTD13x4T7QRobXtjMm4K,2022-09-26,,Västra Götalands läns västra valkrets,ledamot
 i-UB2UKCr2W8fJ3Rr4dtCeHb,2022-09-26,,Stockholms kommuns valkrets,ledamot
 i-MzXaegnmBQej56i8amZoDN,2022-09-26,,Kalmar läns valkrets,ledamot
-i-Lw92TAaAVgG8Kdf7YxhViy,2022-09-26,,Västra Götalands läns norra valkrets,ledamot
 i-2fr3vB32hz5Z6xAxeRqads,2022-09-26,,Stockholms kommuns valkrets,ledamot
 i-QncsjeqVcGrNpNi8SPzrX4,2022-09-26,,Örebro läns valkrets,ledamot
 i-D2JRw2JQkbJnAYJEiDcH47,2022-09-26,,Stockholms kommuns valkrets,ledamot
 i-TMwpsik9bguNXgjB4GcxTS,2022-09-26,,Skåne läns södra valkrets,ledamot
 i-L1n9B3HMMa1BFpMjixTVue,2022-09-26,,Stockholms kommuns valkrets,ledamot
-i-PjQgLPLrkyDV2oYQfyuWq2,2022-09-26,,Stockholms läns valkrets,ledamot
 i-KoABdAPF5wcu7bTLEqhj3Z,2022-09-26,,Hallands läns valkrets,ledamot
 i-TXWjMfPNdu6NddKf5hSeRx,2022-09-26,,Västra Götalands läns västra valkrets,ledamot
 i-3Su8RZSRu3defRTgsQprqZ,2022-09-26,,Västmanlands läns valkrets,ledamot
@@ -13139,14 +13148,12 @@ i-V7UFodKLft3oP8S6c3GFzd,2022-09-26,,Skåne läns södra valkrets,ledamot
 i-3AeBsdJ7MhuLFhPbK13WZp,2022-09-26,,Kalmar läns valkrets,ledamot
 i-ChDzdZDYwg4X9oGXyFy8Ta,2022-09-26,,Stockholms kommuns valkrets,ledamot
 i-655Uw3q6yNE6R2nN2pDvUg,2022-09-26,,Västmanlands läns valkrets,ledamot
-i-AJmnQZAj5vxA1hK3yiJiEm,2022-09-26,,Uppsala läns valkrets,ledamot
 i-JohWyHK5wjKsQnLvxsZ3Ln,2022-09-26,,Uppsala läns valkrets,ledamot
 i-VxX8uLJ6VUnSdeyZcXucoU,2022-09-26,,Skåne läns södra valkrets,ledamot
 i-KEqHuEZEbq5NvHHenfRSVW,2022-09-26,,Västra Götalands läns västra valkrets,ledamot
 i-7vhvYfdv3H73d44FMgW7sh,2022-09-26,,Dalarnas läns valkrets,ledamot
 i-5cTooqVrJJpd4hUqqHPhUf,2022-09-26,,Stockholms kommuns valkrets,ledamot
 i-Uwm3eggnWKqmERZ766iV6a,2022-09-26,,Västernorrlands läns valkrets,ledamot
-i-HxcQkHC9fDSzkJWgvdhDEF,2022-10-07,,Kalmar läns valkrets,ledamot
 i-JPgedjW7JshtfAExS9H21b,2022-10-12,,Skåne läns södra valkrets,ledamot
 i-4rA8nu7Qns2drm1ePJStLd,2022-10-12,,Stockholms kommuns valkrets,ledamot
 i-U1y3evwTTrkjYao8Gey5r6,2022-10-18,,Skåne läns norra och östra valkrets,ledamot
@@ -13179,6 +13186,7 @@ i-7JczRrovTGvs7Lvt1ihPfi,2022-10-25,,Västra Götalands läns västra valkrets,l
 i-3JecSyBEVBAAoLDbynKGW6,2022-11-08,,Stockholms läns valkrets,ledamot
 i-XNt7eWTuNMW1Ce4R4bYMT,2022-12-15,,Göteborgs kommuns valkrets,ledamot
 i-7pp8o5KjbVfk6nNsz3e3FX,2023-01-17,,Dalarnas läns valkrets,ledamot
+i-BE9rE88w7g6A9eUimJmA8D,2023-02-20,,Jönköpings läns valkrets,ledamot
 i-7p7goD9VC5HZh4VdEN1AFo,2023-04-01,,Dalarnas läns valkrets,ledamot
 i-KTmTMYsoqjqixxDSAwcrPb,2023-04-08,,Skåne läns södra valkrets,ledamot
 i-LDFpwyJnL3ETCnq3JKBJqw,2023-05-01,,Stockholms kommuns valkrets,ledamot
@@ -13187,26 +13195,30 @@ i-XS1DYyajKnUSXB7m9DT6C2,2023-05-08,,Malmö kommuns valkrets,ledamot
 i-NJZoKqxvbBjg3XW7WXGhgL,2023-05-15,,Västra Götalands läns östra valkrets,ledamot
 i-QhdbBfCQXCqPEr4GTwvK8F,2023-05-15,,Göteborgs kommuns valkrets,ledamot
 i-Ss5eCCiVtUjuS9PnEw3PRH,2023-05-22,,Stockholms läns valkrets,ledamot
-i-XKBEUKbavmqFvdi75cDrts,2023-06-01,,Stockholms läns valkrets,ledamot
 i-XPu3ZHL3w9uUH4TKYHMmif,2023-06-26,,Södermanlands läns valkrets,ledamot
 i-7MKpZ19NfCt1YZ3XeZaHk3,2023-07-14,,Skåne läns västra valkrets,ledamot
 i-3L2NmwsjEcuGo8fdwvHsQi,2023-08-01,,Blekinge läns valkrets,ledamot
 i-Q6c6PTb1KbongkKbS6VDAD,2023-08-08,,Malmö kommuns valkrets,ledamot
 i-AFto3gTmjTfTgomtq31hLZ,2023-08-14,,Stockholms kommuns valkrets,ledamot
 i-4GBc1kddnipzhFGaGt69TR,2023-08-22,,Stockholms kommuns valkrets,ledamot
-i-15XKZT3hRjksEvtHa8x3vk,2023-08-28,,Uppsala läns valkrets,ledamot
 i-8mQv5P6KHAoGEiUHhANB2Q,2023-08-28,,Västra Götalands läns norra valkrets,ledamot
 i-LXPnzyt5uZsCfLxEEqRvYV,2023-09-25,,Västerbottens läns valkrets,ledamot
 i-VxsbUrESEWZoSuxq4jRwxG,2023-10-09,,Hallands läns valkrets,ledamot
-i-SKsrTm4gWQzab9KkjqBLKS,2023-10-16,,Jämtlands läns valkrets,ledamot
 i-XCrs5cGPH9J1SToBdwxJgt,2023-10-30,,Gävleborgs läns valkrets,ledamot
 i-SRx5MYgiUBkgGLPueXgws5,2023-11-14,,Skåne läns västra valkrets,ledamot
 i-59GzwSB23e1tdcfxS3Mstm,2024-01-01,,Värmlands läns valkrets,ledamot
 i-R1Vn1Lw6jr8YHTAmgGqoM4,2024-01-01,,Stockholms kommuns valkrets,ledamot
 i-9adPkD75NVypGed632N39a,2024-01-08,,Stockholms kommuns valkrets,ledamot
-i-5cQcZgMfPXLpKbuzTtzgn6,2024-01-26,,Jämtlands läns valkrets,ledamot
 i-DhFtpnk9dqFrTXA2tvjJnb,2024-01-30,,Västra Götalands läns västra valkrets,ledamot
 i-9rzEiT5qs2rumTNiqr6kVD,2024-01-31,,Malmö kommuns valkrets,ledamot
 i-Swns2VJiq8mNPgw8cBRfJ9,2024-02-12,,Malmö kommuns valkrets,ledamot
+i-HxcQkHC9fDSzkJWgvdhDEF,2024-03-25,,Kalmar läns valkrets,ledamot
+i-Lw92TAaAVgG8Kdf7YxhViy,2024-03-27,,Västra Götalands läns norra valkrets,ledamot
+i-5cQcZgMfPXLpKbuzTtzgn6,2024-04-02,,Jämtlands läns valkrets,ledamot
+i-TL5yPm2G87AhwVnNMTjvGb,2024-04-02,,Dalarnas läns valkrets,ledamot
+i-DGcLR21cjcBjrD374xbmmM,2024-04-13,,Västra Götalands läns västra valkrets,ledamot
+i-NHEfCn32mEHrAw3JbShLAA,2024-04-22,,Stockholms läns valkrets,ledamot
+i-6GYXkbfSoUeH3CekfDuKLA,2024-05-01,,Uppsala läns valkrets,ledamot
+i-3y4o8soU9qx5tQQ1cG92h3,2024-05-02,,Jämtlands läns valkrets,ledamot
 i-x1CuoKmRHYgQr9i2kh3B5,,,,ledamot
 i-TUyWWYGDFXW92GhiG3CLwF,,,,ledamot

@@ -31,6 +31,9 @@ class Test(unittest.TestCase):
 
 
     def test_manually_checked_mandates(self):
+        """
+        Find each manual mandate in the data... make sure dates are same.
+        """
         mep = self.fetch_mep_meta()
         df = self.fetch_known_mandate_dates()
         config = fetch_config("mandates")
