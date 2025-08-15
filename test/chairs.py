@@ -394,13 +394,6 @@ class Test(unittest.TestCase):
                     df.drop_duplicates(subset=["chair_id", "parliament_year", "chair_start", "chair_end", "person_id"], inplace=True)
                     if len(df["chair_id"].unique()) == 1:
                         pass
-                    elif len(df["chamber"].unique()) > 1:
-                        if dup not in ch:
-                            ch.append(dup)
-                            print("\n--->>>>", dup)
-                            print(df)
-                        print("IN TWO CHAMBERS")
-                        issues = pd.concat([issues, df], ignore_index=True)
                     else:
                         ranges = []
                         for i, r in df.iterrows():
