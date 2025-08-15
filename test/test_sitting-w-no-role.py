@@ -16,7 +16,7 @@ class SittingWithNoRole(unittest.TestCase):
     def setUpClass(cls):
         super(SittingWithNoRole, cls).setUpClass()
         cls.mandates = yearize_mandates()
-        cls.seats = pd.read_csv("data/chair_mp.csv")
+        print(cls.mandates["role"].unique())
         cls.missing_from_year = []
         cls.out_of_date_range = []
 
