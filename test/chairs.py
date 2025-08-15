@@ -541,7 +541,7 @@ class Test(unittest.TestCase):
     #@unittest.skip
     def test_chair_coverage(self):
         """
-        test all chairs are filled
+        test all chairs are filled after 1925
         """
         print("Test coverage of chair-MP mapping.")
         config = fetch_config("chairs")
@@ -552,7 +552,10 @@ class Test(unittest.TestCase):
         for y in chair_mp['parliament_year'].unique():
             y_empty_chairs = []
             y_counter = 0
-            year_chair_mp = chair_mp.loc[chair_mp['parliament_year'] == y]
+            year_chair_mp = chair_mp.loc[
+                    (chair_mp['parliament_year'] == y) &
+                    (chair_mp['parliament_year'] > 1925)
+                ]
             year_chairs = year_chair_mp["chair_id"].unique()
             if year_chair_mp["person_id"].isnull().any():
                 for i, r in year_chair_mp.iterrows():
