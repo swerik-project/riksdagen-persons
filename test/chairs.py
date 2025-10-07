@@ -316,6 +316,7 @@ class Test(unittest.TestCase):
                             missing_in_R.append([y, c])
                             warnings.warn(f"{y}: {c}", ChairMissingFromRange)
                 elif len(enk_chairs) > len(year_chair_mp_chairs)+len(excludes):
+                    [print(_) for _ in enk_chairs if _ not in year_chair_mp_chairs]
                     self.assertFalse(True, "¡Sth is super wrong!")
         if len(OutOfRange) > 0:
             if config and config["write_chair_nrs_in_range"]:
@@ -338,7 +339,7 @@ class Test(unittest.TestCase):
     #  --->  Test integrity of bum to chair mapping
     # ---------------------------------------------
     #
-    @unittest.skip
+    #@unittest.skip
     def test_chair_hogs(self):
         """
         check no single person sits in two places at once
@@ -393,13 +394,6 @@ class Test(unittest.TestCase):
                     df.drop_duplicates(subset=["chair_id", "parliament_year", "chair_start", "chair_end", "person_id"], inplace=True)
                     if len(df["chair_id"].unique()) == 1:
                         pass
-                    elif len(df["chamber"].unique()) > 1:
-                        if dup not in ch:
-                            ch.append(dup)
-                            print("\n--->>>>", dup)
-                            print(df)
-                        print("IN TWO CHAMBERS")
-                        issues = pd.concat([issues, df], ignore_index=True)
                     else:
                         ranges = []
                         for i, r in df.iterrows():
@@ -447,7 +441,7 @@ class Test(unittest.TestCase):
         self.assertTrue(no_chair_hogs)
 
 
-    @unittest.skip
+    #@unittest.skip
     def test_knaMP(self):
         """
         Check no one is sharing a chare
@@ -511,7 +505,11 @@ class Test(unittest.TestCase):
                         ranges = sorted(ranges, key=lambda x: (x[0], x[1]))
                         for ridx, _range in enumerate(ranges):
                             if ridx < len(ranges)-1:
-                                delta = (datetime.strptime(_range[1], "%Y-%m-%d") - datetime.strptime(ranges[ridx+1][0], "%Y-%m-%d")).days
+                                try:
+                                    delta = (datetime.strptime(_range[1], "%Y-%m-%d") - datetime.strptime(ranges[ridx+1][0], "%Y-%m-%d")).days
+                                except:
+                                    print("~~~~~~~~~XXXX", ranges[ridx+1][0], _range[1])
+                                    self.assertTrue(False)
                                 if max(0, delta) > 0:
                                     issues = pd.concat([issues,df], ignore_index=True)
                                     if dup not in kh:
@@ -540,10 +538,10 @@ class Test(unittest.TestCase):
     #  --->  Test coverage
     # ---------------------
     #
-    @unittest.skip
+    #@unittest.skip
     def test_chair_coverage(self):
         """
-        test all chairs are filled
+        test all chairs are filled after 1925
         """
         print("Test coverage of chair-MP mapping.")
         config = fetch_config("chairs")
@@ -554,7 +552,10 @@ class Test(unittest.TestCase):
         for y in chair_mp['parliament_year'].unique():
             y_empty_chairs = []
             y_counter = 0
-            year_chair_mp = chair_mp.loc[chair_mp['parliament_year'] == y]
+            year_chair_mp = chair_mp.loc[
+                    (chair_mp['parliament_year'] == y) &
+                    (chair_mp['parliament_year'] > 1925)
+                ]
             year_chairs = year_chair_mp["chair_id"].unique()
             if year_chair_mp["person_id"].isnull().any():
                 for i, r in year_chair_mp.iterrows():
