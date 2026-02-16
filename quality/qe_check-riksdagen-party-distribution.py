@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+"""
+Builds yearly party distribution snapshots and computes L1 regression metrics.
+"""
 import argparse
 import calendar
 import matplotlib.pyplot as plt
@@ -11,6 +13,8 @@ from trainerlog import get_logger
 logger = get_logger(name="ebun", level="DEBUG")
 
 def read_csv_safe(path):
+    """Read CSV safely; warns if empty or missing."""
+
     try:
         df = pd.read_csv(path, dtype=str).replace({"": None})
         if df.empty:
@@ -24,6 +28,8 @@ def read_csv_safe(path):
         raise
 
 def parse_date_fuzzy(v, kind="start"):
+    """Parse partial dates; fills missing month/day for start/end."""
+
     if pd.isna(v):
         return pd.NaT
     parts = str(v).split("-")
@@ -42,6 +48,8 @@ def parse_date_fuzzy(v, kind="start"):
     
 
 def parse_dates_fuzzy(df, start_cols=[], end_cols=[]):
+    """Apply fuzzy date parsing to DataFrame columns."""
+
     for c in start_cols:
         if c in df.columns:
             df[c] = df[c].apply(parse_date_fuzzy, kind="start")
@@ -52,6 +60,8 @@ def parse_dates_fuzzy(df, start_cols=[], end_cols=[]):
 
 
 def compute_distribution_diff(df_snapshot, df_gold):
+    """Compute differences between snapshot and gold-standard seat counts."""
+
     snap = df_snapshot.rename(columns={"nr_seats": "nr_seats_snapshot"}).copy()
     gold = df_gold.rename(columns={"nr_seats": "nr_seats_gold"}).copy()
 
@@ -96,6 +106,8 @@ def compute_distribution_diff(df_snapshot, df_gold):
 
 
 def compute_regression_metrics(diff_df):
+    """Aggregate L1 distance and basic regression metrics per chamber/year."""
+
     l1_df = (
         diff_df
         .groupby(["riksdagen_year", "chamber"])["abs_diff"]
@@ -112,13 +124,17 @@ def compute_regression_metrics(diff_df):
 
 
 def build_yearly_long(mp, affiliation, party, explicit_no_party, month_day, year_start, year_end, riksdag_df):
+    """Build yearly long-format party distribution with chamber and party assignments."""
 
     def prioritize_chamber(df):
+        """Sort chambers by priority for post-1970s years (ek > ak > fk)."""
         if df["year"].iloc[0] >= 1971:
             df = df.sort_values(by="chamber", key=lambda x: x.map({"ek":0, "ak":1, "fk":2}))
         return df
     
     def map_to_riksdag_year(row):
+        """Map a snapshot year to the correct Riksdag year using start/end ranges."""
+        
         year = row["year"]
         if year <= 1975:
             return year
@@ -232,6 +248,8 @@ def build_yearly_long(mp, affiliation, party, explicit_no_party, month_day, year
 
 
 def plot_l1_distances(l1_df, output_dir, suffix):
+    """Plot L1 distances per chamber over years and save as PNG."""
+
     l1_df = l1_df.copy()
     
     l1_df["riksdagen_year"] = pd.to_numeric(l1_df["riksdagen_year"], errors="coerce").astype(int)
