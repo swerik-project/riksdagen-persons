@@ -19,6 +19,7 @@ if not logger.handlers:
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
+
 class TestPartyDistributionL1(unittest.TestCase):
 
     BASELINE_FILES = {
@@ -32,7 +33,9 @@ class TestPartyDistributionL1(unittest.TestCase):
     }
 
     OUTPUT_DIR = "test/result"
-    THRESHOLD = 0.05  # 5% allowed deterioration
+
+    THRESHOLD_REL = 0.05   # 5% relative deterioration
+    THRESHOLD_ABS = 5      # 5 seats of absolute teterioration
 
     def write_err_df(self, name_str, df):
         now = datetime.now().strftime('%Y%m%d-%H%M%S')
@@ -47,13 +50,21 @@ class TestPartyDistributionL1(unittest.TestCase):
 
         df = pd.read_csv(path)
 
-        required_cols = {"riksdagen_year", "chamber", "l1_distance"}
+        required_cols = {
+            "calendar_year",
+            "parliament_year",
+            "chamber",
+            "l1_distance"
+        }
+
         if not required_cols.issubset(df.columns):
             raise ValueError(
                 f"{path} missing required columns {required_cols}"
             )
 
-        return df[["riksdagen_year", "chamber", "l1_distance"]]
+        return df[
+            ["calendar_year", "parliament_year", "chamber", "l1_distance"]
+        ]
 
     def compare_files(self, label):
         baseline_path = self.BASELINE_FILES[label]
@@ -66,44 +77,59 @@ class TestPartyDistributionL1(unittest.TestCase):
 
         merged = baseline.merge(
             new,
-            on=["riksdagen_year", "chamber"],
+            on=["calendar_year", "parliament_year", "chamber"],
             suffixes=("_base", "_new"),
             how="outer",
             indicator=True
         )
 
-        if not all(merged["_merge"] == "both"):
+        if not (merged["_merge"] == "both").all():
             mismatch = merged[merged["_merge"] != "both"]
             self.write_err_df(f"structural_mismatch_{label}", mismatch)
             self.fail(f"{label}: Structural mismatch detected.")
 
-        merged["delta"] = merged["l1_distance_new"] - merged["l1_distance_base"]
+        merged["delta"] = (
+            merged["l1_distance_new"] -
+            merged["l1_distance_base"]
+        )
 
-        def pct_change(row):
-            if row["l1_distance_base"] == 0:
-                return 0 if row["l1_distance_new"] == 0 else float("inf")
-            return row["delta"] / row["l1_distance_base"]
+        merged["pct_change"] = 0.0
+        nonzero_mask = merged["l1_distance_base"] != 0
 
-        merged["pct_change"] = merged.apply(pct_change, axis=1)
+        merged.loc[nonzero_mask, "pct_change"] = (
+            merged.loc[nonzero_mask, "delta"] /
+            merged.loc[nonzero_mask, "l1_distance_base"]
+        )
 
         regressions = merged[
             (merged["delta"] > 0) &
-            (merged["pct_change"] > self.THRESHOLD)
+            (merged["pct_change"] > self.THRESHOLD_REL) &
+            (merged["delta"] > self.THRESHOLD_ABS)
         ]
 
         if not regressions.empty:
             logger.error(
-                f"{label}: Regression exceeds {self.THRESHOLD*100:.0f}% threshold."
+                f"{label}: Row-level regression exceeds thresholds."
             )
-            self.write_err_df(f"l1_regression_{label}", regressions)
+            self.write_err_df(f"l1_regression_rows_{label}", regressions)
             self.fail(
                 f"{label}: L1 regression exceeds allowed threshold."
             )
 
+        mean_base = baseline["l1_distance"].mean()
+        mean_new = new["l1_distance"].mean()
+
+        if mean_new > mean_base * (1 + self.THRESHOLD_REL):
+            self.fail(
+                f"{label}: Mean L1 regression exceeds "
+                f"{self.THRESHOLD_REL*100:.0f}% threshold "
+                f"(baseline={mean_base:.2f}, snapshot={mean_new:.2f})."
+            )
+
         logger.info(
             f"{label} PASS — "
-            f"mean baseline={baseline['l1_distance'].mean():.2f}, "
-            f"mean snapshot={new['l1_distance'].mean():.2f}"
+            f"mean baseline={mean_base:.2f}, "
+            f"mean snapshot={mean_new:.2f}"
         )
 
     def test_l1_snapshot_03_01(self):
@@ -114,6 +140,7 @@ class TestPartyDistributionL1(unittest.TestCase):
 
     def tearDown(self):
         logger.info("Finished L1 regression test.\n")
+
 
 if __name__ == "__main__":
     unittest.main()

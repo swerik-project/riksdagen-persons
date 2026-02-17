@@ -65,25 +65,25 @@ def compute_distribution_diff(df_snapshot, df_gold):
     snap = df_snapshot.rename(columns={"nr_seats": "nr_seats_snapshot"}).copy()
     gold = df_gold.rename(columns={"nr_seats": "nr_seats_gold"}).copy()
 
-    snap = snap.astype({"party_id": str, "chamber": str, "year": int})
-    gold = gold.astype({"party_id": str, "chamber": str, "year": int})
+    snap = snap.astype({"party_id": str, "chamber": str, "parliament_year": int})
+    gold = gold.astype({"party_id": str, "chamber": str, "parliament_year": int})
 
     snap_blocks = []
 
     for chamber, snap_grp in snap.groupby("chamber", sort=False):
         gold_grp = gold[gold["chamber"] == chamber]
-        elections = np.sort(gold_grp["year"].unique())
+        elections = np.sort(gold_grp["parliament_year"].unique())
         breaks = np.append(elections, np.inf)
         intervals = pd.IntervalIndex.from_breaks(breaks, closed="left")
 
-        idx = intervals.get_indexer(snap_grp["year"])
+        idx = intervals.get_indexer(snap_grp["parliament_year"])
         snap_grp = snap_grp.copy()
         snap_grp["year_block"] = np.where(idx >= 0, elections[idx], -1)
         snap_blocks.append(snap_grp)
 
     snap = pd.concat(snap_blocks, ignore_index=True)
 
-    gold_blocked = gold.rename(columns={"year": "year_block"})
+    gold_blocked = gold.rename(columns={"parliament_year": "year_block"})
 
     merged = snap.merge(
         gold_blocked[["year_block","chamber","party_id","nr_seats_gold"]],
@@ -97,23 +97,25 @@ def compute_distribution_diff(df_snapshot, df_gold):
     merged["seat_diff"] = merged["nr_seats_snapshot"] - merged["nr_seats_gold"]
     merged["abs_diff"] = merged["seat_diff"].abs()
 
-    merged = merged.rename(columns={"year": "riksdagen_year", "year_block": "gold_year", "seat_diff": "diff"})
-    merged = merged[["riksdagen_year", "chamber", "gold_year", "party_id", "party_name", "nr_seats_snapshot", "nr_seats_gold", "diff", "abs_diff"]]
-    merged = merged.sort_values(["riksdagen_year", "chamber", "party_id"]).reset_index(drop=True)
+    merged = merged.rename(columns={"year_block": "gold_year", "seat_diff": "diff"})
+
+    merged = merged[["calendar_year", "parliament_year", "chamber", "gold_year", "party_id", "party_name", "nr_seats_snapshot", "nr_seats_gold", "diff", "abs_diff"]]
+    merged = merged.sort_values(["calendar_year", "parliament_year", "chamber", "party_id"]).reset_index(drop=True)
 
     return merged
 
 
 
 def compute_regression_metrics(diff_df):
-    """Aggregate L1 distance and basic regression metrics per chamber/year."""
+    """Aggregate L1 distance per calendar and parliamentary year."""
 
     l1_df = (
         diff_df
-        .groupby(["riksdagen_year", "chamber"])["abs_diff"]
+        .groupby(["calendar_year", "parliament_year", "chamber"])["abs_diff"]
         .sum()
         .reset_index(name="l1_distance")
     )
+
     return {
         "l1_per_year_chamber": l1_df,
         "max_l1": int(l1_df["l1_distance"].max()) if len(l1_df) else 0,
@@ -124,18 +126,17 @@ def compute_regression_metrics(diff_df):
 
 
 def build_yearly_long(mp, affiliation, party, explicit_no_party, month_day, year_start, year_end, riksdag_df):
-    """Build yearly long-format party distribution with chamber and party assignments."""
+    """Build yearly long-format party distribution with original and mapped Riksdag years."""
 
     def prioritize_chamber(df):
         """Sort chambers by priority for post-1970s years (ek > ak > fk)."""
-        if df["year"].iloc[0] >= 1971:
+        if df["calendar_year"].iloc[0] >= 1971:
             df = df.sort_values(by="chamber", key=lambda x: x.map({"ek":0, "ak":1, "fk":2}))
         return df
     
     def map_to_riksdag_year(row):
         """Map a snapshot year to the correct Riksdag year using start/end ranges."""
-        
-        year = row["year"]
+        year = row["calendar_year"]
         if year <= 1975:
             return year
 
@@ -146,7 +147,7 @@ def build_yearly_long(mp, affiliation, party, explicit_no_party, month_day, year
             return 199900 if ry == "19992000" else int(ry)
 
         past = riksdag_df[riksdag_df["start"] <= snapshot_date].sort_values("start", ascending=False)
-        future = riksdag_df[riksdag_df["start"] > snapshot_date].sort_values("start")
+        future = riksdag_df[riksdag_df["start"] >= snapshot_date].sort_values("start")
         if not past.empty:
             return int(past.iloc[0]["parliament_year"])
         elif not future.empty:
@@ -155,11 +156,9 @@ def build_yearly_long(mp, affiliation, party, explicit_no_party, month_day, year
 
     month, day = month_day
 
-    years = pd.DataFrame({
-        "year": range(year_start, year_end + 1)
-    })
+    years = pd.DataFrame({"calendar_year": range(year_start, year_end + 1)})
     years["check_date"] = pd.to_datetime(
-        years["year"].astype(str) + f"-{month:02d}-{day:02d}"
+        years["calendar_year"].astype(str) + f"-{month:02d}-{day:02d}"
     )
 
     mp["start"] = mp["start"].fillna(pd.Timestamp("1000-01-01"))
@@ -175,11 +174,9 @@ def build_yearly_long(mp, affiliation, party, explicit_no_party, month_day, year
     ]
 
     mp_snap["chamber"] = None
-    mp_snap.loc[(mp_snap["role"] == "andrakammarledamot") & (mp_snap["year"] < 1971), "chamber"] = "ak"
-    mp_snap.loc[(mp_snap["role"] == "förstakammarledamot") & (mp_snap["year"] < 1971), "chamber"] = "fk"
-
-    mp_snap.loc[(mp_snap["chamber"].isna()) & (mp_snap["year"] >= 1971), "chamber"] = "ek"
-
+    mp_snap.loc[(mp_snap["role"] == "andrakammarledamot") & (mp_snap["calendar_year"] < 1971), "chamber"] = "ak"
+    mp_snap.loc[(mp_snap["role"] == "förstakammarledamot") & (mp_snap["calendar_year"] < 1971), "chamber"] = "fk"
+    mp_snap.loc[(mp_snap["chamber"].isna()) & (mp_snap["calendar_year"] >= 1971), "chamber"] = "ek"
     mp_snap = mp_snap.dropna(subset=["chamber"])
 
     affiliation["start"] = affiliation["start"].fillna(pd.Timestamp("1000-01-01"))
@@ -194,21 +191,18 @@ def build_yearly_long(mp, affiliation, party, explicit_no_party, month_day, year
 
     merged["active_aff"] = (
         (merged['start_aff'] <= merged['check_date']) &
-        (merged['end_aff'] >= merged['check_date'])
+        (merged['end_aff'] > merged['check_date'])
     )
-
     merged["active_rank"] = merged["active_aff"].astype(int)
-
     merged["start_aff"] = merged["start_aff"].fillna(pd.Timestamp("1000-01-01"))
 
     merged = merged.sort_values(
-        ["person_id","year","chamber","active_rank","start_aff"],
+        ["person_id","calendar_year","chamber","active_rank","start_aff"],
         ascending=[True,True,True,False,False]
     )
 
-    merged = merged.groupby(["person_id","year"], group_keys=False).apply(prioritize_chamber)
-    merged = merged.drop_duplicates(["person_id","year"])
-
+    merged = merged.groupby(["person_id","calendar_year"], group_keys=False).apply(prioritize_chamber)
+    merged = merged.drop_duplicates(["person_id","calendar_year"])
     merged.loc[~merged["active_aff"], "swerik_party_id"] = None
 
     party_map = dict(zip(
@@ -225,13 +219,12 @@ def build_yearly_long(mp, affiliation, party, explicit_no_party, month_day, year
     mask = merged["person_id"].isin(no_party_ids)
     merged.loc[mask, "party_name"] = "utan_partibeteckning"
     merged.loc[mask, "party_id"] = None
-
     merged["party_name"] = merged["party_name"].fillna("utan_partibeteckning")
 
     df_long = (
         merged
-        .drop_duplicates(["year","person_id","party_name","chamber"])
-        .groupby(["year","chamber","party_id","party_name"])
+        .drop_duplicates(["calendar_year","person_id","party_name","chamber"])
+        .groupby(["calendar_year","chamber","party_id","party_name"])
         .size()
         .reset_index(name="nr_seats")
     )
@@ -240,31 +233,31 @@ def build_yearly_long(mp, affiliation, party, explicit_no_party, month_day, year
     riksdag_df["start"] = pd.to_datetime(riksdag_df["start"])
     riksdag_df["end"] = pd.to_datetime(riksdag_df["end"])
 
-    df_long["year"] = df_long.apply(map_to_riksdag_year, axis=1)
-    df_long = df_long[["year", "chamber", "party_id", "party_name", "nr_seats"]]
-    df_long["year"] = pd.to_numeric(df_long["year"], errors='coerce').astype(int)
+    df_long["parliament_year"] = df_long.apply(map_to_riksdag_year, axis=1)
+
+    df_long = df_long[["calendar_year", "parliament_year", "chamber", "party_id", "party_name", "nr_seats"]]
+    df_long["parliament_year"] = pd.to_numeric(df_long["parliament_year"], errors='coerce').astype(int)
 
     return df_long
-
 
 def plot_l1_distances(l1_df, output_dir, suffix):
     """Plot L1 distances per chamber over years and save as PNG."""
 
     l1_df = l1_df.copy()
     
-    l1_df["riksdagen_year"] = pd.to_numeric(l1_df["riksdagen_year"], errors="coerce").astype(int)
+    l1_df["calendar_year"] = pd.to_numeric(l1_df["calendar_year"], errors="coerce").astype(int)
 
-    l1_df = l1_df.sort_values("riksdagen_year").reset_index(drop=True)
+    l1_df = l1_df.sort_values("calendar_year").reset_index(drop=True)
 
-    year_positions = {year: idx for idx, year in enumerate(l1_df["riksdagen_year"].unique())}
-    l1_df["x_pos"] = l1_df["riksdagen_year"].map(year_positions)
+    year_positions = {year: idx for idx, year in enumerate(l1_df["calendar_year"].unique())}
+    l1_df["x_pos"] = l1_df["calendar_year"].map(year_positions)
 
     plt.figure(figsize=(14, 6))
     for chamber, grp in l1_df.groupby("chamber"):
         plt.plot(grp["x_pos"], grp["l1_distance"], marker='o', label=chamber.upper())
 
     plt.title("L1 Distance Between Snapshot and Gold-Standard per Chamber")
-    plt.xlabel("Riksdagen Year")
+    plt.xlabel("Calendar Year")
     plt.ylabel("L1 Distance")
 
     all_years = list(year_positions.keys())
@@ -328,7 +321,7 @@ def main(args):
         year_end,
         riksdag_year_df
     )
-    df["year"] = pd.to_numeric(df["year"], errors="coerce").astype(int)
+    df["parliament_year"] = pd.to_numeric(df["parliament_year"], errors="coerce").astype(int)
     df.to_csv(output_snap, index=False, float_format='%.0f')
 
 
