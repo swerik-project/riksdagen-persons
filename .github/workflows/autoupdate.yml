@@ -1,0 +1,42 @@
+name: "Riksdagen Persons: update from Wikidata"
+
+on:
+  push:
+    branches:
+      - 'autoupdate'
+jobs:
+  db:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.13]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyriksdagen
+    - name: Clone scripts repo
+      run: |
+        git clone https://github.com/swerik-project/scripts.git
+
+    - name: Make directories
+      run: |
+        mkdir -p input/metadata
+        mkdir input/matching
+        
+    - name: Download new data
+      run: |
+        python scripts/src/wikidata_query.py --source member_of_parliament
+
+    - name: Process newly downloaded data
+      run: |
+        python scripts/src/wikidata_process.py
+
+    - name: Check diffs
+      run: |
+        git diff --stat
