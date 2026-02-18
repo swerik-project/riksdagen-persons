@@ -24,7 +24,7 @@ jobs:
         pip install pandas==2.3.3
     - name: Clone scripts repo
       run: |
-        git clone -b dev https://github.com/swerik-project/scripts.git
+        git clone -b parliament_year https://github.com/swerik-project/scripts.git
 
     - name: Make directories
       run: |
