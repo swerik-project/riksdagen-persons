@@ -5,7 +5,7 @@ on:
     branches:
       - 'autoupdate'
 jobs:
-  db:
+  autoupdate:
     runs-on: ubuntu-latest
     strategy:
       matrix:
