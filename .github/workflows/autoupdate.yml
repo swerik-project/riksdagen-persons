@@ -38,6 +38,7 @@ jobs:
 
     - name: Process newly downloaded data
       run: |
+        cp data/meeting.csv data/riksdag-year.csv
         python scripts/src/wikidata_process.py
 
     - name: Check diffs
