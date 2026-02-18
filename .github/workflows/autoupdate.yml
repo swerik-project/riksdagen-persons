@@ -42,3 +42,9 @@ jobs:
     - name: Check diffs
       run: |
         git diff --stat
+
+    - name: Sample git diffs
+      run: |
+        sample-git-diffs --n 20 > AUTOMATIC.diff
+        diff2markdown --path AUTOMATIC.diff --reponame riksdagen-persons --branch autoupdate --username swerik-project > AUTOMATIC.md
+        head --lines 20 AUTOMATIC.md
