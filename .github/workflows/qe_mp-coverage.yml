@@ -15,7 +15,9 @@ jobs:
     - name: Checkout PR source branch
       uses: actions/checkout@v4
       with:
-        ref: ${{ github.head_ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 1
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
