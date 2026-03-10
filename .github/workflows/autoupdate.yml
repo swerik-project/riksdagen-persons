@@ -6,6 +6,7 @@ on:
       - 'autoupdate'
 jobs:
   autoupdate:
+    if: "!contains(github.event.head_commit.message, 'SKIP CI')"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -56,8 +57,7 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git checkout data/riksdag-year.csv
         git add data
-        git commit -m "feat: fetch new data from wikidata"
-        - name: Push changes
+        git commit -m "feat: fetch new data from wikidata [SKIP CI]"
 
     - name: Push changes
       uses: ad-m/github-push-action@master
