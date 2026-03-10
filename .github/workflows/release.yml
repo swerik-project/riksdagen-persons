@@ -41,16 +41,6 @@ jobs:
         ls
         ls dumps
 
-    - name: Clone scripts repo
-      run: |
-        git clone -b parliament_year https://github.com/swerik-project/scripts.git
-
-    - name: Process data
-      run: |
-        python scripts/src/wikidata_process.py --formats xlsx sqlite
-        mv RiksdagenPersons.db riksdagen_persons.sqlite
-        mv RiksdagenPersons.xlsx riksdagen_persons.xlsx
-
     - name: zip dumps
       run: zip -r dumps.zip dumps
 
@@ -59,6 +49,21 @@ jobs:
 
     - name: zip quality estimates
       run: zip -r quality.zip quality/estimates
+
+    - name: Clone scripts repo
+      run: |
+        git clone -b parliament_year https://github.com/swerik-project/scripts.git
+
+    - name: Make directories
+      run: |
+        mkdir -p input/metadata
+        mkdir input/matching
+
+    - name: Process data into XLSX and Sqlite formats
+      run: |
+        python scripts/src/wikidata_process.py --formats xlsx sqlite
+        mv RiksdagenPersons.db riksdagen_persons.sqlite
+        mv RiksdagenPersons.xlsx riksdagen_persons.xlsx
 
     - name: Upload artifacts to release
       uses: svenstaro/upload-release-action@v2
