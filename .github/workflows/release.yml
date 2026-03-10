@@ -37,12 +37,16 @@ jobs:
         python .github/workflows/release/dump-chair-data.py --version $VERSION
         ls
         ls dumps
-        python -c 'from pyriksdagen.reference_handling import compile_bib_list; compile_bib_list(output_file="dumps/reference-list.bib")'
+        python -c 'from pyriksdagen.reference_handling import compile_bib_list; compile_bib_list(output_file="reference-list.bib")'
         ls
         ls dumps
 
-    - name: zip dumps
-      run: zip -r dumps.zip dumps
+    - name: Rename dumps to riksdagen_persons_csv
+      run: |
+        mv dumps riksdagen_persons_csv
+
+    - name: zip riksdagen_persons_csv
+      run: zip -r riksdagen_persons_csv.zip riksdagen_persons_csv
 
     - name: Zip metadata
       run: zip -r persons.zip data
@@ -85,4 +89,11 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: ./riksdagen_persons.sqlite
+        tag: ${{ github.ref }}
+
+    - name: Upload reference list to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./reference-list.bib
         tag: ${{ github.ref }}
