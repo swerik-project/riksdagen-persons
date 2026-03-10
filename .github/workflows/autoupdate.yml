@@ -43,10 +43,15 @@ jobs:
       run: |
         python scripts/src/wikidata_query.py --source member_of_parliament
 
-    - name: Process newly downloaded data
+    - name: Process newly downloaded data to make sure the structure is correct
       run: |
         cp data/meeting.csv data/riksdag-year.csv
         python scripts/src/wikidata_process.py --formats csv
+
+    - name: Process party affiliation
+      run: |
+        python scripts/src/SWERIK-ID/map_party_affiliation.py
+        python scripts/src/SWERIK-ID/update_party_affiliation.py
 
     - name: Check diffs
       run: |
