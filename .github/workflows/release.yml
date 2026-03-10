@@ -23,6 +23,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyriksdagen
         pip install cycler
+        pip install pandas==2.3.3 xlsxwriter
 
     - name: dump stuff
       run: |
@@ -40,6 +41,16 @@ jobs:
         ls
         ls dumps
 
+    - name: Clone scripts repo
+      run: |
+        git clone -b parliament_year https://github.com/swerik-project/scripts.git
+
+    - name: Process data
+      run: |
+        python scripts/src/wikidata_process.py --formats xlsx sqlite
+        mv RiksdagenPersons.db riksdagen_persons.sqlite
+        mv RiksdagenPersons.xlsx riksdagen_persons.xlsx
+
     - name: zip dumps
       run: zip -r dumps.zip dumps
 
@@ -56,3 +67,17 @@ jobs:
         file: ./*.zip
         tag: ${{ github.ref }}
         file_glob: true
+
+    - name: Upload XLSX to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./riksdagen_persons.xlsx
+        tag: ${{ github.ref }}
+
+    - name: Upload sqlite DB to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./riksdagen_persons.sqlite
+        tag: ${{ github.ref }}
