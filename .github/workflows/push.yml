@@ -10,6 +10,7 @@ jobs:
         python-version: [3.8]
     steps:
     - uses: actions/checkout@v4
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -30,6 +31,7 @@ jobs:
         python-version: [3.8]
     steps:
     - uses: actions/checkout@v4
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -53,6 +55,7 @@ jobs:
         python-version: [3.8]
     steps:
     - uses: actions/checkout@v4
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -73,6 +76,7 @@ jobs:
        python-version: [3.8]
     steps:
     - uses: actions/checkout@v4
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -94,6 +98,7 @@ jobs:
         python-version: [3.8]
     steps:
     - uses: actions/checkout@v4
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:

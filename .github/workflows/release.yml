@@ -13,9 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        persist-credentials: false   # use GITHUB_TOKEN
-        fetch-depth: 1               # fetch depth is nr of commits
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
