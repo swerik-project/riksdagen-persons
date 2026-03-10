@@ -50,8 +50,8 @@ jobs:
 
     - name: Process party affiliation
       run: |
-        python scripts/src/SWERIK-ID/map_party_affiliation.py
-        python scripts/src/SWERIK-ID/update_party_affiliation.py
+        python scripts/src/SWERIK-ID/map-party-affiliation.py
+        python scripts/src/SWERIK-ID/update-party-affiliation.py
 
     - name: Check diffs
       run: |
