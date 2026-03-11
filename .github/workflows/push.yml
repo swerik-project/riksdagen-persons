@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.13]
     steps:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/checkout
@@ -27,6 +27,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyriksdagen
         pip install pytest-cfg-fetcher
+        pip install pandas==2.3.3
     - name: Test chars and chair-mp mapping metadata
       run: |
         python -m unittest test.chairs
