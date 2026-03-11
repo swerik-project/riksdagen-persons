@@ -102,4 +102,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        gh release edit ${{ github.ref }} --notes-file /path/to/release_notes.md
+        gh release edit ${{ github.ref }} --notes-file ./.github/workflows/release/release_notes.md
