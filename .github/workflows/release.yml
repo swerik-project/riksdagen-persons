@@ -41,12 +41,12 @@ jobs:
         ls
         ls dumps
 
-    - name: Rename dumps to riksdagen_persons_csv
+    - name: Rename dumps to persons_csv
       run: |
-        mv dumps riksdagen_persons_csv
+        mv dumps persons_csv
 
-    - name: zip riksdagen_persons_csv
-      run: zip -r riksdagen_persons_csv.zip riksdagen_persons_csv
+    - name: zip persons_csv
+      run: zip -r persons_csv.zip persons_csv
 
     - name: Zip metadata
       run: zip -r persons.zip data
@@ -66,8 +66,8 @@ jobs:
     - name: Process data into XLSX and Sqlite formats
       run: |
         python scripts/src/wikidata_process.py --formats xlsx sqlite
-        mv RiksdagenPersons.db riksdagen_persons.sqlite
-        mv RiksdagenPersons.xlsx riksdagen_persons.xlsx
+        mv RiksdagenPersons.db persons.sqlite
+        mv RiksdagenPersons.xlsx persons.xlsx
 
     - name: Upload artifacts to release
       uses: svenstaro/upload-release-action@v2
@@ -81,14 +81,14 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./riksdagen_persons.xlsx
+        file: ./persons.xlsx
         tag: ${{ github.ref }}
 
     - name: Upload sqlite DB to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./riksdagen_persons.sqlite
+        file: ./persons.sqlite
         tag: ${{ github.ref }}
 
     - name: Upload reference list to release
@@ -97,3 +97,9 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: ./reference-list.bib
         tag: ${{ github.ref }}
+
+    - name: Update release description
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release edit ${{ github.ref_name }} --notes-file ./.github/workflows/release/release_notes.md
