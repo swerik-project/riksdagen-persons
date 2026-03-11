@@ -9,13 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.13]
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        persist-credentials: false   # use GITHUB_TOKEN
-        fetch-depth: 1               # fetch depth is nr of commits
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -25,6 +23,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyriksdagen
         pip install cycler
+        pip install pandas==2.3.3 xlsxwriter
 
     - name: dump stuff
       run: |
@@ -38,18 +37,37 @@ jobs:
         python .github/workflows/release/dump-chair-data.py --version $VERSION
         ls
         ls dumps
-        python -c 'from pyriksdagen.reference_handling import compile_bib_list; compile_bib_list(output_file="dumps/reference-list.bib")'
+        python -c 'from pyriksdagen.reference_handling import compile_bib_list; compile_bib_list(output_file="reference-list.bib")'
         ls
         ls dumps
 
-    - name: zip dumps
-      run: zip -r dumps.zip dumps
+    - name: Rename dumps to persons_csv
+      run: |
+        mv dumps persons_csv
+
+    - name: zip persons_csv
+      run: zip -r persons_csv.zip persons_csv
 
     - name: Zip metadata
       run: zip -r persons.zip data
 
     - name: zip quality estimates
       run: zip -r quality.zip quality/estimates
+
+    - name: Clone scripts repo
+      run: |
+        git clone -b parliament_year https://github.com/swerik-project/scripts.git
+
+    - name: Make directories
+      run: |
+        mkdir -p input/metadata
+        mkdir input/matching
+
+    - name: Process data into XLSX and Sqlite formats
+      run: |
+        python scripts/src/wikidata_process.py --formats xlsx sqlite
+        mv RiksdagenPersons.db persons.sqlite
+        mv RiksdagenPersons.xlsx persons.xlsx
 
     - name: Upload artifacts to release
       uses: svenstaro/upload-release-action@v2
@@ -58,3 +76,30 @@ jobs:
         file: ./*.zip
         tag: ${{ github.ref }}
         file_glob: true
+
+    - name: Upload XLSX to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./persons.xlsx
+        tag: ${{ github.ref }}
+
+    - name: Upload sqlite DB to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./persons.sqlite
+        tag: ${{ github.ref }}
+
+    - name: Upload reference list to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./reference-list.bib
+        tag: ${{ github.ref }}
+
+    - name: Update release description
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release edit ${{ github.ref_name }} --notes-file ./.github/workflows/release/release_notes.md
