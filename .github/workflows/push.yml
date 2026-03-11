@@ -27,6 +27,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pyriksdagen
+        pip install pyriksdagen==1.10.0
         pip install pytest-cfg-fetcher
         pip install pandas==2.3.3
     - name: Test chars and chair-mp mapping metadata
