@@ -12,7 +12,7 @@ import warnings
 import sys
 from trainerlog import get_logger
 LOGGER = get_logger("unittest")
-
+LOGGER.info("Use the env variable LOGLEVEL=DEBUG to get more detailed error messages")
 
 class ChairHog(Warning):
 
@@ -296,6 +296,9 @@ class Test(unittest.TestCase):
                         if x in year_chair_mp_chairs:
                             OutOfRange.append([y, x])
                             warnings.warn(f"{y}: {x}", ChairYearOutOfRange)
+                            error_message = f"OutOfRange error {y}: {x}"
+                            LOGGER.error(error_message)
+
                 if len(tvok_chairs) > len(year_chair_mp_chairs)+len(excludes):
                     for c in tvok_chairs:
                         if c not in year_chair_mp_chairs and c not in excludes:
@@ -311,6 +314,8 @@ class Test(unittest.TestCase):
                         if x in year_chair_mp_chairs:
                             OutOfRange.append([y, x])
                             warnings.warn(f"{y}: {x}", ChairYearOutOfRange)
+                            error_message = f"OutOfRange error {y}: {x}"
+                            LOGGER.error(error_message)
                 if len(enk_chairs) < len(year_chair_mp_chairs)+len(excludes):
                     for c in tvok_chairs:
                         if c not in year_chair_mp_chairs and c not in excludes:
@@ -424,7 +429,7 @@ class Test(unittest.TestCase):
                                         msg_error = f"Chair Hog error for person: {dup}"
                                         msg_debug = f"Error details for chair hogger {dup}:\n{df}\nranges: {ranges}\n{_range}\n{ranges[ridx+1]}"
                                         LOGGER.error(msg_error)
-                                        LOGGER.debug(msg_warn)
+                                        LOGGER.debug(msg_debug)
 
                 if len(ch) > 0:
                     print("\n\n")
