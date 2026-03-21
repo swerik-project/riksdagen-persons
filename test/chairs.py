@@ -10,9 +10,9 @@ import pandas as pd
 import unittest
 import warnings
 import sys
-
-
-
+from trainerlog import get_logger
+LOGGER = get_logger("unittest")
+LOGGER.info("Use the env variable LOGLEVEL=DEBUG to get more detailed error messages")
 
 class ChairHog(Warning):
 
@@ -179,19 +179,20 @@ class Test(unittest.TestCase):
         """
         check chair IDs are unique
         """
-        print("Testing: chairs have unique IDs")
+        LOGGER.info("Testing: chairs have unique IDs")
         chairs = self.get_chairs()
         chair_ids = chairs['chair_id'].values
         if len(chair_ids) != len(set(chair_ids)):
             warnings.warn("There's probably a duplicate chair ID.", DuplicateIDWarning)
-        self.assertEqual(len(chair_ids), len(set(chair_ids)))
+        msg = f"There's at least one duplicate chair ID, {len(chair_ids)} IDs vs. {len(set(chair_ids))} unique IDs"
+        self.assertEqual(len(chair_ids), len(set(chair_ids)), msg)
 
     #@unittest.skip
     def test_chair_nrs_in_range(self):
         """
         check no chairs are numbered higher than the max chair nr for that chamber
         """
-        print("Testing: chairs within max range for chamber")
+        LOGGER.info("Testing: chairs within max range for chamber")
         chairs = self.get_chairs()
         max_chair = self.get_max_chair()
         for k, v in max_chair.items():
@@ -209,7 +210,7 @@ class Test(unittest.TestCase):
         """
         check chair IDs in chair_mp are the same set as chairs
         """
-        print("Testing: chair ids are the same set in chairs.csv and chair_mp.csv")
+        LOGGER.info("Testing: chair ids are the same set in chairs.csv and chair_mp.csv")
         chairs = self.get_chairs()
         chair_mp = self.get_chair_mp()
         chair_ids_a = chairs['chair_id'].unique()
@@ -223,7 +224,7 @@ class Test(unittest.TestCase):
         """
         check no chairs from tvåkammartiden are used in enkammartid and vice-versa
         """
-        print("Testing: no chairs from tvåkammartiden are used in enkammartid and vice-versa")
+        LOGGER.info("Testing: no chairs from tvåkammartiden are used in enkammartid and vice-versa")
         chairs = self.get_chairs()
         config = fetch_config("chairs")
         tvok_chairs = chairs.loc[chairs['chamber'] != 'ek', 'chair_id'].unique()
@@ -265,7 +266,7 @@ class Test(unittest.TestCase):
            and that every seat within that range is present at least once
            in the chair_mp file (whether filled or not)
         """
-        print("Testing: chairs are within acceptable range for a given year\n     and that every seat within that range is present at least once")
+        LOGGER.info("Testing: chairs are within acceptable range for a given year\n     and that every seat within that range is present at least once")
         chairs = self.get_chairs()
         config = fetch_config("chairs")
         tvok_chairs = chairs.loc[chairs['chamber'] != 'ek', 'chair_id'].unique()
@@ -295,6 +296,9 @@ class Test(unittest.TestCase):
                         if x in year_chair_mp_chairs:
                             OutOfRange.append([y, x])
                             warnings.warn(f"{y}: {x}", ChairYearOutOfRange)
+                            error_message = f"OutOfRange error {y}: {x}"
+                            LOGGER.error(error_message)
+
                 if len(tvok_chairs) > len(year_chair_mp_chairs)+len(excludes):
                     for c in tvok_chairs:
                         if c not in year_chair_mp_chairs and c not in excludes:
@@ -310,6 +314,8 @@ class Test(unittest.TestCase):
                         if x in year_chair_mp_chairs:
                             OutOfRange.append([y, x])
                             warnings.warn(f"{y}: {x}", ChairYearOutOfRange)
+                            error_message = f"OutOfRange error {y}: {x}"
+                            LOGGER.error(error_message)
                 if len(enk_chairs) < len(year_chair_mp_chairs)+len(excludes):
                     for c in tvok_chairs:
                         if c not in year_chair_mp_chairs and c not in excludes:
@@ -332,8 +338,8 @@ class Test(unittest.TestCase):
                     f"{config['test_out_dir']}/{self.what_time_it_is()}_chair-missing-in-R.csv",
                     sep=';',
                     index=False)
-        self.assertEqual(len(OutOfRange), 0)
-        self.assertEqual(len(missing_in_R), 0)
+        self.assertEqual(len(OutOfRange), 0, f"{len(OutOfRange)} chair(s) are outside of an acceptable range for a given year")
+        self.assertEqual(len(missing_in_R), 0, f"{len(missing_in_R)} chair(s) are missing in the chair_mp file")
 
     #
     #  --->  Test integrity of bum to chair mapping
@@ -344,7 +350,7 @@ class Test(unittest.TestCase):
         """
         check no single person sits in two places at once
         """
-        print("Testing: no single person sits in two places at once")
+        LOGGER.info("Testing: no single person sits in two places at once")
         chair_mp = self.get_chair_mp()
         chair_mp.rename(columns={"start": "chair_start", "end":"chair_end"}, inplace=True)
         chair_mp = chair_mp[chair_mp["person_id"].notna()]
@@ -420,10 +426,10 @@ class Test(unittest.TestCase):
                                     issues = pd.concat([issues,df], ignore_index=True)
                                     if dup not in ch:
                                         ch.append(dup)
-                                        print("\n--->>>>", dup)
-                                        print(ranges)
-                                        print(df)
-                                        print(_range, ranges[ridx+1])
+                                        msg_error = f"Chair Hog error for person: {dup}"
+                                        msg_debug = f"Error details for chair hogger {dup}:\n{df}\nranges: {ranges}\n{_range}\n{ranges[ridx+1]}"
+                                        LOGGER.error(msg_error)
+                                        LOGGER.debug(msg_debug)
 
                 if len(ch) > 0:
                     print("\n\n")
@@ -433,20 +439,22 @@ class Test(unittest.TestCase):
                     [ddups.append(_) for _ in ch]
         if config and config['write_chairhogs']:
             issues.drop_duplicates(inplace=True)
+            errorlog_path = f"{config['test_out_dir']}/{self.what_time_it_is()}_ChairHogs.csv"
+            LOGGER.info(f"Write error details to {errorlog_path}")
             issues.to_csv(
-                f"{config['test_out_dir']}/{self.what_time_it_is()}_ChairHogs.csv",
+                errorlog_path,
                 sep=';',
                 index=False)
-        print(counter, ddups)
-        self.assertTrue(no_chair_hogs)
+        error_message = f"{counter} instance(s) of a person sitting in two places at once ({ddups})"
+        self.assertEqual(counter, 0, error_message)
 
 
     #@unittest.skip
     def test_knaMP(self):
         """
-        Check no one is sharing a chare
+        Check no one is sharing a chair
         """
-        print("Testing no one sits on the same chair at the same time")
+        LOGGER.info("Testing no one sits on the same chair at the same time")
         config = fetch_config("chairs")
         chair_mp = self.get_chair_mp()
         chair_mp.rename(columns={"start": "chair_start", "end":"chair_end"}, inplace=True)
@@ -508,19 +516,21 @@ class Test(unittest.TestCase):
                                 try:
                                     delta = (datetime.strptime(_range[1], "%Y-%m-%d") - datetime.strptime(ranges[ridx+1][0], "%Y-%m-%d")).days
                                 except:
-                                    print("~~~~~~~~~XXXX", ranges[ridx+1][0], _range[1])
+                                    LOGGER.error(f"~~~~~~~~~XXXX {ranges[ridx+1][0]}, {_range[1]}")
+                                    # TODO: what does this mean
                                     self.assertTrue(False)
                                 if max(0, delta) > 0:
                                     issues = pd.concat([issues,df], ignore_index=True)
                                     if dup not in kh:
                                         kh.append(dup)
-                                        print("\n--->>>>", dup)
-                                        print(df)
-                                        print(ranges)
-                                        print(_range, ranges[ridx+1])
+                                        msg = f"KnaMP error:\n{df}\n{ranges}\n{_range}\n{ranges[ridx+1]}"
+                                        LOGGER.error(msg)
+
                 if len(kh) > 0:
-                    print("\n\n")
-                    warnings.warn(f"{y}: [{', '.join(kh)}]", KnaMP)
+                    #print("\n\n")
+                    #warnings.warn(f"{y}: [{', '.join(kh)}]", KnaMP)
+                    msg = f"{y}: [{', '.join(kh)}]"
+                    LOGGER.error(f"KnaMP error:\n{msg}")
                     ingen_knahund = False
                     counter += len(kh)
                     [ddups.append(_) for _ in kh]
@@ -531,8 +541,8 @@ class Test(unittest.TestCase):
                 sep=';',
                 index=False)
 
-        print(counter, ddups)
-        self.assertTrue(ingen_knahund)
+        error_message = f"{counter} instance(s) of a two persons sitting in the same chair ({ddups})"
+        self.assertEqual(counter, 0, error_message)
 
     #
     #  --->  Test coverage
@@ -543,7 +553,7 @@ class Test(unittest.TestCase):
         """
         test all chairs are filled after 1925
         """
-        print("Test coverage of chair-MP mapping.")
+        LOGGER.info("Test coverage of chair-MP mapping.")
         config = fetch_config("chairs")
         chair_mp = self.get_chair_mp()
         no_empty_chairs = True
@@ -581,8 +591,8 @@ class Test(unittest.TestCase):
                 sep=';',
                 index=False)
 
-        print(counter, empty_chairs)
-        self.assertTrue(no_empty_chairs)
+        error_message = f"{counter} empty chairs found ({empty_chairs})"
+        self.assertEqual(counter, 0, error_message)
 
 
 
