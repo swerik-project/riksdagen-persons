@@ -1,0 +1,22 @@
+name: "Checkout Persons Repo"
+
+runs:
+  using: "composite"
+  steps:
+    # PR checkout
+    - name: Checkout PR head
+      if: ${{ github.event_name == 'pull_request' }}
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+        fetch-depth: 1
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+
+    # Normal checkout (push, workflow_dispatch, etc.)
+    - name: Checkout current repo
+      if: ${{ github.event_name != 'pull_request' }}
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+        fetch-depth: 1
