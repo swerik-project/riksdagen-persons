@@ -33,7 +33,7 @@ jobs:
       run: |
         for month in 3 10; do
           python quality/qe_check-riksdagen-party-distribution.py \
-            --day 1 --month $month --start 1912 --end 2023 \
+            --day 1 --month $month --start 1912 --end 2025 \
             --output quality/estimates/party-distribution/
         done
 
