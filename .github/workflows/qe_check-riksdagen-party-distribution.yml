@@ -29,17 +29,13 @@ jobs:
         pip install pyriksdagen
         pip install pytest
 
-    - name: Run Party Distribution QC - March 1
+    - name: Run Party Distribution QC
       run: |
-        python quality/qe_check-riksdagen-party-distribution.py \
-          --day 1 --month 3 --start 1912 --end 2023 \
-          --output quality/estimates/party-distribution/
-
-    - name: Run Party Distribution QC - October 1
-      run: |
-        python quality/qe_check-riksdagen-party-distribution.py \
-          --day 1 --month 10 --start 1912 --end 2023 \
-          --output quality/estimates/party-distribution/
+        for month in 3 10; do
+          python quality/qe_check-riksdagen-party-distribution.py \
+            --day 1 --month $month --start 1912 --end 2023 \
+            --output quality/estimates/party-distribution/
+        done
 
     - name: Add and commit changes
       run: |
@@ -52,6 +48,7 @@ jobs:
         else
           echo "::warning:: No changes detected in party distribution snapshots."
           git commit --allow-empty -m "chore (workflow): no changes to party distribution QC snapshots"
+        fi
 
     - name: Push changes
       uses: ad-m/github-push-action@master
