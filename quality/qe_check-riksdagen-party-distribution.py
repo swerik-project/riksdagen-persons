@@ -279,12 +279,9 @@ def main(args):
 
     if args.start > args.end:
         raise ValueError("Start year cannot be greater than end year.")
-
     
     suffix = f"{args.month:02d}-{args.day:02d}"
     output_snap = os.path.join(args.output, f"snapshot-distribution-{suffix}.csv")
-
-
 
     logger.info("Loading data...")
     party = parse_dates_fuzzy(pd.read_csv(os.path.join("data/", "party.csv")), ["inception"], ["dissolution"])
