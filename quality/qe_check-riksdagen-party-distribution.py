@@ -12,21 +12,6 @@ from trainerlog import get_logger
 
 logger = get_logger(name="ebun", level="DEBUG")
 
-def read_csv_safe(path):
-    """Read CSV safely; warns if empty or missing."""
-
-    try:
-        df = pd.read_csv(path, dtype=str).replace({"": None})
-        if df.empty:
-            logger.warning(f"CSV at {path} is empty.")
-        return df
-    except FileNotFoundError:
-        logger.error(f"File not found: {path}")
-        raise
-    except pd.errors.ParserError as e:
-        logger.error(f"Error parsing CSV {path}: {e}")
-        raise
-
 def parse_date_fuzzy(v, kind="start"):
     """Parse partial dates; fills missing month/day for start/end."""
 
@@ -47,8 +32,11 @@ def parse_date_fuzzy(v, kind="start"):
         return pd.NaT
     
 
-def parse_dates_fuzzy(df, start_cols=[], end_cols=[]):
+def parse_dates_fuzzy(df, start_cols=None, end_cols=None):
     """Apply fuzzy date parsing to DataFrame columns."""
+    
+    start_cols = start_cols or []
+    end_cols = end_cols or []
 
     for c in start_cols:
         if c in df.columns:
@@ -65,20 +53,25 @@ def compute_distribution_diff(df_snapshot, df_gold):
     snap = df_snapshot.rename(columns={"nr_seats": "nr_seats_snapshot"}).copy()
     gold = df_gold.rename(columns={"nr_seats": "nr_seats_gold"}).copy()
 
-    snap = snap.astype({"party_id": str, "chamber": str, "parliament_year": int})
-    gold = gold.astype({"party_id": str, "chamber": str, "parliament_year": int})
+    snap = snap.astype({"party_id": "string", "chamber": "string", "parliament_year": "Int64"})
+    gold = gold.astype({"party_id": "string", "chamber": "string", "parliament_year": "Int64"})
 
     snap_blocks = []
 
     for chamber, snap_grp in snap.groupby("chamber", sort=False):
         gold_grp = gold[gold["chamber"] == chamber]
-        elections = np.sort(gold_grp["parliament_year"].unique())
-        breaks = np.append(elections, np.inf)
-        intervals = pd.IntervalIndex.from_breaks(breaks, closed="left")
+        elections = np.sort(gold_grp["parliament_year"].dropna().unique())
 
-        idx = intervals.get_indexer(snap_grp["parliament_year"])
+        bins = np.append(elections, elections[-1]+1)
+        
         snap_grp = snap_grp.copy()
-        snap_grp["year_block"] = np.where(idx >= 0, elections[idx], -1)
+        snap_grp["year_block"] = pd.cut(
+            snap_grp["parliament_year"],
+            bins=bins,
+            right=False,
+            labels=elections
+        ).astype("Int64")
+        
         snap_blocks.append(snap_grp)
 
     snap = pd.concat(snap_blocks, ignore_index=True)
@@ -236,7 +229,7 @@ def build_yearly_long(mp, affiliation, party, explicit_no_party, month_day, year
     df_long["parliament_year"] = df_long.apply(map_to_riksdag_year, axis=1)
 
     df_long = df_long[["calendar_year", "parliament_year", "chamber", "party_id", "party_name", "nr_seats"]]
-    df_long["parliament_year"] = pd.to_numeric(df_long["parliament_year"], errors='coerce').astype(int)
+    df_long["parliament_year"] = pd.to_numeric(df_long["parliament_year"], errors='coerce').astype("Int64")
 
     return df_long
 
@@ -276,22 +269,12 @@ def plot_l1_distances(l1_df, output_dir, suffix):
 
 
 def main(args):
-    corpus_dir = args.corpus_data
-    output_dir = args.output
-    os.makedirs(output_dir, exist_ok=True)
-
-    party_csv = os.path.join(corpus_dir, "party.csv")
-    affiliation_csv = os.path.join(corpus_dir, "party_affiliation.csv")
-    member_csv = os.path.join(corpus_dir, "member_of_parliament.csv")
-    no_party_csv = os.path.join(corpus_dir, "explicit_no_party.csv")
-    riksdag_year_csv = os.path.join(corpus_dir, "riksdag-year.csv")
-    year_start = args.start
-    year_end = args.end
+    os.makedirs(args.output, exist_ok=True)
 
     try:
         pd.Timestamp(year=args.start, month=args.month, day=args.day)
     except ValueError:
-        raise ValueError(f"Invalid date: {args.year}-{args.month}-{args.day}")
+        raise ValueError(f"Invalid date: {args.start}-{args.month}-{args.day}")
 
 
     if args.start > args.end:
@@ -299,15 +282,17 @@ def main(args):
 
     
     suffix = f"{args.month:02d}-{args.day:02d}"
-    output_snap = os.path.join(output_dir, f"snapshot-distribution-{suffix}.csv")
+    output_snap = os.path.join(args.output, f"snapshot-distribution-{suffix}.csv")
+
+
 
     logger.info("Loading data...")
-    party = parse_dates_fuzzy(read_csv_safe(party_csv), ["inception"], ["dissolution"])
-    affiliation = parse_dates_fuzzy(read_csv_safe(affiliation_csv), ["start"], ["end"])
-    mp = parse_dates_fuzzy(read_csv_safe(member_csv), ["start"], ["end"])
-    explicit_no_party = read_csv_safe(no_party_csv)
-    gold_df = read_csv_safe(args.gold) if args.gold else None
-    riksdag_year_df = read_csv_safe(riksdag_year_csv)
+    party = parse_dates_fuzzy(pd.read_csv(os.path.join("data/", "party.csv")), ["inception"], ["dissolution"])
+    affiliation = parse_dates_fuzzy(pd.read_csv(os.path.join("data/", "party_affiliation.csv")), ["start"], ["end"])
+    mp = parse_dates_fuzzy(pd.read_csv(os.path.join("data/", "member_of_parliament.csv")), ["start"], ["end"])
+    explicit_no_party = pd.read_csv(os.path.join("data/", "explicit_no_party.csv"))
+    riksdag_year_df = pd.read_csv(os.path.join("data/", "riksdag-year.csv"))
+    gold_df = pd.read_csv(args.gold) if args.gold else None
 
     logger.info("Building snapshot...")
 
@@ -317,11 +302,11 @@ def main(args):
         party.copy(),
         explicit_no_party,
         (args.month, args.day),
-        year_start,
-        year_end,
+        args.start,
+        args.end,
         riksdag_year_df
     )
-    df["parliament_year"] = pd.to_numeric(df["parliament_year"], errors="coerce").astype(int)
+    df["parliament_year"] = pd.to_numeric(df["parliament_year"], errors="coerce").astype("Int64")
     df.to_csv(output_snap, index=False, float_format='%.0f')
 
 
@@ -330,12 +315,12 @@ def main(args):
         diff_df = compute_distribution_diff(df, gold_df)
         metrics = compute_regression_metrics(diff_df)
 
-        diff_df.to_csv(os.path.join(output_dir, f"snapshot-{suffix}-diff.csv"), index=False)
-        metrics["l1_per_year_chamber"].to_csv(os.path.join(output_dir, f"snapshot-{suffix}-l1.csv"), index=False)
+        diff_df.to_csv(os.path.join(args.output, f"snapshot-{suffix}-diff.csv"), index=False)
+        metrics["l1_per_year_chamber"].to_csv(os.path.join(args.output, f"snapshot-{suffix}-l1.csv"), index=False)
 
         logger.debug(f"Metrics:\n{metrics}")
 
-        plot_l1_distances(metrics["l1_per_year_chamber"], output_dir, suffix)
+        plot_l1_distances(metrics["l1_per_year_chamber"], args.output, suffix)
 
     logger.info("Done.")
 
@@ -345,7 +330,6 @@ if __name__ == "__main__":
     parser.add_argument("--gold", type=str, help="Path to gold-standard.")
     parser.add_argument("--day", type=int, required=True, help="Day to take the party distribution.")
     parser.add_argument("--month", type=int, required=True, help="Month to take the party distribution.")
-    parser.add_argument("--corpus-data", type=str, default="data/", help="Location of the riksdagen-persons data files.")
     parser.add_argument("--output", type=str, default="quality/estimates/party-distribution/", help="Output directory.")
     parser.add_argument("--start", type=int, default=1912, help="Define the start year to build the party distribution.")
     parser.add_argument("--end", type=int, default=2023, help="Define the end year to build the party distribution.")
