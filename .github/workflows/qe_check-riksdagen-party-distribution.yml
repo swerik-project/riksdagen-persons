@@ -1,0 +1,64 @@
+name: "Riksdagen Persons: Party Distribution QC"
+
+on:
+  pull_request:
+    branches:
+      - 'dev'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+
+    steps:
+    - name: Checkout PR source branch
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.head_ref }}
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest
+
+    - name: Run Party Distribution QC - March 1
+      run: |
+        python quality/qe_check-riksdagen-party-distribution.py \
+          --day 1 --month 3 --start 1912 --end 2023 \
+          --output quality/estimates/party-distribution/
+
+    - name: Run Party Distribution QC - October 1
+      run: |
+        python quality/qe_check-riksdagen-party-distribution.py \
+          --day 1 --month 10 --start 1912 --end 2023 \
+          --output quality/estimates/party-distribution/
+
+    - name: Add and commit changes
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        if [[ `git status quality/estimates/party-distribution/ --porcelain --untracked-files=no` ]]; then
+          git add quality/estimates/party-distribution/*.csv
+          git add quality/estimates/party-distribution/*.png
+          git commit -m "chore (workflow): update party distribution QC snapshots"
+        else
+          echo "::warning:: No changes detected in party distribution snapshots."
+          git commit --allow-empty -m "chore (workflow): no changes to party distribution QC snapshots"
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.head_ref }}
+
+    - name: Run Party Distribution L1 Regression Tests
+      run: |
+        pytest test/test_party_distribution_l1.py --maxfail=1 --disable-warnings -v
