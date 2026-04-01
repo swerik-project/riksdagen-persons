@@ -7,9 +7,11 @@ from pyriksdagen.date_handling import yearize_mandates
 from pytest_cfg_fetcher.fetch import fetch_config
 import json
 import pandas as pd
+import polars as pl
 import unittest
 import warnings
 import sys
+import tqdm
 from trainerlog import get_logger
 LOGGER = get_logger("unittest")
 LOGGER.info("Use the env variable LOGLEVEL=DEBUG to get more detailed error messages")
@@ -350,103 +352,47 @@ class Test(unittest.TestCase):
         """
         check no single person sits in two places at once
         """
+        def stringify_row(row_dict):
+            s = f"In year {row_dict['parliament_year']}, person: {row_dict['person_id']} sat in {row_dict['chair_id']}"
+            return f"{s} from {row_dict['start_str']} to {row_dict['end_str']}"
+
         LOGGER.info("Testing: no single person sits in two places at once")
         chair_mp = self.get_chair_mp()
-        chair_mp.rename(columns={"start": "chair_start", "end":"chair_end"}, inplace=True)
-        chair_mp = chair_mp[chair_mp["person_id"].notna()]
-        chairs = self.get_chairs()
-        chair_mp = pd.merge(chair_mp, chairs, on="chair_id", how="left")
-        mep_by_year = yearize_mandates()
-        mep_by_year.rename(columns={"start": "meta_start", "end":"meta_end"}, inplace=True)
-        mep_by_year = mep_by_year[mep_by_year["meta_start"].notna()]
-        config = fetch_config("chairs")
-        if config and config['write_ch_chmp_merge']:
-            mep_by_year.to_csv(
-                f"{config['test_out_dir']}/{self.what_time_it_is()}_chair-chairmp_merge.csv",
-                sep=';',
-                index=False)
-        chair_mp = pd.merge(chair_mp, mep_by_year, on=["person_id", "parliament_year"], how="left")
+        chair_mp = pl.from_pandas(chair_mp)
+        chair_mp = chair_mp.filter(pl.col("person_id").is_not_null())
+        
+        # Fill out nulls for printing
+        chair_mp_imputed = chair_mp.with_columns(pl.col("start").fill_null("N/A").alias("start_str"))
+        chair_mp_imputed = chair_mp_imputed.with_columns(pl.col("end").fill_null("N/A").alias("end_str"))
 
-        if config and config['write_trouble_matching']:
-            outdf = chair_mp.loc[pd.isna(chair_mp["role"])].copy()
-            if not outdf.empty:
-                outdf.to_csv(
-                    f"{config['test_out_dir']}/{self.what_time_it_is()}_trouble-matching-yearize.csv",
-                    sep=';',
-                    index=False)
+        # Fill out nulls for filtering. Use values that are larger and smaller than all real dates
+        chair_mp_imputed = chair_mp_imputed.with_columns(pl.col("start").fill_null("1000-01-01"))
+        chair_mp_imputed = chair_mp_imputed.with_columns(pl.col("end").fill_null("3000-12-31"))
 
-        general_start_end = self.get_riksdag_year()
-        no_chair_hogs = True
-        counter = 0
-        ddups = []
-        issues = pd.DataFrame(columns=chair_mp.columns)
-        for y in chair_mp['parliament_year'].unique():
-            year_chair_mp = chair_mp.loc[chair_mp['parliament_year'] == y]
-            yse = general_start_end.loc[general_start_end['parliament_year'] == y].copy()
-            yse.reset_index(drop=True, inplace=True)
-            yse.sort_values(by=["chamber", "start", "end"], inplace=True)
-            cs = yse["chamber"].unique()
-            d = {}
-            for c in cs:
-                cdf = yse.loc[yse["chamber"] == c].copy()
-                cdf.reset_index(drop=True, inplace=True)
-                d[c] = {"earliest": cdf.at[0, "start"], "latest": cdf.at[len(cdf.index)-1, "end"]}
-            mps = year_chair_mp.loc[pd.notnull(year_chair_mp['person_id']), 'person_id'].values
-            if len(mps) > len(set(mps)):
-                dups = self.get_duplicated_items(mps)
-                ch = []
-                for dup in dups:
-                    df = year_chair_mp.loc[year_chair_mp["person_id"] == dup].copy()
-                    df.drop_duplicates(subset=["chair_id", "parliament_year", "chair_start", "chair_end", "person_id"], inplace=True)
-                    if len(df["chair_id"].unique()) == 1:
-                        pass
-                    else:
-                        ranges = []
-                        for i, r in df.iterrows():
-                            rstart = None
-                            if pd.notnull(r["chair_start"]):
-                                rstart = r["chair_start"]
-                            elif pd.notnull(r['meta_start']):
-                                rstart = r['meta_start']
-                            else:
-                                rstart = d[r["chamber"]]["earliest"]
-                            rend = None
-                            if pd.notnull(r["chair_end"]):
-                                rend = r["chair_end"]
-                            elif pd.notnull(r["meta_end"]):
-                                rend = r["meta_end"]
-                            else:
-                                rend = d[r["chamber"]]["latest"]
-                            ranges.append((rstart, rend))
-                        ranges = sorted(ranges, key=lambda x: (x[0], x[1]))
-                        for ridx, _range in enumerate(ranges):
-                            if ridx < len(ranges)-1:
-                                delta = (datetime.strptime(_range[1], "%Y-%m-%d") - datetime.strptime(ranges[ridx+1][0], "%Y-%m-%d")).days
-                                if max(0, delta) > 0:
-                                    issues = pd.concat([issues,df], ignore_index=True)
-                                    if dup not in ch:
-                                        ch.append(dup)
-                                        msg_error = f"Chair Hog error for person: {dup}"
-                                        msg_debug = f"Error details for chair hogger {dup}:\n{df}\nranges: {ranges}\n{_range}\n{ranges[ridx+1]}"
-                                        LOGGER.error(msg_error)
-                                        LOGGER.debug(msg_debug)
+        error_counter = 0
+        for parliament_year in tqdm.tqdm(sorted(set(chair_mp.get_column("parliament_year")))):
+            chair_mp_imputed_year = chair_mp_imputed.filter(pl.col("parliament_year") == parliament_year)
 
-                if len(ch) > 0:
-                    print("\n\n")
-                    warnings.warn(f"{y}: [{', '.join(ch)}]", ChairHog)
-                    no_chair_hogs = False
-                    counter += len(ch)
-                    [ddups.append(_) for _ in ch]
-        if config and config['write_chairhogs']:
-            issues.drop_duplicates(inplace=True)
-            errorlog_path = f"{config['test_out_dir']}/{self.what_time_it_is()}_ChairHogs.csv"
-            LOGGER.info(f"Write error details to {errorlog_path}")
-            issues.to_csv(
-                errorlog_path,
-                sep=';',
-                index=False)
-        error_message = f"{counter} instance(s) of a person sitting in two places at once ({ddups})"
-        self.assertEqual(counter, 0, error_message)
+            # Test separately for each date where seating might change: 
+            # Year start, year end, and every time somebody changes seats
+            dates = set(chair_mp_imputed_year.get_column("start")).union(set(chair_mp_imputed_year.get_column("end")))
+            error_messages = []
+            for date in dates:
+                chair_mp_imputed_date = chair_mp_imputed_year.filter(pl.col("start") <= date)
+                chair_mp_imputed_date = chair_mp_imputed_date.filter(pl.col("end") >= date)
+                duplicate_ix = chair_mp_imputed_date.select("person_id").is_duplicated()
+                if sum(duplicate_ix) >= 1:
+                    chair_mp_duplicated = chair_mp_imputed_date.filter(duplicate_ix)
+                    descs = "\n".join([stringify_row(row_dict) for row_dict in chair_mp_duplicated.to_dicts()])
+                    error_messages.append(descs)
+
+            # Only count each error once, even though it might appear on multiple dates
+            for descs in sorted(set(error_messages)):
+                error_counter += len(set(error_messages))
+                LOGGER.error(f"Chair Hog Error:\n{descs}")
+
+        error_message = f"{error_counter} instance(s) of a person sitting in two places at once"
+        self.assertEqual(error_counter, 0, error_message)
 
 
     #@unittest.skip
