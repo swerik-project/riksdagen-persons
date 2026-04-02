@@ -328,14 +328,14 @@ class Test(unittest.TestCase):
                     self.assertFalse(True, "¡Sth is super wrong!")
         if len(OutOfRange) > 0:
             if config and config["write_chair_nrs_in_range"]:
-                df = pd.DataFrame(OutOfRange, columne=["year", "chair"])
+                df = pd.DataFrame(OutOfRange, columns=["year", "chair"])
                 df.to_csv(
                     f"{config['test_out_dir']}/{what_time_it_is}_chair-OOR.csv",
                     sep=';',
                     index=False)
         if len(missing_in_R) > 0:
             if config and config["write_chair_nrs_in_range"]:
-                df = pd.DataFrame(missing_in_R, columne=["year", "chair"])
+                df = pd.DataFrame(missing_in_R, columns=["year", "chair"])
                 df.to_csv(
                     f"{config['test_out_dir']}/{self.what_time_it_is()}_chair-missing-in-R.csv",
                     sep=';',
@@ -387,8 +387,8 @@ class Test(unittest.TestCase):
                     error_messages.append(descs)
 
             # Only count each error once, even though it might appear on multiple dates
+            error_counter += len(set(error_messages))
             for descs in sorted(set(error_messages)):
-                error_counter += len(set(error_messages))
                 LOGGER.error(f"Chair Hog Error:\n{descs}")
 
         error_message = f"{error_counter} instance(s) of a person sitting in two places at once"
