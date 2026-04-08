@@ -1,0 +1,126 @@
+"""
+Tests related to constituency.
+"""
+from datetime import datetime
+from pytest_cfg_fetcher.fetch import fetch_config
+import pandas as pd
+import unittest
+import warnings
+
+""" Reference coverage on date April 8th 2026"""
+REFERENCE_APRIL = [{'year': '1867', 'total': 318, 'filled': 273, 'missing': 45, 'completion_rate': '85.85%'}, {'year': '1868', 'total': 17, 'filled': 15, 'missing': 2, 'completion_rate': '88.24%'}, {'year': '1869', 'total': 23, 'filled': 20, 'missing': 3, 'completion_rate': '86.96%'}, {'year': '1870', 'total': 121, 'filled': 95, 'missing': 26, 'completion_rate': '78.51%'}, {'year': '1871', 'total': 33, 'filled': 28, 'missing': 5, 'completion_rate': '84.85%'}, {'year': '1872', 'total': 8, 'filled': 7, 'missing': 1, 'completion_rate': '87.50%'}, {'year': '1873', 'total': 106, 'filled': 95, 'missing': 11, 'completion_rate': '89.62%'}, {'year': '1874', 'total': 22, 'filled': 21, 'missing': 1, 'completion_rate': '95.45%'}, {'year': '1875', 'total': 29, 'filled': 28, 'missing': 1, 'completion_rate': '96.55%'}, {'year': '1876', 'total': 111, 'filled': 97, 'missing': 14, 'completion_rate': '87.39%'}, {'year': '1877', 'total': 19, 'filled': 16, 'missing': 3, 'completion_rate': '84.21%'}, {'year': '1878', 'total': 39, 'filled': 34, 'missing': 5, 'completion_rate': '87.18%'}, {'year': '1879', 'total': 93, 'filled': 89, 'missing': 4, 'completion_rate': '95.70%'}, {'year': '1880', 'total': 35, 'filled': 34, 'missing': 1, 'completion_rate': '97.14%'}, {'year': '1881', 'total': 18, 'filled': 18, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1882', 'total': 88, 'filled': 78, 'missing': 10, 'completion_rate': '88.64%'}, {'year': '1883', 'total': 25, 'filled': 25, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1884', 'total': 30, 'filled': 28, 'missing': 2, 'completion_rate': '93.33%'}, {'year': '1885', 'total': 108, 'filled': 103, 'missing': 5, 'completion_rate': '95.37%'}, {'year': '1886', 'total': 31, 'filled': 31, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1887', 'total': 103, 'filled': 86, 'missing': 17, 'completion_rate': '83.50%'}, {'year': '1888', 'total': 99, 'filled': 85, 'missing': 14, 'completion_rate': '85.86%'}, {'year': '1889', 'total': 33, 'filled': 33, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1890', 'total': 25, 'filled': 23, 'missing': 2, 'completion_rate': '92.00%'}, {'year': '1891', 'total': 101, 'filled': 95, 'missing': 6, 'completion_rate': '94.06%'}, {'year': '1892', 'total': 53, 'filled': 49, 'missing': 4, 'completion_rate': '92.45%'}, {'year': '1893', 'total': 2, 'filled': 2, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1894', 'total': 102, 'filled': 97, 'missing': 5, 'completion_rate': '95.10%'}, {'year': '1895', 'total': 27, 'filled': 26, 'missing': 1, 'completion_rate': '96.30%'}, {'year': '1896', 'total': 19, 'filled': 17, 'missing': 2, 'completion_rate': '89.47%'}, {'year': '1897', 'total': 98, 'filled': 92, 'missing': 6, 'completion_rate': '93.88%'}, {'year': '1898', 'total': 16, 'filled': 16, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1899', 'total': 16, 'filled': 15, 'missing': 1, 'completion_rate': '93.75%'}, {'year': '1900', 'total': 83, 'filled': 80, 'missing': 3, 'completion_rate': '96.39%'}, {'year': '1901', 'total': 14, 'filled': 14, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1902', 'total': 22, 'filled': 21, 'missing': 1, 'completion_rate': '95.45%'}, {'year': '1903', 'total': 90, 'filled': 86, 'missing': 4, 'completion_rate': '95.56%'}, {'year': '1904', 'total': 13, 'filled': 13, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1905', 'total': 27, 'filled': 27, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1906', 'total': 61, 'filled': 55, 'missing': 6, 'completion_rate': '90.16%'}, {'year': '1907', 'total': 25, 'filled': 24, 'missing': 1, 'completion_rate': '96.00%'}, {'year': '1908', 'total': 27, 'filled': 27, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1909', 'total': 117, 'filled': 112, 'missing': 5, 'completion_rate': '95.73%'}, {'year': '1910', 'total': 25, 'filled': 24, 'missing': 1, 'completion_rate': '96.00%'}, {'year': '1911', 'total': 31, 'filled': 30, 'missing': 1, 'completion_rate': '96.77%'}, {'year': '1912', 'total': 283, 'filled': 268, 'missing': 15, 'completion_rate': '94.70%'}, {'year': '1913', 'total': 25, 'filled': 19, 'missing': 6, 'completion_rate': '76.00%'}, {'year': '1914', 'total': 65, 'filled': 56, 'missing': 9, 'completion_rate': '86.15%'}, {'year': '1915', 'total': 54, 'filled': 48, 'missing': 6, 'completion_rate': '88.89%'}, {'year': '1916', 'total': 21, 'filled': 20, 'missing': 1, 'completion_rate': '95.24%'}, {'year': '1917', 'total': 17, 'filled': 14, 'missing': 3, 'completion_rate': '82.35%'}, {'year': '1918', 'total': 114, 'filled': 100, 'missing': 14, 'completion_rate': '87.72%'}, {'year': '1919', 'total': 125, 'filled': 113, 'missing': 12, 'completion_rate': '90.40%'}, {'year': '1920', 'total': 27, 'filled': 25, 'missing': 2, 'completion_rate': '92.59%'}, {'year': '1921', 'total': 91, 'filled': 81, 'missing': 10, 'completion_rate': '89.01%'}, {'year': '1922', 'total': 262, 'filled': 240, 'missing': 22, 'completion_rate': '91.60%'}, {'year': '1923', 'total': 8, 'filled': 7, 'missing': 1, 'completion_rate': '87.50%'}, {'year': '1924', 'total': 11, 'filled': 10, 'missing': 1, 'completion_rate': '90.91%'}, {'year': '1925', 'total': 68, 'filled': 66, 'missing': 2, 'completion_rate': '97.06%'}, {'year': '1926', 'total': 15, 'filled': 13, 'missing': 2, 'completion_rate': '86.67%'}, {'year': '1927', 'total': 14, 'filled': 14, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1928', 'total': 21, 'filled': 19, 'missing': 2, 'completion_rate': '90.48%'}, {'year': '1929', 'total': 78, 'filled': 75, 'missing': 3, 'completion_rate': '96.15%'}, {'year': '1930', 'total': 12, 'filled': 12, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1931', 'total': 28, 'filled': 26, 'missing': 2, 'completion_rate': '92.86%'}, {'year': '1932', 'total': 11, 'filled': 9, 'missing': 2, 'completion_rate': '81.82%'}, {'year': '1933', 'total': 83, 'filled': 80, 'missing': 3, 'completion_rate': '96.39%'}, {'year': '1934', 'total': 22, 'filled': 22, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1935', 'total': 20, 'filled': 20, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1936', 'total': 25, 'filled': 22, 'missing': 3, 'completion_rate': '88.00%'}, {'year': '1937', 'total': 83, 'filled': 82, 'missing': 1, 'completion_rate': '98.80%'}, {'year': '1938', 'total': 29, 'filled': 29, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1939', 'total': 25, 'filled': 24, 'missing': 1, 'completion_rate': '96.00%'}, {'year': '1940', 'total': 22, 'filled': 21, 'missing': 1, 'completion_rate': '95.45%'}, {'year': '1941', 'total': 76, 'filled': 73, 'missing': 3, 'completion_rate': '96.05%'}, {'year': '1942', 'total': 23, 'filled': 20, 'missing': 3, 'completion_rate': '86.96%'}, {'year': '1943', 'total': 27, 'filled': 24, 'missing': 3, 'completion_rate': '88.89%'}, {'year': '1944', 'total': 23, 'filled': 20, 'missing': 3, 'completion_rate': '86.96%'}, {'year': '1945', 'total': 60, 'filled': 53, 'missing': 7, 'completion_rate': '88.33%'}, {'year': '1946', 'total': 22, 'filled': 22, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1947', 'total': 17, 'filled': 17, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1948', 'total': 25, 'filled': 25, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1949', 'total': 84, 'filled': 81, 'missing': 3, 'completion_rate': '96.43%'}, {'year': '1950', 'total': 21, 'filled': 20, 'missing': 1, 'completion_rate': '95.24%'}, {'year': '1951', 'total': 22, 'filled': 21, 'missing': 1, 'completion_rate': '95.45%'}, {'year': '1952', 'total': 15, 'filled': 14, 'missing': 1, 'completion_rate': '93.33%'}, {'year': '1953', 'total': 64, 'filled': 63, 'missing': 1, 'completion_rate': '98.44%'}, {'year': '1954', 'total': 24, 'filled': 23, 'missing': 1, 'completion_rate': '95.83%'}, {'year': '1955', 'total': 14, 'filled': 13, 'missing': 1, 'completion_rate': '92.86%'}, {'year': '1956', 'total': 19, 'filled': 18, 'missing': 1, 'completion_rate': '94.74%'}, {'year': '1957', 'total': 68, 'filled': 66, 'missing': 2, 'completion_rate': '97.06%'}, {'year': '1958', 'total': 51, 'filled': 48, 'missing': 3, 'completion_rate': '94.12%'}, {'year': '1959', 'total': 20, 'filled': 19, 'missing': 1, 'completion_rate': '95.00%'}, {'year': '1960', 'total': 18, 'filled': 18, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '1961', 'total': 52, 'filled': 51, 'missing': 1, 'completion_rate': '98.08%'}, {'year': '1962', 'total': 24, 'filled': 21, 'missing': 3, 'completion_rate': '87.50%'}, {'year': '1963', 'total': 17, 'filled': 16, 'missing': 1, 'completion_rate': '94.12%'}, {'year': '1964', 'total': 26, 'filled': 23, 'missing': 3, 'completion_rate': '88.46%'}, {'year': '1965', 'total': 68, 'filled': 62, 'missing': 6, 'completion_rate': '91.18%'}, {'year': '1966', 'total': 16, 'filled': 15, 'missing': 1, 'completion_rate': '93.75%'}, {'year': '1967', 'total': 13, 'filled': 12, 'missing': 1, 'completion_rate': '92.31%'}, {'year': '1968', 'total': 19, 'filled': 14, 'missing': 5, 'completion_rate': '73.68%'}, {'year': '1969', 'total': 83, 'filled': 79, 'missing': 4, 'completion_rate': '95.18%'}, {'year': '1970', 'total': 11, 'filled': 9, 'missing': 2, 'completion_rate': '81.82%'}, {'year': '1971', 'total': 360, 'filled': 357, 'missing': 3, 'completion_rate': '99.17%'}, {'year': '1972', 'total': 8, 'filled': 1, 'missing': 7, 'completion_rate': '12.50%'}, {'year': '1973', 'total': 5, 'filled': 1, 'missing': 4, 'completion_rate': '20.00%'}, {'year': '1974', 'total': 385, 'filled': 358, 'missing': 27, 'completion_rate': '92.99%'}, {'year': '1975', 'total': 12, 'filled': 8, 'missing': 4, 'completion_rate': '66.67%'}, {'year': '1976', 'total': 385, 'filled': 362, 'missing': 23, 'completion_rate': '94.03%'}, {'year': '1977', 'total': 32, 'filled': 23, 'missing': 9, 'completion_rate': '71.88%'}, {'year': '1978', 'total': 44, 'filled': 20, 'missing': 24, 'completion_rate': '45.45%'}, {'year': '1979', 'total': 407, 'filled': 387, 'missing': 20, 'completion_rate': '95.09%'}, {'year': '1980', 'total': 26, 'filled': 20, 'missing': 6, 'completion_rate': '76.92%'}, {'year': '1981', 'total': 52, 'filled': 37, 'missing': 15, 'completion_rate': '71.15%'}, {'year': '1982', 'total': 411, 'filled': 390, 'missing': 21, 'completion_rate': '94.89%'}, {'year': '1983', 'total': 60, 'filled': 32, 'missing': 28, 'completion_rate': '53.33%'}, {'year': '1984', 'total': 37, 'filled': 23, 'missing': 14, 'completion_rate': '62.16%'}, {'year': '1985', 'total': 412, 'filled': 385, 'missing': 27, 'completion_rate': '93.45%'}, {'year': '1986', 'total': 41, 'filled': 21, 'missing': 20, 'completion_rate': '51.22%'}, {'year': '1987', 'total': 40, 'filled': 25, 'missing': 15, 'completion_rate': '62.50%'}, {'year': '1988', 'total': 418, 'filled': 393, 'missing': 25, 'completion_rate': '94.02%'}, {'year': '1989', 'total': 43, 'filled': 26, 'missing': 17, 'completion_rate': '60.47%'}, {'year': '1990', 'total': 43, 'filled': 30, 'missing': 13, 'completion_rate': '69.77%'}, {'year': '1991', 'total': 412, 'filled': 385, 'missing': 27, 'completion_rate': '93.45%'}, {'year': '1992', 'total': 49, 'filled': 35, 'missing': 14, 'completion_rate': '71.43%'}, {'year': '1993', 'total': 40, 'filled': 30, 'missing': 10, 'completion_rate': '75.00%'}, {'year': '1994', 'total': 394, 'filled': 373, 'missing': 21, 'completion_rate': '94.67%'}, {'year': '1995', 'total': 72, 'filled': 42, 'missing': 30, 'completion_rate': '58.33%'}, {'year': '1996', 'total': 45, 'filled': 18, 'missing': 27, 'completion_rate': '40.00%'}, {'year': '1997', 'total': 17, 'filled': 9, 'missing': 8, 'completion_rate': '52.94%'}, {'year': '1998', 'total': 382, 'filled': 370, 'missing': 12, 'completion_rate': '96.86%'}, {'year': '1999', 'total': 26, 'filled': 14, 'missing': 12, 'completion_rate': '53.85%'}, {'year': '2000', 'total': 27, 'filled': 19, 'missing': 8, 'completion_rate': '70.37%'}, {'year': '2001', 'total': 26, 'filled': 18, 'missing': 8, 'completion_rate': '69.23%'}, {'year': '2002', 'total': 405, 'filled': 380, 'missing': 25, 'completion_rate': '93.83%'}, {'year': '2003', 'total': 48, 'filled': 36, 'missing': 12, 'completion_rate': '75.00%'}, {'year': '2004', 'total': 60, 'filled': 43, 'missing': 17, 'completion_rate': '71.67%'}, {'year': '2005', 'total': 50, 'filled': 39, 'missing': 11, 'completion_rate': '78.00%'}, {'year': '2006', 'total': 419, 'filled': 390, 'missing': 29, 'completion_rate': '93.08%'}, {'year': '2007', 'total': 44, 'filled': 33, 'missing': 11, 'completion_rate': '75.00%'}, {'year': '2008', 'total': 35, 'filled': 26, 'missing': 9, 'completion_rate': '74.29%'}, {'year': '2009', 'total': 40, 'filled': 29, 'missing': 11, 'completion_rate': '72.50%'}, {'year': '2010', 'total': 407, 'filled': 396, 'missing': 11, 'completion_rate': '97.30%'}, {'year': '2011', 'total': 47, 'filled': 38, 'missing': 9, 'completion_rate': '80.85%'}, {'year': '2012', 'total': 54, 'filled': 45, 'missing': 9, 'completion_rate': '83.33%'}, {'year': '2013', 'total': 53, 'filled': 45, 'missing': 8, 'completion_rate': '84.91%'}, {'year': '2014', 'total': 417, 'filled': 401, 'missing': 16, 'completion_rate': '96.16%'}, {'year': '2015', 'total': 41, 'filled': 35, 'missing': 6, 'completion_rate': '85.37%'}, {'year': '2016', 'total': 46, 'filled': 42, 'missing': 4, 'completion_rate': '91.30%'}, {'year': '2017', 'total': 77, 'filled': 69, 'missing': 8, 'completion_rate': '89.61%'}, {'year': '2018', 'total': 406, 'filled': 405, 'missing': 1, 'completion_rate': '99.75%'}, {'year': '2019', 'total': 67, 'filled': 65, 'missing': 2, 'completion_rate': '97.01%'}, {'year': '2020', 'total': 42, 'filled': 41, 'missing': 1, 'completion_rate': '97.62%'}, {'year': '2021', 'total': 56, 'filled': 56, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '2022', 'total': 446, 'filled': 445, 'missing': 1, 'completion_rate': '99.78%'}, {'year': '2023', 'total': 44, 'filled': 44, 'missing': 0, 'completion_rate': '100.00%'}, {'year': '2024', 'total': 18, 'filled': 17, 'missing': 1, 'completion_rate': '94.44%'}]
+
+#For dynamic non decreasing reference
+REFERENCE_COVERAGE = REFERENCE_APRIL
+
+class Unlisted(Warning):
+
+    def __init__(self, m):
+        self.message = m
+
+    def __str__(self):
+        return self.message
+
+
+class Info(Warning):
+
+    def __init__(self, m):
+        self.message = m
+
+    def __str__(self):
+        return self.message
+
+
+
+
+class Test(unittest.TestCase):
+    def get_constituency_completion_by_start_year(self, members):
+
+        members['start'] = members['start'].astype(str).str[:4]
+        members['district'] = members['district'].fillna('').astype(str).str.strip()
+
+        incomplete_years = []
+        all_years = []
+
+        for year, group in members.groupby('start'):
+            total = len(group)
+            filled = (group['district'] != '').sum()
+            completion_rate = filled / total if total > 0 else 1.0
+            completion_rate = round(completion_rate, 4)
+            missing = total - filled
+
+            all_years.append({
+                "year": str(year),
+                "total": int(total),
+                "filled": int(filled),
+                "missing": int(missing),
+                "completion_rate": f"{completion_rate:.2%}"
+            })
+
+            if completion_rate < 1.0:
+                incomplete_years.append({
+                        "year": str(year),
+                        "total": int(total),
+                        "filled": int(filled),
+                        "missing": int(missing),
+                        "completion_rate": f"{completion_rate:.2%}"
+                    })
+        return all_years, incomplete_years
+    
+    def get_MP_per_district_per_year(self, members):
+
+        members['year'] = members['start'].astype(str).str[:4]
+        members['district'] = members['district'].fillna('').astype(str).str.strip()
+
+        df_counts = (
+            members[members['district'] != '']
+            .groupby(['year', 'district'])
+            .size() # Compte le nombre de lignes par groupe
+            .reset_index(name='mp_count') # Transforme le résultat en colonnes
+        )
+
+        return df_counts
+    
+
+    """ Test if MP do have a constituency, and if the constituency is listed in the data. """
+    def test_constituency_completion_by_start_year(self):
+        
+        members = pd.read_csv("data/member_of_parliament.csv")
+        all_years, incomplete_years = self.get_constituency_completion_by_start_year(members)
+   
+        REFERENCE = {d['year']: d for d in REFERENCE_COVERAGE}
+
+        failures = []
+
+        for entry in all_years:
+            current_rate = float(entry['completion_rate'].strip('%')) / 100
+            ref_rate = float(REFERENCE[entry['year']]['completion_rate'].strip('%')) / 100
+            if current_rate < (ref_rate - 0.0001):
+                msg = f"Year {entry['year']}: {entry['completion_rate']} (ref: {REFERENCE[entry['year']]['completion_rate']})"
+                failures.append(msg)
+        if failures:
+            header = f"\n {len(failures)} years lost some quality :"
+            full_report = header + "\n" + "\n".join(failures)
+            self.fail(full_report)
+        #REFERENCE_COVERAGE = all_years for dynamic non decreasing reference
+    
+    """ Tests the coherence of the data based on the computation of empirical variance"""
+    def test_MP_per_district_per_year(self):
+
+        members = pd.read_csv("data/member_of_parliament.csv")
+        df_counts = self.get_MP_per_district_per_year(members)
+        pivot_counts = df_counts.pivot(index='year', columns='district', values='mp_count').fillna(0)
+        districts_variance = pivot_counts.var(axis=0, ddof=0)
+        failures = []
+
+        for district, var in districts_variance.items():
+            if var > 5: #this number is almost arbitrary and needs fine tuning
+                failures.append(f"District {district} has a suspicious variance of {var}.")   
+        if failures:
+            header = f"\n {len(failures)} districts have a suspicious variance :"
+            full_report = header + "\n" + "\n".join(failures)
+            self.fail(full_report)         
+
+
+if __name__ == '__main__':
+    unittest.main()
