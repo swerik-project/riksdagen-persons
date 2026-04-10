@@ -16,14 +16,6 @@ from trainerlog import get_logger
 LOGGER = get_logger("unittest")
 LOGGER.info("Use the env variable LOGLEVEL=DEBUG to get more detailed error messages")
 
-class ChairHog(Warning):
-
-    def __init__(self, m):
-        self.message = "\n" + f"The following MPs sit in two chairs in {m}:."
-
-    def __str__(self):
-        return self.message
-
 
 class ChairInWrongTimePeriod(Warning):
 
@@ -74,15 +66,6 @@ class EmptyChair(Warning):
 
     def __init__(self, m):
         self.message = "\n" + f"The following chairs are empty in in {m}:."
-
-    def __str__(self):
-        return self.message
-
-
-class KnaMP(Warning):
-
-    def __init__(self, m):
-        self.message = "\n" + f"The following chairs are occupied by more than one person at the same time in {m}:."
 
     def __str__(self):
         return self.message
@@ -369,14 +352,14 @@ class Test(unittest.TestCase):
         chair_mp_imputed = chair_mp_imputed.with_columns(pl.col("start").fill_null("1000-01-01"))
         chair_mp_imputed = chair_mp_imputed.with_columns(pl.col("end").fill_null("3000-12-31"))
 
-        error_counter = 0
+        chairhog_error_counter, knamp_error_counter = 0, 0
         for parliament_year in tqdm.tqdm(sorted(set(chair_mp.get_column("parliament_year")))):
             chair_mp_imputed_year = chair_mp_imputed.filter(pl.col("parliament_year") == parliament_year)
 
             # Test separately for each date where seating might change: 
             # Year start, year end, and every time somebody changes seats
             dates = set(chair_mp_imputed_year.get_column("start")).union(set(chair_mp_imputed_year.get_column("end")))
-            error_messages = []
+            chairhog_error_messages, knamp_error_messages = [], []
             for date in dates:
                 chair_mp_imputed_date = chair_mp_imputed_year.filter(pl.col("start") <= date)
                 chair_mp_imputed_date = chair_mp_imputed_date.filter(pl.col("end") >= date)
@@ -384,111 +367,28 @@ class Test(unittest.TestCase):
                 if sum(duplicate_ix) >= 1:
                     chair_mp_duplicated = chair_mp_imputed_date.filter(duplicate_ix)
                     descs = "\n".join([stringify_row(row_dict) for row_dict in chair_mp_duplicated.to_dicts()])
-                    error_messages.append(descs)
+                    chairhog_error_messages.append(descs)
+
+                duplicate_ix = chair_mp_imputed_date.select("chair_id").is_duplicated()
+                if sum(duplicate_ix) >= 1:
+                    chair_mp_duplicated = chair_mp_imputed_date.filter(duplicate_ix)
+                    chair_mp_duplicated = chair_mp_duplicated.sort("chair_id")
+                    descs = "\n".join([stringify_row(row_dict) for row_dict in chair_mp_duplicated.to_dicts()])
+                    knamp_error_messages.append(descs)
 
             # Only count each error once, even though it might appear on multiple dates
-            error_counter += len(set(error_messages))
-            for descs in sorted(set(error_messages)):
+            chairhog_error_counter += len(set(chairhog_error_messages))
+            for descs in sorted(set(chairhog_error_messages)):
                 LOGGER.error(f"Chair Hog Error:\n{descs}")
+            knamp_error_counter += len(set(knamp_error_messages))
+            for descs in sorted(set(knamp_error_messages)):
+                LOGGER.error(f"KnaMP Error:\n{descs}")
 
-        error_message = f"{error_counter} instance(s) of a person sitting in two places at once"
-        self.assertEqual(error_counter, 0, error_message)
+        error_message = f"{chairhog_error_counter} instance(s) of a person sitting in two places at once"
+        self.assertEqual(chairhog_error_counter, 0, error_message)
 
-
-    #@unittest.skip
-    def test_knaMP(self):
-        """
-        Check no one is sharing a chair
-        """
-        LOGGER.info("Testing no one sits on the same chair at the same time")
-        config = fetch_config("chairs")
-        chair_mp = self.get_chair_mp()
-        chair_mp.rename(columns={"start": "chair_start", "end":"chair_end"}, inplace=True)
-        chair_mp = chair_mp[chair_mp["person_id"].notna()]
-        chairs = self.get_chairs()
-        chair_mp = pd.merge(chair_mp, chairs, on="chair_id", how="left")
-        mep_by_year = yearize_mandates()
-        mep_by_year.rename(columns={"start": "meta_start", "end":"meta_end"}, inplace=True)
-        mep_by_year = mep_by_year[mep_by_year["meta_start"].notna()]
-        chair_mp = pd.merge(chair_mp, mep_by_year, on=["person_id", "parliament_year"], how="left")
-        general_start_end = self.get_riksdag_year()
-        ingen_knahund = True
-        counter = 0
-        ddups = []
-        issues = pd.DataFrame(columns=chair_mp.columns)
-        for y in chair_mp['parliament_year'].unique():
-            year_chair_mp = chair_mp.loc[chair_mp['parliament_year'] == y].copy()
-            yse = general_start_end.loc[general_start_end['parliament_year'] == y].copy()
-            yse.reset_index(drop=True, inplace=True)
-            yse.sort_values(by=["chamber", "start", "end"], inplace=True)
-            cs = yse["chamber"].unique()
-            d = {}
-            for c in cs:
-                cdf = yse.loc[yse["chamber"] == c].copy()
-                cdf.reset_index(drop=True, inplace=True)
-                d[c] = {"earliest": cdf.at[0, "start"], "latest": cdf.at[len(cdf.index)-1, "end"]}
-            year_chair_mp.drop_duplicates(inplace=True)
-            chairs = year_chair_mp.loc[pd.notnull(year_chair_mp['chair_id']), 'chair_id'].values
-            if len(chairs) > len(set(chairs)):
-                dups = self.get_duplicated_items(chairs)
-                kh = []
-                for dup in dups:
-                    df = year_chair_mp.loc[year_chair_mp["chair_id"] == dup].copy()
-                    df.drop_duplicates(subset=["chair_id", "parliament_year", "chair_start", "chair_end", "person_id"], inplace=True)
-                    if len(df["person_id"].unique()) == 1:
-                        pass
-                    else:
-                        ranges = []
-                        for i, r in df.iterrows():
-                            rstart = None
-                            if pd.notnull(r["chair_start"]):
-                                rstart = r["chair_start"]
-                            elif pd.notnull(r["meta_start"]):
-                                rstart = r["meta_start"]
-                            else:
-                                rstart = d[r["chamber"]]["earliest"]
-                            rend = None
-                            if pd.notnull(r["chair_end"]):
-                                rend = r["chair_end"]
-                            elif pd.notnull(r["meta_end"]):
-                                rend = r["meta_end"]
-                            else:
-                                rend = d[r["chamber"]]["latest"]
-                            ranges.append((rstart, rend))
-
-                        ranges = sorted(ranges, key=lambda x: (x[0], x[1]))
-                        for ridx, _range in enumerate(ranges):
-                            if ridx < len(ranges)-1:
-                                try:
-                                    delta = (datetime.strptime(_range[1], "%Y-%m-%d") - datetime.strptime(ranges[ridx+1][0], "%Y-%m-%d")).days
-                                except:
-                                    LOGGER.error(f"~~~~~~~~~XXXX {ranges[ridx+1][0]}, {_range[1]}")
-                                    # TODO: what does this mean
-                                    self.assertTrue(False)
-                                if max(0, delta) > 0:
-                                    issues = pd.concat([issues,df], ignore_index=True)
-                                    if dup not in kh:
-                                        kh.append(dup)
-                                        msg = f"KnaMP error:\n{df}\n{ranges}\n{_range}\n{ranges[ridx+1]}"
-                                        LOGGER.error(msg)
-
-                if len(kh) > 0:
-                    #print("\n\n")
-                    #warnings.warn(f"{y}: [{', '.join(kh)}]", KnaMP)
-                    msg = f"{y}: [{', '.join(kh)}]"
-                    LOGGER.error(f"KnaMP error:\n{msg}")
-                    ingen_knahund = False
-                    counter += len(kh)
-                    [ddups.append(_) for _ in kh]
-        if config and config['write_knahund']:
-            issues.drop_duplicates(inplace=True)
-            issues.to_csv(
-                f"{config['test_out_dir']}/{self.what_time_it_is()}_LoveSeats.csv",
-                sep=';',
-                index=False)
-
-        error_message = f"{counter} instance(s) of a two persons sitting in the same chair ({ddups})"
-        self.assertEqual(counter, 0, error_message)
+        error_message = f"{knamp_error_counter} instance(s) of two or more people sitting in one chair at once"
+        self.assertEqual(knamp_error_counter, 0, error_message)
 
     #
     #  --->  Test coverage
