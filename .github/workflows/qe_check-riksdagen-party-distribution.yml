@@ -6,7 +6,7 @@ on:
       - 'dev'
 
 jobs:
-  build:
+  party-distribution:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -29,7 +29,7 @@ jobs:
         pip install pyriksdagen
         pip install pytest
 
-    - name: Run Party Distribution QC
+    - name: Run-Party-Distribution-QC
       run: |
         for month in 3 10; do
           python quality/qe_check-riksdagen-party-distribution.py \

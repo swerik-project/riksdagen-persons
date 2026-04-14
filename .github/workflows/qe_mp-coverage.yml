@@ -6,7 +6,7 @@ on:
       - 'dev'
 
 jobs:
-  build:
+  mp-coverage:
     runs-on: ubuntu-latest
     strategy:
       matrix:

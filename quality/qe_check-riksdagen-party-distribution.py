@@ -1,102 +1,190 @@
-#!/usr/bin/env python3
-"""
-Builds yearly party distribution snapshots and computes L1 regression metrics.
-"""
 import argparse
 import calendar
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 import os
-import pandas as pd
+import polars as pl
 from trainerlog import get_logger
+from datetime import date
 
 logger = get_logger(name="ebun", level="DEBUG")
 
 def parse_date_fuzzy(v, kind="start"):
-    """Parse partial dates; fills missing month/day for start/end."""
-
-    if pd.isna(v):
-        return pd.NaT
+    """
+    Parse partial dates; fills missing month/day for start/end.
+    Supports formats: YYYY, YYYY-MM, YYYY-MM-DD
+    """
+    if v is None or str(v).strip() == "":
+        return date(1000,1,1) if kind == "start" else date(9999,12,31)
     parts = str(v).split("-")
     try:
         if len(parts) == 1:
-            return pd.Timestamp(f"{parts[0]}-01-01" if kind=="start" else f"{parts[0]}-12-31")
+            return date(int(parts[0]),1 if kind == "start" else 12,1 if kind == "start" else 31)
         elif len(parts) == 2:
             year, month = int(parts[0]), int(parts[1])
-            day = 1 if kind=="start" else calendar.monthrange(year, month)[1]
-            return pd.Timestamp(f"{year}-{month:02d}-{day}")
+            day = 1 if kind == "start" else calendar.monthrange(year, month)[1]
+            return date(year, month, day)
         else:
-            return pd.Timestamp(v)
+            return date(int(parts[0]), int(parts[1]), int(parts[2]))
     except Exception as e:
         logger.warning(f"Failed to parse date '{v}': {e}")
-        return pd.NaT
-    
+        return None
+
 
 def parse_dates_fuzzy(df, start_cols=None, end_cols=None):
-    """Apply fuzzy date parsing to DataFrame columns."""
-    
+    """Apply fuzzy date parsing to specified start/end columns in a Polars DataFrame."""
     start_cols = start_cols or []
     end_cols = end_cols or []
 
+    def apply_fuzzy(col, kind):
+        values = df[col].to_list()
+        parsed = [parse_date_fuzzy(v, kind=kind) for v in values]
+        return pl.Series(col, parsed)
+
     for c in start_cols:
         if c in df.columns:
-            df[c] = df[c].apply(parse_date_fuzzy, kind="start")
+            df = df.with_columns(apply_fuzzy(c, kind="start"))
+
     for c in end_cols:
         if c in df.columns:
-            df[c] = df[c].apply(parse_date_fuzzy, kind="end")
+            df = df.with_columns(apply_fuzzy(c, kind="end"))
+
     return df
 
 
-def compute_distribution_diff(df_snapshot, df_gold):
-    """Compute differences between snapshot and gold-standard seat counts."""
+def build_yearly_long(mp, affiliation, riksdag_year, party, args):
+    """Build yearly long-format party distribution with original and mapped Riksdag years using Polars."""
 
-    snap = df_snapshot.rename(columns={"nr_seats": "nr_seats_snapshot"}).copy()
-    gold = df_gold.rename(columns={"nr_seats": "nr_seats_gold"}).copy()
+    ###--- 1. Create years we are interested in the snapshot ---###
+    calendar_years = list(range(args.start, args.end + 1))
 
-    snap = snap.astype({"party_id": "string", "chamber": "string", "parliament_year": "Int64"})
-    gold = gold.astype({"party_id": "string", "chamber": "string", "parliament_year": "Int64"})
+    years = pl.DataFrame({
+        "calendar_year": calendar_years,
+        "check_date": [date(y, args.month, args.day) for y in calendar_years]
+    })
 
-    snap_blocks = []
-
-    for chamber, snap_grp in snap.groupby("chamber", sort=False):
-        gold_grp = gold[gold["chamber"] == chamber]
-        elections = np.sort(gold_grp["parliament_year"].dropna().unique())
-
-        bins = np.append(elections, elections[-1]+1)
-        
-        snap_grp = snap_grp.copy()
-        snap_grp["year_block"] = pd.cut(
-            snap_grp["parliament_year"],
-            bins=bins,
-            right=False,
-            labels=elections
-        ).astype("Int64")
-        
-        snap_blocks.append(snap_grp)
-
-    snap = pd.concat(snap_blocks, ignore_index=True)
-
-    gold_blocked = gold.rename(columns={"parliament_year": "year_block"})
-
-    merged = snap.merge(
-        gold_blocked[["year_block","chamber","party_id","nr_seats_gold"]],
-        on=["year_block","chamber","party_id"],
-        how="outer"
+    years = (
+        years
+        .with_columns(
+            pl.when(pl.col("calendar_year") < 1971)
+            .then(pl.lit(["fk", "ak"]))
+            .otherwise(pl.lit(["ek"]))
+            .alias("chamber_list")
+        )
+        .explode("chamber_list")
+        .rename({"chamber_list": "chamber"})
     )
 
-    merged["nr_seats_gold"] = merged["nr_seats_gold"].fillna(0).astype(int)
-    merged["nr_seats_snapshot"] = merged["nr_seats_snapshot"].fillna(0).astype(int)
-    
-    merged["seat_diff"] = merged["nr_seats_snapshot"] - merged["nr_seats_gold"]
-    merged["abs_diff"] = merged["seat_diff"].abs()
+    ###--- 2. Match calendar year with the rightful parliament year ---###
+    years_sorted = years.sort("check_date", "chamber")
+    riksdag_sorted = riksdag_year.sort("start")
+    years_snap = years_sorted.join_asof(
+        riksdag_sorted,
+        left_on="check_date",
+        right_on="start",
+        by="chamber",
+        strategy="backward", # nearest start <= check_date
+        suffix="_riksdag"
+    )
 
-    merged = merged.rename(columns={"year_block": "gold_year", "seat_diff": "diff"})
+    years_snap = years_snap.with_columns([
+        pl.when(pl.col("check_date") <= pl.col("end"))
+        .then(pl.col("parliament_year"))
+        .otherwise(None)
+        .alias("riksdag_year"),
 
-    merged = merged[["calendar_year", "parliament_year", "chamber", "gold_year", "party_id", "party_name", "nr_seats_snapshot", "nr_seats_gold", "diff", "abs_diff"]]
-    merged = merged.sort_values(["calendar_year", "parliament_year", "chamber", "party_id"]).reset_index(drop=True)
+        pl.when(pl.col("check_date") <= pl.col("end"))
+        .then(pl.col("specifier"))
+        .otherwise(None)
+        .alias("period")
+    ]).select("calendar_year","check_date","parliament_year","specifier","chamber")
 
-    return merged
+    ###--- 3. Find all the mp-s active on those given years on that date ---###
+    mp = mp.with_columns([
+        pl.when((pl.col("role") == "andrakammarledamot") )
+        .then(pl.lit("ak"))
+        .otherwise(
+            pl.when((pl.col("role") == "förstakammarledamot"))
+                .then(pl.lit("fk"))
+                .otherwise(pl.lit("ek"))
+        )
+        .alias("role")
+    ]).rename({"start": "start_mandate", "end": "end_mandate", "role": "chamber"})
 
+    mp_snap = mp.join_where(
+        years_snap,
+        (pl.col("start_mandate") <= pl.col("check_date")) &
+        (pl.col("end_mandate") >= pl.col("check_date")) &
+        (pl.col("chamber") == pl.col("chamber_right"))
+    ).drop("chamber_right")
+
+    ###--- 4.1 Add the party affiliation of MPs on those dates ---###
+    affiliation = affiliation.rename({
+        "start": "start_aff",
+        "end": "end_aff"
+    })
+
+    merged = (
+        mp_snap
+        .join(
+            affiliation,
+            on="person_id",
+            how="inner"
+        )
+        .filter(
+            (pl.col("start_aff") <= pl.col("check_date")) &
+            (pl.col("end_aff") >= pl.col("check_date"))
+        )
+        .with_columns(
+            # interval size (used to pick most specific match)
+            (pl.col("end_aff") - pl.col("start_aff"))
+            .dt.total_days()
+            .alias("interval_len")
+        )
+        .sort([
+            "person_id",
+            "check_date",
+            "interval_len"
+        ])
+        .group_by(["person_id", "check_date"])
+        .agg(pl.all().first())
+    ).drop("interval_len")
+
+    ###--- 4.2 Fill missing SWERIK party IDs using party table ---###
+    party_lookup = party.select([
+        "party",
+        "swerik_party_id"
+    ]).unique()
+
+    merged = merged.join(
+        party_lookup,
+        on="party",
+        how="left",
+        suffix="_party"
+    )
+
+    merged = merged.with_columns(
+        pl.col("swerik_party_id")
+        .fill_null(pl.col("swerik_party_id_party"))
+        .fill_null("No SWERIK-id found")
+    ).drop("swerik_party_id_party")
+
+    ###--- 5. Aggregate and count the party memberships ---###
+    result = (
+        merged
+        .group_by(["calendar_year", "parliament_year", "chamber", "swerik_party_id"])
+        .agg(
+            pl.n_unique("person_id").alias("nr_seats")
+        )
+    )
+
+    # Final column order
+    result = result.sort(by=[
+        "calendar_year", "chamber"
+    ])
+
+    return result
 
 
 def compute_regression_metrics(diff_df):
@@ -104,158 +192,141 @@ def compute_regression_metrics(diff_df):
 
     l1_df = (
         diff_df
-        .groupby(["calendar_year", "parliament_year", "chamber"])["abs_diff"]
-        .sum()
-        .reset_index(name="l1_distance")
+        .group_by(["calendar_year", "parliament_year", "chamber"])
+        .agg(
+            pl.col("abs_diff").sum().alias("l1_distance")
+        )
     )
 
     return {
         "l1_per_year_chamber": l1_df,
-        "max_l1": int(l1_df["l1_distance"].max()) if len(l1_df) else 0,
-        "mean_l1": float(l1_df["l1_distance"].mean()) if len(l1_df) else 0.0,
-        "max_party_diff": int(diff_df["abs_diff"].max()) if len(diff_df) else 0,
-        "nr_rows_with_diff": int((diff_df["abs_diff"] > 0).sum()),
+        "max_l1": l1_df.select(pl.col("l1_distance").max()).item() if l1_df.height > 0 else 0,
+        "mean_l1": l1_df.select(pl.col("l1_distance").mean()).item() if l1_df.height > 0 else 0.0,
+        "max_party_diff": diff_df.select(pl.col("abs_diff").max()).item() if diff_df.height > 0 else 0,
+        "nr_rows_with_diff": diff_df.select(
+            (pl.col("abs_diff") > 0).sum()
+        ).item(),
     }
 
 
-def build_yearly_long(mp, affiliation, party, explicit_no_party, month_day, year_start, year_end, riksdag_df):
-    """Build yearly long-format party distribution with original and mapped Riksdag years."""
+def compute_distribution_diff(df_snapshot, df_gold):
+    """Compute differences between snapshot and gold-standard seat counts."""
 
-    def prioritize_chamber(df):
-        """Sort chambers by priority for post-1970s years (ek > ak > fk)."""
-        if df["calendar_year"].iloc[0] >= 1971:
-            df = df.sort_values(by="chamber", key=lambda x: x.map({"ek":0, "ak":1, "fk":2}))
-        return df
-    
-    def map_to_riksdag_year(row):
-        """Map a snapshot year to the correct Riksdag year using start/end ranges."""
-        year = row["calendar_year"]
-        if year <= 1975:
-            return year
+    # --- 1. Rename columns ---
+    snap = df_snapshot.rename({"nr_seats": "nr_seats_snapshot"})
+    gold = df_gold.rename({"nr_seats": "nr_seats_gold"})
 
-        snapshot_date = pd.Timestamp(year, month, day)
-        candidates = riksdag_df.query("@snapshot_date >= start and @snapshot_date <= end")
-        if not candidates.empty:
-            ry = str(candidates.iloc[0]["parliament_year"])
-            return 199900 if ry == "19992000" else int(ry)
+    # --- 2. Ensure types ---
+    snap = snap.with_columns([
+        pl.col("swerik_party_id").cast(pl.Utf8),
+        pl.col("chamber").cast(pl.Utf8),
+        pl.col("parliament_year").cast(pl.Int64),
+    ])
 
-        past = riksdag_df[riksdag_df["start"] <= snapshot_date].sort_values("start", ascending=False)
-        future = riksdag_df[riksdag_df["start"] >= snapshot_date].sort_values("start")
-        if not past.empty:
-            return int(past.iloc[0]["parliament_year"])
-        elif not future.empty:
-            return int(future.iloc[0]["parliament_year"])
-        return year
+    gold = gold.with_columns([
+        pl.col("swerik_party_id").cast(pl.Utf8),
+        pl.col("chamber").cast(pl.Utf8),
+        pl.col("parliament_year").cast(pl.Int64),
+    ])
 
-    month, day = month_day
-
-    years = pd.DataFrame({"calendar_year": range(year_start, year_end + 1)})
-    years["check_date"] = pd.to_datetime(
-        years["calendar_year"].astype(str) + f"-{month:02d}-{day:02d}"
+    # --- 3. Build election "blocks" using join_asof ---
+    elections = (
+        gold
+        .select(["chamber", "parliament_year"])
+        .unique()
+        .sort(["chamber", "parliament_year"])
+        .rename({"parliament_year": "year_block"})
     )
 
-    mp["start"] = mp["start"].fillna(pd.Timestamp("1000-01-01"))
-    mp["end"] = mp["end"].fillna(pd.Timestamp("9999-12-31"))
-
-    mp["_tmp"] = 1
-    years["_tmp"] = 1
-    mp_snap = mp.merge(years, on="_tmp").drop(columns="_tmp")
-
-    mp_snap = mp_snap[
-        (mp_snap["start"] <= mp_snap["check_date"]) &
-        (mp_snap["end"] >= mp_snap["check_date"])
-    ]
-
-    mp_snap["chamber"] = None
-    mp_snap.loc[(mp_snap["role"] == "andrakammarledamot") & (mp_snap["calendar_year"] < 1971), "chamber"] = "ak"
-    mp_snap.loc[(mp_snap["role"] == "förstakammarledamot") & (mp_snap["calendar_year"] < 1971), "chamber"] = "fk"
-    mp_snap.loc[(mp_snap["chamber"].isna()) & (mp_snap["calendar_year"] >= 1971), "chamber"] = "ek"
-    mp_snap = mp_snap.dropna(subset=["chamber"])
-
-    affiliation["start"] = affiliation["start"].fillna(pd.Timestamp("1000-01-01"))
-    affiliation["end"] = affiliation["end"].fillna(pd.Timestamp("9999-12-31"))
-
-    merged = mp_snap.merge(
-        affiliation[['person_id','swerik_party_id','start','end']],
-        on='person_id',
-        how='left',
-        suffixes=("_mp","_aff")
+    snap = (
+        snap.sort(["chamber", "parliament_year"])
+        .join_asof(
+            elections,
+            left_on="parliament_year",
+            right_on="year_block",
+            by="chamber",
+            strategy="backward"
+        )
     )
 
-    merged["active_aff"] = (
-        (merged['start_aff'] <= merged['check_date']) &
-        (merged['end_aff'] > merged['check_date'])
+    # --- 4. Prepare gold ---
+    gold_blocked = gold.rename({"parliament_year": "year_block"})
+
+    # --- 5. Outer join snapshot vs gold ---
+    merged = snap.join(
+        gold_blocked.select([
+            "year_block", "chamber", "swerik_party_id", "nr_seats_gold"
+        ]),
+        on=["year_block", "chamber", "swerik_party_id"],
+        how="outer"
     )
-    merged["active_rank"] = merged["active_aff"].astype(int)
-    merged["start_aff"] = merged["start_aff"].fillna(pd.Timestamp("1000-01-01"))
 
-    merged = merged.sort_values(
-        ["person_id","calendar_year","chamber","active_rank","start_aff"],
-        ascending=[True,True,True,False,False]
-    )
+    # --- 6. Fill missing values ---
+    merged = merged.with_columns([
+        pl.col("nr_seats_gold").fill_null(0).cast(pl.Int64),
+        pl.col("nr_seats_snapshot").fill_null(0).cast(pl.Int64),
+    ])
 
-    merged = merged.groupby(["person_id","calendar_year"], group_keys=False).apply(prioritize_chamber)
-    merged = merged.drop_duplicates(["person_id","calendar_year"])
-    merged.loc[~merged["active_aff"], "swerik_party_id"] = None
+    # --- 7. Compute differences ---
+    merged = merged.with_columns([
+        (pl.col("nr_seats_snapshot") - pl.col("nr_seats_gold")).alias("diff"),
+        (pl.col("nr_seats_snapshot") - pl.col("nr_seats_gold")).abs().alias("abs_diff"),
+    ])
 
-    party_map = dict(zip(
-        party["swerik_party_id"],
-        party["party"].fillna("utan_partibeteckning")
-            .str.strip()
-            .str.lower()
-            .str.replace(" ", "_", regex=False)
-    ))
-    merged["party_name"] = merged["swerik_party_id"].map(party_map).fillna("utan_partibeteckning")
-    merged["party_id"] = merged["swerik_party_id"]
-
-    no_party_ids = set(explicit_no_party["person_id"])
-    mask = merged["person_id"].isin(no_party_ids)
-    merged.loc[mask, "party_name"] = "utan_partibeteckning"
-    merged.loc[mask, "party_id"] = None
-    merged["party_name"] = merged["party_name"].fillna("utan_partibeteckning")
-
-    df_long = (
+    # --- 8. Final formatting ---
+    merged = (
         merged
-        .drop_duplicates(["calendar_year","person_id","party_name","chamber"])
-        .groupby(["calendar_year","chamber","party_id","party_name"])
-        .size()
-        .reset_index(name="nr_seats")
+        .rename({"year_block": "gold_year"})
+        .select([
+            "calendar_year",
+            "parliament_year",
+            "chamber",
+            "gold_year",
+            "swerik_party_id",
+            "nr_seats_snapshot",
+            "nr_seats_gold",
+            "diff",
+            "abs_diff",
+        ])
+        .sort(["calendar_year", "parliament_year", "chamber", "swerik_party_id"])
     )
 
-    riksdag_df = riksdag_df.copy()
-    riksdag_df["start"] = pd.to_datetime(riksdag_df["start"])
-    riksdag_df["end"] = pd.to_datetime(riksdag_df["end"])
+    return merged
 
-    df_long["parliament_year"] = df_long.apply(map_to_riksdag_year, axis=1)
-
-    df_long = df_long[["calendar_year", "parliament_year", "chamber", "party_id", "party_name", "nr_seats"]]
-    df_long["parliament_year"] = pd.to_numeric(df_long["parliament_year"], errors='coerce').astype("Int64")
-
-    return df_long
 
 def plot_l1_distances(l1_df, output_dir, suffix):
     """Plot L1 distances per chamber over years and save as PNG."""
 
-    l1_df = l1_df.copy()
-    
-    l1_df["calendar_year"] = pd.to_numeric(l1_df["calendar_year"], errors="coerce").astype(int)
+    l1_df = (
+        l1_df
+        .with_columns(
+            pl.col("calendar_year").cast(pl.Int64)
+        )
+        .sort("calendar_year")
+    )
 
-    l1_df = l1_df.sort_values("calendar_year").reset_index(drop=True)
+    unique_years = l1_df.select("calendar_year").unique().sort("calendar_year").to_series().to_list()
+    year_positions = {year: idx for idx, year in enumerate(unique_years)}
 
-    year_positions = {year: idx for idx, year in enumerate(l1_df["calendar_year"].unique())}
-    l1_df["x_pos"] = l1_df["calendar_year"].map(year_positions)
+    l1_df = l1_df.with_columns(
+        pl.col("calendar_year")
+        .replace_strict(year_positions)
+        .alias("x_pos")
+    )
+
+    pdf = l1_df.to_pandas()
 
     plt.figure(figsize=(14, 6))
-    for chamber, grp in l1_df.groupby("chamber"):
+
+    for chamber, grp in pdf.groupby("chamber"):
         plt.plot(grp["x_pos"], grp["l1_distance"], marker='o', label=chamber.upper())
 
     plt.title("L1 Distance Between Snapshot and Gold-Standard per Chamber")
     plt.xlabel("Calendar Year")
     plt.ylabel("L1 Distance")
 
-    all_years = list(year_positions.keys())
-    tick_positions = [year_positions[year] for i, year in enumerate(all_years) if i % 5 == 0]
-    tick_labels = [all_years[i] for i in range(len(all_years)) if i % 5 == 0]
+    tick_positions = [year_positions[y] for i, y in enumerate(unique_years) if i % 5 == 0]
+    tick_labels = [y for i, y in enumerate(unique_years) if i % 5 == 0]
 
     plt.xticks(ticks=tick_positions, labels=tick_labels, rotation=45)
     plt.legend(title="Chamber")
@@ -265,6 +336,7 @@ def plot_l1_distances(l1_df, output_dir, suffix):
     plot_file = os.path.join(output_dir, f"snapshot-{suffix}-l1-plot.png")
     plt.savefig(plot_file, dpi=150)
     plt.close()
+
     logger.info(f"L1 distance plot saved to: {plot_file}")
 
 
@@ -272,11 +344,10 @@ def main(args):
     os.makedirs(args.output, exist_ok=True)
 
     try:
-        pd.Timestamp(year=args.start, month=args.month, day=args.day)
+        date(year = args.start, month = args.month, day=args.day)
     except ValueError:
         raise ValueError(f"Invalid date: {args.start}-{args.month}-{args.day}")
-
-
+    
     if args.start > args.end:
         raise ValueError("Start year cannot be greater than end year.")
     
@@ -284,43 +355,38 @@ def main(args):
     output_snap = os.path.join(args.output, f"snapshot-distribution-{suffix}.csv")
 
     logger.info("Loading data...")
-    party = parse_dates_fuzzy(pd.read_csv(os.path.join("data/", "party.csv")), ["inception"], ["dissolution"])
-    affiliation = parse_dates_fuzzy(pd.read_csv(os.path.join("data/", "party_affiliation.csv")), ["start"], ["end"])
-    mp = parse_dates_fuzzy(pd.read_csv(os.path.join("data/", "member_of_parliament.csv")), ["start"], ["end"])
-    explicit_no_party = pd.read_csv(os.path.join("data/", "explicit_no_party.csv"))
-    riksdag_year_df = pd.read_csv(os.path.join("data/", "riksdag-year.csv"))
-    gold_df = pd.read_csv(args.gold) if args.gold else None
+    affiliation = parse_dates_fuzzy(pl.read_csv("data/party_affiliation.csv"), ["start"], ["end"]).drop("party_id", "start_precision", "end_precision")
+    mp = parse_dates_fuzzy(pl.read_csv("data/member_of_parliament.csv"), ["start"], ["end"]).drop("district")
+    riksdag_year_df = parse_dates_fuzzy(pl.read_csv("data/riksdag-year.csv"), ["start"], ["end"])
+    party = parse_dates_fuzzy(pl.read_csv("data/party.csv"), ["inception"], ["dissolution"])
+    gold = parse_dates_fuzzy(pl.read_csv(args.gold)) if args.gold else None
 
     logger.info("Building snapshot...")
 
-    df = build_yearly_long(
-        mp.copy(),
-        affiliation.copy(),
-        party.copy(),
-        explicit_no_party,
-        (args.month, args.day),
-        args.start,
-        args.end,
-        riksdag_year_df
-    )
-    df["parliament_year"] = pd.to_numeric(df["parliament_year"], errors="coerce").astype("Int64")
-    df.to_csv(output_snap, index=False, float_format='%.0f')
+    df = build_yearly_long(mp, affiliation, riksdag_year_df, party, args)
+    df.write_csv(output_snap, float_precision=0)
 
-
-    if gold_df is not None:
+    if gold is not None:
         logger.info("Running metrics...")
-        diff_df = compute_distribution_diff(df, gold_df)
+
+        diff_df = compute_distribution_diff(df, gold)
         metrics = compute_regression_metrics(diff_df)
 
-        diff_df.to_csv(os.path.join(args.output, f"snapshot-{suffix}-diff.csv"), index=False)
-        metrics["l1_per_year_chamber"].to_csv(os.path.join(args.output, f"snapshot-{suffix}-l1.csv"), index=False)
+        diff_df.write_csv(os.path.join(args.output, f"snapshot-{suffix}-diff.csv"))
 
-        logger.debug(f"Metrics:\n{metrics}")
+        l1_df = metrics["l1_per_year_chamber"]
+        l1_sorted = l1_df.sort(
+            ["calendar_year", "parliament_year", "chamber"]
+        )
+        l1_sorted.write_csv(
+            os.path.join(args.output, f"snapshot-{suffix}-l1.csv")
+        )
+
+        logger.debug(f"Metrics:\n{l1_sorted}")
 
         plot_l1_distances(metrics["l1_per_year_chamber"], args.output, suffix)
 
     logger.info("Done.")
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -332,4 +398,3 @@ if __name__ == "__main__":
     parser.add_argument("--end", type=int, default=2023, help="Define the end year to build the party distribution.")
     args = parser.parse_args()
     main(args)
-
