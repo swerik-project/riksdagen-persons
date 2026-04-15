@@ -51,6 +51,10 @@ jobs:
           git commit --allow-empty -m "chore (workflow): no changes to party distribution QC snapshots"
         fi
 
+    - name: Pull latest changes
+      run: |
+        git pull --rebase origin ${{ github.head_ref }}
+
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
