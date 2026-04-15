@@ -1,12 +1,11 @@
+from datetime import date
+from trainerlog import get_logger
+
 import argparse
 import calendar
 import matplotlib.pyplot as plt
-import numpy as np
-import sys
 import os
 import polars as pl
-from trainerlog import get_logger
-from datetime import date
 
 logger = get_logger(name="ebun", level="DEBUG")
 
@@ -209,89 +208,105 @@ def compute_regression_metrics(diff_df):
     }
 
 
-def compute_distribution_diff(df_snapshot, df_gold):
-    """Compute differences between snapshot and gold-standard seat counts."""
+def compute_distribution_diff(df_snapshot, df_gold, party):
 
-    # --- 1. Rename columns ---
-    snap = df_snapshot.rename({"nr_seats": "nr_seats_snapshot"})
-    gold = df_gold.rename({"nr_seats": "nr_seats_gold"})
-
-    # --- 2. Ensure types ---
-    snap = snap.with_columns([
+    # --- 1. Prepare snapshot ---
+    snap = df_snapshot.with_columns([
         pl.col("swerik_party_id").cast(pl.Utf8),
         pl.col("chamber").cast(pl.Utf8),
         pl.col("parliament_year").cast(pl.Int64),
-    ])
+    ]).rename({"nr_seats": "nr_seats_snapshot"})
 
-    gold = gold.with_columns([
+    # --- 2. Prepare gold ---
+    gold = df_gold.with_columns([
         pl.col("swerik_party_id").cast(pl.Utf8),
         pl.col("chamber").cast(pl.Utf8),
         pl.col("parliament_year").cast(pl.Int64),
-    ])
+    ]).rename({"nr_seats": "nr_seats_gold"})
 
-    # --- 3. Build election "blocks" using join_asof ---
-    elections = (
-        gold
-        .select(["chamber", "parliament_year"])
-        .unique()
-        .sort(["chamber", "parliament_year"])
-        .rename({"parliament_year": "year_block"})
+    # --- restrict gold to snapshot support only due to different parliament years after 1971s ---
+    # gold = gold.join(
+    #    snap.select(["parliament_year", "chamber"]).unique(),
+    #     on=["parliament_year", "chamber"],
+    #   how="semi"
+    #)
+
+    gold.write_csv("result1.csv")
+
+    # --- 3. Build FULL key universe---
+    keys = pl.concat([
+        snap.select(["parliament_year", "chamber", "swerik_party_id"]),
+        gold.select(["parliament_year", "chamber", "swerik_party_id"])
+    ]).unique()
+
+    # --- 4. Attach snapshot ---
+    merged = keys.join(
+        snap,
+        on=["parliament_year", "chamber", "swerik_party_id"],
+        how="left"
     )
 
-    snap = (
-        snap.sort(["chamber", "parliament_year"])
-        .join_asof(
-            elections,
-            left_on="parliament_year",
-            right_on="year_block",
-            by="chamber",
-            strategy="backward"
-        )
+    merged.write_csv("result2.csv")
+
+    # --- 5. Attach gold using ASOF logic ---
+    snap = merged.sort(["chamber", "swerik_party_id", "parliament_year"])
+    gold = gold.sort(["chamber", "swerik_party_id", "parliament_year"])
+
+    merged = snap.join_asof(
+        gold,
+        left_on="parliament_year",
+        right_on="parliament_year",
+        by=["chamber", "swerik_party_id"],
+        strategy="backward",
+        suffix="_gold"
     )
 
-    # --- 4. Prepare gold ---
-    gold_blocked = gold.rename({"parliament_year": "year_block"})
-
-    # --- 5. Outer join snapshot vs gold ---
-    merged = snap.join(
-        gold_blocked.select([
-            "year_block", "chamber", "swerik_party_id", "nr_seats_gold"
-        ]),
-        on=["year_block", "chamber", "swerik_party_id"],
-        how="outer"
-    )
+    merged.write_csv("result3.csv")
 
     # --- 6. Fill missing values ---
     merged = merged.with_columns([
-        pl.col("nr_seats_gold").fill_null(0).cast(pl.Int64),
-        pl.col("nr_seats_snapshot").fill_null(0).cast(pl.Int64),
+        pl.col("nr_seats_snapshot").fill_null(0),
+        pl.col("nr_seats_gold").fill_null(0),
     ])
 
-    # --- 7. Compute differences ---
+    merged.write_csv("result4.csv")
+
+    # --- 7. Compute diffs ---
     merged = merged.with_columns([
         (pl.col("nr_seats_snapshot") - pl.col("nr_seats_gold")).alias("diff"),
         (pl.col("nr_seats_snapshot") - pl.col("nr_seats_gold")).abs().alias("abs_diff"),
     ])
 
-    # --- 8. Final formatting ---
-    merged = (
-        merged
-        .rename({"year_block": "gold_year"})
-        .select([
-            "calendar_year",
-            "parliament_year",
-            "chamber",
-            "gold_year",
-            "swerik_party_id",
-            "nr_seats_snapshot",
-            "nr_seats_gold",
-            "diff",
-            "abs_diff",
-        ])
-        .sort(["calendar_year", "parliament_year", "chamber", "swerik_party_id"])
+    # --- 8. Add party names ---
+    party_lookup = party.select([
+        "swerik_party_id",
+        "party"
+    ]).unique()
+
+    merged = merged.join(
+        party_lookup,
+        on="swerik_party_id",
+        how="left"
     )
 
-    return merged
+    merged = merged.with_columns(
+        pl.col("party").fill_null("No SWERIK-id found")
+    )
+
+    # --- 9. Debug flag ---
+    merged = merged.with_columns(
+        pl.when(pl.col("swerik_party_id").is_in(party["swerik_party_id"]))
+        .then(pl.lit(False))
+        .otherwise(pl.lit(True))
+        .alias("missing_party_mapping")
+    )
+
+    # --- 10. Final sort ---
+    return merged.sort([
+        "parliament_year",
+        "chamber",
+        "swerik_party_id"
+    ])
 
 
 def plot_l1_distances(l1_df, output_dir, suffix):
@@ -369,7 +384,7 @@ def main(args):
     if gold is not None:
         logger.info("Running metrics...")
 
-        diff_df = compute_distribution_diff(df, gold)
+        diff_df = compute_distribution_diff(df, gold, party)
         metrics = compute_regression_metrics(diff_df)
 
         diff_df.write_csv(os.path.join(args.output, f"snapshot-{suffix}-diff.csv"))
