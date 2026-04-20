@@ -333,7 +333,9 @@ class Test(unittest.TestCase):
     #@unittest.skip
     def test_chair_hogs(self):
         """
-        check no single person sits in two places at once
+        Chair duplicates, check that
+        - no single person sits in two places at once (Chair Hog)
+        - multiple people do not sit in the same chair at once (KnaMP)
         """
         def stringify_row(row_dict):
             s = f"In year {row_dict['parliament_year']}, person: {row_dict['person_id']} sat in {row_dict['chair_id']}"
