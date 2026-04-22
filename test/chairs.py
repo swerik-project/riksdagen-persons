@@ -337,8 +337,48 @@ class Test(unittest.TestCase):
         - no single person sits in two places at once (Chair Hog)
         - multiple people do not sit in the same chair at once (KnaMP)
         """
+        name_map = {}
+        try:
+            name_df = pd.read_csv("data/name.csv")
+            primary = name_df[name_df["primary_name"].astype(str).str.lower() == "true"]
+            name_map = dict(zip(primary["person_id"].astype(str), primary["name"].astype(str)))
+        except Exception as e:
+            LOGGER.warning(f"Could not load data/name.csv for resolution: {e}")
+
+        chair_label_map = {}
+        try:
+            chairs_df = pd.read_csv("data/chairs.csv")
+            chair_label_map = {
+                str(r.chair_id): f"{r.chamber} {r.chair_nr}"
+                for r in chairs_df.itertuples()
+            }
+        except Exception as e:
+            LOGGER.warning(f"Could not load data/chairs.csv for resolution: {e}")
+
+        def resolve_name(pid):
+            try:
+                n = name_map.get(str(pid))
+                return f" ({n})" if n else ""
+            except Exception:
+                return ""
+
+        def resolve_chair(cid):
+            try:
+                cid_s = str(cid)
+                short = cid_s[:8] if len(cid_s) >= 8 else cid_s
+                label = chair_label_map.get(cid_s)
+                return f"{short} ({label})" if label else cid_s
+            except Exception:
+                return str(cid)
+
         def stringify_row(row_dict):
-            s = f"In year {row_dict['parliament_year']}, person: {row_dict['person_id']} sat in {row_dict['chair_id']}"
+            pid = row_dict['person_id']
+            cid = row_dict['chair_id']
+            s = (
+                f"In year {row_dict['parliament_year']}, "
+                f"person: {pid}{resolve_name(pid)} "
+                f"sat in {resolve_chair(cid)}"
+            )
             return f"{s} from {row_dict['start_str']} to {row_dict['end_str']}"
 
         LOGGER.info("Testing: no single person sits in two places at once")
