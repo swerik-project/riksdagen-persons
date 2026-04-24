@@ -15,7 +15,73 @@ jobs:
     steps:
     - name: Checkout PR source branch
       uses: actions/checkout@v4
+      with:name: "Riksdagen Persons: Party Distribution QC"
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  party-distribution:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.13]
+
+    steps:
+    - name: Checkout PR branch (full history)
+      uses: actions/checkout@v4
       with:
+        fetch-depth: 0
+        ref: ${{ github.head_ref }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyriksdagen pytest polars
+
+    - name: Run Party Distribution QC
+      run: |
+        for month in 3 10; do
+          python quality/qe_check-riksdagen-party-distribution.py \
+            --day 1 --month $month --start 1912 --end 2025 \
+            --output quality/estimates/party-distribution/
+        done
+
+    - name: Configure Git
+      run: |
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config user.name "github-actions[bot]"
+
+    - name: Commit changes (if any)
+      run: |
+        if [[ -n "$(git status --porcelain quality/estimates/party-distribution/)" ]]; then
+          git add quality/estimates/party-distribution/*.csv || true
+          git add quality/estimates/party-distribution/*.png || true
+          git commit -m "chore (workflow): update party distribution QC snapshots"
+        else
+          echo "No changes detected"
+        fi
+
+    - name: Sync with remote branch
+      run: |
+        git fetch origin ${{ github.head_ref }}
+        git rebase origin/${{ github.head_ref }} || (echo "Rebase conflict" && exit 1)
+
+    - name: Push changes safely
+      run: |
+        git push origin HEAD:${{ github.head_ref }} --force-with-lease
+
+    - name: Run Party Distribution L1 Regression Tests
+      run: |
+        pytest test/test_party_distribution_l1.py --maxfail=1 --disable-warnings -v
         ref: ${{ github.head_ref }}
 
     - name: Set up Python ${{ matrix.python-version }}
