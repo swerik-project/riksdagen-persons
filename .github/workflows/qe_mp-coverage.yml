@@ -8,12 +8,21 @@ on:
 jobs:
   mp-coverage:
     runs-on: ubuntu-latest
+
+    concurrency:
+      group: mp-coverage-${{ github.head_ref }}
+      cancel-in-progress: true
+
     strategy:
       matrix:
         python-version: [3.8]
+
     steps:
     - name: Checkout PR source branch
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
     - uses: ./.github/actions/checkout
 
     - name: Set up Python ${{ matrix.python-version }}
@@ -38,22 +47,18 @@ jobs:
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        if [[ `git status quality/estimates/mp-coverage/ --porcelain --untracked-files=no` ]]; then
+        git fetch origin ${{ github.head_ref }}
+        git rebase origin/${{ github.head_ref }} || true
+        if [[ -n $(git status quality/estimates/mp-coverage/ --porcelain --untracked-files=no) ]]; then
           git add quality/estimates/mp-coverage/coverage-summary.txt
           git add quality/estimates/mp-coverage/mp-coverage.csv
-          # git add quality/estimates/mp-coverage/coverage.csv # this file is hyyuuuyuuggee
           git add quality/estimates/mp-coverage/*.png
           git commit -m "chore (workflow): update MP coverage quality estimation"
         else
-          echo ""
-          echo "::warning:: WARNING!!! No changes detected in quality/estimates/mp-coverage/."
-          echo "           Double check the version nr and everything else is up to date."
-          echo ""
+          echo "::warning:: No changes detected in MP coverage outputs"
           git commit --allow-empty -m "chore (workflow): no changes to MP coverage quality estimation"
         fi
 
     - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.head_ref }}
+      run: |
+        git push origin HEAD:${{ github.head_ref }}

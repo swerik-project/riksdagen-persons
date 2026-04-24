@@ -9,6 +9,10 @@ jobs:
   party-distribution:
     runs-on: ubuntu-latest
 
+    concurrency:
+      group: party-distribution-${{ github.head_ref }}
+      cancel-in-progress: true
+
     strategy:
       matrix:
         python-version: [3.13]
@@ -18,7 +22,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.head_ref }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -38,29 +41,26 @@ jobs:
               --output quality/estimates/party-distribution/
           done
 
-      - name: Configure Git
+      - name: Commit changes (safe)
         run: |
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
 
-      - name: Commit changes (if any)
-        run: |
+          git fetch origin ${{ github.head_ref }}
+          git rebase origin/${{ github.head_ref }} || true
+
           if [[ -n "$(git status --porcelain quality/estimates/party-distribution/)" ]]; then
             git add quality/estimates/party-distribution/*.csv || true
             git add quality/estimates/party-distribution/*.png || true
             git commit -m "chore (workflow): update party distribution QC snapshots"
           else
             echo "No changes detected"
+            git commit --allow-empty -m "chore (workflow): no changes to party distribution QC"
           fi
 
-      - name: Sync with remote branch
+      - name: Push changes
         run: |
-          git fetch origin ${{ github.head_ref }}
-          git rebase origin/${{ github.head_ref }}
-
-      - name: Push changes safely
-        run: |
-          git push origin HEAD:${{ github.head_ref }} --force-with-lease
+          git push origin HEAD:${{ github.head_ref }}
 
       - name: Run Party Distribution L1 Regression Tests
         run: |
