@@ -208,7 +208,7 @@ def compute_regression_metrics(diff_df):
     }
 
 
-def compute_distribution_diff(df_snapshot, df_gold, party):
+def compute_distribution_diff(df_snapshot, df_gold, party_df):
 
     # --- 1. Prepare snapshot ---
     snap = df_snapshot.with_columns([
@@ -224,15 +224,6 @@ def compute_distribution_diff(df_snapshot, df_gold, party):
         pl.col("parliament_year").cast(pl.Int64),
     ]).rename({"nr_seats": "nr_seats_gold"})
 
-    # --- restrict gold to snapshot support only due to different parliament years after 1971s ---
-    # gold = gold.join(
-    #    snap.select(["parliament_year", "chamber"]).unique(),
-    #     on=["parliament_year", "chamber"],
-    #   how="semi"
-    #)
-
-    gold.write_csv("result1.csv")
-
     # --- 3. Build FULL key universe---
     keys = pl.concat([
         snap.select(["parliament_year", "chamber", "swerik_party_id"]),
@@ -245,8 +236,6 @@ def compute_distribution_diff(df_snapshot, df_gold, party):
         on=["parliament_year", "chamber", "swerik_party_id"],
         how="left"
     )
-
-    merged.write_csv("result2.csv")
 
     # --- 5. Attach gold using ASOF logic ---
     snap = merged.sort(["chamber", "swerik_party_id", "parliament_year"])
@@ -261,27 +250,27 @@ def compute_distribution_diff(df_snapshot, df_gold, party):
         suffix="_gold"
     )
 
-    merged.write_csv("result3.csv")
-
     # --- 6. Fill missing values ---
     merged = merged.with_columns([
         pl.col("nr_seats_snapshot").fill_null(0),
         pl.col("nr_seats_gold").fill_null(0),
     ])
 
-    merged.write_csv("result4.csv")
+    # --- restrict gold to snapshot support due to 1th of October can land in two different year patches.
+    valid_years = df_snapshot.select("parliament_year").unique()
 
-    # --- 7. Compute diffs ---
-    merged = merged.with_columns([
-        (pl.col("nr_seats_snapshot") - pl.col("nr_seats_gold")).alias("diff"),
-        (pl.col("nr_seats_snapshot") - pl.col("nr_seats_gold")).abs().alias("abs_diff"),
-    ])
+    merged = merged.filter(
+        pl.col("parliament_year").is_in(valid_years["parliament_year"])
+    )
 
     # --- 8. Add party names ---
-    party_lookup = party.select([
+    party_lookup = party_df.select([
         "swerik_party_id",
-        "party"
+        "party",
+        "inception",
+        "dissolution"
     ]).unique()
+
 
     merged = merged.join(
         party_lookup,
@@ -289,20 +278,44 @@ def compute_distribution_diff(df_snapshot, df_gold, party):
         how="left"
     )
 
+    merged = merged.with_columns([
+        pl.when(
+            (pl.col("calendar_year") < pl.col("inception").dt.year()) |
+            (
+                pl.col("dissolution").is_not_null() &
+                (pl.col("calendar_year") > pl.col("dissolution").dt.year())
+            )
+        )
+        .then(0)
+        .otherwise(pl.col("nr_seats_gold"))
+        .alias("nr_seats_gold")
+    ])
+
     merged = merged.with_columns(
         pl.col("party").fill_null("No SWERIK-id found")
     )
 
     # --- 9. Debug flag ---
     merged = merged.with_columns(
-        pl.when(pl.col("swerik_party_id").is_in(party["swerik_party_id"]))
+        pl.when(pl.col("swerik_party_id").is_in(party_df["swerik_party_id"]))
         .then(pl.lit(False))
         .otherwise(pl.lit(True))
         .alias("missing_party_mapping")
     )
 
+    # --- 7. Compute diffs ---
+    merged = merged.with_columns([
+        (pl.col("nr_seats_snapshot") - pl.col("nr_seats_gold")).alias("diff"),
+        (pl.col("nr_seats_snapshot") - pl.col("nr_seats_gold")).abs().alias("abs_diff"),
+    ])
+
+    merged = merged.with_columns([
+        pl.col("calendar_year").fill_null(pl.col("parliament_year"))
+    ])
+
     # --- 10. Final sort ---
     return merged.sort([
+        "calendar_year",
         "parliament_year",
         "chamber",
         "swerik_party_id"
@@ -367,7 +380,6 @@ def main(args):
         raise ValueError("Start year cannot be greater than end year.")
     
     suffix = f"{args.month:02d}-{args.day:02d}"
-    output_snap = os.path.join(args.output, f"snapshot-distribution-{suffix}.csv")
 
     logger.info("Loading data...")
     affiliation = parse_dates_fuzzy(pl.read_csv("data/party_affiliation.csv"), ["start"], ["end"]).drop("party_id", "start_precision", "end_precision")
@@ -379,7 +391,7 @@ def main(args):
     logger.info("Building snapshot...")
 
     df = build_yearly_long(mp, affiliation, riksdag_year_df, party, args)
-    df.write_csv(output_snap, float_precision=0)
+    df.write_csv(os.path.join(args.output, f"snapshot-distribution-{suffix}.csv"), float_precision=0)
 
     if gold is not None:
         logger.info("Running metrics...")
@@ -393,15 +405,14 @@ def main(args):
         l1_sorted = l1_df.sort(
             ["calendar_year", "parliament_year", "chamber"]
         )
-        l1_sorted.write_csv(
-            os.path.join(args.output, f"snapshot-{suffix}-l1.csv")
-        )
+        l1_sorted.write_csv(os.path.join(args.output, f"snapshot-{suffix}-l1.csv"))
 
         logger.debug(f"Metrics:\n{l1_sorted}")
 
         plot_l1_distances(metrics["l1_per_year_chamber"], args.output, suffix)
 
     logger.info("Done.")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
