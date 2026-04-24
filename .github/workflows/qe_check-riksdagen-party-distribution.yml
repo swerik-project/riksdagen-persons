@@ -41,7 +41,7 @@ jobs:
               --output quality/estimates/party-distribution/
           done
 
-      - name: Commit changes (safe)
+      - name: Commit changes (safe, no empty commits)
         run: |
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
@@ -53,9 +53,9 @@ jobs:
             git add quality/estimates/party-distribution/*.csv || true
             git add quality/estimates/party-distribution/*.png || true
             git commit -m "chore (workflow): update party distribution QC snapshots"
+            echo "Changes committed"
           else
-            echo "No changes detected"
-            git commit --allow-empty -m "chore (workflow): no changes to party distribution QC"
+            echo "No changes detected — skipping commit"
           fi
 
       - name: Push changes

@@ -43,20 +43,22 @@ jobs:
       run: |
         python quality/plot/mp-coverage/mp-coverage.py
 
-    - name: Add and commit changes
+    - name: Add and commit changes (safe, no empty commits)
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
+
         git fetch origin ${{ github.head_ref }}
         git rebase origin/${{ github.head_ref }} || true
-        if [[ -n $(git status quality/estimates/mp-coverage/ --porcelain --untracked-files=no) ]]; then
+
+        if [[ -n "$(git status --porcelain quality/estimates/mp-coverage/ --untracked-files=no)" ]]; then
           git add quality/estimates/mp-coverage/coverage-summary.txt
           git add quality/estimates/mp-coverage/mp-coverage.csv
           git add quality/estimates/mp-coverage/*.png
+
           git commit -m "chore (workflow): update MP coverage quality estimation"
         else
-          echo "::warning:: No changes detected in MP coverage outputs"
-          git commit --allow-empty -m "chore (workflow): no changes to MP coverage quality estimation"
+          echo "No changes detected — skipping commit"
         fi
 
     - name: Push changes
