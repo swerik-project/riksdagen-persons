@@ -180,7 +180,7 @@ def build_yearly_long(mp, affiliation, riksdag_year, party, args):
 
     # Final column order
     result = result.sort(by=[
-        "calendar_year", "chamber"
+        "calendar_year", "chamber", "swerik_party_id"
     ])
 
     return result
