@@ -420,33 +420,40 @@ class Test(unittest.TestCase):
                 duplicate_ix = chair_mp_imputed_date.select("person_id").is_duplicated()
                 if sum(duplicate_ix) >= 1:
                     chair_mp_duplicated = chair_mp_imputed_date.filter(duplicate_ix)
-                    descs = "\n".join([stringify_row(row_dict) for row_dict in chair_mp_duplicated.to_dicts()])
-                    chairhog_error_messages.append(descs)
+                    for row_dict in chair_mp_duplicated.to_dicts():
+                        error_str = stringify_row(row_dict)
+                        chairhog_error_messages.append(error_str)
 
                 duplicate_ix = chair_mp_imputed_date.select("chair_id").is_duplicated()
                 if sum(duplicate_ix) >= 1:
                     chair_mp_duplicated = chair_mp_imputed_date.filter(duplicate_ix)
                     chair_mp_duplicated = chair_mp_duplicated.sort("chair_id")
-                    descs = "\n".join([stringify_row(row_dict) for row_dict in chair_mp_duplicated.to_dicts()])
-                    knamp_error_messages.append(descs)
+                    for row_dict in chair_mp_duplicated.to_dicts():
+                        error_str = stringify_row(row_dict)
+                        knamp_error_messages.append(error_str)
 
             # Only count each error once, even though it might appear on multiple dates
             chairhog_error_counter += len(set(chairhog_error_messages))
-            for descs in sorted(set(chairhog_error_messages)):
-                LOGGER.error(f"Chair Hog Error:\n{descs}")
-            knamp_error_counter += len(set(knamp_error_messages))
-            for descs in sorted(set(knamp_error_messages)):
-                LOGGER.error(f"KnaMP Error:\n{descs}")
+            problematic_rows = sorted(set(chairhog_error_messages))
+            if len(problematic_rows) >= 1:
+                problematic_rows_str = "\n".join(problematic_rows)
+                LOGGER.error(f"Chair Hog Error:\n{problematic_rows_str}")
 
-        CHAIRHOG_THRESHOLD_2026_04_22 = 14
+            knamp_error_counter += len(set(knamp_error_messages))
+            problematic_rows = sorted(set(knamp_error_messages), key=lambda s: s.split("sat in")[-1])
+            if len(problematic_rows) >= 1:
+                problematic_rows_str = "\n".join(problematic_rows)
+                LOGGER.error(f"KnaMP Error:\n{problematic_rows_str}")
+
+        CHAIRHOG_THRESHOLD_2026_04_23 = 34
         error_message = f"{chairhog_error_counter} instance(s) of a person sitting in two places at once"
-        self.assertLessEqual(chairhog_error_counter, CHAIRHOG_THRESHOLD_2026_04_22, error_message)
+        self.assertLessEqual(chairhog_error_counter, CHAIRHOG_THRESHOLD_2026_04_23, error_message)
         if chairhog_error_counter > 0:
             LOGGER.warning(error_message)
 
-        KNAMP_THRESHOLD_2026_04_22 = 17
+        KNAMP_THRESHOLD_2026_04_23 = 46
         error_message = f"{knamp_error_counter} instance(s) of two or more people sitting in one chair at once"
-        self.assertLessEqual(knamp_error_counter, KNAMP_THRESHOLD_2026_04_22, error_message)
+        self.assertLessEqual(knamp_error_counter, KNAMP_THRESHOLD_2026_04_23, error_message)
         if knamp_error_counter > 0:
             LOGGER.warning(error_message)
 
