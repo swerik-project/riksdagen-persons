@@ -2,52 +2,51 @@ from datetime import date
 from trainerlog import get_logger
 
 import argparse
-import calendar
 import matplotlib.pyplot as plt
 import os
 import polars as pl
 
 logger = get_logger(name="ebun", level="DEBUG")
 
-def parse_date_fuzzy(v, kind="start"):
-    """
-    Parse partial dates; fills missing month/day for start/end.
-    Supports formats: YYYY, YYYY-MM, YYYY-MM-DD
-    """
-    if v is None or str(v).strip() == "":
-        return date(1000,1,1) if kind == "start" else date(9999,12,31)
-    parts = str(v).split("-")
-    try:
-        if len(parts) == 1:
-            return date(int(parts[0]),1 if kind == "start" else 12,1 if kind == "start" else 31)
-        elif len(parts) == 2:
-            year, month = int(parts[0]), int(parts[1])
-            day = 1 if kind == "start" else calendar.monthrange(year, month)[1]
-            return date(year, month, day)
-        else:
-            return date(int(parts[0]), int(parts[1]), int(parts[2]))
-    except Exception as e:
-        logger.warning(f"Failed to parse date '{v}': {e}")
-        return None
-
-
 def parse_dates_fuzzy(df, start_cols=None, end_cols=None):
-    """Apply fuzzy date parsing to specified start/end columns in a Polars DataFrame."""
     start_cols = start_cols or []
     end_cols = end_cols or []
 
-    def apply_fuzzy(col, kind):
-        values = df[col].to_list()
-        parsed = [parse_date_fuzzy(v, kind=kind) for v in values]
-        return pl.Series(col, parsed)
-
     for c in start_cols:
         if c in df.columns:
-            df = df.with_columns(apply_fuzzy(c, kind="start"))
+            df = df.with_columns(
+                pl.coalesce([
+                    pl.col(c).str.to_date("%Y-%m-%d", strict=False),
+
+                    pl.col(c).str.to_date("%Y-%m", strict=False)
+                        .dt.date()
+                        .dt.replace(day=1),
+
+                    pl.col(c).str.to_date("%Y", strict=False)
+                        .dt.date()
+                        .dt.replace(month=1, day=1),
+
+                    pl.lit(date(1000, 1, 1))
+                ]).alias(c)
+            )
 
     for c in end_cols:
         if c in df.columns:
-            df = df.with_columns(apply_fuzzy(c, kind="end"))
+            df = df.with_columns(
+                pl.coalesce([
+                    pl.col(c).str.to_date("%Y-%m-%d", strict=False),
+
+                    pl.col(c).str.to_date("%Y-%m", strict=False)
+                        .dt.date()
+                        .dt.month_end(),
+
+                    pl.col(c).str.to_date("%Y", strict=False)
+                        .dt.date()
+                        .dt.replace(month=12, day=31),
+
+                    pl.lit(date(9999, 12, 31))
+                ]).alias(c)
+            )
 
     return df
 
@@ -387,6 +386,8 @@ def main(args):
     riksdag_year_df = parse_dates_fuzzy(pl.read_csv("data/riksdag-year.csv"), ["start"], ["end"])
     party = parse_dates_fuzzy(pl.read_csv("data/party.csv"), ["inception"], ["dissolution"])
     gold = parse_dates_fuzzy(pl.read_csv(args.gold)) if args.gold else None
+
+    affiliation.write_csv("watefak.csv")
 
     logger.info("Building snapshot...")
 
