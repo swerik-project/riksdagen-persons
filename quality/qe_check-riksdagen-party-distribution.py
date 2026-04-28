@@ -297,9 +297,9 @@ def compute_distribution_diff(df_snapshot, df_gold, party_df):
 
     # --- 8. Debug flag ---
     merged = merged.with_columns(
-        pl.when(pl.col("swerik_party_id").is_in(party_df["swerik_party_id"]))
-        .then(pl.lit(False))
-        .otherwise(pl.lit(True))
+        pl.col("swerik_party_id")
+        .is_in(party_df["swerik_party_id"])
+        .not_()
         .alias("missing_party_mapping")
     )
 
