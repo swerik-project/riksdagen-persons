@@ -212,15 +212,15 @@ def compute_distribution_diff(df_snapshot, df_gold, party_df):
 
     # --- 1. Prepare snapshot ---
     snap = df_snapshot.with_columns([
-        pl.col("swerik_party_id").cast(pl.Utf8),
-        pl.col("chamber").cast(pl.Utf8),
+        pl.col("swerik_party_id").cast(pl.String),
+        pl.col("chamber").cast(pl.String),
         pl.col("parliament_year").cast(pl.Int64),
     ]).rename({"nr_seats": "nr_seats_snapshot"})
 
     # --- 2. Prepare gold ---
     gold = df_gold.with_columns([
-        pl.col("swerik_party_id").cast(pl.Utf8),
-        pl.col("chamber").cast(pl.Utf8),
+        pl.col("swerik_party_id").cast(pl.String),
+        pl.col("chamber").cast(pl.String),
         pl.col("parliament_year").cast(pl.Int64),
     ]).rename({"nr_seats": "nr_seats_gold"})
 
@@ -263,7 +263,7 @@ def compute_distribution_diff(df_snapshot, df_gold, party_df):
         pl.col("parliament_year").is_in(valid_years["parliament_year"])
     )
 
-    # --- 8. Add party names ---
+    # --- 7. Add party names ---
     party_lookup = party_df.select([
         "swerik_party_id",
         "party",
@@ -295,7 +295,7 @@ def compute_distribution_diff(df_snapshot, df_gold, party_df):
         pl.col("party").fill_null("No SWERIK-id found")
     )
 
-    # --- 9. Debug flag ---
+    # --- 8. Debug flag ---
     merged = merged.with_columns(
         pl.when(pl.col("swerik_party_id").is_in(party_df["swerik_party_id"]))
         .then(pl.lit(False))
@@ -303,7 +303,7 @@ def compute_distribution_diff(df_snapshot, df_gold, party_df):
         .alias("missing_party_mapping")
     )
 
-    # --- 7. Compute diffs ---
+    # --- 9. Compute diffs ---
     merged = merged.with_columns([
         (pl.col("nr_seats_snapshot") - pl.col("nr_seats_gold")).alias("diff"),
         (pl.col("nr_seats_snapshot") - pl.col("nr_seats_gold")).abs().alias("abs_diff"),
