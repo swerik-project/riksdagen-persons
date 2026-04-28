@@ -75,8 +75,6 @@ def build_yearly_long(mp, affiliation, riksdag_year, party, args):
     )
 
 
-    print(years.schema)
-    print(riksdag_year.schema)
     ###--- 2. Match calendar year with the rightful parliament year ---###
     years_sorted = years.sort("check_date", "chamber")
     riksdag_sorted = riksdag_year.sort("start")
