@@ -74,6 +74,9 @@ def build_yearly_long(mp, affiliation, riksdag_year, party, args):
         .rename({"chamber_list": "chamber"})
     )
 
+
+    print(years.schema)
+    print(riksdag_year.schema)
     ###--- 2. Match calendar year with the rightful parliament year ---###
     years_sorted = years.sort("check_date", "chamber")
     riksdag_sorted = riksdag_year.sort("start")
@@ -89,12 +92,10 @@ def build_yearly_long(mp, affiliation, riksdag_year, party, args):
     years_snap = years_snap.with_columns([
         pl.when(pl.col("check_date") <= pl.col("end"))
         .then(pl.col("parliament_year"))
-        .otherwise(None)
         .alias("riksdag_year"),
 
         pl.when(pl.col("check_date") <= pl.col("end"))
         .then(pl.col("specifier"))
-        .otherwise(None)
         .alias("period")
     ]).select("calendar_year","check_date","parliament_year","specifier","chamber")
 
