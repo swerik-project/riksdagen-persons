@@ -199,9 +199,9 @@ def compute_regression_metrics(diff_df):
 
     return {
         "l1_per_year_chamber": l1_df,
-        "max_l1": l1_df.select(pl.col("l1_distance").max()).item() if l1_df.height > 0 else 0,
-        "mean_l1": l1_df.select(pl.col("l1_distance").mean()).item() if l1_df.height > 0 else 0.0,
-        "max_party_diff": diff_df.select(pl.col("abs_diff").max()).item() if diff_df.height > 0 else 0,
+        "max_l1": (l1_df.select(pl.col("l1_distance").max()).item() if not l1_df.is_empty() else 0),
+        "mean_l1": l1_df.select(pl.col("l1_distance").mean()).item() if not l1_df.is_empty() else 0.0,
+        "max_party_diff": diff_df.select(pl.col("abs_diff").max()).item() if not diff_df.is_empty() else 0,
         "nr_rows_with_diff": diff_df.select(
             (pl.col("abs_diff") > 0).sum()
         ).item(),
