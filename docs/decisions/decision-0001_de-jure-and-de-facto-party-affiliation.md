@@ -8,7 +8,7 @@ Party affiliation can mean more than one thing in Swedish parliamentary history.
 
 These meanings usually coincide, but not always. They can diverge for members who leave a party during a mandate period, become partyless or independent (`vilde`), publicly join another party, or hold a mandate whose formal electoral basis differs from the person's political identity. They are also harder to separate before party-based election was formally regulated in law.
 
-Existing SWERIK decisions partly address this problem:
+Existing SWERIK project decisions partly address this problem:
 
 - Decision 0005 unifies labels for partyless MPs.
 - Decision 0013 says historical party name changes should be represented as dated rows.
@@ -22,7 +22,7 @@ SWERIK shall distinguish between **de jure party affiliation** and **de facto pa
 
 ### Definitions
 
-**De jure party affiliation** is the formal, mandate-based party relation. It answers the question: which party, party label, or non-party status was formally attached to the parliamentary mandate under the applicable electoral or parliamentary rules? This can be seen as the formal leagl party of the mandate.
+**De jure party affiliation** is the formal, mandate-based party relation. It answers the question: which party, party label, or non-party status was formally attached to the parliamentary mandate under the applicable electoral or parliamentary rules? This can be seen as the formal legal party of the mandate.
 
 **De facto party affiliation** is the practical political affiliation. It answers the question: which party or political group did the person politically belong to, identify with, or become recognized as representing in practice?
 
@@ -53,15 +53,15 @@ The legal-historical boundary at which party labels become formally meaningful f
 
 The current working hypothesis is that the proportional election reform around 1909 is the relevant boundary, based on discussion in issue #90 and a reference to Stjernquist, *Tvåkammartiden*, p. 75. This must be checked against primary or authoritative legal-historical sources before being encoded as a rule.
 
-Before the verified legal boundary, party data should not automatically be erased or replaced with a single value such as "not regulated in law". Historical party or group labels may remain useful when they are grounded in Riksdag-affiliated or biographical sources. Those rows should be represented as source-grounded historical affiliation or de facto affiliation, not as later legal mandate affiliation unless a formal basis is verified.
+Before the verified legal boundary, party data should not be erased or replaced with a single value such as "not regulated in law". Historical party or group labels may remain useful when they are grounded in Riksdag-affiliated or biographical sources. Those rows should be represented in the de facto table, not as later legal mandate affiliation. In other words, this period is pre-de-jure: party affiliation can be recorded as practical or source-grounded historical affiliation, but not as de jure affiliation unless a formal legal basis is verified.
 
 ### Party switchers
 
 This decision supersedes the conceptual rule in Decision 0014 for future migrated data.
 
-If an MP leaves the party formally attached to the mandate during the mandate period, the new political party should not automatically replace the formal affiliation in the de jure table. Instead:
+If an MP leaves the party formally attached to the mandate during the mandate period, the new political party should not replace the formal affiliation in the de jure table. Instead, the MP becomes de jure independent from the date of leaving the party. Therefore:
 
-- the de jure table should record the formal mandate status according to the applicable rules and sources, such as the original mandate party or a partyless/independent status;
+- the de jure table should record the original mandate party until the date the MP leaves that party, and an independent or partyless status from that date;
 - the de facto table should record the person's practical political affiliation when it differs from the formal mandate status.
 
 ### Party name changes
@@ -85,4 +85,3 @@ This decision does not supersede Decision 0013. Historical party name changes sh
 - Requires legal-historical source work before the boundary can be implemented.
 - Requires auditing current `party_affiliation.csv` rows before migration.
 - May require downstream users to update code when the explicit v2 tables are introduced.
-
