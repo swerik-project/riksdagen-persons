@@ -1,11 +1,5 @@
 # De jure and de facto party affiliation
 
-## Status
-
-Proposed
-
-Related issues: [#80](https://github.com/swerik-project/riksdagen-persons/issues/80), [#87](https://github.com/swerik-project/riksdagen-persons/issues/87), [#90](https://github.com/swerik-project/riksdagen-persons/issues/90)
-
 ## Context
 
 The `riksdagen-persons` repository stores normalized, time-bounded metadata about members of parliament, ministers, speakers, governments, and related entities. Party affiliation is currently stored in `data/party_affiliation.csv` with the columns `person_id`, `start`, `end`, `party`, and `party_id`.
@@ -28,7 +22,7 @@ SWERIK shall distinguish between **de jure party affiliation** and **de facto pa
 
 ### Definitions
 
-**De jure party affiliation** is the formal, mandate-based party relation. It answers the question: which party, party label, or non-party status was formally attached to the parliamentary mandate under the applicable electoral or parliamentary rules?
+**De jure party affiliation** is the formal, mandate-based party relation. It answers the question: which party, party label, or non-party status was formally attached to the parliamentary mandate under the applicable electoral or parliamentary rules? This can be seen as the formal leagl party of the mandate.
 
 **De facto party affiliation** is the practical political affiliation. It answers the question: which party or political group did the person politically belong to, identify with, or become recognized as representing in practice?
 
@@ -36,9 +30,11 @@ Both concepts are time-bounded and must not extend outside the person's parliame
 
 ### Current table
 
-During the current `v1.x` data API, `data/party_affiliation.csv` remains the legacy/default party affiliation table. It should not be silently redefined as strictly de jure until the data has been audited and migrated.
+During the current `v1.x` data API, `data/party_affiliation.csv` remains the legacy/default party affiliation table. It should not be silently redefined as strictly de jure until the data has been audited and migrated. 
 
 The current table may contain a mixture of source-grounded historical affiliation, mandate-based affiliation, partyless status, and practical party affiliation. Documentation should make this transitional status explicit.
+
+Hence, for now it should remain as a legacy table, and will be deprecated when the future table structure is implemented. It will then be removed in the next major version.
 
 ### Future table structure
 
@@ -90,16 +86,3 @@ This decision does not supersede Decision 0013. Historical party name changes sh
 - Requires auditing current `party_affiliation.csv` rows before migration.
 - May require downstream users to update code when the explicit v2 tables are introduced.
 
-## Implementation notes
-
-The implementation should be handled in a separate issue with stepwise tasks:
-
-1. Verify the exact legal boundary for party-based mandate affiliation, starting with Stjernquist, *Tvåkammartiden*, p. 75, and the proportional election reform around 1909.
-2. Audit `data/party_affiliation.csv` for `vilde`, `partilös`, party switchers, missing dates, and pre-boundary rows.
-3. Identify and document known edge cases, including Alf Svensson and selected post-1909 party switchers.
-4. Decide exact schemas for `party_affiliation_de_jure.csv` and `party_affiliation_de_facto.csv`.
-5. Create draft tables or generated views.
-6. Add integrity tests ensuring de jure and de facto rows are bounded by MP mandate periods.
-7. Add regression tests for known edge cases.
-8. Update the README/data dictionary and migration notes.
-9. Link or close issues #80, #87, and #90 once covered.
