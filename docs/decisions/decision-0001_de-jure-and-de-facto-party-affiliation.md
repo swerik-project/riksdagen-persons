@@ -2,7 +2,9 @@
 
 ## Context
 
-The `riksdagen-persons` repository stores normalized, time-bounded metadata about members of parliament, ministers, speakers, governments, and related entities. Party affiliation is currently stored in `data/party_affiliation.csv` with the columns `person_id`, `start`, `end`, `party`, and `party_id`.
+The `riksdagen-persons` repository stores normalized, time-bounded metadata about members of parliament, ministers, speakers, governments, and related entities.
+
+Party identities, historical party-name periods, inception and dissolution dates, successor relations, and SWERIK party identifiers are stored in `data/party.csv`. Party affiliation relations between persons and parties are stored in `data/party_affiliation.csv`, currently including `person_id`, `start`, `end`, `party`, `party_id`, `swerik_party_id`, `start_precision`, and `end_precision`.
 
 Party affiliation can mean more than one thing in Swedish parliamentary history. It can refer to the formal party basis of a parliamentary mandate, the parliamentary group with which a person was associated, the party a person politically belonged to in practice, or a historical classification used by Riksdag-affiliated or biographical sources.
 
@@ -15,6 +17,8 @@ Existing SWERIK project decisions partly address this problem:
 - Decision 0014 says MPs who swap parties during a mandate should receive new rows in `party_affiliation.csv`.
 
 Issue #90 proposes making the distinction between formal and practical affiliation explicit. This decision records that model and marks the parts that still require source work before implementation.
+
+This decision does not introduce a new party identity table and does not replace the existing party-name model in `data/party.csv`. It concerns the affiliation relation between a person and a party or non-party status.
 
 ## Decision
 
@@ -32,7 +36,7 @@ Both concepts are time-bounded and must not extend outside the person's parliame
 
 During the current `v1.x` data API, `data/party_affiliation.csv` remains the legacy/default party affiliation table. It should not be silently redefined as strictly de jure until the data has been audited and migrated. 
 
-The current table may contain a mixture of source-grounded historical affiliation, mandate-based affiliation, partyless status, and practical party affiliation. Documentation should make this transitional status explicit.
+The current table is legacy not because party metadata is missing, but because it may conflate several affiliation meanings: mandate-based affiliation, practical political affiliation, source-grounded historical classification, and independent/partyless status. Documentation should make this transitional status explicit.
 
 Hence, for now it should remain as a legacy table, and will be deprecated when the future table structure is implemented. It will then be removed in the next major version.
 
@@ -42,6 +46,8 @@ In the next major version that changes the party affiliation API, SWERIK should 
 
 - `party_affiliation_de_jure.csv`
 - `party_affiliation_de_facto.csv`
+
+These tables should build on the existing party identity model. They should reference parties through `swerik_party_id` and should not duplicate party inception, dissolution, successor, or name-change metadata already stored in `data/party.csv`.
 
 The preferred implementation is separate tables rather than a shared `type` column in one table.
 
