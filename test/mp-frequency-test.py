@@ -93,6 +93,9 @@ class Test(unittest.TestCase):
         return dates
 
     def test_mp_frequency(self):
+        """
+        Test daily frequencies.
+        """
         config = fetch_config("mp-freq-test")
         baseline_df = pd.read_csv(f"./test/data/baseline-n-mps-year.csv")
         baseline_df['year'] = baseline_df['year'].apply(lambda x: str(x)[:4])

@@ -155,3 +155,6 @@ The mandate counts include adjustment mandates (`utjämningsmandat`) where appli
 
 
 
+# Mailing list
+
+For updates right to your email, join our mailing list for parliamentary research infrastructure [here](https://lists.uu.se/sympa/subscribe/parliamentary-research-infrastructure).
