@@ -30,6 +30,21 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - chamber
 - chair_nr
 
+### `data/constituency.csv`
+- constituency_id
+- chamber
+- start_date
+- end_date
+- name
+
+### `data/constituency_mandates.csv`
+- constituency_id
+- start_date
+- end_date
+- mandates_total
+
+The mandate counts include adjustment mandates (`utjämningsmandat`) where applicable.
+
 ### `data/described_by_source.csv`
 - person_id
 - source
@@ -135,7 +150,6 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 ### `data/wiki_id.csv`
 - person_id
 - wiki_id
-
 
 
 
