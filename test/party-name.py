@@ -13,6 +13,18 @@ class Test(unittest.TestCase):
         return party_names, party_affil
 
 
+    def _successor_edges_from_party_names(self, party_names):
+        edges = set()
+        for _, row in party_names.iterrows():
+            if pd.isna(row["swerik_successor"]):
+                continue
+            for successor in str(row["swerik_successor"]).split("|"):
+                successor = successor.strip()
+                if successor:
+                    edges.add((row["swerik_party_id"], successor))
+        return edges
+
+
     def test_party_names(self):
         names, affil = self._load_data()
         config = fetch_config("party-names")
@@ -119,6 +131,37 @@ class Test(unittest.TestCase):
         self.assertTrue(len(rows)<3)
         #self.assertEqual(len(unlisted_parties), 0)
         self.assertTrue(len(unlisted_parties)<360)
+
+
+    def test_party_successor(self):
+        """
+        Test the normalized party successor table.
+
+        `successor_id` and `swerik_successor` are deprecated compatibility
+        columns in `party.csv`. During the transition, they may remain present,
+        but `party_successor.csv` should contain the normalized SWERIK-ID
+        successor edges.
+        """
+        party_names, _ = self._load_data()
+        successors = pd.read_csv("data/party_successor.csv")
+
+        self.assertEqual(
+            list(successors.columns),
+            ["swerik_party_id", "successor_swerik_party_id"])
+        self.assertFalse(party_names["swerik_party_id"].duplicated().any())
+        self.assertFalse(successors.duplicated().any())
+
+        party_ids = set(party_names["swerik_party_id"])
+        source_ids = set(successors["swerik_party_id"])
+        target_ids = set(successors["successor_swerik_party_id"])
+        self.assertTrue(source_ids.issubset(party_ids), source_ids - party_ids)
+        self.assertTrue(target_ids.issubset(party_ids), target_ids - party_ids)
+
+        expected_edges = self._successor_edges_from_party_names(party_names)
+        actual_edges = set(
+            zip(successors["swerik_party_id"],
+                successors["successor_swerik_party_id"]))
+        self.assertEqual(expected_edges, actual_edges)
 
 
 
