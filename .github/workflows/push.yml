@@ -1,24 +1,38 @@
 name: "Riksdagen Persons: data integrity tests"
 
-on: [push]
+on:
+  pull_request:
+    branches:
+      - 'dev'
+  push:
+    paths:
+      - data/**
+      - .github/**
+  workflow_dispatch:
 
 jobs:
   chairs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.13]
     steps:
     - uses: actions/checkout@v4
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 1
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pyriksdagen
+        pip install pyriksdagen==1.10.0
         pip install pytest-cfg-fetcher
+        pip install pandas==2.3.3
+        pip install polars pyarrow
     - name: Test chars and chair-mp mapping metadata
       run: |
         python -m unittest test.chairs
@@ -30,10 +44,13 @@ jobs:
         python-version: [3.8]
     steps:
     - uses: actions/checkout@v4
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 1
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -53,10 +70,13 @@ jobs:
         python-version: [3.8]
     steps:
     - uses: actions/checkout@v4
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 1
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -73,10 +93,13 @@ jobs:
        python-version: [3.8]
     steps:
     - uses: actions/checkout@v4
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 1
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -85,6 +108,7 @@ jobs:
     - name: Test MPs agains manually curated data
       run: |
         python -m unittest test.party-affiliation
+        python -m unittest test.party-name
 
   frequency-distr:
     runs-on: ubuntu-latest
@@ -93,10 +117,13 @@ jobs:
         python-version: [3.8]
     steps:
     - uses: actions/checkout@v4
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 1
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip

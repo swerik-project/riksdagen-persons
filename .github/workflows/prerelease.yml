@@ -14,11 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        persist-credentials: false   # use GITHUB_TOKEN
-        fetch-depth: 1               # fetch depth is nr of commits
-        ref: ${{ github.head_ref }}
-
+    - uses: ./.github/actions/checkout
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -33,7 +29,7 @@ jobs:
 
     - name: Get release type
       run: |
-        release_type=$(echo ${{ github.event.pull_request.title }} | grep -Eoh '(((M|m)ajor|inor)|(P|p)atch)')
+        release_type=$(echo ${{ github.event.pull_request.title }} | grep -Eoh '(((M|m)(ajor|inor))|(P|p)atch)')
         if [ -z $release_type ] ; then
             echo "::warning:: You have to indicate the release type in the title of a pr to main"
             echo "::warning::       suggested pr title: `prerelease: major|minor|patch version`"
