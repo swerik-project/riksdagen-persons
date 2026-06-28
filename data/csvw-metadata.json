@@ -230,6 +230,33 @@
             "titles": "party_id",
             "dc:description": "External party identifier, typically a Wikidata QID.",
             "datatype": "string"
+          },
+          {
+            "name": "swerik_party_id",
+            "titles": "swerik_party_id",
+            "dc:description": "Stable SWERIK party identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start_precision",
+            "titles": "start_precision",
+            "dc:description": "Precision of the affiliation start date.",
+            "datatype": {
+              "base": "string",
+              "format": "^(day|year)$"
+            },
+            "required": true
+          },
+          {
+            "name": "end_precision",
+            "titles": "end_precision",
+            "dc:description": "Precision of the affiliation end date.",
+            "datatype": {
+              "base": "string",
+              "format": "^(day|year)$"
+            },
+            "required": true
           }
         ],
         "foreignKeys": [
@@ -239,8 +266,95 @@
               "resource": "person.csv",
               "columnReference": "person_id"
             }
+          },
+          {
+            "columnReference": "swerik_party_id",
+            "reference": {
+              "resource": "party.csv",
+              "columnReference": "swerik_party_id"
+            }
           }
         ]
+      }
+    },
+    {
+      "url": "party.csv",
+      "dc:title": "Parties",
+      "dc:description": "Party authority table with external identifiers, SWERIK party identifiers, temporal coverage, and successor relations.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "party_id",
+            "titles": "party_id",
+            "dc:description": "External party identifier, typically a Wikidata QID. Values are not unique when the same external entity is represented by multiple SWERIK party records.",
+            "datatype": "string"
+          },
+          {
+            "name": "party",
+            "titles": "party",
+            "dc:description": "Party or parliamentary group name.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "inception",
+            "titles": "inception",
+            "dc:description": "Party inception date. Values may use a nominal full date even when precision is year-level.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "inception_precision",
+            "titles": "inception_precision",
+            "dc:description": "Precision of the inception date.",
+            "datatype": {
+              "base": "string",
+              "format": "^(day|year)$"
+            },
+            "required": true
+          },
+          {
+            "name": "dissolution",
+            "titles": "dissolution",
+            "dc:description": "Party dissolution date, where known. Values may use a nominal full date even when precision is year-level.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            }
+          },
+          {
+            "name": "dissolution_precision",
+            "titles": "dissolution_precision",
+            "dc:description": "Precision of the dissolution date, where known.",
+            "datatype": {
+              "base": "string",
+              "format": "^(day|year)$"
+            }
+          },
+          {
+            "name": "successor_id",
+            "titles": "successor_id",
+            "dc:description": "External identifier or pipe-separated identifiers for successor parties, where known.",
+            "datatype": "string"
+          },
+          {
+            "name": "swerik_party_id",
+            "titles": "swerik_party_id",
+            "dc:description": "Stable SWERIK party identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "swerik_successor",
+            "titles": "swerik_successor",
+            "dc:description": "SWERIK party identifier or pipe-separated identifiers for successor parties, where known.",
+            "datatype": "string"
+          }
+        ],
+        "primaryKey": "swerik_party_id"
       }
     },
     {
