@@ -95,6 +95,7 @@ def plot_coverage(version, df):
 
 def main(args):
 
+    os.makedirs("quality/estimates/mp-coverage", exist_ok=True)
 
 
     print("plotting MP coverage")
