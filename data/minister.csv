@@ -1,5 +1,5 @@
 person_id,start,end,government,role
-i-HoKrvTnXU5eTu8LVqgLr9p,1840-05-16,1841-01-14,Regeringen Posse,konsultativt statsråd
+i-HoKrvTnXU5eTu8LVqgLr9p,1840-05-16,1841-01-14,Regeringen Mauritz Posse I,konsultativt statsråd
 i-HoKrvTnXU5eTu8LVqgLr9p,1840-05-16,1841-01-14,Regeringen Törnebladh,konsultativt statsråd
 i-r1VTfFi2u63HbDnjDKUPf,1842-12-29,1844-05-18,Regeringen Gyllenhaal,ecklesiastikminister
 i-r1VTfFi2u63HbDnjDKUPf,1842-12-29,1844-05-18,Regeringen Törnebladh,ecklesiastikminister
@@ -47,7 +47,6 @@ i-DZAnqjUMmj8qFZsvGfjxRv,1860-11-02,1863-08-01,Regeringen De Geer d.ä. I,eckles
 i-35xJbKo6VkrJQSnGvrd9Vj,1856-05-28,1866-07-04,Regeringen De Geer d.ä. I,finansminister
 i-35xJbKo6VkrJQSnGvrd9Vj,1856-05-28,1866-07-04,Regeringen Günther,finansminister
 i-35xJbKo6VkrJQSnGvrd9Vj,1856-05-28,1866-07-04,Regeringen Sparre,finansminister
-i-HSP9LioPctrDbuGfZ5P4G,1859-01-29,1866-09,Regeringen Adlercreutz,konsultativt statsråd
 i-HSP9LioPctrDbuGfZ5P4G,1859-01-29,1866-09,Regeringen De Geer d.ä. I,konsultativt statsråd
 i-HiLh4CgUmPaDRYddeo7w7X,1866-09-04,1867-05-31,Regeringen De Geer d.ä. I,finansminister
 i-9igV4UYxvovYHfEKhx7fdK,1862-03-28,1867-07-05,Regeringen De Geer d.ä. I,lantförsvarsminister
@@ -576,7 +575,6 @@ i-Uvs6wJSKDGeqbWbAmWFoBe,1969-10-14,1973-11-03,Regeringen Palme I,samfundsminist
 i-B4nu9XszBXgUbk8rfByBoJ,1969-10-14,1973-11-03,Regeringen Palme I,ungdomsminister
 i-PrkaUkuoauE9i2124cj3AX,1971-06-30,1973-11-03,Regeringen Palme I,utrikesminister
 i-PiA69Zron44x5fF1pHdUBo,,1973-11-03,Regeringen Palme I,landsbygdsminister
-i-WAR7Xtq5vM5vhtMxcKDZv4,1973-11-03,1973-12-31,Regeringen Erlander III,civilminister
 i-PiA69Zron44x5fF1pHdUBo,1973-11-03,1973-12-31,Regeringen Palme I,inrikesminister
 i-YL4aQfT264wNd4jTiiKUox,1969-10-14,1974-12-31,Regeringen Palme I,konsultativt statsråd
 i-QSBS4dqtsRDzm8fcNNRFaC,1970-10-09,1975-10-27,Regeringen Palme I,handelsminister
@@ -681,7 +679,6 @@ i-P7oVLGoBfbz4RGE5XkQtLN,1976-10-08,1982-10-08,Regeringen Fälldin I,utbildnings
 i-P7oVLGoBfbz4RGE5XkQtLN,1976-10-08,1982-10-08,Regeringen Fälldin II,utbildningsminister
 i-P7oVLGoBfbz4RGE5XkQtLN,1976-10-08,1982-10-08,Regeringen Fälldin III,utbildningsminister
 i-P7oVLGoBfbz4RGE5XkQtLN,1976-10-08,1982-10-08,Regeringen Ullsten,utbildningsminister
-i-5FsdBgp7zC1W8jXSUkwwDq,1978-10-18,1982-10-08,Regeringen Fälldin I,bostadsminister
 i-5FsdBgp7zC1W8jXSUkwwDq,1978-10-18,1982-10-08,Regeringen Ullsten,bostadsminister
 i-8DX2HEsXGBiY7R9ZYRTmeN,1979-10-12,1982-10-08,Regeringen Fälldin II,invandrarminister
 i-8DX2HEsXGBiY7R9ZYRTmeN,1979-10-12,1982-10-08,Regeringen Fälldin II,jämställdhetsminister
@@ -754,8 +751,6 @@ i-2pEgGvjfozTyRxyzmLZFo2,1982-10-08,1986-10-10,Regeringen Palme II,minister för
 i-2pEgGvjfozTyRxyzmLZFo2,,1986-10-10,Regeringen Carlsson I,landsbygdsminister
 i-FLEUnTue6oAgyDmZZjwLh8,1982-10-08,1987-10-19,Regeringen Carlsson I,arbetsmarknadsminister
 i-FLEUnTue6oAgyDmZZjwLh8,1982-10-08,1987-10-19,Regeringen Palme II,arbetsmarknadsminister
-i-GwSWKqF8wUht9mCcC5zupF,1983,1987-10-19,Regeringen Carlsson I,justitieminister
-i-GwSWKqF8wUht9mCcC5zupF,1983,1987-10-19,Regeringen Palme II,justitieminister
 i-GwSWKqF8wUht9mCcC5zupF,1983-11-15,1987-10-19,Regeringen Carlsson I,justitieminister
 i-GwSWKqF8wUht9mCcC5zupF,1983-11-15,1987-10-19,Regeringen Palme II,justitieminister
 i-FLEUnTue6oAgyDmZZjwLh8,1986-10-10,1987-10-19,Regeringen Carlsson I,jämställdhetsminister
@@ -1168,10 +1163,10 @@ i-aihY66rhb8LqCkSn8GhKt,,2019-09-10,Regeringen Löfven II,utrikesminister
 i-9VQB2AJUahVE6YUpda5FKN,2014-10-03,2019-10-01,Regeringen Löfven I,socialförsäkringsminister
 i-9VQB2AJUahVE6YUpda5FKN,2014-10-03,2019-10-01,Regeringen Löfven II,socialförsäkringsminister
 i-LGnWAFHmtMWgHhZSuUL8EB,,2019-10-01,Regeringen Löfven II,civilminister
-i-UPW2cbGnTUbMZaKTrot5Bh,2014-10-03,2020-10-18,Regeringen Andersson,justitieminister
-i-UPW2cbGnTUbMZaKTrot5Bh,2014-10-03,2020-10-18,Regeringen Löfven I,justitieminister
-i-UPW2cbGnTUbMZaKTrot5Bh,2014-10-03,2020-10-18,Regeringen Löfven II,justitieminister
-i-UPW2cbGnTUbMZaKTrot5Bh,2014-10-03,2020-10-18,Regeringen Löfven III,justitieminister
+i-UPW2cbGnTUbMZaKTrot5Bh,2021-11-30,2022-10-18,Regeringen Andersson,justitieminister
+i-UPW2cbGnTUbMZaKTrot5Bh,2014-10-03,2019-01-21,Regeringen Löfven I,justitieminister
+i-UPW2cbGnTUbMZaKTrot5Bh,2019-01-21,2021-07-09,Regeringen Löfven II,justitieminister
+i-UPW2cbGnTUbMZaKTrot5Bh,2021-07-09,2021-11-30,Regeringen Löfven III,justitieminister
 i-9BUsH2Bn1bGihptNC5r7uq,2019-01-21,2020-12-17,Regeringen Löfven II,biståndsminister
 i-C2s3YhmmVmNkgvznmmnD4x,2014-10-03,2021-02-05,Regeringen Löfven I,finansmarknadsminister
 i-C2s3YhmmVmNkgvznmmnD4x,2014-10-03,2021-02-05,Regeringen Löfven II,finansmarknadsminister
@@ -1184,7 +1179,6 @@ i-4FL9252Gm3rHAifaDrXzaZ,2019-01-21,2021-07-09,Regeringen Löfven II,EU-minister
 i-74hLepsvAgUMEvVVtBCGuc,2014-10-03,2021-11-30,Regeringen Löfven I,finansminister
 i-74hLepsvAgUMEvVVtBCGuc,2014-10-03,2021-11-30,Regeringen Löfven II,finansminister
 i-74hLepsvAgUMEvVVtBCGuc,2014-10-03,2021-11-30,Regeringen Löfven III,finansminister
-i-PAgTpr3nkZRPEoiqjPKQAf,2019-01-21,2021-11-30,Regeringen Löfven I,idrottsminister
 i-PAgTpr3nkZRPEoiqjPKQAf,2019-01-21,2021-11-30,Regeringen Löfven II,demokratiminister
 i-PAgTpr3nkZRPEoiqjPKQAf,2019-01-21,2021-11-30,Regeringen Löfven II,kulturminister
 i-PAgTpr3nkZRPEoiqjPKQAf,2019-01-21,2021-11-30,Regeringen Löfven III,demokratiminister
@@ -1243,7 +1237,7 @@ i-UQqGFoa8dKdxwwNw6kCAkL,1938-12-16,,Regeringen Hansson II,infrastrukturminister
 i-LffKZcrG2fCYbma7r7ZpgZ,1939-10-14,,Regeringen Hansson II,konsultativt statsråd
 i-PRkToj2ss6C9sjWtUtqNNh,1944-09-30,,Regeringen Hansson III,infrastrukturminister
 i-3urySgCAk2SuFz1BB8TX5x,1948-10-29,,Regeringen Erlander I,landsbygdsminister
-i-WAR7Xtq5vM5vhtMxcKDZv4,1973-11-03,,Regeringen Palme I,civilminister
+i-WAR7Xtq5vM5vhtMxcKDZv4,1973-11-03,1973-12-31,Regeringen Palme I,civilminister
 i-2pEgGvjfozTyRxyzmLZFo2,1973-11-03,,Regeringen Palme I,landsbygdsminister
 i-SySN6qMqpcrxHXHJgwvJdT,1974-01-04,,Regeringen Palme I,skolminister
 i-FrizKF8qiYUeCD64QhzzFt,1981-05-05,,Regeringen Fälldin II,infrastrukturminister
@@ -1259,7 +1253,6 @@ i-HhkgRHGRURfXTuftg1jHSf,2002-10-21,,Regeringen Persson,landsbygdsminister
 i-CcdZckB2ErC625pmVtogZg,2002-11-03,,Regeringen Persson,försvarsminister
 i-9Rr7JqtzHpZv84evqPH4D8,2012-04-18,,Regeringen Reinfeldt,försvarsminister
 i-9AVauGWoNZ6utf3kmZanbm,2016-09-13,,Regeringen Löfven I,skolminister
-i-PMx51X9QbaLUMtQNq6sVfz,2019-01-21,,Regeringen Löfven I,minister för högre utbildning och forskning
 i-8eXWd1vC6ZRoeQdNAwzhbS,2019-09-10,,Regeringen Löfven II,minister för nordiskt samarbete
 i-8eXWd1vC6ZRoeQdNAwzhbS,2019-09-10,,Regeringen Löfven II,utrikeshandelsminister
 i-LGnWAFHmtMWgHhZSuUL8EB,2019-10-01,,Regeringen Löfven II,socialförsäkringsminister
@@ -1309,8 +1302,8 @@ i-E4AiRv2UMsiA9KQkJbXB8E,,,Regeringen Andersson,finansmarknadsminister
 i-9CH1KbWwyrj8DRqAQB3Fza,,,Regeringen Löfven I,utbildningsminister
 i-9CuY4EZ971YdyxJ8sudKc,,,Regeringen Löfven II,integrationsminister
 i-9CuY4EZ971YdyxJ8sudKc,,,Regeringen Löfven III,biträdande finansminister
-i-PAgTpr3nkZRPEoiqjPKQAf,,,Regeringen Löfven II,idrottsminister
-i-PAgTpr3nkZRPEoiqjPKQAf,,,Regeringen Löfven III,idrottsminister
+i-PAgTpr3nkZRPEoiqjPKQAf,2019-01-21,2021-07-09,Regeringen Löfven II,idrottsminister
+i-PAgTpr3nkZRPEoiqjPKQAf,2021-07-09,2021-11-30,Regeringen Löfven III,idrottsminister
 i-BSEtbZG4ePv3rfebXQWRkd,,,Regeringen Erlander I,infrastrukturminister
 i-BSEtbZG4ePv3rfebXQWRkd,,,Regeringen Hansson IV,infrastrukturminister
 i-CicdbyfBoitjsXT8ugY99b,,,Regeringen Löfven I,miljöminister
@@ -1327,8 +1320,8 @@ i-Spsbo7A5zikEeUY3JEYcNV,,,Regeringen Andersson,finansminister
 i-Spsbo7A5zikEeUY3JEYcNV,,,Regeringen Löfven II,inrikesminister
 i-Spsbo7A5zikEeUY3JEYcNV,,,Regeringen Löfven III,inrikesminister
 i-PMx51X9QbaLUMtQNq6sVfz,,,Regeringen Andersson,biståndsminister
-i-PMx51X9QbaLUMtQNq6sVfz,,,Regeringen Löfven II,högskoleminister
-i-PMx51X9QbaLUMtQNq6sVfz,,,Regeringen Löfven III,högskoleminister
+i-PMx51X9QbaLUMtQNq6sVfz,2019-01-21,2021-07-09,Regeringen Löfven II,högskoleminister
+i-PMx51X9QbaLUMtQNq6sVfz,2021-07-09,2021-11-30,Regeringen Löfven III,högskoleminister
 i-NW2TEoH8XmW9aSn2aKJ8EA,,,Regeringen Andersson,integrationsminister
 i-NW2TEoH8XmW9aSn2aKJ8EA,,,Regeringen Andersson,migrationsminister
 i-4qJ1WSYreoe9MGDFPCwZKy,,,Regeringen Carlsson III,landsbygdsminister
@@ -1344,8 +1337,8 @@ i-LGnWAFHmtMWgHhZSuUL8EB,,,Regeringen Löfven I,civilminister
 i-LGnWAFHmtMWgHhZSuUL8EB,,,Regeringen Löfven III,socialförsäkringsminister
 i-5FsdBgp7zC1W8jXSUkwwDq,,,Regeringen Fälldin I,Biträdande bostadsminister
 i-5FsdBgp7zC1W8jXSUkwwDq,,,Regeringen Fälldin I,konsultativt statsråd
-i-5FsdBgp7zC1W8jXSUkwwDq,,,Regeringen Fälldin II,bostadsminister
-i-5FsdBgp7zC1W8jXSUkwwDq,,,Regeringen Fälldin III,bostadsminister
+i-5FsdBgp7zC1W8jXSUkwwDq,1978-10-18,1982-10-08,Regeringen Fälldin II,bostadsminister
+i-5FsdBgp7zC1W8jXSUkwwDq,1978-10-18,1982-10-08,Regeringen Fälldin III,bostadsminister
 i-74hLepsvAgUMEvVVtBCGuc,,,Regeringen Andersson,statsminister
 i-3FEh1q844FM3qRDgqmfWSF,,,Regeringen Carlsson III,sjukvårdsminister
 i-9VQB2AJUahVE6YUpda5FKN,,,Regeringen Andersson,miljöminister
