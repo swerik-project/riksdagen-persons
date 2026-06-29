@@ -224,6 +224,50 @@ class Test(unittest.TestCase):
         self.assertEqual([], missing_governments, f"Minister governments missing from government.csv: {missing_governments}")
 
 
+    def test_minister_government_counts(self):
+        """
+        Test reviewed minister-count expectations for each government.
+        """
+        minister = pd.read_csv("data/minister.csv", dtype=str, keep_default_na=False)
+        expected = pd.read_csv("test/data/minister-government-counts.csv", dtype=str, keep_default_na=False)
+
+        count_columns = [
+            "expected_unique_persons",
+            "expected_unique_minister_roles",
+        ]
+        for column in count_columns:
+            expected[column] = expected[column].str.strip()
+
+        person_counts = minister.groupby("government")["person_id"].nunique().to_dict()
+        role_counts = (
+            minister[["government", "person_id", "role"]]
+            .drop_duplicates()
+            .groupby("government")
+            .size()
+            .to_dict()
+        )
+        errors = []
+
+        for _, row in expected.iterrows():
+            if row["expected_unique_persons"] not in ["", "NULL"]:
+                expected_count = int(row["expected_unique_persons"])
+                actual_count = person_counts.get(row["government"], 0)
+                if actual_count != expected_count:
+                    errors.append(
+                        f"{row['government']} | expected {expected_count} unique persons, found {actual_count}"
+                    )
+
+            if row["expected_unique_minister_roles"] not in ["", "NULL"]:
+                expected_count = int(row["expected_unique_minister_roles"])
+                actual_count = role_counts.get(row["government"], 0)
+                if actual_count != expected_count:
+                    errors.append(
+                        f"{row['government']} | expected {expected_count} unique minister roles, found {actual_count}"
+                    )
+
+        self.assertEqual([], errors)
+
+
     def test_minister_government_date_intersections(self):
         """
         Test that dated minister rows intersect their government date interval.
