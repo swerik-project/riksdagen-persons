@@ -153,6 +153,33 @@ class Test(unittest.TestCase):
         self.assertEqual(len(df), len(df_unique), df_duplicate)
 
 
+    def test_minister_person_metadata(self):
+        """
+        Test that all minister person IDs resolve to person and name metadata.
+        """
+        minister = pd.read_csv("data/minister.csv", dtype=str, keep_default_na=False)
+        person = pd.read_csv("data/person.csv", dtype=str, keep_default_na=False)
+        name = pd.read_csv("data/name.csv", dtype=str, keep_default_na=False)
+
+        missing_person = sorted(set(minister["person_id"]) - set(person["person_id"]))
+        missing_name = sorted(set(minister["person_id"]) - set(name["person_id"]))
+
+        self.assertEqual([], missing_person, f"Minister IDs missing from person.csv: {missing_person}")
+        self.assertEqual([], missing_name, f"Minister IDs missing from name.csv: {missing_name}")
+
+
+    def test_minister_government_metadata(self):
+        """
+        Test that all minister government labels resolve to government metadata.
+        """
+        minister = pd.read_csv("data/minister.csv", dtype=str, keep_default_na=False)
+        government = pd.read_csv("data/government.csv", dtype=str, keep_default_na=False)
+
+        missing_governments = sorted(set(minister["government"]) - set(government["government"]))
+
+        self.assertEqual([], missing_governments, f"Minister governments missing from government.csv: {missing_governments}")
+
+
     def test_party_affiliation(self):
         """
         test no duplicates in party data
