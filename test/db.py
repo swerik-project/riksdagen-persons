@@ -114,6 +114,41 @@ class Test(unittest.TestCase):
         return df
 
 
+    def parse_date_interval(self, value, is_end):
+        """
+        Parse partial date strings as half-open interval boundaries.
+        """
+        if pd.isna(value) or str(value).strip() == "":
+            if is_end:
+                return pd.Timestamp.max.normalize()
+            return None
+
+        match = DATE_RE.match(str(value).strip())
+        if match is None:
+            return None
+
+        year = int(match.group(1))
+        month = int(match.group(2)) if match.group(2) else None
+        day = int(match.group(3)) if match.group(3) else None
+
+        try:
+            if month is None:
+                if is_end:
+                    return pd.Timestamp(year + 1, 1, 1)
+                return pd.Timestamp(year, 1, 1)
+
+            if day is None:
+                if is_end:
+                    if month == 12:
+                        return pd.Timestamp(year + 1, 1, 1)
+                    return pd.Timestamp(year, month + 1, 1)
+                return pd.Timestamp(year, month, 1)
+
+            return pd.Timestamp(year, month, day)
+        except ValueError:
+            return None
+
+
     def write_error_df(self, df_name, errs, outpath):
         """
         Take a list of errors and write the output as a dataframe
@@ -178,6 +213,37 @@ class Test(unittest.TestCase):
         missing_governments = sorted(set(minister["government"]) - set(government["government"]))
 
         self.assertEqual([], missing_governments, f"Minister governments missing from government.csv: {missing_governments}")
+
+
+    def test_minister_government_date_intersections(self):
+        """
+        Test that dated minister rows intersect their government date interval.
+        """
+        minister = pd.read_csv("data/minister.csv", dtype=str, keep_default_na=False)
+        government = pd.read_csv("data/government.csv", dtype=str, keep_default_na=False)
+
+        government_dates = {}
+        for _, row in government.iterrows():
+            government_dates[row["government"]] = (
+                self.parse_date_interval(row["start"], is_end=False),
+                self.parse_date_interval(row["end"], is_end=True),
+            )
+
+        errors = []
+        for _, row in minister.iterrows():
+            start = self.parse_date_interval(row["start"], is_end=False)
+            end = self.parse_date_interval(row["end"], is_end=True)
+            if start is None or end is None:
+                continue
+
+            government_start, government_end = government_dates[row["government"]]
+            intersects = start < government_end and end > government_start
+            if not intersects:
+                errors.append(
+                    f"{row['person_id']} | {row['government']} | {row['role']} | {row['start']} - {row['end']}"
+                )
+
+        self.assertEqual([], errors)
 
 
     def test_party_affiliation(self):
