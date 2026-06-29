@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-from pytest_cfg_fetcher.fetch import fetch_config
+try:
+    from pytest_cfg_fetcher.fetch import fetch_config
+except ImportError:
+    def fetch_config(_):
+        return None
 from tqdm import tqdm
 import pandas as pd
 import unittest

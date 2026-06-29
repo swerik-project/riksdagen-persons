@@ -12,13 +12,22 @@ from pyriksdagen.utils import (
     parse_protocol,
     protocol_iterators,
 )
-from pytest_cfg_fetcher.fetch import fetch_config
 import pandas as pd
+import re
 import unittest
 import warnings
 import yaml
 
+try:
+    from pytest_cfg_fetcher.fetch import fetch_config
+except ImportError:
+    def fetch_config(_):
+        return None
 
+
+
+
+DATE_RE = re.compile(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$")
 
 
 class DuplicateWarning(Warning):

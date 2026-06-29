@@ -2,7 +2,11 @@
 Tests related to party affiliations.
 """
 from datetime import datetime
-from pytest_cfg_fetcher.fetch import fetch_config
+try:
+    from pytest_cfg_fetcher.fetch import fetch_config
+except ImportError:
+    def fetch_config(_):
+        return None
 import pandas as pd
 import unittest
 import warnings

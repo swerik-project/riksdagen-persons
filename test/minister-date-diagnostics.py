@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-Write a diagnostic report for minister date coverage and interval issues.
+Test minister date coverage and interval integrity.
 
-This is intentionally a reporting script, not a failing integrity test. It
-normalizes partial dates to intervals so YYYY and YYYY-MM values can be compared
-with full ISO dates.
+This normalizes partial dates to intervals so YYYY and YYYY-MM values can be
+compared with full ISO dates.
 """
 from pathlib import Path
 import re
@@ -13,7 +12,6 @@ import pandas as pd
 
 
 DATA_DIR = Path("data")
-OUT_DIR = Path("test/result")
 DATE_RE = re.compile(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$")
 
 
@@ -97,36 +95,6 @@ def get_overlaps(ministers):
     return pd.DataFrame(rows)
 
 
-def get_gaps(ministers):
-    rows = []
-    valid = ministers[
-        ministers["start_date"].notna()
-        & ministers["end_date"].notna()
-        & (ministers["end_issue"] != "blank")
-    ]
-
-    for (person_id, role), group in valid.groupby(["person_id", "role"], dropna=False):
-        group = group.sort_values(["start_date", "end_date", "government"]).reset_index(drop=True)
-        previous = None
-        for _, row in group.iterrows():
-            if previous is not None and row["start_date"] > previous["end_date"]:
-                rows.append({
-                    "person_id": person_id,
-                    "role": role,
-                    "previous_government": previous["government"],
-                    "previous_start": previous["start"],
-                    "previous_end": previous["end"],
-                    "current_government": row["government"],
-                    "current_start": row["start"],
-                    "current_end": row["end"],
-                    "gap_days": (row["start_date"] - previous["end_date"]).days,
-                })
-            if previous is None or row["end_date"] > previous["end_date"]:
-                previous = row
-
-    return pd.DataFrame(rows)
-
-
 def get_government_mismatches(ministers, governments):
     rows = []
     government_by_name = governments.set_index("government")
@@ -153,45 +121,10 @@ def get_government_mismatches(ministers, governments):
     return pd.DataFrame(rows)
 
 
-def write_report(summary, overlaps, gaps, government_mismatches):
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    overlaps.to_csv(OUT_DIR / "minister-date-overlaps.csv", index=False)
-    gaps.to_csv(OUT_DIR / "minister-date-gaps.csv", index=False)
-    government_mismatches.to_csv(OUT_DIR / "minister-government-date-mismatches.csv", index=False)
-    no_intersection = government_mismatches[
-        ~government_mismatches["has_intersection"]
-    ] if len(government_mismatches) else government_mismatches
-    no_intersection.to_csv(OUT_DIR / "minister-government-date-no-intersection.csv", index=False)
-
-    lines = [
-        "# Minister Date Diagnostics",
-        "",
-        "This diagnostic normalizes partial dates to half-open intervals:",
-        "",
-        "- `YYYY` start dates begin on January 1; end dates stop at January 1 the following year.",
-        "- `YYYY-MM` start dates begin on the first day; end dates stop at the first day of the following month.",
-        "- `YYYY-MM-DD` dates use the recorded day as the boundary.",
-        "- A minister row ending on the same date another begins is treated as adjacent, not overlapping.",
-        "",
-        "## Summary",
-        "",
-    ]
-
-    for key, value in summary.items():
-        lines.append(f"- {key}: {value}")
-
-    lines.extend([
-        "",
-        "## Output Files",
-        "",
-        "- `test/result/minister-date-overlaps.csv`",
-        "- `test/result/minister-date-gaps.csv`",
-        "- `test/result/minister-government-date-mismatches.csv`",
-        "- `test/result/minister-government-date-no-intersection.csv`",
-        "",
-    ])
-
-    (OUT_DIR / "minister-date-diagnostics.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+def format_rows(df, columns, limit=10):
+    if df.empty:
+        return ""
+    return "\n" + df[columns].head(limit).to_string(index=False)
 
 
 def main():
@@ -208,29 +141,60 @@ def main():
     ]
 
     overlaps = get_overlaps(ministers)
-    gaps = get_gaps(ministers)
     government_mismatches = get_government_mismatches(ministers, governments)
+    partial_overlaps = overlaps[
+        overlaps["overlap_type"] == "partial_overlap"
+    ] if len(overlaps) else overlaps
+    no_intersection = government_mismatches[
+        ~government_mismatches["has_intersection"]
+    ] if len(government_mismatches) else government_mismatches
 
-    summary = {
-        "minister rows": len(ministers),
-        "unique minister person IDs": ministers["person_id"].nunique(),
-        "unique person-role groups": ministers[["person_id", "role"]].drop_duplicates().shape[0],
-        "blank minister start": int((ministers["start_issue"] == "blank").sum()),
-        "blank minister end": int((ministers["end_issue"] == "blank").sum()),
-        "malformed minister start": int((ministers["start_issue"] == "malformed").sum()),
-        "malformed minister end": int((ministers["end_issue"] == "malformed").sum()),
-        "inverted minister intervals": len(inverted_minister_dates),
-        "person-role adjacent overlaps": len(overlaps),
-        "person-role same-interval overlaps": int((overlaps["overlap_type"] == "same_interval").sum()) if len(overlaps) else 0,
-        "person-role partial overlaps": int((overlaps["overlap_type"] == "partial_overlap").sum()) if len(overlaps) else 0,
-        "person-role adjacent gaps": len(gaps),
-        "minister rows not contained in government interval": len(government_mismatches),
-        "minister rows with no government interval intersection": int((~government_mismatches["has_intersection"]).sum()) if len(government_mismatches) else 0,
-    }
+    malformed_starts = ministers[ministers["start_issue"] == "malformed"]
+    malformed_ends = ministers[ministers["end_issue"] == "malformed"]
 
-    write_report(summary, overlaps, gaps, government_mismatches)
-    for key, value in summary.items():
-        print(f"{key}: {value}")
+    assert malformed_starts.empty, (
+        "Malformed minister start dates:"
+        + format_rows(malformed_starts, ["person_id", "government", "role", "start"])
+    )
+    assert malformed_ends.empty, (
+        "Malformed minister end dates:"
+        + format_rows(malformed_ends, ["person_id", "government", "role", "end"])
+    )
+    assert inverted_minister_dates.empty, (
+        "Minister rows with start after end:"
+        + format_rows(inverted_minister_dates, ["person_id", "government", "role", "start", "end"])
+    )
+    assert partial_overlaps.empty, (
+        "Minister person-role intervals with partial overlaps:"
+        + format_rows(
+            partial_overlaps,
+            [
+                "person_id",
+                "role",
+                "previous_government",
+                "previous_start",
+                "previous_end",
+                "current_government",
+                "current_start",
+                "current_end",
+            ],
+        )
+    )
+    assert no_intersection.empty, (
+        "Minister rows with no intersection with their government interval:"
+        + format_rows(
+            no_intersection,
+            [
+                "person_id",
+                "role",
+                "government",
+                "minister_start",
+                "minister_end",
+                "government_start",
+                "government_end",
+            ],
+        )
+    )
 
 
 if __name__ == "__main__":
