@@ -66,6 +66,9 @@ class Test(unittest.TestCase):
         mep = self.get_mep().reset_index(names="mep_row")
 
         chair_mp = chair_mp[pd.notnull(chair_mp["person_id"])].copy()
+        chair_mp = chair_mp.rename(
+            columns={"start": "chair_raw_start", "end": "chair_raw_end"}
+        )
         chair_mp = chair_mp.merge(
             chairs[["chair_id", "chamber", "chair_nr"]],
             on="chair_id",
@@ -73,14 +76,14 @@ class Test(unittest.TestCase):
         )
         chair_mp["chair_start"] = chair_mp.apply(
             lambda row: self.parse_start_date(
-                row["start"],
+                row["chair_raw_start"],
                 self.parliament_year_start(row["parliament_year"]),
             ),
             axis=1,
         )
         chair_mp["chair_end"] = chair_mp.apply(
             lambda row: self.parse_end_date(
-                row["end"],
+                row["chair_raw_end"],
                 self.parliament_year_end(row["parliament_year"]),
             ),
             axis=1,
@@ -115,11 +118,15 @@ class Test(unittest.TestCase):
             "chair_id",
             "chamber",
             "chair_nr",
-            "start",
-            "end",
+            "chair_raw_start",
+            "chair_raw_end",
+            "chair_start",
+            "chair_end",
             "mep_row",
             "meta_start",
             "meta_end",
+            "mep_start",
+            "mep_end",
             "role",
         ]
         return mismatches[report_cols].sort_values(
