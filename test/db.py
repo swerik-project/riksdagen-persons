@@ -230,16 +230,11 @@ class Test(unittest.TestCase):
         """
         speaker = self.get_meta_df("speaker").fillna("")
         current_speaker = "i-BZ7PcK8D1efvHXsafGEMKE"
-        known_open_ended = {
-            # Historical row still needs exact source checking.
-            "i-UQb1WPSaU3ohorTovz3X3c",
-        }
 
         missing_start = speaker[speaker["start"] == ""].copy()
         missing_end = speaker[
             (speaker["end"] == "")
             & (speaker["person_id"] != current_speaker)
-            & (~speaker["person_id"].isin(known_open_ended))
         ].copy()
 
         self.assertTrue(missing_start.empty, missing_start)
