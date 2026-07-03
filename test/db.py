@@ -193,6 +193,37 @@ class Test(unittest.TestCase):
         self.assertEqual(len(df), len(df_unique), df_duplicate)
 
 
+    def test_known_speaker_dates(self):
+        """
+        Test that speaker dates checked for PR 120 do not regress.
+        """
+        speaker = self.get_meta_df("speaker").fillna("")
+        known = pd.read_csv("test/data/known-speaker-dates.csv", sep=';').fillna("")
+
+        missing = []
+        for i, row in known.iterrows():
+            fil = speaker.loc[
+                (speaker['person_id'] == row['person_id'])
+                & (speaker['role'] == row['role'])
+                & (speaker['start'].astype(str) == row['start'])
+                & (speaker['end'].astype(str) == row['end'])
+            ]
+            if fil.empty:
+                missing.append(
+                    {
+                        "person_id": row["person_id"],
+                        "name": row["name"],
+                        "role": row["role"],
+                        "expected_start": row["start"],
+                        "expected_end": row["end"],
+                        "reviewed_by": row["reviewed_by"],
+                        "review_note": row["review_note"],
+                    }
+                )
+
+        self.assertEqual(len(missing), 0, pd.DataFrame(missing))
+
+
     def test_twitter(self):
         """
         test no duplicates in twitter data
