@@ -241,6 +241,49 @@ class Test(unittest.TestCase):
         self.assertTrue(missing_end.empty, missing_end)
 
 
+    def test_exact_speaker_dates_do_not_overlap(self):
+        """
+        Test that exact-dated speaker intervals do not overlap for the same role.
+        """
+        speaker = self.get_meta_df("speaker").fillna("").reset_index(names="row")
+        speaker["row"] += 2
+        speaker["start"] = speaker["start"].astype(str)
+        speaker["end"] = speaker["end"].astype(str)
+
+        exact = speaker[
+            (speaker["start"].str.len() == 10)
+            & ((speaker["end"] == "") | (speaker["end"].str.len() == 10))
+        ].copy()
+        exact["start_date"] = pd.to_datetime(exact["start"])
+        exact["end_date"] = pd.to_datetime(
+            exact["end"].replace("", pd.Timestamp.max.normalize())
+        )
+
+        overlaps = []
+        for role, group in exact.groupby("role"):
+            records = group.to_dict("records")
+            for i, a in enumerate(records):
+                for b in records[i + 1:]:
+                    if a["person_id"] == b["person_id"]:
+                        continue
+                    if a["start_date"] < b["end_date"] and b["start_date"] < a["end_date"]:
+                        overlaps.append(
+                            {
+                                "role": role,
+                                "left_row": a["row"],
+                                "left_person_id": a["person_id"],
+                                "left_start": a["start"],
+                                "left_end": a["end"],
+                                "right_row": b["row"],
+                                "right_person_id": b["person_id"],
+                                "right_start": b["start"],
+                                "right_end": b["end"],
+                            }
+                        )
+
+        self.assertEqual(len(overlaps), 0, pd.DataFrame(overlaps))
+
+
     def test_twitter(self):
         """
         test no duplicates in twitter data
