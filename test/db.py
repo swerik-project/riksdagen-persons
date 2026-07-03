@@ -186,8 +186,7 @@ class Test(unittest.TestCase):
         df_name = "speaker"
         df, df_unique, df_duplicate = self.get_duplicates(df_name, columns)
 
-        if len(df) != len(df_unique):
-            warnings.warn(str(df_duplicate), DuplicateWarning)
+        self.assertEqual(len(df), len(df_unique), df_duplicate)
 
         df, df_unique, df_duplicate = self.get_duplicates(df_name, None)
         self.assertEqual(len(df), len(df_unique), df_duplicate)
