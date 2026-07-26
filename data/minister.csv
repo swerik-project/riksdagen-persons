@@ -61,6 +61,7 @@ i-35gSvZSnGVngdKy4MQKZtS,1868-06-04,1870-01-14,Regeringen De Geer d.ä. I,sjöf�
 i-VJzAojg4oj9Du46UWXaaqZ,1867-08-23,1870-05-12,Regeringen De Geer d.ä. I,finansminister
 i-4vNUD3c1Zrcuq5QuVbNmhB,1863-08-01,1870-06-03,Regeringen De Geer d.ä. I,ecklesiastikminister
 i-2bVVLzWvNsURiiwq5jSQS9,1868,1870-06-03,Regeringen De Geer d.ä. I,civilminister
+i-M6HZSzErrkvRs1tuZi7K48,1858,1870,Regeringen De Geer d.ä. I,justitiestatsminister
 i-NeTAuRpvnph7pbgbLpZxig,1867-07-05,1871-12-05,Regeringen Adlercreutz,lantförsvarsminister
 i-NeTAuRpvnph7pbgbLpZxig,1867-07-05,1871-12-05,Regeringen De Geer d.ä. I,lantförsvarsminister
 i-LCcpUNpbfh4oCj9DbmSZS3,1871-11-10,1872-12-17,Regeringen Adlercreutz,utrikesstatsminister
@@ -85,9 +86,10 @@ i-M6haWJp8kv7KUkmMPYjX4C,1871-12-05,1877-09-11,Regeringen De Geer d.ä. III,lant
 i-A1rXJfgfS6b5QQQgwn3Jm8,,1878-07-04,Regeringen De Geer d.ä. III,konsultativt statsråd
 i-4vNUD3c1Zrcuq5QuVbNmhB,1875-05-11,1878-11-01,Regeringen De Geer d.ä. II,ecklesiastikminister
 i-4vNUD3c1Zrcuq5QuVbNmhB,1875-05-11,1878-11-01,Regeringen De Geer d.ä. III,ecklesiastikminister
+i-M6HZSzErrkvRs1tuZi7K48,1875,1876,Regeringen De Geer d.ä. II,justitiestatsminister
 i-2ehtmACUZPNJMNnS5o3dYB,1875-05-11,1879-06-06,Regeringen De Geer d.ä. II,konsultativt statsråd
 i-2ehtmACUZPNJMNnS5o3dYB,1875-05-11,1879-06-06,Regeringen De Geer d.ä. III,konsultativt statsråd
-i-M6HZSzErrkvRs1tuZi7K48,1876-03-20,1879-06-06,Regeringen De Geer d.ä. III,justitieminister
+i-M6HZSzErrkvRs1tuZi7K48,1876-03-20,1880-04-19,Regeringen De Geer d.ä. III,justitieminister
 i-FhLSLTTgMvsYGQ25DUwcvz,1874-12-23,1880-04-19,Regeringen Carleson,sjöförsvarsminister
 i-FhLSLTTgMvsYGQ25DUwcvz,1874-12-23,1880-04-19,Regeringen De Geer d.ä. II,sjöförsvarsminister
 i-FhLSLTTgMvsYGQ25DUwcvz,1874-12-23,1880-04-19,Regeringen De Geer d.ä. III,sjöförsvarsminister
@@ -435,7 +437,7 @@ i-57VtU3DUgS6ebh11mtUQes,1939-12-13,1944-09-30,Regeringen Hansson III,kommunikat
 i-SgDQWpwtGGYUWQfKENDRYv,1940-10-11,1944-09-30,Regeringen Hansson III,konsultativt statsråd
 i-PRkToj2ss6C9sjWtUtqNNh,1941-03-07,1944-09-30,Regeringen Hansson III,konsultativt statsråd
 i-57ZzcRcBrWajRrZt3i1BgM,1941-03-07,1944-09-30,Regeringen Hansson III,handelsminister
-i-Xqo83uEfAGu6C7HdvFMFwx,1943-08-30,1944-09-30,Regeringen Hansson III,konsultativt statsråd
+i-Xqo83uEfAGu6C7HdvFMFwx,1943-08-30,1945-07-31,Regeringen Hansson III,konsultativt statsråd
 i-57VtU3DUgS6ebh11mtUQes,,1944-09-30,Regeringen Hansson III,infrastrukturminister
 i-CU4eSFiFKKx8yk9jS92iFV,1939-12-13,1944-12-15,Regeringen Hansson III,ecklesiastikminister
 i-PRkToj2ss6C9sjWtUtqNNh,1944,1945,Regeringen Hansson III,kommunikationsminister
@@ -466,7 +468,7 @@ i-DMs16qwN3uGgTraB34UW2Z,1945-07-31,1948-10-28,Regeringen Hansson IV,konsultativ
 i-MewtapTSFPS47jDhDe5nqD,1947-04-11,1948-10-28,Regeringen Erlander I,konsultativt statsråd
 i-C35yyip4t5V4hBSBwnGD7Z,1945-07-31,1948-10-29,Regeringen Erlander I,jordbruksminister
 i-C35yyip4t5V4hBSBwnGD7Z,1945-07-31,1948-10-29,Regeringen Hansson IV,jordbruksminister
-i-3urySgCAk2SuFz1BB8TX5x,1947-05-24,1948-10-29,Regeringen Erlander I,folkhushållningsminister
+i-3urySgCAk2SuFz1BB8TX5x,1947-04-11,1948-10-28,Regeringen Erlander I,folkhushållningsminister
 i-C35yyip4t5V4hBSBwnGD7Z,,1948-10-29,Regeringen Erlander I,landsbygdsminister
 i-MSbi6CmhoHjdUGidWdU69V,,1949-06-30,Regeringen Erlander I,finansminister
 i-C3AtGSK2kCCQrcij1zKWxy,1949-07-01,1949-10-17,Regeringen Erlander I,finansminister
@@ -475,7 +477,7 @@ i-MewtapTSFPS47jDhDe5nqD,1948-10-29,1949-12-31,Regeringen Erlander I,folkhushål
 i-DMs16qwN3uGgTraB34UW2Z,1950-01-01,1950-06-30,Regeringen Erlander I,folkhushållningsminister
 i-4oQw33kXPxZphhSAmpgVJv,1950-01-04,1950-07-01,Regeringen Erlander I,konsultativt statsråd
 i-4oQw33kXPxZphhSAmpgVJv,1950-01-04,1950-07-01,Regeringen Erlander I,löneminister
-i-UEUWoCh2SPr4UTMWyDHVXA,1946-10-11,1951-03-08,Regeringen Erlander I,ecklesiastikminister
+i-UEUWoCh2SPr4UTMWyDHVXA,1946-10-11,1951-10-01,Regeringen Erlander I,ecklesiastikminister
 i-4Mr7D9BCozgkT5mSiFk6Gv,1939-12-13,1951-10-01,Regeringen Erlander I,socialminister
 i-4Mr7D9BCozgkT5mSiFk6Gv,1939-12-13,1951-10-01,Regeringen Hansson III,socialminister
 i-4Mr7D9BCozgkT5mSiFk6Gv,1939-12-13,1951-10-01,Regeringen Hansson IV,socialminister
@@ -485,7 +487,7 @@ i-CVG5H18C4Zmb44stfabVSc,1945-07-31,1951-10-01,Regeringen Erlander I,försvarsmi
 i-CVG5H18C4Zmb44stfabVSc,1945-07-31,1951-10-01,Regeringen Hansson IV,försvarsminister
 i-RsxcNGZPjwF53SBgVLhwYJ,1947-07-01,1951-10-01,Regeringen Erlander I,inrikesminister
 i-ErNemW6WNsbRaNz3Q9qVQH,1948-10-28,1951-10-01,Regeringen Erlander I,konsultativt statsråd
-i-3urySgCAk2SuFz1BB8TX5x,1948-10-30,1951-10-01,Regeringen Erlander I,jordbruksminister
+i-3urySgCAk2SuFz1BB8TX5x,1948-10-28,1951-10-01,Regeringen Erlander I,jordbruksminister
 i-VRK4jvXteD5oQpqXgdmTs6,1951-03-17,1951-10-01,Regeringen Erlander I,ecklesiastikminister
 i-YFw2Hg1VzTr3FRtAKxwtUT,1944,1952,Regeringen Erlander I,konsultativt statsråd
 i-YFw2Hg1VzTr3FRtAKxwtUT,1944,1952,Regeringen Erlander II,konsultativt statsråd
@@ -542,16 +544,17 @@ i-T2MQwweEV4czixyLDV86HQ,1954-06-04,1966-12-31,Regeringen Erlander II,biståndsm
 i-T2MQwweEV4czixyLDV86HQ,1954-06-04,1966-12-31,Regeringen Erlander III,biståndsminister
 i-DKX1MP4aaNtFZSpMKXCwY,1965-11-25,1967-09-28,Regeringen Erlander III,kommunikationsminister
 i-8FeKtrT5DmgTKt1JtCcHmB,1957-10-31,1967-09-29,Regeringen Erlander III,ecklesiastikminister
-i-2pEgGvjfozTyRxyzmLZFo2,1965-11-25,1967-09-29,Regeringen Erlander III,kommunminister
+i-2pEgGvjfozTyRxyzmLZFo2,1965-08-13,1967-09-29,Regeringen Erlander III,konsultativt statsråd
 i-DKX1MP4aaNtFZSpMKXCwY,1967-09-29,1967-12-31,Regeringen Erlander III,ecklesiastikminister
 i-PrkaUkuoauE9i2124cj3AX,1967-02-28,1968-12-31,Regeringen Erlander III,biträdande finansminister
 i-Ua1nqYCRbnUSNc5Tw1tXiK,1961-11-25,1969-01-24,Regeringen Erlander III,jordbruksminister
 i-2E2N5MpZ8PjBpuMWc4jqhz,1957-10-31,1969-01-25,Regeringen Erlander III,inrikesminister
 i-PxXnoHZ17qEdb9ZZ9xZFF,1965-09-15,1969-06-27,Regeringen Erlander III,civilminister
-i-2pEgGvjfozTyRxyzmLZFo2,1967-09-29,1969-06-30,Regeringen Erlander III,kommunikationsminister
+i-2pEgGvjfozTyRxyzmLZFo2,1967-09-29,1969-06-27,Regeringen Erlander III,kommunikationsminister
 i-U22vAKBq8RA2Ji6KCU4j6Z,1959-12-01,1969-10-14,Regeringen Erlander III,justitieminister
 i-2wqSLYX3KMpYHr9NReDRzj,1966-12-09,1969-10-14,Regeringen Erlander III,konsultativt statsråd
 i-B4nu9XszBXgUbk8rfByBoJ,1967-01-09,1969-10-14,Regeringen Erlander III,konsultativt statsråd
+i-B4nu9XszBXgUbk8rfByBoJ,1969-10-14,1976-10-08,Regeringen Palme I,konsultativt statsråd
 i-DKX1MP4aaNtFZSpMKXCwY,1968-01-01,1969-10-14,Regeringen Erlander III,utbildningsminister
 i-NAbeZfqManywc6YbAfsfki,1955-09-12,1970-10-09,Regeringen Erlander II,handelsminister
 i-NAbeZfqManywc6YbAfsfki,1955-09-12,1970-10-09,Regeringen Erlander III,handelsminister
@@ -573,8 +576,8 @@ i-QPZoWKCvCmfTAWBDnrZkyr,1967-09-29,1973-11-03,Regeringen Erlander III,skolminis
 i-QPZoWKCvCmfTAWBDnrZkyr,1967-09-29,1973-11-03,Regeringen Palme I,skolminister
 i-Ua1nqYCRbnUSNc5Tw1tXiK,1969-01-25,1973-11-03,Regeringen Erlander III,inrikesminister
 i-Ua1nqYCRbnUSNc5Tw1tXiK,1969-01-25,1973-11-03,Regeringen Palme I,inrikesminister
-i-2pEgGvjfozTyRxyzmLZFo2,1969-07-01,1973-11-03,Regeringen Erlander III,civilminister
-i-2pEgGvjfozTyRxyzmLZFo2,1969-07-01,1973-11-03,Regeringen Palme I,civilminister
+i-2pEgGvjfozTyRxyzmLZFo2,1969-06-27,1973-10-31,Regeringen Erlander III,civilminister
+i-2pEgGvjfozTyRxyzmLZFo2,1969-06-27,1973-10-31,Regeringen Palme I,civilminister
 i-Uvs6wJSKDGeqbWbAmWFoBe,1969-10-14,1973-11-03,Regeringen Palme I,samfundsminister
 i-B4nu9XszBXgUbk8rfByBoJ,1969-10-14,1973-11-03,Regeringen Palme I,ungdomsminister
 i-PrkaUkuoauE9i2124cj3AX,1971-06-30,1973-11-03,Regeringen Palme I,utrikesminister
@@ -600,7 +603,7 @@ i-FLEUnTue6oAgyDmZZjwLh8,1973-11-03,1976-10-08,Regeringen Palme I,jämställdhet
 i-EKAdp351JQgZiMQXg875jB,1973-11-03,1976-10-08,Regeringen Palme I,biståndsminister
 i-WAR7Xtq5vM5vhtMxcKDZv4,1973-11-03,1976-10-08,Regeringen Palme I,samfundsminister
 i-PxXnoHZ17qEdb9ZZ9xZFF,1973-11-03,1976-10-08,Regeringen Palme I,samfundsminister
-i-2pEgGvjfozTyRxyzmLZFo2,1973-11-03,1976-10-08,Regeringen Palme I,jordbruksminister
+i-2pEgGvjfozTyRxyzmLZFo2,1973-10-31,1976-10-08,Regeringen Palme I,jordbruksminister
 i-NNg3rVUKuVF2eKT1NULEhB,1973-11-03,1976-10-08,Regeringen Palme I,utbildningsminister
 i-ErNemW6WNsbRaNz3Q9qVQH,1973-11-03,1976-10-08,Regeringen Palme I,utrikesminister
 i-WYkrZExE7jfwHjmfH1DPwg,1974-01-01,1976-10-08,Regeringen Palme I,bostadsminister
@@ -744,8 +747,8 @@ i-Swj9MJpeW2AoQ6xU1k7jnv,1985-07-01,1985-10-17,Regeringen Palme II,infrastruktur
 i-VxBS1HHcrVMPJcDXUTpFJS,,1985-10-17,Regeringen Palme II,biståndsminister
 i-WYkrZExE7jfwHjmfH1DPwg,1985-10-07,1986-02-28,Regeringen Palme II,miljöminister
 i-WYkrZExE7jfwHjmfH1DPwg,1982-10-08,1986-03-13,Regeringen Palme II,Statsministerns ställföretädare
-i-2pEgGvjfozTyRxyzmLZFo2,1982-10-08,1986-10-09,Regeringen Carlsson I,jordbruksminister
-i-2pEgGvjfozTyRxyzmLZFo2,1982-10-08,1986-10-09,Regeringen Palme II,jordbruksminister
+i-2pEgGvjfozTyRxyzmLZFo2,1982-10-08,1989-12-31,Regeringen Carlsson I,jordbruksminister
+i-2pEgGvjfozTyRxyzmLZFo2,1982-10-08,1989-12-31,Regeringen Palme II,jordbruksminister
 i-BZDMLaDZjTMLecbbyhYS3t,1983-01-01,1986-10-09,Regeringen Carlsson I,utrikeshandelsminister
 i-BZDMLaDZjTMLecbbyhYS3t,1983-01-01,1986-10-09,Regeringen Palme II,utrikeshandelsminister
 i-2pEgGvjfozTyRxyzmLZFo2,1986-03-13,1986-10-09,Regeringen Carlsson I,Statsministerns ställföretädare
@@ -939,8 +942,8 @@ i-3sPbyicZy7gfbq8RdVTQMb,1994-10-07,1998-10-07,Regeringen Carlsson III,kommunika
 i-3sPbyicZy7gfbq8RdVTQMb,1994-10-07,1998-10-07,Regeringen Persson,kommunikationsminister
 i-PzNviXpYSimQsvSkF9CmDz,1996-03-22,1998-10-07,Regeringen Persson,bostadsminister
 i-PzNviXpYSimQsvSkF9CmDz,1996-03-22,1998-10-07,Regeringen Persson,skatteminister
-i-L7Ay5GaFaMutWEX7utMv62,1996-03-22,1998-10-07,Regeringen Persson,arbetsrättsminister
-i-L7Ay5GaFaMutWEX7utMv62,1996-03-22,1998-10-07,Regeringen Persson,jämställdhetsminister
+i-L7Ay5GaFaMutWEX7utMv62,1996-03-22,1998-10-06,Regeringen Persson,arbetsrättsminister
+i-L7Ay5GaFaMutWEX7utMv62,1996-03-22,1998-10-06,Regeringen Persson,jämställdhetsminister
 i-QtJg9oNHiDkHLkgiCwmrBb,1996-03-22,1998-10-07,Regeringen Persson,jordbruksminister
 i-5iuSCbAspakd6XhUXCtA5E,1996-03-22,1998-10-07,Regeringen Persson,energiminister
 i-5iuSCbAspakd6XhUXCtA5E,1996-03-22,1998-10-07,Regeringen Persson,näringsminister
@@ -1359,7 +1362,7 @@ i-3sPbyicZy7gfbq8RdVTQMb,,,Regeringen Carlsson III,infrastrukturminister
 i-F4Pzs4iARRvqG686ESA9J,,,Regeringen Ullsten,infrastrukturminister
 i-XgRZtFgzPDL7KcwsDvGVej,,,Regeringen Reinfeldt,statsminister
 i-AZnaWEAg22YQ3HzVMfNSHR,,,Regeringen Carl Bildt,statsminister
-i-M6HZSzErrkvRs1tuZi7K48,,,Regeringen De Geer d.ä. III,statsminister
+i-M6HZSzErrkvRs1tuZi7K48,1876-03-20,1880-04-19,Regeringen De Geer d.ä. III,statsminister
 i-6ETHRvdQXy7JyB6UH2jtzU,,,Regeringen Posse,statsminister
 i-DZAnqjUMmj8qFZsvGfjxRv,,,Regeringen Thyselius,statsminister
 i-WvZ8kwXQvoFrcSjSJt2YfH,,,Regeringen Themptander,statsminister
