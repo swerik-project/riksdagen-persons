@@ -3,6 +3,7 @@ throw ERROR on inconsistencies on our side
 
 WARN on upstream errors
 """
+import calendar
 from datetime import datetime
 from lxml import etree
 from pathlib import Path
@@ -14,6 +15,7 @@ from pyriksdagen.utils import (
 )
 from pytest_cfg_fetcher.fetch import fetch_config
 import pandas as pd
+import re
 import unittest
 import warnings
 import yaml
@@ -151,6 +153,71 @@ class Test(unittest.TestCase):
         df_name = "minister"
         df, df_unique, df_duplicate = self.get_duplicates(df_name, None)
         self.assertEqual(len(df), len(df_unique), df_duplicate)
+
+
+    def test_nobility(self):
+        """
+        Test nobility metadata schema and person references.
+        """
+        df_name = "nobility"
+        columns = ["person_id", "start", "end", "title"]
+        df = self.get_meta_df(df_name)
+
+        self.assertEqual(list(df.columns), columns)
+
+        df, df_unique, df_duplicate = self.get_duplicates(df_name, None)
+        self.assertEqual(len(df), len(df_unique), df_duplicate)
+
+        df = df.fillna("").astype(str)
+        person = self.get_meta_df("person")
+
+        missing_persons = df[~df["person_id"].isin(person["person_id"])]
+        self.assertTrue(missing_persons.empty, missing_persons)
+
+        valid_titles = {"greve", "friherre"}
+        invalid_titles = df[~df["title"].isin(valid_titles)]
+        self.assertTrue(invalid_titles.empty, invalid_titles)
+
+        def parse_endpoint(value, is_end=False):
+            if value == "":
+                return None
+            if re.fullmatch(r"\d{4}", value):
+                month = 12 if is_end else 1
+                day = 31 if is_end else 1
+                return datetime(int(value), month, day)
+            if re.fullmatch(r"\d{4}-\d{2}", value):
+                year, month = [int(part) for part in value.split("-")]
+                day = calendar.monthrange(year, month)[1] if is_end else 1
+                return datetime(year, month, day)
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+                return datetime.strptime(value, "%Y-%m-%d")
+            raise ValueError(f"Invalid date value: {value}")
+
+        invalid_dates = []
+        for i, row in df.iterrows():
+            try:
+                start = parse_endpoint(row["start"])
+                end = parse_endpoint(row["end"], is_end=True)
+            except ValueError as e:
+                invalid_dates.append(
+                    {
+                        "row": i + 2,
+                        "person_id": row["person_id"],
+                        "issue": str(e),
+                    }
+                )
+                continue
+
+            if start and end and start > end:
+                invalid_dates.append(
+                    {
+                        "row": i + 2,
+                        "person_id": row["person_id"],
+                        "issue": "start is after end",
+                    }
+                )
+
+        self.assertEqual(len(invalid_dates), 0, pd.DataFrame(invalid_dates))
 
 
     def test_party_affiliation(self):
