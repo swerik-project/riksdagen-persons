@@ -19,6 +19,12 @@ import warnings
 import yaml
 
 
+UNICAMERAL_DEPUTY_SPEAKER_ROLES = {
+    "Sveriges riksdags förste vice talman",
+    "Sveriges riksdags andre vice talman",
+    "Sveriges riksdags tredje vice talman",
+}
+
 
 
 class DuplicateWarning(Warning):
@@ -121,6 +127,22 @@ class Test(unittest.TestCase):
         now = datetime.now().strftime('%Y%m%d-%H%M%S')
         errs.to_csv(f"{outpath}/{now}_db_{df_name}.csv", sep=';', index=False)
 
+    def parse_speaker_date(self, value):
+        """
+        Parse speaker.csv's coarse YYYY dates and exact YYYY-MM-DD dates.
+        """
+        if pd.isna(value) or value == "":
+            return None
+
+        value = str(value)
+        for date_format in ("%Y-%m-%d", "%Y"):
+            try:
+                return datetime.strptime(value, date_format)
+            except ValueError:
+                pass
+
+        raise ValueError(value)
+
     #
     # ---> Tests
     #
@@ -191,6 +213,46 @@ class Test(unittest.TestCase):
 
         df, df_unique, df_duplicate = self.get_duplicates(df_name, None)
         self.assertEqual(len(df), len(df_unique), df_duplicate)
+
+    def test_speaker_light_integrity(self):
+        """
+        Test light integrity constraints for speaker.csv.
+        """
+        speaker = pd.read_csv("data/speaker.csv", dtype=str, keep_default_na=False)
+        person = pd.read_csv("data/person.csv", dtype=str, keep_default_na=False)
+
+        speaker_person_ids = set(speaker["person_id"])
+        known_person_ids = set(person["person_id"])
+        missing_person_ids = sorted(speaker_person_ids - known_person_ids)
+        self.assertEqual(missing_person_ids, [])
+
+        date_errors = []
+        for i, row in speaker.iterrows():
+            for column in ["start", "end"]:
+                try:
+                    self.parse_speaker_date(row[column])
+                except ValueError:
+                    date_errors.append(
+                        {
+                            "line": i + 2,
+                            "person_id": row["person_id"],
+                            "role": row["role"],
+                            "column": column,
+                            "value": row[column],
+                        }
+                    )
+
+        self.assertEqual(date_errors, [])
+
+        duplicate_columns = ["person_id", "start", "end", "role"]
+        duplicate_rows = speaker[speaker.duplicated(duplicate_columns, keep=False)]
+        self.assertTrue(duplicate_rows.empty, duplicate_rows)
+
+        post_1971 = speaker[
+            speaker["start"].apply(self.parse_speaker_date) >= datetime(1971, 1, 1)
+        ]
+        missing_roles = UNICAMERAL_DEPUTY_SPEAKER_ROLES - set(post_1971["role"])
+        self.assertEqual(missing_roles, set())
 
 
     def test_twitter(self):
