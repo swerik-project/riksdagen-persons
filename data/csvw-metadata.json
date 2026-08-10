@@ -2,12 +2,7 @@
   "@context": [
     "http://www.w3.org/ns/csvw",
     {
-      "@language": "en",
-      "dc": "http://purl.org/dc/terms/",
-      "dcat": "http://www.w3.org/ns/dcat#",
-      "schema": "http://schema.org/",
-      "swerik": "https://swerik-project.github.io/ns#",
-      "xsd": "http://www.w3.org/2001/XMLSchema#"
+      "@language": "en"
     }
   ],
   "@id": "https://github.com/swerik-project/riksdagen-persons/tree/main/data/csvw-metadata.json",
@@ -599,7 +594,7 @@
             "required": true
           }
         ],
-        "primaryKey": "government_id"
+        "primaryKey": "government"
       }
     },
     {
