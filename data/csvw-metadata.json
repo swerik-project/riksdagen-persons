@@ -351,6 +351,70 @@
       }
     },
     {
+      "url": "party_leaders.csv",
+      "dc:title": "Party Leaders",
+      "dc:description": "Party leaders over time, each period resolved to the SWERIK party record that existed during it. A tenure spanning a party name change is split into one row per party period, and coexisting party records (a parliamentary group alongside the party organisation) each get their own row, so rows are not mutually exclusive.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier. Empty where the leader has no person record in the corpus.",
+            "datatype": "string"
+          },
+          {
+            "name": "name",
+            "titles": "name",
+            "dc:description": "Leader name as given in the source, retained so that rows without a person_id remain identifiable.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start_date",
+            "titles": "start_date",
+            "dc:description": "Start of the leadership period, clipped to the party's inception where the tenure began before it. Values may be full dates, year-month dates or year-level dates depending on source precision.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            },
+            "required": true
+          },
+          {
+            "name": "end_date",
+            "titles": "end_date",
+            "dc:description": "End of the leadership period, clipped to the party's dissolution where the tenure outlasted it. Empty where the period is ongoing or its end is unknown. Values may be full dates, year-month dates or year-level dates depending on source precision.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "party_id",
+            "titles": "party_id",
+            "dc:description": "Stable SWERIK party identifier of the party led during this period. Note that this column holds a SWERIK party identifier, unlike the party_id column of party.csv and party_affiliation.csv, which holds an external Wikidata QID.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          },
+          {
+            "columnReference": "party_id",
+            "reference": {
+              "resource": "party.csv",
+              "columnReference": "swerik_party_id"
+            }
+          }
+        ]
+      }
+    },
+    {
       "url": "minister.csv",
       "dc:title": "Ministers",
       "dc:description": "Ministerial appointments linked to persons.",

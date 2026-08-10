@@ -1,0 +1,165 @@
+person_id,name,start_date,end_date,party_id
+,Claes Tholin,1896-02,1907-01-17,i-VS8ddgxigwL5TceKtXGApS
+i-VM3kn4h4mTkLoFpEyrhy5t,Hjalmar Branting,1907-01-17,1925-02-24,i-VS8ddgxigwL5TceKtXGApS
+i-L7nvZ56RferP78KNpz2Uh1,Per Albin Hansson,1925-11-15,1946-10-06,i-VS8ddgxigwL5TceKtXGApS
+i-4Mr7D9BCozgkT5mSiFk6Gv,Gustav Möller,1946-10-07,1946-10-09,i-VS8ddgxigwL5TceKtXGApS
+i-8fp2gLHtWqnYwFqeVLu5w8,Tage Erlander,1946-10-09,1969-10-01,i-VS8ddgxigwL5TceKtXGApS
+i-DKX1MP4aaNtFZSpMKXCwY,Olof Palme,1969-10-01,1986-02-28,i-VS8ddgxigwL5TceKtXGApS
+i-WYkrZExE7jfwHjmfH1DPwg,Ingvar Carlsson,1986-03-01,1996-03-15,i-VS8ddgxigwL5TceKtXGApS
+i-3kVCtR7mCK6mW2F6oaBMR5,Göran Persson,1996-03-15,2007-03-17,i-VS8ddgxigwL5TceKtXGApS
+i-GFJcxAB9fyzG2VN1HakscJ,Mona Sahlin,2007-03-17,2011-03-25,i-VS8ddgxigwL5TceKtXGApS
+i-UojdP4mF9dqkxf3QQ9oPFe,Håkan Juholt,2011-03-25,2012-01-21,i-VS8ddgxigwL5TceKtXGApS
+i-Xzt52E3ZeNyJ9HLW4B5Sk1,Stefan Löfven,2012-01-27,2021-11-04,i-VS8ddgxigwL5TceKtXGApS
+i-74hLepsvAgUMEvVVtBCGuc,Magdalena Andersson,2021-11-04,,i-VS8ddgxigwL5TceKtXGApS
+i-QfeDyZ27DQmH17bsjAZDYK,Gustaf Fredrik Östberg,1905,1905,i-9gKkoAVdC2bU1LFrXNHCxd
+i-5p2XzfXQYwvKFEXTR5iFUy,Hugo Tamm,1907,1907-10-04,i-9gKkoAVdC2bU1LFrXNHCxd
+i-QfeDyZ27DQmH17bsjAZDYK,Gustaf Fredrik Östberg,1908,1912,i-9gKkoAVdC2bU1LFrXNHCxd
+i-QfeDyZ27DQmH17bsjAZDYK,Gustaf Fredrik Östberg,1910,1912,i-W4wDukSDpMNcSwPExagVMB
+i-QfeDyZ27DQmH17bsjAZDYK,Gustaf Fredrik Östberg,1912,1912,i-3kDgsboJBSv4zGqF4zfCsY
+i-Fnu186BGHvvTJDuB7t6zMb,Arvid Lindman,1912,1912,i-9gKkoAVdC2bU1LFrXNHCxd
+i-Fnu186BGHvvTJDuB7t6zMb,Arvid Lindman,1912,1912,i-W4wDukSDpMNcSwPExagVMB
+i-Fnu186BGHvvTJDuB7t6zMb,Arvid Lindman,1912,1917,i-3kDgsboJBSv4zGqF4zfCsY
+i-WFAgacpHQWjHhsNNuUmKTE,Olof Jonsson i Hov,1917,1917,i-3kDgsboJBSv4zGqF4zfCsY
+i-Fnu186BGHvvTJDuB7t6zMb,Arvid Lindman,1919,1920,i-3kDgsboJBSv4zGqF4zfCsY
+i-7qWGCczgXmCbLWUggUPPsa,Carl Hallendorff,1922,1922,i-3kDgsboJBSv4zGqF4zfCsY
+i-Fnu186BGHvvTJDuB7t6zMb,Arvid Lindman,1924,1935-06-03,i-3kDgsboJBSv4zGqF4zfCsY
+i-Fnu186BGHvvTJDuB7t6zMb,Arvid Lindman,1935,1935-06-03,i-4nyjRorziqEDtDmp1ZXDoP
+i-CU4eSFiFKKx8yk9jS92iFV,Gösta Bagge,1935-06-03,1944-12-09,i-4nyjRorziqEDtDmp1ZXDoP
+i-PRkToj2ss6C9sjWtUtqNNh,Fritiof Domö,1944-12-09,1950-01-09,i-4nyjRorziqEDtDmp1ZXDoP
+i-2gvrXtH5sAT9PgXsCVpQSW,Jarl Hjalmarson,1950-01-09,1961-08-28,i-4nyjRorziqEDtDmp1ZXDoP
+i-2gvrXtH5sAT9PgXsCVpQSW,Jarl Hjalmarson,1952-07-17,1961-08-28,i-3A4u29WVtvfu8i1KwuPEeE
+i-S8m3fmgdhJmz5CbDpVBctA,Gunnar Heckscher,1961-08-28,1965-06-01,i-4nyjRorziqEDtDmp1ZXDoP
+i-S8m3fmgdhJmz5CbDpVBctA,Gunnar Heckscher,1961-08-28,1965-06-01,i-3A4u29WVtvfu8i1KwuPEeE
+i-MTA6YhhXtmnmGGwd2tXXRL,Yngve Holmberg,1965-06-01,1970-11-14,i-4nyjRorziqEDtDmp1ZXDoP
+i-MTA6YhhXtmnmGGwd2tXXRL,Yngve Holmberg,1965-06-01,1969-01-09,i-3A4u29WVtvfu8i1KwuPEeE
+i-MTA6YhhXtmnmGGwd2tXXRL,Yngve Holmberg,1969-01-10,1970-11-14,i-F6Stwe8wVnSPa3BbgusszQ
+i-LQKP5CDY62YpFZWUbs7QiW,Gösta Bohman,1970-11-14,1981-10-25,i-F6Stwe8wVnSPa3BbgusszQ
+i-Pe1ftVDt68xexZMLUFEKsL,Ulf Adelsohn,1981-10-25,1986-08-23,i-F6Stwe8wVnSPa3BbgusszQ
+i-AZnaWEAg22YQ3HzVMfNSHR,Carl Bildt,1986-08-23,1999-09-04,i-F6Stwe8wVnSPa3BbgusszQ
+i-4i5vpDVzDizjgGeYkeoK2E,Bo Lundgren,1999-09-04,2003-10-25,i-F6Stwe8wVnSPa3BbgusszQ
+i-XgRZtFgzPDL7KcwsDvGVej,Fredrik Reinfeldt,2003-10-25,2015-01-10,i-F6Stwe8wVnSPa3BbgusszQ
+i-CajxChHCyySL6R6AQNT1bF,Anna Kinberg Batra,2015-01-10,2017-08-25,i-F6Stwe8wVnSPa3BbgusszQ
+i-bRyJHEKb5DCkicXkuZwMY,Ulf Kristersson,2017-10-01,,i-F6Stwe8wVnSPa3BbgusszQ
+i-ViDKs1694HGMUS3nPFJ9Vd,Erik Eriksson i Spraxkya,1916-12,1919,i-CNbGLyuzdkRJ2sJBBpzJit
+i-8aihZN7cw4opEHkSafGqrr,Johan Andersson i Raklösen,1920,1924-01,i-CNbGLyuzdkRJ2sJBBpzJit
+i-9gw6tCpchuRJcG4S3PU6wP,Johan Johansson i Kälkebo,1924,1928-06-22,i-CNbGLyuzdkRJ2sJBBpzJit
+i-95K5z35tn37uoiYoUqCBaa,Olof Olsson i Kullenbergstorp,1929-06-15,1934-06,i-CNbGLyuzdkRJ2sJBBpzJit
+i-QSvXYSPnCaog2kVQuZMYmX,Axel Pehrsson-Bramstorp,1934-06-16,1949-06-20,i-CNbGLyuzdkRJ2sJBBpzJit
+i-KaEwnQ53dsfqZGV8fcpYbX,Gunnar Hedlund,1949-06-20,1957-07-02,i-CNbGLyuzdkRJ2sJBBpzJit
+i-KaEwnQ53dsfqZGV8fcpYbX,Gunnar Hedlund,1957-07-03,1971-06-21,i-UiFZiVNo3YgVfyN93Qigiv
+i-PDvEfAmYAgGTBhkGvyY7F4,Thorbjörn Fälldin,1971-06-21,1985-12-05,i-UiFZiVNo3YgVfyN93Qigiv
+i-XrDegv7uQGz4MSbepK4txd,Karin Söder,1985-12-05,1987-01-02,i-UiFZiVNo3YgVfyN93Qigiv
+i-FrizKF8qiYUeCD64QhzzFt,Olof Johansson,1987-02-21,1998-06-15,i-UiFZiVNo3YgVfyN93Qigiv
+i-GSfuaZB2iKY7EQ9cNr63sp,Lennart Daléus,1998-06-15,2001-03-19,i-UiFZiVNo3YgVfyN93Qigiv
+i-PRFN1BS8QWUhjjGAM8w3Fj,Maud Olofsson,2001-03-19,2011-09-23,i-UiFZiVNo3YgVfyN93Qigiv
+i-NirXfc8JiwP3Ssuz3NR6e2,Annie Lööf,2011-09-23,2023-02-02,i-UiFZiVNo3YgVfyN93Qigiv
+i-2B9CQsorTkxsV4aDV5kmNj,Muharrem Demirok,2023-02-02,2025-05-03,i-UiFZiVNo3YgVfyN93Qigiv
+i-FsQi9rLBPWwgHr8YrG1deY,Anna-Karin Hatt,2025-05-03,2025-10-15,i-UiFZiVNo3YgVfyN93Qigiv
+i-AmkEPQHyLbWFNYdCQzmzAu,Elisabeth Thand Ringqvist,2025-11-13,,i-UiFZiVNo3YgVfyN93Qigiv
+i-PfWLQcWc1zHmdsEJAzj7vd,Sixten von Friesen,1900-01-16,1905,i-JmAkiEUKt5ZBgaCKGCMNu2
+i-Hr1HTFqifdBa5H1eAGcaEu,Karl Staaff,1904,1904,i-JmAkiEUKt5ZBgaCKGCMNu2
+i-Hr1HTFqifdBa5H1eAGcaEu,Karl Staaff,1907,1915,i-JmAkiEUKt5ZBgaCKGCMNu2
+i-KLVdWuEH3iyC7Ws5pZeVNK,Daniel Persson i Tällberg,1915,1917,i-JmAkiEUKt5ZBgaCKGCMNu2
+i-EMnZ9doEs8MQVGY2nAGkkE,Nils Edén,1917,1923,i-JmAkiEUKt5ZBgaCKGCMNu2
+i-SmANBDpEMp49AgxGMgLJX,Ernst Beckman,1902,1914,i-6phCStV52pp0GuBufmEi9g
+i-H51hFF5ej5tCePg4YqjSsq,Axel Schotte,1914,1917,i-6phCStV52pp0GuBufmEi9g
+i-KLVdWuEH3iyC7Ws5pZeVNK,Daniel Persson i Tällberg,1917,1918,i-6phCStV52pp0GuBufmEi9g
+i-4kz1fC2gQwdiC7G6RzQ2SK,Raoul Hamilton,1919,1923,i-6phCStV52pp0GuBufmEi9g
+i-Xk2ZY1AVkT44C7mHKMPyhE,Carl Gustaf Ekman,1923-06-06,1933-03,i-V7MTfG5XaAmjbSDtLkyyfc
+i-3D7Cfk47LUcjbeGff3k8fV,Felix Hamrin,1933-01-10,1934-08-05,i-V7MTfG5XaAmjbSDtLkyyfc
+i-WLU6NbD2RqdzNAUFs2iT52,Ola Jeppsson i Mörrum,1933-03,1934-08-05,i-V7MTfG5XaAmjbSDtLkyyfc
+i-JSniSV7GLnNo4eioo6Paqg,Eliel Löfgren,1923-10-07,1930-06-07,i-9fghptqkyNzTVdA8knRCGq
+,E. A. Nilson,1924-01-10,1925-01-10,i-9fghptqkyNzTVdA8knRCGq
+i-JSniSV7GLnNo4eioo6Paqg,Eliel Löfgren,1925-01-10,1934-08-05,i-9fghptqkyNzTVdA8knRCGq
+i-4WEXv6PZpB3sB69uG9D7nN,Ernst Lyberg,1930-06-07,1932-06-12,i-9fghptqkyNzTVdA8knRCGq
+i-J2XMMheFYn2HnPhL5mPhfx,Karl Andersson,1933-01-24,1934-08-05,i-9fghptqkyNzTVdA8knRCGq
+i-3D7Cfk47LUcjbeGff3k8fV,Felix Hamrin,1934-08-05,1935-01-10,i-FpGjUCojANuvvwqsNXjcuu
+i-57VtU3DUgS6ebh11mtUQes,Gustaf Andersson i Rasjön,1935-01-10,1944-09-28,i-FpGjUCojANuvvwqsNXjcuu
+i-BqDGKscaLhUZHhaFFmx5pf,Bertil Ohlin,1944-09-28,1967-06-11,i-FpGjUCojANuvvwqsNXjcuu
+i-BtszRKWKgFfiTcr2r2Ek6j,Sven Wedén,1967-06-11,1969-09-26,i-FpGjUCojANuvvwqsNXjcuu
+i-Qz4kjjKSzCm5RwSxi2vkro,Gunnar Helén,1969-11-07,1975-11-07,i-FpGjUCojANuvvwqsNXjcuu
+i-8aNTXCV4f9MdU7Dz15ZXyB,Per Ahlmark,1975-11-07,1978-03-04,i-FpGjUCojANuvvwqsNXjcuu
+i-4uJEFdvmwfbMmozZhv5XDY,Ola Ullsten,1978-03-04,1983-10-01,i-FpGjUCojANuvvwqsNXjcuu
+i-MYV5TtBU5tQGwqDu4dq25s,Bengt Westerberg,1983-10-01,1990-11-23,i-FpGjUCojANuvvwqsNXjcuu
+i-MYV5TtBU5tQGwqDu4dq25s,Bengt Westerberg,1990-11-24,1995-02-04,i-Hm85EQfFmbYuYFPjpXtuCj
+i-NTXLkayNLx1xKQsGQibNYd,Maria Leissner,1995-02-04,1997-03-15,i-Hm85EQfFmbYuYFPjpXtuCj
+i-NZES3NTTAs3ZaBTU3RVkYE,Lars Leijonborg,1997-03-15,2007-09-07,i-Hm85EQfFmbYuYFPjpXtuCj
+i-AvFShRZVEyBV61S19AKNGK,Jan Björklund,2007-09-07,2015-11-22,i-Hm85EQfFmbYuYFPjpXtuCj
+i-AvFShRZVEyBV61S19AKNGK,Jan Björklund,2015-11-23,2019-06-28,i-Kpkv9BSujEEJp1S4rDiDt7
+i-Rtt4vV6Vr1WnfJAi2Dn9hN,Nyamko Sabuni,2019-06-28,2022-04-08,i-Kpkv9BSujEEJp1S4rDiDt7
+i-PyYxwdbw2KYpXyCWKWHmmT,Johan Pehrson,2022-04-08,2025-06-24,i-Kpkv9BSujEEJp1S4rDiDt7
+,Simona Mohamsson,2025-06-24,,i-Kpkv9BSujEEJp1S4rDiDt7
+,Eva Sahlin,1981-10-04,1984-06-02,i-Qha9NerKBigcjJXgoRk4Md
+i-FaHZVPWVR2eB2WbWdES1dK,Ragnhild Pohanka,1984-06-02,1986-05,i-Qha9NerKBigcjJXgoRk4Md
+i-EF4gEp1CrEwnV5AnkFU4P2,Per Gahrton,1984-06-02,1985-09-29,i-Qha9NerKBigcjJXgoRk4Md
+i-EfLrWUocZwsV2PVnPdzohZ,Birger Schlaug,1985-09-29,1986-05,i-Qha9NerKBigcjJXgoRk4Md
+i-5orH1EJN5hP5LGxnLXboj2,Eva Goës,1986-05,1988-10,i-Qha9NerKBigcjJXgoRk4Md
+i-EfLrWUocZwsV2PVnPdzohZ,Birger Schlaug,1986-05,1988-10,i-Qha9NerKBigcjJXgoRk4Md
+i-T3gdjsEDM8Rwzy9YJpgufQ,Inger Schörling,1988-09-28,1988-10-02,i-Qha9NerKBigcjJXgoRk4Md
+i-C5oSgDpxjTK7J31TqsPEwQ,Claes Roxbergh,1988-09-28,1988-10-02,i-Qha9NerKBigcjJXgoRk4Md
+,Fiona Björling,1988-10-02,1990-06,i-Qha9NerKBigcjJXgoRk4Md
+i-CjZkXimkoMyh995sWqXoSH,Anders Nordin,1988-10-02,1990-06,i-Qha9NerKBigcjJXgoRk4Md
+,Margareta Gisselberg,1990-06-14,1992-04,i-Qha9NerKBigcjJXgoRk4Md
+,Jan Axelsson,1990-06-14,1992-04,i-Qha9NerKBigcjJXgoRk4Md
+i-NAZHDwfGffE63ZZmJW4qqn,Marianne Samuelsson,1992-04-19,1999-05-14,i-Qha9NerKBigcjJXgoRk4Md
+i-EfLrWUocZwsV2PVnPdzohZ,Birger Schlaug,1992-04-19,2000-06-03,i-Qha9NerKBigcjJXgoRk4Md
+i-Q6T8pKy9pERdSQEuTcARyR,Lotta Nilsson Hedström,1999-05-14,2002-05-10,i-Qha9NerKBigcjJXgoRk4Md
+i-JyVEFshzVXajALX3xcvJad,Matz Hammarström,2000-06-03,2002-05-10,i-Qha9NerKBigcjJXgoRk4Md
+i-FvpsLGyVJwy2VnAqBbfthX,Maria Wetterstrand,2002-05-10,2011-05-21,i-Qha9NerKBigcjJXgoRk4Md
+i-9BUsH2Bn1bGihptNC5r7uq,Peter Eriksson,2002-05-10,2011-05-21,i-Qha9NerKBigcjJXgoRk4Md
+i-ST3KmJ7dwych9bUEkWZEu6,Åsa Romson,2011-05-21,2016-05-13,i-Qha9NerKBigcjJXgoRk4Md
+i-9CH1KbWwyrj8DRqAQB3Fza,Gustav Fridolin,2011-05-21,2019-05-04,i-Qha9NerKBigcjJXgoRk4Md
+i-CicdbyfBoitjsXT8ugY99b,Isabella Lövin,2016-05-13,2021-01-31,i-Qha9NerKBigcjJXgoRk4Md
+i-C2s3YhmmVmNkgvznmmnD4x,Per Bolund,2019-05-04,2023-11-18,i-Qha9NerKBigcjJXgoRk4Md
+i-PjQgLPLrkyDV2oYQfyuWq2,Märta Stenevi,2021-01-31,2024-04-28,i-Qha9NerKBigcjJXgoRk4Md
+i-6EELQ8G6wLhYTcTKBKGQdF,Daniel Helldén,2023-11-18,,i-Qha9NerKBigcjJXgoRk4Md
+i-PAgTpr3nkZRPEoiqjPKQAf,Amanda Lind,2024-04-28,,i-Qha9NerKBigcjJXgoRk4Md
+i-DVBTR4FnJMy9pff8g7tptN,Carl Winberg,1917-05-13,,i-SwzbNNYoyZYULLDiTu2zGP
+i-Xy8Q95HPbgxgm5iGyCyBLd,Zeth Höglund,1917-05-13,,i-SwzbNNYoyZYULLDiTu2zGP
+i-Lee6HzC4SEXhUPAjMv9DZi,Ernst Åström,1918,1918,i-SwzbNNYoyZYULLDiTu2zGP
+i-UA8QjszavpQnNcqKo12DY2,Karl Kilbom,1918,1918,i-SwzbNNYoyZYULLDiTu2zGP
+i-Xy8Q95HPbgxgm5iGyCyBLd,Zeth Höglund,1919,1920,i-SwzbNNYoyZYULLDiTu2zGP
+i-Xy8Q95HPbgxgm5iGyCyBLd,Zeth Höglund,1921,1923,i-SwzbNNYoyZYULLDiTu2zGP
+i-Xy8Q95HPbgxgm5iGyCyBLd,Zeth Höglund,1921-03-28,1923,i-TQCUzfkvYhBFrXeQwXoENH
+i-UA8QjszavpQnNcqKo12DY2,Karl Kilbom,1921,1923,i-SwzbNNYoyZYULLDiTu2zGP
+i-UA8QjszavpQnNcqKo12DY2,Karl Kilbom,1921-03-28,1923,i-TQCUzfkvYhBFrXeQwXoENH
+i-Xy8Q95HPbgxgm5iGyCyBLd,Zeth Höglund,1923,1924-08,i-SwzbNNYoyZYULLDiTu2zGP
+i-Xy8Q95HPbgxgm5iGyCyBLd,Zeth Höglund,1923,1924-08,i-TQCUzfkvYhBFrXeQwXoENH
+i-UA8QjszavpQnNcqKo12DY2,Karl Kilbom,1924-08,1929-11-30,i-TQCUzfkvYhBFrXeQwXoENH
+i-Tym6Aw1gBuoRJqfGXa3Wdy,Nils Flyg,1924-08,1929-11-30,i-TQCUzfkvYhBFrXeQwXoENH
+i-JFfGPzij9DwmfbXD4RuxyR,Sven Linderot,1929-11-30,1951-03,i-TQCUzfkvYhBFrXeQwXoENH
+i-GPYC16egTa8Yn3wguN6WLg,Hilding Hagberg,1951-03,1964-01-06,i-TQCUzfkvYhBFrXeQwXoENH
+i-FiisfXYQcUpGymcboYQpoF,C.-H. Hermansson,1964-01-06,1967-05-15,i-TQCUzfkvYhBFrXeQwXoENH
+i-FiisfXYQcUpGymcboYQpoF,C.-H. Hermansson,1967-05-16,1975-03-13,i-2SVXJYpXaRHXxbWRcbRd5N
+i-5wPAQ1MDLRTsW1XngYcD46,Lars Werner,1975-03-13,1990-05-26,i-2SVXJYpXaRHXxbWRcbRd5N
+i-5wPAQ1MDLRTsW1XngYcD46,Lars Werner,1990-05-27,1993-01-07,i-CJb7bcc1eZcehvGarg8GpB
+i-LzYBGnvuhNHdQ7LQKPA6UJ,Gudrun Schyman,1993-01-07,2003-01-26,i-CJb7bcc1eZcehvGarg8GpB
+i-LB9Tn6B1RXiAHZEWEK1hYC,Ulla Hoffmann,2003-01-26,2004-02-20,i-CJb7bcc1eZcehvGarg8GpB
+i-HpwkrkkrFd1MRPixHrr8q1,Lars Ohly,2004-02-20,2012-01-06,i-CJb7bcc1eZcehvGarg8GpB
+i-PPZKpwNr5kqkWArvESGC5X,Jonas Sjöstedt,2012-01-06,2020-10-31,i-CJb7bcc1eZcehvGarg8GpB
+i-8voj19hLWTGJHkxNP79tRb,Nooshi Dadgostar,2020-10-31,,i-CJb7bcc1eZcehvGarg8GpB
+,Birger Ekstedt,1964-04-15,1972-07-05,i-B79rKJX4ZV61ozevGt8JLL
+,"Tremannapresidium (Åke Gafvelin, Sven Enlund, Alf Svensson)",1972-07-05,1973-01-20,i-B79rKJX4ZV61ozevGt8JLL
+i-WCrN5vpCNm6z9SvfXfby4e,Alf Svensson,1973-01-20,1996-06-28,i-B79rKJX4ZV61ozevGt8JLL
+i-WCrN5vpCNm6z9SvfXfby4e,Alf Svensson,1996-06-29,2004-04-03,i-BRRSButj7zSqB1u7zD6hod
+i-8BTYtQ95yRpC5syyC4aHoY,Göran Hägglund,2004-04-03,2015-04-25,i-BRRSButj7zSqB1u7zD6hod
+i-UgG6CqxVABxx5Hq9mpcZ8M,Ebba Busch,2015-04-25,,i-BRRSButj7zSqB1u7zD6hod
+,Leif Ericsson,1988-02-06,1989,i-Cb6hYmJf4EDxesFRgErquJ
+,Johnny Berg,1988-02-06,1989,i-Cb6hYmJf4EDxesFRgErquJ
+,Ola Sundberg,1989,1990,i-Cb6hYmJf4EDxesFRgErquJ
+,Anders Klarström,1989,1995,i-Cb6hYmJf4EDxesFRgErquJ
+,Madeleine Larsson,1990,1992,i-Cb6hYmJf4EDxesFRgErquJ
+i-Uj8BaU1ExHbpKGVGx2k7Ed,Mikael Jansson,1995,2005-05-07,i-Cb6hYmJf4EDxesFRgErquJ
+i-DCyBt1A1WiAhi5tm5k4A7H,Jimmie Åkesson,2005-05-07,,i-Cb6hYmJf4EDxesFRgErquJ
+i-4sEtGRPnuog5ACjegAtakj,Mattias Karlsson,2014-10-17,2015-04,i-Cb6hYmJf4EDxesFRgErquJ
+i-g5oS8RSWuaximcHXWswPQ,Bert Karlsson,1991-02-04,1991-02-18,i-YYGgpk3VEG9XW1wZTzUShT
+i-SfnrsjEZBg9vdQjkU5VSZ2,Ian Wachtmeister,1991-02-25,1994-04-09,i-YYGgpk3VEG9XW1wZTzUShT
+i-9YGU9DsvbhLihhVNnvsKND,Harriet Colliander,1994-04-09,1994-06-05,i-YYGgpk3VEG9XW1wZTzUShT
+i-5kCq5AaWoBgtDWjyW8fFRC,Vivianne Franzén,1994-06-05,1997-01-18,i-YYGgpk3VEG9XW1wZTzUShT
+,Gunilla Aastrup Persson,1994-07-28,1994-08-20,i-YYGgpk3VEG9XW1wZTzUShT
+,Bengt G. Andersson,1997-01-18,1997-05-25,i-YYGgpk3VEG9XW1wZTzUShT
+i-XAZuDYpjMWVDmo4L97UiJw,John Bouvin,1997-05-25,1998-05,i-YYGgpk3VEG9XW1wZTzUShT
+,Per Anders Gustavsson,1998-05,1999,i-YYGgpk3VEG9XW1wZTzUShT
+i-ALh3PHXDXv6YrkEMi4FuSj,Ulf Eriksson,1999,2000-02-25,i-YYGgpk3VEG9XW1wZTzUShT
+i-Tym6Aw1gBuoRJqfGXa3Wdy,Nils Flyg,1934-05-01,1943-01-09,i-SeXPXWPfyJxdeuuFtkdhxh
+,Agaton Blom,1943-01-09,1943,i-SeXPXWPfyJxdeuuFtkdhxh
