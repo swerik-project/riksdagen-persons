@@ -37,6 +37,15 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - end_date
 - name
 
+### `data/constituency_chairs.csv`
+- chair_id
+- constituency_id
+- start_date
+- end_date
+
+Which constituency each chair (`data/chairs.csv`) belonged to over time. A chair
+that was reassigned between constituencies has one row per period.
+
 ### `data/constituency_mandates.csv`
 - constituency_id
 - start_date
@@ -44,6 +53,18 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - mandates_total
 
 The mandate counts include adjustment mandates (`utjämningsmandat`) where applicable.
+
+All three tables cover `fk`/`ak` from 1925 and `ek` from 1971. Dates are
+parliament year boundaries taken from `data/riksdag-year.csv`: a period starts on
+the first day of the first parliament year it covers and ends on the last day of
+the last one, and consecutive parliament years carrying the same value are merged
+into a single row. From parliament year 2004/05 onwards the riksdag years
+themselves share their boundary date, so consecutive periods can touch on a
+single date.
+
+The one exception is the `ek` end date `2026-09-15`, which is the end of
+parliament year 2025/26. `data/riksdag-year.csv` currently stops at 2023/24 and
+needs 2024/25 and 2025/26 added for the tables to line up with it.
 
 ### `data/described_by_source.csv`
 - person_id

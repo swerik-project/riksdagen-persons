@@ -1,86 +1,86 @@
 constituency_id,chamber,start_date,end_date,name
-66c4e12f-d764-5309-805a-f277d91aeb7a,ak,1935-01-10,1970-12-31,Blekinge läns valkrets
-7b5afbfc-aed1-5edb-913c-f89ce67b95a5,ak,1935-01-10,1970-12-31,Dalarnas läns valkrets
-9921f6f7-beb1-5224-826d-9b6e7c4114ed,ak,1935-01-10,1970-12-31,Fyrstadskretsen
-46761fb0-8ace-53c0-8fbd-0a16c7fdc91d,ak,1935-01-10,1970-12-31,Gotlands läns valkrets
-e8fdd33e-33e7-5173-b67a-6f4fba71e4c2,ak,1935-01-10,1970-12-31,Gävleborgs läns valkrets
-32a49115-dad0-5644-afea-6515d72a2fa2,ak,1935-01-10,1970-12-31,Göteborgs kommuns valkrets
-1b9b3b5b-7c11-5f64-978c-e1d1b2002a5c,ak,1935-01-10,1968-12-31,Göteborgs och Bohus läns landstingsområdes valkrets
-40f4f3db-cc8b-56b3-9b72-ec5a1a7070f7,ak,1935-01-10,1970-12-31,Hallands läns valkrets
-ac735033-812d-52c5-a8ef-5254c0709510,ak,1935-01-10,1970-12-31,Jämtlands läns valkrets
-f84e8ff2-b777-5e35-a14c-1a7e50855c36,ak,1935-01-10,1970-12-31,Jönköpings läns valkrets
-29c5f935-4b82-58f0-84b9-38fddeb478af,ak,1935-01-10,1970-12-31,Kalmar läns valkrets
-b3d2ec8f-3f84-5cdd-90b2-eda30fe3e65d,ak,1935-01-10,1970-12-31,Kronobergs läns valkrets
-ab10f2c3-d083-5c5a-b2ca-4a97f0410be8,ak,1935-01-10,1970-12-31,Malmöhus läns valkrets
-850638eb-f41d-5b5e-91bc-07a7ef818918,ak,1935-01-10,1970-12-31,Norrbottens läns valkrets
-1a7d6b60-4c46-50ef-97fa-502f0b3ced2c,ak,1935-01-10,1970-12-31,Skaraborgs läns valkrets
-5b619cc8-3825-577f-97f2-791ed8cbbf05,ak,1935-01-10,1970-12-31,Skåne läns norra och östra valkrets
-c29ab651-c882-5372-b400-c1315400b6b3,ak,1935-01-10,1970-12-31,Stockholms kommuns valkrets
-899ddaec-b4d0-557f-b637-39829a0fe0f1,ak,1935-01-10,1970-12-31,Stockholms läns valkrets
-5a911a22-b39d-5103-bb54-ad725a2f95c8,ak,1935-01-10,1970-12-31,Södermanlands läns valkrets
-060a7a45-fe70-554c-8395-60d9d522d523,ak,1935-01-10,1970-12-31,Uppsala läns valkrets
-28620dd2-366d-501c-94a8-a4bec03c7e6d,ak,1935-01-10,1970-12-31,Värmlands läns valkrets
-2ccd1e63-c4b8-53cc-8ef3-e9e95931d8f5,ak,1935-01-10,1970-12-31,Västerbottens läns valkrets
-be377f3a-8cd1-587c-a143-bf5d0cf4b3a0,ak,1935-01-10,1970-12-31,Västernorrlands läns valkrets
-899d0c00-1af8-56c6-bd46-79a83dfcf8c1,ak,1935-01-10,1970-12-31,Västmanlands läns valkrets
-c94900a7-e6d3-53ad-8ee2-5badba7c9876,ak,1935-01-10,1970-12-31,Älvsborgs läns norra valkrets
-43274040-7203-53fb-845b-2b1afddb308c,ak,1935-01-10,1970-12-31,Älvsborgs läns södra valkrets
-aba3654d-c18d-541b-b3cc-d11c7f96ec6f,ak,1935-01-10,1970-12-31,Örebro läns valkrets
-f190408c-0f9c-57ed-8318-9273dced4a38,ak,1935-01-10,1970-12-31,Östergötlands läns valkrets
-e6d44948-949c-57bb-a181-ca34ac6ac813,ak,1969-01-01,1970-12-31,Göteborgs och Bohus läns landstingskommuns valkrets
-352b9fa6-6250-564e-9522-46f6a36097fe,ek,1971-01-11,2026-06-30,Blekinge läns valkrets
+66c4e12f-d764-5309-805a-f277d91aeb7a,ak,1925-01-10,1970-12-16,Blekinge läns valkrets
+7b5afbfc-aed1-5edb-913c-f89ce67b95a5,ak,1925-01-10,1970-12-16,Dalarnas läns valkrets
+9921f6f7-beb1-5224-826d-9b6e7c4114ed,ak,1925-01-10,1970-12-16,Fyrstadskretsen
+46761fb0-8ace-53c0-8fbd-0a16c7fdc91d,ak,1925-01-10,1970-12-16,Gotlands läns valkrets
+e8fdd33e-33e7-5173-b67a-6f4fba71e4c2,ak,1925-01-10,1970-12-16,Gävleborgs läns valkrets
+32a49115-dad0-5644-afea-6515d72a2fa2,ak,1925-01-10,1970-12-16,Göteborgs kommuns valkrets
+1b9b3b5b-7c11-5f64-978c-e1d1b2002a5c,ak,1925-01-10,1968-12-12,Göteborgs och Bohus läns landstingsområdes valkrets
+40f4f3db-cc8b-56b3-9b72-ec5a1a7070f7,ak,1925-01-10,1970-12-16,Hallands läns valkrets
+ac735033-812d-52c5-a8ef-5254c0709510,ak,1925-01-10,1970-12-16,Jämtlands läns valkrets
+f84e8ff2-b777-5e35-a14c-1a7e50855c36,ak,1925-01-10,1970-12-16,Jönköpings läns valkrets
+29c5f935-4b82-58f0-84b9-38fddeb478af,ak,1925-01-10,1970-12-16,Kalmar läns valkrets
+b3d2ec8f-3f84-5cdd-90b2-eda30fe3e65d,ak,1925-01-10,1970-12-16,Kronobergs läns valkrets
+ab10f2c3-d083-5c5a-b2ca-4a97f0410be8,ak,1925-01-10,1970-12-16,Malmöhus läns valkrets
+850638eb-f41d-5b5e-91bc-07a7ef818918,ak,1925-01-10,1970-12-16,Norrbottens läns valkrets
+1a7d6b60-4c46-50ef-97fa-502f0b3ced2c,ak,1925-01-10,1970-12-16,Skaraborgs läns valkrets
+5b619cc8-3825-577f-97f2-791ed8cbbf05,ak,1925-01-10,1970-12-16,Skåne läns norra och östra valkrets
+c29ab651-c882-5372-b400-c1315400b6b3,ak,1925-01-10,1970-12-16,Stockholms kommuns valkrets
+899ddaec-b4d0-557f-b637-39829a0fe0f1,ak,1925-01-10,1970-12-16,Stockholms läns valkrets
+5a911a22-b39d-5103-bb54-ad725a2f95c8,ak,1925-01-10,1970-12-16,Södermanlands läns valkrets
+060a7a45-fe70-554c-8395-60d9d522d523,ak,1925-01-10,1970-12-16,Uppsala läns valkrets
+28620dd2-366d-501c-94a8-a4bec03c7e6d,ak,1925-01-10,1970-12-16,Värmlands läns valkrets
+2ccd1e63-c4b8-53cc-8ef3-e9e95931d8f5,ak,1925-01-10,1970-12-16,Västerbottens läns valkrets
+be377f3a-8cd1-587c-a143-bf5d0cf4b3a0,ak,1925-01-10,1970-12-16,Västernorrlands läns valkrets
+899d0c00-1af8-56c6-bd46-79a83dfcf8c1,ak,1925-01-10,1970-12-16,Västmanlands läns valkrets
+c94900a7-e6d3-53ad-8ee2-5badba7c9876,ak,1925-01-10,1970-12-16,Älvsborgs läns norra valkrets
+43274040-7203-53fb-845b-2b1afddb308c,ak,1925-01-10,1970-12-16,Älvsborgs läns södra valkrets
+aba3654d-c18d-541b-b3cc-d11c7f96ec6f,ak,1925-01-10,1970-12-16,Örebro läns valkrets
+f190408c-0f9c-57ed-8318-9273dced4a38,ak,1925-01-10,1970-12-16,Östergötlands läns valkrets
+e6d44948-949c-57bb-a181-ca34ac6ac813,ak,1969-01-10,1970-12-16,Göteborgs och Bohus läns landstingskommuns valkrets
+352b9fa6-6250-564e-9522-46f6a36097fe,ek,1971-01-11,2026-09-15,Blekinge läns valkrets
 72b06389-e8cc-5a7f-97bd-b697e29d92e9,ek,1971-01-11,1998-09-14,Bohusläns valkrets
-0513f834-f476-5c55-878b-e62d2d14087d,ek,1971-01-11,2026-06-30,Dalarnas läns valkrets
+0513f834-f476-5c55-878b-e62d2d14087d,ek,1971-01-11,2026-09-15,Dalarnas läns valkrets
 77564945-b88d-5e96-9332-e474481cfc5c,ek,1971-01-11,1994-06-21,Fyrstadskretsen
-592c89e6-ed06-5678-85d5-3a81f32dd83f,ek,1971-01-11,2026-06-30,Gotlands läns valkrets
-98941c5a-79d5-5f93-bb5b-00774f03d021,ek,1971-01-11,2026-06-30,Gävleborgs läns valkrets
-66149692-b5cc-50f8-a778-2131f28fe57d,ek,1971-01-11,2026-06-30,Göteborgs kommuns valkrets
-6a5c15bf-688e-5a49-a539-c0eab6478b72,ek,1971-01-11,2026-06-30,Hallands läns valkrets
-88073719-4eb3-5370-acd3-f061ef80e1f6,ek,1971-01-11,2026-06-30,Jämtlands läns valkrets
-3b8cf955-bf93-520c-a3fe-c4a47a38a4bb,ek,1971-01-11,2026-06-30,Jönköpings läns valkrets
-9ccaac05-e6d0-5ae0-af81-84815d9ba0e0,ek,1971-01-11,2026-06-30,Kalmar läns valkrets
+592c89e6-ed06-5678-85d5-3a81f32dd83f,ek,1971-01-11,2026-09-15,Gotlands läns valkrets
+98941c5a-79d5-5f93-bb5b-00774f03d021,ek,1971-01-11,2026-09-15,Gävleborgs läns valkrets
+66149692-b5cc-50f8-a778-2131f28fe57d,ek,1971-01-11,2026-09-15,Göteborgs kommuns valkrets
+6a5c15bf-688e-5a49-a539-c0eab6478b72,ek,1971-01-11,2026-09-15,Hallands läns valkrets
+88073719-4eb3-5370-acd3-f061ef80e1f6,ek,1971-01-11,2026-09-15,Jämtlands läns valkrets
+3b8cf955-bf93-520c-a3fe-c4a47a38a4bb,ek,1971-01-11,2026-09-15,Jönköpings läns valkrets
+9ccaac05-e6d0-5ae0-af81-84815d9ba0e0,ek,1971-01-11,2026-09-15,Kalmar läns valkrets
 d5171f25-e144-57e0-8818-475a87cc5809,ek,1971-01-11,1998-09-14,Kristianstads läns valkrets
-95fb07b4-04ab-5bf8-897a-40679b4451c4,ek,1971-01-11,2026-06-30,Kronobergs läns valkrets
+95fb07b4-04ab-5bf8-897a-40679b4451c4,ek,1971-01-11,2026-09-15,Kronobergs läns valkrets
 ce2cfedc-94fe-5e5e-9134-ce27a7ce4f48,ek,1971-01-11,1994-06-21,Malmöhus läns valkrets
-7113b2cc-9972-5065-b2dd-77a7e868113a,ek,1971-01-11,2026-06-30,Norrbottens läns valkrets
+7113b2cc-9972-5065-b2dd-77a7e868113a,ek,1971-01-11,2026-09-15,Norrbottens läns valkrets
 d34944b2-a7de-580f-a21e-a5691c785c8b,ek,1971-01-11,1998-09-14,Skaraborgs läns valkrets
-949c1729-b7ab-521d-ad1b-60772ec2276f,ek,1971-01-11,2026-06-30,Stockholms kommuns valkrets
-75402d16-31ae-5692-a5a7-1008706a092a,ek,1971-01-11,2026-06-30,Stockholms läns valkrets
-d14f5900-dbaa-535e-9291-6d184dee2316,ek,1971-01-11,2026-06-30,Södermanlands läns valkrets
-0af335ba-25f1-581d-858f-437ea3adecea,ek,1971-01-11,2026-06-30,Uppsala läns valkrets
-88dc2372-1608-57b0-b0e6-1a789be8dec9,ek,1971-01-11,2026-06-30,Värmlands läns valkrets
-9b204dc5-542a-5e3a-ac60-fe14c1cb46de,ek,1971-01-11,2026-06-30,Västerbottens läns valkrets
-136bd5a8-3576-5b75-bc02-5e42ba984200,ek,1971-01-11,2026-06-30,Västernorrlands läns valkrets
-335f9c5a-a060-59bd-8e10-95c79ced3c98,ek,1971-01-11,2026-06-30,Västmanlands läns valkrets
-9bef2d8f-9970-5df1-97fa-4941035d4740,ek,1971-01-11,2026-06-30,Västra Götalands läns södra valkrets
+949c1729-b7ab-521d-ad1b-60772ec2276f,ek,1971-01-11,2026-09-15,Stockholms kommuns valkrets
+75402d16-31ae-5692-a5a7-1008706a092a,ek,1971-01-11,2026-09-15,Stockholms läns valkrets
+d14f5900-dbaa-535e-9291-6d184dee2316,ek,1971-01-11,2026-09-15,Södermanlands läns valkrets
+0af335ba-25f1-581d-858f-437ea3adecea,ek,1971-01-11,2026-09-15,Uppsala läns valkrets
+88dc2372-1608-57b0-b0e6-1a789be8dec9,ek,1971-01-11,2026-09-15,Värmlands läns valkrets
+9b204dc5-542a-5e3a-ac60-fe14c1cb46de,ek,1971-01-11,2026-09-15,Västerbottens läns valkrets
+136bd5a8-3576-5b75-bc02-5e42ba984200,ek,1971-01-11,2026-09-15,Västernorrlands läns valkrets
+335f9c5a-a060-59bd-8e10-95c79ced3c98,ek,1971-01-11,2026-09-15,Västmanlands läns valkrets
+9bef2d8f-9970-5df1-97fa-4941035d4740,ek,1971-01-11,2026-09-15,Västra Götalands läns södra valkrets
 23ff6cf2-07be-5de2-b01f-a4aa39503e46,ek,1971-01-11,1998-09-14,Älvsborgs läns norra valkrets
-e81abcf9-5188-5367-ad40-4e793d4f55e3,ek,1971-01-11,2026-06-30,Örebro läns valkrets
-dec7e907-68a3-5977-b0b2-267422de26fb,ek,1971-01-11,2026-06-30,Östergötlands läns valkrets
-90a5c436-9d88-53bb-b9e9-7314a438703f,ek,1994-10-03,2026-06-30,Malmö kommuns valkrets
+e81abcf9-5188-5367-ad40-4e793d4f55e3,ek,1971-01-11,2026-09-15,Örebro läns valkrets
+dec7e907-68a3-5977-b0b2-267422de26fb,ek,1971-01-11,2026-09-15,Östergötlands läns valkrets
+90a5c436-9d88-53bb-b9e9-7314a438703f,ek,1994-10-03,2026-09-15,Malmö kommuns valkrets
 8d210c34-becf-5dbd-b1fe-15d608635374,ek,1994-10-03,1998-09-14,Malmöhus läns norra valkrets
 c8cd016a-8b2b-5bc2-8fc9-e8ac0f5ba65a,ek,1994-10-03,1998-09-14,Malmöhus läns södra valkrets
-b4b85329-707b-5b48-8276-04b0980850d3,ek,1998-09-15,2026-06-30,Skåne läns norra och östra valkrets
-e1bb0035-d8f1-5350-8aa8-962b52b0553f,ek,1998-09-15,2026-06-30,Skåne läns södra valkrets
-0259c4e5-f8dc-555a-a982-bc145e6182ca,ek,1998-09-15,2026-06-30,Skåne läns västra valkrets
-1aed974b-1504-5223-9940-b9a0d45845cd,ek,1998-09-15,2026-06-30,Västra Götalands läns norra valkrets
-03c44b66-74b5-5b6f-a92f-365fcb5806de,ek,1998-09-15,2026-06-30,Västra Götalands läns västra valkrets
-3ed93b54-6eb2-5b8d-865d-7587a0486881,ek,1998-09-15,2026-06-30,Västra Götalands läns östra valkrets
-52d3be74-04c2-5ef4-ac33-10731fc6f074,fk,1935-01-10,1970-12-31,Blekinge läns och Kristianstads läns valkrets
-b7bcdd69-c525-5716-a985-a12260f20f70,fk,1935-01-10,1970-12-31,Gävleborgs läns med Gävle stads valkrets
-b4e172a0-46d7-5354-96b4-2d766739c3d2,fk,1935-01-10,1970-12-31,Göteborgs och Bohus läns valkrets
-d534300a-5530-5600-b1af-7b1dd6723046,fk,1935-01-10,1970-12-31,Göteborgs stads valkrets
-632495bb-e961-5581-9345-278a353d0405,fk,1935-01-10,1970-12-31,Jönköpings läns valkrets
-2e90b3ff-5244-5c1b-a4d6-62773e5bd1d7,fk,1935-01-10,1970-12-31,Kalmar läns och Gotlands läns valkrets
-7671d1a1-b494-53ab-9ea8-59b8fbcdffc5,fk,1935-01-10,1970-12-31,Kopparbergs läns valkrets
-ff31e42c-ce65-53e9-94c9-75a3487f1284,fk,1935-01-10,1970-12-31,Kronobergs läns och Hallands läns valkrets
-6618cb64-f32d-5806-a07f-3b914964eb26,fk,1935-01-10,1970-12-31,Malmöhus läns valkrets
-3ffdbc9c-5dee-555c-98e7-92f3c88684af,fk,1935-01-10,1970-12-31,Skaraborgs läns valkrets
-79c143d0-423e-582c-881d-0abf0a4cea5c,fk,1935-01-10,1970-12-31,Stockholms läns och Uppsala läns valkrets
-3dcfde6e-898d-5524-ad57-3dd1df3ddd34,fk,1935-01-10,1970-12-31,Stockholms stads valkrets
-e86227ba-7ea9-5302-81b6-461749b8b4fd,fk,1935-01-10,1970-12-31,Södermanlands läns och Västmanlands läns valkrets
-483bb97a-ce72-54f6-a4c4-49b240eb5341,fk,1935-01-10,1970-12-31,Värmlands läns valkrets
-977a727a-b31d-5b48-ac60-f7538811f206,fk,1935-01-10,1970-12-31,Västerbottens läns och Norrbottens läns valkrets
-71e15575-7c78-51b0-9d82-5d2a233e8e87,fk,1935-01-10,1970-12-31,Västernorrlands läns och Jämtlands läns valkrets
-c1806dd8-c00e-56de-bec3-c28973b02d73,fk,1935-01-10,1970-12-31,Älvsborgs läns valkrets
-789d2e28-3b2d-5bc6-9425-4c454f3efeec,fk,1935-01-10,1970-12-31,Örebro läns valkrets
-39f50a3e-9748-5cbb-899c-fce5af24b249,fk,1935-01-10,1970-12-31,Östergötlands läns med Norrköpings stads valkrets
+b4b85329-707b-5b48-8276-04b0980850d3,ek,1998-09-15,2026-09-15,Skåne läns norra och östra valkrets
+e1bb0035-d8f1-5350-8aa8-962b52b0553f,ek,1998-09-15,2026-09-15,Skåne läns södra valkrets
+0259c4e5-f8dc-555a-a982-bc145e6182ca,ek,1998-09-15,2026-09-15,Skåne läns västra valkrets
+1aed974b-1504-5223-9940-b9a0d45845cd,ek,1998-09-15,2026-09-15,Västra Götalands läns norra valkrets
+03c44b66-74b5-5b6f-a92f-365fcb5806de,ek,1998-09-15,2026-09-15,Västra Götalands läns västra valkrets
+3ed93b54-6eb2-5b8d-865d-7587a0486881,ek,1998-09-15,2026-09-15,Västra Götalands läns östra valkrets
+52d3be74-04c2-5ef4-ac33-10731fc6f074,fk,1925-01-10,1970-12-16,Blekinge läns och Kristianstads läns valkrets
+b7bcdd69-c525-5716-a985-a12260f20f70,fk,1925-01-10,1970-12-16,Gävleborgs läns med Gävle stads valkrets
+b4e172a0-46d7-5354-96b4-2d766739c3d2,fk,1925-01-10,1970-12-16,Göteborgs och Bohus läns valkrets
+d534300a-5530-5600-b1af-7b1dd6723046,fk,1925-01-10,1970-12-16,Göteborgs stads valkrets
+632495bb-e961-5581-9345-278a353d0405,fk,1925-01-10,1970-12-16,Jönköpings läns valkrets
+2e90b3ff-5244-5c1b-a4d6-62773e5bd1d7,fk,1925-01-10,1970-12-16,Kalmar läns och Gotlands läns valkrets
+7671d1a1-b494-53ab-9ea8-59b8fbcdffc5,fk,1925-01-10,1970-12-16,Kopparbergs läns valkrets
+ff31e42c-ce65-53e9-94c9-75a3487f1284,fk,1925-01-10,1970-12-16,Kronobergs läns och Hallands läns valkrets
+6618cb64-f32d-5806-a07f-3b914964eb26,fk,1925-01-10,1970-12-16,Malmöhus läns valkrets
+3ffdbc9c-5dee-555c-98e7-92f3c88684af,fk,1925-01-10,1970-12-16,Skaraborgs läns valkrets
+79c143d0-423e-582c-881d-0abf0a4cea5c,fk,1925-01-10,1970-12-16,Stockholms läns och Uppsala läns valkrets
+3dcfde6e-898d-5524-ad57-3dd1df3ddd34,fk,1925-01-10,1970-12-16,Stockholms stads valkrets
+e86227ba-7ea9-5302-81b6-461749b8b4fd,fk,1925-01-10,1970-12-16,Södermanlands läns och Västmanlands läns valkrets
+483bb97a-ce72-54f6-a4c4-49b240eb5341,fk,1925-01-10,1970-12-16,Värmlands läns valkrets
+977a727a-b31d-5b48-ac60-f7538811f206,fk,1925-01-10,1970-12-16,Västerbottens läns och Norrbottens läns valkrets
+71e15575-7c78-51b0-9d82-5d2a233e8e87,fk,1925-01-10,1970-12-16,Västernorrlands läns och Jämtlands läns valkrets
+c1806dd8-c00e-56de-bec3-c28973b02d73,fk,1925-01-10,1970-12-16,Älvsborgs läns valkrets
+789d2e28-3b2d-5bc6-9425-4c454f3efeec,fk,1925-01-10,1970-12-16,Örebro läns valkrets
+39f50a3e-9748-5cbb-899c-fce5af24b249,fk,1925-01-10,1970-12-16,Östergötlands läns med Norrköpings stads valkrets
