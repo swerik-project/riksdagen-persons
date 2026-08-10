@@ -55,8 +55,8 @@
             "titles": "born",
             "dc:description": "Birth date, where known.",
             "datatype": {
-              "base": "date",
-              "format": "yyyy-MM-dd"
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
             }
           },
           {
@@ -64,8 +64,8 @@
             "titles": "dead",
             "dc:description": "Death date, where known.",
             "datatype": {
-              "base": "date",
-              "format": "yyyy-MM-dd"
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
             }
           },
           {
