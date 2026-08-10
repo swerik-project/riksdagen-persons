@@ -8,7 +8,7 @@ import unittest
 from csvw import TableGroup
 from trainerlog import get_logger
 LOGGER = get_logger("csvw-test")
-
+import polars as pl
 
 
 class Test(unittest.TestCase):
@@ -116,6 +116,57 @@ class Test(unittest.TestCase):
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         tg.validate_schema()
+
+
+
+    def test_column_formats(self):
+        """
+        validate CSVW schema
+        """
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+        erroneous_tables = []
+        no_errors = 0
+        for table in tg.tables:
+            table_name = table.url
+            df = pl.read_csv(self.get_data_dir() / str(table_name), infer_schema_length=10000)
+            for col in table.tableSchema.columns:
+                pl_col = df.get_column(col.name)
+                datatype = col.datatype
+
+                # BOOLEAN
+                if datatype.format == "^(True|False)$":
+                    if pl_col.dtype != pl.Boolean:
+                        LOGGER.error(f"Expected boolean data type for {col.name}, got {pl_col.dtype}")
+                        no_errors += 1
+
+                # Integer
+                elif datatype.base == "integer":
+                    if pl_col.dtype != pl.Int64:
+                        LOGGER.error(f"Expected integer data type for {col.name}, got {pl_col.dtype}")
+                        no_errors += 1
+
+                # String with regular expression
+                elif datatype.base == "string" and datatype.format is not None:
+                    matched = df.filter(pl.col(col.name).is_not_null())
+                    matched = matched.with_columns(pl.col(col.name).str.extract(datatype.format, group_index=0).alias(f"matches"))
+                    matched = matched.filter(pl.col("matches").is_null())
+                    if len(matched) >= 1:
+                        LOGGER.error(f"Non format-matching ({datatype.base}, {datatype.format}) values found for column {col.name}:\n{matched}")
+                        no_errors += len(matched)
+
+                # ISO date yyyy-MM-dd
+                elif datatype.base == "date":
+                    expression = r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+
+                    matched = df.filter(pl.col(col.name).is_not_null())
+                    matched = matched.with_columns(pl.col(col.name).str.extract(expression, group_index=0).alias(f"matches"))
+                    matched = matched.filter(pl.col("matches").is_null())
+
+                    if len(matched) >= 1:
+                        LOGGER.error(f"Expected ISO date data type for '{col.name}', non-matching values found\n{matched}")
+                        no_errors += len(matched)
+
+        self.assertEqual(0, no_errors, f"{no_errors} format error(s) found")
 
 
 
