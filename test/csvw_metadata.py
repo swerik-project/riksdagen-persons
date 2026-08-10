@@ -5,7 +5,9 @@ import csv
 import json
 from pathlib import Path
 import unittest
-
+from csvw import TableGroup
+from trainerlog import get_logger
+LOGGER = get_logger("csvw-test")
 
 
 
@@ -80,12 +82,31 @@ class Test(unittest.TestCase):
         """
         mismatches = []
         for table in self.get_metadata_tables():
+            table_name = table["url"]
             csv_header = self.get_csv_header(table["url"])
             metadata_header = self.get_metadata_header(table)
             if csv_header != metadata_header:
-                mismatches.append(table["url"])
+                LOGGER.error(f"In {table_name}, CSV headers do not match:\nfound {csv_header}, should be {metadata_header}")
+                mismatches.append(table_name)
 
-        self.assertEqual(mismatches, [])
+        self.assertEqual(len(mismatches), 0, f"Erroneous columns found in {len(mismatches)} file(s)")
+
+    def test_primary_keys(self):
+        """
+        test CSVW column declarations match the actual CSV header order
+        """
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+        no_errors = 0
+        for table in tg.tables:
+            table_name = table.url
+            try:
+                table.check_primary_key()
+            except Exception as e:
+                LOGGER.error(f"ERROR in {table_name}:\n{e}")
+                no_errors += 1
+
+        
+        self.assertEqual(0, no_errors, f"Non-unique primary keys found in {no_errors} table(s).")
 
 
 
