@@ -96,17 +96,19 @@ class Test(unittest.TestCase):
         test CSVW column declarations match the actual CSV header order
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
-        no_errors = 0
+        erroneous_tables = []
         for table in tg.tables:
             table_name = table.url
             try:
                 table.check_primary_key()
             except Exception as e:
                 LOGGER.error(f"ERROR in {table_name}:\n{e}")
-                no_errors += 1
+                erroneous_tables.append(str(table_name))
 
-        
-        self.assertEqual(0, no_errors, f"Non-unique primary keys found in {no_errors} table(s).")
+        print(erroneous_tables)
+        no_errors = len(erroneous_tables)
+        erroneous_tables = ", ".join(erroneous_tables)
+        self.assertEqual(0, no_errors, f"Non-unique primary keys found in {no_errors} table(s): {erroneous_tables}.")
 
 
 
