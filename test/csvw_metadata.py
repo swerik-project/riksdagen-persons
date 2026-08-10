@@ -93,7 +93,7 @@ class Test(unittest.TestCase):
 
     def test_primary_keys(self):
         """
-        test CSVW column declarations match the actual CSV header order
+        test that all primary keys are unique
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         erroneous_tables = []
@@ -109,6 +109,13 @@ class Test(unittest.TestCase):
         erroneous_tables = ", ".join(erroneous_tables)
         self.assertEqual(0, no_errors, f"Non-unique primary keys found in {no_errors} table(s): {erroneous_tables}.")
 
+
+    def test_validate_schema(self):
+        """
+        validate CSVW schema
+        """
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+        tg.validate_schema()
 
 
 
