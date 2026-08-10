@@ -62,9 +62,7 @@ into a single row. From parliament year 2004/05 onwards the riksdag years
 themselves share their boundary date, so consecutive periods can touch on a
 single date.
 
-The one exception is the `ek` end date `2026-09-15`, which is the end of
-parliament year 2025/26. `data/riksdag-year.csv` currently stops at 2023/24 and
-needs 2024/25 and 2025/26 added for the tables to line up with it.
+Every date in these tables is a session boundary in `data/riksdag-year.csv`.
 
 ### `data/described_by_source.csv`
 - person_id
