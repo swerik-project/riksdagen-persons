@@ -105,7 +105,6 @@ class Test(unittest.TestCase):
                 LOGGER.error(f"ERROR in {table_name}:\n{e}")
                 erroneous_tables.append(str(table_name))
 
-        print(erroneous_tables)
         no_errors = len(erroneous_tables)
         erroneous_tables = ", ".join(erroneous_tables)
         self.assertEqual(0, no_errors, f"Non-unique primary keys found in {no_errors} table(s): {erroneous_tables}.")
