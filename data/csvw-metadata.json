@@ -1,0 +1,1069 @@
+{
+  "@context": [
+    "http://www.w3.org/ns/csvw",
+    {
+      "@language": "en"
+    }
+  ],
+  "@id": "https://github.com/swerik-project/riksdagen-persons/tree/main/data/csvw-metadata.json",
+  "dc:title": "Riksdagen Persons CSV metadata",
+  "dc:description": "CSVW table group metadata for the normalized CSV tables in the Riksdagen Persons repository.",
+  "dc:identifier": "riksdagen-persons",
+  "dc:publisher": {
+    "schema:name": "SWERIK project",
+    "schema:url": {
+      "@id": "https://swerik-project.github.io/"
+    }
+  },
+  "dc:source": {
+    "@id": "https://github.com/swerik-project/riksdagen-persons"
+  },
+  "dc:isPartOf": {
+    "@id": "https://github.com/swerik-project/the-swedish-parliament-corpus"
+  },
+  "dcat:keyword": [
+    "Riksdagen",
+    "Swedish Parliament",
+    "members of parliament",
+    "CSVW"
+  ],
+  "dialect": {
+    "encoding": "utf-8",
+    "delimiter": ",",
+    "header": true
+  },
+  "null": [
+    "",
+    "nan"
+  ],
+  "tables": [
+    {
+      "url": "person.csv",
+      "dc:title": "Persons",
+      "dc:description": "Person records for actors represented in the corpus metadata.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "born",
+            "titles": "born",
+            "dc:description": "Birth date, where known.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "dead",
+            "titles": "dead",
+            "dc:description": "Death date, where known.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "gender",
+            "titles": "gender",
+            "dc:description": "Recorded gender category.",
+            "datatype": "string"
+          },
+          {
+            "name": "riksdagen_id",
+            "titles": "riksdagen_id",
+            "dc:description": "Identifier used by the Swedish Parliament, where available.",
+            "datatype": "string"
+          }
+        ],
+        "primaryKey": "person_id"
+      }
+    },
+    {
+      "url": "name.csv",
+      "dc:title": "Names",
+      "dc:description": "Names and aliases linked to persons.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "name",
+            "titles": "name",
+            "dc:description": "Recorded name or alias.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "primary_name",
+            "titles": "primary_name",
+            "dc:description": "Whether the name is the preferred display name for the person.",
+            "datatype": {
+              "base": "string",
+              "format": "^(True|False)$"
+            },
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "member_of_parliament.csv",
+      "dc:title": "Members of Parliament",
+      "dc:description": "Mandates as member of parliament, including dates, district, and role.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Start of the mandate. Values may be full dates or year-level dates depending on source precision.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "End of the mandate. Values may be full dates or year-level dates depending on source precision.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "district",
+            "titles": "district",
+            "dc:description": "Electoral district or constituency.",
+            "datatype": "string"
+          },
+          {
+            "name": "role",
+            "titles": "role",
+            "dc:description": "Parliamentary role or chamber membership.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "party_affiliation.csv",
+      "dc:title": "Party Affiliations",
+      "dc:description": "Party affiliations for persons over time.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Start of the affiliation. Values may be full dates or year-level dates depending on source precision.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "End of the affiliation. Values may be full dates or year-level dates depending on source precision.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "party",
+            "titles": "party",
+            "dc:description": "Party name.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "party_id",
+            "titles": "party_id",
+            "dc:description": "External party identifier, typically a Wikidata QID.",
+            "datatype": "string"
+          },
+          {
+            "name": "swerik_party_id",
+            "titles": "swerik_party_id",
+            "dc:description": "Stable SWERIK party identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start_precision",
+            "titles": "start_precision",
+            "dc:description": "Precision of the affiliation start date.",
+            "datatype": {
+              "base": "string",
+              "format": "^(day|year)$"
+            },
+            "required": true
+          },
+          {
+            "name": "end_precision",
+            "titles": "end_precision",
+            "dc:description": "Precision of the affiliation end date.",
+            "datatype": {
+              "base": "string",
+              "format": "^(day|year)$"
+            },
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          },
+          {
+            "columnReference": "swerik_party_id",
+            "reference": {
+              "resource": "party.csv",
+              "columnReference": "swerik_party_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "party.csv",
+      "dc:title": "Parties",
+      "dc:description": "Party authority table with external identifiers, SWERIK party identifiers, temporal coverage, and successor relations.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "party_id",
+            "titles": "party_id",
+            "dc:description": "External party identifier, typically a Wikidata QID. Values are not unique when the same external entity is represented by multiple SWERIK party records.",
+            "datatype": "string"
+          },
+          {
+            "name": "party",
+            "titles": "party",
+            "dc:description": "Party or parliamentary group name.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "inception",
+            "titles": "inception",
+            "dc:description": "Party inception date. Values may use a nominal full date even when precision is year-level.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "inception_precision",
+            "titles": "inception_precision",
+            "dc:description": "Precision of the inception date.",
+            "datatype": {
+              "base": "string",
+              "format": "^(day|year)$"
+            },
+            "required": true
+          },
+          {
+            "name": "dissolution",
+            "titles": "dissolution",
+            "dc:description": "Party dissolution date, where known. Values may use a nominal full date even when precision is year-level.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            }
+          },
+          {
+            "name": "dissolution_precision",
+            "titles": "dissolution_precision",
+            "dc:description": "Precision of the dissolution date, where known.",
+            "datatype": {
+              "base": "string",
+              "format": "^(day|year)$"
+            }
+          },
+          {
+            "name": "successor_id",
+            "titles": "successor_id",
+            "dc:description": "External identifier or pipe-separated identifiers for successor parties, where known.",
+            "datatype": "string"
+          },
+          {
+            "name": "swerik_party_id",
+            "titles": "swerik_party_id",
+            "dc:description": "Stable SWERIK party identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "swerik_successor",
+            "titles": "swerik_successor",
+            "dc:description": "SWERIK party identifier or pipe-separated identifiers for successor parties, where known.",
+            "datatype": "string"
+          }
+        ],
+        "primaryKey": "swerik_party_id"
+      }
+    },
+    {
+      "url": "minister.csv",
+      "dc:title": "Ministers",
+      "dc:description": "Ministerial appointments linked to persons.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Start of the appointment. Values may be full dates, year-month values, or blank depending on source precision.",
+            "datatype": {
+              "base": "string",
+              "format": "^([0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?)?$"
+            }
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "End of the appointment. Values may be full dates, year-month values, or blank depending on source precision.",
+            "datatype": {
+              "base": "string",
+              "format": "^([0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?)?$"
+            }
+          },
+          {
+            "name": "government",
+            "titles": "government",
+            "dc:description": "Government name.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "role",
+            "titles": "role",
+            "dc:description": "Ministerial role.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "speaker.csv",
+      "dc:title": "Speakers",
+      "dc:description": "Speaker and deputy speaker roles over time.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Start of the speaker role. Values may be full dates or year-level dates depending on source precision.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            },
+            "required": true
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "End of the speaker role. Values may be full dates or year-level dates depending on source precision.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "role",
+            "titles": "role",
+            "dc:description": "Speaker role.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "chairs.csv",
+      "dc:title": "Parliamentary Chairs",
+      "dc:description": "Seat or chair identifiers by chamber and chair number.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chair_id",
+            "titles": "chair_id",
+            "dc:description": "Stable chair identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "chamber",
+            "titles": "chamber",
+            "dc:description": "Parliamentary chamber code.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "chair_nr",
+            "titles": "chair_nr",
+            "dc:description": "Chair number within the chamber.",
+            "datatype": "integer",
+            "required": true
+          }
+        ],
+        "primaryKey": "chair_id"
+      }
+    },
+    {
+      "url": "chair_mp.csv",
+      "dc:title": "Chair Occupancy",
+      "dc:description": "Mappings between parliamentary chairs, parliament years, and persons.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chair_id",
+            "titles": "chair_id",
+            "dc:description": "Stable chair identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "parliament_year",
+            "titles": "parliament_year",
+            "dc:description": "Parliament year to which the mapping applies.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Start of the chair occupancy, where known. Values may be full dates or year-level dates.",
+            "datatype": {
+              "base": "string",
+              "format": "^([0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?)?$"
+            }
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "End of the chair occupancy, where known. Values may be full dates or year-level dates.",
+            "datatype": {
+              "base": "string",
+              "format": "^([0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?)?$"
+            }
+          },
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier, where the chair occupant is known.",
+            "datatype": "string"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "chair_id",
+            "reference": {
+              "resource": "chairs.csv",
+              "columnReference": "chair_id"
+            }
+          },
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "government.csv",
+      "dc:title": "Governments",
+      "dc:description": "Swedish governments and their time spans.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Start date of the government.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "End date of the government, where known.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            }
+          },
+          {
+            "name": "government",
+            "titles": "government",
+            "dc:description": "Government name.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "government_id",
+            "titles": "government_id",
+            "dc:description": "External government identifier, typically a Wikidata QID.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": "government"
+      }
+    },
+    {
+      "url": "party_abbreviation.csv",
+      "dc:title": "Party Abbreviations",
+      "dc:description": "Mappings from party names and variants to party abbreviations.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "party",
+            "titles": "party",
+            "dc:description": "Party name or party-name variant.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "abbreviation",
+            "titles": "abbreviation",
+            "dc:description": "Standard party abbreviation.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "ocr_correction",
+            "titles": "ocr_correction",
+            "dc:description": "Whether the row represents an OCR correction variant.",
+            "datatype": {
+              "base": "string",
+              "format": "^(True|False)$"
+            },
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "url": "external_identifiers.csv",
+      "dc:title": "External Identifiers",
+      "dc:description": "External authority identifiers for persons.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "authority",
+            "titles": "authority",
+            "dc:description": "Identifier authority or source system.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "identifier",
+            "titles": "identifier",
+            "dc:description": "Identifier value in the authority system.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "wiki_id.csv",
+      "dc:title": "Wikidata Identifiers",
+      "dc:description": "Wikidata identifiers linked to persons.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "wiki_id",
+            "titles": "wiki_id",
+            "dc:description": "Wikidata entity identifier.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "described_by_source.csv",
+      "dc:title": "Described By Source",
+      "dc:description": "Bibliographic or authority sources that describe persons.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "source",
+            "titles": "source",
+            "dc:description": "Source identifier or URI.",
+            "datatype": "anyURI",
+            "required": true
+          },
+          {
+            "name": "volume",
+            "titles": "volume",
+            "dc:description": "Source volume, where applicable.",
+            "datatype": "string"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "references_map.csv",
+      "dc:title": "Reference Map",
+      "dc:description": "References that map persons to bibliographic keys, Wikidata source identifiers, and page references.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "bibtex_key",
+            "titles": "bibtex_key",
+            "dc:description": "Bibliographic key for the referenced source.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "wiki_id",
+            "titles": "wiki_id",
+            "dc:description": "Wikidata entity identifier for the source.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "page",
+            "titles": "page",
+            "dc:description": "Page reference in the source.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "explicit_no_party.csv",
+      "dc:title": "Explicit No Party Evidence",
+      "dc:description": "Source evidence for persons explicitly recorded without party affiliation.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "wiki_id",
+            "titles": "wiki_id",
+            "dc:description": "Wikidata entity identifier for the person.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "pages",
+            "titles": "pages",
+            "dc:description": "Page reference in the cited source.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "ref",
+            "titles": "ref",
+            "dc:description": "Source reference URI.",
+            "datatype": "anyURI",
+            "required": true
+          },
+          {
+            "name": "vol",
+            "titles": "vol",
+            "dc:description": "Volume or source-specific reference detail.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "location_specifier.csv",
+      "dc:title": "Location Specifiers",
+      "dc:description": "Location specifiers used to disambiguate persons.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "location",
+            "titles": "location",
+            "dc:description": "Location used as a name or identity specifier.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "place_of_birth.csv",
+      "dc:title": "Places of Birth",
+      "dc:description": "Birth places linked to persons.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "link",
+            "titles": "link",
+            "dc:description": "Place URI, typically a Wikidata URI.",
+            "datatype": "anyURI",
+            "required": true
+          },
+          {
+            "name": "place",
+            "titles": "place",
+            "dc:description": "Place name.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "place_of_death.csv",
+      "dc:title": "Places of Death",
+      "dc:description": "Death places linked to persons.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "link",
+            "titles": "link",
+            "dc:description": "Place URI, typically a Wikidata URI.",
+            "datatype": "anyURI",
+            "required": true
+          },
+          {
+            "name": "place",
+            "titles": "place",
+            "dc:description": "Place name.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "portraits.csv",
+      "dc:title": "Portraits",
+      "dc:description": "Portrait image URLs linked to persons.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "portrait",
+            "titles": "portrait",
+            "dc:description": "Portrait image URL.",
+            "datatype": "anyURI",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "twitter.csv",
+      "dc:title": "Twitter Handles",
+      "dc:description": "Twitter/X handles linked to persons.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "twitter",
+            "titles": "twitter",
+            "dc:description": "Twitter/X handle without URL prefix.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "riksdag-year.csv",
+      "dc:title": "Parliament Years",
+      "dc:description": "Parliament years, chamber codes, and session date ranges.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "parliament_year",
+            "titles": "parliament_year",
+            "dc:description": "Parliament year or parliamentary session identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "specifier",
+            "titles": "specifier",
+            "dc:description": "Session specifier, where applicable.",
+            "datatype": "string"
+          },
+          {
+            "name": "chamber",
+            "titles": "chamber",
+            "dc:description": "Parliamentary chamber code.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Start date of the parliament year/chamber combination.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "End date of the parliament year/chamber combination.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          }
+        ]
+      }
+    }
+  ],
+  "swerik:notes": [
+    "This metadata file intentionally starts with conservative constraints. Historical date fields with mixed precision are represented as strings with date-like patterns rather than strict xsd:date values.",
+    "Additional project-specific ordering or curation annotations should use the swerik namespace so the core CSVW structure remains standards-compatible."
+  ]
+}
