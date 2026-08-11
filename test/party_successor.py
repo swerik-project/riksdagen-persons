@@ -4,7 +4,7 @@ Validate the normalized party successor table.
 
 Corpus guarantee:
 `data/party_successor.csv` is the authoritative normalized table for party
-succession links, with one SWERIK party successor relation per row.
+succession links, with one party successor relation per row.
 
 Why this matters:
 `successor_id` and `swerik_successor` in `data/party.csv` are deprecated
@@ -19,7 +19,7 @@ temporary deprecated `swerik_successor` compatibility column in
 
 Documentation:
 See `README.md` for the table descriptions and
-`the-swedish-parliament-corpus/docs/decisions/decision-0021_writing-data-integrity-tests.md`
+`the-swedish-parliament-corpus/docs/decisions/decision-0024_writing-data-integrity-tests.md`
 for the data integrity test style guide.
 """
 
@@ -52,7 +52,7 @@ class TestPartySuccessor(unittest.TestCase):
         """
         party_names, successors = self._load_data()
 
-        expected_columns = ["swerik_party_id", "successor_swerik_party_id"]
+        expected_columns = ["party_id", "successor_party_id"]
         self.assertEqual(
             list(successors.columns),
             expected_columns,
@@ -82,8 +82,8 @@ class TestPartySuccessor(unittest.TestCase):
             f"{duplicated_successors.head(10).to_dict('records')}")
 
         party_ids = set(party_names["swerik_party_id"])
-        source_ids = set(successors["swerik_party_id"])
-        target_ids = set(successors["successor_swerik_party_id"])
+        source_ids = set(successors["party_id"])
+        target_ids = set(successors["successor_party_id"])
         missing_source_ids = sorted(source_ids - party_ids)
         missing_target_ids = sorted(target_ids - party_ids)
 
@@ -103,8 +103,8 @@ class TestPartySuccessor(unittest.TestCase):
         expected_edges = self._successor_edges_from_deprecated_column(
             party_names)
         actual_edges = set(
-            zip(successors["swerik_party_id"],
-                successors["successor_swerik_party_id"]))
+            zip(successors["party_id"],
+                successors["successor_party_id"]))
         missing_edges = sorted(expected_edges - actual_edges)
         extra_edges = sorted(actual_edges - expected_edges)
 
