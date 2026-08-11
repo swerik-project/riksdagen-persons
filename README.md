@@ -100,8 +100,8 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - party_id
 
 ### `data/party_successor.csv`
-- swerik_party_id
-- successor_swerik_party_id
+- party_id
+- successor_party_id
 
 ### `data/person.csv`
 - person_id

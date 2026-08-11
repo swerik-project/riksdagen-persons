@@ -359,34 +359,34 @@
       "tableSchema": {
         "columns": [
           {
-            "name": "swerik_party_id",
-            "titles": "swerik_party_id",
+            "name": "party_id",
+            "titles": "party_id",
             "dc:description": "Stable SWERIK party identifier for the predecessor party.",
             "datatype": "string",
             "required": true
           },
           {
-            "name": "successor_swerik_party_id",
-            "titles": "successor_swerik_party_id",
+            "name": "successor_party_id",
+            "titles": "successor_party_id",
             "dc:description": "Stable SWERIK party identifier for the successor party.",
             "datatype": "string",
             "required": true
           }
         ],
         "primaryKey": [
-          "swerik_party_id",
-          "successor_swerik_party_id"
+          "party_id",
+          "successor_party_id"
         ],
         "foreignKeys": [
           {
-            "columnReference": "swerik_party_id",
+            "columnReference": "party_id",
             "reference": {
               "resource": "party.csv",
               "columnReference": "swerik_party_id"
             }
           },
           {
-            "columnReference": "successor_swerik_party_id",
+            "columnReference": "successor_party_id",
             "reference": {
               "resource": "party.csv",
               "columnReference": "swerik_party_id"
