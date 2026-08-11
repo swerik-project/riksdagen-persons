@@ -7,6 +7,7 @@ on:
   push:
     paths:
       - data/**
+      - test/**
       - .github/**
   workflow_dispatch:
 
@@ -109,6 +110,7 @@ jobs:
       run: |
         python -m unittest test.party-affiliation
         python -m unittest test.party-name
+        python -m unittest test.party_successor
 
   frequency-distr:
     runs-on: ubuntu-latest
