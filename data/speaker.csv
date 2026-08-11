@@ -1,37 +1,37 @@
 person_id,start,end,role
 i-QW5W2LNiETVn7C6pxUPTUU,1867,1872,andra kammarens talman
 i-2KQokBVhondPT8e9ZQdmem,1867,1872,andra kammarens vice talman
-i-9SHnAjHpLBQfhwqrNpggaV,1868,1872,första kammarens vice talman
+i-9SHnAjHpLBQfhwqrNpggaV,1868-01-16,1872,första kammarens vice talman
 i-nScanqUU78nhbW9ef8XLW,1873,1874,andra kammarens vice talman
 i-UorJwn2scwABTf47APC1S2,1873,1874,första kammarens vice talman
 i-A6HKJELS9dEVb676FNQ5tp,1873,1875,andra kammarens talman
-i-2ehtmACUZPNJMNnS5o3dYB,1875,1875,första kammarens vice talman
-i-9SHnAjHpLBQfhwqrNpggaV,1875,1875,första kammarens vice talman
+i-2ehtmACUZPNJMNnS5o3dYB,1875-01-16,1875-05-11,första kammarens vice talman
+i-9SHnAjHpLBQfhwqrNpggaV,1875-05-14,1875,första kammarens vice talman
 i-NykMZF95yM2zdf9NMBtont,1867,1876,första kammarens talman
 i-8pJuJ7cpFV75dB4vcHCzJA,1876,1877,första kammarens vice talman
 i-6tymTvb9PiygbXCXFfdMi6,1877,1877,första kammarens talman
 i-HWWVGZcUSaZGHGdRYcnTju,1878,1878,första kammarens vice talman
-i-Qtn5xiAaEShY2RfbLLuCj8,1875,1880,andra kammarens vice talman
-i-6ETHRvdQXy7JyB6UH2jtzU,1876,1880,andra kammarens talman
+i-Qtn5xiAaEShY2RfbLLuCj8,1875,1880-04-21,andra kammarens vice talman
+i-6ETHRvdQXy7JyB6UH2jtzU,1876,1880-04-19,andra kammarens talman
 i-QW5W2LNiETVn7C6pxUPTUU,1878,1880,första kammarens talman
 i-TF2nMgsgs9UxhzkCePtBJo,1880-04-21,1884,andra kammarens vice talman
-i-37qgHWj8Zd858MSWDhN8Zo,1885,1887,andra kammarens vice talman
-i-BqxiGcrvRSyw7vSVD9ghzT,1887,1888,andra kammarens vice talman
-i-Qtn5xiAaEShY2RfbLLuCj8,1880,1890,andra kammarens talman
+i-37qgHWj8Zd858MSWDhN8Zo,1885,1887-05-03,andra kammarens vice talman
+i-BqxiGcrvRSyw7vSVD9ghzT,1887-05-04,1888,andra kammarens vice talman
+i-Qtn5xiAaEShY2RfbLLuCj8,1880-04-21,1890,andra kammarens talman
 i-37qgHWj8Zd858MSWDhN8Zo,1889,1890,andra kammarens vice talman
-i-C2VM46vRGtzGexbCmpfNpg,1879,1891,första kammarens vice talman
-i-NykMZF95yM2zdf9NMBtont,1881,1891,första kammarens talman
-i-89Xt4xe7kMHGuKUnav6Lzb,1890,1891,andra kammarens talman
+i-C2VM46vRGtzGexbCmpfNpg,1879,1891-03-07,första kammarens vice talman
+i-NykMZF95yM2zdf9NMBtont,1881,1891-03-07,första kammarens talman
+i-89Xt4xe7kMHGuKUnav6Lzb,1891-01-17,1891,andra kammarens talman
 i-Vzob1iVwoThSSCEU9iFJLb,1892,1893,andra kammarens talman
 i-XEaguj6e5odu6YoYQ7mu5L,1891,1894,andra kammarens vice talman
-i-QzXydyaoPnVMCpzAFujWei,1891,1895,första kammarens vice talman
-i-C2VM46vRGtzGexbCmpfNpg,1891,1895,första kammarens talman
+i-QzXydyaoPnVMCpzAFujWei,1891-03-07,1895,första kammarens vice talman
+i-C2VM46vRGtzGexbCmpfNpg,1891-03-07,1895,första kammarens talman
 i-QfeDyZ27DQmH17bsjAZDYK,1895,1896,andra kammarens vice talman
 i-XEaguj6e5odu6YoYQ7mu5L,1897,1897,andra kammarens vice talman
-i-EFGMikwqApUMCA86eB1wGu,1896,1899,första kammarens vice talman
+i-EFGMikwqApUMCA86eB1wGu,1896,1899-02-01,första kammarens vice talman
 i-Ddmtm1uG9esPH37c8XjUXZ,1894,1902,andra kammarens talman
 i-SnW9TwRwSRopKvaUfURXvo,1898,1902,andra kammarens vice talman
-i-LkZi3hQne6xsLtDL597mit,1899,1905,första kammarens vice talman
+i-LkZi3hQne6xsLtDL597mit,1899-02-04,1905,första kammarens vice talman
 i-QzXydyaoPnVMCpzAFujWei,1896,1908,första kammarens talman
 i-ESAm1DKfv3KraeQ1CSiwmq,1903,1908,andra kammarens vice talman
 i-LkZi3hQne6xsLtDL597mit,1906,1908,första kammarens vice talman
@@ -111,6 +111,6 @@ i-YUKjmPPD3LmjeCPdQWkuEh,1994-10-03,2002-09-30,Sveriges riksdags talman
 i-6Yv6bDMEdGpsmCZBFnnZk4,2002-09-30,2006-10-02,Sveriges riksdags talman
 i-D74cdq6EQpWG5dWigfnSSw,2006-10-02,2014-09-29,Sveriges riksdags talman
 i-9KG7jeGdkJDsSQQb3gKA2U,2014-09-29,2018-09-24,Sveriges riksdags talman
-i-wVG4QF5ZkrTTo5uHxD7ED,1867,,första kammarens vice talman
+i-wVG4QF5ZkrTTo5uHxD7ED,1867-01-18,1868-01-15,första kammarens vice talman
 i-UQb1WPSaU3ohorTovz3X3c,1905,,första kammarens vice talman
 i-BZ7PcK8D1efvHXsafGEMKE,2018-09-24,,Sveriges riksdags talman
