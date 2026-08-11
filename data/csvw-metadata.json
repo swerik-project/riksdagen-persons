@@ -555,6 +555,112 @@
       }
     },
     {
+      "url": "constituency.csv",
+      "dc:title": "Constituencies",
+      "dc:description": "Electoral constituencies by chamber and active date range. Constituency identifiers are stable SWERIK UUIDs.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "constituency_id",
+            "titles": "constituency_id",
+            "dc:description": "Stable SWERIK constituency identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "chamber",
+            "titles": "chamber",
+            "dc:description": "Parliamentary chamber code.",
+            "datatype": {
+              "base": "string",
+              "format": "^(fk|ak|ek)$"
+            },
+            "required": true
+          },
+          {
+            "name": "start_date",
+            "titles": "start_date",
+            "dc:description": "Date when the constituency active period starts.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "end_date",
+            "titles": "end_date",
+            "dc:description": "Date when the constituency active period ends.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "name",
+            "titles": "name",
+            "dc:description": "Constituency name.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": "constituency_id"
+      }
+    },
+    {
+      "url": "constituency_mandates.csv",
+      "dc:title": "Constituency Mandates",
+      "dc:description": "Total mandates by constituency and date range. Counts include adjustment mandates where applicable.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "constituency_id",
+            "titles": "constituency_id",
+            "dc:description": "Stable SWERIK constituency identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start_date",
+            "titles": "start_date",
+            "dc:description": "Date when the mandate count starts applying.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "end_date",
+            "titles": "end_date",
+            "dc:description": "Date when the mandate count stops applying.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "mandates_total",
+            "titles": "mandates_total",
+            "dc:description": "Total number of mandates for the constituency during the date range.",
+            "datatype": "integer",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "constituency_id",
+            "reference": {
+              "resource": "constituency.csv",
+              "columnReference": "constituency_id"
+            }
+          }
+        ]
+      }
+    },
+    {
       "url": "government.csv",
       "dc:title": "Governments",
       "dc:description": "Swedish governments and their time spans.",
