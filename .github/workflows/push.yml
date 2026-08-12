@@ -63,6 +63,9 @@ jobs:
     - name: Test that metadata matchs CSVW spec
       run: |
         python -m unittest test.csvw_metadata
+    - name: Test that metadata is properly sorted
+      run: |
+        python -m unittest test.sort_order
 
   db:
     runs-on: ubuntu-latest
