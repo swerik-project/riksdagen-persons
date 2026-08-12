@@ -230,8 +230,7 @@
             "name": "swerik_party_id",
             "titles": "swerik_party_id",
             "dc:description": "Stable SWERIK party identifier.",
-            "datatype": "string",
-            "required": true
+            "datatype": "string"
           },
           {
             "name": "start_precision",
@@ -240,8 +239,7 @@
             "datatype": {
               "base": "string",
               "format": "^(day|year)$"
-            },
-            "required": true
+            }
           },
           {
             "name": "end_precision",
@@ -250,8 +248,7 @@
             "datatype": {
               "base": "string",
               "format": "^(day|year)$"
-            },
-            "required": true
+            }
           }
         ],
         "foreignKeys": [
