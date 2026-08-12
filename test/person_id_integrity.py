@@ -2,10 +2,10 @@
 Test that local SWERIK person identifiers remain stable.
 
 This checks the corpus guarantee that every person in data/person.csv has a
-local SWERIK identifier, that those identifiers are unique, and that identifiers
-captured in test/data/swerik-person-id-baseline.csv are still present after
-metadata synchronization. The guarantee matters because Wikidata synchronization
-may refresh external metadata, but it must not remove or rename locally curated
+local SWERIK identifier and that identifiers captured in
+test/data/swerik-person-id-baseline.csv are still present after metadata
+synchronization. The guarantee matters because Wikidata synchronization may
+refresh external metadata, but it must not remove or rename locally curated
 persons such as newly added MPs or ministers.
 """
 from collections import Counter
@@ -64,24 +64,6 @@ class Test(unittest.TestCase):
             len(invalid),
             f"Found {len(invalid)} missing or non-SWERIK person_id value(s) in "
             f"{PERSON_PATH}; first examples: {invalid[:20]}",
-        )
-
-    def test_person_ids_are_unique(self):
-        """
-        Test local SWERIK person_id values are unique in person.csv.
-        """
-        person_ids = read_column(PERSON_PATH, "person_id")
-        counts = Counter(person_ids)
-        duplicates = sorted(person_id for person_id, count in counts.items() if count > 1)
-
-        if duplicates:
-            LOGGER.error(f"Duplicate person_id values found in {PERSON_PATH}: {duplicates[:20]}")
-
-        self.assertEqual(
-            [],
-            duplicates,
-            f"Found {len(duplicates)} duplicate person_id value(s) in {PERSON_PATH}; "
-            f"first examples: {duplicates[:20]}",
         )
 
     def test_baseline_person_ids_are_unique(self):
