@@ -18,5 +18,6 @@
     "portraits.csv": ["person_id", "portrait"],
     "described_by_source.csv": ["person_id", "source"],
     "minister.csv": ["start", "government", "person_id", "role"],
-    "party.csv": ["party"]
+    "party.csv": ["party"],
+    "external_identifiers.csv": ["person_id", "authority", "identifier"]
 }
