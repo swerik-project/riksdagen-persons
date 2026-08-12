@@ -19,5 +19,6 @@
     "described_by_source.csv": ["person_id", "source"],
     "minister.csv": ["start", "government", "person_id", "role"],
     "party.csv": ["party"],
-    "external_identifiers.csv": ["person_id", "authority", "identifier"]
+    "external_identifiers.csv": ["person_id", "authority", "identifier"],
+    "references_map.csv": ["person_id", "bibtex_key", "page"]
 }
