@@ -13,7 +13,7 @@
     "location_specifier.csv": ["person_id", "location"],
     "twitter.csv": ["person_id", "twitter"],
     "explicit_no_party.csv": ["person_id", "pages"],
-    "member_of_parliament.csv": ["start", "role", "end", "district", "person_id"],
+    "member_of_parliament.csv": ["person_id", "start", "role", "end", "district"],
     "party_affiliation.csv": ["person_id", "start", "party", "party_id"],
     "portraits.csv": ["person_id", "portrait"],
     "described_by_source.csv": ["person_id", "source"],
