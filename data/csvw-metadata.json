@@ -555,6 +555,176 @@
       }
     },
     {
+      "url": "constituency.csv",
+      "dc:title": "Constituencies",
+      "dc:description": "Constituency authority table with chamber and temporal coverage.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "constituency_id",
+            "titles": "constituency_id",
+            "dc:description": "Stable SWERIK constituency identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "chamber",
+            "titles": "chamber",
+            "dc:description": "Parliamentary chamber code.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start_date",
+            "titles": "start_date",
+            "dc:description": "First day of the first parliament year in which the constituency existed.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "end_date",
+            "titles": "end_date",
+            "dc:description": "Last day of the last parliament year in which the constituency existed.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "name",
+            "titles": "name",
+            "dc:description": "Constituency name.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": "constituency_id"
+      }
+    },
+    {
+      "url": "constituency_mandates.csv",
+      "dc:title": "Constituency Mandates",
+      "dc:description": "Number of mandates allocated to each constituency over time.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "constituency_id",
+            "titles": "constituency_id",
+            "dc:description": "Stable SWERIK constituency identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start_date",
+            "titles": "start_date",
+            "dc:description": "First day of the first parliament year for which the mandate count applies.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "end_date",
+            "titles": "end_date",
+            "dc:description": "Last day of the last parliament year for which the mandate count applies.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "mandates_total",
+            "titles": "mandates_total",
+            "dc:description": "Number of mandates allocated to the constituency in the period.",
+            "datatype": "integer",
+            "required": true
+          }
+        ],
+        "primaryKey": [
+          "constituency_id",
+          "start_date"
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "constituency_id",
+            "reference": {
+              "resource": "constituency.csv",
+              "columnReference": "constituency_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "constituency_chairs.csv",
+      "dc:title": "Constituency Chairs",
+      "dc:description": "Mappings between parliamentary chairs and the constituencies they belong to over time.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chair_id",
+            "titles": "chair_id",
+            "dc:description": "Stable chair identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "constituency_id",
+            "titles": "constituency_id",
+            "dc:description": "Stable SWERIK constituency identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start_date",
+            "titles": "start_date",
+            "dc:description": "First day of the first parliament year in which the chair belonged to the constituency.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "end_date",
+            "titles": "end_date",
+            "dc:description": "Last day of the last parliament year in which the chair belonged to the constituency.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          }
+        ],
+        "primaryKey": [
+          "chair_id",
+          "start_date"
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "chair_id",
+            "reference": {
+              "resource": "chairs.csv",
+              "columnReference": "chair_id"
+            }
+          },
+          {
+            "columnReference": "constituency_id",
+            "reference": {
+              "resource": "constituency.csv",
+              "columnReference": "constituency_id"
+            }
+          }
+        ]
+      }
+    },
+    {
       "url": "government.csv",
       "dc:title": "Governments",
       "dc:description": "Swedish governments and their time spans.",
