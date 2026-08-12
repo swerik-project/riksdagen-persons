@@ -1,7 +1,4 @@
 person_id,start,end,government,role
-i-Y7HHuSEZsgc8ayVQEsVKs9,1815-11-22,1828-03-26,Karl XIII:s statsråd,statsråd
-i-Y7HHuSEZsgc8ayVQEsVKs9,1815-11-22,1828-03-26,Karl XIV Johans statsråd (till 1840),statsråd
-i-F5Lo79KEGCBu1choqsfsAZ,1828-01-16,1831-11,Karl XIV Johans statsråd (till 1840),statsråd
 i-HoKrvTnXU5eTu8LVqgLr9p,1840-05-16,1841-01-14,Regeringen Posse,konsultativt statsråd
 i-HoKrvTnXU5eTu8LVqgLr9p,1840-05-16,1841-01-14,Regeringen Törnebladh,konsultativt statsråd
 i-r1VTfFi2u63HbDnjDKUPf,1842-12-29,1844-05-18,Regeringen Gyllenhaal,ecklesiastikminister
@@ -635,8 +632,6 @@ i-LQKP5CDY62YpFZWUbs7QiW,1976-11-25,1978-10-18,Regeringen Fälldin I,ekonomimini
 i-4uJEFdvmwfbMmozZhv5XDY,1978-03-07,1978-10-18,Regeringen Fälldin I,Statsministerns ställföretädare
 i-BtQ4ubBXfEg4xPiwpPM4Vt,1978-03-07,1978-10-18,Regeringen Fälldin I,invandrarminister
 i-BtQ4ubBXfEg4xPiwpPM4Vt,1978-03-07,1978-10-18,Regeringen Fälldin I,jämställdhetsminister
-i-8RqA5Vq57Dp8X1YMfWXXz1,1976,1979,Regeringen Fälldin I,statssekreterare
-i-8RqA5Vq57Dp8X1YMfWXXz1,1976,1979,Regeringen Ullsten,statssekreterare
 i-M584LNfWt4DmybohxUfGwq,1976-10-08,1979-10-12,Regeringen Fälldin I,justitieminister
 i-M584LNfWt4DmybohxUfGwq,1976-10-08,1979-10-12,Regeringen Ullsten,justitieminister
 i-GebX3kmqSPBTWucSe5EXUh,1978-10-18,1979-10-12,Regeringen Ullsten,utrikesminister
@@ -969,7 +964,6 @@ i-L7Ay5GaFaMutWEX7utMv62,1998-10-07,2000-10-21,Regeringen Persson,integrationsmi
 i-L7Ay5GaFaMutWEX7utMv62,1998-10-07,2000-10-21,Regeringen Persson,ungdomsminister
 i-NxhWABYZtDAg5RbsxD7VBv,1999-09-14,2001-11-16,Regeringen Persson,biståndsminister
 i-NxhWABYZtDAg5RbsxD7VBv,1999-09-14,2001-11-16,Regeringen Persson,migrationsminister
-i-BCDpWeGcyN6FUwwXHRDSyd,1990,2002,Regeringen Carlsson I,Justitieombudsmannen
 i-3wVE19WEnkoueWU41a2FfR,1998-10-07,2002-01-16,Regeringen Persson,skolminister
 i-6Yv6bDMEdGpsmCZBFnnZk4,1997-02-01,2002-09-30,Regeringen Persson,försvarsminister
 i-HP26Ex6XfZD2gozC8P6pdm,1998-10-06,2002-10-06,Regeringen Persson,arbetsmarknadsminister
