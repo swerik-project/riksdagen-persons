@@ -295,8 +295,7 @@
             "datatype": {
               "base": "date",
               "format": "yyyy-MM-dd"
-            },
-            "required": true
+            }
           },
           {
             "name": "inception_precision",
@@ -305,8 +304,7 @@
             "datatype": {
               "base": "string",
               "format": "^(day|year)$"
-            },
-            "required": true
+            }
           },
           {
             "name": "dissolution",
