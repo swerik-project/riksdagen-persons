@@ -294,22 +294,20 @@
           {
             "name": "inception",
             "titles": "inception",
-            "dc:description": "Party inception date. Values may use a nominal full date even when precision is year-level.",
+            "dc:description": "Party inception date, where known. Values may use a nominal full date even when precision is year-level.",
             "datatype": {
               "base": "date",
               "format": "yyyy-MM-dd"
-            },
-            "required": true
+            }
           },
           {
             "name": "inception_precision",
             "titles": "inception_precision",
-            "dc:description": "Precision of the inception date.",
+            "dc:description": "Precision of the inception date, where known.",
             "datatype": {
               "base": "string",
               "format": "^(day|year)$"
-            },
-            "required": true
+            }
           },
           {
             "name": "dissolution",

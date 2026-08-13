@@ -1,20 +1,20 @@
 party_id,party,inception,inception_precision,dissolution,dissolution_precision,successor_id,swerik_party_id,swerik_successor
 Q105112,Socialdemokraterna,1889-01-01,year,,,Q10672903,i-VS8ddgxigwL5TceKtXGApS,i-SwzbNNYoyZYULLDiTu2zGP
-Q111033682,Högerpartiet,1952-01-01,year,1969-01-01,day,Q110843,i-3A4u29WVtvfu8i1KwuPEeE,i-F6Stwe8wVnSPa3BbgusszQ
-Q110843,Moderata samlingspartiet,1969-01-01,year,,,,i-F6Stwe8wVnSPa3BbgusszQ,
-Q110472693,Bondeförbundet,1913-01-01,year,1956-12-31,year,Q110832,i-CNbGLyuzdkRJ2sJBBpzJit,i-UiFZiVNo3YgVfyN93Qigiv
-Q110832,Centerpartiet,1957-01-01,year,,,,i-UiFZiVNo3YgVfyN93Qigiv,
-Q4887122,Frisinnade folkpartiet,1924-01-01,year,1935-01-01,year,Q110857,i-V7MTfG5XaAmjbSDtLkyyfc,i-Hm85EQfFmbYuYFPjpXtuCj
-Q110857,Folkpartiet liberalerna,1990-01-01,year,2015-11-25,day,Q110857,i-Hm85EQfFmbYuYFPjpXtuCj,i-Kpkv9BSujEEJp1S4rDiDt7|i-FpGjUCojANuvvwqsNXjcuu
-Q110857,Liberalerna,2015-11-25,day,,,,i-Kpkv9BSujEEJp1S4rDiDt7,
+Q111033682,Högerpartiet,1952-07-17,day,1969-01-09,day,Q110843,i-3A4u29WVtvfu8i1KwuPEeE,i-F6Stwe8wVnSPa3BbgusszQ
+Q110843,Moderata samlingspartiet,1969-01-10,day,,,,i-F6Stwe8wVnSPa3BbgusszQ,
+Q110472693,Bondeförbundet,1913-01-01,year,1957-07-02,day,Q110832,i-CNbGLyuzdkRJ2sJBBpzJit,i-UiFZiVNo3YgVfyN93Qigiv
+Q110832,Centerpartiet,1957-07-03,day,,,,i-UiFZiVNo3YgVfyN93Qigiv,
+Q4887122,Frisinnade folkpartiet,1923-06-06,day,1934-08-05,day,Q110857,i-V7MTfG5XaAmjbSDtLkyyfc,i-FpGjUCojANuvvwqsNXjcuu
+Q110857,Folkpartiet liberalerna,1990-11-24,day,2015-11-22,day,Q110857,i-Hm85EQfFmbYuYFPjpXtuCj,i-Kpkv9BSujEEJp1S4rDiDt7|i-FpGjUCojANuvvwqsNXjcuu
+Q110857,Liberalerna,2015-11-23,day,,,,i-Kpkv9BSujEEJp1S4rDiDt7,
 Q504069,Sverigedemokraterna,1988-02-06,day,,,,i-Cb6hYmJf4EDxesFRgErquJ,
 Q213451,Miljöpartiet,1981-09-20,day,,,,i-Qha9NerKBigcjJXgoRk4Md,
-Q111285801,Sveriges kommunistiska parti,1921-01-01,year,1967-01-01,year,Q1787940,i-TQCUzfkvYhBFrXeQwXoENH,i-2SVXJYpXaRHXxbWRcbRd5N
-Q110837,Vänsterpartiet Kommunisterna,1967-01-01,year,1990-01-01,year,Q110837,i-2SVXJYpXaRHXxbWRcbRd5N,i-CJb7bcc1eZcehvGarg8GpB
-Q110837,Vänsterpartiet,1990-01-01,year,,,,i-CJb7bcc1eZcehvGarg8GpB,
-Q213654,Kristdemokratiska Samhällspartiet,1987-01-01,year,1996-01-01,year,Q213654,i-B79rKJX4ZV61ozevGt8JLL,i-BRRSButj7zSqB1u7zD6hod
-Q213654,Kristdemokraterna,1996-01-01,year,,,,i-BRRSButj7zSqB1u7zD6hod,
-Q967278,Ny demokrati,1991-01-01,year,2000-02-25,day,,i-YYGgpk3VEG9XW1wZTzUShT,
+Q111285801,Sveriges kommunistiska parti,1921-03-28,day,1967-05-15,day,Q1787940,i-TQCUzfkvYhBFrXeQwXoENH,i-2SVXJYpXaRHXxbWRcbRd5N
+Q110837,Vänsterpartiet Kommunisterna,1967-05-16,day,1990-05-26,day,Q110837,i-2SVXJYpXaRHXxbWRcbRd5N,i-CJb7bcc1eZcehvGarg8GpB
+Q110837,Vänsterpartiet,1990-05-27,day,,,,i-CJb7bcc1eZcehvGarg8GpB,
+Q213654,Kristdemokratiska Samhällspartiet,1964-03-20,day,1996-06-28,day,Q213654,i-B79rKJX4ZV61ozevGt8JLL,i-BRRSButj7zSqB1u7zD6hod
+Q213654,Kristdemokraterna,1996-06-29,day,,,,i-BRRSButj7zSqB1u7zD6hod,
+Q967278,Ny demokrati,1991-02-04,day,2000-02-25,day,,i-YYGgpk3VEG9XW1wZTzUShT,
 Q10554125,Lantmanna- och borgarepartiet inom andrakammaren,1912-01-01,year,1935-01-01,year,Q111077860,i-NhgK2ujGF5t35o2VjT8Q5U,i-4nyjRorziqEDtDmp1ZXDoP
 Q111077860,Högerns riksdagsgrupp,1935-01-01,year,1970-01-01,year,Q110843,i-4nyjRorziqEDtDmp1ZXDoP,i-F6Stwe8wVnSPa3BbgusszQ
 Q3480145,Första kammarens nationella parti,1912-01-01,year,1935-01-01,year,Q111077860,i-3kDgsboJBSv4zGqF4zfCsY,i-4nyjRorziqEDtDmp1ZXDoP
@@ -53,9 +53,11 @@ Q10594830,Nationella framstegspartiet,1906-01-01,year,1912-01-01,year,Q10554125,
 Q10499214,Frisinnade försvarsvänner,1914-01-01,year,1914-12-31,year,,i-GM695yHGsRXSAorwcFL7x5,
 Q10672903,Socialdemokratiska vänstergruppen,1917-01-01,year,1924-01-01,year,Q105112|Q111285801,i-SwzbNNYoyZYULLDiTu2zGP,i-VS8ddgxigwL5TceKtXGApS|i-TQCUzfkvYhBFrXeQwXoENH
 Q10540831,Jordbrukarnas fria grupp,1918-01-01,year,1922-01-01,year,Q110472693,i-PvAXgvY3G8qXv1ZM9xudRA,i-CNbGLyuzdkRJ2sJBBpzJit
-Q10560990,Liberala riksdagspartiet,1924-01-01,year,1935-01-01,year,Q110857,i-9fghptqkyNzTVdA8knRCGq,i-Kpkv9BSujEEJp1S4rDiDt7|i-FpGjUCojANuvvwqsNXjcuu
-Q111188360,Kilbomspartiet,1924-01-01,year,1934-01-01,year,Q2425638,i-VzZnBZoi4EChaiCfF6kxbz,i-SeXPXWPfyJxdeuuFtkdhxh
-Q2425638,Socialistiska partiet,1934-01-01,year,1944-01-01,year,,i-SeXPXWPfyJxdeuuFtkdhxh,
+Q10560990,Liberala riksdagspartiet,1923-10-07,day,1934-08-05,day,Q110857,i-9fghptqkyNzTVdA8knRCGq,i-FpGjUCojANuvvwqsNXjcuu
+Q111188360,Kilbomspartiet,1929-10-09,day,1934-04-30,day,Q2425638,i-VzZnBZoi4EChaiCfF6kxbz,i-SeXPXWPfyJxdeuuFtkdhxh
+Q2425638,Socialistiska partiet,1934-05-01,day,1944-01-01,year,,i-SeXPXWPfyJxdeuuFtkdhxh,
 Q10579102,Medborgerlig samling (1964–1968),1964-01-01,year,1968-01-01,year,,i-ANbQF76SzeSESXQFvzPzFw,
-Q110857,Folkpartiet,1934-01-01,year,1990-01-01,year,Q110857,i-FpGjUCojANuvvwqsNXjcuu,i-Hm85EQfFmbYuYFPjpXtuCj
+Q110857,Folkpartiet,1934-08-05,day,1990-11-23,day,Q110857,i-FpGjUCojANuvvwqsNXjcuu,i-Hm85EQfFmbYuYFPjpXtuCj
 ,Utan partibeteckning,,,,,,i-851f4cdfa36f4dbab4b24855a1eb43ce,
+,Högerns riksorganisation,1938-06-18,day,1952-07-16,day,,i-HNe8KkGHn59Q6R8HE40hvQ,i-3A4u29WVtvfu8i1KwuPEeE
+,Frisinnade landsföreningen,,,1934-08-05,day,,i-6phCStV52pp0GuBufmEi9g,i-FpGjUCojANuvvwqsNXjcuu
