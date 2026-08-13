@@ -2,16 +2,22 @@
 """
 Test minister date coverage and interval integrity.
 
-This normalizes partial dates to intervals so YYYY and YYYY-MM values can be
-compared with full ISO dates.
+This data-integrity test checks that dated rows in `data/minister.csv` use
+parseable date values, do not have inverted intervals, do not partially overlap
+for the same person and role, and intersect the date interval of the referenced
+government in `data/government.csv`. 
 """
 from pathlib import Path
 import re
+import unittest
 
 import pandas as pd
+from trainerlog import get_logger
 
 
+LOGGER = get_logger("minister-date-integrity")
 DATA_DIR = Path("data")
+RESULT_DIR = Path("test/result")
 DATE_RE = re.compile(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$")
 
 
@@ -62,7 +68,7 @@ def add_date_columns(df):
     return df
 
 
-def get_overlaps(ministers):
+def minister_overlap_rows(ministers):
     rows = []
     valid = ministers[
         ministers["start_date"].notna()
@@ -95,7 +101,7 @@ def get_overlaps(ministers):
     return pd.DataFrame(rows)
 
 
-def get_government_mismatches(ministers, governments):
+def government_mismatch_rows(ministers, governments):
     rows = []
     government_by_name = governments.set_index("government")
     valid = ministers[ministers["start_date"].notna() & ministers["end_date"].notna()]
@@ -121,81 +127,93 @@ def get_government_mismatches(ministers, governments):
     return pd.DataFrame(rows)
 
 
-def format_rows(df, columns, limit=10):
-    if df.empty:
-        return ""
-    return "\n" + df[columns].head(limit).to_string(index=False)
+class TestMinisterDateIntegrity(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        LOGGER.info("Loading minister and government metadata for date integrity tests")
+        cls.ministers = add_date_columns(
+            pd.read_csv(DATA_DIR / "minister.csv", dtype=str, keep_default_na=False)
+        )
+        cls.governments = add_date_columns(
+            pd.read_csv(DATA_DIR / "government.csv", dtype=str, keep_default_na=False)
+        )
 
+    def write_diagnostics(self, name, rows):
+        path = RESULT_DIR / f"minister-date-integrity-{name}.csv"
+        RESULT_DIR.mkdir(parents=True, exist_ok=True)
+        rows.to_csv(path, index=False)
+        LOGGER.error("Wrote %s diagnostic row(s) to %s", len(rows), path)
+        return path
 
-def main():
-    ministers = pd.read_csv(DATA_DIR / "minister.csv", dtype=str, keep_default_na=False)
-    governments = pd.read_csv(DATA_DIR / "government.csv", dtype=str, keep_default_na=False)
+    def assert_no_rows(self, rows, message, diagnostic_name):
+        if not rows.empty:
+            path = self.write_diagnostics(diagnostic_name, rows)
+            self.fail(f"{message}: found {len(rows)} row(s); details written to {path}")
 
-    ministers = add_date_columns(ministers)
-    governments = add_date_columns(governments)
+    def test_minister_dates_are_parseable(self):
+        """Test that non-empty minister start and end dates are parseable."""
+        malformed_starts = self.ministers[self.ministers["start_issue"] == "malformed"][
+            ["person_id", "government", "role", "start"]
+        ]
+        malformed_ends = self.ministers[self.ministers["end_issue"] == "malformed"][
+            ["person_id", "government", "role", "end"]
+        ]
 
-    inverted_minister_dates = ministers[
-        ministers["start_date"].notna()
-        & ministers["end_date"].notna()
-        & (ministers["start_date"] > ministers["end_date"])
-    ]
+        self.assert_no_rows(
+            malformed_starts,
+            "Malformed minister start dates",
+            "malformed-start-dates",
+        )
+        self.assert_no_rows(
+            malformed_ends,
+            "Malformed minister end dates",
+            "malformed-end-dates",
+        )
 
-    overlaps = get_overlaps(ministers)
-    government_mismatches = get_government_mismatches(ministers, governments)
-    partial_overlaps = overlaps[
-        overlaps["overlap_type"] == "partial_overlap"
-    ] if len(overlaps) else overlaps
-    no_intersection = government_mismatches[
-        ~government_mismatches["has_intersection"]
-    ] if len(government_mismatches) else government_mismatches
+    def test_minister_date_intervals_are_not_inverted(self):
+        """Test that minister rows do not start after their end date."""
+        inverted = self.ministers[
+            self.ministers["start_date"].notna()
+            & self.ministers["end_date"].notna()
+            & (self.ministers["start_date"] > self.ministers["end_date"])
+        ][["person_id", "government", "role", "start", "end"]]
 
-    malformed_starts = ministers[ministers["start_issue"] == "malformed"]
-    malformed_ends = ministers[ministers["end_issue"] == "malformed"]
+        self.assert_no_rows(
+            inverted,
+            "Minister rows with start date after end date",
+            "inverted-intervals",
+        )
 
-    assert malformed_starts.empty, (
-        "Malformed minister start dates:"
-        + format_rows(malformed_starts, ["person_id", "government", "role", "start"])
-    )
-    assert malformed_ends.empty, (
-        "Malformed minister end dates:"
-        + format_rows(malformed_ends, ["person_id", "government", "role", "end"])
-    )
-    assert inverted_minister_dates.empty, (
-        "Minister rows with start after end:"
-        + format_rows(inverted_minister_dates, ["person_id", "government", "role", "start", "end"])
-    )
-    assert partial_overlaps.empty, (
-        "Minister person-role intervals with partial overlaps:"
-        + format_rows(
+    def test_minister_person_role_intervals_do_not_partially_overlap(self):
+        """
+        Test that dated intervals for the same person and role do not partially overlap.
+        """
+        overlaps = minister_overlap_rows(self.ministers)
+        partial_overlaps = overlaps[
+            overlaps["overlap_type"] == "partial_overlap"
+        ] if len(overlaps) else overlaps
+
+        self.assert_no_rows(
             partial_overlaps,
-            [
-                "person_id",
-                "role",
-                "previous_government",
-                "previous_start",
-                "previous_end",
-                "current_government",
-                "current_start",
-                "current_end",
-            ],
+            "Minister person-role intervals with partial overlaps",
+            "partial-overlaps",
         )
-    )
-    assert no_intersection.empty, (
-        "Minister rows with no intersection with their government interval:"
-        + format_rows(
+
+    def test_minister_rows_intersect_government_date_intervals(self):
+        """
+        Test that dated minister rows overlap the referenced government's date interval.
+        """
+        government_mismatches = government_mismatch_rows(self.ministers, self.governments)
+        no_intersection = government_mismatches[
+            ~government_mismatches["has_intersection"]
+        ] if len(government_mismatches) else government_mismatches
+
+        self.assert_no_rows(
             no_intersection,
-            [
-                "person_id",
-                "role",
-                "government",
-                "minister_start",
-                "minister_end",
-                "government_start",
-                "government_end",
-            ],
+            "Minister rows with no intersection with their government interval",
+            "government-no-intersection",
         )
-    )
 
 
 if __name__ == "__main__":
-    main()
+    unittest.main()

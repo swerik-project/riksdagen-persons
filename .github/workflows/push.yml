@@ -89,6 +89,7 @@ jobs:
         echo "throw ERROR on inconsistencies on our side"
         echo "WARN on upstream errors"
         python -m unittest test.db
+        python -m unittest test.minister_date_integrity
 
   mandates:
     runs-on: ubuntu-latest
