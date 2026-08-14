@@ -9,6 +9,7 @@ from pathlib import Path
 from pyriksdagen.db import load_metadata
 from pyriksdagen.utils import (
     get_doc_dates,
+    parse_date,
     parse_protocol,
     protocol_iterators,
 )
@@ -226,19 +227,39 @@ class Test(unittest.TestCase):
 
     def test_speaker_dates_are_present(self):
         """
-        Test that speaker rows do not silently become open-ended.
+        Test that only the current speaker row is open-ended.
         """
-        speaker = self.get_meta_df("speaker").fillna("")
-        current_speaker = "i-BZ7PcK8D1efvHXsafGEMKE"
+        speaker = self.get_meta_df("speaker").fillna("").copy()
+        speaker["start"] = speaker["start"].astype(str)
+        speaker["end"] = speaker["end"].astype(str)
 
         missing_start = speaker[speaker["start"] == ""].copy()
-        missing_end = speaker[
-            (speaker["end"] == "")
-            & (speaker["person_id"] != current_speaker)
+        speaker["start_date"] = speaker["start"].map(parse_date)
+        invalid_start = speaker[
+            (speaker["start"] != "")
+            & speaker["start_date"].isna()
         ].copy()
 
-        self.assertTrue(missing_start.empty, missing_start)
-        self.assertTrue(missing_end.empty, missing_end)
+        latest_start = speaker["start_date"].max()
+        open_ended = speaker[speaker["end"] == ""].copy()
+        # Speaker intervals should be closed historical facts. The only open
+        # interval should be the current speaker, represented by the latest
+        # start date in speaker.csv.
+        unexpected_open_ended = open_ended[
+            open_ended["start_date"] != latest_start
+        ].copy()
+
+        self.assertTrue(missing_start.empty, f"Speaker rows missing start dates:\n{missing_start}")
+        self.assertTrue(invalid_start.empty, f"Speaker rows with unparseable start dates:\n{invalid_start}")
+        self.assertTrue(
+            unexpected_open_ended.empty,
+            f"Only the speaker row with latest start date ({latest_start.date()}) may be open-ended:\n{unexpected_open_ended}"
+        )
+        self.assertEqual(
+            len(open_ended),
+            1,
+            f"Expected exactly one open-ended current speaker row; found {len(open_ended)}:\n{open_ended}"
+        )
 
 
     def test_exact_speaker_dates_do_not_overlap(self):
