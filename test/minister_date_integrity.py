@@ -22,12 +22,17 @@ The test allows one person to hold multiple roles in the same government at the
 same time. It fails only when one person's effective intervals overlap across
 different governments.
 
+It also fails when a minister row has no effective intersection with the
+referenced government interval. Such rows cannot support date-aware government
+resolution, even if the person and role are otherwise valid.
+
 Partial end dates are interpreted as exclusive upper bounds for the following
 year or month, so `1979` covers the calendar year 1979 and `1979-10` covers
 October 1979.
 
-When overlaps are found, the test writes structured CSV diagnostics to
-`test/results/minister-government-overlaps.csv`.
+When failures are found, the test writes structured CSV diagnostics to
+`test/results/minister-government-overlaps.csv` or
+`test/results/minister-government-disjoint-rows.csv`.
 """
 import csv
 from dataclasses import dataclass
@@ -45,6 +50,7 @@ RESULTS_DIR = Path(".") / "test" / "results"
 MINISTER_PATH = DATA_DIR / "minister.csv"
 GOVERNMENT_PATH = DATA_DIR / "government.csv"
 OVERLAP_PATH = RESULTS_DIR / "minister-government-overlaps.csv"
+DISJOINT_PATH = RESULTS_DIR / "minister-government-disjoint-rows.csv"
 
 
 @dataclass(frozen=True)
@@ -124,6 +130,11 @@ def minister_effective_rows(governments):
                 "government": row["government"],
                 "start": row["start"],
                 "end": row["end"],
+                "government_start": government_interval.start.isoformat(),
+                "government_end": (
+                    "" if government_interval.end == date.max
+                    else government_interval.end.isoformat()
+                ),
                 "effective_start": effective.start.isoformat(),
                 "effective_end": "" if effective.end == date.max else effective.end.isoformat(),
                 "interval": effective,
@@ -166,6 +177,25 @@ def find_cross_government_overlaps(rows):
     return overlaps
 
 
+def find_rows_without_government_intersection(rows):
+    return [
+        {
+            "line": row["line"],
+            "person_id": row["person_id"],
+            "government": row["government"],
+            "role": row["role"],
+            "start": row["start"],
+            "end": row["end"],
+            "government_start": row["government_start"],
+            "government_end": row["government_end"],
+            "effective_start": row["effective_start"],
+            "effective_end": row["effective_end"],
+        }
+        for row in rows
+        if row["interval"].start >= row["interval"].end
+    ]
+
+
 def write_overlaps(overlaps):
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     fieldnames = [
@@ -191,7 +221,49 @@ def write_overlaps(overlaps):
         writer.writerows(overlaps)
 
 
+def write_disjoint_rows(rows):
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    fieldnames = [
+        "line",
+        "person_id",
+        "government",
+        "role",
+        "start",
+        "end",
+        "government_start",
+        "government_end",
+        "effective_start",
+        "effective_end",
+    ]
+    with open(DISJOINT_PATH, "w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 class TestMinisterDateIntegrity(unittest.TestCase):
+
+    def test_minister_rows_intersect_referenced_government(self):
+        """
+        Test every minister row overlaps the government it references.
+        """
+        governments = load_government_intervals()
+        rows = minister_effective_rows(governments)
+        disjoint_rows = find_rows_without_government_intersection(rows)
+
+        if disjoint_rows:
+            write_disjoint_rows(disjoint_rows)
+            LOGGER.error(
+                f"Found {len(disjoint_rows)} minister row(s) outside their "
+                f"referenced government interval. Details written to {DISJOINT_PATH}."
+            )
+
+        self.assertEqual(
+            [],
+            disjoint_rows,
+            f"Found {len(disjoint_rows)} minister row(s) outside their referenced "
+            f"government interval; details written to {DISJOINT_PATH}",
+        )
 
     def test_ministers_do_not_overlap_across_governments(self):
         """
