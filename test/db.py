@@ -14,12 +14,11 @@ from pyriksdagen.utils import (
 )
 from pytest_cfg_fetcher.fetch import fetch_config
 import pandas as pd
-import re
 import unittest
 import warnings
 import yaml
 
-DATE_RE = re.compile(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$")
+from test.date_integrity_helpers import parse_date_interval
 
 class DuplicateWarning(Warning):
     def __init__(self, duplicate_df):
@@ -112,42 +111,6 @@ class Test(unittest.TestCase):
         path = p / f"{df_name}.csv"
         df = pd.read_csv(path)
         return df
-
-
-    def parse_date_interval(self, value, is_end):
-        """
-        Parse partial date strings as half-open interval boundaries.
-        """
-        if pd.isna(value) or str(value).strip() == "":
-            if is_end:
-                return pd.Timestamp.max.normalize()
-            return None
-
-        match = DATE_RE.match(str(value).strip())
-        if match is None:
-            return None
-
-        year = int(match.group(1))
-        month = int(match.group(2)) if match.group(2) else None
-        day = int(match.group(3)) if match.group(3) else None
-
-        try:
-            if month is None:
-                if is_end:
-                    return pd.Timestamp(year + 1, 1, 1)
-                return pd.Timestamp(year, 1, 1)
-
-            if day is None:
-                if is_end:
-                    if month == 12:
-                        return pd.Timestamp(year + 1, 1, 1)
-                    return pd.Timestamp(year, month + 1, 1)
-                return pd.Timestamp(year, month, 1)
-
-            return pd.Timestamp(year, month, day)
-        except ValueError:
-            return None
-
 
     def write_error_df(self, df_name, errs, outpath):
         """
@@ -269,14 +232,14 @@ class Test(unittest.TestCase):
         government_dates = {}
         for _, row in government.iterrows():
             government_dates[row["government"]] = (
-                self.parse_date_interval(row["start"], is_end=False),
-                self.parse_date_interval(row["end"], is_end=True),
+                parse_date_interval(row["start"], is_end=False)[0],
+                parse_date_interval(row["end"], is_end=True)[0],
             )
 
         errors = []
         for _, row in minister.iterrows():
-            start = self.parse_date_interval(row["start"], is_end=False)
-            end = self.parse_date_interval(row["end"], is_end=True)
+            start = parse_date_interval(row["start"], is_end=False)[0]
+            end = parse_date_interval(row["end"], is_end=True)[0]
             if start is None or end is None:
                 continue
 
