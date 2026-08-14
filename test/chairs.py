@@ -107,16 +107,21 @@ class Test(unittest.TestCase):
     #  Out of range chair for specific years
     def get_oor_year(self):
         oor_year = {
-            '1957':
-                    [    # until 1957 -- if year < 1957
+            'before_1957':
+                    [    # before 1957 -- if year < 1957
                     '814127872a174909bd6ecaeaf59290fe',  # a231
                     'd423710cb9e64b17b93484e120f07e66',  # a232
                     'c77cdeebf789416e98cf8afb05b75a23',  # a233
                     '34ad45b358764a388b53c45ae1ce3681'   # f151
                     ],
-            '1959':
-                    [    # until 1959 -- elif year < 1959
-                    '814127872a174909bd6ecaeaf59290fe',  # a231
+            '1957':
+                    [    # 1957
+                    'd423710cb9e64b17b93484e120f07e66',  # a232
+                    'c77cdeebf789416e98cf8afb05b75a23',  # a233
+                    '34ad45b358764a388b53c45ae1ce3681'   # f151
+                    ],
+            '1958':
+                    [    # 1958
                     'd423710cb9e64b17b93484e120f07e66',  # a232
                     'c77cdeebf789416e98cf8afb05b75a23'   # a233
                     ],
@@ -268,10 +273,12 @@ class Test(unittest.TestCase):
             ].unique()
             excludes = []
             if y < 1971:
-                if y <= 1957:
+                if y < 1957:
+                    excludes = oor_year['before_1957']
+                elif y == 1957:
                     excludes = oor_year['1957']
-                elif y < 1959:
-                    excludes = oor_year['1959']
+                elif y == 1958:
+                    excludes = oor_year['1958']
                 elif y < 1961:
                     excludes = oor_year['1961']
                 elif y < 1965:
