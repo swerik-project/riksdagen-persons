@@ -4,11 +4,8 @@ Test chars and chair-mp mapping metadata.
 """
 from datetime import datetime
 from pyriksdagen.date_handling import yearize_mandates
-try:
-    from pytest_cfg_fetcher.fetch import fetch_config
-except ImportError:
-    def fetch_config(_):
-        return None
+from pytest_cfg_fetcher.fetch import fetch_config
+
 import json
 import pandas as pd
 import polars as pl
