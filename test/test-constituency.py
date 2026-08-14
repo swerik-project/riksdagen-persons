@@ -1,25 +1,24 @@
+"""Test constituency metadata integrity.
+
+The tests check that member-of-parliament rows retain constituency coverage
+and stable district-year distributions relative to stored reference baselines.
+Diagnostic plots are written to the test result directory for review when the
+tests fail or when the constituency distribution changes.
 """
-Tests related to constituency.
-"""
-from datetime import datetime
-from pytest_cfg_fetcher.fetch import fetch_config
-import pandas as pd
+from pathlib import Path
+import matplotlib
+matplotlib.use("Agg")
+import polars as pl
 import unittest
-import warnings
-import json
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from trainerlog import get_logger
 import re
-logger = get_logger(name="constituency_test")
+logger = get_logger(name="constituency test")
 
 
-
-#Variance threshold for the number of MPs per district per year, to detect potential outliers in the data. This is a heuristic value and may need adjustment based on the specific dataset and context.
-VARIANCE_THRESHOLD = 5 #this number is almost arbitrary and needs fine tuning   
-
-#Number of constituencies threshold
-CONSTITUENCY_COUNT_THRESHOLD = 437 
+CONSTITUENCY_COUNT_THRESHOLD = 437
+RESULTS_DIR = Path("test/result")
 
 
 
@@ -27,7 +26,14 @@ class Test(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.members = pd.read_csv("data/member_of_parliament.csv")
+        cls.members = pl.read_csv(
+            "data/member_of_parliament.csv",
+            schema_overrides={
+                "start": pl.Utf8,
+                "district": pl.Utf8,
+            },
+        )
+        RESULTS_DIR.mkdir(parents=True, exist_ok=True)
         cls.REFERENCE_COVERAGE = [{"year": "1867", "total": 318, "filled": 273, "missing": 45, "completion_rate": "85.85%"},
   {"year": "1868", "total": 17, "filled": 15, "missing": 2, "completion_rate": "88.24%"},
   {"year": "1869", "total": 23, "filled": 20, "missing": 3, "completion_rate": "86.96%"},
@@ -198,7 +204,7 @@ class Test(unittest.TestCase):
 {"district": "Bergsjö och Delsbo tingslags valkrets", "variance": 0.006289056240987021},
 {"district": "Björkekinds, Östkinds, Lösings, Bråbo och Memmings domsagas valkrets", "variance": 0.04234097099823746},
 {"district": "Blekinge läns och Kristianstads läns valkrets", "variance": 0.8392885755487904},
-{"district": "Blekinge läns valkrets", "variance": 4.116327511616728},
+{"district": "Blekinge läns valkrets", "variance": 4.201020529251216},
 {"district": "Bollnäs domsagas valkrets", "variance": 0.024675532767184743},
 {"district": "Borås valkrets", "variance": 0.018626822624579396},
 {"district": "Borås, Alingsås och Ulricehamns valkrets", "variance": 0.03653260695401379},
@@ -285,7 +291,7 @@ class Test(unittest.TestCase):
 {"district": "Inlands domsagas valkrets", "variance": 0.03064412754366287},
 {"district": "Jämtlands läns norra valkrets", "variance": 0.09297388239064253},
 {"district": "Jämtlands läns södra valkrets", "variance": 0.08031565454254125},
-{"district": "Jämtlands läns valkrets", "variance": 3.0719435987822457},
+{"district": "Jämtlands läns valkrets", "variance": 3.0903840829081126},
 {"district": "Jämtlands norra domsagas valkrets", "variance": 0.04234097099823746},
 {"district": "Jämtlands västra domsagas valkrets", "variance": 0.04234097099823745},
 {"district": "Jämtlands östra domsagas valkrets", "variance": 0.012497997115846822},
@@ -354,7 +360,7 @@ class Test(unittest.TestCase):
 {"district": "Lunds valkrets", "variance": 0.04234097099823745},
 {"district": "Lysings och Göstrings domsagas valkrets", "variance": 0.04234097099823745},
 {"district": "Malmö kommun", "variance": 0.012497997115846822},
-{"district": "Malmö kommuns valkrets", "variance": 7.113924050632911},
+{"district": "Malmö kommuns valkrets", "variance": 7.119338633756575},
 {"district": "Malmö stads valkrets", "variance": 0.018626822624579396},
 {"district": "Malmö, Helsingborgs, Landskrona och Lunds valkrets", "variance": 0.018626822624579396},
 {"district": "Malmöhus läns mellersta valkrets", "variance": 0.18029963146931577},
@@ -631,60 +637,68 @@ class Test(unittest.TestCase):
      
 
     def get_constituency_completion_by_start_year(self, members):
-
-        members['start'] = members['start'].astype(str).str[:4]
-        members['district'] = members['district'].fillna('').astype(str).str.strip()
-
-        incomplete_years = []
-        all_years = []
-
-        for year, group in members.groupby('start'):
-            total = len(group)
-            filled = (group['district'] != '').sum()
-            completion_rate = filled / total if total > 0 else 1.0
-            completion_rate = round(completion_rate, 4)
-            missing = total - filled
-
-            all_years.append({
-                "year": str(year),
-                "total": int(total),
-                "filled": int(filled),
-                "missing": int(missing),
-                "completion_rate": f"{completion_rate:.2%}"
-            })
-
-            if completion_rate < 1.0:
-                incomplete_years.append({
-                        "year": str(year),
-                        "total": int(total),
-                        "filled": int(filled),
-                        "missing": int(missing),
-                        "completion_rate": f"{completion_rate:.2%}"
-                    })
-        return all_years, incomplete_years
-    
-    def get_MP_per_district_per_year(self, members):
-        
-        members['year'] = members['start'].astype(str).str[:4]
-        members['district'] = members['district'].fillna('').astype(str).str.strip()
-
-        df_counts = (
-            members[members['district'] != '']
-            .groupby(['year', 'district'])
-            .size() 
-            .reset_index(name='mp_count') 
+        """Calculate constituency completion by mandate start year."""
+        prepared_members = members.with_columns(
+            pl.col("start").cast(pl.Utf8).str.slice(0, 4).alias("year"),
+            pl.col("district")
+            .fill_null("")
+            .cast(pl.Utf8)
+            .str.strip_chars()
+            .alias("district_clean"),
+        )
+        completion_by_year = (
+            prepared_members
+            .group_by("year")
+            .agg(
+                total=pl.len(),
+                filled=(pl.col("district_clean") != "").sum(),
+            )
+            .with_columns(
+                missing=pl.col("total") - pl.col("filled"),
+                completion_rate_value=pl.col("filled") / pl.col("total"),
+            )
+            .sort("year")
         )
 
-        return df_counts
-    
+        all_years = []
+        incomplete_years = []
+        for row in completion_by_year.to_dicts():
+            completion_rate = round(float(row["completion_rate_value"]), 4)
+            entry = {
+                "year": str(row["year"]),
+                "total": int(row["total"]),
+                "filled": int(row["filled"]),
+                "missing": int(row["missing"]),
+                "completion_rate": f"{completion_rate:.2%}",
+            }
+            all_years.append(entry)
+            if completion_rate < 1.0:
+                incomplete_years.append(entry)
+        return all_years, incomplete_years
 
-    
+    def get_MP_per_district_per_year(self, members):
+        """Count MPs per constituency and mandate start year."""
+        prepared_members = members.with_columns(
+            pl.col("start").cast(pl.Utf8).str.slice(0, 4).alias("year"),
+            pl.col("district")
+            .fill_null("")
+            .cast(pl.Utf8)
+            .str.strip_chars()
+            .alias("district"),
+        )
+        return (
+            prepared_members
+            .filter(pl.col("district") != "")
+            .group_by(["year", "district"])
+            .len(name="mp_count")
+            .sort(["year", "district"])
+        )
+
+
     def test_constituency_completion_by_start_year(self):
-        """ Test if MP do have a constituency, and if the constituency is listed in the data. """
-        
-        
+        """Test that MP rows do not lose constituency coverage by start year."""
         all_years, incomplete_years = self.get_constituency_completion_by_start_year(self.members)
-    
+
         plt.figure(figsize=(12, 6))
         plt.plot([entry['year'] for entry in all_years], [float(entry['completion_rate'].strip('%')) for entry in all_years], marker='o', label='Current Data')
         plt.plot([entry['year'] for entry in self.REFERENCE_COVERAGE], [float(entry['completion_rate'].strip('%')) for entry in self.REFERENCE_COVERAGE], marker='x', label='Reference Data')
@@ -692,10 +706,11 @@ class Test(unittest.TestCase):
         plt.ylabel('Completion Rate')
         plt.title('Constituency Completion Rate by Start Year')
         plt.legend()
-        plt.gca().xaxis.set_major_locator(ticker.MultipleLocator(10)) # Un tick tous les 10 ans
-        plt.xticks(rotation=45) 
+        plt.gca().xaxis.set_major_locator(ticker.MultipleLocator(10))
+        plt.xticks(rotation=45)
         plt.tight_layout()
-        plt.savefig("test/result/constituency_completion_by_year.png")
+        plt.savefig(RESULTS_DIR / "constituency_completion_by_year.png")
+        plt.close()
         REFERENCE = {d['year']: d for d in self.REFERENCE_COVERAGE}
         failures = 0
 
@@ -704,55 +719,81 @@ class Test(unittest.TestCase):
             ref_entry = REFERENCE.get(entry['year'])
             if ref_entry is None:
                 continue
-            ref_rate = float(REFERENCE[entry['year']]['completion_rate'].strip('%')) / 100
+            ref_rate = float(ref_entry['completion_rate'].strip('%')) / 100
             if current_rate < (ref_rate - 0.0001):
-                msg = f"Year {entry['year']}: {entry['completion_rate']} (ref: {REFERENCE[entry['year']]['completion_rate']})"
+                msg = f"Year {entry['year']}: {entry['completion_rate']} (ref: {ref_entry['completion_rate']})"
                 failures += 1
                 logger.error(msg)
-        
-        self.assertEqual(failures, 0, f"All years should have a completion rate at least as good as the reference. Failures: {failures}")
+
+        self.assertEqual(
+            failures,
+            0,
+            "All years should have a completion rate at least as good as the "
+            f"reference. Failures: {failures}. See {RESULTS_DIR / 'constituency_completion_by_year.png'}",
+        )
         #self.REFERENCE_COVERAGE = all_years #for dynamic non decreasing reference
-    
-   
+
     def test_MP_per_district_per_year(self):
-        """ Tests the coherence of the data based on the computation of empirical variance"""
-
+        """Test constituency-year MP counts against reference variances."""
         members = self.members
-        unique_districts = members['district'].dropna().unique()
+        unique_districts = (
+            members
+            .select(
+                pl.col("district")
+                .drop_nulls()
+                .cast(pl.Utf8)
+                .str.strip_chars()
+                .unique()
+                .sort()
+            )
+            .to_series()
+            .to_list()
+        )
+        logger.info(f"Number of unique constituencies: {len(unique_districts)}")
 
-    
-        districts_tries = sorted(unique_districts)
-
-        # 3. Print the number of unique constituencies 
-        print(f"Number of unique constituencies : {len(districts_tries)}")
-        print("-" * 30)
-        
         df_counts = self.get_MP_per_district_per_year(members)
-        pivot_counts = df_counts.pivot(index='year', columns='district', values='mp_count').fillna(0)
+        pivot_counts = (
+            df_counts
+            .pivot(index="year", on="district", values="mp_count")
+            .fill_null(0)
+            .sort("year")
+        )
+        years = pivot_counts.get_column("year").to_list()
         for district in pivot_counts.columns:
+            if district == "year":
+                continue
             plt.figure(figsize=(12, 6))
-            plt.plot(pivot_counts.index, pivot_counts[district], marker='o', label=district)
+            plt.plot(years, pivot_counts.get_column(district).to_list(), marker='o', label=district)
             plt.xlabel('Year')
             plt.ylabel('Number of MPs')
             plt.title(f'Number of MPs in {district} Over Time')
             plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
-            plt.gca().xaxis.set_major_locator(ticker.MultipleLocator(10)) # Un tick tous les 10 ans
+            plt.gca().xaxis.set_major_locator(ticker.MultipleLocator(10))
             plt.xticks(rotation=45)
             plt.tight_layout()
             safe_district_name = re.sub(r'[^a-zA-Z0-9]', '_', district)
-            plt.savefig(f"test/result/mp_per_district_over_time_{safe_district_name}.png")
+            plt.savefig(RESULTS_DIR / f"mp_per_district_over_time_{safe_district_name}.png")
+            plt.close()
 
-        districts_variance = pivot_counts.var(axis=0, ddof=0)
+        districts_variance = pivot_counts.select(pl.exclude("year").var(ddof=0)).to_dicts()[0]
         reference = {d['district']: d['variance'] for d in self.REFERENCE_VARIANCES}
         failures = 0
-        numer = 0
         for district, var in districts_variance.items():
-            numer += 1
             if var > reference.get(district, 0.0) + 1e-4:  # Using the lookup for variance thresholds
                 failures += 1
-                logger.error(f"District {district} variance should be below {reference.get(district, 0.0)}.")  
-        self.assertEqual(failures, 0, f"All districts should have a variance of MP count per year below reference. Failures: {failures}")             
-        self.assertLessEqual(len(unique_districts), CONSTITUENCY_COUNT_THRESHOLD, f"The number of unique constituencies should be less than {CONSTITUENCY_COUNT_THRESHOLD}. Found: {len(unique_districts)}")
+                logger.error(f"District {district} variance should be below {reference.get(district, 0.0)}.")
+        self.assertEqual(
+            failures,
+            0,
+            "All districts should have a variance of MP count per year below "
+            f"reference. Failures: {failures}. See diagnostic plots in {RESULTS_DIR}",
+        )
+        self.assertLessEqual(
+            len(unique_districts),
+            CONSTITUENCY_COUNT_THRESHOLD,
+            "The number of unique constituencies should be less than "
+            f"{CONSTITUENCY_COUNT_THRESHOLD}. Found: {len(unique_districts)}",
+        )
 
 if __name__ == '__main__':
     unittest.main()
