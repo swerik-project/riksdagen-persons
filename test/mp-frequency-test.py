@@ -8,11 +8,7 @@ from pyriksdagen.metadata import (
 from pyriksdagen.utils import (
     get_data_location,
 )
-try:
-    from pytest_cfg_fetcher.fetch import fetch_config
-except ImportError:
-    def fetch_config(_):
-        return None
+from pytest_cfg_fetcher.fetch import fetch_config
 from tqdm import tqdm
 import datetime as dt
 import pandas as pd
