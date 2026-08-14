@@ -92,6 +92,7 @@ jobs:
         echo "throw ERROR on inconsistencies on our side"
         echo "WARN on upstream errors"
         python -m unittest test.db
+        python -m unittest test.nobility
         python -m unittest test.person_id_integrity
 
   mandates:
