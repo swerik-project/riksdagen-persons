@@ -3,7 +3,6 @@ throw ERROR on inconsistencies on our side
 
 WARN on upstream errors
 """
-import calendar
 from datetime import datetime
 from lxml import etree
 from pathlib import Path
@@ -15,7 +14,6 @@ from pyriksdagen.utils import (
 )
 from pytest_cfg_fetcher.fetch import fetch_config
 import pandas as pd
-import re
 import unittest
 import warnings
 import yaml
