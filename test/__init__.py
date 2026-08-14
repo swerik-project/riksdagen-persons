@@ -25,11 +25,14 @@
             :end-before: Test Cases
 
 
-### Test manually reviewed minister date evidence -- `ministers-date-evidence.py`
+### Test manually reviewed minister date evidence -- `minister_date_evidence.py`
 
-.. include:: docs/ministers-date-evidence.md
-            :start-after: Summary
-            :end-before: Test Cases
+See the module docstring in `minister_date_evidence.py`.
+
+
+### Test minister date and government integrity -- `minister_date_integrity.py`
+
+See the module docstring in `minister_date_integrity.py`.
 
 
 ### Test the number of MPs is around where it should be -- `mp-frequency-test.py`
