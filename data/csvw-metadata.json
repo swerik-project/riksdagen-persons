@@ -108,10 +108,7 @@
             "name": "primary_name",
             "titles": "primary_name",
             "dc:description": "Whether the name is the preferred display name for the person.",
-            "datatype": {
-              "base": "string",
-              "format": "^(True|False)$"
-            },
+            "datatype": "boolean",
             "required": true
           }
         ],
@@ -616,10 +613,7 @@
             "name": "ocr_correction",
             "titles": "ocr_correction",
             "dc:description": "Whether the row represents an OCR correction variant.",
-            "datatype": {
-              "base": "string",
-              "format": "^(True|False)$"
-            },
+            "datatype": "boolean",
             "required": true
           }
         ]
