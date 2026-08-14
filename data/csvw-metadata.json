@@ -127,6 +127,63 @@
       }
     },
     {
+      "url": "nobility.csv",
+      "dc:title": "Nobility",
+      "dc:description": "Person-level noble-title metadata used to resolve historical speaker introductions.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "First known date when the person held the noble title, where known.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "Last known date when the person held the noble title, where known.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "title",
+            "titles": "title",
+            "dc:description": "Normalized noble title.",
+            "datatype": {
+              "base": "string",
+              "format": "^(greve|friherre)$"
+            },
+            "required": true
+          }
+        ],
+        "primaryKey": [
+          "person_id",
+          "title"
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
       "url": "member_of_parliament.csv",
       "dc:title": "Members of Parliament",
       "dc:description": "Mandates as member of parliament, including dates, district, and role.",
