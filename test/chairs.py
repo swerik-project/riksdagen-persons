@@ -5,7 +5,6 @@ Test chars and chair-mp mapping metadata.
 from datetime import datetime
 from pyriksdagen.date_handling import yearize_mandates
 from pytest_cfg_fetcher.fetch import fetch_config
-
 import json
 import pandas as pd
 import polars as pl
