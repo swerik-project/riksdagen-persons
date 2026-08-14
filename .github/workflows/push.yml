@@ -22,7 +22,9 @@ jobs:
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 1
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -30,9 +32,40 @@ jobs:
         pip install pyriksdagen==1.10.0
         pip install pytest-cfg-fetcher
         pip install pandas==2.3.3
+        pip install polars pyarrow
     - name: Test chars and chair-mp mapping metadata
       run: |
         python -m unittest test.chairs
+
+  csvw:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.13]
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ./.github/actions/checkout
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 1
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyriksdagen
+        pip install pyriksdagen==1.10.0
+        pip install pytest-cfg-fetcher
+        pip install pandas==2.3.3
+        pip install polars pyarrow
+        pip install csvw
+    - name: Test that metadata matchs CSVW spec
+      run: |
+        python -m unittest test.csvw_metadata
+    - name: Test that metadata is properly sorted
+      run: |
+        python -m unittest test.sort_order
 
   db:
     runs-on: ubuntu-latest
@@ -45,7 +78,9 @@ jobs:
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 1
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -57,6 +92,7 @@ jobs:
         echo "throw ERROR on inconsistencies on our side"
         echo "WARN on upstream errors"
         python -m unittest test.db
+        python -m unittest test.person_id_integrity
 
   mandates:
     runs-on: ubuntu-latest
@@ -69,7 +105,9 @@ jobs:
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 1
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -90,7 +128,9 @@ jobs:
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 1
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -112,7 +152,9 @@ jobs:
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 1
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
