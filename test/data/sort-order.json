@@ -20,5 +20,6 @@
     "minister.csv": ["start", "government", "person_id", "role"],
     "party.csv": ["party"],
     "external_identifiers.csv": ["person_id", "authority", "identifier"],
-    "references_map.csv": ["person_id", "bibtex_key", "page"]
+    "references_map.csv": ["person_id", "bibtex_key", "page"],
+    "party_leaders.csv": ["party_id", "start_date"]
 }
