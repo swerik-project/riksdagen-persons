@@ -65,6 +65,9 @@ jobs:
     - name: Test that metadata matchs CSVW spec
       run: |
         python -m unittest test.csvw_metadata
+    - name: Test that metadata is properly sorted
+      run: |
+        python -m unittest test.sort_order
 
   db:
     runs-on: ubuntu-latest
@@ -91,6 +94,7 @@ jobs:
         echo "throw ERROR on inconsistencies on our side"
         echo "WARN on upstream errors"
         python -m unittest test.db
+        python -m unittest test.person_id_integrity
 
   mandates:
     runs-on: ubuntu-latest
