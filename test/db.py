@@ -187,10 +187,18 @@ class Test(unittest.TestCase):
         df_name = "speaker"
         df, df_unique, df_duplicate = self.get_duplicates(df_name, columns)
 
-        self.assertEqual(len(df), len(df_unique), df_duplicate)
+        self.assertEqual(
+            len(df),
+            len(df_unique),
+            f"Duplicate speaker rows for columns {columns}:\n{df_duplicate}"
+        )
 
         df, df_unique, df_duplicate = self.get_duplicates(df_name, None)
-        self.assertEqual(len(df), len(df_unique), df_duplicate)
+        self.assertEqual(
+            len(df),
+            len(df_unique),
+            f"Duplicate speaker rows:\n{df_duplicate}"
+        )
 
 
     def test_known_speaker_dates(self):
