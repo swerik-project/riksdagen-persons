@@ -144,7 +144,7 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - role
 
 ### `data/twitter.csv` (deprecated)
-- person_id 
+- person_id
 - twitter
  
 ### `data/wiki_id.csv`
