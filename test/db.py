@@ -222,7 +222,15 @@ class Test(unittest.TestCase):
                     }
                 )
 
-        self.assertEqual(len(missing), 0, pd.DataFrame(missing))
+        missing_df = pd.DataFrame(missing)
+        self.assertEqual(
+            len(missing),
+            0,
+            (
+                "Some manually reviewed speaker date rows are missing from "
+                f"data/speaker.csv. Missing rows: {len(missing)}\n{missing_df}"
+            )
+        )
 
 
     def test_speaker_dates_are_present(self):
@@ -302,7 +310,15 @@ class Test(unittest.TestCase):
                             }
                         )
 
-        self.assertEqual(len(overlaps), 0, pd.DataFrame(overlaps))
+        overlaps_df = pd.DataFrame(overlaps)
+        self.assertEqual(
+            len(overlaps),
+            0,
+            (
+                "Exact-dated speaker intervals overlap for the same role. "
+                f"Overlapping row pairs: {len(overlaps)}\n{overlaps_df}"
+            )
+        )
 
 
     def test_twitter(self):
