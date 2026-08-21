@@ -9,6 +9,7 @@ from pathlib import Path
 from pyriksdagen.db import load_metadata
 from pyriksdagen.utils import (
     get_doc_dates,
+    parse_date,
     parse_protocol,
     protocol_iterators,
 )
@@ -191,6 +192,133 @@ class Test(unittest.TestCase):
 
         df, df_unique, df_duplicate = self.get_duplicates(df_name, None)
         self.assertEqual(len(df), len(df_unique), df_duplicate)
+
+
+    def test_known_speaker_dates(self):
+        """
+        Test that speaker dates checked for PR 120 do not regress.
+        """
+        speaker = self.get_meta_df("speaker").fillna("")
+        known = pd.read_csv("test/data/known-speaker-dates.csv", sep=';').fillna("")
+
+        missing = []
+        for i, row in known.iterrows():
+            fil = speaker.loc[
+                (speaker['person_id'] == row['person_id'])
+                & (speaker['role'] == row['role'])
+                & (speaker['start'].astype(str) == row['start'])
+                & (speaker['end'].astype(str) == row['end'])
+            ]
+            if fil.empty:
+                missing.append(
+                    {
+                        "person_id": row["person_id"],
+                        "name": row["name"],
+                        "role": row["role"],
+                        "expected_start": row["start"],
+                        "expected_end": row["end"],
+                        "reviewed_by": row["reviewed_by"],
+                        "review_note": row["review_note"],
+                    }
+                )
+
+        missing_df = pd.DataFrame(missing)
+        self.assertEqual(
+            len(missing),
+            0,
+            (
+                "Some manually reviewed speaker date rows are missing from "
+                f"data/speaker.csv. Missing rows: {len(missing)}\n{missing_df}"
+            )
+        )
+
+
+    def test_speaker_dates_are_present(self):
+        """
+        Test that only the current speaker row is open-ended.
+        """
+        speaker = self.get_meta_df("speaker").fillna("").copy()
+        speaker["start"] = speaker["start"].astype(str)
+        speaker["end"] = speaker["end"].astype(str)
+
+        missing_start = speaker[speaker["start"] == ""].copy()
+        speaker["start_date"] = speaker["start"].map(parse_date)
+        invalid_start = speaker[
+            (speaker["start"] != "")
+            & speaker["start_date"].isna()
+        ].copy()
+
+        latest_start = speaker["start_date"].max()
+        open_ended = speaker[speaker["end"] == ""].copy()
+        # Speaker intervals should be closed historical facts. The only open
+        # interval should be the current speaker, represented by the latest
+        # start date in speaker.csv.
+        unexpected_open_ended = open_ended[
+            open_ended["start_date"] != latest_start
+        ].copy()
+
+        self.assertTrue(missing_start.empty, f"Speaker rows missing start dates:\n{missing_start}")
+        self.assertTrue(invalid_start.empty, f"Speaker rows with unparseable start dates:\n{invalid_start}")
+        self.assertTrue(
+            unexpected_open_ended.empty,
+            f"Only the speaker row with latest start date ({latest_start.date()}) may be open-ended:\n{unexpected_open_ended}"
+        )
+        self.assertEqual(
+            len(open_ended),
+            1,
+            f"Expected exactly one open-ended current speaker row; found {len(open_ended)}:\n{open_ended}"
+        )
+
+
+    def test_exact_speaker_dates_do_not_overlap(self):
+        """
+        Test that exact-dated speaker intervals do not overlap for the same role.
+        """
+        speaker = self.get_meta_df("speaker").fillna("").reset_index(names="row")
+        speaker["row"] += 2
+        speaker["start"] = speaker["start"].astype(str)
+        speaker["end"] = speaker["end"].astype(str)
+
+        exact = speaker[
+            (speaker["start"].str.len() == 10)
+            & ((speaker["end"] == "") | (speaker["end"].str.len() == 10))
+        ].copy()
+        exact["start_date"] = pd.to_datetime(exact["start"])
+        exact["end_date"] = pd.to_datetime(
+            exact["end"].replace("", pd.Timestamp.max.normalize())
+        )
+
+        overlaps = []
+        for role, group in exact.groupby("role"):
+            records = group.to_dict("records")
+            for i, a in enumerate(records):
+                for b in records[i + 1:]:
+                    if a["person_id"] == b["person_id"]:
+                        continue
+                    if a["start_date"] < b["end_date"] and b["start_date"] < a["end_date"]:
+                        overlaps.append(
+                            {
+                                "role": role,
+                                "left_row": a["row"],
+                                "left_person_id": a["person_id"],
+                                "left_start": a["start"],
+                                "left_end": a["end"],
+                                "right_row": b["row"],
+                                "right_person_id": b["person_id"],
+                                "right_start": b["start"],
+                                "right_end": b["end"],
+                            }
+                        )
+
+        overlaps_df = pd.DataFrame(overlaps)
+        self.assertEqual(
+            len(overlaps),
+            0,
+            (
+                "Exact-dated speaker intervals overlap for the same role. "
+                f"Overlapping row pairs: {len(overlaps)}\n{overlaps_df}"
+            )
+        )
 
 
     def test_twitter(self):
