@@ -8,7 +8,7 @@ on:
     paths:
       - data/**
       - test/**
-      - !test/result/
+      - '!test/result/**'
       - .github/**
   workflow_dispatch:
 
