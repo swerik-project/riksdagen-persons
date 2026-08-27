@@ -19,8 +19,7 @@ import unittest
 import warnings
 import yaml
 
-
-
+from test.date_integrity_helpers import parse_date_interval
 
 class DuplicateWarning(Warning):
     def __init__(self, duplicate_df):
@@ -114,7 +113,6 @@ class Test(unittest.TestCase):
         df = pd.read_csv(path)
         return df
 
-
     def write_error_df(self, df_name, errs, outpath):
         """
         Take a list of errors and write the output as a dataframe
@@ -152,6 +150,108 @@ class Test(unittest.TestCase):
         df_name = "minister"
         df, df_unique, df_duplicate = self.get_duplicates(df_name, None)
         self.assertEqual(len(df), len(df_unique), df_duplicate)
+
+
+    def test_minister_person_metadata(self):
+        """
+        Test that all minister person IDs resolve to person and name metadata.
+        """
+        minister = pd.read_csv("data/minister.csv", dtype=str, keep_default_na=False)
+        person = pd.read_csv("data/person.csv", dtype=str, keep_default_na=False)
+        name = pd.read_csv("data/name.csv", dtype=str, keep_default_na=False)
+
+        missing_person = sorted(set(minister["person_id"]) - set(person["person_id"]))
+        missing_name = sorted(set(minister["person_id"]) - set(name["person_id"]))
+
+        self.assertEqual([], missing_person, f"Minister IDs missing from person.csv: {missing_person}")
+        self.assertEqual([], missing_name, f"Minister IDs missing from name.csv: {missing_name}")
+
+
+    def test_minister_government_metadata(self):
+        """
+        Test that all minister government labels resolve to government metadata.
+        """
+        minister = pd.read_csv("data/minister.csv", dtype=str, keep_default_na=False)
+        government = pd.read_csv("data/government.csv", dtype=str, keep_default_na=False)
+
+        missing_governments = sorted(set(minister["government"]) - set(government["government"]))
+
+        self.assertEqual([], missing_governments, f"Minister governments missing from government.csv: {missing_governments}")
+
+
+    def test_minister_government_counts(self):
+        """
+        Test reviewed minister-count expectations for each government.
+        """
+        minister = pd.read_csv("data/minister.csv", dtype=str, keep_default_na=False)
+        expected = pd.read_csv("test/data/minister-government-counts.csv", dtype=str, keep_default_na=False)
+
+        count_columns = [
+            "expected_unique_persons",
+            "expected_unique_minister_roles",
+        ]
+        for column in count_columns:
+            expected[column] = expected[column].str.strip()
+
+        person_counts = minister.groupby("government")["person_id"].nunique().to_dict()
+        role_counts = (
+            minister[["government", "person_id", "role"]]
+            .drop_duplicates()
+            .groupby("government")
+            .size()
+            .to_dict()
+        )
+        errors = []
+
+        for _, row in expected.iterrows():
+            if row["expected_unique_persons"] not in ["", "NULL"]:
+                expected_count = int(row["expected_unique_persons"])
+                actual_count = person_counts.get(row["government"], 0)
+                if actual_count != expected_count:
+                    errors.append(
+                        f"{row['government']} | expected {expected_count} unique persons, found {actual_count}"
+                    )
+
+            if row["expected_unique_minister_roles"] not in ["", "NULL"]:
+                expected_count = int(row["expected_unique_minister_roles"])
+                actual_count = role_counts.get(row["government"], 0)
+                if actual_count != expected_count:
+                    errors.append(
+                        f"{row['government']} | expected {expected_count} unique minister roles, found {actual_count}"
+                    )
+
+        self.assertEqual([], errors)
+
+
+    def test_minister_government_date_intersections(self):
+        """
+        Test that dated minister rows intersect their government date interval.
+        """
+        minister = pd.read_csv("data/minister.csv", dtype=str, keep_default_na=False)
+        government = pd.read_csv("data/government.csv", dtype=str, keep_default_na=False)
+
+        government_dates = {}
+        for _, row in government.iterrows():
+            government_dates[row["government"]] = (
+                parse_date_interval(row["start"], is_end=False)[0],
+                parse_date_interval(row["end"], is_end=True)[0],
+            )
+
+        errors = []
+        for _, row in minister.iterrows():
+            start = parse_date_interval(row["start"], is_end=False)[0]
+            end = parse_date_interval(row["end"], is_end=True)[0]
+            if start is None or end is None:
+                continue
+
+            government_start, government_end = government_dates[row["government"]]
+            intersects = start < government_end and end > government_start
+            if not intersects:
+                errors.append(
+                    f"{row['person_id']} | {row['government']} | {row['role']} | {row['start']} - {row['end']}"
+                )
+
+        self.assertEqual([], errors)
 
 
     def test_party_affiliation(self):
