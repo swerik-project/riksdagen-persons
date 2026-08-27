@@ -130,20 +130,24 @@ class TestPartySuccessor(unittest.TestCase):
         for party_id, name in party_names.iter_rows():
             party_names_dict[party_id] = name
 
+        EXCEPTIONS = ["i-SwzbNNYoyZYULLDiTu2zGP"]
+        for exception_party in EXCEPTIONS:
+            e_name = party_names_dict[exception_party]
+            LOGGER.info(f"Skip exception: {exception_party} / {e_name}")
+
         for party, successor in df.iter_rows():
-            G.add_edge(party, successor)
+            if party not in EXCEPTIONS and successor not in EXCEPTIONS:
+                G.add_edge(party, successor)
 
-
-        NO_OF_ACCEPTABLE_CYCLES = 1
         if not nx.is_directed_acyclic_graph(G):
             cycles = nx.recursive_simple_cycles(G)
             for c in cycles:
                 c_with_names = ", ".join([party_names_dict[party_id] for party_id in c])
                 LOGGER.error(f"Cycle found: {c}\nNames: {c_with_names}")
 
-            msg = f"The party successor graph has more cycles than it is supposed to ({len(cycles)} > {NO_OF_ACCEPTABLE_CYCLES})"
+            #msg = f"The party successor graph has more cycles than it is supposed to ({len(cycles)} > {NO_OF_ACCEPTABLE_CYCLES})"
 
-            self.assertLessEqual(len(cycles), NO_OF_ACCEPTABLE_CYCLES, msg)
+            self.assertLessEqual(len(cycles), 0, "The party successor graph has cycles")
 
 if __name__ == "__main__":
     unittest.main()
