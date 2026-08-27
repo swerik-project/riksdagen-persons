@@ -193,6 +193,59 @@ class Test(unittest.TestCase):
         self.assertEqual(len(df), len(df_unique), df_duplicate)
 
 
+    def test_known_speaker_dates(self):
+        """
+        Test that speaker dates checked for PR 120 do not regress.
+        """
+        speaker = self.get_meta_df("speaker").fillna("")
+        known = pd.read_csv("test/data/known-speaker-dates.csv", sep=';').fillna("")
+
+        missing = []
+        for i, row in known.iterrows():
+            fil = speaker.loc[
+                (speaker['person_id'] == row['person_id'])
+                & (speaker['role'] == row['role'])
+                & (speaker['start'].astype(str) == row['start'])
+                & (speaker['end'].astype(str) == row['end'])
+            ]
+            if fil.empty:
+                missing.append(
+                    {
+                        "person_id": row["person_id"],
+                        "name": row["name"],
+                        "role": row["role"],
+                        "expected_start": row["start"],
+                        "expected_end": row["end"],
+                        "reviewed_by": row["reviewed_by"],
+                        "review_note": row["review_note"],
+                    }
+                )
+
+        self.assertEqual(len(missing), 0, pd.DataFrame(missing))
+
+
+    def test_speaker_dates_are_present(self):
+        """
+        Test that speaker rows do not silently become open-ended.
+        """
+        speaker = self.get_meta_df("speaker").fillna("")
+        current_speaker = "i-BZ7PcK8D1efvHXsafGEMKE"
+        known_open_ended = {
+            # Historical row still needs exact source checking.
+            "i-UQb1WPSaU3ohorTovz3X3c",
+        }
+
+        missing_start = speaker[speaker["start"] == ""].copy()
+        missing_end = speaker[
+            (speaker["end"] == "")
+            & (speaker["person_id"] != current_speaker)
+            & (~speaker["person_id"].isin(known_open_ended))
+        ].copy()
+
+        self.assertTrue(missing_start.empty, missing_start)
+        self.assertTrue(missing_end.empty, missing_end)
+
+
     def test_twitter(self):
         """
         test no duplicates in twitter data
