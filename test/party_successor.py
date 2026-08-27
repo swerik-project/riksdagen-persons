@@ -26,7 +26,11 @@ for the data integrity test style guide.
 import unittest
 
 import pandas as pd
+import polars as pl
+import networkx as nx
 
+from trainerlog import get_logger
+LOGGER = get_logger("test-party-successor")
 
 class TestPartySuccessor(unittest.TestCase):
     def _load_data(self):
@@ -116,6 +120,30 @@ class TestPartySuccessor(unittest.TestCase):
             f"missing {len(missing_edges)} edges: {missing_edges[:10]}; "
             f"extra {len(extra_edges)} edges: {extra_edges[:10]}")
 
+    def test_directed_acyclic_graph(self):
+        G = nx.DiGraph()
+        df = pl.read_csv("data/party_successor.csv")
+        party_names = pl.read_csv("data/party.csv")
+        party_names = party_names.select("swerik_party_id", "party")
+
+        party_names_dict = {}
+        for party_id, name in party_names.iter_rows():
+            party_names_dict[party_id] = name
+
+        for party, successor in df.iter_rows():
+            G.add_edge(party, successor)
+
+
+        NO_OF_ACCEPTABLE_CYCLES = 1
+        if not nx.is_directed_acyclic_graph(G):
+            cycles = nx.recursive_simple_cycles(G)
+            for c in cycles:
+                c_with_names = ", ".join([party_names_dict[party_id] for party_id in c])
+                LOGGER.error(f"Cycle found: {c}\nNames: {c_with_names}")
+
+            msg = f"The party successor graph has more cycles than it is supposed to ({len(cycles)} > {NO_OF_ACCEPTABLE_CYCLES})"
+
+            self.assertLessEqual(len(cycles), NO_OF_ACCEPTABLE_CYCLES, msg)
 
 if __name__ == "__main__":
     unittest.main()
