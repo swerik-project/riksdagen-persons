@@ -138,7 +138,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyriksdagen
         pip install pytest-cfg-fetcher
-        pip install polars
+        pip install polars networkx
     - name: Test MPs agains manually curated data
       run: |
         python -m unittest test.party-affiliation
