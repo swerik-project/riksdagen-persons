@@ -79,10 +79,12 @@ Separator == ;
 
 ## known-speaker-dates.csv
 
-Manually checked speaker date corrections from PR 120, based on the
-spreadsheet review by Fredrik. Row 16 in that review is included
-with separate provenance because Fredrik did not record-check it; the date is
-retained from `person.csv` as Edvard Casparsson's death date.
+Manually checked speaker date corrections, mostly based on the PR 120
+spreadsheet review by Fredrik. Row 16 in that review is included with separate
+provenance because Fredrik did not record-check it; the date is retained from
+`person.csv` as Edvard Casparsson's death date. The 1905 Åkerhielm rows were
+added from a Wikipedia lead checked against the local riksdag-year metadata and
+1905 urtima protocols.
 
 Separator == ;
 
