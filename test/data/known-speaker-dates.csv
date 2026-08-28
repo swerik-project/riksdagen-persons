@@ -2,7 +2,7 @@ person_id;name;role;start;end;reviewed_by;review_note;source_file;source_lines
 i-wVG4QF5ZkrTTo5uHxD7ED;Ludvig Teodor Almqvist;första kammarens vice talman;1867-01-18;1868-01-15;Fredrik Eriksson;Manually checked for PR 120.;riksdagen-records/data/1867/prot-1867--fk--0118.xml;755-770
 i-9SHnAjHpLBQfhwqrNpggaV;Olof Fåhræus;första kammarens vice talman;1868-01-16;1872;Fredrik Eriksson;Manually checked for PR 120.;riksdagen-records/data/1868/prot-1868--fk--0116.xml;268-280
 i-2ehtmACUZPNJMNnS5o3dYB;Gerhard Lagerstråle;första kammarens vice talman;1875-01-16;1875-05-11;Fredrik Eriksson;Manually checked for PR 120.;riksdagen-records/data/1875/prot-1875--fk--001.xml;618-625
-i-9SHnAjHpLBQfhwqrNpggaV;Olof Fåhræus;första kammarens vice talman;1875-05-14;1875;Fredrik Eriksson;Manually checked for PR 120.;riksdagen-records/data/1875/prot-1875--fk--040.xml;225-233
+i-9SHnAjHpLBQfhwqrNpggaV;Olof Fåhræus;första kammarens vice talman;1875-05-14;1875-05-26;Fredrik Eriksson;Manually checked for PR 120 and refined in speaker-handoff-fixes.;riksdagen-records/data/1875/prot-1875--fk--040.xml;225-233
 i-6ETHRvdQXy7JyB6UH2jtzU;Arvid Posse;andra kammarens talman;1876;1880-04-19;Fredrik Eriksson;Manually checked for PR 120.;riksdagen-records/data/1880/prot-1880--ak--042.xml;428-443
 i-Qtn5xiAaEShY2RfbLLuCj8;Olof Wijk den yngre;andra kammarens vice talman;1875;1880-04-21;Fredrik Eriksson;Manually checked for PR 120. End date adjusted from 1880-04-20 per Fredrik's review comment.;riksdagen-records/data/1880/prot-1880--ak--042.xml;472-479
 i-Qtn5xiAaEShY2RfbLLuCj8;Olof Wijk den yngre;andra kammarens talman;1880-04-21;1890;Fredrik Eriksson;Manually checked for PR 120.;riksdagen-records/data/1880/prot-1880--ak--042.xml;472-479
