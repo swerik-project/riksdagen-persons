@@ -15,7 +15,8 @@ pipe-separated successor values from `data/party.csv`.
 Input data:
 The test compares `data/party_successor.csv` with party identifiers and the
 temporary deprecated `swerik_successor` compatibility column in
-`data/party.csv`.
+`data/party.csv`. CSVW tests cover schema, primary-key, and foreign-key
+integrity; this test covers successor-specific semantics.
 
 Documentation:
 See `README.md` for the table descriptions and
@@ -25,90 +26,75 @@ for the data integrity test style guide.
 
 import unittest
 
-import pandas as pd
-import polars as pl
 import networkx as nx
+import polars as pl
 
 from trainerlog import get_logger
+
 LOGGER = get_logger("test-party-successor")
 
-class TestPartySuccessor(unittest.TestCase):
-    def _load_data(self):
-        party_names = pd.read_csv("data/party.csv")
-        successors = pd.read_csv("data/party_successor.csv")
-        return party_names, successors
 
-    def _successor_edges_from_deprecated_column(self, party_names):
-        edges = set()
-        for _, row in party_names.iterrows():
-            if pd.isna(row["swerik_successor"]):
-                continue
-            for successor in str(row["swerik_successor"]).split("|"):
-                successor = successor.strip()
-                if successor:
-                    edges.add((row["swerik_party_id"], successor))
-        return edges
+SOCIALDEMOCRATERNA_ID = "i-VS8ddgxigwL5TceKtXGApS"
+SOCIALDEMOKRATISKA_VANSTERGRUPPEN_ID = "i-SwzbNNYoyZYULLDiTu2zGP"
+
+
+def successor_edges_from_deprecated_column(party_names):
+    edges = set()
+    rows = (
+        party_names
+        .select("swerik_party_id", "swerik_successor")
+        .filter(pl.col("swerik_successor").is_not_null())
+    )
+    for party_id, successors in rows.iter_rows():
+        for successor_id in successors.split("|"):
+            successor_id = successor_id.strip()
+            if successor_id:
+                edges.add((party_id, successor_id))
+    return edges
+
+
+def successor_edges_from_table(successors):
+    return set(successors.select("party_id", "successor_party_id").iter_rows())
+
+
+def party_name_by_id(party_names):
+    return dict(party_names.select("swerik_party_id", "party").iter_rows())
+
+
+def successor_graph(successors):
+    graph = nx.DiGraph()
+    graph.add_edges_from(successor_edges_from_table(successors))
+    return graph
+
+
+def canonical_cycle(cycle):
+    rotations = [
+        tuple(cycle[i:] + cycle[:i])
+        for i in range(len(cycle))
+    ]
+    return min(rotations)
+
+
+ALLOWED_CYCLES = {
+    canonical_cycle([
+        SOCIALDEMOCRATERNA_ID,
+        SOCIALDEMOKRATISKA_VANSTERGRUPPEN_ID,
+    ])
+}
+
+
+class TestPartySuccessor(unittest.TestCase):
 
     def test_successor_table_matches_deprecated_party_csv_column(self):
         """
         Allow deprecated successor columns temporarily while requiring the
         normalized successor table to preserve the same SWERIK-ID edges.
         """
-        party_names, successors = self._load_data()
+        party_names = pl.read_csv("data/party.csv")
+        successors = pl.read_csv("data/party_successor.csv")
 
-        expected_columns = ["party_id", "successor_party_id"]
-        self.assertEqual(
-            list(successors.columns),
-            expected_columns,
-            "data/party_successor.csv must have columns "
-            f"{expected_columns}; found {list(successors.columns)}")
-
-        duplicated_party_ids = (
-            party_names.loc[
-                party_names["swerik_party_id"].duplicated(),
-                "swerik_party_id"
-            ]
-            .dropna()
-            .unique()
-            .tolist()
-        )
-        self.assertFalse(
-            duplicated_party_ids,
-            "data/party.csv must have unique swerik_party_id values; "
-            f"found {len(duplicated_party_ids)} duplicates: "
-            f"{duplicated_party_ids[:10]}")
-
-        duplicated_successors = successors.loc[successors.duplicated()]
-        self.assertTrue(
-            duplicated_successors.empty,
-            "data/party_successor.csv must not contain duplicate rows; "
-            f"found {len(duplicated_successors)} duplicates: "
-            f"{duplicated_successors.head(10).to_dict('records')}")
-
-        party_ids = set(party_names["swerik_party_id"])
-        source_ids = set(successors["party_id"])
-        target_ids = set(successors["successor_party_id"])
-        missing_source_ids = sorted(source_ids - party_ids)
-        missing_target_ids = sorted(target_ids - party_ids)
-
-        self.assertFalse(
-            missing_source_ids,
-            "All source IDs in data/party_successor.csv must exist in "
-            "data/party.csv swerik_party_id; found "
-            f"{len(missing_source_ids)} missing source IDs: "
-            f"{missing_source_ids[:10]}")
-        self.assertFalse(
-            missing_target_ids,
-            "All target IDs in data/party_successor.csv must exist in "
-            "data/party.csv swerik_party_id; found "
-            f"{len(missing_target_ids)} missing target IDs: "
-            f"{missing_target_ids[:10]}")
-
-        expected_edges = self._successor_edges_from_deprecated_column(
-            party_names)
-        actual_edges = set(
-            zip(successors["party_id"],
-                successors["successor_party_id"]))
+        expected_edges = successor_edges_from_deprecated_column(party_names)
+        actual_edges = successor_edges_from_table(successors)
         missing_edges = sorted(expected_edges - actual_edges)
         extra_edges = sorted(actual_edges - expected_edges)
 
@@ -120,34 +106,28 @@ class TestPartySuccessor(unittest.TestCase):
             f"missing {len(missing_edges)} edges: {missing_edges[:10]}; "
             f"extra {len(extra_edges)} edges: {extra_edges[:10]}")
 
-    def test_directed_acyclic_graph(self):
-        G = nx.DiGraph()
-        df = pl.read_csv("data/party_successor.csv")
+    def test_no_unexpected_successor_cycles(self):
         party_names = pl.read_csv("data/party.csv")
-        party_names = party_names.select("swerik_party_id", "party")
+        successors = pl.read_csv("data/party_successor.csv")
 
-        party_names_dict = {}
-        for party_id, name in party_names.iter_rows():
-            party_names_dict[party_id] = name
+        names = party_name_by_id(party_names)
+        graph = successor_graph(successors)
+        cycles = list(nx.simple_cycles(graph))
+        unexpected_cycles = []
+        for cycle in cycles:
+            cycle_names = ", ".join(names[party_id] for party_id in cycle)
+            if canonical_cycle(cycle) in ALLOWED_CYCLES:
+                LOGGER.info(f"Allowed cycle found: {cycle}\nNames: {cycle_names}")
+            else:
+                unexpected_cycles.append(cycle)
+                LOGGER.error(f"Unexpected cycle found: {cycle}\nNames: {cycle_names}")
 
-        EXCEPTIONS = ["i-SwzbNNYoyZYULLDiTu2zGP"]
-        for exception_party in EXCEPTIONS:
-            e_name = party_names_dict[exception_party]
-            LOGGER.info(f"Skip exception: {exception_party} / {e_name}")
+        self.assertEqual(
+            len(unexpected_cycles),
+            0,
+            "The party successor graph has unexpected cycles; allowed cycles "
+            f"are {sorted(ALLOWED_CYCLES)}, found {unexpected_cycles}")
 
-        for party, successor in df.iter_rows():
-            if party not in EXCEPTIONS and successor not in EXCEPTIONS:
-                G.add_edge(party, successor)
-
-        if not nx.is_directed_acyclic_graph(G):
-            cycles = nx.recursive_simple_cycles(G)
-            for c in cycles:
-                c_with_names = ", ".join([party_names_dict[party_id] for party_id in c])
-                LOGGER.error(f"Cycle found: {c}\nNames: {c_with_names}")
-
-            #msg = f"The party successor graph has more cycles than it is supposed to ({len(cycles)} > {NO_OF_ACCEPTABLE_CYCLES})"
-
-            self.assertLessEqual(len(cycles), 0, "The party successor graph has cycles")
 
 if __name__ == "__main__":
     unittest.main()
