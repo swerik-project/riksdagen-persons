@@ -88,6 +88,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyriksdagen
         pip install pytest-cfg-fetcher
+        pip install polars
     - name: Test metadata integrity
       run: |
         echo "Test that there are no duplicates in the DB"

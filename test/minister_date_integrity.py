@@ -33,6 +33,9 @@ October 1979.
 When failures are found, the test writes structured CSV diagnostics to
 `test/results/minister-government-overlaps.csv` or
 `test/results/minister-government-disjoint-rows.csv`.
+
+Follow-up documentation for the current known date mismatches is in
+`docs/issue-drafts/minister-government-date-mismatches.md`.
 """
 import csv
 from dataclasses import dataclass
@@ -41,6 +44,7 @@ from pathlib import Path
 import unittest
 import warnings
 
+import polars as pl
 from pyriksdagen.utils import parse_date
 from trainerlog import get_logger
 
@@ -53,6 +57,9 @@ GOVERNMENT_PATH = DATA_DIR / "government.csv"
 OVERLAP_PATH = RESULTS_DIR / "minister-government-overlaps.csv"
 DISJOINT_PATH = RESULTS_DIR / "minister-government-disjoint-rows.csv"
 
+# These rows are known minister/government date mismatches documented in
+# docs/issue-drafts/minister-government-date-mismatches.md. They are warnings
+# until that follow-up issue is fixed; any additional disjoint row is an error.
 KNOWN_DISJOINT_ROWS = {
     (
         "i-HoKrvTnXU5eTu8LVqgLr9p",
@@ -123,8 +130,7 @@ class Interval:
 
 
 def read_csv(path):
-    with open(path, encoding="utf-8", newline="") as f:
-        return list(csv.DictReader(f))
+    return pl.read_csv(path, infer_schema=False).fill_null("").to_dicts()
 
 
 def parse_boundary(value, is_start):
@@ -323,23 +329,36 @@ class TestMinisterDateIntegrity(unittest.TestCase):
         governments = load_government_intervals()
         rows = minister_effective_rows(governments)
         disjoint_rows = find_rows_without_government_intersection(rows)
-
-        if disjoint_rows:
-            write_disjoint_rows(disjoint_rows)
-            LOGGER.warning(
-                f"Found {len(disjoint_rows)} known minister row(s) outside their "
-                f"referenced government interval. Details written to {DISJOINT_PATH}."
-            )
-            warnings.warn(
-                f"Known minister/government date mismatches found: {len(disjoint_rows)}; "
-                f"details written to {DISJOINT_PATH}",
-                UserWarning,
-            )
-
+        known_disjoint_rows = [
+            row for row in disjoint_rows
+            if disjoint_row_key(row) in KNOWN_DISJOINT_ROWS
+        ]
         unexpected_disjoint_rows = [
             row for row in disjoint_rows
             if disjoint_row_key(row) not in KNOWN_DISJOINT_ROWS
         ]
+
+        if disjoint_rows:
+            write_disjoint_rows(disjoint_rows)
+
+        if known_disjoint_rows:
+            LOGGER.warning(
+                f"Found {len(known_disjoint_rows)} known minister row(s) outside their "
+                f"referenced government interval. Details written to {DISJOINT_PATH}."
+            )
+            warnings.warn(
+                "Known minister/government date mismatches found: "
+                f"{len(known_disjoint_rows)}; "
+                f"details written to {DISJOINT_PATH}",
+                UserWarning,
+            )
+
+        if unexpected_disjoint_rows:
+            LOGGER.error(
+                f"Found {len(unexpected_disjoint_rows)} unexpected minister row(s) "
+                f"outside their referenced government interval. "
+                f"Details written to {DISJOINT_PATH}."
+            )
 
         self.assertEqual(
             [],
