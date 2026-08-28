@@ -34,6 +34,9 @@ from trainerlog import get_logger
 LOGGER = get_logger("test-party-successor")
 
 
+# Socialdemokratiska vänstergruppen split from Socialdemokraterna in 1917,
+# and parts of that movement later rejoined Socialdemokraterna; these IDs
+# identify that documented split/rejoin relation.
 SOCIALDEMOCRATERNA_ID = "i-VS8ddgxigwL5TceKtXGApS"
 SOCIALDEMOKRATISKA_VANSTERGRUPPEN_ID = "i-SwzbNNYoyZYULLDiTu2zGP"
 
@@ -75,6 +78,8 @@ def canonical_cycle(cycle):
     return min(rotations)
 
 
+# Allowed cycles are historically documented split/rejoin relations; all other
+# successor cycles are treated as data errors.
 ALLOWED_CYCLES = {
     canonical_cycle([
         SOCIALDEMOCRATERNA_ID,
