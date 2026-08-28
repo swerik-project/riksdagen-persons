@@ -9,6 +9,7 @@ from pathlib import Path
 from pyriksdagen.db import load_metadata
 from pyriksdagen.utils import (
     get_doc_dates,
+    parse_date,
     parse_protocol,
     protocol_iterators,
 )
@@ -18,7 +19,6 @@ import unittest
 import warnings
 import yaml
 
-
 UNICAMERAL_DEPUTY_SPEAKER_ROLES = {
     "Sveriges riksdags förste vice talman",
     "Sveriges riksdags andre vice talman",
@@ -26,6 +26,7 @@ UNICAMERAL_DEPUTY_SPEAKER_ROLES = {
 }
 
 
+from test.date_integrity_helpers import parse_date_interval
 
 class DuplicateWarning(Warning):
     def __init__(self, duplicate_df):
@@ -119,7 +120,6 @@ class Test(unittest.TestCase):
         df = pd.read_csv(path)
         return df
 
-
     def write_error_df(self, df_name, errs, outpath):
         """
         Take a list of errors and write the output as a dataframe
@@ -175,6 +175,108 @@ class Test(unittest.TestCase):
         self.assertEqual(len(df), len(df_unique), df_duplicate)
 
 
+    def test_minister_person_metadata(self):
+        """
+        Test that all minister person IDs resolve to person and name metadata.
+        """
+        minister = pd.read_csv("data/minister.csv", dtype=str, keep_default_na=False)
+        person = pd.read_csv("data/person.csv", dtype=str, keep_default_na=False)
+        name = pd.read_csv("data/name.csv", dtype=str, keep_default_na=False)
+
+        missing_person = sorted(set(minister["person_id"]) - set(person["person_id"]))
+        missing_name = sorted(set(minister["person_id"]) - set(name["person_id"]))
+
+        self.assertEqual([], missing_person, f"Minister IDs missing from person.csv: {missing_person}")
+        self.assertEqual([], missing_name, f"Minister IDs missing from name.csv: {missing_name}")
+
+
+    def test_minister_government_metadata(self):
+        """
+        Test that all minister government labels resolve to government metadata.
+        """
+        minister = pd.read_csv("data/minister.csv", dtype=str, keep_default_na=False)
+        government = pd.read_csv("data/government.csv", dtype=str, keep_default_na=False)
+
+        missing_governments = sorted(set(minister["government"]) - set(government["government"]))
+
+        self.assertEqual([], missing_governments, f"Minister governments missing from government.csv: {missing_governments}")
+
+
+    def test_minister_government_counts(self):
+        """
+        Test reviewed minister-count expectations for each government.
+        """
+        minister = pd.read_csv("data/minister.csv", dtype=str, keep_default_na=False)
+        expected = pd.read_csv("test/data/minister-government-counts.csv", dtype=str, keep_default_na=False)
+
+        count_columns = [
+            "expected_unique_persons",
+            "expected_unique_minister_roles",
+        ]
+        for column in count_columns:
+            expected[column] = expected[column].str.strip()
+
+        person_counts = minister.groupby("government")["person_id"].nunique().to_dict()
+        role_counts = (
+            minister[["government", "person_id", "role"]]
+            .drop_duplicates()
+            .groupby("government")
+            .size()
+            .to_dict()
+        )
+        errors = []
+
+        for _, row in expected.iterrows():
+            if row["expected_unique_persons"] not in ["", "NULL"]:
+                expected_count = int(row["expected_unique_persons"])
+                actual_count = person_counts.get(row["government"], 0)
+                if actual_count != expected_count:
+                    errors.append(
+                        f"{row['government']} | expected {expected_count} unique persons, found {actual_count}"
+                    )
+
+            if row["expected_unique_minister_roles"] not in ["", "NULL"]:
+                expected_count = int(row["expected_unique_minister_roles"])
+                actual_count = role_counts.get(row["government"], 0)
+                if actual_count != expected_count:
+                    errors.append(
+                        f"{row['government']} | expected {expected_count} unique minister roles, found {actual_count}"
+                    )
+
+        self.assertEqual([], errors)
+
+
+    def test_minister_government_date_intersections(self):
+        """
+        Test that dated minister rows intersect their government date interval.
+        """
+        minister = pd.read_csv("data/minister.csv", dtype=str, keep_default_na=False)
+        government = pd.read_csv("data/government.csv", dtype=str, keep_default_na=False)
+
+        government_dates = {}
+        for _, row in government.iterrows():
+            government_dates[row["government"]] = (
+                parse_date_interval(row["start"], is_end=False)[0],
+                parse_date_interval(row["end"], is_end=True)[0],
+            )
+
+        errors = []
+        for _, row in minister.iterrows():
+            start = parse_date_interval(row["start"], is_end=False)[0]
+            end = parse_date_interval(row["end"], is_end=True)[0]
+            if start is None or end is None:
+                continue
+
+            government_start, government_end = government_dates[row["government"]]
+            intersects = start < government_end and end > government_start
+            if not intersects:
+                errors.append(
+                    f"{row['person_id']} | {row['government']} | {row['role']} | {row['start']} - {row['end']}"
+                )
+
+        self.assertEqual([], errors)
+
+
     def test_party_affiliation(self):
         """
         test no duplicates in party data
@@ -208,11 +310,145 @@ class Test(unittest.TestCase):
         df_name = "speaker"
         df, df_unique, df_duplicate = self.get_duplicates(df_name, columns)
 
-        if len(df) != len(df_unique):
-            warnings.warn(str(df_duplicate), DuplicateWarning)
+        self.assertEqual(
+            len(df),
+            len(df_unique),
+            f"Duplicate speaker rows for columns {columns}:\n{df_duplicate}"
+        )
 
         df, df_unique, df_duplicate = self.get_duplicates(df_name, None)
-        self.assertEqual(len(df), len(df_unique), df_duplicate)
+        self.assertEqual(
+            len(df),
+            len(df_unique),
+            f"Duplicate speaker rows:\n{df_duplicate}"
+        )
+
+
+    def test_known_speaker_dates(self):
+        """
+        Test that speaker dates checked for PR 120 do not regress.
+        """
+        speaker = self.get_meta_df("speaker").fillna("")
+        known = pd.read_csv("test/data/known-speaker-dates.csv", sep=';').fillna("")
+
+        missing = []
+        for i, row in known.iterrows():
+            fil = speaker.loc[
+                (speaker['person_id'] == row['person_id'])
+                & (speaker['role'] == row['role'])
+                & (speaker['start'].astype(str) == row['start'])
+                & (speaker['end'].astype(str) == row['end'])
+            ]
+            if fil.empty:
+                missing.append(
+                    {
+                        "person_id": row["person_id"],
+                        "name": row["name"],
+                        "role": row["role"],
+                        "expected_start": row["start"],
+                        "expected_end": row["end"],
+                        "reviewed_by": row["reviewed_by"],
+                        "review_note": row["review_note"],
+                    }
+                )
+
+        missing_df = pd.DataFrame(missing)
+        self.assertEqual(
+            len(missing),
+            0,
+            (
+                "Some manually reviewed speaker date rows are missing from "
+                f"data/speaker.csv. Missing rows: {len(missing)}\n{missing_df}"
+            )
+        )
+
+
+    def test_speaker_dates_are_present(self):
+        """
+        Test that only the current speaker row is open-ended.
+        """
+        speaker = self.get_meta_df("speaker").fillna("").copy()
+        speaker["start"] = speaker["start"].astype(str)
+        speaker["end"] = speaker["end"].astype(str)
+
+        missing_start = speaker[speaker["start"] == ""].copy()
+        speaker["start_date"] = speaker["start"].map(parse_date)
+        invalid_start = speaker[
+            (speaker["start"] != "")
+            & speaker["start_date"].isna()
+        ].copy()
+
+        latest_start = speaker["start_date"].max()
+        open_ended = speaker[speaker["end"] == ""].copy()
+        # Speaker intervals should be closed historical facts. The only open
+        # interval should be the current speaker, represented by the latest
+        # start date in speaker.csv.
+        unexpected_open_ended = open_ended[
+            open_ended["start_date"] != latest_start
+        ].copy()
+
+        self.assertTrue(missing_start.empty, f"Speaker rows missing start dates:\n{missing_start}")
+        self.assertTrue(invalid_start.empty, f"Speaker rows with unparseable start dates:\n{invalid_start}")
+        self.assertTrue(
+            unexpected_open_ended.empty,
+            f"Only the speaker row with latest start date ({latest_start.date()}) may be open-ended:\n{unexpected_open_ended}"
+        )
+        self.assertEqual(
+            len(open_ended),
+            1,
+            f"Expected exactly one open-ended current speaker row; found {len(open_ended)}:\n{open_ended}"
+        )
+
+
+    def test_exact_speaker_dates_do_not_overlap(self):
+        """
+        Test that exact-dated speaker intervals do not overlap for the same role.
+        """
+        speaker = self.get_meta_df("speaker").fillna("").reset_index(names="row")
+        speaker["row"] += 2
+        speaker["start"] = speaker["start"].astype(str)
+        speaker["end"] = speaker["end"].astype(str)
+
+        exact = speaker[
+            (speaker["start"].str.len() == 10)
+            & ((speaker["end"] == "") | (speaker["end"].str.len() == 10))
+        ].copy()
+        exact["start_date"] = pd.to_datetime(exact["start"])
+        exact["end_date"] = pd.to_datetime(
+            exact["end"].replace("", pd.Timestamp.max.normalize())
+        )
+
+        overlaps = []
+        for role, group in exact.groupby("role"):
+            records = group.to_dict("records")
+            for i, a in enumerate(records):
+                for b in records[i + 1:]:
+                    if a["person_id"] == b["person_id"]:
+                        continue
+                    if a["start_date"] < b["end_date"] and b["start_date"] < a["end_date"]:
+                        overlaps.append(
+                            {
+                                "role": role,
+                                "left_row": a["row"],
+                                "left_person_id": a["person_id"],
+                                "left_start": a["start"],
+                                "left_end": a["end"],
+                                "right_row": b["row"],
+                                "right_person_id": b["person_id"],
+                                "right_start": b["start"],
+                                "right_end": b["end"],
+                            }
+                        )
+
+        overlaps_df = pd.DataFrame(overlaps)
+        self.assertEqual(
+            len(overlaps),
+            0,
+            (
+                "Exact-dated speaker intervals overlap for the same role. "
+                f"Overlapping row pairs: {len(overlaps)}\n{overlaps_df}"
+            )
+        )
 
     def test_speaker_light_integrity(self):
         """
