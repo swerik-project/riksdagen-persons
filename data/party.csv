@@ -13,7 +13,7 @@ Q111103693,Det förenade högerpartiet,1910-01-01,year,1912-01-01,year,Q3480145,
 Q10480339,Ehrenheimska partiet,1837-01-01,year,1888-01-01,year,Q7251368,i-SyAxSYehBkTSozNTpRSE1W,i-JsGzmeZj512cSTetKpxYQF
 Q110857,Folkpartiet,1934-01-01,year,1990-01-01,year,Q110857,i-FpGjUCojANuvvwqsNXjcuu,i-Hm85EQfFmbYuYFPjpXtuCj
 Q10497448,Folkpartiet (1895–1900),1895-01-01,year,1900-01-01,year,Q1594086,i-Hg7NeuZ4rqH2NNJM9r6R7P,i-JmAkiEUKt5ZBgaCKGCMNu2
-Q110857,Folkpartiet liberalerna,1990-01-01,year,2015-11-25,day,Q110857,i-Hm85EQfFmbYuYFPjpXtuCj,i-Kpkv9BSujEEJp1S4rDiDt7|i-FpGjUCojANuvvwqsNXjcuu
+Q110857,Folkpartiet liberalerna,1990-01-01,year,2015-11-25,day,Q110857,i-Hm85EQfFmbYuYFPjpXtuCj,i-Kpkv9BSujEEJp1S4rDiDt7
 Q10499105,Friesenska diskussionsklubben,1897-01-01,year,1900-01-01,year,Q1594086,i-JyxgnWsKdPSp9CUq7kwP9M,i-JmAkiEUKt5ZBgaCKGCMNu2
 Q10499121,Frihandelsvänliga centern,1895-01-01,year,1898-01-01,year,Q10499105,i-U38vhH3bmRSkDD29zS4VN3,i-JyxgnWsKdPSp9CUq7kwP9M
 Q4887122,Frisinnade folkpartiet,1924-01-01,year,1935-01-01,year,Q110857,i-V7MTfG5XaAmjbSDtLkyyfc,i-Hm85EQfFmbYuYFPjpXtuCj
@@ -24,7 +24,7 @@ Q10501500,Första kammarens minoritetsparti,1888-01-01,year,1905-01-01,year,Q105
 Q10501501,Första kammarens moderata parti,1905-01-01,year,1912-01-01,year,Q3480145,i-9gKkoAVdC2bU1LFrXNHCxd,i-3kDgsboJBSv4zGqF4zfCsY
 Q3480145,Första kammarens nationella parti,1912-01-01,year,1935-01-01,year,Q111077860,i-3kDgsboJBSv4zGqF4zfCsY,i-4nyjRorziqEDtDmp1ZXDoP
 Q7251368,Första kammarens protektionistiska parti,1888-01-01,year,1910-01-01,year,Q111103693,i-JsGzmeZj512cSTetKpxYQF,i-W4wDukSDpMNcSwPExagVMB
-Q10502466,Gamla lantmannapartiet,1888-01-01,year,1895-01-01,year,Q6487621,i-U7KB9Qos7yhdHuWxPyJes6,i-PgZ4noUUgrkZvcF5NuPikj
+Q10502466,Gamla lantmannapartiet,1888-01-01,year,1895-01-01,year,Q6487621,i-U7KB9Qos7yhdHuWxPyJes6,i-GBiUCFdU5Uqau3iaf8ZoZq
 Q111077860,Högerns riksdagsgrupp,1935-01-01,year,1970-01-01,year,Q110843,i-4nyjRorziqEDtDmp1ZXDoP,i-F6Stwe8wVnSPa3BbgusszQ
 Q111033682,Högerpartiet,1952-01-01,year,1969-01-01,day,Q110843,i-3A4u29WVtvfu8i1KwuPEeE,i-F6Stwe8wVnSPa3BbgusszQ
 Q10540831,Jordbrukarnas fria grupp,1918-01-01,year,1922-01-01,year,Q110472693,i-PvAXgvY3G8qXv1ZM9xudRA,i-CNbGLyuzdkRJ2sJBBpzJit
@@ -32,7 +32,8 @@ Q111188360,Kilbomspartiet,1924-01-01,year,1934-01-01,year,Q2425638,i-VzZnBZoi4EC
 Q213654,Kristdemokraterna,1996-01-01,year,,,,i-BRRSButj7zSqB1u7zD6hod,
 Q213654,Kristdemokratiska Samhällspartiet,1987-01-01,year,1996-01-01,year,Q213654,i-B79rKJX4ZV61ozevGt8JLL,i-BRRSButj7zSqB1u7zD6hod
 Q10554125,Lantmanna- och borgarepartiet inom andrakammaren,1912-01-01,year,1935-01-01,year,Q111077860,i-NhgK2ujGF5t35o2VjT8Q5U,i-4nyjRorziqEDtDmp1ZXDoP
-Q6487621,Lantmannapartiet,1867-03-10,day,1912-01-01,year,Q10604308|Q10502466|Rundbäckarna,i-PgZ4noUUgrkZvcF5NuPikj,i-SGnPE3o9jEHg9veQxp4jCS|i-U7KB9Qos7yhdHuWxPyJes6
+Q6487621,Lantmannapartiet,1867-03-10,day,1888-01-01,year,Q10604308|Q10502466,i-PgZ4noUUgrkZvcF5NuPikj,i-SGnPE3o9jEHg9veQxp4jCS|i-U7KB9Qos7yhdHuWxPyJes6
+Q6487621,Lantmannapartiet,1895-01-01,year,1912-01-01,year,Q10554125,i-GBiUCFdU5Uqau3iaf8ZoZq,i-NhgK2ujGF5t35o2VjT8Q5U
 Q10554126,Lantmannapartiets filial,1873-01-01,year,1888-01-01,year,Q7251368|Q10501500,i-N8ZHM5bKMBzbJXmiiDXiGG,i-JsGzmeZj512cSTetKpxYQF|i-CwShqiWdwctbU6TPYH5iUZ
 Q10560990,Liberala riksdagspartiet,1924-01-01,year,1935-01-01,year,Q110857,i-9fghptqkyNzTVdA8knRCGq,i-Kpkv9BSujEEJp1S4rDiDt7|i-FpGjUCojANuvvwqsNXjcuu
 Q1594086,Liberala samlingspartiet,1900-01-16,day,1924-01-01,year,Q10560990|Q4887122|Q110472693,i-JmAkiEUKt5ZBgaCKGCMNu2,i-9fghptqkyNzTVdA8knRCGq|i-V7MTfG5XaAmjbSDtLkyyfc|i-CNbGLyuzdkRJ2sJBBpzJit
@@ -43,7 +44,7 @@ Q110843,Moderata samlingspartiet,1969-01-01,year,,,,i-F6Stwe8wVnSPa3BbgusszQ,
 Q10594830,Nationella framstegspartiet,1906-01-01,year,1912-01-01,year,Q10554125,i-6DouUrv3WUqNo3ZV44MQo2,i-NhgK2ujGF5t35o2VjT8Q5U
 Q967278,Ny demokrati,1991-01-01,year,2000-02-25,day,,i-YYGgpk3VEG9XW1wZTzUShT,
 Q10604299,Nya centern (partigrupp 1883-1887),1883-01-01,year,1888-01-01,year,Q10411414,i-KTFh6jJ82W8M3YskEqK73p,i-EVCNHEkqssUGBqpFtyU8mT
-Q10604308,Nya lantmannapartiet,1888-01-01,year,1895-01-01,year,Q6487621,i-SGnPE3o9jEHg9veQxp4jCS,i-PgZ4noUUgrkZvcF5NuPikj
+Q10604308,Nya lantmannapartiet,1888-01-01,year,1895-01-01,year,Q6487621,i-SGnPE3o9jEHg9veQxp4jCS,i-GBiUCFdU5Uqau3iaf8ZoZq
 Q10604782,Nyliberala partiet,1868-01-01,year,1872-01-01,year,,i-DstLa7iX9NynjKcb2xuaqW,
 Q10671173,Skånska partiet,1873-01-01,year,1886-01-01,year,Q10444847,i-GhUs4b9mVsgTwzUFZQvgb7,i-KEgnYCc73ZQ58du5cBUznD
 Q105112,Socialdemokraterna,1889-01-01,year,,,Q10672903,i-VS8ddgxigwL5TceKtXGApS,i-SwzbNNYoyZYULLDiTu2zGP
