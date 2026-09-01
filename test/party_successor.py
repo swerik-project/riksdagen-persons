@@ -2,22 +2,6 @@
 """
 Validate the normalized party successor table.
 
-Corpus guarantee:
-`data/party_successor.csv` is the authoritative normalized table for party
-succession links, with one party successor relation per row.
-
-Why this matters:
-`successor_id` and `swerik_successor` in `data/party.csv` are deprecated
-compatibility columns. During the transition they may remain in the CSV, but
-new code should be able to rely on `data/party_successor.csv` without parsing
-pipe-separated successor values from `data/party.csv`.
-
-Input data:
-The test compares `data/party_successor.csv` with party identifiers and the
-temporary deprecated `swerik_successor` compatibility column in
-`data/party.csv`. CSVW tests cover schema, primary-key, and foreign-key
-integrity; this test covers successor-specific semantics.
-
 Documentation:
 See `README.md` for the table descriptions and
 `the-swedish-parliament-corpus/docs/decisions/decision-0024_writing-data-integrity-tests.md`
@@ -62,8 +46,8 @@ class TestPartySuccessor(unittest.TestCase):
 
     def test_successor_table_matches_deprecated_party_csv_column(self):
         """
-        Allow deprecated successor columns temporarily while requiring the
-        normalized successor table to preserve the same SWERIK-ID edges.
+        Test that the deprecated columns `successor_id` and `swerik_successor`
+        in `data/party.csv` contain the same information as party_successor.csv.
         """
         party_names = pl.read_csv("data/party.csv")
         successors = pl.read_csv("data/party_successor.csv")
