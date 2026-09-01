@@ -33,14 +33,6 @@ from trainerlog import get_logger
 
 LOGGER = get_logger("test-party-successor")
 
-
-# Socialdemokratiska vänstergruppen split from Socialdemokraterna in 1917,
-# and parts of that movement later rejoined Socialdemokraterna; these IDs
-# identify that documented split/rejoin relation.
-SOCIALDEMOCRATERNA_ID = "i-VS8ddgxigwL5TceKtXGApS"
-SOCIALDEMOKRATISKA_VANSTERGRUPPEN_ID = "i-SwzbNNYoyZYULLDiTu2zGP"
-
-
 def successor_edges_from_deprecated_column(party_names):
     edges = set()
     rows = (
@@ -55,37 +47,15 @@ def successor_edges_from_deprecated_column(party_names):
                 edges.add((party_id, successor_id))
     return edges
 
-
-def successor_edges_from_table(successors):
-    return set(successors.select("party_id", "successor_party_id").iter_rows())
-
-
 def party_name_by_id(party_names):
     return dict(party_names.select("swerik_party_id", "party").iter_rows())
 
 
 def successor_graph(successors):
+    edges = set(successors.select("party_id", "successor_party_id").iter_rows())
     graph = nx.DiGraph()
-    graph.add_edges_from(successor_edges_from_table(successors))
+    graph.add_edges_from(edges)
     return graph
-
-
-def canonical_cycle(cycle):
-    rotations = [
-        tuple(cycle[i:] + cycle[:i])
-        for i in range(len(cycle))
-    ]
-    return min(rotations)
-
-
-# Allowed cycles are historically documented split/rejoin relations; all other
-# successor cycles are treated as data errors.
-ALLOWED_CYCLES = {
-    canonical_cycle([
-        SOCIALDEMOCRATERNA_ID,
-        SOCIALDEMOKRATISKA_VANSTERGRUPPEN_ID,
-    ])
-}
 
 
 class TestPartySuccessor(unittest.TestCase):
@@ -99,7 +69,7 @@ class TestPartySuccessor(unittest.TestCase):
         successors = pl.read_csv("data/party_successor.csv")
 
         expected_edges = successor_edges_from_deprecated_column(party_names)
-        actual_edges = successor_edges_from_table(successors)
+        actual_edges = set(successor_graph(successors).edges)
         missing_edges = sorted(expected_edges - actual_edges)
         extra_edges = sorted(actual_edges - expected_edges)
 
@@ -112,8 +82,25 @@ class TestPartySuccessor(unittest.TestCase):
             f"extra {len(extra_edges)} edges: {extra_edges[:10]}")
 
     def test_no_unexpected_successor_cycles(self):
+        """
+        Test that the successor graph is a (mostly) directed acyclic graph.
+
+        Known exceptions are allowed.
+        """
         party_names = pl.read_csv("data/party.csv")
         successors = pl.read_csv("data/party_successor.csv")
+
+        # Socialdemokratiska vänstergruppen split from Socialdemokraterna in 1917,
+        # and parts of that movement later rejoined Socialdemokraterna
+        SOCIALDEMOCRATERNA_ID = "i-VS8ddgxigwL5TceKtXGApS"
+        SOCIALDEMOKRATISKA_VANSTERGRUPPEN_ID = "i-SwzbNNYoyZYULLDiTu2zGP"
+
+        ALLOWED_CYCLES = [
+            {
+                SOCIALDEMOCRATERNA_ID,
+                SOCIALDEMOKRATISKA_VANSTERGRUPPEN_ID,
+            }
+        ]
 
         names = party_name_by_id(party_names)
         graph = successor_graph(successors)
@@ -121,7 +108,7 @@ class TestPartySuccessor(unittest.TestCase):
         unexpected_cycles = []
         for cycle in cycles:
             cycle_names = ", ".join(names[party_id] for party_id in cycle)
-            if canonical_cycle(cycle) in ALLOWED_CYCLES:
+            if set(cycle) in ALLOWED_CYCLES:
                 LOGGER.info(f"Allowed cycle found: {cycle}\nNames: {cycle_names}")
             else:
                 unexpected_cycles.append(cycle)
