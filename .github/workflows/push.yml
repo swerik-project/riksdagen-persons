@@ -7,6 +7,8 @@ on:
   push:
     paths:
       - data/**
+      - test/**
+      - '!test/result/**'
       - .github/**
   workflow_dispatch:
 
@@ -86,6 +88,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyriksdagen
         pip install pytest-cfg-fetcher
+        pip install polars
     - name: Test metadata integrity
       run: |
         echo "Test that there are no duplicates in the DB"
@@ -137,10 +140,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyriksdagen
         pip install pytest-cfg-fetcher
+        pip install polars networkx
     - name: Test MPs agains manually curated data
       run: |
         python -m unittest test.party-affiliation
         python -m unittest test.party-name
+        python -m unittest test.party_successor
 
   frequency-distr:
     runs-on: ubuntu-latest

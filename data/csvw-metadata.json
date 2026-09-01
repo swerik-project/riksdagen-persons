@@ -324,7 +324,7 @@
           {
             "name": "successor_id",
             "titles": "successor_id",
-            "dc:description": "External identifier or pipe-separated identifiers for successor parties, where known.",
+            "dc:description": "Deprecated compatibility column. External identifier or pipe-separated identifiers for successor parties, where known. Use party_successor.csv for normalized successor relations.",
             "datatype": "string"
           },
           {
@@ -337,11 +337,54 @@
           {
             "name": "swerik_successor",
             "titles": "swerik_successor",
-            "dc:description": "SWERIK party identifier or pipe-separated identifiers for successor parties, where known.",
+            "dc:description": "Deprecated compatibility column. SWERIK party identifier or pipe-separated identifiers for successor parties, where known. Use party_successor.csv for normalized successor relations.",
             "datatype": "string"
           }
         ],
         "primaryKey": "swerik_party_id"
+      }
+    },
+    {
+      "url": "party_successor.csv",
+      "dc:title": "Party Successors",
+      "dc:description": "Normalized party succession relations. Each row links one SWERIK party record to one successor SWERIK party record.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "party_id",
+            "titles": "party_id",
+            "dc:description": "Stable SWERIK party identifier for the predecessor party.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "successor_party_id",
+            "titles": "successor_party_id",
+            "dc:description": "Stable SWERIK party identifier for the successor party.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": [
+          "party_id",
+          "successor_party_id"
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "party_id",
+            "reference": {
+              "resource": "party.csv",
+              "columnReference": "swerik_party_id"
+            }
+          },
+          {
+            "columnReference": "successor_party_id",
+            "reference": {
+              "resource": "party.csv",
+              "columnReference": "swerik_party_id"
+            }
+          }
+        ]
       }
     },
     {
