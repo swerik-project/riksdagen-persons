@@ -1,5 +1,4 @@
 """Data integrity checks for manually verified MP mandate dates."""
-import os
 import unittest
 
 import polars as pl
@@ -7,14 +6,12 @@ from trainerlog import get_logger
 
 
 LOGGER = get_logger(name="mandate-date-integrity")
-DIAGNOSTIC_DIR = "test/results"
-DIAGNOSTIC_PATH = f"{DIAGNOSTIC_DIR}/mandate-date-integrity.csv"
 
 
 class MandateDateIntegrityTest(unittest.TestCase):
 
     def test_manually_checked_mandates(self):
-        """Guarantee: manually verified MP mandate dates stay in the metadata.
+        """Guarantee: manually verified MP mandate dates in the metadata.
 
         Why this matters: manually checked start and end dates are curated
         reference points. If they drift, corpus users can get incorrect mandate
@@ -54,8 +51,6 @@ class MandateDateIntegrityTest(unittest.TestCase):
         )
 
         if missing_dates.height:
-            os.makedirs(DIAGNOSTIC_DIR, exist_ok=True)
-            missing_dates.write_csv(DIAGNOSTIC_PATH)
             LOGGER.error(
                 f"{missing_dates.height} manually verified mandate date(s) "
                 "are missing from data/member_of_parliament.csv"
@@ -71,7 +66,7 @@ class MandateDateIntegrityTest(unittest.TestCase):
             0,
             f"{missing_dates.height} manually verified MP mandate date(s) "
             "are missing from data/member_of_parliament.csv. Details were "
-            f"logged with trainerlog and written to {DIAGNOSTIC_PATH}.",
+            "logged with trainerlog.",
         )
 
 
