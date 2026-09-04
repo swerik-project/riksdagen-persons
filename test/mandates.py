@@ -5,66 +5,63 @@ import polars as pl
 from trainerlog import get_logger
 
 
-LOGGER = get_logger(name="mandate-date-integrity")
-
-
 class MandateDateIntegrityTest(unittest.TestCase):
-
     def test_manually_checked_mandates(self):
-        """Guarantee: manually verified MP mandate dates in the metadata.
-
-        Why this matters: manually checked start and end dates are curated
-        reference points. If they drift, corpus users can get incorrect mandate
-        intervals even when the metadata file remains structurally valid.
+        """Guarantee: manually verified MP mandate dates remain in the metadata.
 
         Data: compares ``test/data/mandate-dates.csv`` with
         ``data/member_of_parliament.csv``.
         """
-        expected_dates = pl.read_csv("test/data/mandate-dates.csv", separator=";")
-        member_dates = pl.read_csv("data/member_of_parliament.csv")
+        manually_checked_dates = pl.read_csv(
+            "test/data/mandate-dates.csv",
+            separator=";",
+        )
+        recorded_mandates = pl.read_csv(
+            "data/member_of_parliament.csv",
+            columns=["person_id", "start", "end"],
+        )
 
-        observed_dates = pl.concat(
+        recorded_dates = pl.concat(
             [
-                member_dates.select(
+                recorded_mandates.select(
                     "person_id",
                     pl.col("start").alias("date"),
-                ).with_columns(pl.lit("START").alias("type")),
-                member_dates.select(
+                    pl.lit("START").alias("type"),
+                ),
+                recorded_mandates.select(
                     "person_id",
                     pl.col("end").alias("date"),
-                ).with_columns(pl.lit("END").alias("type")),
+                    pl.lit("END").alias("type"),
+                ),
             ],
         )
 
         missing_dates = (
-            expected_dates.join(
-                observed_dates,
+            manually_checked_dates.join(
+                recorded_dates,
                 on=["person_id", "date", "type"],
                 how="anti",
             )
             .sort(["person_id", "type", "date"])
         )
+        missing_count = missing_dates.height
 
-        LOGGER.info(
-            f"Checked {expected_dates.height} manually verified mandate date(s) "
-            f"against {member_dates.height} member_of_parliament row(s)"
-        )
-
-        if missing_dates.height:
-            LOGGER.error(
-                f"{missing_dates.height} manually verified mandate date(s) "
+        if missing_count:
+            logger = get_logger(name="mandate-date-integrity")
+            logger.error(
+                f"{missing_count} manually verified mandate date(s) "
                 "are missing from data/member_of_parliament.csv"
             )
             for row in missing_dates.iter_rows(named=True):
-                LOGGER.error(
+                logger.error(
                     f"Missing {row['type']} mandate date {row['date']} "
                     f"for {row['person_id']}"
                 )
 
         self.assertEqual(
-            missing_dates.height,
+            missing_count,
             0,
-            f"{missing_dates.height} manually verified MP mandate date(s) "
+            f"{missing_count} manually verified MP mandate date(s) "
             "are missing from data/member_of_parliament.csv. Details were "
             "logged with trainerlog.",
         )
