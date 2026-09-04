@@ -1,5 +1,5 @@
 """Data integrity checks for manually verified MP mandate dates."""
-from pathlib import Path
+import os
 import unittest
 
 import polars as pl
@@ -7,7 +7,8 @@ from trainerlog import get_logger
 
 
 LOGGER = get_logger(name="mandate-date-integrity")
-DIAGNOSTIC_PATH = Path("test/results/mandate-date-integrity.csv")
+DIAGNOSTIC_DIR = "test/results"
+DIAGNOSTIC_PATH = f"{DIAGNOSTIC_DIR}/mandate-date-integrity.csv"
 
 
 class MandateDateIntegrityTest(unittest.TestCase):
@@ -53,7 +54,7 @@ class MandateDateIntegrityTest(unittest.TestCase):
         )
 
         if missing_dates.height:
-            DIAGNOSTIC_PATH.parent.mkdir(parents=True, exist_ok=True)
+            os.makedirs(DIAGNOSTIC_DIR, exist_ok=True)
             missing_dates.write_csv(DIAGNOSTIC_PATH)
             LOGGER.error(
                 f"{missing_dates.height} manually verified mandate date(s) "
