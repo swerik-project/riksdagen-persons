@@ -1,61 +1,78 @@
-"""
-Test that known MP start/end dates that have been manually verified do not change in the metadata.
-"""
-from datetime import datetime
-from pytest_cfg_fetcher.fetch import fetch_config
-import json
-import pandas as pd
+"""Data integrity checks for manually verified MP mandate dates."""
+from pathlib import Path
 import unittest
-import warnings
+
+import polars as pl
+from trainerlog import get_logger
 
 
+LOGGER = get_logger(name="mandate-date-integrity")
+DIAGNOSTIC_PATH = Path("test/results/mandate-date-integrity.csv")
 
 
-class DateErrorWarning(Warning):
-    def __init__(self, date_error):
-        self.message = f"Date Error: {date_error}"
-
-    def __str__(self):
-        return self.message
-
-
-
-class Test(unittest.TestCase):
-
-    def fetch_known_mandate_dates(self):
-        return pd.read_csv("test/data/mandate-dates.csv", sep=';')
-
-
-    def fetch_mep_meta(self):
-        return pd.read_csv("data/member_of_parliament.csv")
-
+class MandateDateIntegrityTest(unittest.TestCase):
 
     def test_manually_checked_mandates(self):
+        """Guarantee: manually verified MP mandate dates stay in the metadata.
+
+        Why this matters: manually checked start and end dates are curated
+        reference points. If they drift, corpus users can get incorrect mandate
+        intervals even when the metadata file remains structurally valid.
+
+        Data: compares ``test/data/mandate-dates.csv`` with
+        ``data/member_of_parliament.csv``.
         """
-        Find each manual mandate in the data... make sure dates are same.
-        """
-        mep = self.fetch_mep_meta()
-        df = self.fetch_known_mandate_dates()
-        config = fetch_config("mandates")
-        counter = 0
-        rows = []
-        cols = ["person_id", "date", "type"]
-        for i, r in df.iterrows():
-            fil = mep.loc[(mep['person_id'] == r["person_id"]) & (mep[r["type"].lower()] == r['date'])]
-            if fil.empty:
-                counter += 1
-                rows.append([r["person_id"], r["date"], r["type"]])
-                warnings.warn(f"({r['type']}): {r['date']}, {r['person_id']}" , DateErrorWarning)
-        if len(rows) > 0:
-            if config and config['write_errors']:
-                now = datetime.now().strftime("%Y%m%d-%H%M")
-                out = pd.DataFrame(rows, columns=cols)
-                out.to_csv(f"{config['test_out_dir']}{now}_mandates-test.csv", index=False)
+        expected_dates = pl.read_csv("test/data/mandate-dates.csv", separator=";")
+        member_dates = pl.read_csv("data/member_of_parliament.csv")
 
-        self.assertEqual(counter, 0)
+        observed_dates = pl.concat(
+            [
+                member_dates.select(
+                    "person_id",
+                    pl.col("start").alias("date"),
+                ).with_columns(pl.lit("START").alias("type")),
+                member_dates.select(
+                    "person_id",
+                    pl.col("end").alias("date"),
+                ).with_columns(pl.lit("END").alias("type")),
+            ],
+        )
+
+        missing_dates = (
+            expected_dates.join(
+                observed_dates,
+                on=["person_id", "date", "type"],
+                how="anti",
+            )
+            .sort(["person_id", "type", "date"])
+        )
+
+        LOGGER.info(
+            f"Checked {expected_dates.height} manually verified mandate date(s) "
+            f"against {member_dates.height} member_of_parliament row(s)"
+        )
+
+        if missing_dates.height:
+            DIAGNOSTIC_PATH.parent.mkdir(parents=True, exist_ok=True)
+            missing_dates.write_csv(DIAGNOSTIC_PATH)
+            LOGGER.error(
+                f"{missing_dates.height} manually verified mandate date(s) "
+                "are missing from data/member_of_parliament.csv"
+            )
+            for row in missing_dates.iter_rows(named=True):
+                LOGGER.error(
+                    f"Missing {row['type']} mandate date {row['date']} "
+                    f"for {row['person_id']}"
+                )
+
+        self.assertEqual(
+            missing_dates.height,
+            0,
+            f"{missing_dates.height} manually verified MP mandate date(s) "
+            "are missing from data/member_of_parliament.csv. Details were "
+            f"logged with trainerlog and written to {DIAGNOSTIC_PATH}.",
+        )
 
 
-
-
-if __name__ == '__main__':
-    unittest.test()
+if __name__ == "__main__":
+    unittest.main()
