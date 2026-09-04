@@ -5,6 +5,9 @@ import polars as pl
 from trainerlog import get_logger
 
 
+LOGGER = get_logger(name="mandate-date-integrity")
+
+
 class MandateDateIntegrityTest(unittest.TestCase):
     def test_manually_checked_mandates(self):
         """Guarantee: manually verified MP mandate dates remain in the metadata.
@@ -47,13 +50,12 @@ class MandateDateIntegrityTest(unittest.TestCase):
         missing_count = missing_dates.height
 
         if missing_count:
-            logger = get_logger(name="mandate-date-integrity")
-            logger.error(
+            LOGGER.error(
                 f"{missing_count} manually verified mandate date(s) "
                 "are missing from data/member_of_parliament.csv"
             )
             for row in missing_dates.iter_rows(named=True):
-                logger.error(
+                LOGGER.error(
                     f"Missing {row['type']} mandate date {row['date']} "
                     f"for {row['person_id']}"
                 )
