@@ -77,6 +77,17 @@ Separator == ;
 
 Separator == ;
 
+## known-speaker-dates.csv
+
+Manually checked speaker date corrections, mostly based on the PR 120
+spreadsheet review by Fredrik. Row 16 in that review is included with separate
+provenance because Fredrik did not record-check it; the date is retained from
+`person.csv` as Edvard Casparsson's death date. The 1905 Åkerhielm rows were
+added from a Wikipedia lead checked against the local riksdag-year metadata and
+1905 urtima protocols.
+
+Separator == ;
+
 ## Not mp
 
 Some wiki IDs have caused recurring problems in that the entity to which they refer shares a name with an MP and get relabled as such. Here we start a list of such cases so we can eventually implement a test.
@@ -111,4 +122,3 @@ Columns:
 - date: date
 
 Separator == ;
-
