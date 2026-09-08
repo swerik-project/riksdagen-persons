@@ -26,6 +26,7 @@ jobs:
         pip install pyriksdagen
         pip install pytest-cfg-fetcher
         pip install pdoc
+        pip install polars
 
     - name: Get release type
       run: |
