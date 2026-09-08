@@ -187,7 +187,5 @@ jobs:
         pip install pdoc
         pip install polars
     - name: Test documentation build
-      env:
-        PYTHONPATH: ${{ github.workspace }}
       run: |
         pdoc -o /tmp/riksdagen-persons-docs --footer-text docs-smoke-test -t docs/dark-mode --logo https://raw.githubusercontent.com/swerik-project/the-swedish-parliament-corpus/refs/heads/main/readme/riksdagshuset.jpg ../riksdagen-persons
