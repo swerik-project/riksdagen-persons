@@ -88,6 +88,13 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - party
 - party_id
 
+### `data/party_leaders.csv`
+- person_id
+- name
+- start_date
+- end_date
+- party_id
+
 ### `data/person.csv`
 - person_id
 - born
