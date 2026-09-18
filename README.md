@@ -140,4 +140,6 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 
 
 
+# Mailing list
 
+For updates right to your email, join our mailing list for parliamentary research infrastructure [here](https://lists.uu.se/sympa/subscribe/parliamentary-research-infrastructure).
