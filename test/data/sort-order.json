@@ -6,6 +6,7 @@
     "place_of_death.csv": ["person_id", "place"],
     "chairs.csv": {"columns": ["chair_nr", "chamber"], "ascending": true},
     "person.csv": ["person_id"],
+    "nobility.csv": ["person_id", "title"],
     "party_abbreviation.csv": ["abbreviation", "party"],
     "wiki_id.csv": ["wiki_id"],
     "riksdag-year.csv": ["parliament_year", "start", "chamber", "specifier"],
