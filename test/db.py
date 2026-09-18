@@ -6,6 +6,7 @@ WARN on upstream errors
 from datetime import datetime
 from lxml import etree
 from pathlib import Path
+import re
 from pyriksdagen.db import load_metadata
 from pyriksdagen.utils import (
     get_doc_dates,
@@ -31,7 +32,47 @@ CURRENT_UNICAMERAL_SPEAKER_ROLES = {
 }
 
 
-from test.date_integrity_helpers import parse_date_interval
+DATE_RE = re.compile(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$")
+
+
+def parse_date_interval(value, is_end):
+    """
+    Parse partial date strings as interval boundaries for integrity checks.
+
+    Start dates are expanded to the first possible day. End dates are expanded
+    to the exclusive upper bound after the last possible day.
+    """
+    if pd.isna(value) or str(value).strip() == "":
+        if is_end:
+            return pd.Timestamp.max.normalize(), None, "blank"
+        return None, None, "blank"
+
+    value = str(value).strip()
+    match = DATE_RE.match(value)
+    if match is None:
+        return None, None, "malformed"
+
+    year = int(match.group(1))
+    month = int(match.group(2)) if match.group(2) else None
+    day = int(match.group(3)) if match.group(3) else None
+
+    try:
+        if month is None:
+            if is_end:
+                return pd.Timestamp(year + 1, 1, 1), "year", None
+            return pd.Timestamp(year, 1, 1), "year", None
+
+        if day is None:
+            if is_end:
+                if month == 12:
+                    return pd.Timestamp(year + 1, 1, 1), "month", None
+                return pd.Timestamp(year, month + 1, 1), "month", None
+            return pd.Timestamp(year, month, 1), "month", None
+
+        return pd.Timestamp(year, month, day), "day", None
+    except ValueError:
+        return None, None, "malformed"
+
 
 class DuplicateWarning(Warning):
     def __init__(self, duplicate_df):
