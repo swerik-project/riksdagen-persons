@@ -1,13 +1,12 @@
 name: "Riksdagen Persons: data integrity tests"
 
 on:
-  pull_request:
-    branches:
-      - 'dev'
   push:
-    paths:
-      - data/**
-      - .github/**
+    paths-ignore:
+      - 'test/results/**'
+      - 'quality/estimates/**'
+      - 'CITATION.cff'
+      - 'docs/**'
   workflow_dispatch:
 
 jobs:
