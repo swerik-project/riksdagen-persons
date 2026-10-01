@@ -111,7 +111,7 @@ class Test(unittest.TestCase):
 
     def test_foreign_keys(self):
         """
-        test that all primary keys are unique
+        test that all CSVW foreign-key references point to existing rows
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
 
