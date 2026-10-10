@@ -484,6 +484,108 @@
       }
     },
     {
+      "url": "chamber_layouts.csv",
+      "dc:title": "Chamber Layouts",
+      "dc:description": "Identified chamber seating layouts, buildings, and historical chamber-use periods stored as start and end. These periods do not establish that numbered seating remained unchanged. Blank dates mean unknown, not unbounded validity. Sources and qualifications are in docs/chamber-layouts.md and references/chamber-layouts/transcription.json.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chamber_layout_id",
+            "titles": "chamber_layout_id",
+            "dc:description": "Stable identifier of a chamber seating layout.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "chamber",
+            "titles": "chamber",
+            "dc:description": "Parliamentary chamber code.",
+            "datatype": {"base": "string", "format": "^(ak|fk|ek)$"},
+            "required": true
+          },
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Start of the historical chamber-use period assigned to this layout. Precision follows the date text: YYYY, YYYY-MM, or YYYY-MM-DD. Exact dates are inclusive; blank means unknown. Not proof that all numbered seats were unchanged throughout the period.",
+            "datatype": {"base": "string", "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"}
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "End of the historical chamber-use period assigned to this layout. Precision follows the date text: YYYY, YYYY-MM, or YYYY-MM-DD. Exact dates are inclusive; blank means unknown, not an unlimited future interval. Not a furniture-removal date.",
+            "datatype": {"base": "string", "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"}
+          },
+          {
+            "name": "building",
+            "titles": "building",
+            "dc:description": "Name of the building containing the chamber. The rectangular plans are provisionally identified as Riksens ständers hus on Riddarholmen.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": "chamber_layout_id"
+      }
+    },
+    {
+      "url": "chair_neighbours.csv",
+      "dc:title": "Chair Neighbours",
+      "dc:description": "Undirected local neighbour relationships transcribed from seating plans. Coverage is partial across separately oriented seating areas. Missing rows do not assert that two seats are not neighbours.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chamber_layout_id",
+            "titles": "chamber_layout_id",
+            "dc:description": "Layout in which the relationship is observed.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "chair_id_a",
+            "titles": "chair_id_a",
+            "dc:description": "Lexicographically smaller of the two stable chair identifiers.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "chair_id_b",
+            "titles": "chair_id_b",
+            "dc:description": "Lexicographically larger of the two stable chair identifiers.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "relation",
+            "titles": "relation",
+            "dc:description": "Relative position on local seating axes: side by side across the seating direction, aligned front/back, or diagonal. See the data documentation for source-specific orientation conventions.",
+            "datatype": {"base": "string", "format": "^(side_by_side|front_back|diagonal)$"},
+            "required": true
+          },
+          {
+            "name": "separation",
+            "titles": "separation",
+            "dc:description": "Intervening feature. None means no drawn aisle between neighbouring numbered cells, not zero physical distance. Unknown means the source does not establish the intervening feature. Desk is reserved and not used in the initial transcription.",
+            "datatype": {"base": "string", "format": "^(none|aisle|desk|unknown)$"},
+            "required": true
+          }
+        ],
+        "primaryKey": ["chamber_layout_id", "chair_id_a", "chair_id_b"],
+        "foreignKeys": [
+          {
+            "columnReference": "chamber_layout_id",
+            "reference": {"resource": "chamber_layouts.csv", "columnReference": "chamber_layout_id"}
+          },
+          {
+            "columnReference": "chair_id_a",
+            "reference": {"resource": "chairs.csv", "columnReference": "chair_id"}
+          },
+          {
+            "columnReference": "chair_id_b",
+            "reference": {"resource": "chairs.csv", "columnReference": "chair_id"}
+          }
+        ]
+      }
+    },
+    {
       "url": "chair_mp.csv",
       "dc:title": "Chair Occupancy",
       "dc:description": "Mappings between parliamentary chairs, parliament years, and persons.",

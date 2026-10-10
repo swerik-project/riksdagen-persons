@@ -5,6 +5,8 @@
     "place_of_birth.csv": ["person_id", "place"],
     "place_of_death.csv": ["person_id", "place"],
     "chairs.csv": {"columns": ["chair_nr", "chamber"], "ascending": true},
+    "chamber_layouts.csv": ["start", "chamber", "chamber_layout_id"],
+    "chair_neighbours.csv": ["chamber_layout_id", "chair_id_a", "chair_id_b"],
     "person.csv": ["person_id"],
     "party_abbreviation.csv": ["abbreviation", "party"],
     "wiki_id.csv": ["wiki_id"],
