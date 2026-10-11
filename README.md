@@ -30,6 +30,20 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - chamber
 - chair_nr
 
+### Chamber Seating Data
+
+- `data/chamber_layouts.csv`: chamber-use periods and buildings.
+- `data/chair_seating_plans.csv`: dated, source-specific observations.
+- `data/chair_groups.csv`: sections, arcs, banks, rows and their hierarchy.
+- `data/chair_seat_positions.csv`: plan-local positions, orientation, dimensions and local row/column.
+- `data/chair_seat_numbering.csv`: source labels, drawing states and links to existing numbered MP chairs.
+
+See [Chamber layouts and seating plans](docs/chamber-layouts.md) for sources,
+coordinate conventions, limitations, joins and image reconstruction commands.
+Schematic coordinates are not measured distances. Position IDs do not assert
+physical continuity across years, and unnumbered or hidden slots do not assert
+vacancy. The former `chair_neighbours.csv` is no longer part of the data model.
+
 ### `data/described_by_source.csv`
 - person_id
 - source

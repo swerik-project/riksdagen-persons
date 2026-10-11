@@ -527,60 +527,355 @@
       }
     },
     {
-      "url": "chair_neighbours.csv",
-      "dc:title": "Chair Neighbours",
-      "dc:description": "Undirected local neighbour relationships transcribed from seating plans. Coverage is partial across separately oriented seating areas. Missing rows do not assert that two seats are not neighbours.",
+      "url": "chair_seating_plans.csv",
+      "dc:title": "Chair Seating Plans",
+      "dc:description": "Source-specific observations of seating geometry and numbering, not assertions of validity throughout the chamber-use period. Schematic coordinates are not metres; local grids have no global coordinates.",
       "tableSchema": {
         "columns": [
           {
+            "name": "chair_seating_plan_id",
+            "titles": "chair_seating_plan_id",
+            "dc:description": "Stable identifier of one source-specific plan.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
             "name": "chamber_layout_id",
             "titles": "chamber_layout_id",
-            "dc:description": "Layout in which the relationship is observed.",
+            "dc:description": "Broad chamber-use layout containing this observation.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "parliament_year",
+            "titles": "parliament_year",
+            "dc:description": "Parliament year asserted by the source: YYYY or YYYYYY. Unknown remains blank; publication year alone is not used.",
+            "datatype": "integer"
+          },
+          {
+            "name": "label",
+            "titles": "label",
+            "dc:description": "Human-readable source-plan label.",
             "datatype": "string",
             "required": true
           },
           {
-            "name": "chair_id_a",
-            "titles": "chair_id_a",
-            "dc:description": "Lexicographically smaller of the two stable chair identifiers.",
+            "name": "source",
+            "titles": "source",
+            "dc:description": "Repository-relative path to the preserved source image, PDF, TIFF or contributor code.",
             "datatype": "string",
             "required": true
           },
           {
-            "name": "chair_id_b",
-            "titles": "chair_id_b",
-            "dc:description": "Lexicographically larger of the two stable chair identifiers.",
+            "name": "source_locator",
+            "titles": "source_locator",
+            "dc:description": "Source page or Swift layout declaration used for this observation.",
             "datatype": "string",
             "required": true
           },
           {
-            "name": "relation",
-            "titles": "relation",
-            "dc:description": "Relative position on local seating axes: side by side across the seating direction, aligned front/back, or diagonal. See the data documentation for source-specific orientation conventions.",
-            "datatype": {"base": "string", "format": "^(side_by_side|front_back|diagonal)$"},
+            "name": "source_sha256",
+            "titles": "source_sha256",
+            "dc:description": "SHA-256 of the preserved source.",
+            "datatype": {
+              "base": "string",
+              "format": "^[a-f0-9]{64}$"
+            },
             "required": true
           },
           {
-            "name": "separation",
-            "titles": "separation",
-            "dc:description": "Intervening feature. None means no drawn aisle between neighbouring numbered cells, not zero physical distance. Unknown means the source does not establish the intervening feature. Desk is reserved and not used in the initial transcription.",
-            "datatype": {"base": "string", "format": "^(none|aisle|desk|unknown)$"},
+            "name": "coordinate_system",
+            "titles": "coordinate_system",
+            "dc:description": "Schematic uses seat-sized units, x right and y down; local_grid preserves topology without global geometry.",
+            "datatype": {
+              "base": "string",
+              "format": "^(schematic|local_grid)$"
+            },
             "required": true
           }
         ],
-        "primaryKey": ["chamber_layout_id", "chair_id_a", "chair_id_b"],
+        "primaryKey": "chair_seating_plan_id",
         "foreignKeys": [
           {
             "columnReference": "chamber_layout_id",
-            "reference": {"resource": "chamber_layouts.csv", "columnReference": "chamber_layout_id"}
+            "reference": {
+              "resource": "chamber_layouts.csv",
+              "columnReference": "chamber_layout_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "chair_groups.csv",
+      "dc:title": "Chair Groups",
+      "dc:description": "Plan-local hierarchy of chamber, sections, arcs, banks, rows and podium positions. Group boundaries do not assert an aisle.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chair_group_id",
+            "titles": "chair_group_id",
+            "dc:description": "Stable plan-local group identifier.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
           },
           {
-            "columnReference": "chair_id_a",
-            "reference": {"resource": "chairs.csv", "columnReference": "chair_id"}
+            "name": "chair_seating_plan_id",
+            "titles": "chair_seating_plan_id",
+            "dc:description": "Plan containing the group.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
           },
           {
-            "columnReference": "chair_id_b",
-            "reference": {"resource": "chairs.csv", "columnReference": "chair_id"}
+            "name": "parent_group_id",
+            "titles": "parent_group_id",
+            "dc:description": "Containing group in the same plan; blank only for the chamber root.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            }
+          },
+          {
+            "name": "group_type",
+            "titles": "group_type",
+            "dc:description": "Structural type of group.",
+            "datatype": {
+              "base": "string",
+              "format": "^(chamber|section|arc|bank|row|podium)$"
+            },
+            "required": true
+          },
+          {
+            "name": "label",
+            "titles": "label",
+            "dc:description": "Source-relative group description.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": "chair_group_id",
+        "foreignKeys": [
+          {
+            "columnReference": "chair_seating_plan_id",
+            "reference": {
+              "resource": "chair_seating_plans.csv",
+              "columnReference": "chair_seating_plan_id"
+            }
+          },
+          {
+            "columnReference": "parent_group_id",
+            "reference": {
+              "resource": "chair_groups.csv",
+              "columnReference": "chair_group_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "chair_seat_positions.csv",
+      "dc:title": "Chair Seat Positions",
+      "dc:description": "Plan-local positions including hidden and unknown slots. IDs identify model locations, not furniture or proven physical continuity across years. Coordinates are absent for local-grid observations.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chair_seat_position_id",
+            "titles": "chair_seat_position_id",
+            "dc:description": "Stable identifier seeded from plan, group and local row/column, not coordinates or chair number.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "chair_seating_plan_id",
+            "titles": "chair_seating_plan_id",
+            "dc:description": "Plan containing this position.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "chair_group_id",
+            "titles": "chair_group_id",
+            "dc:description": "Leaf group containing this position.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "row",
+            "titles": "row",
+            "dc:description": "One-based local row along the group's seating depth.",
+            "datatype": {
+              "base": "integer",
+              "minimum": 1
+            },
+            "required": true
+          },
+          {
+            "name": "column",
+            "titles": "column",
+            "dc:description": "One-based local column across the group's seating direction.",
+            "datatype": {
+              "base": "integer",
+              "minimum": 1
+            },
+            "required": true
+          },
+          {
+            "name": "x",
+            "titles": "x",
+            "dc:description": "Centre x-coordinate in schematic units; positive to the right.",
+            "datatype": "double"
+          },
+          {
+            "name": "y",
+            "titles": "y",
+            "dc:description": "Centre y-coordinate in schematic units; positive down the rendered page.",
+            "datatype": "double"
+          },
+          {
+            "name": "orientation",
+            "titles": "orientation",
+            "dc:description": "Rotation of the chair's local x-axis, clockwise from page +x in degrees [0,360). Not observed bodily orientation.",
+            "datatype": "double"
+          },
+          {
+            "name": "width",
+            "titles": "width",
+            "dc:description": "Chair-symbol width in schematic units, not a measured physical dimension.",
+            "datatype": "double"
+          },
+          {
+            "name": "height",
+            "titles": "height",
+            "dc:description": "Chair-symbol height in schematic units, not a measured physical dimension.",
+            "datatype": "double"
+          },
+          {
+            "name": "top_radius",
+            "titles": "top_radius",
+            "dc:description": "Corner radius at the local top of the chair symbol, in schematic units.",
+            "datatype": "double"
+          },
+          {
+            "name": "bottom_radius",
+            "titles": "bottom_radius",
+            "dc:description": "Corner radius at the local bottom of the chair symbol, in schematic units.",
+            "datatype": "double"
+          }
+        ],
+        "primaryKey": "chair_seat_position_id",
+        "foreignKeys": [
+          {
+            "columnReference": "chair_seating_plan_id",
+            "reference": {
+              "resource": "chair_seating_plans.csv",
+              "columnReference": "chair_seating_plan_id"
+            }
+          },
+          {
+            "columnReference": "chair_group_id",
+            "reference": {
+              "resource": "chair_groups.csv",
+              "columnReference": "chair_group_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "chair_seat_numbering.csv",
+      "dc:title": "Chair Seat Numbering",
+      "dc:description": "Source-specific labels and optional numbered-MP-chair mappings. Unnumbered, hidden and unknown are distinct drawing states, not occupancy assertions. Special non-MP labels remain unlinked.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chair_seating_plan_id",
+            "titles": "chair_seating_plan_id",
+            "dc:description": "Plan in which this numbering is observed.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "chair_seat_position_id",
+            "titles": "chair_seat_position_id",
+            "dc:description": "Position receiving this label or state.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "chair_id",
+            "titles": "chair_id",
+            "dc:description": "Existing numbered MP-chair ID in the matching chamber. Blank for special non-MP chairs or positions without a known label.",
+            "datatype": "string"
+          },
+          {
+            "name": "label",
+            "titles": "label",
+            "dc:description": "Displayed source label, including special labels outside the MP-chair registry.",
+            "datatype": "string"
+          },
+          {
+            "name": "status",
+            "titles": "status",
+            "dc:description": "Numbered means a label is present; unnumbered is a drawn unlabeled chair; hidden is an omitted Swift slot; unknown is an unresolved image-transcription cell.",
+            "datatype": {
+              "base": "string",
+              "format": "^(numbered|unnumbered|hidden|unknown)$"
+            },
+            "required": true
+          }
+        ],
+        "primaryKey": [
+          "chair_seating_plan_id",
+          "chair_seat_position_id"
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "chair_seating_plan_id",
+            "reference": {
+              "resource": "chair_seating_plans.csv",
+              "columnReference": "chair_seating_plan_id"
+            }
+          },
+          {
+            "columnReference": "chair_seat_position_id",
+            "reference": {
+              "resource": "chair_seat_positions.csv",
+              "columnReference": "chair_seat_position_id"
+            }
+          },
+          {
+            "columnReference": "chair_id",
+            "reference": {
+              "resource": "chairs.csv",
+              "columnReference": "chair_id"
+            }
           }
         ]
       }
