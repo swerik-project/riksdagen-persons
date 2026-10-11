@@ -1,4 +1,5 @@
 """Semantic seating-model guarantees; schema and ordinary key checks live in CSVW tests."""
+import calendar
 import hashlib
 import importlib.util
 import json
@@ -6,8 +7,11 @@ import math
 from pathlib import Path
 import unittest
 from collections import Counter
+from datetime import date
 
 import polars as pl
+from pyriksdagen.metadata import check_date_overlap
+from pyriksdagen.utils import get_formatted_uuid
 from trainerlog import get_logger
 
 LOGGER = get_logger("chair-seating")
@@ -16,6 +20,106 @@ DATA = REPO / "data"
 
 
 class ChairSeatingIntegrity(unittest.TestCase):
+    def test_plan_dates_match_recorded_parliamentary_sessions(self):
+        """Guarantee: plan start/end equal the recorded session envelope for their year and chamber.
+
+        Data: riksdag-year.csv supplies the first start and last end when a
+        year has several sessions. Unknown years or missing session records
+        retain null dates; chamber-use dates are never substituted. These
+        dates describe sessions, not continuous use of a seating arrangement.
+        """
+        plans = pl.read_csv(DATA / "chair_seating_plans.csv", schema_overrides={
+            "parliament_year": pl.String, "start": pl.String, "end": pl.String}).with_columns(
+                pl.col("start", "end").str.to_date(format="%Y-%m-%d"))
+        layouts = pl.read_csv(DATA / "chamber_layouts.csv").select("chamber_layout_id", "chamber")
+        sessions = pl.read_csv(DATA / "riksdag-year.csv", schema_overrides={"parliament_year": pl.String}).with_columns(
+            pl.col("start", "end").str.to_date()).group_by("parliament_year", "chamber").agg(
+                pl.col("start").min(), pl.col("end").max())
+        joined = plans.join(layouts, on="chamber_layout_id", how="left").join(
+            sessions, on=["parliament_year", "chamber"], how="left", suffix="_session")
+        errors = 0
+        LOGGER.info("Checking seating-plan start/end against recorded parliamentary sessions")
+        for row in joined.iter_rows(named=True):
+            if (row["start"], row["end"]) != (row["start_session"], row["end_session"]):
+                LOGGER.error(f"Plan {row['chair_seating_plan_id']} ({row['chamber']}, year {row['parliament_year']}): "
+                             f"start/end {(row['start'], row['end'])} do not match recorded sessions "
+                             f"{(row['start_session'], row['end_session'])}")
+                errors += 1
+        LOGGER.info(f"Checked {joined.height} plans; {errors} inconsistent session date pairs")
+        self.assertEqual(errors, 0, f"{errors} plans have incorrect session dates; details logged with trainerlog")
+
+    def test_plan_years_overlap_chamber_use_periods(self):
+        """Guarantee: every dated plan can overlap its linked chamber-use period.
+
+        Why this matters: a source observation must not be assigned to a
+        building or chamber era that is incompatible with its parliament year.
+
+        Data: chair_seating_plans.csv, chamber_layouts.csv and riksdag-year.csv.
+        Use recorded sessions for the same year and chamber when available;
+        otherwise use the calendar-year envelope of YYYY, YYYYYY or YYYYZZZZ
+        (e.g. 19992000). This fallback checks only possible compatibility.
+        Partial starts use their earliest day and partial ends their latest,
+        with inclusive endpoints. Blank plan years are not checkable; blank
+        chamber bounds remain unknown and cannot rule out overlap themselves.
+        Overlap with any session suffices; neither full containment nor unique
+        or non-overlapping years across plans is required.
+        """
+        def date_bound(value, end=False):
+            if value is None:
+                return None
+            if len(value) == 4:
+                return date(int(value), 12, 31) if end else date(int(value), 1, 1)
+            if len(value) == 7:
+                first_day = date.fromisoformat(value + "-01")
+                last_day = calendar.monthrange(first_day.year, first_day.month)[1]
+                return first_day.replace(day=last_day) if end else first_day
+            return date.fromisoformat(value)
+
+        plans = pl.read_csv(DATA / "chair_seating_plans.csv", schema_overrides={"parliament_year": pl.String})
+        layouts = {row["chamber_layout_id"]: row for row in
+                   pl.read_csv(DATA / "chamber_layouts.csv", schema_overrides={"start": pl.String, "end": pl.String}).to_dicts()}
+        sessions = pl.read_csv(DATA / "riksdag-year.csv", schema_overrides={"parliament_year": pl.String}).with_columns(
+            pl.col("start", "end").str.to_date())
+        errors = checked = undated = fallback = 0
+        LOGGER.info("Checking seating-plan years against chamber-use periods")
+        for plan in plans.to_dicts():
+            year = plan["parliament_year"]
+            if year is None:
+                undated += 1
+                continue
+            checked += 1
+            layout = layouts[plan["chamber_layout_id"]]
+            try:
+                start = date_bound(layout["start"])
+                end = date_bound(layout["end"], end=True)
+                periods = sessions.filter((pl.col("parliament_year") == year) &
+                                          (pl.col("chamber") == layout["chamber"])).select("start", "end").rows()
+                if not periods:
+                    start_year = int(year[:4])
+                    if len(year) == 4:
+                        end_year = start_year
+                    elif year in (f"{start_year}{(start_year + 1) % 100:02d}", f"{start_year}{start_year + 1}"):
+                        end_year = start_year + 1
+                    else:
+                        raise ValueError(f"unsupported parliament year {year!r}")
+                    periods = [(date(start_year, 1, 1), date(end_year, 12, 31))]
+                    fallback += 1
+                    LOGGER.info(f"Plan {plan['chair_seating_plan_id']}: no {layout['chamber']} session dates for {year}; "
+                                f"checking calendar-year envelope {periods}")
+            except ValueError as error:
+                LOGGER.error(f"Plan {plan['chair_seating_plan_id']}, year {year}, layout {plan['chamber_layout_id']}: {error}")
+                errors += 1
+                continue
+            if not any(check_date_overlap(first, last, start if start is not None else first,
+                                          end if end is not None else last) for first, last in periods):
+                LOGGER.error(f"Plan {plan['chair_seating_plan_id']}, year {year}, periods {periods}: "
+                             f"no overlap with layout {plan['chamber_layout_id']} ({layout['chamber']}, "
+                             f"{layout['building']}), start={layout['start']!r}, end={layout['end']!r}")
+                errors += 1
+        LOGGER.info(f"Checked {checked} dated plans ({fallback} calendar-year fallbacks); "
+                    f"{undated} undated plans not checkable; {errors} incompatible plans")
+        self.assertEqual(errors, 0, f"{errors} plans have incompatible or invalid dates; details logged with trainerlog")
+
     def test_groups_form_one_rooted_tree_per_plan(self):
         """Guarantee: group parentage is acyclic, stays within its plan and reaches its chamber root."""
         groups = {r["chair_group_id"]: r for r in pl.read_csv(DATA / "chair_groups.csv").to_dicts()}
@@ -125,12 +229,21 @@ class ChairSeatingIntegrity(unittest.TestCase):
         self.assertEqual(errors.height, 0, f"{errors.height} local-grid positions claim geometry; details logged with trainerlog")
 
     def test_source_files_match_recorded_checksums(self):
-        """Guarantee: every plan resolves to the preserved source bytes identified by its checksum."""
+        """Guarantee: every plan resolves to preserved source bytes and checksums in the reference records."""
         plans = pl.read_csv(DATA / "chair_seating_plans.csv")
+        spec = importlib.util.spec_from_file_location("seating_build", REPO / "references/chamber-layouts/build.py")
+        builder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(builder)
+        sources = builder.plan_sources(REPO)
         errors = 0
         for plan in plans.to_dicts():
-            source = REPO / plan["source"]
-            if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest() != plan["source_sha256"]:
+            provenance = sources.get(plan["chair_seating_plan_id"])
+            if provenance is None:
+                LOGGER.error(f"Plan {plan['chair_seating_plan_id']}: no preserved source reference")
+                errors += 1
+                continue
+            source = REPO / provenance["source"]
+            if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest() != provenance["source_sha256"]:
                 LOGGER.error(f"Plan {plan['chair_seating_plan_id']}: missing or changed source {source}")
                 errors += 1
         self.assertEqual(errors, 0, f"{errors} source checksum failures; details logged with trainerlog")
@@ -227,16 +340,14 @@ class ChairSeatingIntegrity(unittest.TestCase):
 
         References: issue 185, potmo's AK1957 declaration explicitly filters out 163; source review remains pending.
         """
-        plans = pl.read_csv(DATA / "chair_seating_plans.csv")
-        numbering = pl.read_csv(DATA / "chair_seat_numbering.csv").join(plans, on="chair_seating_plan_id")
-        labels = set(numbering.filter((pl.col("source_locator") == "AK1957") & pl.col("label").is_not_null())["label"])
+        numbering = pl.read_csv(DATA / "chair_seat_numbering.csv")
+        labels = set(numbering.filter((pl.col("chair_seating_plan_id") == "i-UK3E8SJq48vBSZu2P4wxiD") & pl.col("label").is_not_null())["label"])
         self.assertEqual(labels, set(range(1, 232)) - {163}, "AK1957 labels no longer match the preserved source omission")
 
     def test_all_contributor_slots_and_states_are_preserved(self):
         """Guarantee: every contributor slot survives import with its original numbered, unnumbered or hidden state."""
         source = json.loads((REPO / "references/chamber-layouts/potmo-layouts.json").read_text(encoding="utf-8"))
-        plans = pl.read_csv(DATA / "chair_seating_plans.csv")
-        numbering = pl.read_csv(DATA / "chair_seat_numbering.csv").join(plans, on="chair_seating_plan_id")
+        numbering = pl.read_csv(DATA / "chair_seat_numbering.csv")
         errors = 0
         for name, shapes in source["plans"].items():
             expected = []
@@ -248,7 +359,8 @@ class ChairSeatingIntegrity(unittest.TestCase):
                 else:
                     expected.extend(shape["data"])
             expected = Counter((seat["status"], seat.get("label")) for seat in expected)
-            actual = Counter(numbering.filter(pl.col("source_locator") == name).select("status", "label").iter_rows())
+            plan_id = get_formatted_uuid(f"riksdagen-persons/chair-seating-plans/potmo/{name}")
+            actual = Counter(numbering.filter(pl.col("chair_seating_plan_id") == plan_id).select("status", "label").iter_rows())
             if actual != expected:
                 LOGGER.error(f"{name}: missing states {expected - actual}; unexpected states {actual - expected}")
                 errors += 1
@@ -257,10 +369,9 @@ class ChairSeatingIntegrity(unittest.TestCase):
     def test_hidden_bank_slot_does_not_shift_numbered_positions(self):
         """Guarantee: AK1965's hidden slot at bank 1 row 7 column 2 is retained beside numbered seat 13."""
         positions = pl.read_csv(DATA / "chair_seat_positions.csv", infer_schema_length=None)
-        plans = pl.read_csv(DATA / "chair_seating_plans.csv")
         numbering = pl.read_csv(DATA / "chair_seat_numbering.csv")
-        joined = positions.join(numbering, on=["chair_seating_plan_id", "chair_seat_position_id"]).join(plans.select("chair_seating_plan_id", "source_locator"), on="chair_seating_plan_id")
-        seat = joined.filter((pl.col("source_locator") == "AK1965") & (pl.col("label") == 13)).row(0, named=True)
+        joined = positions.join(numbering, on=["chair_seating_plan_id", "chair_seat_position_id"])
+        seat = joined.filter((pl.col("chair_seating_plan_id") == "i-HUQEpZ5Ke93YQ73Rj8DM95") & (pl.col("label") == 13)).row(0, named=True)
         self.assertEqual((seat["row"], seat["column"]), (7, 1))
         hidden = joined.filter((pl.col("chair_group_id") == seat["chair_group_id"]) & (pl.col("row") == 7) & (pl.col("column") == 2))
         self.assertEqual(hidden["status"].to_list(), ["hidden"], "Import collapsed or relabelled the hidden source slot beside AK1965 chair 13")
@@ -269,9 +380,8 @@ class ChairSeatingIntegrity(unittest.TestCase):
         """Guarantee: EK1985 chair 1 uses the source's radius 20, 45-degree start and 1.3-unit pair spacing, converted to centre coordinates."""
         positions = pl.read_csv(DATA / "chair_seat_positions.csv", infer_schema_length=None)
         numbering = pl.read_csv(DATA / "chair_seat_numbering.csv")
-        plans = pl.read_csv(DATA / "chair_seating_plans.csv")
-        joined = positions.join(numbering, on=["chair_seating_plan_id", "chair_seat_position_id"]).join(plans.select("chair_seating_plan_id", "source_locator"), on="chair_seating_plan_id")
-        seat = joined.filter((pl.col("source_locator") == "EK1985") & (pl.col("label") == 1)).row(0, named=True)
+        joined = positions.join(numbering, on=["chair_seating_plan_id", "chair_seat_position_id"])
+        seat = joined.filter((pl.col("chair_seating_plan_id") == "i-EUJZz132LDwCFWKkKxu3r1") & (pl.col("label") == 1)).row(0, named=True)
         self.assertAlmostEqual(seat["x"], (20 + 0.65 + 0.5) / math.sqrt(2), places=8)
         self.assertAlmostEqual(seat["y"], (20 - 0.65 + 0.5) / math.sqrt(2), places=8)
         self.assertAlmostEqual(seat["orientation"], 315, places=8)
@@ -280,9 +390,8 @@ class ChairSeatingIntegrity(unittest.TestCase):
         """Guarantee: EK20072008 chair 4 uses the original front ellipse endpoint and its outward normal, not a circular approximation."""
         positions = pl.read_csv(DATA / "chair_seat_positions.csv", infer_schema_length=None)
         numbering = pl.read_csv(DATA / "chair_seat_numbering.csv")
-        plans = pl.read_csv(DATA / "chair_seating_plans.csv")
-        joined = positions.join(numbering, on=["chair_seating_plan_id", "chair_seat_position_id"]).join(plans.select("chair_seating_plan_id", "source_locator"), on="chair_seating_plan_id")
-        seat = joined.filter((pl.col("source_locator") == "EK20072008") & (pl.col("label") == 4)).row(0, named=True)
+        joined = positions.join(numbering, on=["chair_seating_plan_id", "chair_seat_position_id"])
+        seat = joined.filter((pl.col("chair_seating_plan_id") == "i-YZfmCJtMxNJyK9CtT7VLPs") & (pl.col("label") == 4)).row(0, named=True)
         angle = math.pi * 0.005
         normal_x, normal_y = 7 * math.cos(angle), 10 * math.sin(angle)
         length = math.hypot(normal_x, normal_y)

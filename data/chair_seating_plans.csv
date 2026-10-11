@@ -1,18 +1,18 @@
-chair_seating_plan_id,chamber_layout_id,parliament_year,label,source,source_locator,source_sha256,coordinate_system
-i-LCZR7kWxjvZYY5tRC1z9BL,i-5df4usQFbNhAqQ6ByuQY53,,"Andra Kammarens Samlingsrum, rectangular plan: SWERIK schematic",references/chamber-layouts/3NvHuPRPN0jc6ChD.png,supplied image,b6a96077ef04ece21eda8b2cdab90bacd15a270015d73d41b0ef457cc3f27cde,schematic
-i-JxF914YvtmgQw5Lvqsge56,i-95JkfhSMZtjngqkjoZURD,,"Andra kammarens plenisal, angled plan printed 1970",references/chamber-layouts/2BNaqJwN7iBttnet.png,supplied image,d1fab1298239424b381d72984c951dc43976085eaf873a616d3023e56f773b6d,local_grid
-i-GNicbmMpTVfHEx7zRayCKF,i-CYnGkhLk8qvRjB1hqU2MZs,,"Forsta Kammarens samlingsrum, rectangular plan: SWERIK schematic",references/chamber-layouts/kvTzi60YqzD0PBco.png,supplied image,41289f14288dad7a87cf42693dedc177b2c0d9834beaeedef8ec16ef0db2d900,schematic
-i-VvkZUB4duvAZf7bqeEiVir,i-QdciffNczuaFBHaeme1Vwb,,"Forsta kammarens plenisal, angled plan printed 1970",references/chamber-layouts/ZGjnW32AIPgbg0ol.png,supplied image,5eac6666ea5cfc149549614b7fecc1435fbee25980ada5816163ac7f500fad6e,local_grid
-i-RSf9N7EBSrF7SVFSWJvW1i,i-Rwjf4XwqWstRkSzQ2dvSDM,,"Temporary parliament, 350-seat plan (publication date unknown)",references/chamber-layouts/sida0079.tif,supplied image,5ec80d5334ba7123b26a8ab41f09f1a4c7c987c88cef5abf8b4ab4377cb4a3f0,local_grid
-i-JxyaxSiJaTDQWKoaoQptFq,i-95JkfhSMZtjngqkjoZURD,1935,AK1935: SWERIK schematic,references/chamber-layouts/potmo-original.swift,AK1935,fc65bdd1ef48035b49c12455ab0918de5eb4d5a4430ef9827405b79425ced045,schematic
-i-3rtB4GAECZhiviPupE1Qxs,i-QdciffNczuaFBHaeme1Vwb,1935,FK1935: SWERIK schematic,references/chamber-layouts/potmo-original.swift,FK1935,fc65bdd1ef48035b49c12455ab0918de5eb4d5a4430ef9827405b79425ced045,schematic
-i-UK3E8SJq48vBSZu2P4wxiD,i-95JkfhSMZtjngqkjoZURD,1957,AK1957: SWERIK schematic,references/chamber-layouts/potmo-original.swift,AK1957,fc65bdd1ef48035b49c12455ab0918de5eb4d5a4430ef9827405b79425ced045,schematic
-i-FBgnKk8wPWPvdbHJXWNDQ9,i-QdciffNczuaFBHaeme1Vwb,1957,FK1957: SWERIK schematic,references/chamber-layouts/potmo-original.swift,FK1957,fc65bdd1ef48035b49c12455ab0918de5eb4d5a4430ef9827405b79425ced045,schematic
-i-dMjmS6tcCzXffqvhsaFZD,i-95JkfhSMZtjngqkjoZURD,1961,AK1961: SWERIK schematic,references/chamber-layouts/potmo-original.swift,AK1961,fc65bdd1ef48035b49c12455ab0918de5eb4d5a4430ef9827405b79425ced045,schematic
-i-ASptP5Daqh8yrf5UecQ39v,i-QdciffNczuaFBHaeme1Vwb,1961,FK1961: SWERIK schematic,references/chamber-layouts/potmo-original.swift,FK1961,fc65bdd1ef48035b49c12455ab0918de5eb4d5a4430ef9827405b79425ced045,schematic
-i-HUQEpZ5Ke93YQ73Rj8DM95,i-95JkfhSMZtjngqkjoZURD,1965,AK1965: SWERIK schematic,references/chamber-layouts/potmo-original.swift,AK1965,fc65bdd1ef48035b49c12455ab0918de5eb4d5a4430ef9827405b79425ced045,schematic
-i-TFoNmr3o8pHRpupjPgrdYX,i-QdciffNczuaFBHaeme1Vwb,1965,FK1965: SWERIK schematic,references/chamber-layouts/potmo-original.swift,FK1965,fc65bdd1ef48035b49c12455ab0918de5eb4d5a4430ef9827405b79425ced045,schematic
-i-XcjBbJ5Lk7BHeJinhHF3bL,i-Rwjf4XwqWstRkSzQ2dvSDM,1971,EK1971: SWERIK schematic,references/chamber-layouts/potmo-original.swift,EK1971,fc65bdd1ef48035b49c12455ab0918de5eb4d5a4430ef9827405b79425ced045,schematic
-i-EUJZz132LDwCFWKkKxu3r1,i-GyxTDbgqzLZihKQQ4sKrBG,198586,EK1985: SWERIK schematic,references/chamber-layouts/potmo-original.swift,EK1985,fc65bdd1ef48035b49c12455ab0918de5eb4d5a4430ef9827405b79425ced045,schematic
-i-YZfmCJtMxNJyK9CtT7VLPs,i-WsM9PALfgoSj8ctji4c1TW,200708,EK20072008: SWERIK schematic,references/chamber-layouts/potmo-original.swift,EK20072008,fc65bdd1ef48035b49c12455ab0918de5eb4d5a4430ef9827405b79425ced045,schematic
-i-3FcragKXKrbZrZ7AWgiUpb,i-WsM9PALfgoSj8ctji4c1TW,202627,Placing in the chamber for parliamentary session 2026/27; MP seats,references/chamber-layouts/valkommen-till-kammaren-september-2026-webb-placering-i-kammaren-och-ledamoter.pdf,page 1,d4d0c6cb04cf1c969d916d242aeca0d9b88bf2971997ab8a8952aea1bcedf7de,local_grid
+chair_seating_plan_id,chamber_layout_id,parliament_year,start,end,label,coordinate_system
+i-LCZR7kWxjvZYY5tRC1z9BL,i-5df4usQFbNhAqQ6ByuQY53,,,,"Andra Kammarens Samlingsrum, rectangular plan: SWERIK schematic",schematic
+i-JxF914YvtmgQw5Lvqsge56,i-95JkfhSMZtjngqkjoZURD,,,,"Andra kammarens plenisal, angled plan printed 1970",local_grid
+i-GNicbmMpTVfHEx7zRayCKF,i-CYnGkhLk8qvRjB1hqU2MZs,,,,"Forsta Kammarens samlingsrum, rectangular plan: SWERIK schematic",schematic
+i-VvkZUB4duvAZf7bqeEiVir,i-QdciffNczuaFBHaeme1Vwb,,,,"Forsta kammarens plenisal, angled plan printed 1970",local_grid
+i-RSf9N7EBSrF7SVFSWJvW1i,i-Rwjf4XwqWstRkSzQ2dvSDM,,,,"Temporary parliament, 350-seat plan (publication date unknown)",local_grid
+i-JxyaxSiJaTDQWKoaoQptFq,i-95JkfhSMZtjngqkjoZURD,1935,1935-01-10,1935-06-18,AK1935: SWERIK schematic,schematic
+i-3rtB4GAECZhiviPupE1Qxs,i-QdciffNczuaFBHaeme1Vwb,1935,1935-01-10,1935-06-18,FK1935: SWERIK schematic,schematic
+i-UK3E8SJq48vBSZu2P4wxiD,i-95JkfhSMZtjngqkjoZURD,1957,1957-01-10,1957-12-18,AK1957: SWERIK schematic,schematic
+i-FBgnKk8wPWPvdbHJXWNDQ9,i-QdciffNczuaFBHaeme1Vwb,1957,1957-01-10,1957-12-18,FK1957: SWERIK schematic,schematic
+i-dMjmS6tcCzXffqvhsaFZD,i-95JkfhSMZtjngqkjoZURD,1961,1961-01-10,1961-12-15,AK1961: SWERIK schematic,schematic
+i-ASptP5Daqh8yrf5UecQ39v,i-QdciffNczuaFBHaeme1Vwb,1961,1961-01-10,1961-12-15,FK1961: SWERIK schematic,schematic
+i-HUQEpZ5Ke93YQ73Rj8DM95,i-95JkfhSMZtjngqkjoZURD,1965,1965-01-11,1965-12-16,AK1965: SWERIK schematic,schematic
+i-TFoNmr3o8pHRpupjPgrdYX,i-QdciffNczuaFBHaeme1Vwb,1965,1965-01-11,1965-12-16,FK1965: SWERIK schematic,schematic
+i-XcjBbJ5Lk7BHeJinhHF3bL,i-Rwjf4XwqWstRkSzQ2dvSDM,1971,1971-01-11,1971-12-17,EK1971: SWERIK schematic,schematic
+i-EUJZz132LDwCFWKkKxu3r1,i-GyxTDbgqzLZihKQQ4sKrBG,198586,1985-09-30,1986-06-06,EK1985: SWERIK schematic,schematic
+i-YZfmCJtMxNJyK9CtT7VLPs,i-WsM9PALfgoSj8ctji4c1TW,200708,2007-09-18,2008-09-16,EK20072008: SWERIK schematic,schematic
+i-3FcragKXKrbZrZ7AWgiUpb,i-WsM9PALfgoSj8ctji4c1TW,202627,,,Placing in the chamber for parliamentary session 2026/27; MP seats,local_grid

@@ -8,7 +8,7 @@ No distance weights, aisle widths or physical measurements are currently release
 | File | Meaning |
 |---|---|
 | `chamber_layouts.csv` | Existing broad chamber-use periods: `chamber_layout_id,chamber,start,end,building`. |
-| `chair_seating_plans.csv` | One source-specific observation, with plan ID, layout ID, parliamentary year where established, source path, source locator, SHA-256 and coordinate system. |
+| `chair_seating_plans.csv` | One source-specific observation: `chair_seating_plan_id,chamber_layout_id,parliament_year,start,end,label,coordinate_system`. |
 | `chair_groups.csv` | Plan-local groups with stable IDs, parent IDs, group type and label. |
 | `chair_seat_positions.csv` | Plan-local slot IDs, group membership, local row/column and optional geometric drawing information. |
 | `chair_seat_numbering.csv` | One state per position, including its source label and an optional link to the existing MP-chair registry. |
@@ -151,6 +151,21 @@ The 2026/27 PDF explicitly identifies its parliamentary year.
 
 ## Dates and occupancy
 
+The seating-plan `start` and `end` columns describe the parliamentary session
+identified by the source's `parliament_year`, not the confirmed lifetime of
+the seating arrangement. They use inclusive `YYYY-MM-DD` dates from
+`data/riksdag-year.csv`, matched on parliamentary year and chamber. When a
+year has several sessions, `start` is the earliest recorded start and `end`
+the latest recorded end. This envelope does not imply continuous sitting or
+unchanged seating between those dates.
+
+Both dates remain blank when the parliamentary year or its session dates
+are unavailable. In particular, the undated images and the 2026/27 plan
+currently have blank dates because the session table does not yet cover
+2026/27. Building-use dates and publication dates are never substituted.
+The builder fills the dates from the session table, so extending that table
+and rebuilding will update the plan dates without changing their IDs.
+
 The layout registry retains the historical chamber-use periods researched on
 2026-10-09 and 2026-10-10. These are not validity intervals for every numbered
 plan. The registry's columns and chronological ordering are unchanged.
@@ -183,13 +198,13 @@ Reconstruct an image **using only the CSVs**, through the public
 version of `pyriksdagen` containing the new module):
 
 ```sh
-python references/chamber-layouts/render.py --plan EK1985 --output /tmp/EK1985.svg
-python references/chamber-layouts/render.py --plan AK1965 --output /tmp/AK1965.png
+python references/chamber-layouts/render.py --plan "EK1985: SWERIK schematic" --output /tmp/EK1985.svg
+python references/chamber-layouts/render.py --plan "AK1965: SWERIK schematic" --output /tmp/AK1965.png
 python references/chamber-layouts/render.py --all
 ```
 
-A plan ID may be used instead of a unique source locator. `--all` writes PNGs
-for all 17 plans plus a Markdown index to `references/chamber-layouts/previews`;
+A plan ID may be used instead of an exact unique label. `--all` writes PNGs
+named by plan ID for all 17 plans plus a Markdown index to `references/chamber-layouts/previews`;
 `--output-dir` can select another directory. The script is a thin wrapper, with
 all drawing logic maintained in `pyriksdagen`. While testing a sibling checkout
 before its release, prefix the commands above with `PYTHONPATH=../pyriksdagen`.
@@ -200,7 +215,7 @@ Matplotlib figure without opening a window or changing the global backend:
 ```python
 from pyriksdagen.chair_seating import render_chair_seating_plan
 
-figure = render_chair_seating_plan("data", "EK1985", "/tmp/EK1985.png")
+figure = render_chair_seating_plan("data", "EK1985: SWERIK schematic", "/tmp/EK1985.png")
 figure.clear()
 ```
 
@@ -214,4 +229,3 @@ display choices, not relative positions or distances in the room.
 Colours, font glyphs and line weights are renderer choices; constituency
 colouring requires an additional dated occupancy/constituency join. The figures
 are review aids, not source acceptance.
-

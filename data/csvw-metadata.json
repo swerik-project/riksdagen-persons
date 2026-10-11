@@ -559,34 +559,22 @@
             "datatype": "integer"
           },
           {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Earliest recorded session start for this parliament_year and chamber in riksdag-year.csv, inclusive. Blank when the year or session dates are unknown. Describes the parliamentary session, not confirmed continuous use of the seating arrangement.",
+            "datatype": "date"
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "Latest recorded session end for this parliament_year and chamber in riksdag-year.csv, inclusive. Blank when the year or session dates are unknown. Multiple sessions form a date envelope, not an assertion of continuous sitting or unchanged seating.",
+            "datatype": "date"
+          },
+          {
             "name": "label",
             "titles": "label",
-            "dc:description": "Human-readable source-plan label.",
+            "dc:description": "Human-readable source-plan label. Source files, locators and checksums are preserved separately under references/chamber-layouts/; see docs/chamber-layouts.md.",
             "datatype": "string",
-            "required": true
-          },
-          {
-            "name": "source",
-            "titles": "source",
-            "dc:description": "Repository-relative path to the preserved source image, PDF, TIFF or contributor code.",
-            "datatype": "string",
-            "required": true
-          },
-          {
-            "name": "source_locator",
-            "titles": "source_locator",
-            "dc:description": "Source page or Swift layout declaration used for this observation.",
-            "datatype": "string",
-            "required": true
-          },
-          {
-            "name": "source_sha256",
-            "titles": "source_sha256",
-            "dc:description": "SHA-256 of the preserved source.",
-            "datatype": {
-              "base": "string",
-              "format": "^[a-f0-9]{64}$"
-            },
             "required": true
           },
           {
