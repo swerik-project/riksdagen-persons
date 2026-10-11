@@ -199,16 +199,17 @@ class ChairSeatingIntegrity(unittest.TestCase):
         self.assertEqual(count, 0, f"{count} wrong or missing chair mappings; details logged with trainerlog")
 
     def test_schematic_geometry_is_complete_and_renderable(self):
-        """Guarantee: schematic positions have finite coordinates, valid rotation, positive dimensions and bounded corner radii."""
+        """Guarantee: schematic positions have finite centre coordinates and rotation in [0,360).
+
+        Drawing dimensions and corner radii are renderer settings, not corpus data.
+        """
         positions = pl.read_csv(DATA / "chair_seat_positions.csv", infer_schema_length=None).join(pl.read_csv(DATA / "chair_seating_plans.csv"), on="chair_seating_plan_id")
         errors = 0
-        keys = ["x", "y", "orientation", "width", "height", "top_radius", "bottom_radius"]
+        keys = ["x", "y", "orientation"]
         for row in positions.filter(pl.col("coordinate_system") == "schematic").to_dicts():
             valid = all(row[key] is not None and math.isfinite(row[key]) for key in keys)
             if valid:
-                valid = (0 <= row["orientation"] < 360 and row["width"] > 0 and row["height"] > 0 and
-                         0 <= row["top_radius"] <= min(row["width"], row["height"]) / 2 and
-                         0 <= row["bottom_radius"] <= min(row["width"], row["height"]) / 2)
+                valid = 0 <= row["orientation"] < 360
             if not valid:
                 LOGGER.error(f"Invalid schematic geometry: {row}")
                 errors += 1
@@ -217,7 +218,7 @@ class ChairSeatingIntegrity(unittest.TestCase):
     def test_local_grids_do_not_claim_global_coordinates(self):
         """Guarantee: local-grid transcriptions preserve unknown global geometry as null, not fabricated coordinates."""
         positions = pl.read_csv(DATA / "chair_seat_positions.csv", infer_schema_length=None).join(pl.read_csv(DATA / "chair_seating_plans.csv"), on="chair_seating_plan_id")
-        keys = ["x", "y", "orientation", "width", "height", "top_radius", "bottom_radius"]
+        keys = ["x", "y", "orientation"]
         errors = positions.filter((pl.col("coordinate_system") == "local_grid") & pl.any_horizontal(pl.col(keys).is_not_null()))
         if errors.height:
             LOGGER.error(f"Local grids with unsupported geometry:\n{errors}")

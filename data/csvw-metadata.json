@@ -745,30 +745,6 @@
             "titles": "orientation",
             "dc:description": "Rotation of the chair's local x-axis, clockwise from page +x in degrees [0,360). Not observed bodily orientation.",
             "datatype": "double"
-          },
-          {
-            "name": "width",
-            "titles": "width",
-            "dc:description": "Chair-symbol width in schematic units, not a measured physical dimension.",
-            "datatype": "double"
-          },
-          {
-            "name": "height",
-            "titles": "height",
-            "dc:description": "Chair-symbol height in schematic units, not a measured physical dimension.",
-            "datatype": "double"
-          },
-          {
-            "name": "top_radius",
-            "titles": "top_radius",
-            "dc:description": "Corner radius at the local top of the chair symbol, in schematic units.",
-            "datatype": "double"
-          },
-          {
-            "name": "bottom_radius",
-            "titles": "bottom_radius",
-            "dc:description": "Corner radius at the local bottom of the chair symbol, in schematic units.",
-            "datatype": "double"
           }
         ],
         "primaryKey": "chair_seat_position_id",

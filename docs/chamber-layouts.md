@@ -64,16 +64,22 @@ distances are not comparable across source plans.**
 - `x,y` locate the centre of the chair symbol.
 - `orientation` rotates its local x-axis clockwise from page +x, in degrees
   from 0 inclusive to 360 exclusive. It is not an observation of bodily orientation.
-- `width,height` describe the symbol's dimensions.
-- `top_radius,bottom_radius` preserve the source's two corner radii.
-- Local top is toward negative local y; local bottom is toward positive local y.
+
+Chair size and corner rounding are not data columns. `pyriksdagen` uses the
+same rendering defaults for every plan, including local-grid previews:
+`width=0.6`, `height=0.6`, `top_radius=0.0`, `bottom_radius=0.18`.
+These are symbol dimensions in drawing units, not physical measurements.
+They can be overridden in `render_chair_seating_plan` without changing seat
+centres, orientation, numbering or groups. Local top is toward negative local
+y before rotation. Shared symbols do not reproduce each source's exact
+chair outline, and apparent edge-to-edge gaps depend on the drawing style.
 
 The contributor's anchor is at the middle of the chair's top edge. Import converts
 that anchor to the centre, retaining the original side/down directions.
 Circular banks and the 200-segment ellipse interpolation are expanded to
 individual positions.
 
-For `local_grid` plans, all seven geometric fields are null. Row/column
+For `local_grid` plans, `x`, `y` and `orientation` are null. Row/column
 indices preserve local topology only; they cannot be used as global distances.
 Regions and banks are retained, with the original aisle/unknown-boundary
 annotations still available in `transcription.json`. No new aisle assertions
@@ -96,8 +102,8 @@ the second chamber's are below. This opposite source orientation is retained.
 Visible passage gaps are retained proportionally, including the wider middle
 passage, but scans are not rectified and these are not measured aisle widths.
 
-Rectangles represent the source's numbered cells, with zero rotation and
-corner radii. They do not establish which way an MP faced. The nine AK and
+Shared chair symbols represent the source's numbered-cell centres, with zero
+rotation. They do not establish which way an MP faced. The nine AK and
 two FK unknown slots keep approximate grid locations and appear as `?`; no
 missing numbers or physical chairs have been invented. This is a global
 **seat map**, not an architectural reconstruction: walls, desks and other
