@@ -66,6 +66,9 @@ jobs:
     - name: Test that metadata is properly sorted
       run: |
         python -m unittest test.sort_order
+    - name: Test seating plans and reproducible reconstruction
+      run: |
+        python -m unittest test.chair_seating
 
   db:
     runs-on: ubuntu-latest
