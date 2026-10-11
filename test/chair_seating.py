@@ -279,6 +279,7 @@ class ChairSeatingIntegrity(unittest.TestCase):
 
         Data: AK has labels 1-230 except 52/84 and nine unknown cells;
         FK has labels 1-150 except 127/136 and two unknown cells.
+        Each also has one unnumbered Speaker chair, without an MP-chair link.
         """
         numbering = pl.read_csv(DATA / "chair_seat_numbering.csv")
         expected = {"i-LCZR7kWxjvZYY5tRC1z9BL": (230, {52, 84}, 9),
@@ -288,10 +289,86 @@ class ChairSeatingIntegrity(unittest.TestCase):
             actual = Counter(numbering.filter(pl.col("chair_seating_plan_id") == plan_id).select("status", "label").iter_rows())
             source = Counter(("numbered", label) for label in set(range(1, maximum + 1)) - omitted)
             source["unknown", None] = unknown
+            source["unnumbered", None] = 1
             if actual != source:
                 LOGGER.error(f"{plan_id}: missing states {source - actual}; unexpected states {actual - source}")
                 errors += 1
         self.assertEqual(errors, 0, f"{errors} Samlingsrum plans changed numbering states; details logged with trainerlog")
+
+    def test_samlingsrum_orientations_are_quarter_turns(self):
+        """Guarantee: every Samlingsrum position has orientation 0, 90, 180 or 270 degrees.
+
+        Data: chair_seat_positions.csv, restricted to the rectangular AK and
+        FK Samlingsrum plan IDs. Includes Speaker chairs and unresolved slots.
+        Nulls and all other angles fail; other plans may retain arbitrary
+        schematic rotations. This checks the allowed angles only, independently
+        of the separate Speaker-placement and bank-facing-direction test.
+        """
+        plan_ids = ("i-LCZR7kWxjvZYY5tRC1z9BL", "i-GNicbmMpTVfHEx7zRayCKF")
+        positions = pl.read_csv(DATA / "chair_seat_positions.csv", infer_schema_length=None).filter(
+            pl.col("chair_seating_plan_id").is_in(plan_ids))
+        self.assertEqual(set(positions["chair_seating_plan_id"]), set(plan_ids),
+                         "Both Samlingsrum plans must have positions to check their orientations")
+        LOGGER.info("Checking Samlingsrum orientations are restricted to 0, 90, 180 or 270 degrees")
+        invalid = positions.filter(pl.col("orientation").is_null() |
+                                   ~pl.col("orientation").is_in([0, 90, 180, 270]))
+        for seat in invalid.iter_rows(named=True):
+            LOGGER.error(f"Plan {seat['chair_seating_plan_id']}, position {seat['chair_seat_position_id']}: "
+                         f"orientation {seat['orientation']!r}; expected 0, 90, 180 or 270 degrees")
+        LOGGER.info(f"Checked {positions.height} Samlingsrum positions; {invalid.height} invalid orientations")
+        self.assertEqual(invalid.height, 0,
+                         f"{invalid.height} Samlingsrum positions have invalid orientations; details logged with trainerlog")
+
+    def test_samlingsrum_speaker_positions_and_schematic_facing_directions(self):
+        """Guarantee: each Samlingsrum has one unnumbered Speaker chair and aligned quarter-turn banks.
+
+        Data: approximate Speaker centres read from the supplied plans are
+        AK (263,649) and FK (278,104) pixels, divided by 25. Main banks face
+        the Speaker end; podium-side banks face inward. Only 0/90/180/270
+        degrees are allowed, with one orientation per region. These are drawing
+        conventions, not measured historic angles or MPs' bodily orientation.
+        Unknown slots retain their unresolved status despite their rotation.
+        """
+        positions = pl.read_csv(DATA / "chair_seat_positions.csv", infer_schema_length=None)
+        groups = pl.read_csv(DATA / "chair_groups.csv")
+        group_labels = dict(groups.select("chair_group_id", "label").iter_rows())
+        seats = positions.join(groups.select("chair_group_id", "group_type", "parent_group_id"), on="chair_group_id").join(
+            pl.read_csv(DATA / "chair_seat_numbering.csv"),
+            on=["chair_seating_plan_id", "chair_seat_position_id"])
+        anchors = {"i-LCZR7kWxjvZYY5tRC1z9BL": (263 / 25, 649 / 25, 0),
+                   "i-GNicbmMpTVfHEx7zRayCKF": (278 / 25, 104 / 25, 180)}
+        errors = 0
+        for plan_id, (x, y, angle) in anchors.items():
+            plan = seats.filter(pl.col("chair_seating_plan_id") == plan_id)
+            podium = plan.filter(pl.col("group_type") == "podium")
+            if podium.height != 1:
+                LOGGER.error(f"{plan_id}: expected one Speaker chair, found {podium.height}")
+                errors += 1
+                continue
+            speaker = podium.row(0, named=True)
+            if (speaker["status"] != "unnumbered" or speaker["chair_id"] is not None
+                    or speaker["label"] is not None
+                    or any(speaker[key] is None or not math.isclose(speaker[key], expected, abs_tol=1e-8)
+                           for key, expected in (("x", x), ("y", y), ("orientation", angle)))):
+                LOGGER.error(f"{plan_id}: invalid Speaker chair: {speaker}")
+                errors += 1
+            orientations = {
+                "main seating area, image left to right and top to bottom": (angle + 180) % 360,
+                "podium-side left banks; local rows run vertically in image": 90,
+                "podium-side right banks; local rows run vertically in image": 270,
+            }
+            for seat in plan.filter(pl.col("group_type") != "podium").iter_rows(named=True):
+                if any(seat[key] is None for key in ("x", "y", "orientation")):
+                    LOGGER.error(f"{plan_id}: missing geometry for {seat['chair_seat_position_id']}")
+                    errors += 1
+                    continue
+                region = group_labels.get(seat["parent_group_id"])
+                expected = orientations.get(region)
+                if seat["orientation"] != expected:
+                    LOGGER.error(f"{plan_id}: {seat['chair_seat_position_id']} in {region!r}: "
+                                 f"expected orientation {expected}, found {seat['orientation']}")
+                    errors += 1
+        self.assertEqual(errors, 0, f"{errors} Speaker/facing errors; details logged with trainerlog")
 
     def test_import_preserves_the_known_ak1957_label_gap(self):
         """Guarantee: AK1957 retains the source's omitted label 163 rather than silently manufacturing a numbered chair.

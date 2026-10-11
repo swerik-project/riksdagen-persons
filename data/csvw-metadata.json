@@ -743,7 +743,7 @@
           {
             "name": "orientation",
             "titles": "orientation",
-            "dc:description": "Rotation of the chair's local x-axis, clockwise from page +x in degrees [0,360). Not observed bodily orientation.",
+            "dc:description": "Drawing rotation of the chair's local x-axis, clockwise from page +x in degrees [0,360). Samlingsrum banks use only 0/90/180/270 degrees: main banks face the Speaker end and side banks face inward by convention, not measured historic angles. Not observed bodily orientation.",
             "datatype": "double"
           }
         ],

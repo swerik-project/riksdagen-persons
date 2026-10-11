@@ -67,12 +67,19 @@ distances are not comparable across source plans.**
 
 Chair size and corner rounding are not data columns. `pyriksdagen` uses the
 same rendering defaults for every plan, including local-grid previews:
-`width=0.6`, `height=0.6`, `top_radius=0.0`, `bottom_radius=0.18`.
+`width=0.75`, `height=0.75`, `top_radius=0.0`, `bottom_radius=0.18`.
 These are symbol dimensions in drawing units, not physical measurements.
 They can be overridden in `render_chair_seating_plan` without changing seat
 centres, orientation, numbering or groups. Local top is toward negative local
 y before rotation. Shared symbols do not reproduce each source's exact
 chair outline, and apparent edge-to-edge gaps depend on the drawing style.
+By default, `fit_symbols=True` uniformly shrinks all symbols within a figure
+when necessary to prevent touching, including after rotation. This checks
+rotated bounding rectangles and leaves a 10% projected separation margin.
+The footer reports the actual size; dense plans can therefore use smaller
+symbols while retaining the same shape and proportions. Hidden slots do not
+constrain sizing. Set `fit_symbols=False` to retain exact requested dimensions,
+accepting possible overlaps. Fitting never changes stored geometry.
 
 The contributor's anchor is at the middle of the chair's top edge. Import converts
 that anchor to the centre, retaining the original side/down directions.
@@ -88,12 +95,14 @@ are inferred from group boundaries or schematic gaps.
 ### Samlingsrum global placement
 
 The rectangular first- and second-chamber plans associated provisionally with
-Riksens ständers hus now have global coordinates. Their original plan, group,
+Riksens ständers hus now have global coordinates. Their existing plan, group,
 position and chair IDs, local indices and numbering states are unchanged.
+Each also has one new unnumbered Speaker chair in its own `podium` group,
+labelled `Speaker (Talman)`, with no `chair_id` or invented number.
 The manual drawing anchors and qualifications are preserved in
 [`samlingsrum-geometry.json`](../references/chamber-layouts/samlingsrum-geometry.json).
 It records the source checksums, image dimensions, per-region pixel centres,
-symbol dimensions and the 25-pixels-per-unit conversion.
+original cell dimensions, Speaker anchors and the 25-pixels-per-unit conversion.
 
 These placements were visually checked against both images. Main-bank array
 columns run horizontally; podium-side array columns run vertically. The
@@ -102,10 +111,27 @@ the second chamber's are below. This opposite source orientation is retained.
 Visible passage gaps are retained proportionally, including the wider middle
 passage, but scans are not rectified and these are not measured aisle widths.
 
-Shared chair symbols represent the source's numbered-cell centres, with zero
-rotation. They do not establish which way an MP faced. The nine AK and
+The Speaker anchors are approximate scan centres: AK `(263,649)` pixels,
+below the labelled Talmansbordet; FK `(278,104)` pixels, behind the central
+table at the top. Divide by 25 for CSV coordinates. AK's Speaker faces up the
+page (`orientation=0`), FK's down (`180`). The FK table is not text-labelled;
+its identification is an interpretation supported by the supplied `FKbild.jpg`.
+`AKbild.jpg` also provides visual context for the inward-facing arrangement.
+The photographs are not used to infer dates or measured angles.
+
+Other symbols retain their numbered-cell centres and use only quarter-turn
+orientations: `0`, `90`, `180` or `270` degrees. Each bank stays aligned,
+without fanning individual chairs diagonally toward the Speaker. AK main
+banks face down the page (`180`); FK main banks face up (`0`). In both plans,
+left podium-side banks face right (`90`) and right banks face left (`270`).
+The symbol's local negative-y (square-cornered) edge is its schematic front.
+This bank-level facing rule is a **drawing convention**, not a transcription of
+each physical chair's angle and not evidence of MPs' bodily orientation.
+The renderer keeps number labels upright and captions the Speaker chair
+using its podium-group label. The nine AK and
 two FK unknown slots keep approximate grid locations and appear as `?`; no
-missing numbers or physical chairs have been invented. This is a global
+missing numbers are filled in, and rotating unknown slots does not establish
+physical chairs. This is a global
 **seat map**, not an architectural reconstruction: walls, desks and other
 untranscribed furniture are not encoded. Printing dates remain unknown.
 
