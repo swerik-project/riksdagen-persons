@@ -305,13 +305,14 @@ class ChairSeatingIntegrity(unittest.TestCase):
         of the separate Speaker-placement and bank-facing-direction test.
         """
         plan_ids = ("i-LCZR7kWxjvZYY5tRC1z9BL", "i-GNicbmMpTVfHEx7zRayCKF")
-        positions = pl.read_csv(DATA / "chair_seat_positions.csv", infer_schema_length=None).filter(
+        positions = pl.read_csv(DATA / "chair_seat_positions.csv", infer_schema_length=None,
+                                schema_overrides={"orientation": pl.Float64}).filter(
             pl.col("chair_seating_plan_id").is_in(plan_ids))
         self.assertEqual(set(positions["chair_seating_plan_id"]), set(plan_ids),
                          "Both Samlingsrum plans must have positions to check their orientations")
         LOGGER.info("Checking Samlingsrum orientations are restricted to 0, 90, 180 or 270 degrees")
         invalid = positions.filter(pl.col("orientation").is_null() |
-                                   ~pl.col("orientation").is_in([0, 90, 180, 270]))
+                                   ~pl.col("orientation").is_in([0.0, 90.0, 180.0, 270.0]))
         for seat in invalid.iter_rows(named=True):
             LOGGER.error(f"Plan {seat['chair_seating_plan_id']}, position {seat['chair_seat_position_id']}: "
                          f"orientation {seat['orientation']!r}; expected 0, 90, 180 or 270 degrees")
