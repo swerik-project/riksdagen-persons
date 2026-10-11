@@ -55,9 +55,11 @@ have no MP-chair link. The existing EK chair 350 is correctly linked in the
 
 ## Geometry and reconstruction
 
-The `schematic` coordinate system uses the contributor's arbitrary
-chair-sized units, with page x increasing right and y increasing down.
-**These values are neither metres nor coordinates on an original scanned page.**
+The `schematic` coordinate system uses plan-specific drawing units, with page
+x increasing right and y increasing down. The eleven contributor plans use
+arbitrary chair-sized units. The two Samlingsrum plans use approximate scan
+pixel centres divided by 25. **Neither system is calibrated to metres, and
+distances are not comparable across source plans.**
 
 - `x,y` locate the centre of the chair symbol.
 - `orientation` rotates its local x-axis clockwise from page +x, in degrees
@@ -66,7 +68,7 @@ chair-sized units, with page x increasing right and y increasing down.
 - `top_radius,bottom_radius` preserve the source's two corner radii.
 - Local top is toward negative local y; local bottom is toward positive local y.
 
-The anchor is at the middle of the chair's top edge. Import converts
+The contributor's anchor is at the middle of the chair's top edge. Import converts
 that anchor to the centre, retaining the original side/down directions.
 Circular banks and the 200-segment ellipse interpolation are expanded to
 individual positions.
@@ -76,6 +78,30 @@ indices preserve local topology only; they cannot be used as global distances.
 Regions and banks are retained, with the original aisle/unknown-boundary
 annotations still available in `transcription.json`. No new aisle assertions
 are inferred from group boundaries or schematic gaps.
+
+### Samlingsrum global placement
+
+The rectangular first- and second-chamber plans associated provisionally with
+Riksens ständers hus now have global coordinates. Their original plan, group,
+position and chair IDs, local indices and numbering states are unchanged.
+The manual drawing anchors and qualifications are preserved in
+[`samlingsrum-geometry.json`](../references/chamber-layouts/samlingsrum-geometry.json).
+It records the source checksums, image dimensions, per-region pixel centres,
+symbol dimensions and the 25-pixels-per-unit conversion.
+
+These placements were visually checked against both images. Main-bank array
+columns run horizontally; podium-side array columns run vertically. The
+first chamber's podium-side banks are above the main seating area, whereas
+the second chamber's are below. This opposite source orientation is retained.
+Visible passage gaps are retained proportionally, including the wider middle
+passage, but scans are not rectified and these are not measured aisle widths.
+
+Rectangles represent the source's numbered cells, with zero rotation and
+corner radii. They do not establish which way an MP faced. The nine AK and
+two FK unknown slots keep approximate grid locations and appear as `?`; no
+missing numbers or physical chairs have been invented. This is a global
+**seat map**, not an architectural reconstruction: walls, desks and other
+untranscribed furniture are not encoded. Printing dates remain unknown.
 
 ## Sources and coverage
 
@@ -110,8 +136,8 @@ The earlier sources remain in `references/chamber-layouts/`:
 
 | Source | Chamber | Numbered positions | Geometry |
 |---|---|---:|---|
-| `3NvHuPRPN0jc6ChD.png` | Rectangular AK | 228 | Local grids |
-| `kvTzi60YqzD0PBco.png` | Rectangular FK | 148 | Local grids |
+| `3NvHuPRPN0jc6ChD.png` | Rectangular AK | 228 | Global, scan-based schematic |
+| `kvTzi60YqzD0PBco.png` | Rectangular FK | 148 | Global, scan-based schematic |
 | `2BNaqJwN7iBttnet.png` | Angled AK, printed 1970 | 233 | Local grids |
 | `ZGjnW32AIPgbg0ol.png` | Angled FK, printed 1970 | 151 | Local grids |
 | `sida0079.tif` | Kulturhuset EK | 350 | Local grids |
@@ -180,7 +206,7 @@ figure.clear()
 
 Hidden slots are omitted without moving other chairs; unnumbered chairs are
 drawn without labels. Unknown slots appear as dashed `?` boxes, not confirmed
-physical chairs. The six local-grid plans are explicitly labelled **partial
+physical chairs. The four local-grid plans are explicitly labelled **partial
 reconstructions, not chamber floor plans**. They show banks in separate panels
 with local row/column order and group paths. Panel arrangement and spacing are
 display choices, not relative positions or distances in the room.
