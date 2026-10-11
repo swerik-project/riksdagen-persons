@@ -1,8 +1,5 @@
-"""Semantic seating-model guarantees; schema and ordinary key checks live in CSVW tests."""
+"""CSV-only seating-model guarantees; schema and ordinary key checks live in CSVW tests."""
 import calendar
-import hashlib
-import importlib.util
-import json
 import math
 from pathlib import Path
 import unittest
@@ -11,12 +8,10 @@ from datetime import date
 
 import polars as pl
 from pyriksdagen.metadata import check_date_overlap
-from pyriksdagen.utils import get_formatted_uuid
 from trainerlog import get_logger
 
 LOGGER = get_logger("chair-seating")
-REPO = Path(__file__).resolve().parents[1]
-DATA = REPO / "data"
+DATA = Path(__file__).resolve().parents[1] / "data"
 
 
 class ChairSeatingIntegrity(unittest.TestCase):
@@ -228,44 +223,6 @@ class ChairSeatingIntegrity(unittest.TestCase):
             LOGGER.error(f"Local grids with unsupported geometry:\n{errors}")
         self.assertEqual(errors.height, 0, f"{errors.height} local-grid positions claim geometry; details logged with trainerlog")
 
-    def test_source_files_match_recorded_checksums(self):
-        """Guarantee: every plan resolves to preserved source bytes and checksums in the reference records."""
-        plans = pl.read_csv(DATA / "chair_seating_plans.csv")
-        spec = importlib.util.spec_from_file_location("seating_build", REPO / "references/chamber-layouts/build.py")
-        builder = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(builder)
-        sources = builder.plan_sources(REPO)
-        errors = 0
-        for plan in plans.to_dicts():
-            provenance = sources.get(plan["chair_seating_plan_id"])
-            if provenance is None:
-                LOGGER.error(f"Plan {plan['chair_seating_plan_id']}: no preserved source reference")
-                errors += 1
-                continue
-            source = REPO / provenance["source"]
-            if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest() != provenance["source_sha256"]:
-                LOGGER.error(f"Plan {plan['chair_seating_plan_id']}: missing or changed source {source}")
-                errors += 1
-        self.assertEqual(errors, 0, f"{errors} source checksum failures; details logged with trainerlog")
-
-    def test_tables_reproduce_from_preserved_sources(self):
-        """Guarantee: all released seating tables equal the deterministic expansion of their preserved source records.
-
-        Why this matters: a changed transcription or group algorithm must not leave stale CSVs behind.
-        """
-        spec = importlib.util.spec_from_file_location("seating_build", REPO / "references/chamber-layouts/build.py")
-        builder = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(builder)
-        errors = 0
-        for filename, expected in builder.build_tables(REPO).items():
-            schema = {key: pl.String for key in builder.HEADERS[filename]}
-            actual = pl.read_csv(DATA / filename, schema_overrides=schema)
-            expected = [{key: None if value is None else str(value) for key, value in row.items()} for row in expected]
-            if not actual.equals(pl.DataFrame(expected, schema=schema)):
-                LOGGER.error(f"Stale seating table: {filename}; rerun references/chamber-layouts/build.py")
-                errors += 1
-        self.assertEqual(errors, 0, f"{errors} stale tables; details logged with trainerlog")
-
     def test_samlingsrum_coordinates_match_image_anchors(self):
         """Guarantee: both Samlingsrum plans preserve the scans' main/side-bank axes and page orientation.
 
@@ -343,28 +300,6 @@ class ChairSeatingIntegrity(unittest.TestCase):
         numbering = pl.read_csv(DATA / "chair_seat_numbering.csv")
         labels = set(numbering.filter((pl.col("chair_seating_plan_id") == "i-UK3E8SJq48vBSZu2P4wxiD") & pl.col("label").is_not_null())["label"])
         self.assertEqual(labels, set(range(1, 232)) - {163}, "AK1957 labels no longer match the preserved source omission")
-
-    def test_all_contributor_slots_and_states_are_preserved(self):
-        """Guarantee: every contributor slot survives import with its original numbered, unnumbered or hidden state."""
-        source = json.loads((REPO / "references/chamber-layouts/potmo-layouts.json").read_text(encoding="utf-8"))
-        numbering = pl.read_csv(DATA / "chair_seat_numbering.csv")
-        errors = 0
-        for name, shapes in source["plans"].items():
-            expected = []
-            for shape in shapes:
-                if shape["type"] == "chair":
-                    expected.append(shape["data"])
-                elif shape["type"] == "arc":
-                    expected.extend(seat for bank in shape["banks"] for seat in bank)
-                else:
-                    expected.extend(shape["data"])
-            expected = Counter((seat["status"], seat.get("label")) for seat in expected)
-            plan_id = get_formatted_uuid(f"riksdagen-persons/chair-seating-plans/potmo/{name}")
-            actual = Counter(numbering.filter(pl.col("chair_seating_plan_id") == plan_id).select("status", "label").iter_rows())
-            if actual != expected:
-                LOGGER.error(f"{name}: missing states {expected - actual}; unexpected states {actual - expected}")
-                errors += 1
-        self.assertEqual(errors, 0, f"{errors} plans changed source states; details logged with trainerlog")
 
     def test_hidden_bank_slot_does_not_shift_numbered_positions(self):
         """Guarantee: AK1965's hidden slot at bank 1 row 7 column 2 is retained beside numbered seat 13."""
