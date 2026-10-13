@@ -177,14 +177,12 @@ class Test(unittest.TestCase):
 
     def test_start_end(self):
         """
-        Test that each start and end column pair is coherent
+        Test that each start and end column pair is coherent (start is earlier or same as end)
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
-        erroneous_tables = []
         no_errors = 0
         for table in tg.tables:
-            table_name = table.url
-            df = pl.read_csv(self.get_data_dir() / str(table_name), infer_schema_length=10000)
+            df = pl.read_csv(self.get_data_dir() / str(table.url), infer_schema_length=10000)
 
             if "start" in df.columns:
                 df = df.filter(pl.col("start").is_not_null())
@@ -198,8 +196,7 @@ class Test(unittest.TestCase):
 
                 if len(df_errors) >= 1:
                     no_errors += len(df_errors)
-                    LOGGER.error(f"Inconsistent start dates in {table_name}:\n{df_errors}")
-
+                    LOGGER.error(f"Inconsistent start dates in {table.url}:\n{df_errors}")
         
         self.assertEqual(no_errors, 0, f"{no_errors} inconsistent start and end dates found")
 
