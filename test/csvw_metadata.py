@@ -175,6 +175,41 @@ class Test(unittest.TestCase):
 
         self.assertEqual(0, no_errors, f"{no_errors} format error(s) found")
 
+    def test_start_end(self):
+        """
+        Test that each start and end column pair is coherent
+        """
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+        erroneous_tables = []
+        no_errors = 0
+        for table in tg.tables:
+            table_name = table.url
+            df = pl.read_csv(self.get_data_dir() / str(table_name), infer_schema_length=10000)
+
+            if "start" in df.columns:
+                df_fulldate = df.filter(pl.col("start").str.len_chars() == 10)
+                df_fulldate = df_fulldate.filter(pl.col("end").str.len_chars() == 10)
+                df_fulldate_errors = df_fulldate.filter(pl.col("start") > pl.col("end"))
+
+                if len(df_fulldate_errors) >= 1:
+                    no_errors += len(df_fulldate_errors)
+                    LOGGER.error(f"Inconsistent start dates in {table_name}:\n{df_fulldate_errors}")
+
+                # For low-precision values, heck consisntency on the year level
+                df_no_fulldate = df.filter((pl.col("start").str.len_chars() != 10) | (pl.col("end").str.len_chars() != 10))
+                df_no_fulldate = df_no_fulldate.with_columns(pl.col("start").str.head(4))
+                df_no_fulldate = df_no_fulldate.with_columns(pl.col("end").str.head(4))
+                df_no_fulldate = df_no_fulldate.filter(pl.col("start").is_not_null())
+                df_no_fulldate = df_no_fulldate.filter(pl.col("end").is_not_null())
+                df_no_fulldate_errors = df_no_fulldate.filter(pl.col("start") > pl.col("end"))
+
+                if len(df_no_fulldate_errors) >= 1:
+                    no_errors += len(df_no_fulldate_errors)
+                    LOGGER.error(f"Inconsistent start dates in {table_name}:\n{df_no_fulldate_errors}")
+
+        
+        self.assertEqual(no_errors, 0, f"{no_errors} inconsistent start and end dates found")
+
 
 
 if __name__ == '__main__':
