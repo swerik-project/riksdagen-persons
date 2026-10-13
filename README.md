@@ -20,7 +20,8 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 
 Committee entities, abbreviations, roles, memberships and external identifiers
 are documented in [CSVW metadata](data/csvw-metadata.json). Source snapshots,
-import coverage and review material are in the [Ledamotsdata batch notes](references/committee-ledamotsdata/README.md).
+import coverage and review material are in the [Ledamotsdata batch notes](references/committee-ledamotsdata/README.md)
+and [Wikidata enrichment notes](references/committee-wikidata/README.md).
 
 ### `data/chair_mp.csv`
 - chair_id

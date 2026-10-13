@@ -20,6 +20,36 @@ DATA_DIR = Path("data")
 
 
 class CommitteeIntegrity(unittest.TestCase):
+    def test_wikidata_items_identify_one_committee(self):
+        """Guarantee: a Wikidata item never merges distinct committee entities.
+
+        Data: committee_external_identifiers.csv. Deferred incarnations must
+        stay unresolved instead of sharing an aggregate Wikidata identifier.
+        """
+        rows = pl.read_csv(DATA_DIR / "committee_external_identifiers.csv").filter(pl.col("authority") == "wikidata")
+        failures = 0
+        for group in rows.partition_by("identifier"):
+            if group["committee_id"].n_unique() != 1:
+                failures += 1
+                LOGGER.error("Wikidata item maps to multiple committees: %s", group.to_dicts())
+        LOGGER.info("Checked %s committee Wikidata links; %s ambiguous items", rows.height, failures)
+        self.assertEqual(0, failures, f"{failures} ambiguous Wikidata items; details logged")
+
+    def test_committees_have_one_wikidata_identity(self):
+        """Guarantee: a committee is not equated with multiple Wikidata entities.
+
+        Ordinary renames retain one identity; historic and modern Civilutskottet
+        must not both be linked to the same committee.
+        """
+        rows = pl.read_csv(DATA_DIR / "committee_external_identifiers.csv").filter(pl.col("authority") == "wikidata")
+        failures = 0
+        for group in rows.partition_by("committee_id"):
+            if group["identifier"].n_unique() != 1:
+                failures += 1
+                LOGGER.error("Committee maps to multiple Wikidata items: %s", group.to_dicts())
+        LOGGER.info("Checked %s committee Wikidata links; %s ambiguous committees", rows.height, failures)
+        self.assertEqual(0, failures, f"{failures} ambiguous committee identities; details logged")
+
     def test_source_organ_codes_resolve_to_one_committee(self):
         """Guarantee: a Riksdagen source organ code identifies one committee.
 

@@ -40,7 +40,7 @@
     {
       "url": "committee.csv",
       "dc:title": "Committees",
-      "dc:description": "Committee entities, including historical committees required by Ledamotsdata. The initial batch omits reused joint-committee codes pending incarnation resolution. Inception and dissolution are not inferred from the first and last observed memberships.",
+      "dc:description": "Committee entities from Ledamotsdata and reviewed Wikidata enrichment. Reused joint-committee codes remain unresolved. Inception and dissolution retain source precision and are not inferred from observed memberships. Snapshot and review decisions are recorded under references/committee-wikidata.",
       "tableSchema": {
         "columns": [
           {
@@ -200,7 +200,7 @@
     {
       "url": "committee_membership.csv",
       "dc:title": "Committee memberships",
-      "dc:description": "Person-to-committee assignments from Ledamotsdata. Dates retain calendar days from source timestamps, which are preserved in references/committee-ledamotsdata. Exact duplicate assignments after date conversion are collapsed. Missing or ambiguous person matches and invalid intervals are reported rather than published. Coverage is incomplete and is not a complete membership roster for every date.",
+      "dc:description": "Person-to-committee assignments from Ledamotsdata with additive reviewed Wikidata enrichment. Ledamotsdata timestamps are preserved in references/committee-ledamotsdata; published dates retain calendar days. Wikidata dates retain year, month or day precision and source statements are preserved in references/committee-wikidata. Existing assignments are not replaced or extended by overlapping Wikidata claims. Missing or ambiguous matches, unsupported claims and invalid intervals are reported rather than published. Coverage is incomplete and is not a complete roster for every date.",
       "tableSchema": {
         "columns": [
           {
@@ -298,7 +298,7 @@
           {
             "name": "identifier",
             "titles": "identifier",
-            "dc:description": "Exact identifier within the named authority.",
+            "dc:description": "Exact identifier within the named authority: source code for riksdagen_org_code, QID for wikidata, and full article URL for wikipedia_sv or wikipedia_en.",
             "datatype": "string",
             "required": true
           }
