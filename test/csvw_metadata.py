@@ -181,10 +181,13 @@ class Test(unittest.TestCase):
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         no_errors = 0
+
         for table in tg.tables:
             df = pl.read_csv(self.get_data_dir() / str(table.url), infer_schema_length=10000)
 
-            if "start" in df.columns:
+            has_start, has_end = "start" in df.columns, "end" in df.columns
+            self.assertEqual(has_start, has_end, f"Problem with column names in {table.url}; start: {has_start}, end: {has_end}")
+            if has_start:
                 df = df.filter(pl.col("start").is_not_null())
                 df = df.filter(pl.col("end").is_not_null())
 
