@@ -66,6 +66,9 @@ jobs:
     - name: Test that metadata is properly sorted
       run: |
         python -m unittest test.sort_order
+    - name: Test committee source codes and abbreviations
+      run: |
+        python -m unittest test.committee_integrity
 
   db:
     runs-on: ubuntu-latest

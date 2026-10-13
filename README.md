@@ -18,6 +18,10 @@ Contains integrity tests related to the riksdagen-persons repository and to the 
 
 The `data/` directory contains a number of csv files in Normal form where the `person_id` served as a primary key.
 
+Committee entities, abbreviations, roles, memberships and external identifiers
+are documented in [CSVW metadata](data/csvw-metadata.json). Source snapshots,
+import coverage and review material are in the [Ledamotsdata batch notes](references/committee-ledamotsdata/README.md).
+
 ### `data/chair_mp.csv`
 - chair_id
 - parliament_year
