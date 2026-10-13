@@ -127,15 +127,19 @@ class Test(unittest.TestCase):
 
 
     def test_column_formats(self):
-        """
-        validate CSVW schema
+        """Guarantee: released values satisfy their CSVW formats and scalar types.
+
+        Read declared strings as strings so numeric-looking partial dates and
+        identifiers retain their lexical representation for regex validation.
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         erroneous_tables = []
         no_errors = 0
         for table in tg.tables:
             table_name = table.url
-            df = pl.read_csv(self.get_data_dir() / str(table_name), infer_schema_length=10000)
+            string_columns = {col.name: pl.String for col in table.tableSchema.columns if col.datatype.base == "string"}
+            df = pl.read_csv(self.get_data_dir() / str(table_name), infer_schema_length=10000,
+                             schema_overrides=string_columns)
             for col in table.tableSchema.columns:
                 pl_col = df.get_column(col.name)
                 datatype = col.datatype
