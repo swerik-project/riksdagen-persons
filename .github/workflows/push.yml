@@ -1,13 +1,12 @@
 name: "Riksdagen Persons: data integrity tests"
 
 on:
-  pull_request:
-    branches:
-      - 'dev'
   push:
-    paths:
-      - data/**
-      - .github/**
+    paths-ignore:
+      - 'test/results/**'
+      - 'quality/estimates/**'
+      - 'CITATION.cff'
+      - 'docs/**'
   workflow_dispatch:
 
 jobs:
@@ -54,12 +53,13 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install csvw
         pip install pyriksdagen
         pip install pyriksdagen==1.10.0
         pip install pytest-cfg-fetcher
         pip install pandas==2.3.3
-        pip install polars pyarrow
-        pip install csvw
+        pip install polars
+        pip install pyarrow
     - name: Test that metadata matchs CSVW spec
       run: |
         python -m unittest test.csvw_metadata
@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.13]
     steps:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/checkout
@@ -99,7 +99,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.13]
     steps:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/checkout
@@ -121,7 +121,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-       python-version: [3.8]
+       python-version: [3.13]
     steps:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/checkout
@@ -145,7 +145,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.13]
     steps:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/checkout
@@ -163,3 +163,27 @@ jobs:
     - name: Test at least 95% of parliament days have the correct N MPs (+-10%)
       run: |
         python -m unittest test.mp-frequency-test
+
+  docs:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.13]
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ./.github/actions/checkout
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install csvw
+        pip install pyriksdagen
+        pip install pytest-cfg-fetcher
+        pip install pdoc
+        pip install polars
+    - name: Test documentation build
+      run: |
+        pdoc -o /tmp/riksdagen-persons-docs --footer-text docs-smoke-test -t docs/dark-mode --logo https://raw.githubusercontent.com/swerik-project/the-swedish-parliament-corpus/refs/heads/main/readme/riksdagshuset.jpg ../riksdagen-persons
