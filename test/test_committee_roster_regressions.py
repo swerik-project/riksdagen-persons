@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 import polars as pl
 
-from test import committee_roster_integrity as integrity
+from . import committee_roster_integrity as integrity
 
 
 class RosterGateRegressions(unittest.TestCase):

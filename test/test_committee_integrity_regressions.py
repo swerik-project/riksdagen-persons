@@ -12,7 +12,7 @@ from unittest.mock import patch
 
 import polars as pl
 
-from test import committee_integrity as integrity
+from . import committee_integrity as integrity
 
 
 class PartialDateBounds(unittest.TestCase):
