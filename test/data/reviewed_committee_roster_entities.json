@@ -1,0 +1,106 @@
+[
+  {
+    "entity": {
+      "committee_id": "i-UZB1HMFZ2CVVp8YbJ1sXLC",
+      "committee": "Första kammarens allmänna beredningsutskott",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "1950:p13345:2",
+      "year": 1950,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/EBP0regb1.html",
+      "excerpt": ", s. Suppleant i bankoutskottet; ledamot i FK:s allmänna beredningsutskott; suppleant i särskilda utskottet; valman vid fullmäktigevalen; suppleant för riksgäldsfullmäktige.",
+      "source_header": "Yttrande AK 14: 108. Andersson, Axel Gustav Birger, i Tidaholm, LFK, s.",
+      "source_sha256": "ec3ffad10572d6fa9a505a3ba6e947bc17faa0b174a6ab90e34dbd4dbec8d1e8",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        13345,
+        13346,
+        13347
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; 1970 birth year checked.",
+      "batch": "2026-10-16-rosters-1950-1970"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-YHFh5mCtpKtVXfvfnmBZqM",
+      "committee": "Andra kammarens allmänna beredningsutskott",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "1950:p13310:1",
+      "year": 1950,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/EBP0regb1.html",
+      "excerpt": ", bf. Suppleant i AK:s allmänna beredningsutskott.",
+      "source_header": "Motioner FK 18, 65, 66, 103, 112, 200 e, 228 e, 239 e, 261 e, 262 e, 384, 394, 405, 474 e, 492. Yttranden FK 15: 104 24: 21. Adolfsson, E. H. J., LAK, bf.",
+      "source_sha256": "ec3ffad10572d6fa9a505a3ba6e947bc17faa0b174a6ab90e34dbd4dbec8d1e8",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        13310,
+        13311,
+        13312
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; 1970 birth year checked.",
+      "batch": "2026-10-16-rosters-1950-1970"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-37dPfrra4UdSPHLvjENhiL",
+      "committee": "Allmänna beredningsutskottet",
+      "committee_type": "standing",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "1970:p16231:2",
+      "year": 1970,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/FTP0regb1.html",
+      "excerpt": ", s Suppleant i andra lagutskottet och i allmänna beredningsutskottet",
+      "source_header": "frågor AK 8:6 (9:in) (sabotage mot trafikflygplan) 34:138 (36:7 7) (krigspropaganda) Interpellationer AK 14:33 (28:2 7) (supertanlsers f. olja) 35:64 (36:90) (oljeindustri v. Brofjorden) Aldén, A. Olov (Olle), förman, Degerfors, f. 1919, LAK, s",
+      "source_sha256": "9bd0520b5473cb2febd920c19a7cc13d7bf80e922acfe3842d62f4008d6d7ae1",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        16231,
+        16232,
+        16233
+      ],
+      "identity_basis": "Olov/Olof variant; exact birth year and chamber agree.",
+      "batch": "2026-10-16-rosters-1950-1970"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-ThKMZqqcAtCN9HQFGsqgCV",
+      "committee": "Särskilda utskottet (1950)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "1950:p13314:2",
+      "year": 1950,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/EBP0regb1.html",
+      "excerpt": ", fp. Ledamot i AK:s allmänna beredningsutskott; suppleant i särskilda utskottet.",
+      "source_header": "Motioner AK 32, 94, 122 e, 173, 192, 203, 211, 257 e, 313, 314, 319, 323, 334, 394, 398, 468, 540, 545, 566, 592, 602, 612 e, 614, 615 e. Yttranden AK 24: 41, 55. Ager, Ruth Maria, LAK, fp.",
+      "source_sha256": "ec3ffad10572d6fa9a505a3ba6e947bc17faa0b174a6ab90e34dbd4dbec8d1e8",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        13314,
+        13315,
+        13316
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; 1970 birth year checked.",
+      "batch": "2026-10-16-rosters-1950-1970"
+    }
+  }
+]

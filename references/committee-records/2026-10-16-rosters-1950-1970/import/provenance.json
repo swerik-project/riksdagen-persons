@@ -1,0 +1,40 @@
+{
+  "autumn_register": {
+    "url": "https://data.riksdagen.se/dokument/ebp1reg.html",
+    "file": "register-1950-autumn.html.gz",
+    "sha256": "e373ba3d13e6bbb0dd7c4e3b5b7e5792e7dded02636eead16ee6643075eff226",
+    "result": "No committee-role entries found in its person-register section; this is not proof that no autumn changes occurred."
+  },
+  "pdf_inspection": [
+    {
+      "year": 1950,
+      "url": "https://weburn.kb.se/riks/tv%C3%A5kammarriksdagen/pdf/web/1950/web_reg_1950____reg/reg_1950____reg_01.pdf",
+      "sha256": "0d99e3169ad961996b2aa1ece3af79c2f32395e0f2a5f2a02f71f9b71ad288f2",
+      "visually_checked_pages": [
+        131,
+        140
+      ],
+      "scope": "Selected page checks only; not a visual review of every claim. 1970 PDF part 01 stops before the end of the person register; the archived HTML contains later entries."
+    },
+    {
+      "year": 1970,
+      "url": "https://weburn.kb.se/riks/tv%C3%A5kammarriksdagen/pdf/web/1970/web_reg_1970____reg/reg_1970____reg_01.pdf",
+      "sha256": "6a2c34dec82a93d04a10c2c2ce45510bc9c7ad239a178c211514bb6de5d054de",
+      "visually_checked_pages": [
+        222
+      ],
+      "scope": "Selected page checks only; not a visual review of every claim. 1970 PDF part 01 stops before the end of the person register; the archived HTML contains later entries."
+    }
+  ],
+  "tool_versions": {
+    "pyriksdagen": "1.10.2",
+    "polars": "1.36.1",
+    "lxml": "6.1.1",
+    "sample-git-diffs": "0.5.2"
+  },
+  "script_sha256": {
+    "extract_committee_registers.py": "a69100ba62ba2112c79924f0cfcfb118c36c0127cae0ba276cc34900eaef0e52",
+    "import_committee_registers.py": "81e23e219441ebd5e7497184f89db1b74cf25cb0b2e1a80359a39881355aed9c"
+  },
+  "interpretations_sha256": "14c90ceaa0bb8b2757afd32583c22d024b5c98e460f1b340217549c8c7a4489a"
+}
