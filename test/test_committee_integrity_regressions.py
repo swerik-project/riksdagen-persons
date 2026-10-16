@@ -346,8 +346,11 @@ class SBLProvenanceRegressions(unittest.TestCase):
             "linked-mps.json": [dict(person_id="person", identifier="123")],
         }
         self.identifiers = pl.DataFrame(dict(person_id=["person"], authority=["DiSweNaBiID"], identifier=["123"]))
+        self.resolved = []
         reader = patch.object(integrity.Path, "read_text", autospec=True,
-                              side_effect=lambda path, **kwargs: json.dumps(self.references[path.name]))
+                              side_effect=lambda path, **kwargs: json.dumps(
+                                  self.resolved if "2026-10-16-resolved" in path.parts
+                                  else self.references[path.name]))
         reader.start()
         self.addCleanup(reader.stop)
         csv_reader = patch.object(integrity.pl, "read_csv", side_effect=lambda *args, **kwargs: self.identifiers.clone())
@@ -398,6 +401,39 @@ class SBLProvenanceRegressions(unittest.TestCase):
         self.identifiers = self.identifiers.clear()
         with self.assertRaisesRegex(AssertionError, "1 SBL person/article links missing"):
             self.gates.test_sbl_linked_mps_retain_source_identifiers()
+
+    def test_followup_source_guard_protects_new_batch(self):
+        """Guarantee: resolved-batch dates receive the same protection as first-pass facts."""
+        self.resolved = self.references["accepted-memberships.json"]
+        self.references["accepted-memberships.json"] = []
+        self.claim["service_source"]["batch"] = "2026-10-16-sbl-resolved"
+        self.gates.test_sbl_curations_retain_archived_source_claims()
+        self.claim["membership"]["start"] = "1909"
+        with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
+            self.gates.test_sbl_curations_retain_archived_source_claims()
+
+
+class ReviewedLifetimeRegressions(unittest.TestCase):
+    def test_corrected_death_and_its_source_are_protected(self):
+        """Guarantee: reverting a reviewed death or citing the wrong article fails."""
+        correction = dict(person_id="p", field="dead", after="1959-11-22", sbl_id="1",
+                          source_url="https://example.org/1", source_clause="d 22 nov 1959")
+        source = dict(person_id="p", sbl_id="1", source_url=correction["source_url"],
+                      source_dead=correction["after"], curriculum_vitae=correction["source_clause"])
+        table = pl.DataFrame(dict(person_id=["p"], dead=["1959-11-22"]))
+        references = {"person-corrections.json": [correction], "source-extracts.json": [source]}
+        with patch.object(integrity.Path, "read_text", autospec=True,
+                          side_effect=lambda path: json.dumps(references[path.name])), \
+                patch.object(integrity.pl, "read_csv", side_effect=lambda *args, **kwargs: table):
+            gate = integrity.CommitteeIntegrity().test_sbl_reviewed_lifetime_corrections_retain_source_dates
+            gate()
+            table = table.with_columns(pl.lit("1859-10-22").alias("dead"))
+            with self.assertRaisesRegex(AssertionError, "1 SBL lifetime corrections altered"):
+                gate()
+            table = table.with_columns(pl.lit("1959-11-22").alias("dead"))
+            source["source_url"] = "https://example.org/wrong"
+            with self.assertRaisesRegex(AssertionError, "1 SBL lifetime corrections altered"):
+                gate()
 
 
 if __name__ == "__main__":

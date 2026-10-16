@@ -206,7 +206,8 @@ class CommitteeIntegrity(unittest.TestCase):
     def test_sbl_curations_retain_archived_source_claims(self):
         """Guarantee: each SBL curation retains its matching archived source claim.
 
-        Data: accepted-memberships and source-extracts in the pinned SBL batch,
+        Data: accepted-memberships in the original and resolved SBL batches,
+        with source-extracts pinned in the original batch,
         plus reviewed_committee_memberships.json. Each added or refined claim
         has exactly one fixture, with the same membership and citation, and
         its excerpt occurs in that person's decoded career summary. Existing
@@ -215,17 +216,24 @@ class CommitteeIntegrity(unittest.TestCase):
         completeness; the original licensed export is archived with the batch.
         """
         root = Path("references/committee-sbl/2026-10-16/reports")
-        accepted = {row["claim_id"]: row for row in json.loads((root / "accepted-memberships.json").read_text())
-                    if row["action"] in ("add", "refine_undated")}
+        accepted = {}
+        for directory, batch in (("2026-10-16", "2026-10-16-sbl"),
+                                 ("2026-10-16-resolved", "2026-10-16-sbl-resolved")):
+            report = Path("references/committee-sbl") / directory / "reports/accepted-memberships.json"
+            for row in json.loads(report.read_text()):
+                if row["action"] in ("add", "refine_undated"):
+                    key = (batch, row["claim_id"])
+                    self.assertNotIn(key, accepted, "Duplicate archived SBL source claim")
+                    accepted[key] = row
         self.assertTrue(accepted, "The SBL accepted-claim reference must not be empty")
         snapshots = {(row["person_id"], row["sbl_id"]): row for row in json.loads((root / "source-extracts.json").read_text())}
         claims = [row for row in json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
-                  if row.get("service_source", {}).get("batch") == "2026-10-16-sbl"]
-        claim_ids = set(accepted) | {row["service_source"]["claim_id"] for row in claims}
+                  if row.get("service_source", {}).get("batch", "").startswith("2026-10-16-sbl")]
+        claim_ids = set(accepted) | {(row["service_source"]["batch"], row["service_source"]["claim_id"]) for row in claims}
         failures = 0
         LOGGER.info("Checking %s SBL curation source claims", len(claim_ids))
         for claim_id in sorted(claim_ids):
-            matches = [row for row in claims if row["service_source"]["claim_id"] == claim_id]
+            matches = [row for row in claims if (row["service_source"]["batch"], row["service_source"]["claim_id"]) == claim_id]
             source = accepted.get(claim_id)
             if source is None or len(matches) != 1:
                 failures += 1
@@ -244,6 +252,33 @@ class CommitteeIntegrity(unittest.TestCase):
                 LOGGER.error("SBL curation differs from archived source %s: %s", claim_id, claim)
         LOGGER.info("Checked %s SBL source claims; %s inconsistent curations", len(claim_ids), failures)
         self.assertEqual(0, failures, f"{failures} SBL curations lack matching source evidence; details logged with trainerlog")
+
+    def test_sbl_reviewed_lifetime_corrections_retain_source_dates(self):
+        """Guarantee: SBL-reviewed lifetime corrections retain the sourced date.
+
+        Data: person.csv, resolved-batch person-corrections.json and the pinned
+        SBL source-extracts. Protect the exact corrected date and its matching
+        biography citation; do not infer dates for unreviewed people. This
+        prevents Palmstierna's impossible pre-birth death date from returning.
+        Failures count person/field corrections, not committee memberships.
+        """
+        corrections = json.loads(Path("references/committee-sbl/2026-10-16-resolved/reports/person-corrections.json").read_text())
+        self.assertTrue(corrections, "The lifetime-correction reference must not be empty")
+        snapshots = {(row["person_id"], row["sbl_id"]): row for row in json.loads(
+            Path("references/committee-sbl/2026-10-16/reports/source-extracts.json").read_text())}
+        people = {row["person_id"]: row for row in pl.read_csv(DATA_DIR / "person.csv", infer_schema=False).to_dicts()}
+        failures = 0
+        LOGGER.info("Checking %s reviewed SBL lifetime corrections", len(corrections))
+        for correction in corrections:
+            source = snapshots.get((correction["person_id"], correction["sbl_id"]))
+            if (people.get(correction["person_id"], {}).get(correction["field"]) != correction["after"]
+                    or source is None or source["source_url"] != correction["source_url"]
+                    or source.get("source_" + correction["field"]) != correction["after"]
+                    or not correction["source_clause"] or correction["source_clause"] not in source["curriculum_vitae"]):
+                failures += 1
+                LOGGER.error("Missing or altered SBL lifetime correction: %s", correction)
+        LOGGER.info("Checked %s SBL lifetime corrections; %s altered", len(corrections), failures)
+        self.assertEqual(0, failures, f"{failures} SBL lifetime corrections altered; details logged with trainerlog")
 
     def test_ku1918_curations_match_resolved_election_evidence(self):
         """Guarantee: KU 1918 curated additions retain their resolved source links.
