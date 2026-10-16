@@ -162,6 +162,8 @@ class CommitteeIntegrity(unittest.TestCase):
         boundaries. Later sourced date enrichment must update both the row
         and its fixture. This protects curated facts, not roster completeness.
         References: Decisions 0004 and 0021; sources in each fixture entry.
+        SBL career summaries are included at their stated year precision;
+        a source-stated starting year does not supply an unknown end.
         """
         claims = json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
         self.assertTrue(claims, "The reviewed membership fixture must not be empty")
@@ -178,6 +180,70 @@ class CommitteeIntegrity(unittest.TestCase):
                              or claim["election_source_url"])
         LOGGER.info("Checked %s reviewed memberships; %s missing or altered", len(claims), failures)
         self.assertEqual(0, failures, f"{failures} reviewed memberships missing or altered; details logged with trainerlog")
+
+    def test_sbl_linked_mps_retain_source_identifiers(self):
+        """Guarantee: MPs processed in the SBL batch retain their article IDs.
+
+        Data: the archived linked-mps report and external_identifiers.csv.
+        DiSweNaBiID is the existing authority for SBL. This protects all
+        processed links, including explicitly unresolved source conflicts;
+        it does not assert that every MP has an SBL biography. Failures count
+        person/article links. New identity corrections must update the report.
+        """
+        links = json.loads(Path("references/committee-sbl/2026-10-16/reports/linked-mps.json").read_text())
+        self.assertTrue(links, "The SBL linkage reference must not be empty")
+        identifiers = pl.read_csv(DATA_DIR / "external_identifiers.csv", infer_schema=False)
+        published = set(identifiers.filter(pl.col("authority") == "DiSweNaBiID").select("person_id", "identifier").iter_rows())
+        failures = 0
+        LOGGER.info("Checking %s archived SBL person/article links", len(links))
+        for link in links:
+            if (link["person_id"], link["identifier"]) not in published:
+                failures += 1
+                LOGGER.error("Missing SBL identifier for linked MP: %s", link)
+        LOGGER.info("Checked %s SBL links; %s missing", len(links), failures)
+        self.assertEqual(0, failures, f"{failures} SBL person/article links missing; details logged with trainerlog")
+
+    def test_sbl_curations_retain_archived_source_claims(self):
+        """Guarantee: each SBL curation retains its matching archived source claim.
+
+        Data: accepted-memberships and source-extracts in the pinned SBL batch,
+        plus reviewed_committee_memberships.json. Each added or refined claim
+        has exactly one fixture, with the same membership and citation, and
+        its excerpt occurs in that person's decoded career summary. Existing
+        unchanged facts are not new curations. Failures count source claim IDs.
+        This checks provenance, not independent human acceptance or parsing
+        completeness; the original licensed export is archived with the batch.
+        """
+        root = Path("references/committee-sbl/2026-10-16/reports")
+        accepted = {row["claim_id"]: row for row in json.loads((root / "accepted-memberships.json").read_text())
+                    if row["action"] in ("add", "refine_undated")}
+        self.assertTrue(accepted, "The SBL accepted-claim reference must not be empty")
+        snapshots = {(row["person_id"], row["sbl_id"]): row for row in json.loads((root / "source-extracts.json").read_text())}
+        claims = [row for row in json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
+                  if row.get("service_source", {}).get("batch") == "2026-10-16-sbl"]
+        claim_ids = set(accepted) | {row["service_source"]["claim_id"] for row in claims}
+        failures = 0
+        LOGGER.info("Checking %s SBL curation source claims", len(claim_ids))
+        for claim_id in sorted(claim_ids):
+            matches = [row for row in claims if row["service_source"]["claim_id"] == claim_id]
+            source = accepted.get(claim_id)
+            if source is None or len(matches) != 1:
+                failures += 1
+                LOGGER.error("Missing, duplicate or unsupported SBL curation %s: %s", claim_id, matches)
+                continue
+            claim = matches[0]
+            citation = claim["service_source"]
+            snapshot = snapshots.get((source["person_id"], source["sbl_id"]))
+            if (snapshot is None or any(claim["membership"].get(k) != source[k] for k in
+                                       ("person_id", "committee_id", "start", "end", "committee_role_id"))
+                    or citation.get("sbl_id") != source["sbl_id"] or citation.get("url") != source["source_url"]
+                    or citation.get("excerpt") != source["source_clause"] or not source["source_clause"]
+                    or snapshot["source_url"] != source["source_url"]
+                    or source["source_clause"] not in snapshot["curriculum_vitae"]):
+                failures += 1
+                LOGGER.error("SBL curation differs from archived source %s: %s", claim_id, claim)
+        LOGGER.info("Checked %s SBL source claims; %s inconsistent curations", len(claim_ids), failures)
+        self.assertEqual(0, failures, f"{failures} SBL curations lack matching source evidence; details logged with trainerlog")
 
     def test_ku1918_curations_match_resolved_election_evidence(self):
         """Guarantee: KU 1918 curated additions retain their resolved source links.

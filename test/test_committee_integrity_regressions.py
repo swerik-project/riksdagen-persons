@@ -5,6 +5,7 @@ they never mutate published CSVs or depend on Git, network access or siblings.
 """
 
 from datetime import date
+import json
 from pathlib import Path
 import unittest
 from unittest.mock import patch
@@ -328,6 +329,75 @@ class ReviewedMembershipRegressions(unittest.TestCase):
         self.source["review_status"] = "source_conflict"
         with self.assertRaisesRegex(AssertionError, "1 KU election curations lack matching"):
             self.gates.test_ku1918_curations_match_resolved_election_evidence()
+
+
+class SBLProvenanceRegressions(unittest.TestCase):
+    def setUp(self):
+        membership = dict(person_id="person", committee_id="committee", start="1910", end=None, committee_role_id="member")
+        source = dict(membership, claim_id="claim", action="add", sbl_id="123", source_url="https://example.org/sbl/123",
+                      source_clause="led av KU från 10")
+        self.claim = {"membership": dict(membership), "service_source": {
+            "batch": "2026-10-16-sbl", "claim_id": "claim", "sbl_id": "123", "url": source["source_url"],
+            "excerpt": source["source_clause"]}}
+        self.references = {
+            "accepted-memberships.json": [source], "reviewed_committee_memberships.json": [self.claim],
+            "source-extracts.json": [dict(person_id="person", sbl_id="123", source_url=source["source_url"],
+                                          curriculum_vitae=source["source_clause"])],
+            "linked-mps.json": [dict(person_id="person", identifier="123")],
+        }
+        self.identifiers = pl.DataFrame(dict(person_id=["person"], authority=["DiSweNaBiID"], identifier=["123"]))
+        reader = patch.object(integrity.Path, "read_text", autospec=True,
+                              side_effect=lambda path, **kwargs: json.dumps(self.references[path.name]))
+        reader.start()
+        self.addCleanup(reader.stop)
+        csv_reader = patch.object(integrity.pl, "read_csv", side_effect=lambda *args, **kwargs: self.identifiers.clone())
+        csv_reader.start()
+        self.addCleanup(csv_reader.stop)
+        self.gates = integrity.CommitteeIntegrity()
+
+    def test_source_guard_accepts_matching_curation(self):
+        """Guarantee: a consistent SBL source, fixture and excerpt pass provenance."""
+        self.gates.test_sbl_curations_retain_archived_source_claims()
+
+    def test_source_guard_rejects_deleted_fixture(self):
+        """Guarantee: deleting a fixture cannot delete protection for an SBL claim."""
+        self.references["reviewed_committee_memberships.json"] = []
+        with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
+            self.gates.test_sbl_curations_retain_archived_source_claims()
+
+    def test_source_guard_rejects_invented_end(self):
+        """Guarantee: a fixture cannot invent an end absent from the SBL claim."""
+        self.claim["membership"]["end"] = "1940"
+        with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
+            self.gates.test_sbl_curations_retain_archived_source_claims()
+
+    def test_source_guard_rejects_wrong_biography(self):
+        """Guarantee: an SBL curation cannot cite a different biography."""
+        self.claim["service_source"]["sbl_id"] = "456"
+        with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
+            self.gates.test_sbl_curations_retain_archived_source_claims()
+
+    def test_source_guard_rejects_excerpt_absent_from_snapshot(self):
+        """Guarantee: the cited career excerpt must occur in the archived summary."""
+        self.references["source-extracts.json"][0]["curriculum_vitae"] = "unrelated career"
+        with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
+            self.gates.test_sbl_curations_retain_archived_source_claims()
+
+    def test_source_guard_rejects_duplicate_fixture(self):
+        """Guarantee: an SBL source claim has exactly one curation fixture."""
+        self.references["reviewed_committee_memberships.json"].append(self.claim)
+        with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
+            self.gates.test_sbl_curations_retain_archived_source_claims()
+
+    def test_identifier_guard_accepts_existing_link(self):
+        """Guarantee: the archived person/article identifier passes when retained."""
+        self.gates.test_sbl_linked_mps_retain_source_identifiers()
+
+    def test_identifier_guard_rejects_removed_link(self):
+        """Guarantee: removal of an archived SBL link fails the identifier gate."""
+        self.identifiers = self.identifiers.clear()
+        with self.assertRaisesRegex(AssertionError, "1 SBL person/article links missing"):
+            self.gates.test_sbl_linked_mps_retain_source_identifiers()
 
 
 if __name__ == "__main__":
