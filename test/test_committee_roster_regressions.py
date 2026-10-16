@@ -77,6 +77,26 @@ class RosterGateRegressions(unittest.TestCase):
              self.assertRaisesRegex(AssertionError, "1 roster observations"):
             self.gates.test_roster_observations_have_compatible_chamber_mandates()
 
+    def test_chamber_gate_accepts_unicameral_mandate(self):
+        """Guarantee: EK observations use single-chamber mandates from 1971 onward."""
+        self.sources = self.sources.with_columns(pl.lit("EK").alias("chamber"), pl.lit("1971").alias("year"))
+        mandates = pl.DataFrame({"person_id": ["p"], "role": ["ledamot"], "start": ["1971"], "end": ["1974"]})
+        tables = {"reviewed_committee_roster_sources.csv": self.sources, "member_of_parliament.csv": mandates}
+        with patch.object(integrity.pl, "read_csv", side_effect=lambda p, **kw: tables[Path(p).name]):
+            self.gates.test_roster_observations_have_compatible_chamber_mandates()
+            tables["member_of_parliament.csv"] = mandates.with_columns(pl.lit("andrakammarledamot").alias("role"))
+            with self.assertRaisesRegex(AssertionError, "1 roster observations"):
+                self.gates.test_roster_observations_have_compatible_chamber_mandates()
+
+    def test_chamber_gate_rejects_anachronistic_unicameral_observation(self):
+        """Guarantee: a single-chamber label cannot validate a pre-1971 observation."""
+        self.sources = self.sources.with_columns(pl.lit("EK").alias("chamber"))
+        mandates = pl.DataFrame({"person_id": ["p"], "role": ["ledamot"], "start": ["1940"], "end": ["1960"]})
+        tables = {"reviewed_committee_roster_sources.csv": self.sources, "member_of_parliament.csv": mandates}
+        with patch.object(integrity.pl, "read_csv", side_effect=lambda p, **kw: tables[Path(p).name]), \
+             self.assertRaisesRegex(AssertionError, "1 roster observations"):
+            self.gates.test_roster_observations_have_compatible_chamber_mandates()
+
     def test_entity_gate_rejects_merged_chamber_body(self):
         """Guarantee: merging a chamber preparation committee into the common body fails."""
         entity = {"committee_id": "c", "committee": "Andra kammarens allmänna beredningsutskott",

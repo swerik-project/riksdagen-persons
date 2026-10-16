@@ -74,7 +74,9 @@ class CommitteeRosterIntegrity(unittest.TestCase):
         joined = sources.join(mandates, on="person_id", how="left", suffix="_mp")
         valid = joined.filter(
             (((pl.col("chamber") == "AK") & (pl.col("role") == "andrakammarledamot")) |
-             ((pl.col("chamber") == "FK") & (pl.col("role") == "förstakammarledamot"))) &
+             ((pl.col("chamber") == "FK") & (pl.col("role") == "förstakammarledamot")) |
+             ((pl.col("chamber") == "EK") & (pl.col("role") == "ledamot") &
+              (pl.col("year") >= "1971"))) &
             (pl.col("start_mp").str.slice(0, 4) <= pl.col("year")) &
             (pl.col("end_mp").str.slice(0, 4) >= pl.col("year")))
         missing = sources.filter(~pl.col("claim_id").is_in(valid["claim_id"].implode()))
