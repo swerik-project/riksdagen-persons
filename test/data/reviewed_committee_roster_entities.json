@@ -154,5 +154,157 @@
       "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; birth year checked where printed.",
       "batch": "2026-10-16-rosters-1951-1955"
     }
+  },
+  {
+    "entity": {
+      "committee_id": "i-4MTAACEzNLrPG6a8Lt6UhY",
+      "committee": "Särskilda utskottet (1958 A)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "1958:p10545:3",
+      "year": 1958,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/EJP7reg.html",
+      "excerpt": ", fp. Suppleant i utrikesutskottet och i statsutskottet ; ledamot i särskilda utskottet; suppleant för bankofullmäktig.",
+      "source_header": "3 A AASTRUP, NILS G. E., LFK, fp.",
+      "source_sha256": "176c51f95143517d99f5490a94a5afba0aba0b891f92f81d6daae46ed52dc89b",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        10545,
+        10546,
+        10547
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; birth year checked where printed.",
+      "batch": "2026-10-16-rosters-1956-1969"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-ShyrySxpdp1QtgCtzrgUw1",
+      "committee": "Särskilda utskottet (1959)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "1959:p11878:4",
+      "year": 1959,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/EKP0regb1.html",
+      "excerpt": ", fp. Ledamot i talmanskonferensen och i utrikesutskottet (v. ordf.); suppleant i statsutskottet; ledamot i särskilda utskottet.",
+      "source_header": "3 A AASTRUP, NILS G. E., LFK, fp.",
+      "source_sha256": "6016b80bea2365953748c0a07b36ed60459426e731697dde63fbf2234fdde342",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        11878,
+        11879,
+        11880
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; birth year checked where printed.",
+      "batch": "2026-10-16-rosters-1956-1969"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-12XeSZh7qDzHaxeH8Kncm3",
+      "committee": "Särskilda utskottet (1960)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "1960:p16241:3",
+      "year": 1960,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/ELP0regb1.html",
+      "excerpt": ", h. Ledamot i bankoutskottet; suppleant i jordbruksutskottet; valmanssuppleant vid fullmäktigevalen; suppleant i särskilda utskottet.",
+      "source_header": "Suppleant i konstitutionsutskottet och i bankoutskottet. Motioner AK 132, 145, 217 e, 218 e, 231, 433, 558, 650, 744, 836 e. AGERBERG, NILS, LAK, h.",
+      "source_sha256": "d19764a2952d6873c1ec2a20eaa864b09c802553763f4e2786d283e1de0a49ac",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        16241,
+        16242,
+        16243
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; birth year checked where printed.",
+      "batch": "2026-10-16-rosters-1956-1969"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Y9NYAS5UY7B5Rhi3pWcy99",
+      "committee": "Särskilda utskottet (1962)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "1962:p18814:2",
+      "year": 1962,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/ENP0regb1.html",
+      "excerpt": ", s Ledamot i konstitutionsutskottet; suppleant i särskilda utskottet; ledamot i Europarådet",
+      "source_header": "25: 100, 102 (uppskjutna ärenden) 32: 5 8 (deltidsarbete) 34: 15, 17, 18 (sj ukgy mnastins tituten) Andersson, G. Ingemar, redaktör, Linköping, f. 1913, LAK, s Ledamot i konstitutionsutskottet; suppleant i särskilda utskottet; ledamot i Europarådet",
+      "source_sha256": "d71a5117569fd088d0b54e23f2e3d1041171df2681963548966b5c4398ed5ee2",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        18814,
+        18815
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; birth year checked where printed.",
+      "batch": "2026-10-16-rosters-1956-1969"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-5JdVabdc4AV2VPtg8Ck3SA",
+      "committee": "Särskilda utskottet nr 1 (1964)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "1964:p21876:3",
+      "year": 1964,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/EPP0regb1.html",
+      "excerpt": ", s Suppleant i tredje lagutskottet, i allmänna beredningsutskottet och i särskilda utskottet nr 1",
+      "source_header": "(epilepsisjuka) Andersson, Rosa V., översköterska, fröken, Strängnäs, f. 1908, LAK, s Suppleant i första lagutskottet Motioner AK 77, 167, 220, 387, 403, 836, 839 (instruktionssjukgymnaster), 883 Anderson, Ruth M. H., kassörska, fröken, Lerum, f. 1908, LAK, s Suppleant i tredje lagutskottet, i allmänna beredningsutskottet och i särskilda utskottet nr 1 Motioner AK 77, 213, 361, 887 Yttranden AK 35: 4 3 (remiss av prop. nr 185)",
+      "source_sha256": "263fc7d9303a7ff8c1f252a0d2f2fd1e59dd7332fc603e2f779b579fc684255e",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        21876
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; birth year checked where printed.",
+      "batch": "2026-10-16-rosters-1956-1969"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Di7fPCQjzuYZjSM8UaSTQ",
+      "committee": "Särskilda utskottet nr 2 (1964)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "1964:p21889:4",
+      "year": 1964,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/EPP0regb1.html",
+      "excerpt": ", ep Ledamot i konstitutionsutskottet (v. ordf.); suppleant i allmänna beredningsutskottet; ledamot i särskilda utskottet nr 2; suppleant för kanslideputerad",
+      "source_header": "Viggen) 36: 3 2, 3 9, 4 2 (försvarskostnadernas verkningar) 39: 7 (vapenfria värnpliktiga) 39: 7, 8 (militära badstugor) 41: 42, 43, 45 (vapenfria värnpliktiga) 41: 112 (befälsrekrytering) Andersson, Torsten, redaktör, Brämhult, f. 1909, LFK, ep",
+      "source_sha256": "263fc7d9303a7ff8c1f252a0d2f2fd1e59dd7332fc603e2f779b579fc684255e",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        21889,
+        21890
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; birth year checked where printed.",
+      "batch": "2026-10-16-rosters-1956-1969"
+    }
   }
 ]

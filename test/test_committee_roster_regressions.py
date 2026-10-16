@@ -88,6 +88,29 @@ class RosterGateRegressions(unittest.TestCase):
              self.assertRaisesRegex(AssertionError, "1 historical committee identities"):
             self.gates.test_reviewed_historical_committee_identities_remain_distinct()
 
+    def test_source_gate_rejects_swapping_1958_sessions(self):
+        """Guarantee: a B-session observation cannot reuse the A-session citation identity."""
+        a = dict(self.observation, claim_id="1958:p1:1", year=1958)
+        b = dict(self.observation, claim_id="1958b:p1:1", year=1958,
+                 url="https://example.org/session-b")
+        self.sources = pl.DataFrame([{**self.row, **o} for o in (a, b)]).with_columns(pl.col("year").cast(pl.String))
+        self.curation["roster_observations"] = [a, b]
+        self.check_sources()
+        self.curation["roster_observations"][1] = dict(b, claim_id=a["claim_id"])
+        with self.assertRaisesRegex(AssertionError, "2 roster claims"):
+            self.check_sources()
+
+    def test_entity_gate_rejects_merging_1964_special_committees(self):
+        """Guarantee: the spring and autumn 1964 special committees remain distinct bodies."""
+        entities = [{"committee_id": f"c{n}", "committee": f"Särskilda utskottet nr {n} (1964)",
+                     "committee_type": "special", "inception": None, "dissolution": None} for n in (1, 2)]
+        fixture = [{"entity": e, "source": {"url": "https://example.org/1964-register"}} for e in entities]
+        wrong = [entities[0], dict(entities[1], committee=entities[0]["committee"])]
+        with patch.object(integrity.pl, "read_csv", return_value=pl.DataFrame(wrong)), \
+             patch.object(integrity.Path, "read_text", return_value=json.dumps(fixture)), \
+             self.assertRaisesRegex(AssertionError, "1 historical committee identities"):
+            self.gates.test_reviewed_historical_committee_identities_remain_distinct()
+
 
 if __name__ == "__main__":
     unittest.main()
