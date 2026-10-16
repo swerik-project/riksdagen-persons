@@ -1,11 +1,10 @@
-"""Semantic guarantees for committee source identifiers and abbreviations.
+"""Semantic guarantees for committee identities, historical dates and curated rows.
 
 CSVW owns structural types, required fields, primary keys and foreign keys.
 """
 
-import calendar
-from datetime import date
 from itertools import combinations
+import json
 from pathlib import Path
 import unicodedata
 import unittest
@@ -19,7 +18,215 @@ LOGGER = get_logger("committee-integrity")
 DATA_DIR = Path("data")
 
 
+def date_bound(column, latest=False):
+    """Return a comparison-only bound for a partial date; preserve unknowns.
+
+    Invalid dates produce null and are reported by the calendar-date guarantee.
+    Replace with a null-preserving pyriksdagen bounds helper when available:
+    increase_date_precision(..., start=False) in 1.10.2 returns None for months.
+    """
+    value = pl.col(column)
+    first = (pl.when(value.str.len_chars() == 4).then(value + "-01-01")
+             .when(value.str.len_chars() == 7).then(value + "-01")
+             .otherwise(value).str.to_date("%Y-%m-%d", strict=False))
+    if not latest:
+        return first
+    return (pl.when(value.str.len_chars() == 4)
+            .then((value + "-12-31").str.to_date("%Y-%m-%d", strict=False))
+            .when(value.str.len_chars() == 7).then(first.dt.month_end())
+            .otherwise(first))
+
+
 class CommitteeIntegrity(unittest.TestCase):
+    def test_committee_dates_are_possible_calendar_dates(self):
+        """Guarantee: every supplied committee date denotes a real calendar date.
+
+        Data: committee lifetimes, membership dates and abbreviation periods.
+        CSVW validates string shape, not whether e.g. 1918-02-30 exists.
+        Missing dates remain unknown and are allowed; failures count date values.
+        """
+        failures = 0
+        checked = 0
+        LOGGER.info("Checking calendar validity of supplied committee dates")
+        for filename, columns in (
+            ("committee.csv", ("inception", "dissolution")),
+            ("committee_membership.csv", ("start", "end")),
+            ("committee_abbreviation.csv", ("start", "end")),
+        ):
+            rows = pl.read_csv(DATA_DIR / filename, infer_schema=False)
+            for column in columns:
+                checked += rows[column].count()
+                for row in rows.filter(pl.col(column).is_not_null() & date_bound(column).is_null()).iter_rows(named=True):
+                    failures += 1
+                    LOGGER.error("Impossible calendar date in %s.%s: %s", filename, column, row)
+        LOGGER.info("Checked %s supplied dates; %s impossible calendar dates", checked, failures)
+        self.assertEqual(0, failures, f"{failures} impossible calendar date values; details logged with trainerlog")
+
+    def test_committee_periods_are_not_definitely_inverted(self):
+        """Guarantee: no committee period definitely starts after it ends.
+
+        Data: committee lifetimes, memberships and abbreviation periods.
+        Compare earliest possible start with latest possible end (Decision 0015).
+        Equal dates and overlapping partial-date bounds are allowed. An unknown
+        endpoint does not establish inversion. Failures count rows. Invalid
+        calendar values are owned by test_committee_dates_are_possible_calendar_dates.
+        """
+        failures = 0
+        checked = 0
+        LOGGER.info("Checking chronology of committee periods")
+        for filename, start, end in (
+            ("committee.csv", "inception", "dissolution"),
+            ("committee_membership.csv", "start", "end"),
+            ("committee_abbreviation.csv", "start", "end"),
+        ):
+            rows = pl.read_csv(DATA_DIR / filename, infer_schema=False)
+            checked += rows.height
+            for row in rows.filter(date_bound(start) > date_bound(end, latest=True)).iter_rows(named=True):
+                failures += 1
+                LOGGER.error("Definitely inverted period in %s: %s", filename, row)
+        LOGGER.info("Checked %s periods; %s definitely inverted rows", checked, failures)
+        self.assertEqual(0, failures, f"{failures} definitely inverted committee periods; details logged with trainerlog")
+
+    def test_memberships_do_not_predate_committee_inception(self):
+        """Guarantee: no known membership boundary definitely predates inception.
+
+        Data: committee_membership.csv joined to committee.csv. A boundary's
+        latest possible day must not precede the earliest possible inception.
+        Check each supplied boundary even if the other is unknown. Missing
+        inception is unknown, not the first observed membership. Failures count
+        membership rows, not endpoints. CSVW owns foreign-key validation.
+        """
+        rows = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False).join(
+            pl.read_csv(DATA_DIR / "committee.csv", infer_schema=False), on="committee_id", how="left")
+        LOGGER.info("Checking %s memberships against known committee inception dates", rows.height)
+        failures = 0
+        before_inception = ((date_bound("start", latest=True) < date_bound("inception")) |
+                            (date_bound("end", latest=True) < date_bound("inception")))
+        for row in rows.filter(before_inception).iter_rows(named=True):
+            failures += 1
+            LOGGER.error("Membership definitely predates committee inception: %s", row)
+        LOGGER.info("Checked %s memberships; %s predate inception", rows.height, failures)
+        self.assertEqual(0, failures, f"{failures} memberships predate committee inception; details logged with trainerlog")
+
+    def test_memberships_do_not_outlast_committee_dissolution(self):
+        """Guarantee: no known membership boundary definitely follows dissolution.
+
+        Data: committee_membership.csv joined to committee.csv. Compare earliest
+        possible membership boundaries with latest possible dissolution. A
+        year-only dissolution permits a boundary in that year. Missing dates
+        remain unknown; one missing endpoint does not hide a contradiction in
+        the other. Failures count membership rows. CSVW owns foreign keys.
+        """
+        rows = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False).join(
+            pl.read_csv(DATA_DIR / "committee.csv", infer_schema=False), on="committee_id", how="left")
+        LOGGER.info("Checking %s memberships against known committee dissolution dates", rows.height)
+        failures = 0
+        after_dissolution = ((date_bound("start") > date_bound("dissolution", latest=True)) |
+                             (date_bound("end") > date_bound("dissolution", latest=True)))
+        for row in rows.filter(after_dissolution).iter_rows(named=True):
+            failures += 1
+            LOGGER.error("Membership definitely outlasts committee dissolution: %s", row)
+        LOGGER.info("Checked %s memberships; %s outlast dissolution", rows.height, failures)
+        self.assertEqual(0, failures, f"{failures} memberships outlast committee dissolution; details logged with trainerlog")
+
+    def test_membership_starts_are_not_outside_person_lifetimes(self):
+        """Guarantee: membership cannot definitely start before birth or after death.
+
+        Data: committee_membership.csv and person.csv. Compare the latest
+        possible start with earliest birth, and earliest start with latest death.
+        Unknowns remain unknown; the comparison does not impute any date.
+        Failures count membership rows. This does not test ends against death:
+        supplied end dates may be administrative or planned, and their endpoint
+        semantics need separate source review. It does not require full MP
+        mandate coverage. CSVW owns the person foreign key.
+        """
+        rows = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False).join(
+            pl.read_csv(DATA_DIR / "person.csv", infer_schema=False).select("person_id", "born", "dead"),
+            on="person_id", how="left")
+        LOGGER.info("Checking %s membership starts against person lifetimes", rows.height)
+        failures = 0
+        outside_lifetime = ((date_bound("start", latest=True) < date_bound("born")) |
+                            (date_bound("start") > date_bound("dead", latest=True)))
+        for row in rows.filter(outside_lifetime).iter_rows(named=True):
+            failures += 1
+            LOGGER.error("Membership starts definitely outside person lifetime: %s", row)
+        LOGGER.info("Checked %s membership starts; %s outside lifetimes", rows.height, failures)
+        self.assertEqual(0, failures, f"{failures} membership starts outside person lifetimes; details logged with trainerlog")
+
+    def test_reviewed_memberships_keep_source_dates_and_roles(self):
+        """Guarantee: reviewed membership facts retain their dates and roles.
+
+        Data: test/data/reviewed_committee_memberships.json records accepted
+        rows and their sources. Dates retain the reviewed source precision,
+        including null when unknown; election dates must not replace service
+        boundaries. Later sourced date enrichment must update both the row
+        and its fixture. This protects curated facts, not roster completeness.
+        References: Decisions 0004 and 0021; sources in each fixture entry.
+        """
+        claims = json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
+        self.assertTrue(claims, "The reviewed membership fixture must not be empty")
+        rows = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False)
+        published = set(rows.iter_rows())
+        failures = 0
+        LOGGER.info("Checking %s reviewed committee memberships", len(claims))
+        for claim in claims:
+            expected = tuple(claim["membership"][column] for column in rows.columns)
+            if expected not in published:
+                failures += 1
+                LOGGER.error("Missing or altered reviewed membership: %s; source: %s",
+                             claim["membership"], claim.get("service_source", {}).get("url")
+                             or claim["election_source_url"])
+        LOGGER.info("Checked %s reviewed memberships; %s missing or altered", len(claims), failures)
+        self.assertEqual(0, failures, f"{failures} reviewed memberships missing or altered; details logged with trainerlog")
+
+    def test_ku1918_curations_match_resolved_election_evidence(self):
+        """Guarantee: KU 1918 curated additions retain their resolved source links.
+
+        Data: reviewed membership fixtures and the archived 1918 KU evidence
+        and reconciliation. Every resolved candidate addition has exactly one
+        fixture matching its person, committee, role and election citation.
+        Undated additions also retain the register citation and session. The
+        existing-membership and conflicting-role cases are not new curations.
+        Failures count election evidence IDs. This checks provenance, not
+        service dates or independent human acceptance of the source readings.
+        """
+        evidence_file = "references/committee-records/2026-10-13-ku1918-review/reports/reviewed-evidence.jsonl"
+        identity_file = "references/committee-records/2026-10-14-ku1918-reconciliation/reports/reconciliation.jsonl"
+        evidence = {row["evidence_id"]: row for row in pl.read_ndjson(evidence_file).to_dicts()}
+        candidates = {row["evidence_id"]: row for row in pl.read_ndjson(identity_file).to_dicts()
+                      if row["comparison_status"] == "candidate_addition_needs_service_bounds"}
+        claims = [claim for claim in json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
+                  if claim["batch"] in ("2026-10-14-ku1918-applied", "2026-10-16-ku1918-undated")]
+        roles = dict(pl.read_csv(DATA_DIR / "committee_role.csv").select("role", "committee_role_id").iter_rows())
+        evidence_ids = set(candidates) | {claim["election_evidence_id"] for claim in claims}
+        failures = 0
+        LOGGER.info("Checking source links for %s curated KU election evidence IDs", len(evidence_ids))
+        for evidence_id in sorted(evidence_ids):
+            matches = [claim for claim in claims if claim["election_evidence_id"] == evidence_id]
+            candidate, source = candidates.get(evidence_id), evidence.get(evidence_id)
+            if len(matches) != 1 or candidate is None or source is None:
+                failures += 1
+                LOGGER.error("Missing, duplicate or unsupported KU curation for %s: %s", evidence_id, matches)
+                continue
+            claim = matches[0]
+            expected = {"election_date": source["event_date"], "election_source_url": source["xml_url"],
+                        "role": source["protocol_role"]}
+            if claim["batch"] == "2026-10-16-ku1918-undated":
+                expected.update({"election_evidence_file": evidence_file, "identity_evidence_file": identity_file,
+                                 "parliament_year": source["parliament_year"], "session": source["session"],
+                                 "chamber": source["chamber"], "register_source_url": source["register_pdf_url"],
+                                 "register_printed_page": source["register_printed_page"],
+                                 "register_excerpt": source["register_quote"]})
+            expected_membership = {"person_id": candidate["person_id"], "committee_id": candidate["committee_id"],
+                                   "committee_role_id": roles[source["protocol_role"]]}
+            if (candidate["identity_status"] != "resolved_by_agent" or source["review_status"] != "source_supported"
+                    or any(claim.get(key) != value for key, value in expected.items())
+                    or any(claim["membership"].get(key) != value for key, value in expected_membership.items())):
+                failures += 1
+                LOGGER.error("KU curation differs from resolved source %s: %s", evidence_id, claim)
+        LOGGER.info("Checked %s KU election evidence IDs; %s inconsistent curations", len(evidence_ids), failures)
+        self.assertEqual(0, failures, f"{failures} KU election curations lack matching source evidence; details logged with trainerlog")
+
     def test_wikidata_items_identify_one_committee(self):
         """Guarantee: a Wikidata item never merges distinct committee entities.
 
@@ -94,23 +301,16 @@ class CommitteeIntegrity(unittest.TestCase):
         ends. A missing boundary is unknown, not infinite. This does not assert
         complete period coverage or duplicate the general interval validation.
         """
-        def bound(value, latest):
-            if value is None:
-                return None
-            parts = [int(part) for part in value.split("-")]
-            year = parts[0]
-            month = parts[1] if len(parts) > 1 else 12 if latest else 1
-            day = parts[2] if len(parts) > 2 else calendar.monthrange(year, month)[1] if latest else 1
-            return date(year, month, day)
-
         rows = pl.read_csv(DATA_DIR / "committee_abbreviation.csv", schema_overrides={
             "start": pl.String, "end": pl.String,
-        }).filter(pl.col("primary_abbreviation"))
+        }).filter(pl.col("primary_abbreviation")).with_columns(
+            date_bound("start", latest=True).alias("latest_start"),
+            date_bound("end").alias("earliest_end"))
         failures = 0
         for group in rows.partition_by("committee_id"):
             for left, right in combinations(group.iter_rows(named=True), 2):
-                a, b = bound(left["start"], True), bound(left["end"], False)
-                c, d = bound(right["start"], True), bound(right["end"], False)
+                a, b = left["latest_start"], left["earliest_end"]
+                c, d = right["latest_start"], right["earliest_end"]
                 if None not in (a, b, c, d) and check_date_overlap(a, b, c, d):
                     failures += 1
                     LOGGER.error("Definitely overlapping primary abbreviations: %s / %s", left, right)

@@ -1,0 +1,205 @@
+{
+  "baseline": {
+    "errors": 0,
+    "failures": 0,
+    "output": "................................................\n----------------------------------------------------------------------\nRan 48 tests in 6.340s\n\nOK\n",
+    "tests": 48
+  },
+  "csv_sha256": {
+    "chair_mp.csv": "8042394556233699d886c00a4e6984e56e2b922bfd5c2dcea15542e4a395e862",
+    "chairs.csv": "2f8ffe6c744a5c4a20f48222b0b1fc4a4b33df4d83639b5a0742e741cc537942",
+    "committee.csv": "1ff323fbd114b628cb5f6306d0a1ad9062def0b38c57977d9ce07258f6188618",
+    "committee_abbreviation.csv": "43ded3f0eeca28f1818d1d1b36d2ddfce1559c8d429ff39eb36289b958c1ee53",
+    "committee_external_identifiers.csv": "bebaefb50a819dfb09c5f63416a883a9f82fba8974f2db363c651822cb7ce783",
+    "committee_membership.csv": "dd3896c598569a748de3c40578aeab325d95d6d251fe669cc44123da8813da48",
+    "committee_role.csv": "1c2e16cd6bd33cfdcad28fbd752691e05d0ea56998e778a67a2bc29fec85f8d8",
+    "described_by_source.csv": "a94d85500cb12709333de60a33171f8da7a26c52e6c340955a09d718dd089ec0",
+    "explicit_no_party.csv": "94154aa655ba3a070039558cda3280d4929885f9ef16264a084339d6ebaa1db5",
+    "external_identifiers.csv": "9739e51195719438bc96d8c28e9a9d90bd3879f07bff69f2fbe910f214d86a29",
+    "government.csv": "f0d67e5b0d4cca9554f017e49012297a02d830d13a5ed98b5329028220420968",
+    "location_specifier.csv": "dfc1f5c01546c7187e97b53f6f25817852009f1a18d12a9d19480efd2bec1378",
+    "member_of_parliament.csv": "f7ee2dff07ab9a9498572178fb07c16249da6c0c8b960cdb0fe9279b996eb6df",
+    "minister.csv": "064e00b5bfa243ad7a8e483ca7d5558d88bd35ba398bb7c7d622a3a5a17f7d7a",
+    "name.csv": "e2958caf1ec734eec37fc6acca18f5bfa909456585c2ac8da795a03e7fceaf18",
+    "party.csv": "f80cd874237ed24247ecf5c3b1ac0224644baea5febc8593e97033975c470a8f",
+    "party_abbreviation.csv": "845ef00690a98578abe772a3c0c698a65a887e812f4b2e51a8270fb9626d3de6",
+    "party_affiliation.csv": "3530132aaff59269b5083bb6b978104ebdddf5a039907970f6e013070e57b8c9",
+    "person.csv": "a74312de3eb2da5d0c265dd04262c4aec6f4efbb2651bebd938151f4b45a2538",
+    "place_of_birth.csv": "a51944922ad6dbecad37fa106686d71da23fa736560780e76e4a8f0c8a7955cd",
+    "place_of_death.csv": "ca9aefd117a6c65f7f455be16c9922b856558e934e93ffea15f5e625bf3e3ba2",
+    "portraits.csv": "8024f800af52a70514a7f2c31ed67bfd7489be7c1d5dd8432cb9f26b38242f35",
+    "references_map.csv": "0dff8121ab23cc8590dc4907c915b79f23d9b9b15d7e08f509421e8647890cdf",
+    "riksdag-year.csv": "eae144210e5d36643ea3e15acc8b3b3ba8fb5951b505c336917747d2dd27a4e7",
+    "speaker.csv": "139bcb27587ffbcaf7f5692b0cf4d815a74acc1bdf4d4dbe088272605823a602",
+    "twitter.csv": "8d51fea04334315be1805bf102ede9f594f5ec100bcb4f8fbdcfa2ab72c3e019",
+    "wiki_id.csv": "54d6a89593117de8ea2b5690c77325c9a0341bd3a4a5ded003bed72d4bea6fcd"
+  },
+  "mutations": [
+    {
+      "case": "impossible_day",
+      "green_after_restore": {
+        "errors": 0,
+        "failures": 0,
+        "output": ".\n----------------------------------------------------------------------\nRan 1 test in 0.008s\n\nOK\n",
+        "tests": 1
+      },
+      "guarantee": "test_committee_dates_are_possible_calendar_dates",
+      "mutation": {
+        "start": "1918-02-30"
+      },
+      "original_row": {
+        "committee_id": "i-9o9DWwgkrWx48Ur42vZzYE",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT",
+        "end": "1919",
+        "person_id": "i-R15uPaT8a19DwHnCrNDNP4",
+        "start": "1918"
+      },
+      "previous_guarantees": {
+        "errors": 0,
+        "failures": 0,
+        "output": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.189s\n\nOK\n",
+        "tests": 7
+      },
+      "red": {
+        "errors": 0,
+        "failures": 1,
+        "output": "F\n======================================================================\nFAIL: test_committee_dates_are_possible_calendar_dates (test.committee_integrity.CommitteeIntegrity)\nGuarantee: every supplied committee date denotes a real calendar date.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/manma760/Dropbox/Projekt/swerik/riksdagen-persons/test/committee_integrity.py\", line 63, in test_committee_dates_are_possible_calendar_dates\n    self.assertEqual(0, failures, f\"{failures} impossible calendar date values; details logged with trainerlog\")\nAssertionError: 0 != 1 : 1 impossible calendar date values; details logged with trainerlog\n\n----------------------------------------------------------------------\nRan 1 test in 0.009s\n\nFAILED (failures=1)\n",
+        "tests": 1
+      }
+    },
+    {
+      "case": "inverted_period",
+      "green_after_restore": {
+        "errors": 0,
+        "failures": 0,
+        "output": ".\n----------------------------------------------------------------------\nRan 1 test in 0.009s\n\nOK\n",
+        "tests": 1
+      },
+      "guarantee": "test_committee_periods_are_not_definitely_inverted",
+      "mutation": {
+        "end": "1917"
+      },
+      "original_row": {
+        "committee_id": "i-9o9DWwgkrWx48Ur42vZzYE",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT",
+        "end": "1919",
+        "person_id": "i-R15uPaT8a19DwHnCrNDNP4",
+        "start": "1918"
+      },
+      "previous_guarantees": {
+        "errors": 0,
+        "failures": 0,
+        "output": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.077s\n\nOK\n",
+        "tests": 7
+      },
+      "red": {
+        "errors": 0,
+        "failures": 1,
+        "output": "F\n======================================================================\nFAIL: test_committee_periods_are_not_definitely_inverted (test.committee_integrity.CommitteeIntegrity)\nGuarantee: no committee period definitely starts after it ends.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/manma760/Dropbox/Projekt/swerik/riksdagen-persons/test/committee_integrity.py\", line 88, in test_committee_periods_are_not_definitely_inverted\n    self.assertEqual(0, failures, f\"{failures} definitely inverted committee periods; details logged with trainerlog\")\nAssertionError: 0 != 1 : 1 definitely inverted committee periods; details logged with trainerlog\n\n----------------------------------------------------------------------\nRan 1 test in 0.006s\n\nFAILED (failures=1)\n",
+        "tests": 1
+      }
+    },
+    {
+      "case": "before_inception",
+      "green_after_restore": {
+        "errors": 0,
+        "failures": 0,
+        "output": ".\n----------------------------------------------------------------------\nRan 1 test in 0.017s\n\nOK\n",
+        "tests": 1
+      },
+      "guarantee": "test_memberships_do_not_predate_committee_inception",
+      "mutation": {
+        "start": "1808"
+      },
+      "original_row": {
+        "committee_id": "i-9o9DWwgkrWx48Ur42vZzYE",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT",
+        "end": "1919",
+        "person_id": "i-R15uPaT8a19DwHnCrNDNP4",
+        "start": "1918"
+      },
+      "previous_guarantees": {
+        "errors": 0,
+        "failures": 0,
+        "output": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.076s\n\nOK\n",
+        "tests": 7
+      },
+      "red": {
+        "errors": 0,
+        "failures": 1,
+        "output": "F\n======================================================================\nFAIL: test_memberships_do_not_predate_committee_inception (test.committee_integrity.CommitteeIntegrity)\nGuarantee: no known membership boundary definitely predates inception.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/manma760/Dropbox/Projekt/swerik/riksdagen-persons/test/committee_integrity.py\", line 109, in test_memberships_do_not_predate_committee_inception\n    self.assertEqual(0, failures, f\"{failures} memberships predate committee inception; details logged with trainerlog\")\nAssertionError: 0 != 1 : 1 memberships predate committee inception; details logged with trainerlog\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nFAILED (failures=1)\n",
+        "tests": 1
+      }
+    },
+    {
+      "case": "after_dissolution",
+      "green_after_restore": {
+        "errors": 0,
+        "failures": 0,
+        "output": ".\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nOK\n",
+        "tests": 1
+      },
+      "guarantee": "test_memberships_do_not_outlast_committee_dissolution",
+      "mutation": {
+        "end": "1971"
+      },
+      "original_row": {
+        "committee_id": "i-2eLwuwAs1ts8rciARgyXwa",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT",
+        "end": "1966",
+        "person_id": "i-6oh2fmMy6eW4v5gtufrZdh",
+        "start": "1953"
+      },
+      "previous_guarantees": {
+        "errors": 0,
+        "failures": 0,
+        "output": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.075s\n\nOK\n",
+        "tests": 7
+      },
+      "red": {
+        "errors": 0,
+        "failures": 1,
+        "output": "F\n======================================================================\nFAIL: test_memberships_do_not_outlast_committee_dissolution (test.committee_integrity.CommitteeIntegrity)\nGuarantee: no known membership boundary definitely follows dissolution.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/manma760/Dropbox/Projekt/swerik/riksdagen-persons/test/committee_integrity.py\", line 130, in test_memberships_do_not_outlast_committee_dissolution\n    self.assertEqual(0, failures, f\"{failures} memberships outlast committee dissolution; details logged with trainerlog\")\nAssertionError: 0 != 1 : 1 memberships outlast committee dissolution; details logged with trainerlog\n\n----------------------------------------------------------------------\nRan 1 test in 0.007s\n\nFAILED (failures=1)\n",
+        "tests": 1
+      }
+    },
+    {
+      "case": "start_before_birth",
+      "green_after_restore": {
+        "errors": 0,
+        "failures": 0,
+        "output": ".\n----------------------------------------------------------------------\nRan 1 test in 0.016s\n\nOK\n",
+        "tests": 1
+      },
+      "guarantee": "test_membership_starts_are_not_outside_person_lifetimes",
+      "mutation": {
+        "start": "1862"
+      },
+      "original_row": {
+        "committee_id": "i-9o9DWwgkrWx48Ur42vZzYE",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT",
+        "end": "1919",
+        "person_id": "i-R15uPaT8a19DwHnCrNDNP4",
+        "start": "1918"
+      },
+      "previous_guarantees": {
+        "errors": 0,
+        "failures": 0,
+        "output": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.075s\n\nOK\n",
+        "tests": 7
+      },
+      "red": {
+        "errors": 0,
+        "failures": 1,
+        "output": "F\n======================================================================\nFAIL: test_membership_starts_are_not_outside_person_lifetimes (test.committee_integrity.CommitteeIntegrity)\nGuarantee: membership cannot definitely start before birth or after death.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/manma760/Dropbox/Projekt/swerik/riksdagen-persons/test/committee_integrity.py\", line 154, in test_membership_starts_are_not_outside_person_lifetimes\n    self.assertEqual(0, failures, f\"{failures} membership starts outside person lifetimes; details logged with trainerlog\")\nAssertionError: 0 != 1 : 1 membership starts outside person lifetimes; details logged with trainerlog\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nFAILED (failures=1)\n",
+        "tests": 1
+      }
+    }
+  ],
+  "published_csvs_unchanged": true,
+  "test_file_sha256": {
+    "committee_integrity.py": "03520354f035c2b27987234a5409a155b9971cb61e57ce07f19a799c08c08b7d",
+    "test_committee_integrity_regressions.py": "21bbf0683f3f8ef961e050985e79189ba52b0601b35e7d3e1a61e06a099546a9"
+  },
+  "verified_on": "2026-10-14"
+}
