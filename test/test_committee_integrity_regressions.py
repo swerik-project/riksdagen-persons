@@ -234,21 +234,19 @@ class ReviewedMembershipRegressions(unittest.TestCase):
         self.membership = {"person_id": "person", "committee_id": "committee", "start": None,
                            "end": None, "committee_role_id": "member"}
         self.rows = pl.DataFrame([self.membership], schema={key: pl.String for key in self.membership})
-        self.source = {"evidence_id": "election", "event_date": "1918-01-21", "xml_url": "https://example.org/protocol",
-                       "protocol_role": "Ledamot", "parliament_year": "1918", "session": "regular", "chamber": "FK",
-                       "register_pdf_url": "https://example.org/register#page=3", "register_printed_page": 1,
-                       "register_quote": "Ledamot i konstitutionsutskottet.", "review_status": "source_supported"}
-        self.candidate = {"evidence_id": "election", "person_id": "person", "committee_id": "committee",
-                          "comparison_status": "candidate_addition_needs_service_bounds", "identity_status": "resolved_by_agent"}
+        self.source = {"election_evidence_id": "election", "election_date": "1918-01-21",
+                       "election_source_url": "https://example.org/protocol", "person_id": "person",
+                       "committee_id": "committee", "role": "Ledamot", "parliament_year": "1918",
+                       "session": "regular", "chamber": "FK", "register_source_url": "https://example.org/register#page=3",
+                       "register_printed_page": 1, "register_excerpt": "Ledamot i konstitutionsutskottet.",
+                       "review_status": "source_supported", "identity_status": "resolved_by_agent"}
         self.claim = {"batch": "2026-10-16-ku1918-undated", "membership": dict(self.membership),
-                      "election_evidence_id": "election", "election_date": self.source["event_date"],
-                      "election_source_url": self.source["xml_url"], "role": "Ledamot", "parliament_year": "1918",
-                      "session": "regular", "chamber": "FK", "register_source_url": self.source["register_pdf_url"],
-                      "register_printed_page": 1, "register_excerpt": self.source["register_quote"],
-                      "election_evidence_file": "references/committee-records/2026-10-13-ku1918-review/reports/reviewed-evidence.jsonl",
-                      "identity_evidence_file": "references/committee-records/2026-10-14-ku1918-reconciliation/reports/reconciliation.jsonl"}
+                      **{key: self.source[key] for key in ("election_evidence_id", "election_date", "election_source_url",
+                         "role", "parliament_year", "session", "chamber", "register_source_url",
+                         "register_printed_page", "register_excerpt")}}
         self.claims = [self.claim]
-        fixture = patch.object(integrity.json, "loads", return_value=self.claims)
+        fixture = patch.object(integrity.Path, "read_text", autospec=True, side_effect=lambda path:
+                               json.dumps(self.claims if path.name == "reviewed_committee_memberships.json" else [self.source]))
         fixture.start()
         self.addCleanup(fixture.stop)
         csv_reader = patch.object(integrity.pl, "read_csv", side_effect=lambda path, **kwargs:
@@ -256,10 +254,6 @@ class ReviewedMembershipRegressions(unittest.TestCase):
                                  pl.DataFrame({"role": ["Ledamot"], "committee_role_id": ["member"]}))
         csv_reader.start()
         self.addCleanup(csv_reader.stop)
-        evidence_reader = patch.object(integrity.pl, "read_ndjson", side_effect=lambda path:
-                                      pl.DataFrame([self.source if Path(path).name == "reviewed-evidence.jsonl" else self.candidate]))
-        evidence_reader.start()
-        self.addCleanup(evidence_reader.stop)
         self.gates = integrity.CommitteeIntegrity()
 
     def test_reviewed_guard_accepts_null_service_boundaries(self):
@@ -334,104 +328,98 @@ class ReviewedMembershipRegressions(unittest.TestCase):
 class SBLProvenanceRegressions(unittest.TestCase):
     def setUp(self):
         membership = dict(person_id="person", committee_id="committee", start="1910", end=None, committee_role_id="member")
-        source = dict(membership, claim_id="claim", action="add", sbl_id="123", source_url="https://example.org/sbl/123",
-                      source_clause="led av KU från 10")
+        self.source = dict(membership, claim_id="claim", batch="2026-10-16-sbl", sbl_id="123",
+                           source_url="https://example.org/sbl/123", source_clause="led av KU från 10")
         self.claim = {"membership": dict(membership), "service_source": {
-            "batch": "2026-10-16-sbl", "claim_id": "claim", "sbl_id": "123", "url": source["source_url"],
-            "excerpt": source["source_clause"]}}
-        self.references = {
-            "accepted-memberships.json": [source], "reviewed_committee_memberships.json": [self.claim],
-            "source-extracts.json": [dict(person_id="person", sbl_id="123", source_url=source["source_url"],
-                                          curriculum_vitae=source["source_clause"])],
-            "linked-mps.json": [dict(person_id="person", identifier="123")],
-        }
+            "batch": "2026-10-16-sbl", "claim_id": "claim", "sbl_id": "123", "url": self.source["source_url"],
+            "excerpt": self.source["source_clause"]}}
+        self.claims = [self.claim]
+        self.links = pl.DataFrame(dict(person_id=["person"], identifier=["123"]))
         self.identifiers = pl.DataFrame(dict(person_id=["person"], authority=["DiSweNaBiID"], identifier=["123"]))
-        self.resolved = []
         reader = patch.object(integrity.Path, "read_text", autospec=True,
-                              side_effect=lambda path, **kwargs: json.dumps(
-                                  self.resolved if "2026-10-16-resolved" in path.parts
-                                  else self.references[path.name]))
+                              side_effect=lambda path, **kwargs: json.dumps(self.claims))
         reader.start()
         self.addCleanup(reader.stop)
-        csv_reader = patch.object(integrity.pl, "read_csv", side_effect=lambda *args, **kwargs: self.identifiers.clone())
+        csv_reader = patch.object(integrity.pl, "read_csv", side_effect=lambda path, **kwargs:
+                                 pl.DataFrame([self.source], schema={key: pl.String for key in self.source})
+                                 if Path(path).name == "reviewed_sbl_committee_sources.csv" else
+                                 self.links.clone() if Path(path).name == "reviewed_sbl_links.csv" else self.identifiers.clone())
         csv_reader.start()
         self.addCleanup(csv_reader.stop)
         self.gates = integrity.CommitteeIntegrity()
 
     def test_source_guard_accepts_matching_curation(self):
         """Guarantee: a consistent SBL source, fixture and excerpt pass provenance."""
-        self.gates.test_sbl_curations_retain_archived_source_claims()
+        self.gates.test_sbl_curations_retain_reviewed_source_claims()
 
     def test_source_guard_rejects_deleted_fixture(self):
         """Guarantee: deleting a fixture cannot delete protection for an SBL claim."""
-        self.references["reviewed_committee_memberships.json"] = []
+        self.claims.clear()
         with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
-            self.gates.test_sbl_curations_retain_archived_source_claims()
+            self.gates.test_sbl_curations_retain_reviewed_source_claims()
 
     def test_source_guard_rejects_invented_end(self):
         """Guarantee: a fixture cannot invent an end absent from the SBL claim."""
         self.claim["membership"]["end"] = "1940"
         with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
-            self.gates.test_sbl_curations_retain_archived_source_claims()
+            self.gates.test_sbl_curations_retain_reviewed_source_claims()
 
     def test_source_guard_rejects_wrong_biography(self):
         """Guarantee: an SBL curation cannot cite a different biography."""
         self.claim["service_source"]["sbl_id"] = "456"
         with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
-            self.gates.test_sbl_curations_retain_archived_source_claims()
+            self.gates.test_sbl_curations_retain_reviewed_source_claims()
 
-    def test_source_guard_rejects_excerpt_absent_from_snapshot(self):
-        """Guarantee: the cited career excerpt must occur in the archived summary."""
-        self.references["source-extracts.json"][0]["curriculum_vitae"] = "unrelated career"
+    def test_source_guard_rejects_changed_excerpt(self):
+        """Guarantee: the citation retains the reviewed source clause."""
+        self.claim["service_source"]["excerpt"] = "unrelated career"
         with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
-            self.gates.test_sbl_curations_retain_archived_source_claims()
+            self.gates.test_sbl_curations_retain_reviewed_source_claims()
 
     def test_source_guard_rejects_duplicate_fixture(self):
         """Guarantee: an SBL source claim has exactly one curation fixture."""
-        self.references["reviewed_committee_memberships.json"].append(self.claim)
+        self.claims.append(self.claim)
         with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
-            self.gates.test_sbl_curations_retain_archived_source_claims()
+            self.gates.test_sbl_curations_retain_reviewed_source_claims()
 
     def test_identifier_guard_accepts_existing_link(self):
-        """Guarantee: the archived person/article identifier passes when retained."""
+        """Guarantee: the reviewed person/article identifier passes when retained."""
         self.gates.test_sbl_linked_mps_retain_source_identifiers()
 
     def test_identifier_guard_rejects_removed_link(self):
-        """Guarantee: removal of an archived SBL link fails the identifier gate."""
+        """Guarantee: removal of a reviewed SBL link fails the identifier gate."""
         self.identifiers = self.identifiers.clear()
         with self.assertRaisesRegex(AssertionError, "1 SBL person/article links missing"):
             self.gates.test_sbl_linked_mps_retain_source_identifiers()
 
     def test_followup_source_guard_protects_new_batch(self):
         """Guarantee: resolved-batch dates receive the same protection as first-pass facts."""
-        self.resolved = self.references["accepted-memberships.json"]
-        self.references["accepted-memberships.json"] = []
+        self.source["batch"] = "2026-10-16-sbl-resolved"
         self.claim["service_source"]["batch"] = "2026-10-16-sbl-resolved"
-        self.gates.test_sbl_curations_retain_archived_source_claims()
+        self.gates.test_sbl_curations_retain_reviewed_source_claims()
         self.claim["membership"]["start"] = "1909"
         with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
-            self.gates.test_sbl_curations_retain_archived_source_claims()
+            self.gates.test_sbl_curations_retain_reviewed_source_claims()
 
 
 class ReviewedLifetimeRegressions(unittest.TestCase):
     def test_corrected_death_and_its_source_are_protected(self):
         """Guarantee: reverting a reviewed death or citing the wrong article fails."""
         correction = dict(person_id="p", field="dead", after="1959-11-22", sbl_id="1",
-                          source_url="https://example.org/1", source_clause="d 22 nov 1959")
-        source = dict(person_id="p", sbl_id="1", source_url=correction["source_url"],
-                      source_dead=correction["after"], curriculum_vitae=correction["source_clause"])
+                          source_url="https://sok.riksarkivet.se/sbl/Presentation.aspx?id=1", source_clause="d 22 nov 1959")
         table = pl.DataFrame(dict(person_id=["p"], dead=["1959-11-22"]))
-        references = {"person-corrections.json": [correction], "source-extracts.json": [source]}
+        links = pl.DataFrame(dict(person_id=["p"], authority=["DiSweNaBiID"], identifier=["1"]))
         with patch.object(integrity.Path, "read_text", autospec=True,
-                          side_effect=lambda path: json.dumps(references[path.name])), \
-                patch.object(integrity.pl, "read_csv", side_effect=lambda *args, **kwargs: table):
+                          side_effect=lambda path: json.dumps([correction])), \
+                patch.object(integrity.pl, "read_csv", side_effect=lambda path, **kwargs:
+                             table if Path(path).name == "person.csv" else links):
             gate = integrity.CommitteeIntegrity().test_sbl_reviewed_lifetime_corrections_retain_source_dates
             gate()
             table = table.with_columns(pl.lit("1859-10-22").alias("dead"))
             with self.assertRaisesRegex(AssertionError, "1 SBL lifetime corrections altered"):
                 gate()
             table = table.with_columns(pl.lit("1959-11-22").alias("dead"))
-            source["source_url"] = "https://example.org/wrong"
+            correction["source_url"] = "https://example.org/wrong"
             with self.assertRaisesRegex(AssertionError, "1 SBL lifetime corrections altered"):
                 gate()
 

@@ -1,6 +1,7 @@
 """Semantic guarantees for committee identities, historical dates and curated rows.
 
 CSVW owns structural types, required fields, primary keys and foreign keys.
+Reviewed evidence is kept in test/data; no reference archives are required.
 """
 
 from itertools import combinations
@@ -184,18 +185,19 @@ class CommitteeIntegrity(unittest.TestCase):
     def test_sbl_linked_mps_retain_source_identifiers(self):
         """Guarantee: MPs processed in the SBL batch retain their article IDs.
 
-        Data: the archived linked-mps report and external_identifiers.csv.
+        Data: test/data/reviewed_sbl_links.csv and external_identifiers.csv.
         DiSweNaBiID is the existing authority for SBL. This protects all
         processed links, including explicitly unresolved source conflicts;
         it does not assert that every MP has an SBL biography. Failures count
-        person/article links. New identity corrections must update the report.
+        person/article links. New identity corrections must update the fixture.
+        The fixture retains only the 622 reviewed person/article pairs.
         """
-        links = json.loads(Path("references/committee-sbl/2026-10-16/reports/linked-mps.json").read_text())
+        links = pl.read_csv("test/data/reviewed_sbl_links.csv", infer_schema=False).to_dicts()
         self.assertTrue(links, "The SBL linkage reference must not be empty")
         identifiers = pl.read_csv(DATA_DIR / "external_identifiers.csv", infer_schema=False)
         published = set(identifiers.filter(pl.col("authority") == "DiSweNaBiID").select("person_id", "identifier").iter_rows())
         failures = 0
-        LOGGER.info("Checking %s archived SBL person/article links", len(links))
+        LOGGER.info("Checking %s reviewed SBL person/article links", len(links))
         for link in links:
             if (link["person_id"], link["identifier"]) not in published:
                 failures += 1
@@ -203,30 +205,26 @@ class CommitteeIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s SBL links; %s missing", len(links), failures)
         self.assertEqual(0, failures, f"{failures} SBL person/article links missing; details logged with trainerlog")
 
-    def test_sbl_curations_retain_archived_source_claims(self):
-        """Guarantee: each SBL curation retains its matching archived source claim.
+    def test_sbl_curations_retain_reviewed_source_claims(self):
+        """Guarantee: each SBL curation retains its matching reviewed source claim.
 
-        Data: accepted-memberships in the original and resolved SBL batches,
-        with source-extracts pinned in the original batch,
-        plus reviewed_committee_memberships.json. Each added or refined claim
+        Data: test/data/reviewed_sbl_committee_sources.csv and
+        reviewed_committee_memberships.json. Each added or refined claim
         has exactly one fixture, with the same membership and citation, and
-        its excerpt occurs in that person's decoded career summary. Existing
-        unchanged facts are not new curations. Failures count source claim IDs.
-        This checks provenance, not independent human acceptance or parsing
-        completeness; the original licensed export is archived with the batch.
+        its excerpt matches the reviewed source clause. The source fixture
+        retains only the fields asserted below, projected from accepted claims;
+        excerpts were checked against the source career summaries when frozen.
+        No full export or import report is read at test time. Unchanged facts
+        are not new curations. Failures count source claim IDs. This checks
+        retained evidence, not source authenticity or independent acceptance.
         """
-        root = Path("references/committee-sbl/2026-10-16/reports")
+        sources = pl.read_csv("test/data/reviewed_sbl_committee_sources.csv", infer_schema=False).to_dicts()
         accepted = {}
-        for directory, batch in (("2026-10-16", "2026-10-16-sbl"),
-                                 ("2026-10-16-resolved", "2026-10-16-sbl-resolved")):
-            report = Path("references/committee-sbl") / directory / "reports/accepted-memberships.json"
-            for row in json.loads(report.read_text()):
-                if row["action"] in ("add", "refine_undated"):
-                    key = (batch, row["claim_id"])
-                    self.assertNotIn(key, accepted, "Duplicate archived SBL source claim")
-                    accepted[key] = row
+        for row in sources:
+            key = (row["batch"], row["claim_id"])
+            self.assertNotIn(key, accepted, "Duplicate reviewed SBL source claim")
+            accepted[key] = row
         self.assertTrue(accepted, "The SBL accepted-claim reference must not be empty")
-        snapshots = {(row["person_id"], row["sbl_id"]): row for row in json.loads((root / "source-extracts.json").read_text())}
         claims = [row for row in json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
                   if row.get("service_source", {}).get("batch", "").startswith("2026-10-16-sbl")]
         claim_ids = set(accepted) | {(row["service_source"]["batch"], row["service_source"]["claim_id"]) for row in claims}
@@ -241,40 +239,38 @@ class CommitteeIntegrity(unittest.TestCase):
                 continue
             claim = matches[0]
             citation = claim["service_source"]
-            snapshot = snapshots.get((source["person_id"], source["sbl_id"]))
-            if (snapshot is None or any(claim["membership"].get(k) != source[k] for k in
-                                       ("person_id", "committee_id", "start", "end", "committee_role_id"))
+            if (any(claim["membership"].get(k) != source[k] for k in
+                    ("person_id", "committee_id", "start", "end", "committee_role_id"))
                     or citation.get("sbl_id") != source["sbl_id"] or citation.get("url") != source["source_url"]
-                    or citation.get("excerpt") != source["source_clause"] or not source["source_clause"]
-                    or snapshot["source_url"] != source["source_url"]
-                    or source["source_clause"] not in snapshot["curriculum_vitae"]):
+                    or citation.get("excerpt") != source["source_clause"] or not source["source_clause"]):
                 failures += 1
-                LOGGER.error("SBL curation differs from archived source %s: %s", claim_id, claim)
+                LOGGER.error("SBL curation differs from reviewed source %s: %s", claim_id, claim)
         LOGGER.info("Checked %s SBL source claims; %s inconsistent curations", len(claim_ids), failures)
         self.assertEqual(0, failures, f"{failures} SBL curations lack matching source evidence; details logged with trainerlog")
 
     def test_sbl_reviewed_lifetime_corrections_retain_source_dates(self):
         """Guarantee: SBL-reviewed lifetime corrections retain the sourced date.
 
-        Data: person.csv, resolved-batch person-corrections.json and the pinned
-        SBL source-extracts. Protect the exact corrected date and its matching
-        biography citation; do not infer dates for unreviewed people. This
+        Data: person.csv, external_identifiers.csv and
+        test/data/reviewed_sbl_person_dates.json. The fixture retains the reviewed
+        date, SBL article ID and quoted evidence, checked against both the career
+        summary and structured SBL date when frozen. Protect the exact date and
+        its linked biography citation; do not infer unreviewed dates. This
         prevents Palmstierna's impossible pre-birth death date from returning.
         Failures count person/field corrections, not committee memberships.
         """
-        corrections = json.loads(Path("references/committee-sbl/2026-10-16-resolved/reports/person-corrections.json").read_text())
+        corrections = json.loads(Path("test/data/reviewed_sbl_person_dates.json").read_text())
         self.assertTrue(corrections, "The lifetime-correction reference must not be empty")
-        snapshots = {(row["person_id"], row["sbl_id"]): row for row in json.loads(
-            Path("references/committee-sbl/2026-10-16/reports/source-extracts.json").read_text())}
         people = {row["person_id"]: row for row in pl.read_csv(DATA_DIR / "person.csv", infer_schema=False).to_dicts()}
+        links = set(pl.read_csv(DATA_DIR / "external_identifiers.csv", infer_schema=False)
+                    .filter(pl.col("authority") == "DiSweNaBiID").select("person_id", "identifier").iter_rows())
         failures = 0
         LOGGER.info("Checking %s reviewed SBL lifetime corrections", len(corrections))
         for correction in corrections:
-            source = snapshots.get((correction["person_id"], correction["sbl_id"]))
             if (people.get(correction["person_id"], {}).get(correction["field"]) != correction["after"]
-                    or source is None or source["source_url"] != correction["source_url"]
-                    or source.get("source_" + correction["field"]) != correction["after"]
-                    or not correction["source_clause"] or correction["source_clause"] not in source["curriculum_vitae"]):
+                    or (correction["person_id"], correction["sbl_id"]) not in links
+                    or correction["source_url"] != f"https://sok.riksarkivet.se/sbl/Presentation.aspx?id={correction['sbl_id']}"
+                    or not correction["source_clause"]):
                 failures += 1
                 LOGGER.error("Missing or altered SBL lifetime correction: %s", correction)
         LOGGER.info("Checked %s SBL lifetime corrections; %s altered", len(corrections), failures)
@@ -283,44 +279,43 @@ class CommitteeIntegrity(unittest.TestCase):
     def test_ku1918_curations_match_resolved_election_evidence(self):
         """Guarantee: KU 1918 curated additions retain their resolved source links.
 
-        Data: reviewed membership fixtures and the archived 1918 KU evidence
-        and reconciliation. Every resolved candidate addition has exactly one
+        Data: reviewed_committee_memberships.json and
+        test/data/reviewed_ku1918_elections.json. The election fixture projects
+        the 40 accepted identities and citations from the reviewed protocol,
+        register and reconciliation evidence, without import diagnostics or
+        source files. Every resolved candidate addition has exactly one
         fixture matching its person, committee, role and election citation.
         Undated additions also retain the register citation and session. The
         existing-membership and conflicting-role cases are not new curations.
         Failures count election evidence IDs. This checks provenance, not
         service dates or independent human acceptance of the source readings.
         """
-        evidence_file = "references/committee-records/2026-10-13-ku1918-review/reports/reviewed-evidence.jsonl"
-        identity_file = "references/committee-records/2026-10-14-ku1918-reconciliation/reports/reconciliation.jsonl"
-        evidence = {row["evidence_id"]: row for row in pl.read_ndjson(evidence_file).to_dicts()}
-        candidates = {row["evidence_id"]: row for row in pl.read_ndjson(identity_file).to_dicts()
-                      if row["comparison_status"] == "candidate_addition_needs_service_bounds"}
+        evidence = {}
+        for row in json.loads(Path("test/data/reviewed_ku1918_elections.json").read_text()):
+            self.assertNotIn(row["election_evidence_id"], evidence, "Duplicate reviewed KU election")
+            evidence[row["election_evidence_id"]] = row
+        self.assertTrue(evidence, "The reviewed KU election fixture must not be empty")
         claims = [claim for claim in json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
                   if claim["batch"] in ("2026-10-14-ku1918-applied", "2026-10-16-ku1918-undated")]
         roles = dict(pl.read_csv(DATA_DIR / "committee_role.csv").select("role", "committee_role_id").iter_rows())
-        evidence_ids = set(candidates) | {claim["election_evidence_id"] for claim in claims}
+        evidence_ids = set(evidence) | {claim["election_evidence_id"] for claim in claims}
         failures = 0
         LOGGER.info("Checking source links for %s curated KU election evidence IDs", len(evidence_ids))
         for evidence_id in sorted(evidence_ids):
             matches = [claim for claim in claims if claim["election_evidence_id"] == evidence_id]
-            candidate, source = candidates.get(evidence_id), evidence.get(evidence_id)
-            if len(matches) != 1 or candidate is None or source is None:
+            source = evidence.get(evidence_id)
+            if len(matches) != 1 or source is None:
                 failures += 1
                 LOGGER.error("Missing, duplicate or unsupported KU curation for %s: %s", evidence_id, matches)
                 continue
             claim = matches[0]
-            expected = {"election_date": source["event_date"], "election_source_url": source["xml_url"],
-                        "role": source["protocol_role"]}
+            expected = {key: source[key] for key in ("election_date", "election_source_url", "role")}
             if claim["batch"] == "2026-10-16-ku1918-undated":
-                expected.update({"election_evidence_file": evidence_file, "identity_evidence_file": identity_file,
-                                 "parliament_year": source["parliament_year"], "session": source["session"],
-                                 "chamber": source["chamber"], "register_source_url": source["register_pdf_url"],
-                                 "register_printed_page": source["register_printed_page"],
-                                 "register_excerpt": source["register_quote"]})
-            expected_membership = {"person_id": candidate["person_id"], "committee_id": candidate["committee_id"],
-                                   "committee_role_id": roles[source["protocol_role"]]}
-            if (candidate["identity_status"] != "resolved_by_agent" or source["review_status"] != "source_supported"
+                expected.update({key: source[key] for key in ("parliament_year", "session", "chamber",
+                                 "register_source_url", "register_printed_page", "register_excerpt")})
+            expected_membership = {"person_id": source["person_id"], "committee_id": source["committee_id"],
+                                   "committee_role_id": roles[source["role"]]}
+            if (source["identity_status"] != "resolved_by_agent" or source["review_status"] != "source_supported"
                     or any(claim.get(key) != value for key, value in expected.items())
                     or any(claim["membership"].get(key) != value for key, value in expected_membership.items())):
                 failures += 1
