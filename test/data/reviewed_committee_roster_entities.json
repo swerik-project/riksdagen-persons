@@ -102,5 +102,57 @@
       "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; 1970 birth year checked.",
       "batch": "2026-10-16-rosters-1950-1970"
     }
+  },
+  {
+    "entity": {
+      "committee_id": "i-LU3kpxGPpyFp21icDzhJ5J",
+      "committee": "Särskilda utskottet (1951)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "1951:p11783:1",
+      "year": 1951,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/ECP0regb1.html",
+      "excerpt": ", s. Suppleant i särskilda utskottet.",
+      "source_header": "3 A Adamsson, E. S. J., LA K, s.",
+      "source_sha256": "6f94c6f4a6a6243200de0a197e8e212c0d81e0caab82161a510bf37072bd467b",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        11783,
+        11784,
+        11785
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; birth year checked where printed.",
+      "batch": "2026-10-16-rosters-1951-1955"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-RHr6J22bT1pwhzP4rwag7x",
+      "committee": "Särskilda utskottet (1954)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "1954:p13262:3",
+      "year": 1954,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/EFP0regb1.html",
+      "excerpt": ", fp. Suppleant i statsutskottet, i bankoutskottet samt i särskilda utskottet.",
+      "source_header": "3 A AASTRUP, N., LFK, fp.",
+      "source_sha256": "adc6a6a7ae807ec559e71f064dcd8bf88bffdb366e6a1145cf638b64bc3d07e4",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        13262,
+        13263,
+        13264
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; birth year checked where printed.",
+      "batch": "2026-10-16-rosters-1951-1955"
+    }
   }
 ]

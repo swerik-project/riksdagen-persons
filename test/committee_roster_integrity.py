@@ -22,7 +22,7 @@ class CommitteeRosterIntegrity(unittest.TestCase):
     def test_roster_curations_retain_source_observations(self):
         """Guarantee: every roster curation retains its reviewed year and evidence.
 
-        Data: reviewed_committee_roster_sources.csv and the corresponding batch
+        Data: reviewed_committee_roster_sources.csv and all roster observations
         in reviewed_committee_memberships.json. Compare exact membership, quote,
         source header, chamber, year and citation for every source claim. This
         protects observation years without converting them into service dates.
@@ -32,7 +32,7 @@ class CommitteeRosterIntegrity(unittest.TestCase):
         """
         expected = pl.read_csv("test/data/reviewed_committee_roster_sources.csv", infer_schema=False).to_dicts()
         claims = [c for c in json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
-                  if c["batch"] == BATCH]
+                  if "roster_observations" in c]
         actual = defaultdict(list)
         for c in claims:
             for observation in c.get("roster_observations", []):
@@ -89,9 +89,9 @@ class CommitteeRosterIntegrity(unittest.TestCase):
         """Guarantee: reviewed historical bodies retain their distinct identities.
 
         Data: committee.csv and reviewed_committee_roster_entities.json. The
-        two 1950 chamber preparation committees must not be conflated with
-        each other or the common 1970 body; the 1950 special committee is
-        scoped to that session. Unknown institutional boundaries stay unknown.
+        chamber preparation committees must not be conflated with each other
+        or the common body used from 1954 onward. Special committees remain
+        scoped to their sessions. Unknown institutional boundaries stay unknown.
         Later sourced enrichment must update the fixture. Failures count bodies.
         CSVW owns primary keys and foreign keys, not these historical meanings.
         """

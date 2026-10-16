@@ -31,6 +31,26 @@ class RosterGateRegressions(unittest.TestCase):
         """Guarantee: the source gate accepts an unchanged supported claim."""
         self.check_sources()
 
+    def test_source_gate_checks_observations_attached_to_older_curations(self):
+        """Guarantee: a later roster observation attached to an SBL curation is still checked."""
+        self.curation["batch"] = "older-sbl-batch"
+        self.curation["service_source"] = {"url": "https://example.org/biography"}
+        self.check_sources()
+        self.curation["roster_observations"][0]["year"] = 1955
+        with self.assertRaisesRegex(AssertionError, "1 roster claims"):
+            self.check_sources()
+
+    def test_source_gate_rejects_loss_of_later_year(self):
+        """Guarantee: retaining an older citation does not mask the loss of a later observation."""
+        later = dict(self.observation, claim_id="1951:p1:1", year=1951)
+        self.curation["roster_observations"].append(later)
+        self.sources = pl.DataFrame([{**self.row, **o} for o in (self.observation, later)]).with_columns(
+            pl.col("year").cast(pl.String))
+        self.check_sources()
+        self.curation["roster_observations"].pop()
+        with self.assertRaisesRegex(AssertionError, "1 roster claims"):
+            self.check_sources()
+
     def test_source_gate_rejects_lost_observation(self):
         """Guarantee: retaining the membership row does not hide a lost source year."""
         self.curation["roster_observations"] = []
