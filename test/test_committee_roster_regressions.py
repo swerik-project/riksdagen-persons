@@ -153,6 +153,14 @@ class RosterGateRegressions(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, "1 roster observations"):
             self.check_session(name, year="1922")
 
+    def test_nineteenth_century_split_session_gate_rejects_wrong_year_and_chamber(self):
+        """Guarantee: nineteenth-century and split-session bodies receive the same semantic checks."""
+        name = "Första kammarens tillfälliga utskott nr 1 (1887 lagtima B)"
+        self.check_session(name, year="1887", chamber="FK")
+        for year, chamber in (("1888", "FK"), ("1887", "AK")):
+            with self.assertRaisesRegex(AssertionError, "1 roster observations"):
+                self.check_session(name, year=year, chamber=chamber)
+
     def test_session_gate_rejects_evidence_from_another_chamber(self):
         """Guarantee: an AK citation cannot attach to an FK temporary committee."""
         name = "Första kammarens tillfälliga utskott nr 1 (1921 lagtima)"

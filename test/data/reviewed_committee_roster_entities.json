@@ -6222,5 +6222,3920 @@
       "identity_basis": "Unique pyriksdagen name candidate within the recorded chamber and year; birth year checked where printed.",
       "batch": "2026-10-16-rosters-1920-1949"
     }
+  },
+  {
+    "entity": {
+      "committee_id": "i-BjTmLZPpyRXymkx44tdUw4",
+      "committee": "Andra kammarens tillfälliga utskott nr 6 (1868 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c1poprot:p142:1",
+      "year": 1868,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c1poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 6. 1: lö9.",
+      "source_header": "utsedd till ledamot i Konstitutions-Utskottet. I: 13. utsedd till ledamot i komitéen för tillsättande af Kammarens tjensteman och betjening. I: 9. utsedd till Fullmägtig i Riksgälds-kontoret. III: 39. Andersson, Lars Daniel, yttranden af. I: 129 -II: 366.",
+      "source_sha256": "f2a1744df800b417addf9ca451670e3f7df23a1d8e14ff8073951727a1c2f659",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        142,
+        143
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-TAYDJidstMJBTWnHByrKJw",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1868 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c1poprot:p450:1",
+      "year": 1868,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c1poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 5 I: 159.",
+      "source_header": "utsedd till suppleant i Stats-Utskottet I: 15. vald till valman för att utse Fullmägtige i Riksbanken och Riksgäldskontoret jemte deras suppleanter, äfvensom styrelseledamöter och suppleanter vid Bankens lånekontor i orterna. III: 13. Danielsson, Daniel: yttranden af. I: 128, 415.",
+      "source_sha256": "f2a1744df800b417addf9ca451670e3f7df23a1d8e14ff8073951727a1c2f659",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        450,
+        451
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-ShQu3iQHN5KHsTf9uyKDH5",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1868 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c1poprot:p472:1",
+      "year": 1868,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c1poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 3. I: 158.",
+      "source_header": "Se vidare Riksbanken. Dissenters : om antagande af lag rörande personer, som bekänna sig till kristna religionen, utan att vara medlemmar af statskyrkan. M. N:o 204 I: 107; L. U. N:o 52 IV: 234-235, 488, 490, 492—516. om upphäfvande af Kongl. Förordningen den 23 Oktober 1860, angående främmande trosbekännare och deras religionsöfning. M. N:o 220 I: 108, 130; L. U. N:o 52 IV: 234- 235, 488, 490, 492—516. Dofsén, E.: yttranden af. II: 129;",
+      "source_sha256": "f2a1744df800b417addf9ca451670e3f7df23a1d8e14ff8073951727a1c2f659",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        472,
+        474
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-UjfFMJ56ZEW5MXnyFwZuTG",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1868 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c1poprot:p559:2",
+      "year": 1868,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c1poprot.html",
+      "excerpt": "utsedd till suppleant i Bevillnings-Utskottet. I: 15. utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 2. I: 158.",
+      "source_header": "III: 453, 562; IV: 90, 149, 151, 461. Ericsson, Pehr, yttranden af. II: 495, 510;",
+      "source_sha256": "f2a1744df800b417addf9ca451670e3f7df23a1d8e14ff8073951727a1c2f659",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        559,
+        561
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-UMV6rwcJzgkQkrVheHDVW4",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1868 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c1poprot:p803:1",
+      "year": 1868,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c1poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 4. I: 159.",
+      "source_header": "H. 37 Hansson, Sr.: yttranden af. II: 537;",
+      "source_sha256": "f2a1744df800b417addf9ca451670e3f7df23a1d8e14ff8073951727a1c2f659",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        803,
+        806
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-UYcCz5LW6USvqPzE6egpCD",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1868 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c1poprot:p818:1",
+      "year": 1868,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c1poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 1 I: 158.",
+      "source_header": "vald till valman för att utse Fullmägtige i Riksbanken och Riksgäldskontoret, jemte deras suppleanter, äfvensom styrelseledamöter och suppleanter vid Bankens lånekontor i orterna. III: 13. Hcderstedt, .1. 0.: utsedd till suppleant åt revisorerna vid Lånekontoret i Wisby. I: 161. Hedlund, S. A.: yttranden af. I: 31, 86, 102, 125, 135, 163, 164, 203, 205, 259, 282, 314, 383, 510, 526, 536, 551, 598;",
+      "source_sha256": "f2a1744df800b417addf9ca451670e3f7df23a1d8e14ff8073951727a1c2f659",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        818,
+        824
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-jcRTtQh5t5eseTcQmzVav",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1869 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c2poprot:p596:1",
+      "year": 1869,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c2poprot.html",
+      "excerpt": "utsedd till ledamot i komitéen för att handhafva vården om Kammarens ekonomiska angelägenheter. I: 11. utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 1. I: 153.",
+      "source_header": "Flädersaft: att denna artikel må i tulltaxan hänföras till bärsaft. M. N:o 40 I: 42, 53; Bev. U. N:o 2 p. 3 I: 342, 344, 397 — 399. Fläsk, se Täflingsmöten. Fock, A. H. E., Friherre: yttranden af. I: 592;",
+      "source_sha256": "74fa21ce1196f4d4ec430327142bf2daef177b6e768990c4086093dd53130a02",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        596,
+        600
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-8bHYNu5wVsXHQyfYaxazsy",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1869 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c2poprot:p813:1",
+      "year": 1869,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c2poprot.html",
+      "excerpt": "Hellerström, S. A.: utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 5. I: 155.",
+      "source_header": "Heland, von, J. F., Öfverstelöjtnant: om pension åt honom. K. P. N:o 1 pag. 39; S. U. N:o 40 p. 18 I: 508, 509, II: 239; R. S. N:o 80 p. 16 IV: 612. Helgonskyld: om utfärdande af en förklaring utaf Kongl. Brefvet till Kammarkollegium den 17 September 1856 angående helgonsky Iden. M. N:o 248 I: 122, 129, 147; A. T. U. N:o 44 III: 579, 580, . IV: 258. Hellerström, S. A.: utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 5. I: 155.",
+      "source_sha256": "74fa21ce1196f4d4ec430327142bf2daef177b6e768990c4086093dd53130a02",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        813
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Mx7Ab3qHtD8hDHGaPPHDqE",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1869 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c2poprot:p1481:2",
+      "year": 1869,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c2poprot.html",
+      "excerpt": "utsedd till suppleant i Stats-Utskottet. I: 16. utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 4 I: 155.",
+      "source_header": "71 Målkärl: om ändring, för så vidt landet angår, af den föreskrifna tiden för omjustering af mått, målkärl och vigter. M. N:o 334 I: 127, 143, 149; A. T. U. N:o 23 II: 245, 323, 450. Månsson, Ola: yttranden af. I: 178;",
+      "source_sha256": "74fa21ce1196f4d4ec430327142bf2daef177b6e768990c4086093dd53130a02",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1481,
+        1484
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-BdCjrM6BUySySSWKdyXRrg",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1869 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c2poprot:p1495:1",
+      "year": 1869,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c2poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 2. I: 154.",
+      "source_header": "Naturvetenskaplig undersökning: om anslag för anställande af en sådan undersökning. K. P. N:o 27 III: 19, 66, 67; S. U. N:o 67 III: 502, 503, 651; R. S. N:o 49 IV: 364. New-York: om anställande af generalkonsul i New-York m. fl. ställen. S.U. N:o 34 p. 3 al: 342, 344, 479—480; R. S. N:o 74 p. 3 IV: 611. Nilson, A. W.: yttranden af. I: 183, 594;",
+      "source_sha256": "74fa21ce1196f4d4ec430327142bf2daef177b6e768990c4086093dd53130a02",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1495,
+        1499
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-MxnCHbrG7rLvxCZk9b1VaF",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1869 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c2poprot:p1775:1",
+      "year": 1869,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c2poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 3. I: 154.",
+      "source_header": "84 P. Printzensköld, A.: yttranden af. I: 168, 224, 285, 416, 423;",
+      "source_sha256": "74fa21ce1196f4d4ec430327142bf2daef177b6e768990c4086093dd53130a02",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1775,
+        1779
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-YKZyy3Jk4N9SrCYiXuLhTP",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1870 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c3poprot:p107:1",
+      "year": 1870,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c3poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 1.",
+      "source_header": "IV: 144, 146, 209, 335, 367. utsedd att anföra den deputation, som hos Konungen skulle begära Talman och vice Talman. I: 14. utsedd till ledamot i Bevillnings-Utskottet. I: 27. Altin, L. M.: yttranden af. I: 108, 276, 494;",
+      "source_sha256": "7c8822b9350cb112943a6bcfd5b8da741ce226f66ca18e077a8c07e029e5d408",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        107,
+        111
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Hp2ttyh54oZkUnDBZrJbvy",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1870 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c3poprot:p121:1",
+      "year": 1870,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c3poprot.html",
+      "excerpt": "Andersson, Andreas, i Mosserudstorp: utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 8. I: 145.",
+      "source_header": "Andersson, Anders Peter, i Helgesta: yttrande af. I: 564. vald till ledamot i Opinionsnämnden. I: 186. vald till suppleant i Särskilda Utskottet i anledning af Herr Palanders motion om reorganisation af rikets sjöförsvar. I: 348. Andersson, Andreas, i Mosserudstorp: utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 8. I: 145.",
+      "source_sha256": "7c8822b9350cb112943a6bcfd5b8da741ce226f66ca18e077a8c07e029e5d408",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        121
+      ],
+      "identity_basis": "Scan p. 5 reads temporary committee N:o 3 for Andreas Andersson in Mosserudstorp; HTML OCR has 8.",
+      "scan_url": "https://weburn.kb.se/riks/tv%C3%A5kammarriksdagen/pdf/web/1870/web_reg_1870__ak__prot/reg_1870__ak__prot.pdf",
+      "scan_sha256": "19f06b45b2b7a6e014c9748e519c623d2d5c2ff6689a25cdb5a95722f3894227",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-TjFVCn7P6DSU5yBUtqJYjQ",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1870 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c3poprot:p128:1",
+      "year": 1870,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c3poprot.html",
+      "excerpt": "Andersson, Johannes, i Knarrevik: yttranden af. II: 482, 485, 559, 649. utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 4. I: 145.",
+      "source_header": "IV: 282. utsedd till ledamot i Stats-Utskottet. I: 27. Andersson, Johannes, i Knarrevik: yttranden af. II: 482, 485, 559, 649. utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 4. I: 145.",
+      "source_sha256": "7c8822b9350cb112943a6bcfd5b8da741ce226f66ca18e077a8c07e029e5d408",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        128
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-7B3nKNszLuNtn43XfnyxMx",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1870 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c3poprot:p471:1",
+      "year": 1870,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c3poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 2. 1: 145.",
+      "source_header": "Domare: om förhöjning i anslaget till ersättning åt domare. K. P. N:o 1 pag. 14; S. U. N:o 22 p. 9 mom. c I: 646, II: 3, 67; R. S. N:o 35 p. 8 IY: 272. Domstolsväsendet: om dess organisation. M. N:o 51 I: 72, 84; L. U. N:o 12 I: 326, 345, 395—423. Dufva, A. W.: yttranden af. I: 123;",
+      "source_sha256": "7c8822b9350cb112943a6bcfd5b8da741ce226f66ca18e077a8c07e029e5d408",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        471,
+        476
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-8MrniaFcYmxyKmQ7LHRB4n",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1870 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c3poprot:p744:2",
+      "year": 1870,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c3poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 5 II: 173.",
+      "source_header": "utsedd till valman för att utse Riksdagens fullmäktige i Riksbanken och Riksgäldskontoret jemte deras suppleanter äfvensom styrelseledamöter och suppleanter vid Bankens lånekontor. III: 518. Gratifikationer: om beviljande af ett särskildt gratifikationsanslag åt tjenstemännen hos Stats-Utskottet. S. U. N:o 18 I: 346 392 421— 435; S.U. N:o 54 p. 2 III: 289, 290, 342, IV: 5—6; S. U.’N:o 82 IV: 271, 272, 367—368. Grenander, J. M. A.: yttranden af. I: 466;",
+      "source_sha256": "7c8822b9350cb112943a6bcfd5b8da741ce226f66ca18e077a8c07e029e5d408",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        744,
+        749
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-VyVU5VPQB6LduHSVE6CBKw",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1871 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c4poprot:p138:1",
+      "year": 1871,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c4poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 1. 1:",
+      "source_header": "IV: 201. Andersson, L., Major: om efterskänkande af den honom samt Rådmannen L. O. Peterson och Kaptenen W. Kleman åliggande skyldighet^ att erlägga ränta å ett dem ådömdt ersättningsbelopp. M. N:o 155 I: 121, 151; S.U. N:o 33 II: 254, 261, 339 - 342. Andersson, Ola, i Nordanå: yttranden af. II: 288;",
+      "source_sha256": "c8279f72167623dcdae0bcc378d9147db9aa492749eb9455c3bcb7ab22e34468",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        138,
+        141
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-NVTvfgauRxCc5E7zxZevTn",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1871 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c4poprot:p143:1",
+      "year": 1871,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c4poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 2. 1:",
+      "source_header": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 1. 1: 163. Andersson, Per, i Fragg: yttranden af. Il: 464; m: 361.",
+      "source_sha256": "c8279f72167623dcdae0bcc378d9147db9aa492749eb9455c3bcb7ab22e34468",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        143,
+        144
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-DoTRgPweoUYTK4s8jN5Zd6",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1871 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c4poprot:p161:1",
+      "year": 1871,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c4poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 3. I: 163.",
+      "source_header": "utsedd till suppleant för lédamöterne i Konstitutions-Utskottet. I: 17. Andra Kammaren: om förändrad lydelse af 14 § i arbetsordningen för Riksdagens Andra Kammare. M. N:o 6 I: 98, 99, 154; Ä T U N:o 5 I: 185, 211, 352—354. Andreasson, Sven, i Tollered: yttranden af. I: 522, 534;",
+      "source_sha256": "c8279f72167623dcdae0bcc378d9147db9aa492749eb9455c3bcb7ab22e34468",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        161,
+        164
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-RcpdNz3WgLMvJqYbBzBYQB",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1872 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c5poprot:p71:1",
+      "year": 1872,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c5poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 1. I: 119. Advokat, se Fullmäktig, Rättegångsombud.",
+      "source_header": "III: 160, 16G ; IV: 229, 256, 374, 504, 522, 527. Adlersparre, A.: yttranden af. II: 78, 93, 97, 123, 135, 139, 308. 371; III: 286;",
+      "source_sha256": "cb8555d106c0fac7853ca54261d02dad7b3ce81a3092ec52fe8f7310479bb5d5",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        71,
+        74
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-R7vSeXRBj8fiRiwKwmDCz4",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1872 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c5poprot:p230:1",
+      "year": 1872,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c5poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 3. I: 119.",
+      "source_header": "Bergengren, Georg, Provincialläkare: angående pension åt honom. K. P. N:o 1 pag. 41; S.U. N:o 13 p. 15 II: 82, 240, 373; R.S. N:o 17 p. 1 IV: 598. Bergman, Carl Johan, Lektor: utsedd till styrelseledamot vid lånekontoret i Wisby. III: 402. Bergström, J.: yttranden af. 1: 332, 504;",
+      "source_sha256": "cb8555d106c0fac7853ca54261d02dad7b3ce81a3092ec52fe8f7310479bb5d5",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        230,
+        233
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-2JYY9ykpvWb2UZ4jb3MeGc",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1872 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c5poprot:p660:1",
+      "year": 1872,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c5poprot.html",
+      "excerpt": "Gumaelius, Arvid: yttranden af. IV: 15, 31, 45, 72, 104, 138, 195, 298, 307, 308, 318, 324, 335, 348, 416, 480, 499, 578, 587, 600, 634. utsedd till suppleant för ledamöterne i Konstitutions-Utskottet. I: 15. utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 2. I: 119. utsedd till revisor för deltagande uti innevarande års granskning af Statsverkets, Riksbankens och Riksgälds-kontorets tillstånd, styrelse och förvaltning. I: 158.",
+      "source_header": "30 H. Gumaelius, Arvid: yttranden af. IV: 15, 31, 45, 72, 104, 138, 195, 298, 307, 308, 318, 324, 335, 348, 416, 480, 499, 578, 587, 600, 634. utsedd till suppleant för ledamöterne i Konstitutions-Utskottet. I: 15. utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 2. I: 119. utsedd till revisor för deltagande uti innevarande års granskning af Statsverkets, Riksbankens och Riksgälds-kontorets tillstånd, styrelse och förvaltning. I: 158.",
+      "source_sha256": "cb8555d106c0fac7853ca54261d02dad7b3ce81a3092ec52fe8f7310479bb5d5",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        660
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-8BDV5vLmWhtubwkY4Ddjaz",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1874 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c7poprot:p321:1",
+      "year": 1874,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c7poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens tillfälliga Utskott N:o 3. I: 84.",
+      "source_header": "IV: 372. utsedd till ledamot i Andra Kammarens tillfälliga Utskott Nio 3. I: 84. Boman, C. E.: yttranden af. I: 112, 140:",
+      "source_sha256": "e6d916a694d9fdacd3d7dd9e592a01965043c270a2b629045799a55b11febf8d",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        321,
+        326
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-GWM5SbqfEMcJqgkySGjgSW",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1874 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c7poprot:p457:1",
+      "year": 1874,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c7poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens tillfälliga Utskott N:o 1. I: 84.",
+      "source_header": "utsedd till ledamot i Andra Kammarens tillfälliga Utskott N:o 1. 1: 84. Ehrenheim, von, Per Jakob, f. d. Statsråd: vald till fullmäktig i Riksbanken. IV: 183. Ekman, C.: yttranden af. I: 300;",
+      "source_sha256": "e6d916a694d9fdacd3d7dd9e592a01965043c270a2b629045799a55b11febf8d",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        457,
+        460
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Je12ATPMPBxS5AfGznDbPB",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1874 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c7poprot:p464:1",
+      "year": 1874,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c7poprot.html",
+      "excerpt": "Ekström, M.: utsedd till ledamot i Andra Kammarens tillfälliga Utskott N:o 2. I: 84.",
+      "source_header": "Ekonomiska karteverket: om anslag dertill. K. P. Ko 1 pag. 38; S U. N:o 18 p. 14 II: 136, 145, 375; R. S. N:o 37 p. 14 V: 365. Ekskog: o-m dispositionsrätten deröfver å skattejord. M. i’F. K. N:o 4: S.U. Ko 22 p. 6 I: 244, 245, 301; R. S. Ko 79 V: 510. Ekström, M.: utsedd till ledamot i Andra Kammarens tillfälliga Utskott N:o 2. I: 84.",
+      "source_sha256": "e6d916a694d9fdacd3d7dd9e592a01965043c270a2b629045799a55b11febf8d",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        464
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-MbNSbraKZwsZswqcxchbhJ",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1875 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c8poprot:p36:1",
+      "year": 1875,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c8poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens tillfälliga Utskott N:o 3 I: 3: 4.",
+      "source_header": "Ackordsamorteringsfond: om denna fonds förbindelsers öfvertagande från år 1876 af statsverket. K. P. N:o 1 pag. 13; S. U. N:o 6 p. 8 II: 14: 35; R. S. N:o 25 p. 5 IV: 43: 74. om anslag till fullgörande af denna fonds förbindelser. K. P. N:o 1 pag. 23; S. U. N:o 6 p. 59 II: 15: 55; R. S. N:o 25 p. 45 IV: 43: 74. Adlersparre, A.: yttranden af. I: 5: 31, 40; 10: 7, 12; 11: 28, 42;",
+      "source_sha256": "2dab331f7816332d04da7affa2f6f0e6c593d4092e248e4f83c34d69472ce1ab",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        36,
+        42
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-52bAB9a7LvH9b6NBjE4Fk5",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1875 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c8poprot:p219:1",
+      "year": 1875,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c8poprot.html",
+      "excerpt": "Bengtsson, J., i Öxared: utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 2. I: 3: 4.",
+      "source_header": "B. 11 Bengtsson, J., i Öxared: utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 2. I: 3: 4.",
+      "source_sha256": "2dab331f7816332d04da7affa2f6f0e6c593d4092e248e4f83c34d69472ce1ab",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        219
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-NXZRHEjVETx2Cr2KTE7abK",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1875 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "c8poprot:p375:1",
+      "year": 1875,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/c8poprot.html",
+      "excerpt": "utsedd till ledamot i Andra Kammarens Tillfälliga Utskott N:o 1. I: 3: 3.",
+      "source_header": "Danmark: om vidtagande af åtgärder för att från detta land utfå åtskilliga der befintliga handlingar och kartor. M. N:o 174 III: 33: 1; 35: 1; A. T. U. N:o 23 IV: 46: 29 -35. De Geer, Louis, Justitie-statsminister: yttrande af. Y: 53: 28. De la Gardie, R.: yttranden af. I: 19: 30, 39, 43, 44;",
+      "source_sha256": "2dab331f7816332d04da7affa2f6f0e6c593d4092e248e4f83c34d69472ce1ab",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        375,
+        379
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-QcvbgNnmkuqnLaK4YHedmM",
+      "committee": "Särskilda utskottet nr 1 (1890 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "cnpcprot:p140:2",
+      "year": 1890,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/cnpcprot.html",
+      "excerpt": "—, Suppleant i särskilda utskottet n:o 1. I. 9, 2.",
+      "source_header": "Almén, A. T. Yttranden af. Se anföranden. —, Suppleant i Statsutskottet. I. 2, 3. Almgren, F. A., suppleant i statsutskottet. I. 2, 3.",
+      "source_sha256": "809524b49f55bff428f014070b40a17ce5a3694a825719c536ce8ca54d0651be",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        140,
+        142
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-QqMXjoGtU3VmRXbAQJ8P5E",
+      "committee": "Särskilda utskottet nr 2 (1890 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "cnpcprot:p474:1",
+      "year": 1890,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/cnpcprot.html",
+      "excerpt": "—, Ledamot i särskilda utskottet n:o 2. II. 20, 2.",
+      "source_header": "17 Anklagad för brott, derå straffarbete följa kan, ang. rättighet för att begagna rättegångsbiträde. M. A. K. n:o 52. L. U. n:o 45. III. 28, 2. B. S. n:o 48. III. 35, 44. Annerstedt, P. S. L. Yttranden af. Se anföranden.",
+      "source_sha256": "809524b49f55bff428f014070b40a17ce5a3694a825719c536ce8ca54d0651be",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        474,
+        475
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Hwk6fSTQgJSoqdeQ5xzX8W",
+      "committee": "Särskilda utskottet nr 1 (1891 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "copoprot:p902:1",
+      "year": 1891,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/copoprot.html",
+      "excerpt": "Brodin, O. A.: yttranden af; se Anföranden; ledamot i särskilda utskottet n:r 1. I: 4: 3;",
+      "source_header": "Brobyggnader; om anslag till understödjande af. K. S. P. VI p. 35: S. U. n:r 14 p. 2, 4 I: 7: 9; R. S. n:r 16 p. 2, 4 II: 19: 12. Brodin, O. A.: yttranden af; se Anföranden; ledamot i särskilda utskottet n:r 1. I: 4: 3;",
+      "source_sha256": "7af75c7e356573da7c55dbb1ecd2463e3f948f55f7144f28eada7096e18d9ae3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        902
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-943GsmMgwRA8ZhKd7xdqix",
+      "committee": "Särskilda utskottet nr 2 (1891 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "copoprot:p1215:1",
+      "year": 1891,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/copoprot.html",
+      "excerpt": "suppleant i särskilda utskottet n:r 2. I: 11: 2;",
+      "source_header": "H. Kaffe och vicker; ang. afskaffande af tullen å. M. A. K. n:r 111; M. F. K. n:r 13; Bev. U. n:r 1 p. 11 1: 14: 3; Bev. U. n:r 3 p. 2 II: 17: 1; Gem. omr. II: 19: 2. Hahn, A., yttranden af; se Anföranden;",
+      "source_sha256": "7af75c7e356573da7c55dbb1ecd2463e3f948f55f7144f28eada7096e18d9ae3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1215,
+        1216
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-KkYHximtq7AdoLSLsgozPa",
+      "committee": "Särskilda utskottet nr 2 (1895 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "csp0reg:p586:2",
+      "year": 1895,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/csp0reg.html",
+      "excerpt": "Suppleant i konstitutionsutskottet. Ledamot i särskilda utskottet n:r 2. Valman vid justitieombudsmans valet. Motion F. K. n:r 11.",
+      "source_header": "I: 7,16 — 7 — Almgren, F. A.",
+      "source_sha256": "c418ea1db12f2ea64d1d01bb6bc4d078be3919d2bfe863287868600fdb5be22b",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        586,
+        587
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-VmGNCADvGqdHgj9wEWor5K",
+      "committee": "Särskilda utskottet nr 1 (1895 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "csp0reg:p1793:2",
+      "year": 1895,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/csp0reg.html",
+      "excerpt": "Ledamot i särskilda utskottet n:r 1. Yttranden F. K. II: 23,32 24,n, 19, 36, 40 III: 32,20 33,12.",
+      "source_header": "I: 6,33  Asker, A.",
+      "source_sha256": "c418ea1db12f2ea64d1d01bb6bc4d078be3919d2bfe863287868600fdb5be22b",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1793,
+        1795
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-8jPegBsKrrjHRdAd1fx1qs",
+      "committee": "Särskilda utskottet nr 2 (1898 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "cvp0reg:p999:2",
+      "year": 1898,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/cvp0reg.html",
+      "excerpt": "Suppleant i konstitutionsutskottet. — Valman vid justitieombudsmansvalet. — Ledamot i särskilda utskottet n:r 2. —",
+      "source_header": "Motion F. K. n:r 38. Yttranden F. K. 1:10,3 15,40 II: 20,2, 4, 6 21,24 24,44 III: 28,40 33,40 35,20. Almgren, F. A.",
+      "source_sha256": "67b849b507999b48e7ca0985eadfac800a6d670e267d20431aadd90c96d68609",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        999,
+        1000
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-DQvpbxKK2BEKJtoNGt27jF",
+      "committee": "Särskilda utskottet nr 1 (1898 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "cvp0reg:p2805:1",
+      "year": 1898,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/cvp0reg.html",
+      "excerpt": "Ledamot i särskilda utskottet n:r 1. Motion A. K. n:r 29.",
+      "source_header": "I: 2,2  Behmer, J. E.",
+      "source_sha256": "67b849b507999b48e7ca0985eadfac800a6d670e267d20431aadd90c96d68609",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        2805,
+        2806
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-R8vQgwtYtggvUMLtrzJ3Mt",
+      "committee": "Särskilda utskottet nr 3 (1901 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "cyp0reg:p872:2",
+      "year": 1901,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/cyp0reg.html",
+      "excerpt": "Suppleant i bevillningsutskottet. Ledamot i särskilda utskottet n:r 3. Vald till suppleant för fullmäktige i riksgäldskontoret.",
+      "source_header": "Yttranden F. K. II: 24,46 III: 33,14. Almgren, O. Ledamot i tillfälligt utskott. Yttranden F. K. I: 8,31 II: 19,61 23,3, 7 24,33,''34. Almqvist, K. F. G.",
+      "source_sha256": "f0f59203eae95a09b076c5932bc5b90bffa48fee55980926d2b8c26ca8b01cd4",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        872,
+        873
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-CCek399Bs3e7ZfiuGtFsw8",
+      "committee": "Särskilda utskottet nr 1 (1901 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "cyp0reg:p1446:1",
+      "year": 1901,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/cyp0reg.html",
+      "excerpt": "Ledamot i särskilda utskottet n:r 1. Vald till ordförande för fullmäktige i riksgäjdskontoret.",
+      "source_header": "II: 27,13 III: 29,6 0 Anderson, F. Albert.",
+      "source_sha256": "f0f59203eae95a09b076c5932bc5b90bffa48fee55980926d2b8c26ca8b01cd4",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1446,
+        1449
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-RXT52vKYo9X4TPzvQ3dcvi",
+      "committee": "Särskilda utskottet nr 2 (1901 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "cyp0reg:p6273:1",
+      "year": 1901,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/cyp0reg.html",
+      "excerpt": "Suppleant i särskilda utskottet n:r 2. Yttranden F. K. I: 8,19 II: 25,7.",
+      "source_header": "  De Geer, G. L., frih.",
+      "source_sha256": "f0f59203eae95a09b076c5932bc5b90bffa48fee55980926d2b8c26ca8b01cd4",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        6273,
+        6274
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-3JWdrz62dbmSF1bs1eG9uu",
+      "committee": "Särskilda utskottet nr 1 (1902 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "czp0reg:p5289:2",
+      "year": 1902,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/czp0reg.html",
+      "excerpt": "Suppleant i särskilda utskottet n:r 1.",
+      "source_header": "Till anställande af en extra grufingeniör inom norra bergm ästaredistriktet anvisas 1,500 kr. för 1903. Bergsskolor; se Bergsbruk. Bergström, A.",
+      "source_sha256": "dcc137ed7e147c075bbece0d61dd7ce3cf9dfa9d2e383c20789b95f4f44cad0b",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        5289,
+        5291
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-FobXkXKMkCqb9ybmDNSzTM",
+      "committee": "Särskilda utskottet nr 2 (1902 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "czp0reg:p18975:1",
+      "year": 1902,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/czp0reg.html",
+      "excerpt": "Valman vid justitieombudsmansvalet. Suppleant i särskilda utskottet n:r 2. Motioner A. K. n:r 40, 120, 121, 125, 139, 140, 141, 172, 197, 198. Yttranden A. K. I: 11,24 13,19 16,40, 44, 47 II: 22,29 III: 32,2 35,32, 54 IV: 40,16, 25 41,52 44,24 V: 52,12 55,3 2.",
+      "source_header": "I: 8,4 '' Hedlund, H.",
+      "source_sha256": "dcc137ed7e147c075bbece0d61dd7ce3cf9dfa9d2e383c20789b95f4f44cad0b",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        18975,
+        18976
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-B5eatFtiiHbi4JxruMMeCy",
+      "committee": "Särskilda utskottet nr 1 (1903 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d0p0regb1:p1691:1",
+      "year": 1903,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d0p0regb1.html",
+      "excerpt": "Ledamot i särskilda utskottet n:r 1. Yttrande F. K. I: 9,28 15,3 18,9, 13 21,28, 33, 40 IL 29,50, 63 35,23, 26, 2 9 38,12, 18.",
+      "source_header": "Ledamot i lagutskottet. Valman vid val af tryckfrihetskommitterade. Almgren, O.",
+      "source_sha256": "83dfd72be849c06c0406c95f6582d49ab5b1d30dc1c3d0179aaf62fb561ebc4b",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1691,
+        1693
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-W3AqDgUGGkDfTTAyRXJpXE",
+      "committee": "Särskilda utskottet nr 3 (1903 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d0p0regb1:p1829:1",
+      "year": 1903,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d0p0regb1.html",
+      "excerpt": "Ledamot i särskilda utskottet n:r 3.",
+      "source_header": "Andaktsstunder. K. prop. ang. stadgande om rätt för konsistorium att, där sådant af omständigheterna föranledes, förordna om hållande af andra offentliga andaktsstunder i stället för ottesångsgudstjänster i städerna med vissa undantag antages. (Ändring i 2 kap. 3 § K. L.) Anderson, F. A.",
+      "source_sha256": "83dfd72be849c06c0406c95f6582d49ab5b1d30dc1c3d0179aaf62fb561ebc4b",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1829,
+        1832
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-H1Sb93mDGfDKYpsGuKYNxX",
+      "committee": "Särskilda utskottet nr 2 (1903 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d0p0regb1:p10084:1",
+      "year": 1903,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d0p0regb1.html",
+      "excerpt": "Suppleant i särskilda utskottet n:r 2. Yttranden A. K. I: 17,13 III: 35,65.",
+      "source_header": "I: 12,1 I: 18,2 Ekman, A.",
+      "source_sha256": "83dfd72be849c06c0406c95f6582d49ab5b1d30dc1c3d0179aaf62fb561ebc4b",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        10084,
+        10086
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-W9ubnvJLgN82Yhj7PV57f6",
+      "committee": "Särskilda utskottet nr 2 (1904 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d1p0reg:p2624:1",
+      "year": 1904,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d1p0reg.html",
+      "excerpt": "Suppleant i särskilda utskottet n:r 2. Motioner A. K. n:r 8, 53, 151, 155, 226.",
+      "source_header": "I: 21,2  Andersson, H., i Grimbo.",
+      "source_sha256": "1d411f16f7a2789b89f9f11c6e576c682a4b868ecd8e74e7413e7b46dd9bc327",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        2624,
+        2625
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-EQBNUVx4yo6bHokBWXG7No",
+      "committee": "Särskilda utskottet nr 1 (1904 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d1p0reg:p5525:1",
+      "year": 1904,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d1p0reg.html",
+      "excerpt": "Suppleant i särskilda utskottet n:r 1. Motioner A. K. n:r 135, 201.",
+      "source_header": "— I: 5,4 Bengtsson, P. A., i Borås.",
+      "source_sha256": "1d411f16f7a2789b89f9f11c6e576c682a4b868ecd8e74e7413e7b46dd9bc327",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        5525,
+        5526
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-CAkJ2wqMskcxt8o5AsVaXP",
+      "committee": "Särskilda utskottet nr 2 (1905 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d2p0regb1:p1818:1",
+      "year": 1905,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d2p0regb1.html",
+      "excerpt": "Ledamot i särskilda utskottet n:r 2.",
+      "source_header": "Allmänna landtbrriksmöten; se Landtbruksmöten. Allmänna läroverk; se Läroverk, allmänna. Almgren, O.",
+      "source_sha256": "00dc9ab0bd3944eb77e23567ee515c3d31a2edca0556492133b61446342d6a3c",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1818,
+        1820
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-UtZeiLL2WwA5mY3UnfF7n2",
+      "committee": "Särskilda utskottet nr 1 (1905 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d2p0regb1:p4913:1",
+      "year": 1905,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d2p0regb1.html",
+      "excerpt": "Ledamot i särskilda utskottet n:r 1. Yttranden F. K. I: 4,io 21,21 II: 24,25 32,12 34,32 38,6 III: 39,7 43,58 48,80, 85.",
+      "source_header": "  Benedicks, G.",
+      "source_sha256": "00dc9ab0bd3944eb77e23567ee515c3d31a2edca0556492133b61446342d6a3c",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        4913,
+        4914
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-WtVWYocemU7XqETFNL4UnE",
+      "committee": "Särskilda utskottet nr 1 (1907 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d4p0regb1:p4690:2",
+      "year": 1907,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d4p0regb1.html",
+      "excerpt": "Suppleant i särskilda utskottet n:r 1. Vald till statsrevisorssuppleant. Yttranden F. K. II: 31,19 IV: 48,41, 44 49,6 51,23 52,4, 19, 31, 33.",
+      "source_header": "I: 14,3  Beck-Friis, J. G., frih.",
+      "source_sha256": "5b5447aa2eac028d020dba57d37ef55e3e2e3c6302dd4119ed42e94b2e497ec3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        4690,
+        4692
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-9LKm9z7mDwwTncG9fuNHqT",
+      "committee": "Särskilda utskottet nr 2 (1907 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d4p0regb1:p5116:1",
+      "year": 1907,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d4p0regb1.html",
+      "excerpt": "Suppleant i särskilda utskottet n:r 2.",
+      "source_header": "Motioner A. K. n:r 62, 76, 77, 120, 127, 173, 241, 273. Yttranden A. K. I: 6,4 II: 31,3 36,19, 25 III: 41,36 V: 69,1. Berggren, J. E.",
+      "source_sha256": "5b5447aa2eac028d020dba57d37ef55e3e2e3c6302dd4119ed42e94b2e497ec3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        5116,
+        5117
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-SRHN5ZkVskt2AESpcTsiYc",
+      "committee": "Särskilda utskottet nr 2 (1908 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d5p0regb1:p2259:1",
+      "year": 1908,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d5p0regb1.html",
+      "excerpt": "Ledamot i särskilda utskottet n:r 2. Motioner A. K. n:r 156, 239, 248.",
+      "source_header": "I: 9,3  Andersson, H., i Grimbo.",
+      "source_sha256": "b3d2084c8c207d092e169aabcc5f832aab183c4b56a0cbc1d738ec76bfa4dda3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        2259,
+        2260
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-QUszCQ1AxiKCjT7F4S4CrB",
+      "committee": "Särskilda utskottet nr 1 (1908 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d5p0regb1:p5586:2",
+      "year": 1908,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d5p0regb1.html",
+      "excerpt": "Suppleant i konstitutionsutskottet. Ledamot i särskilda utskottet n:r 1. Motion F. K. n:r 44.",
+      "source_header": "Beklädnad, arméns; se Armén. Beklädnad, värnpliktiges; se Värn-plikt. Bellinder, A.",
+      "source_sha256": "b3d2084c8c207d092e169aabcc5f832aab183c4b56a0cbc1d738ec76bfa4dda3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        5586,
+        5587
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-GyvU4XzRXRuAvyngj7FzQA",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1910 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d7p0regb1:p1041:1",
+      "year": 1910,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d7p0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 1.",
+      "source_header": "  Ahlfvengren, F. E.",
+      "source_sha256": "39d5b2b1078d61a9d1e1116d3cebfbf9735d1d4222c874073b4dcac200340bc3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1041,
+        1042
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-9WHytX1Wd3sYnKKA8baAdE",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1910 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d7p0regb1:p1709:1",
+      "year": 1910,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d7p0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott n:r 3. i Ledamot i särskilda utskottet n:r 2.",
+      "source_header": "Andra kammaren Anderson, P., i Arvika.",
+      "source_sha256": "39d5b2b1078d61a9d1e1116d3cebfbf9735d1d4222c874073b4dcac200340bc3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1709,
+        1710
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-XHEPFUuif3hgxibVr9n5AE",
+      "committee": "Särskilda utskottet nr 1 (1910 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d7p0regb1:p3781:1",
+      "year": 1910,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d7p0regb1.html",
+      "excerpt": "Ledamot i särskilda utskottet n:r 1. Motion F. K. nr 15.",
+      "source_header": "III: 31,83 V: 51,17 Asker, A.",
+      "source_sha256": "39d5b2b1078d61a9d1e1116d3cebfbf9735d1d4222c874073b4dcac200340bc3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        3781,
+        3782
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-AkNuMB5zgKGcdddMu7fdfw",
+      "committee": "Första kammarens tillfälliga utskott nr 2 (1910 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d7p0regb1:p5704:1",
+      "year": 1910,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d7p0regb1.html",
+      "excerpt": "Ledamot i F. K:s tillfälliga utskott nr 2 (ordf.).",
+      "source_header": "  Biörklund, H. T.",
+      "source_sha256": "39d5b2b1078d61a9d1e1116d3cebfbf9735d1d4222c874073b4dcac200340bc3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        5704,
+        5706
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-X3hTsRgJ8TKjbBiYJHYDEm",
+      "committee": "Första kammarens tillfälliga utskott nr 1 (1910 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d7p0regb1:p8286:2",
+      "year": 1910,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d7p0regb1.html",
+      "excerpt": "Suppleant i bevillningsutskottet. Ledamot i F. K:s tillfälliga utskott n:r 1. Valman vid justitieombudsmansvalet. Valmanssuppleant vid fullmäktigevalen. Motioner F. K. nr 15, 57, 86. Yttranden F. K. 1:12,32,18,11, II: 21,34.",
+      "source_header": "I: 7,7 I: 8,33 Danström, L.",
+      "source_sha256": "39d5b2b1078d61a9d1e1116d3cebfbf9735d1d4222c874073b4dcac200340bc3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        8286,
+        8287
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-b8yMuD6i1JSwPYYFLD9fJ",
+      "committee": "Särskilda utskottet nr 3 (1910 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d7p0regb1:p9074:2",
+      "year": 1910,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d7p0regb1.html",
+      "excerpt": "Suppleant i särskilda utskottet n:r 3.",
+      "source_header": "Ekholm, B., f. d. riksdagsman. Revisor vid riksbankens afdelningskontor i Sundsvall. Eklund, O. G.",
+      "source_sha256": "39d5b2b1078d61a9d1e1116d3cebfbf9735d1d4222c874073b4dcac200340bc3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        9074,
+        9076
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-SsaECR9cT1Asqbsxxr1xmu",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1910 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d7p0regb1:p9547:1",
+      "year": 1910,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d7p0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 5.",
+      "source_header": "Valwanssuppleant vid justitieombudsman sv al et. Suppleant i särskilda utskottet nr 3. Erlansson, J.",
+      "source_sha256": "39d5b2b1078d61a9d1e1116d3cebfbf9735d1d4222c874073b4dcac200340bc3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        9547,
+        9548
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Cz6r9Azp63BM2WekG4sbrx",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1910 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d7p0regb1:p11916:1",
+      "year": 1910,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d7p0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 4. Suppleant i särskilda utskottet nr 3 (v. ordf.).",
+      "source_header": "  Fornander, J. A. U.",
+      "source_sha256": "39d5b2b1078d61a9d1e1116d3cebfbf9735d1d4222c874073b4dcac200340bc3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        11916,
+        11917
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-UzsJ7awHsRGHwLSmmQZEwS",
+      "committee": "Särskilda utskottet nr 2 (1910 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d7p0regb1:p15636:2",
+      "year": 1910,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d7p0regb1.html",
+      "excerpt": "Ledamot i särskilda utskottet n:r 2. Motion F. K. nr 29.",
+      "source_header": "Andra kammaren Hellner, J.",
+      "source_sha256": "39d5b2b1078d61a9d1e1116d3cebfbf9735d1d4222c874073b4dcac200340bc3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        15636,
+        15638
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-WHns8UBoLNi5dBEfGcEjhF",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1910 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d7p0regb1:p21804:1",
+      "year": 1910,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d7p0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 2.",
+      "source_header": "Yalmanssuppleant vid justitieombudsmansvalet. Suppleant i särskilda utskottet nr 3. Motioner A. K. nr 42, 65, 278. Yttrande A. K. Yl: 58,6 3. Jönsson, J., i Slätåker.",
+      "source_sha256": "39d5b2b1078d61a9d1e1116d3cebfbf9735d1d4222c874073b4dcac200340bc3",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        21804,
+        21805
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-UEcLvRmSEUGrkmkP4CbLPc",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1911 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d8p0regb1:p1730:1",
+      "year": 1911,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d8p0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 1.",
+      "source_header": "I: 1,10  Ahlfvengren, F. E.",
+      "source_sha256": "5d8c40683a0dcb66e2cda7af7a2b5db453a64da390fc1112f9a91b10f4c20aa7",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1730,
+        1731
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-SQFcR1KUCUJon5p5AHEzeR",
+      "committee": "Särskilda utskottet nr 1 (1911 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d8p0regb1:p2086:1",
+      "year": 1911,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d8p0regb1.html",
+      "excerpt": "Ledamot i särskilda utskottet n:r 1. Motioner A. K. nr 294, 359.",
+      "source_header": "I: 1,11  Anderson, P., i Arvika.",
+      "source_sha256": "5d8c40683a0dcb66e2cda7af7a2b5db453a64da390fc1112f9a91b10f4c20aa7",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        2086,
+        2087
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-XeE6vU3DzsBWnDsiYtWkKB",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1911 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d8p0regb1:p2109:1",
+      "year": 1911,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d8p0regb1.html",
+      "excerpt": "Andersson, A. E., i Höckerum. Suppleant i A. K:s tillfälliga utskott nr 5.",
+      "source_header": "I: 5,28 I: 6,8 Andersson, A. E., i Höckerum. Suppleant i A. K:s tillfälliga utskott nr 5.",
+      "source_sha256": "5d8c40683a0dcb66e2cda7af7a2b5db453a64da390fc1112f9a91b10f4c20aa7",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        2109
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-8k9vUee2GQP2B7qnYRpApw",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1911 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d8p0regb1:p2337:1",
+      "year": 1911,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d8p0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 4. Suppleant i särskilda utskottet nr 1. Motioner nr 168, 294.",
+      "source_header": "I: 5,29 I: 6,9 Andersson, J., i Stärte.",
+      "source_sha256": "5d8c40683a0dcb66e2cda7af7a2b5db453a64da390fc1112f9a91b10f4c20aa7",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        2337,
+        2338
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-AbpYFAB14WeEBA8XaNzxNc",
+      "committee": "Första kammarens tillfälliga utskott nr 2 (1911 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d8p0regb1:p2516:2",
+      "year": 1911,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d8p0regb1.html",
+      "excerpt": "Suppleant i bevillningsutskottet. Valmanssuppleant för utseende af revi-sorer vid riksbankens afdelningskontor. Suppleant i F. K:s tillfälliga utskott nr 2. Suppleant i särskilda utskottet nr 1. Yttrande F. K. II: 18,47.",
+      "source_header": "III: 32,8 3 VII: 58,1 Antonsson, A.",
+      "source_sha256": "5d8c40683a0dcb66e2cda7af7a2b5db453a64da390fc1112f9a91b10f4c20aa7",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        2516,
+        2517
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-MVtSauUCP7MJSi6rkGzx4H",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1911 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d8p0regb1:p6057:1",
+      "year": 1911,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d8p0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 3.",
+      "source_header": "Suppleant i jordbruksutskottet. Yttranden F. K. I: 10,43 III: 32,3 6. Berglund, F.",
+      "source_sha256": "5d8c40683a0dcb66e2cda7af7a2b5db453a64da390fc1112f9a91b10f4c20aa7",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        6057,
+        6058
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-8JkMgXwJySYG8WMHwQLVyK",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1911 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d8p0regb1:p6064:2",
+      "year": 1911,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d8p0regb1.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 2.",
+      "source_header": "Berglund, G., godsägare. Revisor vid riksbankens afdelniugskontor i Uppsala. Bergman, I.",
+      "source_sha256": "5d8c40683a0dcb66e2cda7af7a2b5db453a64da390fc1112f9a91b10f4c20aa7",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        6064,
+        6067
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-FvfqH4FvnrfrWimtfRStEj",
+      "committee": "Särskilda utskottet nr 2 (1911 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d8p0regb1:p6064:3",
+      "year": 1911,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d8p0regb1.html",
+      "excerpt": "Ledamot i särskilda utskottet nr 2.",
+      "source_header": "Berglund, G., godsägare. Revisor vid riksbankens afdelniugskontor i Uppsala. Bergman, I.",
+      "source_sha256": "5d8c40683a0dcb66e2cda7af7a2b5db453a64da390fc1112f9a91b10f4c20aa7",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        6064,
+        6069
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-8SKTwkEDifq44aPWHVfZJV",
+      "committee": "Första kammarens tillfälliga utskott nr 1 (1911 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d8p0regb1:p10450:2",
+      "year": 1911,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d8p0regb1.html",
+      "excerpt": "Ledamot i F. K:s tillfälliga utskott nr 1. Yalmanssuppleant vid fullmäktigevalen. Motioner F. K. nr 18, 27, 64, 107. Yttranden F. K. II: 17,6 8 18,41 19,45, 66 20,51 III: 26,2 5.",
+      "source_header": "Andra kammaren Danström, L.",
+      "source_sha256": "5d8c40683a0dcb66e2cda7af7a2b5db453a64da390fc1112f9a91b10f4c20aa7",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        10450,
+        10452
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-YAmD7tSR387WQwAEJ9hW67",
+      "committee": "Särskilda utskottet nr 2 (1912 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d9p0regb1:p2027:1",
+      "year": 1912,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d9p0regb1.html",
+      "excerpt": "Ledamot i särskilda utskottet nr 2. Yttrande A. K. IV: 40,37.",
+      "source_header": " I: 1,29 Anderson, P., i Arvika.",
+      "source_sha256": "8d00eff08acda5a52ede6ac1cc2b9c78ee1fb0ae72f58ae496c83986ef8b7f47",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        2027,
+        2028
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-UiEsvQC1upDy3DXf2HsLm5",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1912 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d9p0regb1:p2091:1",
+      "year": 1912,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d9p0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 5.",
+      "source_header": "I: 6,1 IV: 31,2 Andersson, A. E., i Höckerum.",
+      "source_sha256": "8d00eff08acda5a52ede6ac1cc2b9c78ee1fb0ae72f58ae496c83986ef8b7f47",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        2091,
+        2092
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-VyU2XeSawfc9Z8dpoX8G1t",
+      "committee": "Särskilda utskottet nr 1 (1912 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d9p0regb1:p2472:2",
+      "year": 1912,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d9p0regb1.html",
+      "excerpt": "Ledamot i särskilda utskottet nr 1. Motioner F. K. nr 105, 108.",
+      "source_header": "Ansöknings- och besvärstid rör. vissa tjänster. R. D. anhåller, att K. M:t täcktes, med upphäfvande af nu gällande bestämmelser om 56 dagars ansökningstid till vissa tjänster (vid landsstaten, tekniska läroverken) och samma tid för anförande af besvär öfver tjänsteförslag, utfärda föreskrifter om kortare tid i nämnda afseenden. Antonsson, A.",
+      "source_sha256": "8d00eff08acda5a52ede6ac1cc2b9c78ee1fb0ae72f58ae496c83986ef8b7f47",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        2472,
+        2476
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-DjzcJmUBc3SCzGZYeYHH2p",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1912 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d9p0regb1:p4751:1",
+      "year": 1912,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d9p0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 1. Motion A.. K. nr 121.",
+      "source_header": "05 ep Bengtsson, S., i Norup.",
+      "source_sha256": "8d00eff08acda5a52ede6ac1cc2b9c78ee1fb0ae72f58ae496c83986ef8b7f47",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        4751,
+        4753
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-F5KWXLqzAmpVa7V7VDfPzh",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1912 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d9p0regb1:p7990:1",
+      "year": 1912,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d9p0regb1.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 4. Motion A. K. nr 288.",
+      "source_header": "Andra kammaren Bäckman, P. A.",
+      "source_sha256": "8d00eff08acda5a52ede6ac1cc2b9c78ee1fb0ae72f58ae496c83986ef8b7f47",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        7990,
+        7993
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-YCAZ5zpaoeQNfz1wZ4C4gM",
+      "committee": "Första kammarens tillfälliga utskott nr 1 (1912 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d9p0regb1:p8659:1",
+      "year": 1912,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d9p0regb1.html",
+      "excerpt": "Suppleant i F. K:s tillfälliga utskott nr 1.",
+      "source_header": "I: 1,12 - 68 Dahl, P. A.",
+      "source_sha256": "8d00eff08acda5a52ede6ac1cc2b9c78ee1fb0ae72f58ae496c83986ef8b7f47",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        8659,
+        8661
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Gnvn1AJkSrBtbfCd1oyiFG",
+      "committee": "Första kammarens tillfälliga utskott nr 2 (1912 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d9p0regb1:p9033:2",
+      "year": 1912,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/d9p0regb1.html",
+      "excerpt": "Ledamot i F. K:s tillfälliga utskott nr 2 (v. ordf.).",
+      "source_header": "IV: 33,1 Danielsson, O., godsägare. Revisorssuppleant vid afdelningskontoret i Linköping. Danström, L.",
+      "source_sha256": "8d00eff08acda5a52ede6ac1cc2b9c78ee1fb0ae72f58ae496c83986ef8b7f47",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        9033,
+        9036
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-N8i4wZamVSfQKMiE9PM5tn",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1912 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d9p0regb1:p17515:1",
+      "year": 1912,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d9p0regb1.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 2.",
+      "source_header": "I: 1,20 II: 13,1 Henrikson, A., i Heberg.",
+      "source_sha256": "8d00eff08acda5a52ede6ac1cc2b9c78ee1fb0ae72f58ae496c83986ef8b7f47",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        17515,
+        17516
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-BQVi5vhVA37wtGCRYuUQEA",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1912 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "d9p0regb1:p17749:1",
+      "year": 1912,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/d9p0regb1.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 3.",
+      "source_header": "I: 7,2 I: 7,1 Hofsten, C. A. E. von.",
+      "source_sha256": "8d00eff08acda5a52ede6ac1cc2b9c78ee1fb0ae72f58ae496c83986ef8b7f47",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        17749,
+        17750
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Ri6xtTGnGxVXdt5WqYovxh",
+      "committee": "Första kammarens tillfälliga utskott nr 1 (1913 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dap0regb1:p1012:1",
+      "year": 1913,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dap0regb1.html",
+      "excerpt": "Suppleant i F. K:s tillfälliga utskott nr 1. Motion F. K. nr 10.",
+      "source_header": " I: 1,21 Andersson, Karl A.",
+      "source_sha256": "6240af1c77fd1d8704dd74129f81c82a1447690db59d044f821a8d41ca7934a9",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1012,
+        1013
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-SG2vbe3D6ZoQHZDQhqYeDa",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1913 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dap0regb1:p1036:1",
+      "year": 1913,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dap0regb1.html",
+      "excerpt": "Andersson, K. M., i Milsmaden. Suppleant i A. K:s tillfälliga utskott nr 4.",
+      "source_header": "  Andersson, K. M., i Milsmaden. Suppleant i A. K:s tillfälliga utskott nr 4.",
+      "source_sha256": "6240af1c77fd1d8704dd74129f81c82a1447690db59d044f821a8d41ca7934a9",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1036
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-XRDzUbR1yQH28Eq1Y85VtG",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1913 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dap0regb1:p8089:1",
+      "year": 1913,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dap0regb1.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 3.",
+      "source_header": "  Björnberg, K. E.",
+      "source_sha256": "6240af1c77fd1d8704dd74129f81c82a1447690db59d044f821a8d41ca7934a9",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        8089,
+        8090
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-GmbJNji2h5GFj4y1WVAzSu",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1913 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dap0regb1:p8586:1",
+      "year": 1913,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dap0regb1.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 5.",
+      "source_header": " I: 1,25 Borggren, L.",
+      "source_sha256": "6240af1c77fd1d8704dd74129f81c82a1447690db59d044f821a8d41ca7934a9",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        8586,
+        8587
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-HvNF4FquzoZsbHsqrfCyAJ",
+      "committee": "Första kammarens tillfälliga utskott nr 2 (1913 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dap0regb1:p10389:2",
+      "year": 1913,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dap0regb1.html",
+      "excerpt": "Suppleant i bevillningsutskottet. Ledamot i F. K:s tillfälliga utskott nr 2 (v. ordf.).",
+      "source_header": "Yttrande A. K. I: 12,16. Danielsson, P. J., f, d. fästningsbyggnadsarbetare; se Pensioner. Danström, L.",
+      "source_sha256": "6240af1c77fd1d8704dd74129f81c82a1447690db59d044f821a8d41ca7934a9",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        10389,
+        10390
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-4vefRty13NT86pi1YQ2KfZ",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1913 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dap0regb1:p19231:1",
+      "year": 1913,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dap0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 1. Motion A. K. nr 370.",
+      "source_header": "Andra kammaren Hansson, E. H., i Bäck.",
+      "source_sha256": "6240af1c77fd1d8704dd74129f81c82a1447690db59d044f821a8d41ca7934a9",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        19231,
+        19232
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-2GP9c7t8r9TovwrtfoJU4y",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1913 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dap0regb1:p32373:1",
+      "year": 1913,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dap0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 2.",
+      "source_header": "  Larsson, K. J. L., i Bondarve.",
+      "source_sha256": "6240af1c77fd1d8704dd74129f81c82a1447690db59d044f821a8d41ca7934a9",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        32373,
+        32374
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-7hAnNqeqx99AUzBegSxVdi",
+      "committee": "Särskilda utskottet nr 1 (1914 lagtima B)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp8regb1:p172:1",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp8regb1.html",
+      "excerpt": "Suppleant i särskilda utskottet nr 1. i Ledamot i särskilda utskottet nr 3 (v. ordf.).",
+      "source_header": "  Adelswärd, A. T.",
+      "source_sha256": "34519b444159d0eb958a5cb55842af31967c0943fc1b160d4ea9e0f9a07192ca",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        172,
+        174
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-MQSwkFMqdcGGcNN8LgniQQ",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1914 lagtima B)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp8regb1:p399:1",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp8regb1.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 2.",
+      "source_header": "14: 4 25: 3 Andersson, A., i Härrklättan.",
+      "source_sha256": "34519b444159d0eb958a5cb55842af31967c0943fc1b160d4ea9e0f9a07192ca",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        399,
+        400
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-3V5y7RqejjB7ns22sjHCyY",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1914 lagtima B)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp8regb1:p427:1",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp8regb1.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 4.",
+      "source_header": "13: 4 23: 2 Andersson, A. J., i Gävle.",
+      "source_sha256": "34519b444159d0eb958a5cb55842af31967c0943fc1b160d4ea9e0f9a07192ca",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        427,
+        428
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Wj9pFvfd7v64N4HGqpGkQu",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1914 lagtima B)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp8regb1:p554:1",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp8regb1.html",
+      "excerpt": "Andersson, K. M., i Milsmaden. Suppleant i A. K:s tillfälliga utskott nr 1.",
+      "source_header": "5: 3 . Andersson, K. M., i Milsmaden. Suppleant i A. K:s tillfälliga utskott nr 1.",
+      "source_sha256": "34519b444159d0eb958a5cb55842af31967c0943fc1b160d4ea9e0f9a07192ca",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        554
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-QvLjwYKE4DFsFfKArBoAxz",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1914 lagtima B)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp8regb1:p579:1",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp8regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 5.",
+      "source_header": "  Andersson, P. A., i Knäppinge.",
+      "source_sha256": "34519b444159d0eb958a5cb55842af31967c0943fc1b160d4ea9e0f9a07192ca",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        579,
+        581
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-FGdv3z1prUypeKnrffnDTg",
+      "committee": "Särskilda utskottet nr 3 (1914 lagtima B)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp8regb1:p579:2",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp8regb1.html",
+      "excerpt": "Suppleant i särskilda utskottet nr 3. Motioner A. K. nr 11, 46, 60, 73, 89, 90, 175, 188.",
+      "source_header": "  Andersson, P. A., i Knäppinge.",
+      "source_sha256": "34519b444159d0eb958a5cb55842af31967c0943fc1b160d4ea9e0f9a07192ca",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        579,
+        582
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-NJ2MAboaWuACHLtShBVkfo",
+      "committee": "Särskilda utskottet nr 2 (1914 lagtima B)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp8regb1:p8597:1",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp8regb1.html",
+      "excerpt": "Ledamot i särskilda utskottet nr 2.",
+      "source_header": "68 Chalmers tekniska läroanstalt; under förändrad benämning: Chalmers tekniska institut; se Tekniska läroverken. Christiernson, A. C. J.",
+      "source_sha256": "34519b444159d0eb958a5cb55842af31967c0943fc1b160d4ea9e0f9a07192ca",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        8597,
+        8599
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-LS4ogpgjJkYNTsydMk3Tsb",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1914 lagtima B)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp8regb1:p8707:1",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp8regb1.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 3. Motioner A. K. nr 29, 44, 71, 137,138, 162.",
+      "source_header": "5: 5  Dahlberg, G. R.",
+      "source_sha256": "34519b444159d0eb958a5cb55842af31967c0943fc1b160d4ea9e0f9a07192ca",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        8707,
+        8708
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-RHVPj9ApiLGqQRbdCaCE3C",
+      "committee": "Första kammarens tillfälliga utskott nr 2 (1914 lagtima B)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp8regb1:p8797:1",
+      "year": 1914,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dbp8regb1.html",
+      "excerpt": "Ledamot i F. K:s tillfälliga utskott nr 2 (ordf).",
+      "source_header": "(v. ordf.). Yttranden F. 52, 59. K. 32: 31, 43: 4 9, 59: De Geer, Fabian O. G., frih.",
+      "source_sha256": "34519b444159d0eb958a5cb55842af31967c0943fc1b160d4ea9e0f9a07192ca",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        8797,
+        8798
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-PS2F2dqPaxgLQFLsEkfFTs",
+      "committee": "Första kammarens tillfälliga utskott nr 1 (1914 lagtima B)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp8regb1:p14419:2",
+      "year": 1914,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dbp8regb1.html",
+      "excerpt": "Suppleant i konstitutionsutskottet. Ledamot i F. K:s tillfälliga utskott nr 1 (v. ordf.).",
+      "source_header": "Andra kammaren i Hallberg, F. H.",
+      "source_sha256": "34519b444159d0eb958a5cb55842af31967c0943fc1b160d4ea9e0f9a07192ca",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        14419,
+        14420
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-B429oXM92CiWx9UXKbpTgY",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1914 lagtima A)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp7reg:p205:1",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp7reg.html",
+      "excerpt": "Andersson, A. E., i Höckerum. Ledamot i A. K:s tillfälliga utskott nr 5.",
+      "source_header": "1 Suppleant i A. lv:s tillfälliga utskott1 — nr 2. Motioner A. tv. nr 36, 42. Andersson, A. E., i Höckerum. Ledamot i A. K:s tillfälliga utskott nr 5.",
+      "source_sha256": "2f5fad7d3f0b037470f7039f6c20cd2a3b4887b13cb4bab127349476ee09914a",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        205
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-QWvnWVw8bjvqRPUArmQaqT",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1914 lagtima A)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp7reg:p1551:2",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp7reg.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 1.",
+      "source_header": "Valmanssuppleant vid justitieombudsmansvalet. Valmanssuppleant för utseende av revisorer vid riksbankens avdelningskontor. Beckman, K. V., i Linköping.",
+      "source_sha256": "2f5fad7d3f0b037470f7039f6c20cd2a3b4887b13cb4bab127349476ee09914a",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        1551,
+        1553
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-16hBsxuPgSMvRP7wuK1bHb",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1914 lagtima A)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp7reg:p3449:1",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp7reg.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 4. Motioner A. K. nr 13, 25, 50, 64, 69, 148, 156, 161.",
+      "source_header": "4:1 3  Bäckström, W.",
+      "source_sha256": "2f5fad7d3f0b037470f7039f6c20cd2a3b4887b13cb4bab127349476ee09914a",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        3449,
+        3450
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-BFLXKYVWqdQFw1XK7p9rEy",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1914 lagtima A)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp7reg:p5391:2",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp7reg.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 3. Valmanssuppleant för utseende av revisorer vid riksbankens avdelningskontor. Motioner A. K. nr 133—135, 149, 197, 198, 209, 221.",
+      "source_header": "Motion A. K. nr 104. 10: 4 . Erlansson, J.",
+      "source_sha256": "2f5fad7d3f0b037470f7039f6c20cd2a3b4887b13cb4bab127349476ee09914a",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        5391,
+        5393
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-ALfErZ6TyJG8ttsLu3fvJr",
+      "committee": "Första kammarens tillfälliga utskott nr 2 (1914 lagtima A)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp7reg:p7445:2",
+      "year": 1914,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dbp7reg.html",
+      "excerpt": "Ledamot i F. K:s tillfälliga utskott nr 2.",
+      "source_header": " 5: 4 Forssman, P. A.",
+      "source_sha256": "2f5fad7d3f0b037470f7039f6c20cd2a3b4887b13cb4bab127349476ee09914a",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        7445,
+        7447
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-TWQDHzHDcAMpgykHTgDwAS",
+      "committee": "Första kammarens tillfälliga utskott nr 1 (1914 lagtima A)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp7reg:p8435:2",
+      "year": 1914,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dbp7reg.html",
+      "excerpt": "Suppleant i konstitutionsutskottet. Ledamot i F. K:s tillfälliga utskott nr 1 (v. ordf.).",
+      "source_header": " — 81 — Hallberg, F. H.",
+      "source_sha256": "2f5fad7d3f0b037470f7039f6c20cd2a3b4887b13cb4bab127349476ee09914a",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        8435,
+        8436
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-48pAXoDzQLutct2yHTFG3D",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1914 lagtima A)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dbp7reg:p11669:1",
+      "year": 1914,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dbp7reg.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 2.",
+      "source_header": "  Johanson, C., i Gäre.",
+      "source_sha256": "2f5fad7d3f0b037470f7039f6c20cd2a3b4887b13cb4bab127349476ee09914a",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        11669,
+        11670
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-FuivYKqFYV6YExGTJXjRTK",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1915 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dcp0regb1:p105:1",
+      "year": 1915,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dcp0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 2. — Valmanssuppleant för utseende av revisorer vid riksbankens avdelningskontor. —Valmanssuppleant vid ombudsmanna,valen.",
+      "source_header": "Motioner A. K. nr 65, 201, 237. Yttranden A. K. 27: 15, 20, 28: 47, 58, 56: 30 34, 69: 62. Anderson, C. E., i Knapasjö, L. A. K.",
+      "source_sha256": "6f43ba9c70a1e5e22b1161222dccc46773ca7970033265f5e09749465708e9d8",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        105,
+        106,
+        107
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-ScFyQPHzT5ptVkuPMqQop9",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1915 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dcp0regb1:p111:1",
+      "year": 1915,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dcp0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 4. — Valmanssuppleant för utseende av revisorer vid riksbankens avdelningskontor.",
+      "source_header": "Andersson, A. E., i Höckerum, L. A. K. Suppleant i konstitutionsutskottet. — Valman vid fullmäktigevalen. Motioner A. K. nr 88, 109, 128. Andersson, A. J., i Gävle, L. A. K.",
+      "source_sha256": "6f43ba9c70a1e5e22b1161222dccc46773ca7970033265f5e09749465708e9d8",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        111,
+        112,
+        113
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-MvAy39J4PF6MW5Y9Pzw7Dj",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1915 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dcp0regb1:p129:1",
+      "year": 1915,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dcp0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 1.",
+      "source_header": "Suppleant i statsutskottet. Motion A. Iv. nr 64, 225, 237. Andersson, K. M., i Milsmaden, L. A. K. Ledamot i A. K:s tillfälliga utskott nr 1. Motioner A. K. nr 64, 69, 149, 225, 237. Yttranden A. K. 45: 41, 85: 15, 87: 31.",
+      "source_sha256": "6f43ba9c70a1e5e22b1161222dccc46773ca7970033265f5e09749465708e9d8",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        129
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-5AHVv29wFbTxE36TCtzsYA",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1915 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dcp0regb1:p175:1",
+      "year": 1915,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dcp0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 5. — Suppleant i särskilda utskottet nr 2.",
+      "source_header": "Motioner F. K. nr 20, 21, 33. Yttranden F. K. 30: 44, 34: 43, 40: 42. Bengtsson, C. E., i Kullen, L. A. K.",
+      "source_sha256": "6f43ba9c70a1e5e22b1161222dccc46773ca7970033265f5e09749465708e9d8",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        175,
+        176,
+        177
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-SVXSxPnATuASCLQYW7nkuA",
+      "committee": "Särskilda utskottet nr 2 (1915 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dcp0regb1:p175:2",
+      "year": 1915,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dcp0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 5. — Suppleant i särskilda utskottet nr 2.",
+      "source_header": "Motioner F. K. nr 20, 21, 33. Yttranden F. K. 30: 44, 34: 43, 40: 42. Bengtsson, C. E., i Kullen, L. A. K.",
+      "source_sha256": "6f43ba9c70a1e5e22b1161222dccc46773ca7970033265f5e09749465708e9d8",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        175,
+        176,
+        177
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Li9se7DKcyN2MTZw7enkwP",
+      "committee": "Första kammarens tillfälliga utskott nr 2 (1915 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dcp0regb1:p300:2",
+      "year": 1915,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dcp0regb1.html",
+      "excerpt": "Suppleant i bevillningsutskottet. — Ledamot i opinionsnämnden. — Ledamot i F. K:s tillfälliga utskott nr 2 (v. ordf.). •— Valman för utseende av revisorer vid riksbankens avdelningskontor. — Valman vid fullmäktigevalen.",
+      "source_header": "Dahlberg, E., L. F. K. Suppleant i opinionsnämnden. — Valman för utseende av revisorer vid riksbankens avdelningskontor. Danström, L., L. F. K.",
+      "source_sha256": "6f43ba9c70a1e5e22b1161222dccc46773ca7970033265f5e09749465708e9d8",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        300,
+        301,
+        302
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-U2unxJAqqpk53SXEZL6QY2",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1915 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dcp0regb1:p366:1",
+      "year": 1915,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dcp0regb1.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 3. — Suppleant i A. K:s tillfälliga utskott nr 5.",
+      "source_header": "Motioner F. K. nr 11, 20, 30. Yttranden F. K. 20: 34, 45. Elisson, A. P., L. A. K.",
+      "source_sha256": "6f43ba9c70a1e5e22b1161222dccc46773ca7970033265f5e09749465708e9d8",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        366,
+        367,
+        368
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-22cfvZQcL3t189uQdvD99y",
+      "committee": "Särskilda utskottet nr 1 (1915 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dcp0regb1:p444:2",
+      "year": 1915,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dcp0regb1.html",
+      "excerpt": "Ledamot i konstitutionsutskottet. — Statsrevisor. •— Ledamot i särskilda utskottet nr 1.",
+      "source_header": "Gabrielsson, P. M., L. A. K. Suppleant i A. Kas tillfälliga utskott nr 2. — Valmanssuppleant vid fullmäktigevalen. Motioner A. K. nr 32, 42, 112, 194, 237. Yttrande A. K. 59: 53, Geijer, K. E. von, L. F. K.",
+      "source_sha256": "6f43ba9c70a1e5e22b1161222dccc46773ca7970033265f5e09749465708e9d8",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        444,
+        445
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-QMHASVupE4PCwD4BYBaYkv",
+      "committee": "Första kammarens tillfälliga utskott nr 1 (1915 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dcp0regb1:p446:1",
+      "year": 1915,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dcp0regb1.html",
+      "excerpt": "Suppleant i opinionsnämnden. — Suppleant i F. K:s tillfälliga utskott nr 1.",
+      "source_header": "Geijer, K. E. von, L. F. K. Ledamot i konstitutionsutskottet. — Statsrevisor. •— Ledamot i särskilda utskottet nr 1. Yttranden F. K. 48: 7, 68: gi. Gelin, E. V., L. F. K.",
+      "source_sha256": "6f43ba9c70a1e5e22b1161222dccc46773ca7970033265f5e09749465708e9d8",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        446,
+        447,
+        448
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-RFhttje68o99p7J91W2onp",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1916 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "ddp0regb1:p131:1",
+      "year": 1916,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/ddp0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 4. — Valmanssuppleant för utseende av revisorer vid riksbankens avdelningskontor.",
+      "source_header": "Motioner A. K. nr 11, 30, 103—105, 166. Yttrande A. K. 34: 6. Andersson, A. J., i Gävle, L. A. K.",
+      "source_sha256": "33effcfaa7efb9ba51f975f42eba866cc3b6fd3276024cef63acc8597b5d2328",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        131,
+        132,
+        133
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-VHt4xpFXNJcZbspe9cgeBm",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1916 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "ddp0regb1:p145:1",
+      "year": 1916,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/ddp0regb1.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 2.",
+      "source_header": "Motioner A. K. nr 11, 30, 97, 103—105. Yttranden A. K. 18: 3, 38: 54, 64, 44: 6, 47: 41, 57, 52: 18, 19, 57: 12, 19, 63: 9, 18, 65: 2, 75: 84, 76: 14, 83: 8, 85: 31. Andersson, J., i Altofta, L. A. K.",
+      "source_sha256": "33effcfaa7efb9ba51f975f42eba866cc3b6fd3276024cef63acc8597b5d2328",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        145,
+        146,
+        147
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-CNZPiXRpKQK336REqKv3JF",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1916 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "ddp0regb1:p152:1",
+      "year": 1916,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/ddp0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 1.",
+      "source_header": "Motioner A. K. nr 230, 245. 4 Andersson, K. M., i Milsmaden, L. A. K. Ledamot i A. K:s tillfälliga utskott nr 1. Motioner A. K. nr 22, 58, 142, 230, 245, 258, 292, 306.",
+      "source_sha256": "33effcfaa7efb9ba51f975f42eba866cc3b6fd3276024cef63acc8597b5d2328",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        152
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-LrGPH5JSVLfPAgj5bNytgV",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1916 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "ddp0regb1:p188:1",
+      "year": 1916,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/ddp0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 5. —",
+      "source_header": "Bengtsson, C. E., i Kullen, L. A. K. Suppleant i jordbruksutskottet. Motioner A. K. nr 11, 30, 97, 103, 305. Yttranden A. K. 59: 12, 93: 32. Bengtsson, M., i Göteborg, L. A. K.",
+      "source_sha256": "33effcfaa7efb9ba51f975f42eba866cc3b6fd3276024cef63acc8597b5d2328",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        188,
+        189
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-319TueZcwUoTeZNVzBT6CN",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1916 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "ddp0regb1:p269:1",
+      "year": 1916,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/ddp0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 3.",
+      "source_header": "Carlsson, Johan, L. F. K. Suppleant i bankoutskottet. — Valmanssuppleant vid fullmäktigevalen. Carlsson, K. S. A., i Solberga, L. A. K.",
+      "source_sha256": "33effcfaa7efb9ba51f975f42eba866cc3b6fd3276024cef63acc8597b5d2328",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        269,
+        270,
+        271
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-V1tZuae7wvxgaF9aGBmyxY",
+      "committee": "Första kammarens tillfälliga utskott nr 2 (1916 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "ddp0regb1:p306:2",
+      "year": 1916,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/ddp0regb1.html",
+      "excerpt": "Suppleant i bevillningsutskottet. — Ledamot i F. K:s tillfälliga utskott nr 2 (v. ordf.). — Valman för utseende av revisorer vid riksbankens avdelningskontor. — Valman vid fullmäktigevalen.",
+      "source_header": "Yttrande F. K. 36: 16. — 7 Danström, L., L. F. K.",
+      "source_sha256": "33effcfaa7efb9ba51f975f42eba866cc3b6fd3276024cef63acc8597b5d2328",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        306,
+        307,
+        308
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-6cbiLkCgPRqqxhURGfavby",
+      "committee": "Första kammarens tillfälliga utskott nr 1 (1916 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "ddp0regb1:p434:1",
+      "year": 1916,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/ddp0regb1.html",
+      "excerpt": "Suppleant i F. K:s tillfälliga utskott nr 1.",
+      "source_header": "Motion F. K. nr 73. Yttranden F. K. 28: 14, 17, 55: 4, 81: 45, 82: 25, 43. Gelin, E. V., L. F. K.",
+      "source_sha256": "33effcfaa7efb9ba51f975f42eba866cc3b6fd3276024cef63acc8597b5d2328",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        434,
+        435,
+        436
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-NSfnArcvKBDcqnnRnowu1A",
+      "committee": "Särskilda utskottet nr 1 (1917 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dep0regb1:p97:3",
+      "year": 1917,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dep0regb1.html",
+      "excerpt": "Ledamot i bankoutskottet (v. ordf.). — Valman vid fullmäktigevalen. — Ledamot i särskilda utskottet nr 1 (v. ordf.). — Ledamot i talmanskonferensen.",
+      "source_header": "— 3 — A Adelswärd, A. Th., L. A. K.",
+      "source_sha256": "143f868855b2a938bce0b43f00291036c1c36f9658f3b95e1a22d5d088580ba5",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        97,
+        98,
+        99
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-JdQ2F4APVYZ62y2vdBcXWD",
+      "committee": "Första kammarens tillfälliga utskott nr 1 (1917 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dep0regb1:p108:1",
+      "year": 1917,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dep0regb1.html",
+      "excerpt": "Ledamot i F. K:s tillfälliga utskott nr 1.",
+      "source_header": "45: 61, 71, 46: 3, 27, 38, 53: 25, 54: 8, 17, 57: 56, 65, 68, 70, 72, 75, 82, 88, 58: 17, 60: 21. Alkman, E. P., L. F. K.",
+      "source_sha256": "143f868855b2a938bce0b43f00291036c1c36f9658f3b95e1a22d5d088580ba5",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        108,
+        109
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-23nRxemBy9bzJKp7v17JAV",
+      "committee": "Särskilda utskottet nr 2 (1917 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dep0regb1:p121:1",
+      "year": 1917,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dep0regb1.html",
+      "excerpt": "Valmanssuppleant för utseende av revisorer vid riksbankens avdelningskontor. — Suppleant i särskilda utskottet nr 2.",
+      "source_header": "Anderson, A., i Råstock, L. A. K. Yttranden A. K. 23: 77, 25: 31, 43, 53, 30: 7 6, 37: 67, 38: 44, 51: 8, 64: 37. Anderson, C. E., i Knapasjö, L. A. K.",
+      "source_sha256": "143f868855b2a938bce0b43f00291036c1c36f9658f3b95e1a22d5d088580ba5",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        121,
+        122,
+        123
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-VWpFdsWimqWDPCCHdj42pN",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1917 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dep0regb1:p128:1",
+      "year": 1917,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dep0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 4. — Valmanssuppleant för utseende av revisorer vid riksbankens avdelningskontor. — Valmanssuppleant vid fullmäktigevalen. — Suppleant i särskilda utskottet nr 1.",
+      "source_header": "Motioner A. K. nr 132, 162, 188, 190, 319, 498. Yttranden A. K. 42: 15, 55: 6 7. Andersson, A. J., i Gävle, L. A. K.",
+      "source_sha256": "143f868855b2a938bce0b43f00291036c1c36f9658f3b95e1a22d5d088580ba5",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        128,
+        129,
+        130
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-PvpujnGRdCTuB1dDEi9xEL",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1917 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dep0regb1:p142:1",
+      "year": 1917,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dep0regb1.html",
+      "excerpt": "Suppleant i A. K:s tillfälliga utskott nr 2.",
+      "source_header": "Andersson, H., i Skivarp, L. A. K. Yttranden A. K. 23: 4, 24: 13, 26: 5 8, 29: 6 9, 49: 30, 53: 47, 55: 45, 60: 69, 71, 63: 65, 59, 63, 67, 72: 27, 73: 47, 74: u, 78: 19, 79: is, 82: 14. Andersson, J., i Altofta, L. A. K.",
+      "source_sha256": "143f868855b2a938bce0b43f00291036c1c36f9658f3b95e1a22d5d088580ba5",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        142,
+        143
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-DdLnXw4MMnyZttoMSqA7nv",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1917 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dep0regb1:p144:1",
+      "year": 1917,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dep0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 1.",
+      "source_header": "Andersson, J., i Altofta, L. A. K. Suppleant i A. K:s tillfälliga utskott nr 2. Andersson, K. M., i Milsmaden, L. A. K.",
+      "source_sha256": "143f868855b2a938bce0b43f00291036c1c36f9658f3b95e1a22d5d088580ba5",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        144,
+        145,
+        146
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Fg3jYr5cgrQWcAXqgBtiBP",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1917 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dep0regb1:p184:1",
+      "year": 1917,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dep0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 5.",
+      "source_header": "Motioner F. K. nr 49, 117, 139. Yttranden F. K. 14: 16, 18: 10, 44: 6 2, 63, 53: 12, 56: 37. Bengtsson, M., i Göteborg, L. A. K.",
+      "source_sha256": "143f868855b2a938bce0b43f00291036c1c36f9658f3b95e1a22d5d088580ba5",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        184,
+        185
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-5noRTzoJYxQ3tKLx7yhxni",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1917 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dep0regb1:p283:1",
+      "year": 1917,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dep0regb1.html",
+      "excerpt": "Ledamot i A. K:s tillfälliga utskott nr 3.",
+      "source_header": "Suppleant i konstitutionsutskottet. —Valmanssuppleant vid fullmäktigevalen. — Valman vid ombudsmannavalen. Motion F. K. nr 117. Carlsson, K. S. A., i Solberga, L. A. K. Ledamot i A. K:s tillfälliga utskott nr 3. Motioner A. K. nr 188, 447.",
+      "source_sha256": "143f868855b2a938bce0b43f00291036c1c36f9658f3b95e1a22d5d088580ba5",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        283
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-54msFpNM4mn2bL7UefM8qu",
+      "committee": "Första kammarens tillfälliga utskott nr 2 (1917 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dep0regb1:p315:2",
+      "year": 1917,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dep0regb1.html",
+      "excerpt": "Suppleant i bevillningsutskottet. — Ledamot i F. K:s tillfälliga utskott nr 2 (v. ordf.). — Valman för utseende av revisorer vid riksbankens avdelningskontor. — Valman vid fullmäktigevalen.",
+      "source_header": "Dalberg-, E., L. F. K. Valman för utseende av revisorer vid riksbankens avdelningskontor. — Suppleant i särskilda utskottet nr 2. Danström, L., L. F. K.",
+      "source_sha256": "143f868855b2a938bce0b43f00291036c1c36f9658f3b95e1a22d5d088580ba5",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        315,
+        316,
+        317
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-78Et6GdGi3HDDnAfAQTySV",
+      "committee": "Särskilda utskottet nr 3 (1918 urtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp3reg:p72:1",
+      "year": 1918,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dfp3reg.html",
+      "excerpt": "Deputerad för att överlägga med Konungen. — Ledamot i särskilda utskottet nr 3.",
+      "source_header": "Adelswärd, A. T., LAK. Ledamot i talmanskonferensen. Alexanderson, N. E., lfk.",
+      "source_sha256": "4982c8b8b8c4357f2311d42c8085fe0539b5732f517b565d09b0d4cffe2faa96",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        72,
+        73,
+        74
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-EZmfbW9n7mo7agZzAphfRJ",
+      "committee": "Särskilda utskottet nr 1 (1918 urtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp3reg:p85:1",
+      "year": 1918,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dfp3reg.html",
+      "excerpt": "Ledamot i särskilda utskottet nr 1.",
+      "source_header": "Anderson, C. E., i Knapasjö, LAK. Suppleant i konstitutionsutskottet. Andersson, A. J., i Gävle, LAK.",
+      "source_sha256": "4982c8b8b8c4357f2311d42c8085fe0539b5732f517b565d09b0d4cffe2faa96",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        85,
+        86,
+        87
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Tv9FfupYviHrVLrC4UR33t",
+      "committee": "Särskilda utskottet nr 2 (1918 urtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp3reg:p102:1",
+      "year": 1918,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dfp3reg.html",
+      "excerpt": "Suppleant i särskilda utskottet nr 2.",
+      "source_header": "Yttrande AK 18 81. Andersson, K. M., i Milsmaden, LAK. Yttrande AK 17 84. Andersson, P. A., i Knäppinge, LAK. Suppleant i särskilda utskottet nr 2. Yttranden AK 9 41 10 3, 18 16 34 18 32.",
+      "source_sha256": "4982c8b8b8c4357f2311d42c8085fe0539b5732f517b565d09b0d4cffe2faa96",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        102
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-XNGvqTkr1hwQaeHG8NUES1",
+      "committee": "Särskilda utskottet nr 3 (1918 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp0regb1:p120:1",
+      "year": 1918,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dfp0regb1.html",
+      "excerpt": "Ledamot i opinionsnämnden. — Valman vid fullmäktigevalen. — Ledamot i särskilda utskottet nr 3. — Suppleant för AK:s representanter vid Lunds universitets 250-års jubileum.",
+      "source_header": "Ledamot i AK:s tillfälliga utskott nr 3. — Suppleant i särskilda utskottet nr 3. Motion AK nr 17. Adelswärd, A. T., LAK.",
+      "source_sha256": "14f6d7450a143ebee492a537a52039d06b506d66b852092b3e631c6647930b8c",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        120,
+        121
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-DPWXf1QpX1Rj3ShDSi62yR",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1918 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp0regb1:p134:1",
+      "year": 1918,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dfp0regb1.html",
+      "excerpt": "Suppleant i AK:s tillfälliga utskott nr 2. Motioner AK nr 136, 325.",
+      "source_header": "Suppleant i statsutskottet. — Valman förutseende av revisorer vid riksbankens avdelningskontor. Motioner FK nr 74, 96, 107. Ander, J. A., LAK.",
+      "source_sha256": "14f6d7450a143ebee492a537a52039d06b506d66b852092b3e631c6647930b8c",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        134,
+        135
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-EwZNGFGLJgJYhCSB9RvNfq",
+      "committee": "Särskilda utskottet nr 2 (1918 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp0regb1:p139:2",
+      "year": 1918,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dfp0regb1.html",
+      "excerpt": "Suppleant i jordbruksutskottet. —Valman för utseende av revisorer vid riksbankens avdelningskontor. — Ledamot i särskilda utskottet nr 2.",
+      "source_header": "Ledamot i statsutskottet. Motioner AK 17, 57,139,167, 223,258,411, 460. Yttranden AK 18 42, 45 28 53 115, 117,118 58 57, 58 61 52 68 49, 60, 70 70, 26, 28 73 11, 18 74 19, 39, 51. Anderson, C. E., i Knapasjö, LAK.",
+      "source_sha256": "14f6d7450a143ebee492a537a52039d06b506d66b852092b3e631c6647930b8c",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        139,
+        140
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-X7ZVwU6v4A4XkdzNHdutAY",
+      "committee": "Särskilda utskottet nr 1 (1918 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp0regb1:p143:2",
+      "year": 1918,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dfp0regb1.html",
+      "excerpt": "Suppleant i statsutskottet. — Suppleant i särskilda utskottet nr 1. — Valman för utseende av revisorer vid riksbankens avdelningskontor. — Valman vid fullmäktigevalen. Motioner AK nr 22, 139, 379, 442, 478. Yttranden AK 74 4 3, 4 6.",
+      "source_header": "Motioner AK nr 15, 16, 81, 85, 187, 190, 208, 224, 375, 380. Yttranden AK 26 il 58 5 60 15. Andersson, A. J., i Gävle, LAK.",
+      "source_sha256": "14f6d7450a143ebee492a537a52039d06b506d66b852092b3e631c6647930b8c",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        143,
+        144
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-2QbAjbRYnXqCThNhncDkS2",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1918 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp0regb1:p146:1",
+      "year": 1918,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dfp0regb1.html",
+      "excerpt": "Suppleant i AK:s tillfälliga utskott nr 5. Motioner AK nr 187, 205, 365, 426.",
+      "source_header": "Suppleant i statsutskottet. — Suppleant i särskilda utskottet nr 1. — Valman för utseende av revisorer vid riksbankens avdelningskontor. — Valman vid fullmäktigevalen. Motioner AK nr 22, 139, 379, 442, 478. Yttranden AK 74 4 3, 4 6. Andersson, C. W. M., i Nacka, LAK. Ledamot i AK:s tillfälliga utskott nr 5. Motioner AK nr 285, 286, 406. Andersson, E., i Prästbol, LAK.",
+      "source_sha256": "14f6d7450a143ebee492a537a52039d06b506d66b852092b3e631c6647930b8c",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        146,
+        147
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-A1v5rnuHp6tK2fDGcp6wnB",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1918 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp0regb1:p209:1",
+      "year": 1918,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dfp0regb1.html",
+      "excerpt": "Ledamot i AK:s tillfälliga utskott nr 1 (v. ordf.) — Suppleant i AK:s tillfälliga utskott nr 2.",
+      "source_header": "Motioner AK nr 30, 31, 127, 154, 155, 166, 278, 324, 327, 328, 419, 470. Yttranden AK 15 89 28 12, 40 50 49 69 BO 75 41. Berggren, F., LAK.",
+      "source_sha256": "14f6d7450a143ebee492a537a52039d06b506d66b852092b3e631c6647930b8c",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        209,
+        210
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-AcziNsRLSVpXG1AwvRfJUa",
+      "committee": "Första kammarens tillfälliga utskott nr 1 (1918 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp0regb1:p225:1",
+      "year": 1918,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dfp0regb1.html",
+      "excerpt": "Ledamot i FK:s tillfälliga utskott nr 1.",
+      "source_header": "Ledamot i bevillningsutskottet. — Ledamot i opinionsnämnden. Motioner AK nr 22, 161, 187, 229, 315, 370. Bergman, J., LFK.",
+      "source_sha256": "14f6d7450a143ebee492a537a52039d06b506d66b852092b3e631c6647930b8c",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        225,
+        226
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-JGcQHjXudnac27pmaGAJzN",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1918 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp0regb1:p238:1",
+      "year": 1918,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dfp0regb1.html",
+      "excerpt": "Suppleant i AK:s tillfälliga utskott nr 4. — Valmanssuppleant för utseende av tryckfrihetskommitterade. — Valmanssuppleant vid ombudsmannavalen.",
+      "source_header": "Suppleant i AK:s tillfälliga utskott nr 1. — Valmanssuppleant vid fullmäktigevalen. Motioner AK nr 22, 135, 226, 246, 326, 359, 382, 450. Bergström, P., i Bäckland LAK.",
+      "source_sha256": "14f6d7450a143ebee492a537a52039d06b506d66b852092b3e631c6647930b8c",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        238,
+        239
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-VicG5H4wQVruLCmUzkvZ2e",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1918 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp0regb1:p251:1",
+      "year": 1918,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dfp0regb1.html",
+      "excerpt": "Suppleant i AK:s tillfälliga utskott nr 3.",
+      "source_header": "Yttranden AK 23 15, 5 3 27 6 35 5 7, 64 47 18, 21 49 io 50 26 55 3, 7, 13 56 22 64 64 66 30, 41 68 36, 46, 67, 76 70 11, 12 74 62 76 9. Björklund, L. A., LAK.",
+      "source_sha256": "14f6d7450a143ebee492a537a52039d06b506d66b852092b3e631c6647930b8c",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        251,
+        252
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-VCwhMHBN4JAMenUzBP6gVb",
+      "committee": "Första kammarens tillfälliga utskott nr 2 (1918 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dfp0regb1:p411:2",
+      "year": 1918,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dfp0regb1.html",
+      "excerpt": "Suppleant i bevillningsutskottet. — Ledamot i FK:s tillfälliga utskott nr 2 (v. ordf.). — Ledamot i opinionsnämnden. — Valman för utseende av revisorer vid riksbankens avdelningskontor. — Valman vid fullmäktigevalen. Motioner FK nr 74, 81, 107.",
+      "source_header": "Motioner AK nr 15, 81, 187, 190. Yttranden AK 42 5 0, 51. Danström, L., LFK.",
+      "source_sha256": "14f6d7450a143ebee492a537a52039d06b506d66b852092b3e631c6647930b8c",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        411,
+        412
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-X42oUL8tTMSEHUfXDjv4QB",
+      "committee": "Hemliga utskottet (1919 urtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp3reg:p55:1",
+      "year": 1919,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dgp3reg.html",
+      "excerpt": ", ls. Ledamot i hemliga utskottet samt i särskilda utskottet nr 3.",
+      "source_header": "Adelswärd, A. T., frih., lak, ls. Ledamot i talmanskonferensen. Alexanderson, N. E., lfk, ls.",
+      "source_sha256": "29ba20b7357635a401a7c91995105e84adb0de5b5553751459efdf5c0ad8054f",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        55,
+        56
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-Wr2UNBJ5AgVBPEVck6pADA",
+      "committee": "Särskilda utskottet nr 3 (1919 urtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp3reg:p55:2",
+      "year": 1919,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dgp3reg.html",
+      "excerpt": ", ls. Ledamot i hemliga utskottet samt i särskilda utskottet nr 3.",
+      "source_header": "Adelswärd, A. T., frih., lak, ls. Ledamot i talmanskonferensen. Alexanderson, N. E., lfk, ls.",
+      "source_sha256": "29ba20b7357635a401a7c91995105e84adb0de5b5553751459efdf5c0ad8054f",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        55,
+        56
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-DwW9Xo8pMfdKn2nDxaFnPf",
+      "committee": "Särskilda utskottet nr 1 (1919 urtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp3reg:p64:1",
+      "year": 1919,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dgp3reg.html",
+      "excerpt": ", ls. Suppleant i särskilda utskottet nr 1.",
+      "source_header": "Ledamot i särskilda utskottet nr 3. Motion AK 21. Anderson, Carl Edor, Knapasjö, lak, ls. Suppleant i särskilda utskottet nr 1.",
+      "source_sha256": "29ba20b7357635a401a7c91995105e84adb0de5b5553751459efdf5c0ad8054f",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        64
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-TesLt2ZRiCw8cH3HmEqJr",
+      "committee": "Särskilda utskottet nr 2 (1919 urtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp3reg:p91:1",
+      "year": 1919,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dgp3reg.html",
+      "excerpt": ", n. Suppleant i särskilda utskottet nr 2.",
+      "source_header": "Motion AK 2. Yttrande AK 9: 6 9. Antonsson, A., lfk, n.",
+      "source_sha256": "29ba20b7357635a401a7c91995105e84adb0de5b5553751459efdf5c0ad8054f",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        91,
+        92
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-7UABBU66Jay6EXXYCQPyDt",
+      "committee": "Hemliga utskottet (1919 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp0regb1:p17467:2",
+      "year": 1919,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dgp0regb1.html",
+      "excerpt": ", ls. Ledamot i första lagutskottet, i hemliga utskottet samt i första särskilda utskottet; valman vid ombudsmannavalen.",
+      "source_header": "Adelswärd, A. T., lak, ls. Ledamot i talmanskonferensen; valman vid fullmäktigevalen. Alexanderson, N. E., lfk, ls.",
+      "source_sha256": "d49e9118c2848215f417acb454e8546341f6e3b6771788a0c939866038ce13cd",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        17467,
+        17468,
+        17469
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-MT3YWdGaP8Q8mGDyxekAgH",
+      "committee": "Särskilda utskottet nr 1 (1919 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp0regb1:p17467:3",
+      "year": 1919,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dgp0regb1.html",
+      "excerpt": ", ls. Ledamot i första lagutskottet, i hemliga utskottet samt i första särskilda utskottet; valman vid ombudsmannavalen.",
+      "source_header": "Adelswärd, A. T., lak, ls. Ledamot i talmanskonferensen; valman vid fullmäktigevalen. Alexanderson, N. E., lfk, ls.",
+      "source_sha256": "d49e9118c2848215f417acb454e8546341f6e3b6771788a0c939866038ce13cd",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        17467,
+        17468,
+        17469
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-BGkovpuUVWsXrc6xu5mJyH",
+      "committee": "Första kammarens tillfälliga utskott nr 2 (1919 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp0regb1:p17470:1",
+      "year": 1919,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dgp0regb1.html",
+      "excerpt": ", ls. Ledamot i FK:s tillfälliga utskott nr 2 (v. ordf.).",
+      "source_header": "Ledamot i första lagutskottet, i hemliga utskottet samt i första särskilda utskottet; valman vid ombudsmannavalen. Motioner FK 166 e, 188 e, 189 e, 190 e, 191 e. Yttranden FK 2:42,79 6: 18 8:40 12:38 13: 37,47 16:13,26,29,79 20:6, 10 22:51 23:12 26:41,78,81 27:8 34:37,41 37:66,88 38: 74,85 40:66,65 44:22 45:3 9 48:49,62 49: 3, 7 50: 66, 60. Alkman, E. P., lfk, ls.",
+      "source_sha256": "d49e9118c2848215f417acb454e8546341f6e3b6771788a0c939866038ce13cd",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        17470,
+        17471
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-6LuUp5t3aFEfK488BdGYua",
+      "committee": "Andra kammarens tillfälliga utskott nr 5 (1919 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp0regb1:p17476:1",
+      "year": 1919,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dgp0regb1.html",
+      "excerpt": ", sv. Suppleant i AK:s tillfälliga utskott nr 5.",
+      "source_header": "Suppleant i statsutskottet; valman vid valen av avdelningskontorens revisorer. Motioner FK 38 e, 152, 155 e, 164 e, 165 e. Yttranden FK 37: 74, 78 39: 37 43: 63. Alvin, L., lak, sv.",
+      "source_sha256": "d49e9118c2848215f417acb454e8546341f6e3b6771788a0c939866038ce13cd",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        17476,
+        17477
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-8mG9KSMuHYGRG6UuQnR6RN",
+      "committee": "Andra kammarens tillfälliga utskott nr 2 (1919 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp0regb1:p17478:1",
+      "year": 1919,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dgp0regb1.html",
+      "excerpt": ", ls. Ledamot i AK:s tillfälliga utskott nr 2.",
+      "source_header": "Alvin, L., lak, sv. Suppleant i AK:s tillfälliga utskott nr 5. Motioner AK 48, 109, 111 e, 158, 179, 190 e, 242 e, 249, 255 e, 328, 329, 339, 434. Yttrande AK 26: 2 8. Ander, J. A., lak, ls.",
+      "source_sha256": "d49e9118c2848215f417acb454e8546341f6e3b6771788a0c939866038ce13cd",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        17478,
+        17479
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-F3Yg1Y6iJzxCZZp1WjeDan",
+      "committee": "Andra kammarens tillfälliga utskott nr 1 (1919 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp0regb1:p17498:1",
+      "year": 1919,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dgp0regb1.html",
+      "excerpt": ", s. Ledamot i AK:s tillfälliga utskott nr 1; valmanssuppleant vid fullmäktigevalen.",
+      "source_header": "Andersson, Emil, Prästbol (Råda), lak, s. Ledamot i AK:s tillfälliga utskott nr 5. Andersson, Ernst Valfrid, Värtan, lak, s.",
+      "source_sha256": "d49e9118c2848215f417acb454e8546341f6e3b6771788a0c939866038ce13cd",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        17498,
+        17499,
+        17500
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-SJA9QJFFzZ2fxfRPWq6HQN",
+      "committee": "Första kammarens tillfälliga utskott nr 1 (1919 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp0regb1:p17565:1",
+      "year": 1919,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dgp0regb1.html",
+      "excerpt": ", ls. Ledamot i FK:s tillfälliga utskott nr 1 (v. ordf.). 4 — PERSONREGISTER. Bergman, J.",
+      "source_header": "Motioner AK 289, 293. Yttrande AK 23: 8. Bergman, Johan, Stockholm, lfk, ls.",
+      "source_sha256": "d49e9118c2848215f417acb454e8546341f6e3b6771788a0c939866038ce13cd",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        17565,
+        17566,
+        17567,
+        17568,
+        17569,
+        17570
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-JVNJqK83vXZ5TZAq7L3uxe",
+      "committee": "Andra kammarens tillfälliga utskott nr 4 (1919 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp0regb1:p17580:1",
+      "year": 1919,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dgp0regb1.html",
+      "excerpt": ", ls. Ledamot i AK:s tillfälliga utskott nr 4 samt suppleant i nr 1; valmanssuppleant vid val av tryckfrihetskommitterad.",
+      "source_header": "Suppleant i AK:s tillfälliga utskott nr 1 och 3; valmanssuppleant vid fullmäktigevalen. Motioner AK 92, 128, 208, 246. Bergström, Petrus, Bäckland, lak, ls.",
+      "source_sha256": "d49e9118c2848215f417acb454e8546341f6e3b6771788a0c939866038ce13cd",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        17580,
+        17581,
+        17582
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-GKeUa9xz62JbcdZZkHp5SH",
+      "committee": "Andra kammarens tillfälliga utskott nr 3 (1919 lagtima)",
+      "committee_type": "other",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp0regb1:p17593:1",
+      "year": 1919,
+      "chamber": "AK",
+      "url": "https://data.riksdagen.se/dokument/dgp0regb1.html",
+      "excerpt": ", s. ij 5 Ledamot i AK:s tillfälliga utskott nr 3.",
+      "source_header": "48:20, 23,27,81 50:42,46,52,65 52:65,67 65: l, 8, 8, 10. Björklund, L. A., lak, s. ij 5",
+      "source_sha256": "d49e9118c2848215f417acb454e8546341f6e3b6771788a0c939866038ce13cd",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        17593,
+        17594,
+        17595
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
+  },
+  {
+    "entity": {
+      "committee_id": "i-DTJCD7URB7ujjLe6jdoqX6",
+      "committee": "Särskilda utskottet nr 2 (1919 lagtima)",
+      "committee_type": "special",
+      "inception": null,
+      "dissolution": null
+    },
+    "source": {
+      "claim_id": "dgp0regb1:p17756:1",
+      "year": 1919,
+      "chamber": "FK",
+      "url": "https://data.riksdagen.se/dokument/dgp0regb1.html",
+      "excerpt": ", n. Ledamot i andra särskilda utskottet.",
+      "source_header": "Motioner AK 179, 208, 298 e, 309, 311 e, 312 e, 314 e, 328, 329, 339. Yttrande AK 27: 15. Ericson, Håkan Hans Kristian, Stockholm, lfk, n.",
+      "source_sha256": "d49e9118c2848215f417acb454e8546341f6e3b6771788a0c939866038ce13cd",
+      "source_kind": "annual_register",
+      "source_paragraphs": [
+        17756,
+        17757,
+        17758
+      ],
+      "identity_basis": "Unique pyriksdagen name candidate in the stated chamber and mandate year; all printed initials required; exact normalized printed locality required when present in a header. Numeric OCR in printed initials is held. No fuzzy spelling or inferred service dates.",
+      "batch": "2026-10-17-rosters-1867-1919"
+    }
   }
 ]

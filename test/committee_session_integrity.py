@@ -22,7 +22,7 @@ class CommitteeSessionIntegrity(unittest.TestCase):
         committees = pl.read_csv("data/committee.csv", infer_schema=False).select("committee_id", "committee")
         sources = pl.read_csv("test/data/reviewed_committee_roster_sources.csv", infer_schema=False)
         scoped = sources.join(committees, on="committee_id").with_columns(
-            pl.col("committee").str.extract(r"\((19\d\d) (?:lagtima|urtima)\)$", 1).alias("session_year")
+            pl.col("committee").str.extract(r"\(((?:18|19)\d\d) (?:lagtima|urtima)(?: [AB])?\)$", 1).alias("session_year")
         ).filter(pl.col("session_year").is_not_null())
         invalid = scoped.filter(
             (pl.col("year") != pl.col("session_year")) |
