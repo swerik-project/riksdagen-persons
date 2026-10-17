@@ -14,6 +14,7 @@ import polars as pl
 from trainerlog import get_logger
 
 from .committee_integrity import date_bound
+from provenance.committee import read_claims
 
 
 LOGGER = get_logger("committee-term-integrity")
@@ -22,6 +23,40 @@ EXTENSION = Path("test/data/reviewed_committee_term_extension.json")
 
 
 class CommitteeTermIntegrity(unittest.TestCase):
+    def test_resolved_positions_retain_their_parliamentary_evidence(self):
+        """Guarantee: each formerly held appointment retains its reviewed MP or identity basis.
+
+        Data: the extension fixture, canonical parliamentary review and committee
+        provenance. Keep the original 90 positions accounted for after resolution.
+        Existing mandate/start and exact-row guarantees check published data;
+        this guarantee checks the source link which made a resolution possible.
+        Alias-only resolutions need a documented identity review instead of an
+        invented MP correction. Failures count resolved source positions.
+        """
+        source = json.loads(EXTENSION.read_text())
+        review = json.loads(Path("provenance/parliamentary-mandates/1979-1982.json").read_text())
+        changes = {c["id"]: c for c in review["changes"]}
+        resolved = [s for s in source["spells"] if s.get("resolution_batch") == review["batch"]]
+        ledger = {c["service_source"]["claim_id"]: c for c in read_claims()
+                  if c.get("batch") == review["batch"]}
+        self.assertEqual(90, len(resolved) + len(source["held"]), "The original held-position census must remain complete")
+        self.assertEqual({s["claim_id"] for s in resolved}, set(ledger), "Resolved appointments and canonical curations must agree")
+        failures = 0
+        for spell in resolved:
+            claim = ledger[spell["claim_id"]]
+            valid = claim["membership"] == spell["membership"]
+            valid &= claim["service_source"]["mandate_reviews"] == spell["mandate_reviews"]
+            if not spell["mandate_reviews"]:
+                valid &= bool(spell["identity_review"].get("reason")) and bool(spell["identity_review"].get("citations"))
+            for identifier in spell["mandate_reviews"]:
+                correction = changes.get(identifier)
+                valid &= bool(correction) and correction["after"]["person_id"] == spell["membership"]["person_id"]
+            if not valid:
+                failures += 1
+                LOGGER.error("Resolved source position lost its parliamentary basis: %s", spell["resolved_position_id"])
+        LOGGER.info("Checked %s resolved source positions; %s broken evidence links", len(resolved), failures)
+        self.assertEqual(0, failures, f"{failures} resolved positions lost evidence; details logged with trainerlog")
+
     def test_reviewed_election_positions_are_all_accounted_for(self):
         """Guarantee: all 482 opening positions and every reviewed change are accounted for.
 
