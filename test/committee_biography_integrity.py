@@ -2,6 +2,7 @@
 
 import json
 from pathlib import Path
+from provenance.committee import read_roster
 import re
 import unittest
 
@@ -54,13 +55,13 @@ class CommitteeBiographyIntegrity(unittest.TestCase):
     def test_biography_periods_retain_exact_published_claims(self):
         """Guarantee: every biography year retains its person, role and source.
 
-        Data: biography periods and reviewed_committee_roster_sources.csv.
+        Data: biography periods and provenance/committee/observations.csv.
         Both fixtures account for exactly the same claim IDs. No exact event day
         may be invented from a session label. Failures count source claims.
         Existing roster gates separately check membership keys and mandates.
         """
         periods = json.loads(Path(FIXTURE).read_text())
-        rows = pl.read_csv("test/data/reviewed_committee_roster_sources.csv", infer_schema=False).filter(
+        rows = read_roster().filter(
             pl.col("source_kind") == "biography_period").to_dicts()
         expected = {cid: p for p in periods for cid in p["claim_ids"]}
         actual = {r["claim_id"]: r for r in rows}

@@ -5,9 +5,9 @@ neighboring repository or Git checkout are required. Structural CSV guarantees
 remain in CSVW and exact published dates/roles in committee_integrity.
 """
 
-from collections import defaultdict
 import json
 from pathlib import Path
+from provenance.committee import read_roster
 import unittest
 
 import polars as pl
@@ -32,7 +32,7 @@ class CommitteeRosterIntegrity(unittest.TestCase):
         this does not independently authenticate the source or infer service dates.
         """
         identities = pl.read_json("test/data/reviewed_committee_election_identities.json")
-        sources = pl.read_csv("test/data/reviewed_committee_roster_sources.csv", infer_schema=False).select(
+        sources = read_roster().select(
             "claim_id", "person_id", "url", "event_date", "year")
         joined = identities.join(sources, on="claim_id", how="left", suffix="_source")
         invalid = joined.filter(pl.col("person_id_source").is_null() |
@@ -120,57 +120,17 @@ class CommitteeRosterIntegrity(unittest.TestCase):
         self.assertEqual(0, invalid.height,
             f"{invalid.height} election identities contradict printed honorifics; details logged with trainerlog")
 
-    def test_roster_curations_retain_source_observations(self):
-        """Guarantee: every roster curation retains its reviewed year and evidence.
-
-        Data: reviewed_committee_roster_sources.csv and all roster observations
-        in reviewed_committee_memberships.json. Compare exact membership, quote,
-        source header, chamber, year and citation for every source claim. This
-        protects observation years without converting them into service dates.
-        Multiple observations may support one undated row, not a continuous
-        spell. Failures count claim IDs. Fixtures are agent-curated evidence,
-        not proof of source authenticity, roster completeness or human acceptance.
-        """
-        expected = pl.read_csv("test/data/reviewed_committee_roster_sources.csv", infer_schema=False).to_dicts()
-        claims = [c for c in json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
-                  if "roster_observations" in c]
-        actual = defaultdict(list)
-        for c in claims:
-            for observation in c.get("roster_observations", []):
-                actual[observation["claim_id"]].append({**c["membership"], **observation})
-        reference = {r["claim_id"]: r for r in expected}
-        self.assertTrue(reference, "The roster source fixture must not be empty")
-        self.assertEqual(len(expected), len(reference), "Roster reference repeats source claim IDs")
-        failures = 0
-        keys = set(reference) | set(actual)
-        LOGGER.info("Checking %s curated roster source claims", len(keys))
-        for claim_id in sorted(keys):
-            source, matches = reference.get(claim_id), actual.get(claim_id, [])
-            if source is None or len(matches) != 1:
-                failures += 1
-                LOGGER.error("Missing, duplicate or unsupported roster source claim %s", claim_id)
-                continue
-            claim = matches[0]
-            fields = ("person_id", "committee_id", "start", "end", "committee_role_id", "chamber",
-                      "url", "excerpt", "source_header", "source_sha256", "source_kind")
-            if (any(claim.get(k) != source[k] for k in fields) or claim.get("event_date") != source.get("event_date")
-                    or str(claim.get("year")) != source["year"]
-                    or not source["excerpt"] or not source["url"]):
-                failures += 1
-                LOGGER.error("Altered roster evidence for %s; expected %s", claim_id, source)
-        LOGGER.info("Checked %s roster source claims; %s inconsistent", len(keys), failures)
-        self.assertEqual(0, failures, f"{failures} roster claims lack matching evidence; details logged with trainerlog")
 
     def test_dated_roster_observations_fit_their_assigned_service_spells(self):
         """Guarantee: exact roster days agree with the source year and assigned spell.
 
-        Data: reviewed_committee_roster_sources.csv. An election observed on a
+        Data: provenance/committee/observations.csv. An election observed on a
         known day cannot corroborate a service spell that ended earlier in the
         same calendar year. Unknown endpoints remain unknown. Comparison bounds
         allow the stated precision of partial dates without changing those dates.
         Failures count source claim IDs; no Git or archived scans are required.
         """
-        rows = pl.read_csv("test/data/reviewed_committee_roster_sources.csv", infer_schema=False)
+        rows = read_roster()
         rows = rows.filter(pl.col("event_date").is_not_null()).with_columns(
             pl.col("event_date").str.to_date("%Y-%m-%d", strict=False).alias("observed"))
         invalid = rows.filter(pl.col("observed").is_null() |
@@ -195,7 +155,7 @@ class CommitteeRosterIntegrity(unittest.TestCase):
         """
         corrections = json.loads(Path("test/data/reviewed_committee_roster_corrections.json").read_text())
         memberships = pl.read_csv("data/committee_membership.csv", infer_schema=False).to_dicts()
-        source_ids = set(pl.read_csv("test/data/reviewed_committee_roster_sources.csv")["claim_id"])
+        source_ids = set(read_roster()["claim_id"])
         failures = 0
         LOGGER.info("Checking %s scan-corrected false roster claims", len(corrections))
         for correction in corrections:
@@ -217,7 +177,7 @@ class CommitteeRosterIntegrity(unittest.TestCase):
         Failures count source claim IDs.
         This does not infer committee dates from parliamentary mandate dates.
         """
-        sources = pl.read_csv("test/data/reviewed_committee_roster_sources.csv", infer_schema=False)
+        sources = read_roster()
         mandates = pl.read_csv("data/member_of_parliament.csv", infer_schema=False)
         joined = sources.join(mandates, on="person_id", how="left", suffix="_mp")
         valid = joined.filter(

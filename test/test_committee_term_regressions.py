@@ -59,11 +59,6 @@ class CommitteeTermRegressions(unittest.TestCase):
         with self.changed_source(self.source), self.assertRaises(AssertionError):
             self.gates.test_reviewed_election_positions_are_all_accounted_for()
 
-    def test_deleting_a_term_fixture_does_not_remove_source_protection(self):
-        """Guarantee: removing a spell fixture while its curation remains turns the source gate red."""
-        self.source["spells"].pop(0)
-        with self.changed_source(self.source), self.assertRaises(AssertionError):
-            self.gates.test_dated_term_curations_retain_their_source_evidence()
 
     def test_losing_an_extension_committee_turns_the_census_red(self):
         """Guarantee: the all-committee extension cannot silently lose an opening roster."""
@@ -98,10 +93,3 @@ class CommitteeTermRegressions(unittest.TestCase):
         spell["end_review"].update(method="event_month", events=["next_roster"])
         with self.changed_source(source, integrity.EXTENSION.name), self.assertRaises(AssertionError):
             self.gates.test_reviewed_term_dates_follow_their_stated_source_basis()
-
-    def test_extension_source_cannot_disappear_while_its_curation_remains(self):
-        """Guarantee: extension curations remain protected independently of their spell fixtures."""
-        source = json.loads(integrity.EXTENSION.read_text())
-        source["spells"].pop()
-        with self.changed_source(source, integrity.EXTENSION.name), self.assertRaises(AssertionError):
-            self.gates.test_dated_term_curations_retain_their_source_evidence()

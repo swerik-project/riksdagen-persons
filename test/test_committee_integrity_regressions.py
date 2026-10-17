@@ -245,8 +245,11 @@ class ReviewedMembershipRegressions(unittest.TestCase):
                          "role", "parliament_year", "session", "chamber", "register_source_url",
                          "register_printed_page", "register_excerpt")}}
         self.claims = [self.claim]
-        fixture = patch.object(integrity.Path, "read_text", autospec=True, side_effect=lambda path:
-                               json.dumps(self.claims if path.name == "reviewed_committee_memberships.json" else [self.source]))
+        claims = patch.object(integrity, "read_claims", side_effect=lambda: self.claims)
+        claims.start()
+        self.addCleanup(claims.stop)
+        fixture = patch.object(integrity.Path, "read_text", autospec=True,
+                               side_effect=lambda path: json.dumps([self.source]))
         fixture.start()
         self.addCleanup(fixture.stop)
         csv_reader = patch.object(integrity.pl, "read_csv", side_effect=lambda path, **kwargs:
@@ -336,8 +339,7 @@ class SBLProvenanceRegressions(unittest.TestCase):
         self.claims = [self.claim]
         self.links = pl.DataFrame(dict(person_id=["person"], identifier=["123"]))
         self.identifiers = pl.DataFrame(dict(person_id=["person"], authority=["DiSweNaBiID"], identifier=["123"]))
-        reader = patch.object(integrity.Path, "read_text", autospec=True,
-                              side_effect=lambda path, **kwargs: json.dumps(self.claims))
+        reader = patch.object(integrity, "read_claims", side_effect=lambda: self.claims)
         reader.start()
         self.addCleanup(reader.stop)
         csv_reader = patch.object(integrity.pl, "read_csv", side_effect=lambda path, **kwargs:

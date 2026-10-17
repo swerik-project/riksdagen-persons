@@ -112,45 +112,6 @@ class CommitteeTermIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s reviewed spells; %s have unsupported boundaries", total, failures)
         self.assertEqual(0, failures, f"{failures} committee spells have unsupported boundaries; details logged with trainerlog")
 
-    def test_dated_term_curations_retain_their_source_evidence(self):
-        """Guarantee: every term curation retains its exact reviewed source and interpretation.
-
-        Data: both term fixtures and reviewed_committee_memberships.json. Cross-check
-        both directions, so deleting a fixture cannot remove protection. Compare
-        the membership, election quotation, revision-pinned URL and date rationale.
-        Existing committee_integrity checks the actual published membership row.
-        These are agent-reviewed source readings, not independent authentication
-        of the source or human acceptance. Failures count service-spell claim IDs.
-        """
-        failures = 0
-        total = 0
-        all_claims = json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
-        for path in (SOURCE, EXTENSION):
-            source = json.loads(path.read_text())
-            spells = {s["claim_id"]: s for s in source["spells"]}
-            self.assertEqual(len(spells), len(source["spells"]), "Fixture claim IDs must be unique")
-            claims = [c for c in all_claims if c["batch"] == source["batch"]]
-            actual = {c["service_source"]["claim_id"]: c for c in claims}
-            self.assertEqual(len(actual), len(claims), "Term service-spell claim IDs must be unique")
-            events = {e["id"]: e for e in source["events"]}
-            for claim_id in sorted(set(spells) | set(actual)):
-                spell, claim = spells.get(claim_id), actual.get(claim_id)
-                valid = spell is not None and claim is not None
-                if valid:
-                    event, citation = events[spell["election_event"]], claim["service_source"]
-                    valid = (claim["membership"] == spell["membership"] and citation["url"] == event["url"]
-                             and citation["excerpt"] == event["excerpt"] and citation["source_sha256"] == event["source_sha256"]
-                             and citation["end_review"] == spell["end_review"] and bool(source["rule_references"])
-                             and bool(event["excerpt"]) and bool(event["paragraphs"]))
-                    for paragraph in event["paragraphs"]:
-                        valid &= (f"/blob/{source['records_revision']}/{event['file']}/#L" in paragraph["url"]
-                                  and paragraph["url"].endswith("#L" + str(paragraph["line"])) and bool(paragraph["text"]))
-                if not valid:
-                    failures += 1
-                    LOGGER.error("Term curation lost or altered source evidence: %s", claim_id)
-            total += len(set(spells) | set(actual))
-        LOGGER.info("Checked %s term curation IDs; %s lost source evidence", total, failures)
-        self.assertEqual(0, failures, f"{failures} term curations lost source evidence; details logged with trainerlog")
 
     def test_dated_committee_elections_have_contemporary_mp_mandates(self):
         """Guarantee: every dated appointment has a bounded MP mandate on its effective start.

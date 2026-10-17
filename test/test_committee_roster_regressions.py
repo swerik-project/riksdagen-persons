@@ -93,23 +93,6 @@ class RosterGateRegressions(unittest.TestCase):
             pl.col("year", "event_date").cast(pl.String))
         self.gates = integrity.CommitteeRosterIntegrity()
 
-    def check_sources(self):
-        with patch.object(integrity.pl, "read_csv", return_value=self.sources), \
-             patch.object(integrity.Path, "read_text", return_value=json.dumps([self.curation])):
-            self.gates.test_roster_curations_retain_source_observations()
-
-    def test_source_gate_passes_unchanged_evidence(self):
-        """Guarantee: the source gate accepts an unchanged supported claim."""
-        self.check_sources()
-
-    def test_source_gate_rejects_changed_election_day(self):
-        """Guarantee: an exact observed day cannot change in only one evidence fixture."""
-        self.sources = self.sources.with_columns(pl.lit("1950-01-10").alias("event_date"))
-        self.curation["roster_observations"][0]["event_date"] = "1950-01-10"
-        self.check_sources()
-        self.curation["roster_observations"][0]["event_date"] = "1950-01-11"
-        with self.assertRaisesRegex(AssertionError, "1 roster claims"):
-            self.check_sources()
 
     def test_exact_day_gate_rejects_wrong_service_spell_and_source_year(self):
         """Guarantee: an election day cannot support an earlier spell or a different year."""
@@ -142,7 +125,7 @@ class RosterGateRegressions(unittest.TestCase):
     def check_session(self, name, year="1921", chamber="AK"):
         sources = self.sources.with_columns(pl.lit(year).alias("year"), pl.lit(chamber).alias("chamber"))
         tables = {"committee.csv": pl.DataFrame({"committee_id": ["c"], "committee": [name]}),
-                  "reviewed_committee_roster_sources.csv": sources}
+                  "observations.csv": sources}
         with patch.object(sessions.pl, "read_csv", side_effect=lambda p, **kw: tables[Path(p).name]):
             sessions.CommitteeSessionIntegrity().test_session_scoped_rosters_match_committee_year_and_chamber()
 
@@ -168,48 +151,11 @@ class RosterGateRegressions(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, "1 roster observations"):
             self.check_session(name)
 
-    def test_source_gate_checks_observations_attached_to_older_curations(self):
-        """Guarantee: a later roster observation attached to an SBL curation is still checked."""
-        self.curation["batch"] = "older-sbl-batch"
-        self.curation["service_source"] = {"url": "https://example.org/biography"}
-        self.check_sources()
-        self.curation["roster_observations"][0]["year"] = 1955
-        with self.assertRaisesRegex(AssertionError, "1 roster claims"):
-            self.check_sources()
-
-    def test_source_gate_rejects_loss_of_later_year(self):
-        """Guarantee: retaining an older citation does not mask the loss of a later observation."""
-        later = dict(self.observation, claim_id="1951:p1:1", year=1951)
-        self.curation["roster_observations"].append(later)
-        self.sources = pl.DataFrame([{**self.row, **o} for o in (self.observation, later)]).with_columns(
-            pl.col("year").cast(pl.String))
-        self.check_sources()
-        self.curation["roster_observations"].pop()
-        with self.assertRaisesRegex(AssertionError, "1 roster claims"):
-            self.check_sources()
-
-    def test_source_gate_rejects_lost_observation(self):
-        """Guarantee: retaining the membership row does not hide a lost source year."""
-        self.curation["roster_observations"] = []
-        with self.assertRaisesRegex(AssertionError, "1 roster claims"):
-            self.check_sources()
-
-    def test_source_gate_rejects_changed_year(self):
-        """Guarantee: an observation cannot migrate silently to another year."""
-        self.curation["roster_observations"][0]["year"] = 1970
-        with self.assertRaisesRegex(AssertionError, "1 roster claims"):
-            self.check_sources()
-
-    def test_source_gate_rejects_changed_quote(self):
-        """Guarantee: replacing an ordinary-member quote with a substitute quote fails."""
-        self.curation["roster_observations"][0]["excerpt"] = "Suppleant i statsutskottet"
-        with self.assertRaisesRegex(AssertionError, "1 roster claims"):
-            self.check_sources()
 
     def test_chamber_gate_rejects_other_chamber(self):
         """Guarantee: a mandate in the wrong chamber cannot support a roster identity."""
         mandates = pl.DataFrame({"person_id": ["p"], "role": ["förstakammarledamot"], "start": ["1940"], "end": ["1960"]})
-        tables = {"reviewed_committee_roster_sources.csv": self.sources, "member_of_parliament.csv": mandates}
+        tables = {"observations.csv": self.sources, "member_of_parliament.csv": mandates}
         with patch.object(integrity.pl, "read_csv", side_effect=lambda p, **kw: tables[Path(p).name]), \
              self.assertRaisesRegex(AssertionError, "1 roster observations"):
             self.gates.test_roster_observations_have_compatible_chamber_mandates()
@@ -220,7 +166,7 @@ class RosterGateRegressions(unittest.TestCase):
             pl.lit("1989").alias("year"), pl.lit("EK").alias("chamber"))
         mandates = pl.DataFrame({"person_id": ["p"], "role": ["ledamot"],
                                  "start": ["1989-05-10"], "end": ["1991-09-30"]})
-        tables = {"reviewed_committee_roster_sources.csv": sources, "member_of_parliament.csv": mandates}
+        tables = {"observations.csv": sources, "member_of_parliament.csv": mandates}
         with patch.object(integrity.pl, "read_csv", side_effect=lambda p, **kw: tables[Path(p).name]):
             with self.assertRaisesRegex(AssertionError, "1 roster observations"):
                 self.gates.test_roster_observations_have_compatible_chamber_mandates()
@@ -231,7 +177,7 @@ class RosterGateRegressions(unittest.TestCase):
         """Guarantee: EK observations use single-chamber mandates from 1971 onward."""
         self.sources = self.sources.with_columns(pl.lit("EK").alias("chamber"), pl.lit("1971").alias("year"))
         mandates = pl.DataFrame({"person_id": ["p"], "role": ["ledamot"], "start": ["1971"], "end": ["1974"]})
-        tables = {"reviewed_committee_roster_sources.csv": self.sources, "member_of_parliament.csv": mandates}
+        tables = {"observations.csv": self.sources, "member_of_parliament.csv": mandates}
         with patch.object(integrity.pl, "read_csv", side_effect=lambda p, **kw: tables[Path(p).name]):
             self.gates.test_roster_observations_have_compatible_chamber_mandates()
             tables["member_of_parliament.csv"] = mandates.with_columns(pl.lit("andrakammarledamot").alias("role"))
@@ -242,7 +188,7 @@ class RosterGateRegressions(unittest.TestCase):
         """Guarantee: a single-chamber label cannot validate a pre-1971 observation."""
         self.sources = self.sources.with_columns(pl.lit("EK").alias("chamber"))
         mandates = pl.DataFrame({"person_id": ["p"], "role": ["ledamot"], "start": ["1940"], "end": ["1960"]})
-        tables = {"reviewed_committee_roster_sources.csv": self.sources, "member_of_parliament.csv": mandates}
+        tables = {"observations.csv": self.sources, "member_of_parliament.csv": mandates}
         with patch.object(integrity.pl, "read_csv", side_effect=lambda p, **kw: tables[Path(p).name]), \
              self.assertRaisesRegex(AssertionError, "1 roster observations"):
             self.gates.test_roster_observations_have_compatible_chamber_mandates()
@@ -258,17 +204,6 @@ class RosterGateRegressions(unittest.TestCase):
              self.assertRaisesRegex(AssertionError, "1 historical committee identities"):
             self.gates.test_reviewed_historical_committee_identities_remain_distinct()
 
-    def test_source_gate_rejects_swapping_1958_sessions(self):
-        """Guarantee: a B-session observation cannot reuse the A-session citation identity."""
-        a = dict(self.observation, claim_id="1958:p1:1", year=1958)
-        b = dict(self.observation, claim_id="1958b:p1:1", year=1958,
-                 url="https://example.org/session-b")
-        self.sources = pl.DataFrame([{**self.row, **o} for o in (a, b)]).with_columns(pl.col("year").cast(pl.String))
-        self.curation["roster_observations"] = [a, b]
-        self.check_sources()
-        self.curation["roster_observations"][1] = dict(b, claim_id=a["claim_id"])
-        with self.assertRaisesRegex(AssertionError, "2 roster claims"):
-            self.check_sources()
 
     def test_entity_gate_rejects_merging_1964_special_committees(self):
         """Guarantee: the spring and autumn 1964 special committees remain distinct bodies."""
@@ -280,6 +215,27 @@ class RosterGateRegressions(unittest.TestCase):
              patch.object(integrity.Path, "read_text", return_value=json.dumps(fixture)), \
              self.assertRaisesRegex(AssertionError, "1 historical committee identities"):
             self.gates.test_reviewed_historical_committee_identities_remain_distinct()
+
+    def test_canonical_observation_gate_rejects_orphans_and_duplicate_links(self):
+        """Guarantee: canonical observations cannot lose their unique accepted fact."""
+        from . import committee_provenance_integrity as evidence
+        claims = [{"membership": self.row, "roster_observations": [self.observation["claim_id"]]}]
+        published = pl.DataFrame([self.row], schema={k: pl.String for k in self.row})
+        gate = evidence.CommitteeProvenanceIntegrity()
+        with patch.object(evidence, "read_roster", return_value=self.sources), \
+             patch.object(evidence, "read_claims", return_value=claims), \
+             patch.object(evidence.pl, "read_csv", return_value=published):
+            gate.test_observations_have_exactly_one_curation_and_a_published_membership()
+        with patch.object(evidence, "read_roster", return_value=self.sources), \
+             patch.object(evidence, "read_claims", return_value=[]), \
+             patch.object(evidence.pl, "read_csv", return_value=published), \
+             self.assertRaisesRegex(AssertionError, "1 observation claim IDs"):
+            gate.test_observations_have_exactly_one_curation_and_a_published_membership()
+        with patch.object(evidence, "read_roster", return_value=pl.concat([self.sources, self.sources])), \
+             patch.object(evidence, "read_claims", return_value=claims), \
+             patch.object(evidence.pl, "read_csv", return_value=published), \
+             self.assertRaisesRegex(AssertionError, "1 observation claim IDs"):
+            gate.test_observations_have_exactly_one_curation_and_a_published_membership()
 
 
 if __name__ == "__main__":

@@ -7,6 +7,7 @@ Reviewed evidence is kept in test/data; no reference archives are required.
 from itertools import combinations
 import json
 from pathlib import Path
+from provenance.committee import read_claims
 import unicodedata
 import unittest
 
@@ -157,7 +158,7 @@ class CommitteeIntegrity(unittest.TestCase):
     def test_reviewed_memberships_keep_source_dates_and_roles(self):
         """Guarantee: reviewed membership facts retain their dates and roles.
 
-        Data: test/data/reviewed_committee_memberships.json records accepted
+        Data: provenance/committee/memberships.csv records accepted
         rows and their sources. Dates retain the reviewed source precision,
         including null when unknown; election dates must not replace service
         boundaries. Later sourced date enrichment must update both the row
@@ -166,7 +167,7 @@ class CommitteeIntegrity(unittest.TestCase):
         SBL career summaries are included at their stated year precision;
         a source-stated starting year does not supply an unknown end.
         """
-        claims = json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
+        claims = read_claims()
         self.assertTrue(claims, "The reviewed membership fixture must not be empty")
         rows = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False)
         published = set(rows.iter_rows())
@@ -209,7 +210,7 @@ class CommitteeIntegrity(unittest.TestCase):
         """Guarantee: each SBL curation retains its matching reviewed source claim.
 
         Data: test/data/reviewed_sbl_committee_sources.csv and
-        reviewed_committee_memberships.json. Each added or refined claim
+        the canonical committee membership evidence store. Each added or refined claim
         has exactly one fixture, with the same membership and citation, and
         its excerpt matches the reviewed source clause. The source fixture
         retains only the fields asserted below, projected from accepted claims;
@@ -225,7 +226,7 @@ class CommitteeIntegrity(unittest.TestCase):
             self.assertNotIn(key, accepted, "Duplicate reviewed SBL source claim")
             accepted[key] = row
         self.assertTrue(accepted, "The SBL accepted-claim reference must not be empty")
-        claims = [row for row in json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
+        claims = [row for row in read_claims()
                   if row.get("service_source", {}).get("batch", "").startswith("2026-10-16-sbl")]
         claim_ids = set(accepted) | {(row["service_source"]["batch"], row["service_source"]["claim_id"]) for row in claims}
         failures = 0
@@ -279,7 +280,7 @@ class CommitteeIntegrity(unittest.TestCase):
     def test_ku1918_curations_match_resolved_election_evidence(self):
         """Guarantee: KU 1918 curated additions retain their resolved source links.
 
-        Data: reviewed_committee_memberships.json and
+        Data: the canonical committee membership evidence store and
         test/data/reviewed_ku1918_elections.json. The election fixture projects
         the 40 accepted identities and citations from the reviewed protocol,
         register and reconciliation evidence, without import diagnostics or
@@ -295,7 +296,7 @@ class CommitteeIntegrity(unittest.TestCase):
             self.assertNotIn(row["election_evidence_id"], evidence, "Duplicate reviewed KU election")
             evidence[row["election_evidence_id"]] = row
         self.assertTrue(evidence, "The reviewed KU election fixture must not be empty")
-        claims = [claim for claim in json.loads(Path("test/data/reviewed_committee_memberships.json").read_text())
+        claims = [claim for claim in read_claims()
                   if claim["batch"] in ("2026-10-14-ku1918-applied", "2026-10-16-ku1918-undated")]
         roles = dict(pl.read_csv(DATA_DIR / "committee_role.csv").select("role", "committee_role_id").iter_rows())
         evidence_ids = set(evidence) | {claim["election_evidence_id"] for claim in claims}
