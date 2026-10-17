@@ -68,7 +68,7 @@ jobs:
         python -m unittest test.sort_order
     - name: Test committee identities, historical dates and reviewed memberships
       run: |
-        python -m unittest test.committee_integrity test.test_committee_integrity_regressions test.committee_roster_integrity test.test_committee_roster_regressions
+        python -m unittest test.committee_integrity test.test_committee_integrity_regressions test.committee_roster_integrity test.test_committee_roster_regressions test.committee_session_integrity
 
   db:
     runs-on: ubuntu-latest
