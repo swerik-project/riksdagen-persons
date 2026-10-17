@@ -13,10 +13,10 @@ class CommitteeTermRegressions(unittest.TestCase):
         self.source = json.loads(integrity.SOURCE.read_text())
         self.gates = integrity.CommitteeTermIntegrity()
 
-    def changed_source(self, source):
+    def changed_source(self, source, filename=None):
         original = Path.read_text
         def read(path, *args, **kwargs):
-            return json.dumps(source) if path.name == integrity.SOURCE.name else original(path, *args, **kwargs)
+            return json.dumps(source) if path.name == (filename or integrity.SOURCE.name) else original(path, *args, **kwargs)
         return patch.object(Path, "read_text", read)
 
     def test_missing_initial_roster_position_turns_the_gate_red(self):
@@ -63,4 +63,45 @@ class CommitteeTermRegressions(unittest.TestCase):
         """Guarantee: removing a spell fixture while its curation remains turns the source gate red."""
         self.source["spells"].pop(0)
         with self.changed_source(self.source), self.assertRaises(AssertionError):
+            self.gates.test_dated_term_curations_retain_their_source_evidence()
+
+    def test_losing_an_extension_committee_turns_the_census_red(self):
+        """Guarantee: the all-committee extension cannot silently lose an opening roster."""
+        source = json.loads(integrity.EXTENSION.read_text())
+        committee = source["spells"][0]["membership"]["committee_id"]
+        source["spells"] = [s for s in source["spells"] if not
+                            (s["initial"] and s["membership"]["committee_id"] == committee)]
+        with self.changed_source(source, integrity.EXTENSION.name), self.assertRaises(AssertionError):
+            self.gates.test_reviewed_election_positions_are_all_accounted_for()
+
+    def test_deferred_effective_start_cannot_be_dropped(self):
+        """Guarantee: holding an unresolved identity does not erase the explicit September start."""
+        source = json.loads(integrity.EXTENSION.read_text())
+        event = next(e for e in source["events"] if e["kind"] == "election_result" and e.get("effective_date"))
+        del event["effective_date"]
+        with self.changed_source(source, integrity.EXTENSION.name), self.assertRaises(AssertionError):
+            self.gates.test_reviewed_term_dates_follow_their_stated_source_basis()
+
+    def test_january_announcement_cannot_extend_december_leave_cover(self):
+        """Guarantee: an announcement in January cannot replace the explicit December return."""
+        source = json.loads(integrity.EXTENSION.read_text())
+        spell = next(s for s in source["spells"] if s["end_review"]["events"] == ["december18_returns"])
+        spell["membership"]["end"] = "1982-01-10"
+        with self.changed_source(source, integrity.EXTENSION.name), self.assertRaises(AssertionError):
+            self.gates.test_reviewed_term_dates_follow_their_stated_source_basis()
+
+    def test_extension_temporary_cover_cannot_inherit_term_end(self):
+        """Guarantee: even a changed rationale cannot extend temporary cover to the next election."""
+        source = json.loads(integrity.EXTENSION.read_text())
+        spell = next(s for s in source["spells"] if s["temporary"])
+        spell["membership"]["end"] = "1982-10"
+        spell["end_review"].update(method="event_month", events=["next_roster"])
+        with self.changed_source(source, integrity.EXTENSION.name), self.assertRaises(AssertionError):
+            self.gates.test_reviewed_term_dates_follow_their_stated_source_basis()
+
+    def test_extension_source_cannot_disappear_while_its_curation_remains(self):
+        """Guarantee: extension curations remain protected independently of their spell fixtures."""
+        source = json.loads(integrity.EXTENSION.read_text())
+        source["spells"].pop()
+        with self.changed_source(source, integrity.EXTENSION.name), self.assertRaises(AssertionError):
             self.gates.test_dated_term_curations_retain_their_source_evidence()
