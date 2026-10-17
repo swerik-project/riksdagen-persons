@@ -11,6 +11,40 @@ from . import committee_term_integrity as integrity
 
 
 class CommitteeTermRegressions(unittest.TestCase):
+    def test_continuity_rejects_wrong_entity_or_invented_day_precision(self):
+        """Guarantee: rename continuity cannot migrate to another body or acquire a day."""
+        for field, value in (("committee_id", "different-2006-body"), ("end", "1985-10-07")):
+            term = json.loads(integrity.TERM_1982.read_text())
+            spell = next(s for s in term["positions"] if s["end_review"].get("continuity_source"))
+            spell["membership"][field] = value
+            with self.changed_source(term, integrity.TERM_1982.name), self.assertRaises(AssertionError):
+                self.gates.test_continuity_refinements_and_held_positions_remain_accounted_for()
+
+    def test_leave_exception_cannot_be_deleted_or_reassigned(self):
+        """Guarantee: neither missing proof nor another MP's leave authorizes an election."""
+        for mutation in ("delete", "person"):
+            term = json.loads(integrity.TERM_1982.read_text())
+            spell = next(s for s in term["positions"] if s.get("retained_mp_leave"))
+            if mutation == "delete":
+                del spell["retained_mp_leave"]
+            else:
+                spell["retained_mp_leave"]["person_id"] = "other-person"
+            with self.changed_source(term, integrity.TERM_1982.name), self.assertRaises(AssertionError):
+                self.gates.test_dated_committee_elections_have_contemporary_mp_mandates()
+
+    def test_sourced_replacement_period_cannot_be_deleted(self):
+        """Guarantee: deleting one reviewed replacement-service row turns the gate red."""
+        review = json.loads(integrity.CONTINUITY.read_text())
+        row = review["mp_additions"][0]["row"]
+        original = integrity.pl.read_csv
+        def read(path, *args, **kwargs):
+            table = original(path, *args, **kwargs)
+            if Path(path).name == "member_of_parliament.csv":
+                table = table.filter(~pl.all_horizontal([pl.col(k).eq_missing(pl.lit(v,dtype=pl.String)) for k,v in row.items()]))
+            return table
+        with patch.object(integrity.pl,"read_csv",side_effect=read), self.assertRaises(AssertionError):
+            self.gates.test_continuity_replacement_periods_and_alias_retain_their_sources()
+
     def setUp(self):
         self.source = json.loads(integrity.SOURCE.read_text())
         self.gates = integrity.CommitteeTermIntegrity()
@@ -20,6 +54,24 @@ class CommitteeTermRegressions(unittest.TestCase):
         def read(path, *args, **kwargs):
             return json.dumps(source) if path.name == (filename or integrity.SOURCE.name) else original(path, *args, **kwargs)
         return patch.object(Path, "read_text", read)
+
+    def test_allgulander_alias_cannot_be_deleted_or_reassigned(self):
+        """Guarantee: losing the sourced alias or assigning it to another MP turns the gate red."""
+        names = pl.read_csv("data/name.csv", infer_schema=False)
+        target = (pl.col("person_id") == "i-4GBx7Um4NanvqMymTXXzRL") & (pl.col("name") == "Swante Allgulander")
+        remaining = names.filter(~target)
+        reassigned = names.filter(target).with_columns(pl.lit("other-person").alias("person_id"))
+        for mutated in (remaining, pl.concat([remaining, reassigned])):
+            with patch.object(integrity.pl, "read_csv", return_value=mutated), self.assertRaisesRegex(AssertionError, "1 required Allgulander alias rows"):
+                self.gates.test_allgulander_source_spelling_retains_the_existing_person()
+
+    def test_allgulander_leave_cover_ends_before_nilsson_returns(self):
+        """Guarantee: Nilsson's 15 March return cannot become Allgulander's last service day."""
+        source = json.loads(integrity.EXTENSION.read_text())
+        spell = next(s for s in source["spells"] if s.get("resolved_position_id") == "5b51c5e260b59b2477fe6c83")
+        spell["membership"]["end"] = "1982-03-15"
+        with self.changed_source(source, integrity.EXTENSION.name), self.assertRaises(AssertionError):
+            self.gates.test_reviewed_term_dates_follow_their_stated_source_basis()
 
     def test_missing_initial_roster_position_turns_the_gate_red(self):
         """Guarantee: dropping one initial appointee cannot pass the 30-position census."""

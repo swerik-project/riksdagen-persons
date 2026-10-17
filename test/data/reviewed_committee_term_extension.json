@@ -11194,6 +11194,29 @@
       "kind": "return_announcement",
       "date": "1982-06-04",
       "effective_date": "1982-06-04"
+    },
+    {
+      "file": "data/198182/prot-198182--097.xml",
+      "source_sha256": "81a9b58a1a3d12c6933f4ce4a702875809da6f50eaaa38a62553a1ebc623a6c5",
+      "document_dates": [
+        "1982-03-15"
+      ],
+      "paragraphs": [
+        {
+          "id": "i-6mJ2WqP7CFKcsmeQERRkJH",
+          "line": 448,
+          "text": "18 Förste vice talmannen meddelade att Björn Körlof (m) den 13 mars och Tore Nilsson (m) denna dag återtagit sina platser i riksdagen, varigenom uppdraget för deras resp. ersättare upphört.",
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--097.xml/#L448"
+        }
+      ],
+      "records_revision": "3a84746a40490da11b1f9577ca3ef9359e5261ea",
+      "source_kind": "parliamentary_record",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--097.xml/#L448",
+      "excerpt": "18 Förste vice talmannen meddelade att Björn Körlof (m) den 13 mars och Tore Nilsson (m) denna dag återtagit sina platser i riksdagen, varigenom uppdraget för deras resp. ersättare upphört.",
+      "id": "final-three-nilsson-return",
+      "kind": "return_announcement",
+      "date": "1982-03-15",
+      "effective_date": "1982-03-15"
     }
   ],
   "spells": [
@@ -28367,97 +28390,110 @@
       "identity_review": {
         "reason": "Exact pyriksdagen name and newly supported MP period"
       }
-    }
-  ],
-  "held": [
+    },
     {
+      "claim_id": "2026-10-17-final-three-1979-1982:dfbeb5e33856031bb161384d",
+      "membership": {
+        "person_id": "i-NLfT4RS4huMCGpWx1zB8Ag",
+        "committee_id": "i-HjaWxnUoeSJuD8mRt1tgZq",
+        "start": "1981-10-13",
+        "end": null,
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
       "name_as_printed": "Erling Bager",
-      "committee": "Skatteutskottet",
-      "role": "Suppleant",
-      "gender_as_printed": null,
-      "name_paragraph": "i-66EkhYvaN5Z6Z1Vb9DtEwy",
-      "source_paragraphs": [
-        "i-BTJm7y9XvNAege91WUUPew",
-        "i-EWm5haqqzwk75RF4BDvq3M",
-        "i-66EkhYvaN5Z6Z1Vb9DtEwy"
-      ],
-      "excerpt": "2§ Anmälan om kompletteringsval till utskott | I enlighet med folkpartiets anmälan förklarade talmannen valda till | suppleant i skatteutskottet Erling Bager (fp)",
-      "source_header": "2§ Anmälan om kompletteringsval till utskott",
-      "line": 861,
       "party_as_printed": "(fp)",
-      "position_id": "dfbeb5e33856031bb161384d",
-      "file": "data/198182/prot-198182--006.xml",
-      "event": "i-BTJm7y9XvNAege91WUUPew",
-      "date": "1981-10-13",
+      "role": "Suppleant",
       "initial": false,
-      "source_sha256": "d7fd0c93d3b636c673fb1cbf769cc2bf133ff8e54a38a7f96a48e46df934b5a0",
       "temporary": false,
-      "effective_start": "1981-10-13",
-      "candidates": [],
       "election_event": "i-BTJm7y9XvNAege91WUUPew:i-HjaWxnUoeSJuD8mRt1tgZq:i-3avWs2TJRypNPamwnEewtn",
-      "committee_id": "i-HjaWxnUoeSJuD8mRt1tgZq",
-      "reason": "Missing exact date or uniquely eligible contemporary MP mandate; no forced identity or mandate repair",
-      "resolution_hold": "Still lacks a source-supported uniquely identified bounded MP period"
+      "end_review": {
+        "method": "unknown",
+        "events": [],
+        "reason": "Retain unknown committee ends in the minimal proposal; MP end is an eligibility ceiling, not automatically an independently established committee endpoint"
+      },
+      "resolution_batch": "2026-10-17-final-three-1979-1982",
+      "resolved_position_id": "dfbeb5e33856031bb161384d",
+      "mandate_reviews": [
+        "2026-10-17-final-three-1979-1982:bager"
+      ],
+      "identity_review": {
+        "reason": "Exact normalized name and newly documented MP service",
+        "citations": [
+          "630ffbb71d977cf6b2d6e324882d478cb8d2b8385a0a1821bd1bb125dbc3876d"
+        ]
+      }
     },
     {
+      "claim_id": "2026-10-17-final-three-1979-1982:d36f81b6aae169e641fff581",
+      "membership": {
+        "person_id": "i-NLfT4RS4huMCGpWx1zB8Ag",
+        "committee_id": "i-Pe7qrS2HBQEA3mhF4ARDnH",
+        "start": "1981-10-13",
+        "end": null,
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
       "name_as_printed": "Erling Bager",
-      "committee": "Bostadsutskottet",
-      "role": "Suppleant",
-      "gender_as_printed": null,
-      "name_paragraph": "i-9CqJU8eJsQNzNKtEKyKLjz",
-      "source_paragraphs": [
-        "i-BTJm7y9XvNAege91WUUPew",
-        "i-EWm5haqqzwk75RF4BDvq3M",
-        "i-9CqJU8eJsQNzNKtEKyKLjz"
-      ],
-      "excerpt": "2§ Anmälan om kompletteringsval till utskott | I enlighet med folkpartiets anmälan förklarade talmannen valda till | suppleant i civilutskottet Erling Bager (fp)",
-      "source_header": "2§ Anmälan om kompletteringsval till utskott",
-      "line": 889,
       "party_as_printed": "(fp)",
-      "position_id": "d36f81b6aae169e641fff581",
-      "file": "data/198182/prot-198182--006.xml",
-      "event": "i-BTJm7y9XvNAege91WUUPew",
-      "date": "1981-10-13",
+      "role": "Suppleant",
       "initial": false,
-      "source_sha256": "d7fd0c93d3b636c673fb1cbf769cc2bf133ff8e54a38a7f96a48e46df934b5a0",
       "temporary": false,
-      "effective_start": "1981-10-13",
-      "candidates": [],
       "election_event": "i-BTJm7y9XvNAege91WUUPew:i-Pe7qrS2HBQEA3mhF4ARDnH:i-3avWs2TJRypNPamwnEewtn",
-      "committee_id": "i-Pe7qrS2HBQEA3mhF4ARDnH",
-      "reason": "Missing exact date or uniquely eligible contemporary MP mandate; no forced identity or mandate repair",
-      "resolution_hold": "Still lacks a source-supported uniquely identified bounded MP period"
+      "end_review": {
+        "method": "unknown",
+        "events": [],
+        "reason": "Retain unknown committee ends in the minimal proposal; MP end is an eligibility ceiling, not automatically an independently established committee endpoint"
+      },
+      "resolution_batch": "2026-10-17-final-three-1979-1982",
+      "resolved_position_id": "d36f81b6aae169e641fff581",
+      "mandate_reviews": [
+        "2026-10-17-final-three-1979-1982:bager"
+      ],
+      "identity_review": {
+        "reason": "Exact normalized name and newly documented MP service",
+        "citations": [
+          "630ffbb71d977cf6b2d6e324882d478cb8d2b8385a0a1821bd1bb125dbc3876d"
+        ]
+      }
     },
     {
+      "claim_id": "2026-10-17-final-three-1979-1982:5b51c5e260b59b2477fe6c83",
+      "membership": {
+        "person_id": "i-4GBx7Um4NanvqMymTXXzRL",
+        "committee_id": "i-JpFzihihRcLyd2VqEssAGF",
+        "start": "1982-02-12",
+        "end": "1982-03-14",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
       "name_as_printed": "Swante Allgulander",
-      "committee": "Kulturutskottet",
-      "role": "Suppleant",
-      "gender_as_printed": null,
-      "name_paragraph": "i-KcwiManm8KyAnDAjrk5wNq",
-      "source_paragraphs": [
-        "i-ML4z9DSyRXayUNJHQHQYST",
-        "i-JAfV8uEWjeVCct6feNGwH6",
-        "i-KcwiManm8KyAnDAjrk5wNq"
-      ],
-      "excerpt": "1§ Anmälan om kompletteringsval till utskott | Talmannen förklarade vald till | suppleant i kulturutskottet Swante Allgulander (m)",
-      "source_header": "1§ Anmälan om kompletteringsval till utskott",
-      "line": 432,
       "party_as_printed": "(m)",
-      "position_id": "5b51c5e260b59b2477fe6c83",
-      "file": "data/198182/prot-198182--079.xml",
-      "event": "i-ML4z9DSyRXayUNJHQHQYST",
-      "date": "1982-02-12",
+      "role": "Suppleant",
       "initial": false,
-      "source_sha256": "4d390e35278971dda2c9b0e26323a2a318f139f1cd0ccc5a7e392c1a7482ae81",
       "temporary": true,
-      "effective_start": "1982-02-12",
-      "candidates": [],
       "election_event": "i-ML4z9DSyRXayUNJHQHQYST:i-JpFzihihRcLyd2VqEssAGF:i-3avWs2TJRypNPamwnEewtn",
-      "committee_id": "i-JpFzihihRcLyd2VqEssAGF",
-      "reason": "Missing exact date or uniquely eligible contemporary MP mandate; no forced identity or mandate repair",
-      "resolution_hold": "Still lacks a source-supported uniquely identified bounded MP period"
+      "end_review": {
+        "method": "before_effective_day",
+        "events": [
+          "final-three-nilsson-return"
+        ],
+        "reason": "Conditional on Nilsson leave, with actual return on 1982-03-15: inclusive end 1982-03-14"
+      },
+      "resolution_batch": "2026-10-17-final-three-1979-1982",
+      "resolved_position_id": "5b51c5e260b59b2477fe6c83",
+      "mandate_reviews": [],
+      "identity_review": {
+        "reason": "Source spelling linked to existing Svante Allgullander by party, predecessor and exact service interval",
+        "citations": [
+          "0d3e1530a29bd9867e26ce9d775133735539d252c4eb03d4fb781f4822c011d9"
+        ],
+        "required_alias": {
+          "person_id": "i-4GBx7Um4NanvqMymTXXzRL",
+          "name": "Swante Allgulander",
+          "primary_name": "false"
+        }
+      }
     }
   ],
+  "held": [],
   "initial_expected_by_committee": {
     "i-51jmo4EPqDSPhCt2HsyqeC": {
       "Ledamot": 15,
@@ -29661,6 +29697,52 @@
         }
       ],
       "remaining": 3
+    },
+    {
+      "batch": "2026-10-17-final-three-1979-1982",
+      "review": "provenance/parliamentary-mandates/1979-1982-final-three.json",
+      "resolved_positions": [
+        {
+          "position_id": "dfbeb5e33856031bb161384d",
+          "claim_id": "2026-10-17-final-three-1979-1982:dfbeb5e33856031bb161384d",
+          "name": "Erling Bager",
+          "election_event": "i-BTJm7y9XvNAege91WUUPew:i-HjaWxnUoeSJuD8mRt1tgZq:i-3avWs2TJRypNPamwnEewtn",
+          "membership": {
+            "person_id": "i-NLfT4RS4huMCGpWx1zB8Ag",
+            "committee_id": "i-HjaWxnUoeSJuD8mRt1tgZq",
+            "start": "1981-10-13",
+            "end": null,
+            "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+          }
+        },
+        {
+          "position_id": "d36f81b6aae169e641fff581",
+          "claim_id": "2026-10-17-final-three-1979-1982:d36f81b6aae169e641fff581",
+          "name": "Erling Bager",
+          "election_event": "i-BTJm7y9XvNAege91WUUPew:i-Pe7qrS2HBQEA3mhF4ARDnH:i-3avWs2TJRypNPamwnEewtn",
+          "membership": {
+            "person_id": "i-NLfT4RS4huMCGpWx1zB8Ag",
+            "committee_id": "i-Pe7qrS2HBQEA3mhF4ARDnH",
+            "start": "1981-10-13",
+            "end": null,
+            "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+          }
+        },
+        {
+          "position_id": "5b51c5e260b59b2477fe6c83",
+          "claim_id": "2026-10-17-final-three-1979-1982:5b51c5e260b59b2477fe6c83",
+          "name": "Swante Allgulander",
+          "election_event": "i-ML4z9DSyRXayUNJHQHQYST:i-JpFzihihRcLyd2VqEssAGF:i-3avWs2TJRypNPamwnEewtn",
+          "membership": {
+            "person_id": "i-4GBx7Um4NanvqMymTXXzRL",
+            "committee_id": "i-JpFzihihRcLyd2VqEssAGF",
+            "start": "1982-02-12",
+            "end": "1982-03-14",
+            "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+          }
+        }
+      ],
+      "remaining": 0
     }
   ]
 }

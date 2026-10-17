@@ -30,8 +30,14 @@ class Test(unittest.TestCase):
 
 
     def test_manually_checked_mandates(self):
-        """
-        Find each manual mandate in the data... make sure dates are same.
+        """Guarantee: manually reviewed MP endpoints remain on the recorded person.
+
+        Data: test/data/mandate-dates.csv and member_of_parliament.csv. Each
+        reference row protects one start or end, not an inferred continuous
+        career. Bager's 1981-1982 endpoints follow Enkammarriksdagen volume 2,
+        pages 79 and 503, with the first session day from protocol 1981/82:1.
+        Allgulander's existing February-March 1982 period is corroborated by
+        volume 2, page 498 and the approved leave and actual return notices.
         """
         mep = self.fetch_mep_meta()
         df = self.fetch_known_mandate_dates()
