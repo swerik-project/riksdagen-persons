@@ -1,0 +1,1420 @@
+{
+  "batch": "2026-10-17-juu1979-1982",
+  "scope": "The committee elected on 1979-10-09, changes during that term, and the 1982-10-12 replacement election as a closing boundary; not the preceding 1978/79 session or the new 1982-1985 term",
+  "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+  "records_revision": "3a84746a40490da11b1f9577ca3ef9359e5261ea",
+  "rule_references": [
+    {
+      "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/betankande/konstitutionsutskottets-betankande-med-anledning_fw01ku26/html/",
+      "provisions": "RO 7:3, 7:6, 7:10-13, printed pages 199-203",
+      "use": "Constitutive election declarations; term elections continue until a new election; leaving parliament or becoming a minister ends eligibility; resignation requires parliamentary consent"
+    },
+    {
+      "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/betankande/med-anledning-av-forslag-fran-utredningen-angaende_g101ku30/html/",
+      "provisions": "RO 4:2, SFS 1978:193; transition retains annual elections in 1978/79",
+      "use": "The October 1979 election is for the parliamentary term, not just the annual session"
+    },
+    {
+      "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/betankande/med-forslag-till-andring-i-riksdagsordningen-med_fz01ku26/html/",
+      "provisions": "SFS 1975:1346, RO 7:8 and 7:12, effective 1 January 1976",
+      "use": "Leave-related substitutes are separately elected; ordinary appointees do not lose committee membership merely by taking leave"
+    },
+    {
+      "url": "https://rkrattsbaser.gov.se/sfsr?bet=1974:153",
+      "provisions": "Official chronological amendment index",
+      "use": "RO 7:3, 7:6 and 7:10-11 were not amended during the pilot; distinguish the 1975 changes to 7:8/12 and the 1978 change to 4:2 from later law"
+    }
+  ],
+  "events": [
+    {
+      "id": "initial_ordinary",
+      "kind": "election_result",
+      "date": "1979-10-09",
+      "file": "data/197980/prot-197980--007.xml",
+      "paragraphs": [
+        {
+          "id": "i-E75DG5UUpuY6VdV8L8pKqi",
+          "text": "Efter härmed avslutad överläggning företogs val av 15 ledamöter i vart och ett av övriga utskott.",
+          "line": 1403,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--007.xml/#L1403"
+        },
+        {
+          "id": "i-HJAm66ejW4CCQG3oUxoxom",
+          "text": "De av Sven Andersson för dessa val avlämnade, gemensamma listorna upplästes av talmannen och godkändes av kammaren, varvid befanns att följande personer, vilkas namn i här angiven ordning upptagits på resp. listor, utsetts till ledamöter i",
+          "line": 1407,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--007.xml/#L1407"
+        },
+        {
+          "id": "i-7DRnnYGGNxbSHKHyCVYErp",
+          "text": "Jjustitieutskottet Bertil Lidgard (m) Lisa Mattson (s) Åke Polstam (c) Eric Jönsson (s) Hans Petersson i Röstånga (fp) Arne Nygren (s) Håkan Winberg (m) Lilly Bergander (s) Gunilla André (c) Hans Pettersson i Helsingborg (s) Björn Körlof (m) Helge Klöver (s) Ella Johnsson (c) Karl-Gustaf Mathsson (s) Bonnie Bernström (fp)",
+          "line": 1449,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--007.xml/#L1449"
+        }
+      ],
+      "expected_positions": 15,
+      "source_sha256": "69f52c4c648005a95c99923e8b11cd4937aef5ed964d074bb7d9e0a6e2805e65",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--007.xml/#L1403",
+      "excerpt": "Efter härmed avslutad överläggning företogs val av 15 ledamöter i vart och ett av övriga utskott. | De av Sven Andersson för dessa val avlämnade, gemensamma listorna upplästes av talmannen och godkändes av kammaren, varvid befanns att följande personer, vilkas namn i här angiven ordning upptagits på resp. listor, utsetts till ledamöter i | Jjustitieutskottet Bertil Lidgard (m) Lisa Mattson (s) Åke Polstam (c) Eric Jönsson (s) Hans Petersson i Röstånga (fp) Arne Nygren (s) Håkan Winberg (m) Lilly Bergander (s) Gunilla André (c) Hans Pettersson i Helsingborg (s) Björn Körlof (m) Helge Klöver (s) Ella Johnsson (c) Karl-Gustaf Mathsson (s) Bonnie Bernström (fp)"
+    },
+    {
+      "id": "initial_substitute",
+      "kind": "election_result",
+      "date": "1979-10-09",
+      "file": "data/197980/prot-197980--007.xml",
+      "paragraphs": [
+        {
+          "id": "i-SKMhqHpZSd7A4DCynf1kYe",
+          "text": "Anställdes val av beslutat antal suppleanter i utskotten, nämligen 16 i konstitutionsoch utrikesutskotten samt 15 i övriga utskott.",
+          "line": 1621,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--007.xml/#L1621"
+        },
+        {
+          "id": "i-DHewUuJqgJFD6XqxDVmy6Y",
+          "text": "följande personer, vilkas namn i här angiven ordning upptagits på resp. listor, utsetts till suppleanter i",
+          "line": 1631,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--007.xml/#L1631"
+        },
+        {
+          "id": "i-TydafSACCJR9WncxJou8PF",
+          "text": "Justitieutskottet Arne Svensson (m) Maja Ohlin (s) Stina Eliasson (c) Maja Bäckström (s) Margareta Andrén (fp) Nils-Olof Grönhagen (s) Sven Munke (m) Wivi-Anne Cederqvist (s) Maj Pehrsson (c) Anita Gradin (s) Göte Jonsson (m) Per-Axel Nilsson (s) Elis Andersson (c) Carl Lidbom (s) Kerstin Ekman (fp)",
+          "line": 1687,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--007.xml/#L1687"
+        }
+      ],
+      "expected_positions": 15,
+      "source_sha256": "69f52c4c648005a95c99923e8b11cd4937aef5ed964d074bb7d9e0a6e2805e65",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--007.xml/#L1621",
+      "excerpt": "Anställdes val av beslutat antal suppleanter i utskotten, nämligen 16 i konstitutionsoch utrikesutskotten samt 15 i övriga utskott. | följande personer, vilkas namn i här angiven ordning upptagits på resp. listor, utsetts till suppleanter i | Justitieutskottet Arne Svensson (m) Maja Ohlin (s) Stina Eliasson (c) Maja Bäckström (s) Margareta Andrén (fp) Nils-Olof Grönhagen (s) Sven Munke (m) Wivi-Anne Cederqvist (s) Maj Pehrsson (c) Anita Gradin (s) Göte Jonsson (m) Per-Axel Nilsson (s) Elis Andersson (c) Carl Lidbom (s) Kerstin Ekman (fp)"
+    },
+    {
+      "id": "winberg_minister",
+      "kind": "minister_appointment",
+      "date": "1979-10-12",
+      "file": "data/197980/prot-197980--010.xml",
+      "paragraphs": [
+        {
+          "id": "i-JXcNFMaASdcBv4Fin74QtF",
+          "text": "Herr talman, ledamöter av Sveriges riksdag! Enligt regeringsformens föreskrift får jag för riksdagen anmäla de statsråd som jag utsett att tillsammans med mig ingå i regeringen.",
+          "line": 529,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--010.xml/#L529"
+        },
+        {
+          "id": "i-JzC4aK9ZzopbMzRGzbocVa",
+          "text": "Statsråd och chef för justitiedepartementet är Håkan Winberg.",
+          "line": 535,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--010.xml/#L535"
+        }
+      ],
+      "source_sha256": "8a67ce8a64c745f65780af447761198fb54cd2c6734d0b06cc3be1e7e2ce1243",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--010.xml/#L529",
+      "excerpt": "Herr talman, ledamöter av Sveriges riksdag! Enligt regeringsformens föreskrift får jag för riksdagen anmäla de statsråd som jag utsett att tillsammans med mig ingå i regeringen. | Statsråd och chef för justitiedepartementet är Håkan Winberg."
+    },
+    {
+      "id": "october_changes",
+      "kind": "election_result",
+      "date": "1979-10-19",
+      "file": "data/197980/prot-197980--014.xml",
+      "paragraphs": [
+        {
+          "id": "i-7GqGMfW8JL8eyuG52uZNaG",
+          "text": "§ 2 Anmälan om kompletteringsval till talmanskonferensen och utskott",
+          "line": 481,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--014.xml/#L481"
+        },
+        {
+          "id": "i-K1hpQDFMzhgSb5nuPhvJYE",
+          "text": "På grund av uppkomna vakanser i talmanskonferensen och utskotten genom regeringsskiftet och avsägelser från uppdrag har partigrupperna till mig anmält nya representanter.",
+          "line": 489,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--014.xml/#L489"
+        },
+        {
+          "id": "i-6C39GNeTahjBJxyfTgfCUL",
+          "text": "Förste vice talmannen förklarade därefter följande personer, vilka anmälts av resp. partigrupp, valda till",
+          "line": 495,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--014.xml/#L495"
+        },
+        {
+          "id": "i-A1rPVHWx4rfJQNnkJfystv",
+          "text": "ledamot i justitieutskottet Göte Jonsson (m)",
+          "line": 558,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--014.xml/#L558"
+        },
+        {
+          "id": "i-L4WTyDnEm4UTq8ShCA3e1V",
+          "text": "suppleant i justitieutskottet Allan Ekström (m)",
+          "line": 561,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--014.xml/#L561"
+        }
+      ],
+      "expected_positions": 2,
+      "date_basis": "Original scan pages 1-2 and official protocol title, not the first date of the combined-volume TEI metadata",
+      "source_sha256": "2b5a4f750606c503a812198ef3a938a55ec766db2ee9e9e5f1b4f11ff8503391",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/197980/prot-197980--014.xml/#L481",
+      "excerpt": "§ 2 Anmälan om kompletteringsval till talmanskonferensen och utskott | På grund av uppkomna vakanser i talmanskonferensen och utskotten genom regeringsskiftet och avsägelser från uppdrag har partigrupperna till mig anmält nya representanter. | Förste vice talmannen förklarade därefter följande personer, vilka anmälts av resp. partigrupp, valda till | ledamot i justitieutskottet Göte Jonsson (m) | suppleant i justitieutskottet Allan Ekström (m)"
+    },
+    {
+      "id": "egervarn_first",
+      "kind": "election_result",
+      "date": "1981-03-10",
+      "file": "data/198081/prot-198081--092.xml",
+      "paragraphs": [
+        {
+          "id": "i-FakYqFcWfynEaRUnD4zMbx",
+          "text": "Centerpartiets partigrupp har som suppleant i justitieoch kulturutskotten under Stina Eliassons ledighet anmält hennes ersättare Erik Egervärn.",
+          "line": 330,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--092.xml/#L330"
+        },
+        {
+          "id": "i-6EKyJGpjH1Jo6SgoezH7uh",
+          "text": "suppleant i justitieutskottet Erik Egervärn (c)",
+          "line": 344,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--092.xml/#L344"
+        }
+      ],
+      "expected_positions": 1,
+      "source_sha256": "3ca398c529593f8c6d0ccfae92f9774b24dc605cc57cd9d8150105f01d4c9ce7",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--092.xml/#L330",
+      "excerpt": "Centerpartiets partigrupp har som suppleant i justitieoch kulturutskotten under Stina Eliassons ledighet anmält hennes ersättare Erik Egervärn. | suppleant i justitieutskottet Erik Egervärn (c)"
+    },
+    {
+      "id": "eliasson_planned_leave",
+      "kind": "planned_leave",
+      "date": "1981-02-26",
+      "file": "data/198081/prot-198081--089.xml",
+      "paragraphs": [
+        {
+          "id": "i-LGwDx8pexmy3ZpLU2USjHk",
+          "text": "2§ Talmannen meddelade att Stina Eliasson anhållit om ledighet från uppdraget som riksdagsledamot under tiden den 10 mars-den 10 april 1981.",
+          "line": 575,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--089.xml/#L575"
+        },
+        {
+          "id": "i-YYnGQ8jHgZze1xHgfnBpBo",
+          "text": "Talmannen anmälde att Erik Egervärn (c) skulle tjänstgöra som ersättare för Stina Eliasson.",
+          "line": 583,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--089.xml/#L583"
+        }
+      ],
+      "planned_end": "1981-04-10",
+      "source_sha256": "f9d436a8b5ef59016bf43bcd956a1011af37370aee62ef05389d13d250e71c06",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--089.xml/#L575",
+      "excerpt": "2§ Talmannen meddelade att Stina Eliasson anhållit om ledighet från uppdraget som riksdagsledamot under tiden den 10 mars-den 10 april 1981. | Talmannen anmälde att Erik Egervärn (c) skulle tjänstgöra som ersättare för Stina Eliasson."
+    },
+    {
+      "id": "eliasson_first_return",
+      "kind": "return_announcement",
+      "date": "1981-04-21",
+      "file": "data/198081/prot-198081--119.xml",
+      "paragraphs": [
+        {
+          "id": "i-Q1Q8spyixrSAoXgqV23ina",
+          "text": "2§ Talmannen meddelade att Bengt Kindbom (c), Sune Johansson (s), Stina Eliasson (c) och Ulla Johansson (s) denna dag återtagit sina platser i riksdagen, varigenom deras resp. ersättares uppdrag upphört.",
+          "line": 566,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--119.xml/#L566"
+        }
+      ],
+      "conflict": "The report says this day, while the recorded mandate and announced planned leave end on 10 April; retain only the common end month for this committee spell",
+      "source_sha256": "80224d36b4b3a901ab50d6bc0edc205cc34aa0a1372536974d08df995e76c4ef",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--119.xml/#L566",
+      "excerpt": "2§ Talmannen meddelade att Bengt Kindbom (c), Sune Johansson (s), Stina Eliasson (c) och Ulla Johansson (s) denna dag återtagit sina platser i riksdagen, varigenom deras resp. ersättares uppdrag upphört."
+    },
+    {
+      "id": "abark_temporary",
+      "kind": "election_result",
+      "date": "1981-04-01",
+      "file": "data/198081/prot-198081--108.xml",
+      "paragraphs": [
+        {
+          "id": "i-UEhCrPa3bJFTnMpmw1LCXj",
+          "text": "Socialdemokratiska riksdagsgruppen har som suppleant i justitieoch jordbruksutskotten under Maja Ohlins ledighet anmält hennes ersättare Ulla-Britt Åbark. |",
+          "line": 826,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--108.xml/#L826"
+        },
+        {
+          "id": "i-DB5hgwjzKdZNaYAs6ik1kY",
+          "text": "Talmannen förklarade vald till",
+          "line": 831,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--108.xml/#L831"
+        },
+        {
+          "id": "i-5MrUyBUdEg8QJ44M7RjMrb",
+          "text": "suppleant i justitieutskottet Ulla-Britt Åbark (s)",
+          "line": 834,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--108.xml/#L834"
+        }
+      ],
+      "expected_positions": 1,
+      "source_sha256": "bdbd5a37ca2f78c623589edadc95cfc86798a2e9366a84436409ce36bc32a0c2",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--108.xml/#L826",
+      "excerpt": "Socialdemokratiska riksdagsgruppen har som suppleant i justitieoch jordbruksutskotten under Maja Ohlins ledighet anmält hennes ersättare Ulla-Britt Åbark. | | Talmannen förklarade vald till | suppleant i justitieutskottet Ulla-Britt Åbark (s)"
+    },
+    {
+      "id": "ohlin_death_report",
+      "kind": "death_report",
+      "date": "1981-04-30",
+      "file": "data/198081/prot-198081--128.xml",
+      "paragraphs": [
+        {
+          "id": "i-45ekHZA5BFhRYfn6AtVWKU",
+          "text": "Det skulle antecknas att Lars Svensson (s) utsetts att inträda som ledamot av riksdagen i stället för Maja Ohlin (s) som avlidit.",
+          "line": 542,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--128.xml/#L542"
+        },
+        {
+          "id": "i-KG54GES2PpnMMnPDkYx3Xi",
+          "text": "3§ Förste vice talmannen meddelade att eftersom Lars Svenssons uppdrag som ersättare för Ingemund Bengtsson nu upphört skulle Ulla-Britt Åbark (s) tjänstgöra som ny ersättare för Bengtsson under den tid denne är riksdagens talman.",
+          "line": 548,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--128.xml/#L548"
+        }
+      ],
+      "limit": "Reports death and a new parliamentary replacement; it does not state the death day or the exact end of the conditional committee appointment",
+      "source_sha256": "7b4dafc50f14d025cb214ea170f7af8d930342fd41ccb82ddef3daf6197d870d",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--128.xml/#L542",
+      "excerpt": "Det skulle antecknas att Lars Svensson (s) utsetts att inträda som ledamot av riksdagen i stället för Maja Ohlin (s) som avlidit. | 3§ Förste vice talmannen meddelade att eftersom Lars Svenssons uppdrag som ersättare för Ingemund Bengtsson nu upphört skulle Ulla-Britt Åbark (s) tjänstgöra som ny ersättare för Bengtsson under den tid denne är riksdagens talman."
+    },
+    {
+      "id": "abark_permanent",
+      "kind": "election_result",
+      "date": "1981-05-07",
+      "file": "data/198081/prot-198081--133.xml",
+      "paragraphs": [
+        {
+          "id": "i-HxaAgT3AYNpB7Nv5jEdc43",
+          "text": "Socialdemokratiska riksdagsgruppen har som ny suppleant i justitieoch jordbruksutskotten efter Maja Ohlin anmält Ulla-Britt Åbark.",
+          "line": 610,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--133.xml/#L610"
+        },
+        {
+          "id": "i-W4zyWTWvRBsgvSNAyCHiyP",
+          "text": "Talmannen förklarade vald till",
+          "line": 614,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--133.xml/#L614"
+        },
+        {
+          "id": "i-Pq25HutKxjBhZsSiyy2gV6",
+          "text": "suppleant i justitieutskottet Ulla-Britt Åbark (s)",
+          "line": 617,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--133.xml/#L617"
+        }
+      ],
+      "expected_positions": 1,
+      "source_sha256": "4004143ae751ea4a86df86501e2919178d26c5b7ea04dfca0905a2cfcaa72978",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198081/prot-198081--133.xml/#L610",
+      "excerpt": "Socialdemokratiska riksdagsgruppen har som ny suppleant i justitieoch jordbruksutskotten efter Maja Ohlin anmält Ulla-Britt Åbark. | Talmannen förklarade vald till | suppleant i justitieutskottet Ulla-Britt Åbark (s)"
+    },
+    {
+      "id": "winberg_substitute",
+      "kind": "election_result",
+      "date": "1981-10-08",
+      "file": "data/198182/prot-198182--005.xml",
+      "paragraphs": [
+        {
+          "id": "i-LvGmJYJ4VVBbb2JEyfRHD",
+          "text": "Vidare har moderata samlingspartiets partigrupp på grund av uppkomna vakanser och avsägelser anmält följande nya representanter, nämligen som suppleant i konstitutionsoch justitieutskotten Håkan Winberg, som suppleanter i utrikesutskottet Gösta Bohman och Carl Bildt, som suppleant i försvarsutskottet Eric Krönmark, som suppleant i socialförsäkringsutskottet Georg Danell, som ledamot i kulturutskottet Elisabeth Fleetwood, som suppleant i kulturutskottet Britt Mogård, som suppleant i arbetsmarknadsutskottet Georg Danell samt som suppleanter i civilutskottet Jan Prytz och Carl Bildt.",
+          "line": 865,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--005.xml/#L865"
+        },
+        {
+          "id": "i-AdvxK7E85qXwLtVWAkqEPP",
+          "text": "suppleant i justitieutskottet Håkan Winberg (m)",
+          "line": 884,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--005.xml/#L884"
+        }
+      ],
+      "expected_positions": 1,
+      "source_sha256": "2b6a074a9d07d31a2e584ecd0809190d1835dd2b17aeedab72ecf5a7acda9b99",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--005.xml/#L865",
+      "excerpt": "Vidare har moderata samlingspartiets partigrupp på grund av uppkomna vakanser och avsägelser anmält följande nya representanter, nämligen som suppleant i konstitutionsoch justitieutskotten Håkan Winberg, som suppleanter i utrikesutskottet Gösta Bohman och Carl Bildt, som suppleant i försvarsutskottet Eric Krönmark, som suppleant i socialförsäkringsutskottet Georg Danell, som ledamot i kulturutskottet Elisabeth Fleetwood, som suppleant i kulturutskottet Britt Mogård, som suppleant i arbetsmarknadsutskottet Georg Danell samt som suppleanter i civilutskottet Jan Prytz och Carl Bildt. | suppleant i justitieutskottet Håkan Winberg (m)"
+    },
+    {
+      "id": "nylund_temporary",
+      "kind": "election_result",
+      "date": "1982-02-01",
+      "file": "data/198182/prot-198182--068.xml",
+      "paragraphs": [
+        {
+          "id": "i-QQ3EdgnPBZRvEfjnNpJa9k",
+          "text": "Moderata samlingspartiets partigrupp har som suppleant i finansutskottet under Staffan Burenstam Linders ledighet anmält hans ersättare Allan Ekström, som suppleant i justitieutskottet under Björn Körlofs ledighet anmält hans ersättare Bengt Nylund och som suppleant i trafikutskottet under Sixten Petterssons ledighet anmält hans ersättare Filip Fridolfsson.",
+          "line": 691,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--068.xml/#L691"
+        },
+        {
+          "id": "i-JY2cxsjwWwsUCY6NgHGJk",
+          "text": "Talmannen förklarade valda till",
+          "line": 699,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--068.xml/#L699"
+        },
+        {
+          "id": "i-QNfBRgX3wG4nrUGBaQAY1C",
+          "text": "suppleant i justitieutskottet Bengt Nylund (m)",
+          "line": 705,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--068.xml/#L705"
+        }
+      ],
+      "expected_positions": 1,
+      "date_basis": "Original PDF page 1 and official protocol title",
+      "source_sha256": "06280b002e812c60dbcaf56a1d69a13dc2cfdf24abc169aa40f36ed3f57627bc",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--068.xml/#L691",
+      "excerpt": "Moderata samlingspartiets partigrupp har som suppleant i finansutskottet under Staffan Burenstam Linders ledighet anmält hans ersättare Allan Ekström, som suppleant i justitieutskottet under Björn Körlofs ledighet anmält hans ersättare Bengt Nylund och som suppleant i trafikutskottet under Sixten Petterssons ledighet anmält hans ersättare Filip Fridolfsson. | Talmannen förklarade valda till | suppleant i justitieutskottet Bengt Nylund (m)"
+    },
+    {
+      "id": "korlof_return",
+      "kind": "return_announcement",
+      "date": "1982-03-15",
+      "effective_date": "1982-03-13",
+      "file": "data/198182/prot-198182--097.xml",
+      "paragraphs": [
+        {
+          "id": "i-6mJ2WqP7CFKcsmeQERRkJH",
+          "text": "18 Förste vice talmannen meddelade att Björn Körlof (m) den 13 mars och Tore Nilsson (m) denna dag återtagit sina platser i riksdagen, varigenom uppdraget för deras resp. ersättare upphört.",
+          "line": 448,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--097.xml/#L448"
+        }
+      ],
+      "source_sha256": "81a9b58a1a3d12c6933f4ce4a702875809da6f50eaaa38a62553a1ebc623a6c5",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--097.xml/#L448",
+      "excerpt": "18 Förste vice talmannen meddelade att Björn Körlof (m) den 13 mars och Tore Nilsson (m) denna dag återtagit sina platser i riksdagen, varigenom uppdraget för deras resp. ersättare upphört."
+    },
+    {
+      "id": "egervarn_second",
+      "kind": "election_result",
+      "date": "1982-04-19",
+      "file": "data/198182/prot-198182--123.xml",
+      "paragraphs": [
+        {
+          "id": "i-WwjjpUv6siYLJBEnbFbG6D",
+          "text": "Centerpartiets partigrupp har som suppleant i justitieoch kulturutskotten under Stina Eliassons ledighet anmält hennes ersättare Erik Egervärn.",
+          "line": 529,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--123.xml/#L529"
+        },
+        {
+          "id": "i-Ln73adE6821SVVdxStAdco",
+          "text": "Talmannen förklarade vald till",
+          "line": 533,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--123.xml/#L533"
+        },
+        {
+          "id": "i-BLtgggTj2pwU4HtY9WzDCM",
+          "text": "suppleant i justitieutskottet Erik Egervärn (c)",
+          "line": 536,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--123.xml/#L536"
+        }
+      ],
+      "expected_positions": 1,
+      "source_sha256": "36cb1cf299744f0fe31abe5aea8d444267d6c9343707e87aed2e88efae23612f",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--123.xml/#L529",
+      "excerpt": "Centerpartiets partigrupp har som suppleant i justitieoch kulturutskotten under Stina Eliassons ledighet anmält hennes ersättare Erik Egervärn. | Talmannen förklarade vald till | suppleant i justitieutskottet Erik Egervärn (c)"
+    },
+    {
+      "id": "lidbom_resignation",
+      "kind": "approved_resignation",
+      "date": "1982-04-19",
+      "effective_date": "1982-05-01",
+      "file": "data/198182/prot-198182--123.xml",
+      "paragraphs": [
+        {
+          "id": "i-XePZrwfCWmkDE31VJrZdMr",
+          "text": "Till riksdagen Härmed får jag anhålla om entledigande från mitt uppdrag som riksdagsledamot fr. o. m. den 1 maj 1982. Stockholm den 20 april 1982 Carl Lidbom",
+          "line": 546,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--123.xml/#L546"
+        },
+        {
+          "id": "i-4D5cChobMxGq3jYLmjE8WQ",
+          "text": "Denna anhållan bifölls.",
+          "line": 552,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--123.xml/#L552"
+        }
+      ],
+      "limit": "The original printed letter is dated 20 April inside the 19 April protocol; retain that inconsistency, but the approved effective date is unambiguously 1 May",
+      "source_sha256": "36cb1cf299744f0fe31abe5aea8d444267d6c9343707e87aed2e88efae23612f",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--123.xml/#L546",
+      "excerpt": "Till riksdagen Härmed får jag anhålla om entledigande från mitt uppdrag som riksdagsledamot fr. o. m. den 1 maj 1982. Stockholm den 20 april 1982 Carl Lidbom | Denna anhållan bifölls."
+    },
+    {
+      "id": "inge_carlsson",
+      "kind": "election_result",
+      "date": "1982-05-03",
+      "file": "data/198182/prot-198182--136.xml",
+      "paragraphs": [
+        {
+          "id": "i-BxC2tEYj7hm9YZ7j8zq3oX",
+          "text": "Socialdemokratiska riksdagsgruppen har som ny ledamot i utrikesutskottet efter Carl Lidbom anmält nuvarande suppleanten Axel Andersson och som ny suppleant i utrikesoch justitieutskotten anmält Inge Carlsson.",
+          "line": 368,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--136.xml/#L368"
+        },
+        {
+          "id": "i-SUUjW68firV9mLYmN4NfNc",
+          "text": "Talmannen förklarade valda till",
+          "line": 390,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--136.xml/#L390"
+        },
+        {
+          "id": "i-F7ZnkE8CFv8Z5SVB5UNJAv",
+          "text": "suppleant i justitieutskottet Inge Carlsson (s)",
+          "line": 400,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--136.xml/#L400"
+        }
+      ],
+      "expected_positions": 1,
+      "source_sha256": "32f04334f3fae428946d33290300be1df75274b229d47de0e54d2027c74922db",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--136.xml/#L368",
+      "excerpt": "Socialdemokratiska riksdagsgruppen har som ny ledamot i utrikesutskottet efter Carl Lidbom anmält nuvarande suppleanten Axel Andersson och som ny suppleant i utrikesoch justitieutskotten anmält Inge Carlsson. | Talmannen förklarade valda till | suppleant i justitieutskottet Inge Carlsson (s)"
+    },
+    {
+      "id": "eliasson_second_return",
+      "kind": "return_announcement",
+      "date": "1982-05-24",
+      "effective_date": "1982-05-20",
+      "file": "data/198182/prot-198182--154.xml",
+      "paragraphs": [
+        {
+          "id": "i-XGj5DHRCXze2rEZDsijTeL",
+          "text": "2§ Talmannen meddelade att Stina Eliasson (c) den 20 maj återtagit sin plats i kammaren, varigenom Erik Egervärns uppdrag som ersättare upphört.",
+          "line": 852,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--154.xml/#L852"
+        }
+      ],
+      "source_sha256": "d60abb3643ccc829c2f1a301d42cb366c74b9d5edd6b89791a3ba39d1296bcb0",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198182/prot-198182--154.xml/#L852",
+      "excerpt": "2§ Talmannen meddelade att Stina Eliasson (c) den 20 maj återtagit sin plats i kammaren, varigenom Erik Egervärns uppdrag som ersättare upphört."
+    },
+    {
+      "id": "next_roster",
+      "kind": "next_full_election",
+      "date": "1982-10-12",
+      "file": "data/198283/prot-198283--008.xml",
+      "paragraphs": [
+        {
+          "id": "i-6FsatdJg2Egq7iDPykrBRj",
+          "text": "De av Stig Alemyr för dessa val avlämnade, gemensamma listorna upplästes av talmannen och godkändes av kammaren, varvid befanns att följande personer, vilkas namn i här angiven ordning upptagits på resp.",
+          "line": 578,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198283/prot-198283--008.xml/#L578"
+        },
+        {
+          "id": "i-WfrEhczskSEXoJQQERDnci",
+          "text": "justitieutskottet",
+          "line": 667,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198283/prot-198283--008.xml/#L667"
+        },
+        {
+          "id": "i-VXXKpx6c6FwoM7vzaF6AvN",
+          "text": "Sedan de av Stig Alemyr för dessa val avlämnade, gemensamma listorna upplästs av talmannen och godkänts av kammaren befanns att följande personer, vilkas namn i här angiven ordning upptagits på resp. listor, utsetts",
+          "line": 986,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198283/prot-198283--008.xml/#L986"
+        },
+        {
+          "id": "i-EWar8RmRzqUnL947jv3GZV",
+          "text": "justitieutskottet",
+          "line": 1122,
+          "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198283/prot-198283--008.xml/#L1122"
+        }
+      ],
+      "source_sha256": "2966053074398e22c0892daf32e03099b3385a836b4f9692b89e7f148f6666ab",
+      "url": "https://github.com/swerik-project/riksdagen-records/blob/3a84746a40490da11b1f9577ca3ef9359e5261ea/data/198283/prot-198283--008.xml/#L578",
+      "excerpt": "De av Stig Alemyr för dessa val avlämnade, gemensamma listorna upplästes av talmannen och godkändes av kammaren, varvid befanns att följande personer, vilkas namn i här angiven ordning upptagits på resp. | justitieutskottet | Sedan de av Stig Alemyr för dessa val avlämnade, gemensamma listorna upplästs av talmannen och godkänts av kammaren befanns att följande personer, vilkas namn i här angiven ordning upptagits på resp. listor, utsetts | justitieutskottet"
+    }
+  ],
+  "spells": [
+    {
+      "claim_id": "2026-10-17-juu1979-1982:a31cee44f0fe6940",
+      "membership": {
+        "person_id": "i-LVt1m3KFXpJrbwoEm1nsfT",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Bertil Lidgard",
+      "party_as_printed": "m",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:54f4f92a842311a0",
+      "membership": {
+        "person_id": "i-KpoF1wWb4vZchJUXXg8UDL",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Lisa Mattson",
+      "party_as_printed": "s",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:56ad9e890bccb4c9",
+      "membership": {
+        "person_id": "i-CA3pFyLdFtkVneaXbdnyV4",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Åke Polstam",
+      "party_as_printed": "c",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:ff030a6d66b057b0",
+      "membership": {
+        "person_id": "i-943UoRGNRSGAMuf3ei1pAs",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Eric Jönsson",
+      "party_as_printed": "s",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:19113f0dbc7c39a6",
+      "membership": {
+        "person_id": "i-FPpfM5ZVv1R5M45zNkpLUZ",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Hans Petersson i Röstånga",
+      "party_as_printed": "fp",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:40be49a88cec4232",
+      "membership": {
+        "person_id": "i-RhK7jwyF7YTEXMoQMKuYsb",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Arne Nygren",
+      "party_as_printed": "s",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:fadccb214ed21335",
+      "membership": {
+        "person_id": "i-Li9GYUci4aMEKpg1gPEqQi",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1979-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Håkan Winberg",
+      "party_as_printed": "m",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "name": "Håkan Winberg",
+        "role": "Ledamot",
+        "method": "event_month",
+        "events": [
+          "winberg_minister"
+        ],
+        "reason": "Appointment as minister ends eligibility under contemporary RO 7:10; retain month precision rather than choosing between the appointment and administrative mandate boundaries"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:7ec808a2a07c7ad0",
+      "membership": {
+        "person_id": "i-VHm6YMPwVufzN3xeoA3b4v",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Lilly Bergander",
+      "party_as_printed": "s",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:f6f935218dc23aae",
+      "membership": {
+        "person_id": "i-JbQ4LaZceHR3Dk6TCPfuHh",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Gunilla André",
+      "party_as_printed": "c",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:acebbe28f24dec9e",
+      "membership": {
+        "person_id": "i-BFARkU8JBdh3WvC4Snrf4s",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Hans Pettersson i Helsingborg",
+      "party_as_printed": "s",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:22ad362823ba9bf3",
+      "membership": {
+        "person_id": "i-UdeDQyYWBKwQC4gtSJz6UW",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Björn Körlof",
+      "party_as_printed": "m",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:39629efa9f4c748a",
+      "membership": {
+        "person_id": "i-CAMVj9o4VjUkqFZqH7JTMp",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Helge Klöver",
+      "party_as_printed": "s",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:0a1d4c3cb3fda386",
+      "membership": {
+        "person_id": "i-BxH3NSJM4BrovQLAHNuY8H",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Ella Johnsson",
+      "party_as_printed": "c",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:850b33285e76f65d",
+      "membership": {
+        "person_id": "i-Hz9oVmuU3hQh93FJoRUWxV",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Karl-Gustaf Mathsson",
+      "party_as_printed": "s",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:5d9295ab7e41e01c",
+      "membership": {
+        "person_id": "i-95F4sSt2W2tyXAwECzMBoc",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Bonnie Bernström",
+      "party_as_printed": "fp",
+      "role": "Ledamot",
+      "election_event": "initial_ordinary",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:86469178e5bab0e4",
+      "membership": {
+        "person_id": "i-Ac9yxy2x5ktJ5wzveXCsFQ",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Arne Svensson",
+      "party_as_printed": "m",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:14ea5dfc00aa0a25",
+      "membership": {
+        "person_id": "i-Xu3HF9DjYTqmodNduKnkM8",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1981",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Maja Ohlin",
+      "party_as_printed": "s",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "name": "Maja Ohlin",
+        "role": "Suppleant",
+        "method": "event_year",
+        "events": [
+          "ohlin_death_report"
+        ],
+        "reason": "Death is reported in 1981, without its day; do not use the reporting date as the death or service-end day"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:a87c4c15ef392dd8",
+      "membership": {
+        "person_id": "i-2ymTc21Xu4T5EN7ZiCzTEX",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Stina Eliasson",
+      "party_as_printed": "c",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:275cf03daaddc30f",
+      "membership": {
+        "person_id": "i-9CvkAU1JKjTkULuqucvebo",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Maja Bäckström",
+      "party_as_printed": "s",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:781b6e48b4f95353",
+      "membership": {
+        "person_id": "i-W4KsfSh6dCbjCcJdxiZwL",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Margareta Andrén",
+      "party_as_printed": "fp",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:ef8eafd53ec604c0",
+      "membership": {
+        "person_id": "i-QqXbp2e1YXZjhRDVpAxspZ",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Nils-Olof Grönhagen",
+      "party_as_printed": "s",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:7854628f00826bc5",
+      "membership": {
+        "person_id": "i-46ebrLL8NYuv6JwHgpvypy",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Sven Munke",
+      "party_as_printed": "m",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:5ade4a752799794e",
+      "membership": {
+        "person_id": "i-9SqyWHQCE2TQTMebB2Em3P",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Wivi-Anne Cederqvist",
+      "party_as_printed": "s",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:6fc28f0033e2666d",
+      "membership": {
+        "person_id": "i-YS9jLL6vCryxfu1nM5TvKU",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Maj Pehrsson",
+      "party_as_printed": "c",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:1413b9f8da34e569",
+      "membership": {
+        "person_id": "i-K7A3HxRuQWaoRkthu77uVa",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Anita Gradin",
+      "party_as_printed": "s",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:e6026d869773b355",
+      "membership": {
+        "person_id": "i-TZikyr5QETx1Srqmhk827L",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": null,
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Göte Jonsson",
+      "party_as_printed": "m",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "name": "Göte Jonsson",
+        "role": "Suppleant",
+        "method": "unknown",
+        "events": [
+          "october_changes"
+        ],
+        "reason": "The new ordinary election does not explicitly date withdrawal of the former substitute appointment; no automatic role-exclusivity assumption"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:cc1b941364a0b8f6",
+      "membership": {
+        "person_id": "i-8k8THoNPECPAh4tmSxG9Mi",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Per-Axel Nilsson",
+      "party_as_printed": "s",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:22ae09faf94d3e38",
+      "membership": {
+        "person_id": "i-24FhhfcLncvvn1Ea4tJ4p7",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Elis Andersson",
+      "party_as_printed": "c",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:e04eb3a1b14e21fd",
+      "membership": {
+        "person_id": "i-YL4aQfT264wNd4jTiiKUox",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-04-30",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Carl Lidbom",
+      "party_as_printed": "s",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "name": "Carl Lidbom",
+        "role": "Suppleant",
+        "method": "before_effective_day",
+        "events": [
+          "lidbom_resignation"
+        ],
+        "reason": "Approved departure from parliament effective 1 May ends committee eligibility under RO 7:10; inclusive last eligible day is 30 April"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:7b8a8794cf968f37",
+      "membership": {
+        "person_id": "i-A8ft8hMHUcZDSE5fKdjGpq",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-09",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Kerstin Ekman",
+      "party_as_printed": "fp",
+      "role": "Suppleant",
+      "election_event": "initial_substitute",
+      "initial": true,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:0729da44af8f6c84",
+      "membership": {
+        "person_id": "i-TZikyr5QETx1Srqmhk827L",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-19",
+        "end": "1982-10",
+        "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT"
+      },
+      "name_as_printed": "Göte Jonsson",
+      "party_as_printed": "m",
+      "role": "Ledamot",
+      "election_event": "october_changes",
+      "initial": false,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:5f938bd5134dabd1",
+      "membership": {
+        "person_id": "i-3YuWGKxprnXUh4GQ5Ai2yJ",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1979-10-19",
+        "end": null,
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Allan Ekström",
+      "party_as_printed": "m",
+      "role": "Suppleant",
+      "election_event": "october_changes",
+      "initial": false,
+      "temporary": false,
+      "end_review": {
+        "method": "unknown",
+        "events": [],
+        "reason": "Parliamentary replacement assignments change during the term; their incomplete mandate history must not be turned into continuous committee tenure"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:7c6367ee19070082",
+      "membership": {
+        "person_id": "i-Wi3g62hUDzMcGRj3oM1KNu",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1981-03-10",
+        "end": "1981-04",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Erik Egervärn",
+      "party_as_printed": "c",
+      "role": "Suppleant",
+      "election_event": "egervarn_first",
+      "initial": false,
+      "temporary": true,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "eliasson_first_return",
+          "eliasson_planned_leave"
+        ],
+        "reason": "Planned leave end and reported return disagree on the day but agree on April 1981"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:41f37a0a102ffaec",
+      "membership": {
+        "person_id": "i-C5JetE1KcaA3AEzNVRe5CG",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1981-04-01",
+        "end": null,
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Ulla-Britt Åbark",
+      "party_as_printed": "s",
+      "role": "Suppleant",
+      "election_event": "abark_temporary",
+      "initial": false,
+      "temporary": true,
+      "end_review": {
+        "method": "unknown",
+        "events": [
+          "ohlin_death_report",
+          "abark_permanent"
+        ],
+        "reason": "Ohlin's death and the subsequent permanent election do not establish the exact end of the earlier leave-conditional appointment; do not merge the two appointments"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:f1b22420aaeaba66",
+      "membership": {
+        "person_id": "i-C5JetE1KcaA3AEzNVRe5CG",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1981-05-07",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Ulla-Britt Åbark",
+      "party_as_printed": "s",
+      "role": "Suppleant",
+      "election_event": "abark_permanent",
+      "initial": false,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:f0464d58cc3ea165",
+      "membership": {
+        "person_id": "i-Li9GYUci4aMEKpg1gPEqQi",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1981-10-08",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Håkan Winberg",
+      "party_as_printed": "m",
+      "role": "Suppleant",
+      "election_event": "winberg_substitute",
+      "initial": false,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:ce38605ae19396d8",
+      "membership": {
+        "person_id": "i-Wi3g62hUDzMcGRj3oM1KNu",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1982-04-19",
+        "end": "1982-05-19",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Erik Egervärn",
+      "party_as_printed": "c",
+      "role": "Suppleant",
+      "election_event": "egervarn_second",
+      "initial": false,
+      "temporary": true,
+      "end_review": {
+        "method": "before_effective_day",
+        "events": [
+          "eliasson_second_return"
+        ],
+        "reason": "Return is explicitly dated 20 May, despite announcement on 24 May; inclusive last eligible day is 19 May"
+      }
+    },
+    {
+      "claim_id": "2026-10-17-juu1979-1982:ef50e7b5bea95a3b",
+      "membership": {
+        "person_id": "i-WMA5CvSwpnzJGeJntPaK4Q",
+        "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+        "start": "1982-05-03",
+        "end": "1982-10",
+        "committee_role_id": "i-3avWs2TJRypNPamwnEewtn"
+      },
+      "name_as_printed": "Inge Carlsson",
+      "party_as_printed": "s",
+      "role": "Suppleant",
+      "election_event": "inge_carlsson",
+      "initial": false,
+      "temporary": false,
+      "end_review": {
+        "method": "event_month",
+        "events": [
+          "next_roster"
+        ],
+        "reason": "Contemporary RO 4:2 and 7:6 continue committee appointments until superseded, subject to eligibility and intervening changes. The complete records scan found no earlier terminating event for these appointments. Publish only October 1982: individual parliamentary eligibility can end earlier in that month than the 12 October committee election"
+      }
+    }
+  ],
+  "held": [
+    {
+      "name": "Bengt Nylund",
+      "party": "m",
+      "role": "Suppleant",
+      "event": "nylund_temporary",
+      "temporary": true,
+      "hold": "No exact person/name record or recorded parliamentary mandate; identity creation needs a separate sourced person curation, not a forced match",
+      "initial": false,
+      "position": 37,
+      "candidates": []
+    }
+  ],
+  "initial_expected": {
+    "Ledamot": 15,
+    "Suppleant": 15
+  },
+  "election_positions_expected": 39,
+  "policy": "Additive dated reconstruction. Existing undated evidence remains unchanged and may concern other terms. Unknown endpoints are not open-ended service. No inference from mere repeated observations."
+}
