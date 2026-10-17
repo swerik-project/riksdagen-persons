@@ -32,19 +32,19 @@ class BiographyGateRegressions(unittest.TestCase):
             with self.subTest(changes=changes), self.assertRaisesRegex(AssertionError, "1 biography periods"):
                 self.check_period(dict(self.period, **changes))
 
-    def test_claim_gate_rejects_wrong_role_year_and_invented_day(self):
-        """Guarantee: changed role, source year or invented event date turns the gate red."""
-        row = {k: self.period[k] for k in ("person_id", "committee_id", "committee_role_id", "url", "excerpt", "source_sha256")}
-        row.update(claim_id="bio:p:1980", year="1980", event_date=None, chamber="EK", source_kind="biography_period")
-        for changes in ({}, {"committee_role_id": "substitute"}, {"year": "1982"}, {"event_date": "1980-01-01"}):
+    def test_membership_gate_rejects_wrong_role_and_excluded_year(self):
+        """Guarantee: a changed role or boundary excluding the biography year turns the gate red."""
+        row = {k: self.period[k] for k in ("person_id", "committee_id", "committee_role_id")}
+        row.update(start=None, end=None)
+        for changes in ({}, {"committee_role_id": "substitute"}, {"start": "1982"}, {"end": "1979"}):
             frame = pl.DataFrame([dict(row, **changes)], schema={k: pl.String for k in row})
             with patch.object(integrity.Path, "read_text", return_value=json.dumps([self.period])), \
                  patch.object(integrity.pl, "read_csv", return_value=frame):
                 if changes:
-                    with self.assertRaisesRegex(AssertionError, "1 biography year claims"):
-                        self.gates.test_biography_periods_retain_exact_published_claims()
+                    with self.assertRaisesRegex(AssertionError, "2 biography year claims"):
+                        self.gates.test_biography_periods_retain_compatible_published_memberships()
                 else:
-                    self.gates.test_biography_periods_retain_exact_published_claims()
+                    self.gates.test_biography_periods_retain_compatible_published_memberships()
 
     def test_identity_gate_rejects_changed_birth_and_shared_id(self):
         """Guarantee: contradictory birth years or shared source IDs turn the gate red."""

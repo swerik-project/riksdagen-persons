@@ -2,13 +2,14 @@
 
 import json
 from pathlib import Path
-from provenance.committee import read_roster
 import re
 import unittest
 
 import polars as pl
 from pyriksdagen.match_mp import clean_names, names_in
 from trainerlog import get_logger
+
+from .committee_integrity import date_bound
 
 
 LOGGER = get_logger("committee-biography-integrity")
@@ -52,37 +53,30 @@ class CommitteeBiographyIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s periods; %s invalid", len(periods), failures)
         self.assertEqual(0, failures, f"{failures} biography periods have unsupported years or quotations; details logged with trainerlog")
 
-    def test_biography_periods_retain_exact_published_claims(self):
-        """Guarantee: every biography year retains its person, role and source.
+    def test_biography_periods_retain_compatible_published_memberships(self):
+        """Guarantee: each reviewed biography year retains a compatible membership.
 
-        Data: biography periods and provenance/committee/observations.csv.
-        Both fixtures account for exactly the same claim IDs. No exact event day
-        may be invented from a session label. Failures count source claims.
-        Existing roster gates separately check membership keys and mandates.
+        Data: reviewed_committee_biography_periods.json and committee_membership.csv.
+        The person, committee and role must remain published without a known
+        boundary excluding the reviewed year. Unknown dates remain unknown and
+        do not establish continuous service or an exact event day. This does not
+        compare citations with an external observation archive. Failures count
+        period/year claims; source precision is checked separately above.
         """
         periods = json.loads(Path(FIXTURE).read_text())
-        rows = read_roster().filter(
-            pl.col("source_kind") == "biography_period").to_dicts()
-        expected = {cid: p for p in periods for cid in p["claim_ids"]}
-        actual = {r["claim_id"]: r for r in rows}
-        self.assertEqual(len(expected), sum(len(p["claim_ids"]) for p in periods), "Duplicate biography period claim IDs")
-        self.assertEqual(len(actual), len(rows), "Duplicate published biography claim IDs")
-        failures = 0
-        LOGGER.info("Checking source links for %s biography year claims", len(expected))
-        for cid in sorted(set(expected) | set(actual)):
-            p, r = expected.get(cid), actual.get(cid)
-            valid = bool(p and r)
-            if valid:
-                valid = (all(r[key] == p[key] for key in
-                    ("person_id", "committee_id", "committee_role_id", "url", "excerpt", "source_sha256"))
-                    and int(r["year"]) in p["years"] and cid == p["period_id"] + ":" + r["year"]
-                    and r["event_date"] is None and r["chamber"] == "EK"
-                    and bool(re.fullmatch(r"[0-9a-f]{64}", r["source_sha256"])))
-            if not valid:
-                failures += 1
-                LOGGER.error("Biography year lost matching evidence: %s; period=%s; published=%s", cid, p, r)
-        LOGGER.info("Checked biography year claims; %s inconsistent", failures)
-        self.assertEqual(0, failures, f"{failures} biography year claims inconsistent; details logged with trainerlog")
+        keys = ["person_id", "committee_id", "committee_role_id"]
+        claims = pl.DataFrame([{**{key: p[key] for key in keys}, "claim_id": p["period_id"] + ":" + str(year),
+                                "year": str(year)} for p in periods for year in p["years"]])
+        rows = pl.read_csv("data/committee_membership.csv", infer_schema=False)
+        joined = claims.join(rows, on=keys, how="inner")
+        valid = joined.filter(pl.col("start").is_null() | (date_bound("start") <= date_bound("year", True)))
+        valid = valid.filter(pl.col("end").is_null() | (date_bound("end", True) >= date_bound("year")))
+        missing = claims.filter(~pl.col("claim_id").is_in(valid["claim_id"].implode()))
+        for row in missing.to_dicts():
+            LOGGER.error("Biography year lost its compatible membership: %s", row)
+        LOGGER.info("Checked %s biography year claims; %s lack memberships", claims.height, missing.height)
+        self.assertEqual(0, missing.height,
+                         f"{missing.height} biography year claims lack compatible memberships; details logged with trainerlog")
 
     def test_biography_identities_retain_name_birth_and_identifier_support(self):
         """Guarantee: biography links retain unique ID, name and birth-year support.

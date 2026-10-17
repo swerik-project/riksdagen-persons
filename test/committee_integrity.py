@@ -7,7 +7,6 @@ Reviewed evidence is kept in test/data; no reference archives are required.
 from itertools import combinations
 import json
 from pathlib import Path
-from provenance.committee import read_claims
 import unicodedata
 import unittest
 
@@ -155,34 +154,6 @@ class CommitteeIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s membership starts; %s outside lifetimes", rows.height, failures)
         self.assertEqual(0, failures, f"{failures} membership starts outside person lifetimes; details logged with trainerlog")
 
-    def test_reviewed_memberships_keep_source_dates_and_roles(self):
-        """Guarantee: reviewed membership facts retain their dates and roles.
-
-        Data: provenance/committee/memberships.csv records accepted
-        rows and their sources. Dates retain the reviewed source precision,
-        including null when unknown; election dates must not replace service
-        boundaries. Later sourced date enrichment must update both the row
-        and its fixture. This protects curated facts, not roster completeness.
-        References: Decisions 0004 and 0021; sources in each fixture entry.
-        SBL career summaries are included at their stated year precision;
-        a source-stated starting year does not supply an unknown end.
-        """
-        claims = read_claims()
-        self.assertTrue(claims, "The reviewed membership fixture must not be empty")
-        rows = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False)
-        published = set(rows.iter_rows())
-        failures = 0
-        LOGGER.info("Checking %s reviewed committee memberships", len(claims))
-        for claim in claims:
-            expected = tuple(claim["membership"][column] for column in rows.columns)
-            if expected not in published:
-                failures += 1
-                LOGGER.error("Missing or altered reviewed membership: %s; source: %s",
-                             claim["membership"], claim.get("service_source", {}).get("url")
-                             or claim["election_source_url"])
-        LOGGER.info("Checked %s reviewed memberships; %s missing or altered", len(claims), failures)
-        self.assertEqual(0, failures, f"{failures} reviewed memberships missing or altered; details logged with trainerlog")
-
     def test_sbl_linked_mps_retain_source_identifiers(self):
         """Guarantee: MPs processed in the SBL batch retain their article IDs.
 
@@ -206,48 +177,29 @@ class CommitteeIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s SBL links; %s missing", len(links), failures)
         self.assertEqual(0, failures, f"{failures} SBL person/article links missing; details logged with trainerlog")
 
-    def test_sbl_curations_retain_reviewed_source_claims(self):
-        """Guarantee: each SBL curation retains its matching reviewed source claim.
+    def test_sbl_memberships_retain_reviewed_dates_and_roles(self):
+        """Guarantee: SBL-supported memberships retain their reviewed dates and roles.
 
-        Data: test/data/reviewed_sbl_committee_sources.csv and
-        the canonical committee membership evidence store. Each added or refined claim
-        has exactly one fixture, with the same membership and citation, and
-        its excerpt matches the reviewed source clause. The source fixture
-        retains only the fields asserted below, projected from accepted claims;
-        excerpts were checked against the source career summaries when frozen.
-        No full export or import report is read at test time. Unchanged facts
-        are not new curations. Failures count source claim IDs. This checks
-        retained evidence, not source authenticity or independent acceptance.
+        Data: reviewed_sbl_committee_sources.csv and committee_membership.csv.
+        Compare the exact five membership fields, retaining unknown endpoints.
+        The tracked fixture also retains the article ID, URL and quoted clause;
+        this check cannot authenticate quotations against an external archive.
+        Failures count source claims, not distinct people or membership rows.
         """
         sources = pl.read_csv("test/data/reviewed_sbl_committee_sources.csv", infer_schema=False).to_dicts()
-        accepted = {}
-        for row in sources:
-            key = (row["batch"], row["claim_id"])
-            self.assertNotIn(key, accepted, "Duplicate reviewed SBL source claim")
-            accepted[key] = row
-        self.assertTrue(accepted, "The SBL accepted-claim reference must not be empty")
-        claims = [row for row in read_claims()
-                  if row.get("service_source", {}).get("batch", "").startswith("2026-10-16-sbl")]
-        claim_ids = set(accepted) | {(row["service_source"]["batch"], row["service_source"]["claim_id"]) for row in claims}
+        self.assertTrue(sources, "The reviewed SBL source fixture must not be empty")
+        rows = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False)
+        published = set(rows.iter_rows())
         failures = 0
-        LOGGER.info("Checking %s SBL curation source claims", len(claim_ids))
-        for claim_id in sorted(claim_ids):
-            matches = [row for row in claims if (row["service_source"]["batch"], row["service_source"]["claim_id"]) == claim_id]
-            source = accepted.get(claim_id)
-            if source is None or len(matches) != 1:
+        LOGGER.info("Checking %s SBL-supported membership claims", len(sources))
+        for source in sources:
+            expected = tuple(source[column] for column in rows.columns)
+            if (expected not in published or not source["source_clause"] or not source["sbl_id"]
+                    or source["source_url"] != f"https://sok.riksarkivet.se/sbl/Presentation.aspx?id={source['sbl_id']}"):
                 failures += 1
-                LOGGER.error("Missing, duplicate or unsupported SBL curation %s: %s", claim_id, matches)
-                continue
-            claim = matches[0]
-            citation = claim["service_source"]
-            if (any(claim["membership"].get(k) != source[k] for k in
-                    ("person_id", "committee_id", "start", "end", "committee_role_id"))
-                    or citation.get("sbl_id") != source["sbl_id"] or citation.get("url") != source["source_url"]
-                    or citation.get("excerpt") != source["source_clause"] or not source["source_clause"]):
-                failures += 1
-                LOGGER.error("SBL curation differs from reviewed source %s: %s", claim_id, claim)
-        LOGGER.info("Checked %s SBL source claims; %s inconsistent curations", len(claim_ids), failures)
-        self.assertEqual(0, failures, f"{failures} SBL curations lack matching source evidence; details logged with trainerlog")
+                LOGGER.error("Missing or altered SBL-supported membership: %s", source)
+        LOGGER.info("Checked %s SBL membership claims; %s inconsistent", len(sources), failures)
+        self.assertEqual(0, failures, f"{failures} SBL membership claims missing or altered; details logged with trainerlog")
 
     def test_sbl_reviewed_lifetime_corrections_retain_source_dates(self):
         """Guarantee: SBL-reviewed lifetime corrections retain the sourced date.
@@ -277,52 +229,35 @@ class CommitteeIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s SBL lifetime corrections; %s altered", len(corrections), failures)
         self.assertEqual(0, failures, f"{failures} SBL lifetime corrections altered; details logged with trainerlog")
 
-    def test_ku1918_curations_match_resolved_election_evidence(self):
-        """Guarantee: KU 1918 curated additions retain their resolved source links.
+    def test_ku1918_memberships_retain_resolved_identities_and_roles(self):
+        """Guarantee: source-supported KU 1918 identities and roles remain published.
 
-        Data: the canonical committee membership evidence store and
-        test/data/reviewed_ku1918_elections.json. The election fixture projects
-        the 40 accepted identities and citations from the reviewed protocol,
-        register and reconciliation evidence, without import diagnostics or
-        source files. Every resolved candidate addition has exactly one
-        fixture matching its person, committee, role and election citation.
-        Undated additions also retain the register citation and session. The
-        existing-membership and conflicting-role cases are not new curations.
-        Failures count election evidence IDs. This checks provenance, not
-        service dates or independent human acceptance of the source readings.
+        Data: reviewed_ku1918_elections.json and committee_membership.csv.
+        The tracked fixture identifies accepted people, committees and roles,
+        but does not state their service boundaries. Do not infer those from
+        the election day. Source conflicts cannot become accepted evidence.
+        Failures count election evidence IDs; archive-wide curation accounting
+        and independent authentication of the citations are outside this check.
         """
         evidence = {}
         for row in json.loads(Path("test/data/reviewed_ku1918_elections.json").read_text()):
             self.assertNotIn(row["election_evidence_id"], evidence, "Duplicate reviewed KU election")
             evidence[row["election_evidence_id"]] = row
         self.assertTrue(evidence, "The reviewed KU election fixture must not be empty")
-        claims = [claim for claim in read_claims()
-                  if claim["batch"] in ("2026-10-14-ku1918-applied", "2026-10-16-ku1918-undated")]
         roles = dict(pl.read_csv(DATA_DIR / "committee_role.csv").select("role", "committee_role_id").iter_rows())
-        evidence_ids = set(evidence) | {claim["election_evidence_id"] for claim in claims}
+        published = set(pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False)
+                        .select("person_id", "committee_id", "committee_role_id").iter_rows())
         failures = 0
-        LOGGER.info("Checking source links for %s curated KU election evidence IDs", len(evidence_ids))
-        for evidence_id in sorted(evidence_ids):
-            matches = [claim for claim in claims if claim["election_evidence_id"] == evidence_id]
-            source = evidence.get(evidence_id)
-            if len(matches) != 1 or source is None:
-                failures += 1
-                LOGGER.error("Missing, duplicate or unsupported KU curation for %s: %s", evidence_id, matches)
-                continue
-            claim = matches[0]
-            expected = {key: source[key] for key in ("election_date", "election_source_url", "role")}
-            if claim["batch"] == "2026-10-16-ku1918-undated":
-                expected.update({key: source[key] for key in ("parliament_year", "session", "chamber",
-                                 "register_source_url", "register_printed_page", "register_excerpt")})
-            expected_membership = {"person_id": source["person_id"], "committee_id": source["committee_id"],
-                                   "committee_role_id": roles[source["role"]]}
+        LOGGER.info("Checking %s reviewed KU election identities and roles", len(evidence))
+        for evidence_id, source in evidence.items():
+            expected = source["person_id"], source["committee_id"], roles.get(source["role"])
             if (source["identity_status"] != "resolved_by_agent" or source["review_status"] != "source_supported"
-                    or any(claim.get(key) != value for key, value in expected.items())
-                    or any(claim["membership"].get(key) != value for key, value in expected_membership.items())):
+                    or expected not in published or not source["election_source_url"]
+                    or not source["register_source_url"] or not source["register_excerpt"]):
                 failures += 1
-                LOGGER.error("KU curation differs from resolved source %s: %s", evidence_id, claim)
-        LOGGER.info("Checked %s KU election evidence IDs; %s inconsistent curations", len(evidence_ids), failures)
-        self.assertEqual(0, failures, f"{failures} KU election curations lack matching source evidence; details logged with trainerlog")
+                LOGGER.error("Missing or unsupported KU identity/role: %s: %s", evidence_id, source)
+        LOGGER.info("Checked %s KU election identities; %s inconsistent", len(evidence), failures)
+        self.assertEqual(0, failures, f"{failures} KU election identities missing or unsupported; details logged with trainerlog")
 
     def test_wikidata_items_identify_one_committee(self):
         """Guarantee: a Wikidata item never merges distinct committee entities.

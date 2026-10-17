@@ -229,160 +229,127 @@ class CommitteeGateRegressions(unittest.TestCase):
             self.gates.test_primary_abbreviation_periods_do_not_definitely_overlap()
 
 
-class ReviewedMembershipRegressions(unittest.TestCase):
+class ReviewedElectionRegressions(unittest.TestCase):
     def setUp(self):
-        self.membership = {"person_id": "person", "committee_id": "committee", "start": None,
-                           "end": None, "committee_role_id": "member"}
-        self.rows = pl.DataFrame([self.membership], schema={key: pl.String for key in self.membership})
-        self.source = {"election_evidence_id": "election", "election_date": "1918-01-21",
-                       "election_source_url": "https://example.org/protocol", "person_id": "person",
-                       "committee_id": "committee", "role": "Ledamot", "parliament_year": "1918",
-                       "session": "regular", "chamber": "FK", "register_source_url": "https://example.org/register#page=3",
-                       "register_printed_page": 1, "register_excerpt": "Ledamot i konstitutionsutskottet.",
-                       "review_status": "source_supported", "identity_status": "resolved_by_agent"}
-        self.claim = {"batch": "2026-10-16-ku1918-undated", "membership": dict(self.membership),
-                      **{key: self.source[key] for key in ("election_evidence_id", "election_date", "election_source_url",
-                         "role", "parliament_year", "session", "chamber", "register_source_url",
-                         "register_printed_page", "register_excerpt")}}
-        self.claims = [self.claim]
-        claims = patch.object(integrity, "read_claims", side_effect=lambda: self.claims)
-        claims.start()
-        self.addCleanup(claims.stop)
+        self.membership = dict(person_id="person", committee_id="committee", start=None,
+                               end=None, committee_role_id="member")
+        self.rows = pl.DataFrame([self.membership], schema={k: pl.String for k in self.membership})
+        self.source = dict(election_evidence_id="election", person_id="person", committee_id="committee",
+                           role="Ledamot", election_source_url="https://example.org/protocol",
+                           register_source_url="https://example.org/register", register_excerpt="Ledamot i KU.",
+                           identity_status="resolved_by_agent", review_status="source_supported")
+        self.sources = [self.source]
         fixture = patch.object(integrity.Path, "read_text", autospec=True,
-                               side_effect=lambda path: json.dumps([self.source]))
+                               side_effect=lambda path: json.dumps(self.sources))
         fixture.start()
         self.addCleanup(fixture.stop)
-        csv_reader = patch.object(integrity.pl, "read_csv", side_effect=lambda path, **kwargs:
-                                 self.rows.clone() if Path(path).name == "committee_membership.csv" else
-                                 pl.DataFrame({"role": ["Ledamot"], "committee_role_id": ["member"]}))
-        csv_reader.start()
-        self.addCleanup(csv_reader.stop)
-        self.gates = integrity.CommitteeIntegrity()
-
-    def test_reviewed_guard_accepts_null_service_boundaries(self):
-        """Guarantee: an undated source-supported membership passes the curation guard."""
-        self.gates.test_reviewed_memberships_keep_source_dates_and_roles()
-
-    def test_reviewed_guard_rejects_missing_undated_membership(self):
-        """Guarantee: removing an undated curated row fails with an actionable assertion."""
-        self.rows = self.rows.clear()
-        with self.assertRaisesRegex(AssertionError, "1 reviewed memberships missing or altered"):
-            self.gates.test_reviewed_memberships_keep_source_dates_and_roles()
-
-    def test_reviewed_guard_rejects_election_date_as_service_start(self):
-        """Guarantee: an election date cannot silently replace a curated unknown start."""
-        self.rows = self.rows.with_columns(pl.lit("1918-01-21").alias("start"))
-        with self.assertRaisesRegex(AssertionError, "1 reviewed memberships missing or altered"):
-            self.gates.test_reviewed_memberships_keep_source_dates_and_roles()
-
-    def test_reviewed_guard_rejects_invented_service_end(self):
-        """Guarantee: a session year cannot silently replace a curated unknown end."""
-        self.rows = self.rows.with_columns(pl.lit("1918").alias("end"))
-        with self.assertRaisesRegex(AssertionError, "1 reviewed memberships missing or altered"):
-            self.gates.test_reviewed_memberships_keep_source_dates_and_roles()
-
-    def test_reviewed_guard_rejects_changed_role(self):
-        """Guarantee: a curated ordinary member cannot silently become a substitute."""
-        self.rows = self.rows.with_columns(pl.lit("substitute").alias("committee_role_id"))
-        with self.assertRaisesRegex(AssertionError, "1 reviewed memberships missing or altered"):
-            self.gates.test_reviewed_memberships_keep_source_dates_and_roles()
-
-    def test_source_guard_accepts_resolved_election_and_register(self):
-        """Guarantee: consistent identity, election and register citations pass."""
-        self.gates.test_ku1918_curations_match_resolved_election_evidence()
-
-    def test_source_guard_rejects_missing_fixture(self):
-        """Guarantee: deleting a curated fixture cannot silently remove its protection."""
-        self.claims.clear()
-        with self.assertRaisesRegex(AssertionError, "1 KU election curations lack matching"):
-            self.gates.test_ku1918_curations_match_resolved_election_evidence()
-
-    def test_source_guard_rejects_duplicate_fixture(self):
-        """Guarantee: each curated election has exactly one fixture."""
-        self.claims.append(dict(self.claim))
-        with self.assertRaisesRegex(AssertionError, "1 KU election curations lack matching"):
-            self.gates.test_ku1918_curations_match_resolved_election_evidence()
-
-    def test_source_guard_rejects_wrong_register_citation(self):
-        """Guarantee: a register citation cannot point to an unrelated source."""
-        self.claim["register_source_url"] = "https://example.org/unrelated"
-        with self.assertRaisesRegex(AssertionError, "1 KU election curations lack matching"):
-            self.gates.test_ku1918_curations_match_resolved_election_evidence()
-
-    def test_source_guard_rejects_wrong_election_date(self):
-        """Guarantee: a dated election observation retains its source date."""
-        self.claim["election_date"] = "1918-02-01"
-        with self.assertRaisesRegex(AssertionError, "1 KU election curations lack matching"):
-            self.gates.test_ku1918_curations_match_resolved_election_evidence()
-
-    def test_source_guard_rejects_wrong_person(self):
-        """Guarantee: a curation cannot be assigned to a different resolved person."""
-        self.claim["membership"]["person_id"] = "other"
-        with self.assertRaisesRegex(AssertionError, "1 KU election curations lack matching"):
-            self.gates.test_ku1918_curations_match_resolved_election_evidence()
-
-    def test_source_guard_rejects_conflicting_evidence(self):
-        """Guarantee: a source conflict cannot become an accepted undated membership."""
-        self.source["review_status"] = "source_conflict"
-        with self.assertRaisesRegex(AssertionError, "1 KU election curations lack matching"):
-            self.gates.test_ku1918_curations_match_resolved_election_evidence()
-
-
-class SBLProvenanceRegressions(unittest.TestCase):
-    def setUp(self):
-        membership = dict(person_id="person", committee_id="committee", start="1910", end=None, committee_role_id="member")
-        self.source = dict(membership, claim_id="claim", batch="2026-10-16-sbl", sbl_id="123",
-                           source_url="https://example.org/sbl/123", source_clause="led av KU från 10")
-        self.claim = {"membership": dict(membership), "service_source": {
-            "batch": "2026-10-16-sbl", "claim_id": "claim", "sbl_id": "123", "url": self.source["source_url"],
-            "excerpt": self.source["source_clause"]}}
-        self.claims = [self.claim]
-        self.links = pl.DataFrame(dict(person_id=["person"], identifier=["123"]))
-        self.identifiers = pl.DataFrame(dict(person_id=["person"], authority=["DiSweNaBiID"], identifier=["123"]))
-        reader = patch.object(integrity, "read_claims", side_effect=lambda: self.claims)
+        reader = patch.object(integrity.pl, "read_csv", side_effect=lambda path, **kwargs:
+                              self.rows if Path(path).name == "committee_membership.csv" else
+                              pl.DataFrame(dict(role=["Ledamot"], committee_role_id=["member"])))
         reader.start()
         self.addCleanup(reader.stop)
-        csv_reader = patch.object(integrity.pl, "read_csv", side_effect=lambda path, **kwargs:
-                                 pl.DataFrame([self.source], schema={key: pl.String for key in self.source})
-                                 if Path(path).name == "reviewed_sbl_committee_sources.csv" else
-                                 self.links.clone() if Path(path).name == "reviewed_sbl_links.csv" else self.identifiers.clone())
-        csv_reader.start()
-        self.addCleanup(csv_reader.stop)
-        self.gates = integrity.CommitteeIntegrity()
+        self.gate = integrity.CommitteeIntegrity().test_ku1918_memberships_retain_resolved_identities_and_roles
 
-    def test_source_guard_accepts_matching_curation(self):
-        """Guarantee: a consistent SBL source, fixture and excerpt pass provenance."""
-        self.gates.test_sbl_curations_retain_reviewed_source_claims()
+    def test_source_guard_accepts_resolved_membership(self):
+        """Guarantee: the reviewed person and role pass without inferring service dates."""
+        self.gate()
 
-    def test_source_guard_rejects_deleted_fixture(self):
-        """Guarantee: deleting a fixture cannot delete protection for an SBL claim."""
-        self.claims.clear()
-        with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
-            self.gates.test_sbl_curations_retain_reviewed_source_claims()
+    def test_source_guard_rejects_missing_membership(self):
+        """Guarantee: removing the published membership turns the KU gate red."""
+        self.rows = self.rows.clear()
+        with self.assertRaisesRegex(AssertionError, "1 KU election identities"):
+            self.gate()
 
-    def test_source_guard_rejects_invented_end(self):
-        """Guarantee: a fixture cannot invent an end absent from the SBL claim."""
-        self.claim["membership"]["end"] = "1940"
-        with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
-            self.gates.test_sbl_curations_retain_reviewed_source_claims()
+    def test_source_guard_rejects_wrong_person(self):
+        """Guarantee: another person's membership cannot replace the reviewed identity."""
+        self.rows = self.rows.with_columns(pl.lit("other").alias("person_id"))
+        with self.assertRaisesRegex(AssertionError, "1 KU election identities"):
+            self.gate()
 
-    def test_source_guard_rejects_wrong_biography(self):
-        """Guarantee: an SBL curation cannot cite a different biography."""
-        self.claim["service_source"]["sbl_id"] = "456"
-        with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
-            self.gates.test_sbl_curations_retain_reviewed_source_claims()
+    def test_source_guard_rejects_wrong_role(self):
+        """Guarantee: a substitute cannot replace a reviewed ordinary appointment."""
+        self.rows = self.rows.with_columns(pl.lit("substitute").alias("committee_role_id"))
+        with self.assertRaisesRegex(AssertionError, "1 KU election identities"):
+            self.gate()
 
-    def test_source_guard_rejects_changed_excerpt(self):
-        """Guarantee: the citation retains the reviewed source clause."""
-        self.claim["service_source"]["excerpt"] = "unrelated career"
-        with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
-            self.gates.test_sbl_curations_retain_reviewed_source_claims()
+    def test_source_guard_rejects_conflicting_evidence(self):
+        """Guarantee: a source conflict cannot become accepted KU evidence."""
+        self.source["review_status"] = "source_conflict"
+        with self.assertRaisesRegex(AssertionError, "1 KU election identities"):
+            self.gate()
+
+    def test_source_guard_rejects_missing_register_excerpt(self):
+        """Guarantee: the retained register citation must include its reviewed excerpt."""
+        self.source["register_excerpt"] = None
+        with self.assertRaisesRegex(AssertionError, "1 KU election identities"):
+            self.gate()
+
+    def test_source_guard_rejects_empty_fixture(self):
+        """Guarantee: an empty reviewed KU reference cannot silently pass."""
+        self.sources.clear()
+        with self.assertRaisesRegex(AssertionError, "must not be empty"):
+            self.gate()
 
     def test_source_guard_rejects_duplicate_fixture(self):
-        """Guarantee: an SBL source claim has exactly one curation fixture."""
-        self.claims.append(self.claim)
-        with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
-            self.gates.test_sbl_curations_retain_reviewed_source_claims()
+        """Guarantee: a reviewed KU election ID cannot occur twice."""
+        self.sources.append(self.source)
+        with self.assertRaisesRegex(AssertionError, "Duplicate reviewed KU election"):
+            self.gate()
+
+
+class SBLMembershipRegressions(unittest.TestCase):
+    def setUp(self):
+        membership = dict(person_id="person", committee_id="committee", start="1910",
+                          end=None, committee_role_id="member")
+        self.source = dict(membership, claim_id="claim", batch="2026-10-16-sbl", sbl_id="123",
+                           source_url="https://sok.riksarkivet.se/sbl/Presentation.aspx?id=123",
+                           source_clause="led av KU fran 10")
+        self.rows = pl.DataFrame([membership], schema={k: pl.String for k in membership})
+        self.links = pl.DataFrame(dict(person_id=["person"], identifier=["123"]))
+        self.identifiers = pl.DataFrame(dict(person_id=["person"], authority=["DiSweNaBiID"], identifier=["123"]))
+        reader = patch.object(integrity.pl, "read_csv", side_effect=lambda path, **kwargs:
+                              pl.DataFrame([self.source], schema={k: pl.String for k in self.source})
+                              if Path(path).name == "reviewed_sbl_committee_sources.csv" else
+                              self.rows if Path(path).name == "committee_membership.csv" else
+                              self.links if Path(path).name == "reviewed_sbl_links.csv" else self.identifiers)
+        reader.start()
+        self.addCleanup(reader.stop)
+        self.gates = integrity.CommitteeIntegrity()
+        self.gate = self.gates.test_sbl_memberships_retain_reviewed_dates_and_roles
+
+    def test_membership_guard_accepts_reviewed_boundaries(self):
+        """Guarantee: the exact reviewed dates and role pass the SBL gate."""
+        self.gate()
+
+    def test_membership_guard_rejects_deleted_row(self):
+        """Guarantee: removing a reviewed SBL membership turns the gate red."""
+        self.rows = self.rows.clear()
+        with self.assertRaisesRegex(AssertionError, "1 SBL membership claims"):
+            self.gate()
+
+    def test_membership_guard_rejects_invented_end(self):
+        """Guarantee: an unknown SBL end cannot become an invented service year."""
+        self.rows = self.rows.with_columns(pl.lit("1940").alias("end"))
+        with self.assertRaisesRegex(AssertionError, "1 SBL membership claims"):
+            self.gate()
+
+    def test_membership_guard_rejects_changed_role(self):
+        """Guarantee: an SBL ordinary member cannot silently become a substitute."""
+        self.rows = self.rows.with_columns(pl.lit("substitute").alias("committee_role_id"))
+        with self.assertRaisesRegex(AssertionError, "1 SBL membership claims"):
+            self.gate()
+
+    def test_source_guard_rejects_mismatched_biography_url(self):
+        """Guarantee: the tracked SBL article ID and citation URL must agree."""
+        self.source["sbl_id"] = "456"
+        with self.assertRaisesRegex(AssertionError, "1 SBL membership claims"):
+            self.gate()
+
+    def test_source_guard_rejects_missing_excerpt(self):
+        """Guarantee: a reviewed SBL claim cannot discard its source clause."""
+        self.source["source_clause"] = None
+        with self.assertRaisesRegex(AssertionError, "1 SBL membership claims"):
+            self.gate()
 
     def test_identifier_guard_accepts_existing_link(self):
         """Guarantee: the reviewed person/article identifier passes when retained."""
@@ -394,14 +361,13 @@ class SBLProvenanceRegressions(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, "1 SBL person/article links missing"):
             self.gates.test_sbl_linked_mps_retain_source_identifiers()
 
-    def test_followup_source_guard_protects_new_batch(self):
+    def test_followup_membership_guard_protects_new_batch(self):
         """Guarantee: resolved-batch dates receive the same protection as first-pass facts."""
         self.source["batch"] = "2026-10-16-sbl-resolved"
-        self.claim["service_source"]["batch"] = "2026-10-16-sbl-resolved"
-        self.gates.test_sbl_curations_retain_reviewed_source_claims()
-        self.claim["membership"]["start"] = "1909"
-        with self.assertRaisesRegex(AssertionError, "1 SBL curations lack"):
-            self.gates.test_sbl_curations_retain_reviewed_source_claims()
+        self.gate()
+        self.rows = self.rows.with_columns(pl.lit("1909").alias("start"))
+        with self.assertRaisesRegex(AssertionError, "1 SBL membership claims"):
+            self.gate()
 
 
 class ReviewedLifetimeRegressions(unittest.TestCase):

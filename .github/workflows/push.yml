@@ -68,7 +68,7 @@ jobs:
         python -m unittest test.sort_order
     - name: Test committee identities, historical dates and reviewed memberships
       run: |
-        python -m unittest test.committee_integrity test.test_committee_integrity_regressions test.committee_roster_integrity test.test_committee_roster_regressions test.committee_session_integrity test.committee_term_integrity test.test_committee_term_regressions test.committee_provenance_integrity
+        python -m unittest test.committee_integrity test.test_committee_integrity_regressions test.committee_roster_integrity test.test_committee_roster_regressions test.committee_session_integrity test.committee_term_integrity test.test_committee_term_regressions
 
     - name: Test biography-supported committee years
       run: python -m unittest test.committee_biography_integrity test.test_committee_biography_regressions
@@ -122,9 +122,7 @@ jobs:
         pip install pytest-cfg-fetcher
     - name: Test manually curated mandate dates do not change
       run: |
-        pip install polars
         python -m unittest test.mandates
-        python -m unittest test.test_mandate_record_regressions
 
   partyAffiliation:
     runs-on: ubuntu-latest

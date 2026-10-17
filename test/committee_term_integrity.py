@@ -1,7 +1,7 @@
 """Source accounting and date semantics for reviewed committee-term spells.
 
-The two reviewed committee-term fixtures are sufficient offline. These
-checks supplement the existing exact-row curation gate, not CSVW validation.
+The legacy term fixtures and thin reviewed source references are sufficient
+offline. No external source archives or neighboring repositories are needed.
 """
 
 from collections import Counter
@@ -14,61 +14,90 @@ import polars as pl
 from trainerlog import get_logger
 
 from .committee_integrity import date_bound
-from provenance.committee import read_claims
+from provenance.committee import read_sources
 
 
 LOGGER = get_logger("committee-term-integrity")
 SOURCE = Path("test/data/reviewed_committee_terms.json")
 EXTENSION = Path("test/data/reviewed_committee_term_extension.json")
+TERM_1982 = Path("provenance/committee/reviews/term-1982-1985.json")
+
+
+def reviewed_terms():
+    """Project the thin term review without duplicating its shared source text."""
+    terms = [dict(json.loads(path.read_text()), census_term="1979-1982") for path in (SOURCE, EXTENSION)]
+    source = json.loads(TERM_1982.read_text())
+    catalog = read_sources()
+    source["spells"] = source.pop("positions")
+    source["events"] = [catalog[identifier] for identifier in source["events"].values()]
+    source["census_term"] = "1982-1985"
+    terms.append(source)
+    return terms
 
 
 class CommitteeTermIntegrity(unittest.TestCase):
-    def test_resolved_positions_retain_their_parliamentary_evidence(self):
-        """Guarantee: each formerly held appointment retains its reviewed MP or identity basis.
+    def test_resolved_positions_retain_their_reviewed_appointment_keys(self):
+        """Guarantee: resolved held positions retain the appointments recorded in the fixture.
 
-        Data: the extension fixture, canonical parliamentary review and committee
-        provenance. Keep the original 90 positions accounted for after resolution.
-        Existing mandate/start and exact-row guarantees check published data;
-        this guarantee checks the source link which made a resolution possible.
-        Alias-only resolutions need a documented identity review instead of an
-        invented MP correction. Failures count resolved source positions.
+        Data: reviewed_committee_term_extension.json. Its resolution summaries
+        and appointment spells must agree, accounting for all 90 originally
+        held positions. This does not validate the external MP correction
+        reviews referenced by the fixture. Published rows and contemporary
+        mandates are checked separately. Failures count resolved positions.
         """
         source = json.loads(EXTENSION.read_text())
-        review = json.loads(Path("provenance/parliamentary-mandates/1979-1982.json").read_text())
-        changes = {c["id"]: c for c in review["changes"]}
-        resolved = [s for s in source["spells"] if s.get("resolution_batch") == review["batch"]]
-        ledger = {c["service_source"]["claim_id"]: c for c in read_claims()
-                  if c.get("batch") == review["batch"]}
+        resolved = [s for s in source["spells"] if s.get("resolution_batch")]
+        summaries = {p["claim_id"]: p for block in source["resolutions"] for p in block["resolved_positions"]}
         self.assertEqual(90, len(resolved) + len(source["held"]), "The original held-position census must remain complete")
-        self.assertEqual({s["claim_id"] for s in resolved}, set(ledger), "Resolved appointments and canonical curations must agree")
+        self.assertEqual({s["claim_id"] for s in resolved}, set(summaries), "Resolved appointments and their summaries must agree")
         failures = 0
         for spell in resolved:
-            claim = ledger[spell["claim_id"]]
-            valid = claim["membership"] == spell["membership"]
-            valid &= claim["service_source"]["mandate_reviews"] == spell["mandate_reviews"]
-            if not spell["mandate_reviews"]:
-                valid &= bool(spell["identity_review"].get("reason")) and bool(spell["identity_review"].get("citations"))
-            for identifier in spell["mandate_reviews"]:
-                correction = changes.get(identifier)
-                valid &= bool(correction) and correction["after"]["person_id"] == spell["membership"]["person_id"]
+            summary = summaries[spell["claim_id"]]
+            valid = (summary["membership"] == spell["membership"]
+                     and summary["position_id"] == spell["resolved_position_id"]
+                     and summary["election_event"] == spell["election_event"])
             if not valid:
                 failures += 1
-                LOGGER.error("Resolved source position lost its parliamentary basis: %s", spell["resolved_position_id"])
-        LOGGER.info("Checked %s resolved source positions; %s broken evidence links", len(resolved), failures)
-        self.assertEqual(0, failures, f"{failures} resolved positions lost evidence; details logged with trainerlog")
+                LOGGER.error("Resolved position contradicts its appointment summary: %s", spell["resolved_position_id"])
+        LOGGER.info("Checked %s resolved positions; %s inconsistent appointments", len(resolved), failures)
+        self.assertEqual(0, failures, f"{failures} resolved positions contradict their summaries; details logged with trainerlog")
+
+    def test_reviewed_term_memberships_keep_dates_and_roles(self):
+        """Guarantee: every reviewed term appointment remains published at its stated precision.
+
+        Data: reviewed term fixtures and committee_membership.csv. Compare all five
+        membership fields exactly, including unknown ends. Later supported date
+        refinements must update the affected fixture as well as the data. This
+        protects the tracked appointments, not an external curation ledger.
+        Failures count appointment claims; CSVW owns structural validation.
+        """
+        rows = pl.read_csv("data/committee_membership.csv", infer_schema=False)
+        published = set(rows.iter_rows())
+        failures, total = 0, 0
+        for source in reviewed_terms():
+            for spell in source["spells"]:
+                total += 1
+                expected = tuple(spell["membership"][key] for key in rows.columns)
+                if expected not in published:
+                    failures += 1
+                    LOGGER.error("Missing or altered reviewed term appointment: %s", spell["claim_id"])
+        LOGGER.info("Checked %s reviewed appointments; %s missing or altered", total, failures)
+        self.assertEqual(0, failures, f"{failures} reviewed appointments missing or altered; details logged with trainerlog")
 
     def test_reviewed_election_positions_are_all_accounted_for(self):
-        """Guarantee: all 482 opening positions and every reviewed change are accounted for.
+        """Guarantee: each reviewed opening roster and subsequent change is accounted for.
 
-        Data: both term fixtures, checked against the original scans. Every
-        committee has 15 ordinary members and 15 substitutes (16 for KU and UU).
+        Data: reviewed term fixtures, checked against the original scans. The
+        openings contain 482 positions in 1979 and 496 in 1982; substitute
+        allocations differ by committee and term and are never assumed uniform.
         Every later position must be accepted or explicitly held. This is a
         source-position census, not a claim that this many new people or
         uninterrupted service spells were discovered. Failures count events.
         """
-        committees, opening_total, total = set(), 0, 0
-        for path in (SOURCE, EXTENSION):
-            source = json.loads(path.read_text())
+        committees, opening_total, total = {}, Counter(), 0
+        for source in reviewed_terms():
+            term = source["census_term"]
+            committees.setdefault(term, set())
             spells, held = source["spells"], source["held"]
             initial = [s for s in spells if s["initial"]]
             expected = source.get("initial_expected_by_committee") or {source["committee_id"]: source["initial_expected"]}
@@ -78,12 +107,12 @@ class CommitteeTermIntegrity(unittest.TestCase):
             for committee in expected:
                 accepted = [s for s in initial if s["membership"]["committee_id"] == committee]
                 self.assertEqual(len(accepted), len({s["membership"]["person_id"] for s in accepted}))
-            self.assertFalse(committees.intersection(expected), "A committee must not be counted in both fixtures")
-            committees.update(expected)
-            opening_total += sum(counts.values())
+            self.assertFalse(committees[term].intersection(expected), "A committee must not be counted twice within a term")
+            committees[term].update(expected)
+            opening_total[term] += sum(counts.values())
             self.assertEqual(source["election_positions_expected"], len(spells) + len(held))
             counts = Counter([s["election_event"] for s in spells] +
-                             [s.get("election_event", s["event"]) for s in held])
+                             [s.get("election_event") or s["event"] for s in held])
             failures = 0
             for event in source["events"]:
                 if event["kind"] == "election_result" and counts[event["id"]] != event["expected_positions"]:
@@ -91,14 +120,15 @@ class CommitteeTermIntegrity(unittest.TestCase):
                     LOGGER.error("Unaccounted election positions: %s; observed %s", event["id"], counts[event["id"]])
             self.assertEqual(0, failures, f"{failures} election events lost positions; details logged with trainerlog")
             total += len(spells) + len(held)
-        LOGGER.info("Checked %s election positions across %s committees", total, len(committees))
-        self.assertEqual(16, len(committees))
-        self.assertEqual(482, opening_total)
+        LOGGER.info("Checked %s election positions across %s terms", total, len(committees))
+        for term in committees:
+            self.assertEqual(16, len(committees[term]))
+            self.assertEqual({"1979-1982": 482, "1982-1985": 496}[term], opening_total[term])
 
     def test_reviewed_term_dates_follow_their_stated_source_basis(self):
         """Guarantee: dates preserve confirmed elections, effective clauses and reviewed precision.
 
-        Data: both term fixtures. A confirmed election constitutes appointment
+        Data: reviewed term fixtures. A confirmed election constitutes appointment
         unless an explicit effective-date clause defers its start.
         End months/years deliberately retain uncertainty. Inclusive ends precede
         an explicitly effective departure/return by one day, not its reporting
@@ -108,8 +138,7 @@ class CommitteeTermIntegrity(unittest.TestCase):
         """
         failures = 0
         total = 0
-        for path in (SOURCE, EXTENSION):
-            source = json.loads(path.read_text())
+        for source in reviewed_terms():
             events = {e["id"]: e for e in source["events"]}
             for spell in source["spells"]:
                 row, review = spell["membership"], spell["end_review"]
@@ -157,7 +186,7 @@ class CommitteeTermIntegrity(unittest.TestCase):
         a leave-taking MP to surrender their original committee appointment.
         Failures count dated appointment claims; unresolved identities stay held.
         """
-        spells = [s for path in (SOURCE, EXTENSION) for s in json.loads(path.read_text())["spells"]]
+        spells = [s for source in reviewed_terms() for s in source["spells"]]
         starts = pl.DataFrame([{**s["membership"], "claim_id": s["claim_id"]} for s in spells])
         mandates = pl.read_csv("data/member_of_parliament.csv", infer_schema=False)
         joined = starts.select("claim_id", "person_id", pl.col("start").alias("election_day")).join(mandates, on="person_id")
