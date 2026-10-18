@@ -153,24 +153,33 @@ class CommitteeIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s membership starts; %s outside lifetimes", rows.height, failures)
         self.assertEqual(0, failures, f"{failures} membership starts outside person lifetimes; details logged with trainerlog")
 
-    def test_committee_appointment_starts_are_compatible_with_mp_mandates(self):
-        """Guarantee: committee appointments have MP mandates compatible with known starts.
+    def test_committee_members_have_usable_mp_records(self):
+        """Guarantee: every committee member has a usable parliamentary record.
 
         Data: all committee_membership.csv rows and member_of_parliament.csv.
         Accept generic MP and both historical chamber roles, for every committee
-        role and year. Compare each start's earliest/latest possible day with
-        individual mandate intervals, never the envelope of a person's career.
-        A matching bounded mandate establishes compatibility, not an exact start
-        day. Missing committee starts and potentially matching incomplete MP
-        intervals are reported separately as inconclusive, not verified service.
-        Unknown endpoints stay null; a known opposing boundary still rules out
-        a mandate. Invalid or inverted mandate intervals cannot provide support.
-        A person with no usable MP mandate is a failure even if the start is
-        unknown. Calendar validity and committee chronology have separate gates.
-        This checks appointment starts, not ends or uninterrupted service: leave
-        can interrupt recorded MP service without ending a committee appointment.
-        Failures count membership rows, once each. There is no historical
-        exception list, date cutoff or allowance for existing discrepancies.
+        role and year. Invalid or definitely inverted MP intervals cannot supply
+        evidence; missing dates remain unknown. Failures count membership rows
+        without a usable MP record, once each, with no current-data allowance.
+
+        MP rows describe active service, not complete parliamentary eligibility.
+        Leave can exclude service while a committee appointment continues or
+        begins; a committee row start may also be a role change or administrative
+        boundary rather than an election. The published tables do not record
+        leave or full eligibility intervals. Therefore a start outside recorded
+        service is an unresolved diagnostic, not proof of ineligibility. Do not
+        invent leave, join career gaps, or require uninterrupted service.
+
+        Compare partial starts with individual service intervals for diagnostics
+        only. Bounded overlap supports the service date; incomplete intervals and
+        unknown starts remain separate uncertainties. A missing MP record still
+        fails independently of committee dates. Calendar validity, committee
+        chronology and lifetime compatibility have separate gates. This check
+        does not certify eligibility on an appointment date or verify attendance.
+
+        References: Riksdagens protokoll 1998/99:5, sections 2, 3 and 8
+        (committee elections and parental leave effective on the same day);
+        Utrikesutskottets verksamhet 2012/13, section 1.2 (membership during leave).
         """
         memberships = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False).with_row_index("row")
         mandates = pl.read_csv(DATA_DIR / "member_of_parliament.csv", infer_schema=False).filter(
@@ -192,28 +201,31 @@ class CommitteeIntegrity(unittest.TestCase):
         bounded = possible.filter(pl.col("mandate_start").is_not_null() & pl.col("mandate_end").is_not_null())
         people_with_mandates = set(usable["person_id"])
         possible_rows, bounded_rows = set(possible["row"]), set(bounded["row"])
-        missing_mandates = incompatible_starts = unknown_starts = 0
-        LOGGER.info("Checking appointment-start compatibility for all %s committee memberships", memberships.height)
+        missing_mandates = unresolved_starts = unknown_starts = 0
+        LOGGER.info("Checking MP record coverage for all %s committee memberships; "
+                    "service-date overlap does not establish full parliamentary eligibility", memberships.height)
         for row in memberships.iter_rows(named=True):
             if row["person_id"] not in people_with_mandates:
                 missing_mandates += 1
-                LOGGER.error("Committee membership has no usable MP mandate: %s", row)
+                LOGGER.error("Committee membership has no usable MP record: %s", row)
             elif row["start"] is None:
                 unknown_starts += 1
             elif row["row"] not in possible_rows:
-                incompatible_starts += 1
+                unresolved_starts += 1
                 recorded = mandates.filter(pl.col("person_id") == row["person_id"]).select("role", "start", "end")
-                LOGGER.error("Committee appointment start conflicts with recorded MP mandates: %s; mandates: %s",
-                             row, recorded.to_dicts())
-        failures = missing_mandates + incompatible_starts
-        LOGGER.info("Checked %s memberships: %s compatible with bounded mandates; %s unknown starts; "
-                    "%s inconclusive due to incomplete mandate dates; %s without usable mandates; %s incompatible starts",
+                LOGGER.warning("Committee role start is outside recorded MP service; eligibility unresolved "
+                               "(leave, missing service or a different appointment boundary may explain it): %s; "
+                               "MP records: %s", row, recorded.to_dicts())
+        LOGGER.info("Checked %s memberships: %s starts overlap bounded MP service; %s unknown starts; "
+                    "%s inconclusive due to incomplete MP dates; %s without usable MP records; "
+                    "%s outside recorded service with eligibility unresolved",
                     memberships.height, len(bounded_rows), unknown_starts, len(possible_rows - bounded_rows),
-                    missing_mandates, incompatible_starts)
-        self.assertEqual(0, failures,
-                         f"{failures} committee memberships lack compatible MP mandates "
-                         f"({missing_mandates} without usable mandates, {incompatible_starts} incompatible starts); "
-                         "review membership and mandate dates; details logged with trainerlog")
+                    missing_mandates, unresolved_starts)
+        self.assertEqual(0, missing_mandates,
+                         f"{missing_mandates} committee memberships lack usable MP records; "
+                         "review missing parliamentary records and person identities; details logged with trainerlog. "
+                         f"{unresolved_starts} further starts are outside recorded active service; "
+                         "their eligibility needs separate evidence, including leave and appointment semantics")
 
     def test_wikidata_items_identify_one_committee(self):
         """Guarantee: a Wikidata item never merges distinct committee entities.
