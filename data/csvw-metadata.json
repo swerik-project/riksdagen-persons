@@ -40,7 +40,7 @@
     {
       "url": "committee.csv",
       "dc:title": "Committees",
-      "dc:description": "Committee entities from Ledamotsdata and reviewed Wikidata enrichment. Reused joint-committee codes remain unresolved. Inception and dissolution retain source precision and are not inferred from observed memberships. Snapshot and review decisions are recorded under references/committee-wikidata.",
+      "dc:description": "Committee entities.",
       "tableSchema": {
         "columns": [
           {
@@ -53,14 +53,14 @@
           {
             "name": "committee",
             "titles": "committee",
-            "dc:description": "Committee name in the source vocabulary.",
+            "dc:description": "Committee name.",
             "datatype": "string",
             "required": true
           },
           {
             "name": "committee_type",
             "titles": "committee_type",
-            "dc:description": "Kind of parliamentary body.",
+            "dc:description": "Kind of parliamentary committee.",
             "datatype": {
               "base": "string",
               "format": "^(standing|joint|eu_committee|special|other)$"
@@ -70,7 +70,7 @@
           {
             "name": "inception",
             "titles": "inception",
-            "dc:description": "Date of establishment, where independently known.",
+            "dc:description": "Date of establishment.",
             "datatype": {
               "base": "string",
               "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
@@ -79,7 +79,7 @@
           {
             "name": "dissolution",
             "titles": "dissolution",
-            "dc:description": "Date of dissolution, where independently known.",
+            "dc:description": "Date of dissolution.",
             "datatype": {
               "base": "string",
               "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
@@ -94,27 +94,27 @@
     {
       "url": "committee_abbreviation.csv",
       "dc:title": "Committee abbreviations",
-      "dc:description": "Source abbreviations and spelling variants. Initial primary spellings follow the organ code table, or the verified historical source code. Blank validity dates do not assert timeless historical use. Raw aliases are retained alongside NFC spellings.",
+      "dc:description": "Abbreviations and spelling variants of committees.",
       "tableSchema": {
         "columns": [
           {
             "name": "committee_id",
             "titles": "committee_id",
-            "dc:description": "Stable SWERIK committee entity identifier. Retained across ordinary name changes, but not across dissolution and reconstitution.",
+            "dc:description": "SWERIK committee entity identifier.",
             "datatype": "string",
             "required": true
           },
           {
             "name": "abbreviation",
             "titles": "abbreviation",
-            "dc:description": "Exact source spelling, or its NFC counterpart.",
+            "dc:description": "Abbreviation.",
             "datatype": "string",
             "required": true
           },
           {
             "name": "start",
             "titles": "start",
-            "dc:description": "Source-supplied start date. Blank means unknown; no date is inferred.",
+            "dc:description": "Start date. Blank means unknown.",
             "datatype": {
               "base": "string",
               "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
@@ -123,7 +123,7 @@
           {
             "name": "end",
             "titles": "end",
-            "dc:description": "Source-supplied end date, including future dates. Blank means not supplied, not necessarily ongoing.",
+            "dc:description": "End date, including future dates. Blank means not supplied, not necessarily ongoing.",
             "datatype": {
               "base": "string",
               "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
@@ -132,7 +132,7 @@
           {
             "name": "primary_abbreviation",
             "titles": "primary_abbreviation",
-            "dc:description": "Whether this is the preferred spelling within the recorded validity period; initial periods are unknown.",
+            "dc:description": "Whether this is the preferred spelling within the recorded period.",
             "datatype": "boolean",
             "required": true
           }
@@ -157,7 +157,7 @@
     {
       "url": "committee_role.csv",
       "dc:title": "Committee roles",
-      "dc:description": "Roles observed in Ledamotsdata committee assignments, verified against Riksdagen's role code table.",
+      "dc:description": "Roles in committee assignments.",
       "tableSchema": {
         "columns": [
           {
@@ -177,7 +177,7 @@
           {
             "name": "role_class",
             "titles": "role_class",
-            "dc:description": "Broad functional role. Deputerad is classified as ordinary_member.",
+            "dc:description": "Functional role. Deputerad is classified as ordinary_member.",
             "datatype": {
               "base": "string",
               "format": "^(chair|vice_chair|ordinary_member|substitute|replacement|other)$"
@@ -200,7 +200,7 @@
     {
       "url": "committee_membership.csv",
       "dc:title": "Committee memberships",
-      "dc:description": "Person-to-committee assignments from Ledamotsdata with additive reviewed Wikidata enrichment and historical source curation. Ledamotsdata timestamps are preserved in references/committee-ledamotsdata; published dates retain calendar days. Wikidata dates retain year, month or day precision and source statements are preserved in references/committee-wikidata. Historical election evidence and separately sourced service bounds are documented in references/committee-records; reviewed membership fixtures preserve source date precision. Source-supported memberships may have both service dates blank when unknown. Election dates and sessions are retained in the evidence, not interpreted as service boundaries or continuous membership. Existing assignments are not replaced or extended by overlapping Wikidata claims. Missing or ambiguous matches, unsupported claims and invalid intervals are reported rather than published. Coverage is incomplete and is not a complete roster for every date.",
+      "dc:description": "Person-to-committee assignments.",
       "tableSchema": {
         "columns": [
           {
@@ -213,14 +213,14 @@
           {
             "name": "committee_id",
             "titles": "committee_id",
-            "dc:description": "Stable SWERIK committee entity identifier. Retained across ordinary name changes, but not across dissolution and reconstitution.",
+            "dc:description": "Stable SWERIK committee entity identifier.",
             "datatype": "string",
             "required": true
           },
           {
             "name": "start",
             "titles": "start",
-            "dc:description": "Source-supplied start date. Blank means unknown; no date is inferred.",
+            "dc:description": "Source-supplied start date. Blank means unknown.",
             "datatype": {
               "base": "string",
               "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
@@ -229,7 +229,7 @@
           {
             "name": "end",
             "titles": "end",
-            "dc:description": "Source-supplied end date, including future dates. Blank means not supplied, not necessarily ongoing.",
+            "dc:description": "Source-supplied end date. Blank means not supplied, not necessarily ongoing.",
             "datatype": {
               "base": "string",
               "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
@@ -278,13 +278,13 @@
     {
       "url": "committee_external_identifiers.csv",
       "dc:title": "Committee external identifiers",
-      "dc:description": "Committee identifiers kept separately from person identifiers. Riksdagen organ codes are source-system identifiers and may label older assignments retrospectively; historical abbreviation periods do not restrict their import mapping.",
+      "dc:description": "Committee identifiers kept separately from person identifiers.",
       "tableSchema": {
         "columns": [
           {
             "name": "committee_id",
             "titles": "committee_id",
-            "dc:description": "Stable SWERIK committee entity identifier. Retained across ordinary name changes, but not across dissolution and reconstitution.",
+            "dc:description": "Stable SWERIK committee entity identifier.",
             "datatype": "string",
             "required": true
           },
