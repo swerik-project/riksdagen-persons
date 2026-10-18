@@ -13,6 +13,7 @@ Contains metadata on individuals.
 
 Contains integrity tests related to the riksdagen-persons repository and to the estimation of quality and coverage of the data in `data/`.
 
+
 ## Data
 
 The `data/` directory contains a number of csv files in Normal form where the `person_id` served as a primary key.
