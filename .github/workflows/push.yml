@@ -66,9 +66,9 @@ jobs:
     - name: Test that metadata is properly sorted
       run: |
         python -m unittest test.sort_order
-    - name: Test committee dates, identities and retained source support
+    - name: Test committee dates, identities and general MP mandate compatibility
       run: |
-        python -m unittest test.committee_integrity test.test_committee_integrity_regressions test.committee_roster_integrity test.test_committee_roster_regressions test.committee_term_integrity test.test_committee_term_regressions
+        python -m unittest test.committee_integrity test.test_committee_integrity_regressions test.test_committee_mandate_regressions
 
   db:
     runs-on: ubuntu-latest

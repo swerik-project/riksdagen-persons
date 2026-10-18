@@ -153,6 +153,68 @@ class CommitteeIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s membership starts; %s outside lifetimes", rows.height, failures)
         self.assertEqual(0, failures, f"{failures} membership starts outside person lifetimes; details logged with trainerlog")
 
+    def test_committee_appointment_starts_are_compatible_with_mp_mandates(self):
+        """Guarantee: committee appointments have MP mandates compatible with known starts.
+
+        Data: all committee_membership.csv rows and member_of_parliament.csv.
+        Accept generic MP and both historical chamber roles, for every committee
+        role and year. Compare each start's earliest/latest possible day with
+        individual mandate intervals, never the envelope of a person's career.
+        A matching bounded mandate establishes compatibility, not an exact start
+        day. Missing committee starts and potentially matching incomplete MP
+        intervals are reported separately as inconclusive, not verified service.
+        Unknown endpoints stay null; a known opposing boundary still rules out
+        a mandate. Invalid or inverted mandate intervals cannot provide support.
+        A person with no usable MP mandate is a failure even if the start is
+        unknown. Calendar validity and committee chronology have separate gates.
+        This checks appointment starts, not ends or uninterrupted service: leave
+        can interrupt recorded MP service without ending a committee appointment.
+        Failures count membership rows, once each. There is no historical
+        exception list, date cutoff or allowance for existing discrepancies.
+        """
+        memberships = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False).with_row_index("row")
+        mandates = pl.read_csv(DATA_DIR / "member_of_parliament.csv", infer_schema=False).filter(
+            pl.col("role").is_in(["ledamot", "förstakammarledamot", "andrakammarledamot"]))
+        mandates = mandates.with_columns(date_bound("start").alias("mandate_start"),
+                                         date_bound("end", latest=True).alias("mandate_end"))
+        usable = mandates.filter(
+            (pl.col("start").is_null() | pl.col("mandate_start").is_not_null()) &
+            (pl.col("end").is_null() | pl.col("mandate_end").is_not_null()) &
+            (pl.col("mandate_start").is_null() | pl.col("mandate_end").is_null() |
+             (pl.col("mandate_start") <= pl.col("mandate_end"))))
+        dated = memberships.filter(pl.col("start").is_not_null()).with_columns(
+            date_bound("start").alias("start_earliest"), date_bound("start", latest=True).alias("start_latest"))
+        candidates = dated.join(usable.select("person_id", "mandate_start", "mandate_end"), on="person_id")
+        possible = candidates.filter(
+            pl.col("start_earliest").is_not_null() & pl.col("start_latest").is_not_null() &
+            (pl.col("mandate_start").is_null() | (pl.col("start_latest") >= pl.col("mandate_start"))) &
+            (pl.col("mandate_end").is_null() | (pl.col("start_earliest") <= pl.col("mandate_end"))))
+        bounded = possible.filter(pl.col("mandate_start").is_not_null() & pl.col("mandate_end").is_not_null())
+        people_with_mandates = set(usable["person_id"])
+        possible_rows, bounded_rows = set(possible["row"]), set(bounded["row"])
+        missing_mandates = incompatible_starts = unknown_starts = 0
+        LOGGER.info("Checking appointment-start compatibility for all %s committee memberships", memberships.height)
+        for row in memberships.iter_rows(named=True):
+            if row["person_id"] not in people_with_mandates:
+                missing_mandates += 1
+                LOGGER.error("Committee membership has no usable MP mandate: %s", row)
+            elif row["start"] is None:
+                unknown_starts += 1
+            elif row["row"] not in possible_rows:
+                incompatible_starts += 1
+                recorded = mandates.filter(pl.col("person_id") == row["person_id"]).select("role", "start", "end")
+                LOGGER.error("Committee appointment start conflicts with recorded MP mandates: %s; mandates: %s",
+                             row, recorded.to_dicts())
+        failures = missing_mandates + incompatible_starts
+        LOGGER.info("Checked %s memberships: %s compatible with bounded mandates; %s unknown starts; "
+                    "%s inconclusive due to incomplete mandate dates; %s without usable mandates; %s incompatible starts",
+                    memberships.height, len(bounded_rows), unknown_starts, len(possible_rows - bounded_rows),
+                    missing_mandates, incompatible_starts)
+        self.assertEqual(0, failures,
+                         f"{failures} committee memberships lack compatible MP mandates "
+                         f"({missing_mandates} without usable mandates, {incompatible_starts} incompatible starts); "
+                         "review membership and mandate dates; details logged with trainerlog")
+
     def test_wikidata_items_identify_one_committee(self):
         """Guarantee: a Wikidata item never merges distinct committee entities.
 
