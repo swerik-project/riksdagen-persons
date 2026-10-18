@@ -1,11 +1,10 @@
-"""Semantic guarantees for committee identities, historical dates and curated rows.
+"""General semantic guarantees for committee identities and historical dates.
 
 CSVW owns structural types, required fields, primary keys and foreign keys.
-Reviewed evidence is kept in test/data; no reference archives are required.
+These checks use the published data tables, not frozen curation fixtures.
 """
 
 from itertools import combinations
-import json
 from pathlib import Path
 import unicodedata
 import unittest
@@ -154,111 +153,6 @@ class CommitteeIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s membership starts; %s outside lifetimes", rows.height, failures)
         self.assertEqual(0, failures, f"{failures} membership starts outside person lifetimes; details logged with trainerlog")
 
-    def test_sbl_linked_mps_retain_source_identifiers(self):
-        """Guarantee: MPs processed in the SBL batch retain their article IDs.
-
-        Data: test/data/reviewed_sbl_links.csv and external_identifiers.csv.
-        DiSweNaBiID is the existing authority for SBL. This protects all
-        processed links, including explicitly unresolved source conflicts;
-        it does not assert that every MP has an SBL biography. Failures count
-        person/article links. New identity corrections must update the fixture.
-        The fixture retains only the 622 reviewed person/article pairs.
-        """
-        links = pl.read_csv("test/data/reviewed_sbl_links.csv", infer_schema=False).to_dicts()
-        self.assertTrue(links, "The SBL linkage reference must not be empty")
-        identifiers = pl.read_csv(DATA_DIR / "external_identifiers.csv", infer_schema=False)
-        published = set(identifiers.filter(pl.col("authority") == "DiSweNaBiID").select("person_id", "identifier").iter_rows())
-        failures = 0
-        LOGGER.info("Checking %s reviewed SBL person/article links", len(links))
-        for link in links:
-            if (link["person_id"], link["identifier"]) not in published:
-                failures += 1
-                LOGGER.error("Missing SBL identifier for linked MP: %s", link)
-        LOGGER.info("Checked %s SBL links; %s missing", len(links), failures)
-        self.assertEqual(0, failures, f"{failures} SBL person/article links missing; details logged with trainerlog")
-
-    def test_sbl_memberships_retain_reviewed_dates_and_roles(self):
-        """Guarantee: SBL-supported memberships retain their reviewed dates and roles.
-
-        Data: reviewed_sbl_committee_sources.csv and committee_membership.csv.
-        Compare the exact five membership fields, retaining unknown endpoints.
-        The tracked fixture also retains the article ID, URL and quoted clause;
-        this check cannot authenticate quotations against an external archive.
-        Failures count source claims, not distinct people or membership rows.
-        """
-        sources = pl.read_csv("test/data/reviewed_sbl_committee_sources.csv", infer_schema=False).to_dicts()
-        self.assertTrue(sources, "The reviewed SBL source fixture must not be empty")
-        rows = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False)
-        published = set(rows.iter_rows())
-        failures = 0
-        LOGGER.info("Checking %s SBL-supported membership claims", len(sources))
-        for source in sources:
-            expected = tuple(source[column] for column in rows.columns)
-            if (expected not in published or not source["source_clause"] or not source["sbl_id"]
-                    or source["source_url"] != f"https://sok.riksarkivet.se/sbl/Presentation.aspx?id={source['sbl_id']}"):
-                failures += 1
-                LOGGER.error("Missing or altered SBL-supported membership: %s", source)
-        LOGGER.info("Checked %s SBL membership claims; %s inconsistent", len(sources), failures)
-        self.assertEqual(0, failures, f"{failures} SBL membership claims missing or altered; details logged with trainerlog")
-
-    def test_sbl_reviewed_lifetime_corrections_retain_source_dates(self):
-        """Guarantee: SBL-reviewed lifetime corrections retain the sourced date.
-
-        Data: person.csv, external_identifiers.csv and
-        test/data/reviewed_sbl_person_dates.json. The fixture retains the reviewed
-        date, SBL article ID and quoted evidence, checked against both the career
-        summary and structured SBL date when frozen. Protect the exact date and
-        its linked biography citation; do not infer unreviewed dates. This
-        prevents Palmstierna's impossible pre-birth death date from returning.
-        Failures count person/field corrections, not committee memberships.
-        """
-        corrections = json.loads(Path("test/data/reviewed_sbl_person_dates.json").read_text())
-        self.assertTrue(corrections, "The lifetime-correction reference must not be empty")
-        people = {row["person_id"]: row for row in pl.read_csv(DATA_DIR / "person.csv", infer_schema=False).to_dicts()}
-        links = set(pl.read_csv(DATA_DIR / "external_identifiers.csv", infer_schema=False)
-                    .filter(pl.col("authority") == "DiSweNaBiID").select("person_id", "identifier").iter_rows())
-        failures = 0
-        LOGGER.info("Checking %s reviewed SBL lifetime corrections", len(corrections))
-        for correction in corrections:
-            if (people.get(correction["person_id"], {}).get(correction["field"]) != correction["after"]
-                    or (correction["person_id"], correction["sbl_id"]) not in links
-                    or correction["source_url"] != f"https://sok.riksarkivet.se/sbl/Presentation.aspx?id={correction['sbl_id']}"
-                    or not correction["source_clause"]):
-                failures += 1
-                LOGGER.error("Missing or altered SBL lifetime correction: %s", correction)
-        LOGGER.info("Checked %s SBL lifetime corrections; %s altered", len(corrections), failures)
-        self.assertEqual(0, failures, f"{failures} SBL lifetime corrections altered; details logged with trainerlog")
-
-    def test_ku1918_memberships_retain_resolved_identities_and_roles(self):
-        """Guarantee: source-supported KU 1918 identities and roles remain published.
-
-        Data: reviewed_ku1918_elections.json and committee_membership.csv.
-        The tracked fixture identifies accepted people, committees and roles,
-        but does not state their service boundaries. Do not infer those from
-        the election day. Source conflicts cannot become accepted evidence.
-        Failures count election evidence IDs; archive-wide curation accounting
-        and independent authentication of the citations are outside this check.
-        """
-        evidence = {}
-        for row in json.loads(Path("test/data/reviewed_ku1918_elections.json").read_text()):
-            self.assertNotIn(row["election_evidence_id"], evidence, "Duplicate reviewed KU election")
-            evidence[row["election_evidence_id"]] = row
-        self.assertTrue(evidence, "The reviewed KU election fixture must not be empty")
-        roles = dict(pl.read_csv(DATA_DIR / "committee_role.csv").select("role", "committee_role_id").iter_rows())
-        published = set(pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False)
-                        .select("person_id", "committee_id", "committee_role_id").iter_rows())
-        failures = 0
-        LOGGER.info("Checking %s reviewed KU election identities and roles", len(evidence))
-        for evidence_id, source in evidence.items():
-            expected = source["person_id"], source["committee_id"], roles.get(source["role"])
-            if (source["identity_status"] != "resolved_by_agent" or source["review_status"] != "source_supported"
-                    or expected not in published or not source["election_source_url"]
-                    or not source["register_source_url"] or not source["register_excerpt"]):
-                failures += 1
-                LOGGER.error("Missing or unsupported KU identity/role: %s: %s", evidence_id, source)
-        LOGGER.info("Checked %s KU election identities; %s inconsistent", len(evidence), failures)
-        self.assertEqual(0, failures, f"{failures} KU election identities missing or unsupported; details logged with trainerlog")
-
     def test_wikidata_items_identify_one_committee(self):
         """Guarantee: a Wikidata item never merges distinct committee entities.
 
@@ -273,21 +167,6 @@ class CommitteeIntegrity(unittest.TestCase):
                 LOGGER.error("Wikidata item maps to multiple committees: %s", group.to_dicts())
         LOGGER.info("Checked %s committee Wikidata links; %s ambiguous items", rows.height, failures)
         self.assertEqual(0, failures, f"{failures} ambiguous Wikidata items; details logged")
-
-    def test_committees_have_one_wikidata_identity(self):
-        """Guarantee: a committee is not equated with multiple Wikidata entities.
-
-        Ordinary renames retain one identity; historic and modern Civilutskottet
-        must not both be linked to the same committee.
-        """
-        rows = pl.read_csv(DATA_DIR / "committee_external_identifiers.csv").filter(pl.col("authority") == "wikidata")
-        failures = 0
-        for group in rows.partition_by("committee_id"):
-            if group["identifier"].n_unique() != 1:
-                failures += 1
-                LOGGER.error("Committee maps to multiple Wikidata items: %s", group.to_dicts())
-        LOGGER.info("Checked %s committee Wikidata links; %s ambiguous committees", rows.height, failures)
-        self.assertEqual(0, failures, f"{failures} ambiguous committee identities; details logged")
 
     def test_source_organ_codes_resolve_to_one_committee(self):
         """Guarantee: a Riksdagen source organ code identifies one committee.

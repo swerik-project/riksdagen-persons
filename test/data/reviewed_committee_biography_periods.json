@@ -16061,5 +16061,2244 @@
     "claim_ids": [
       "biography:0577039541710:f23e1d41933edb45:1987"
     ]
+  },
+  {
+    "committee": "Finansutskottet",
+    "role": "Suppleant",
+    "period": "85/86-87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1982- Suppleant i Finansutskottet 82/83 och 85/86-87/88, Socialförsäkringsutskottet 82/83-84/85 samt Lagutskottet 85/86-87/88. Ledamot av Finansutskottet 82/83-84/85, Skatteutskottet 88/89-90/91 och Kulturutskottet 91/92-93/94.",
+    "source_clause": "Suppleant i Finansutskottet 82/83 och 85/86-87/88, Socialförsäkringsutskottet 82/83-84/85 samt Lagutskottet 85/86-87/88",
+    "period_id": "biography:075784887694:58d6fa770f57ffd9",
+    "person_id": "i-Ahzryxd2b7naJSD37mfHNJ",
+    "source_id": "075784887694",
+    "source_birth_year": "1922",
+    "source_latest_year": 2026,
+    "source_surname": "Hegeland",
+    "source_name": "Hugo Hegeland",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=075784887694&utformat=json",
+    "committee_id": "i-JwnXUyhBV4Gu1ijXpE7jcH",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:075784887694:58d6fa770f57ffd9:1986",
+      "biography:075784887694:58d6fa770f57ffd9:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Lagutskottet",
+    "role": "Suppleant",
+    "period": "85/86-87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1982- Suppleant i Finansutskottet 82/83 och 85/86-87/88, Socialförsäkringsutskottet 82/83-84/85 samt Lagutskottet 85/86-87/88. Ledamot av Finansutskottet 82/83-84/85, Skatteutskottet 88/89-90/91 och Kulturutskottet 91/92-93/94.",
+    "source_clause": "Suppleant i Finansutskottet 82/83 och 85/86-87/88, Socialförsäkringsutskottet 82/83-84/85 samt Lagutskottet 85/86-87/88",
+    "period_id": "biography:075784887694:6ad61879c95df1d5",
+    "person_id": "i-Ahzryxd2b7naJSD37mfHNJ",
+    "source_id": "075784887694",
+    "source_birth_year": "1922",
+    "source_latest_year": 2026,
+    "source_surname": "Hegeland",
+    "source_name": "Hugo Hegeland",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=075784887694&utformat=json",
+    "committee_id": "i-Uz9mTjQTUPjWD7iHEQRTZN",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:075784887694:6ad61879c95df1d5:1986",
+      "biography:075784887694:6ad61879c95df1d5:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Konstitutionsutskottet",
+    "role": "Suppleant",
+    "period": "82/83-84/85",
+    "years": [
+      1983,
+      1984
+    ],
+    "excerpt": "Ers 1982-85. Rdl 1985- Suppl i Konstitutionsutskottet 82/83-84/85, Justitieutskottet 82/83-84/85, Utrikesutskottet 85/86-93/94 och Finansutskottet 91/92. Led av Justitieutskottet 85/86-87/88, Bostadsutskottet 88/89-90/91 och Konstitutionsutskottet 91/92-93/94. Led av Europarådets svenska delegation 92/93-93/94.",
+    "source_clause": "Suppl i Konstitutionsutskottet 82/83-84/85, Justitieutskottet 82/83-84/85, Utrikesutskottet 85/86-93/94 och Finansutskottet 91/92",
+    "period_id": "biography:0913695315308:190c1c6472663395",
+    "person_id": "i-5JKt3JHcrr8pme3Wk6qvJA",
+    "source_id": "0913695315308",
+    "source_birth_year": "1925",
+    "source_latest_year": 2026,
+    "source_surname": "Franck",
+    "source_name": "Hans Göran Franck",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0913695315308&utformat=json",
+    "committee_id": "i-9o9DWwgkrWx48Ur42vZzYE",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0913695315308:190c1c6472663395:1983",
+      "biography:0913695315308:190c1c6472663395:1984"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Justitieutskottet",
+    "role": "Suppleant",
+    "period": "82/83-84/85",
+    "years": [
+      1983,
+      1984
+    ],
+    "excerpt": "Ers 1982-85. Rdl 1985- Suppl i Konstitutionsutskottet 82/83-84/85, Justitieutskottet 82/83-84/85, Utrikesutskottet 85/86-93/94 och Finansutskottet 91/92. Led av Justitieutskottet 85/86-87/88, Bostadsutskottet 88/89-90/91 och Konstitutionsutskottet 91/92-93/94. Led av Europarådets svenska delegation 92/93-93/94.",
+    "source_clause": "Suppl i Konstitutionsutskottet 82/83-84/85, Justitieutskottet 82/83-84/85, Utrikesutskottet 85/86-93/94 och Finansutskottet 91/92",
+    "period_id": "biography:0913695315308:309e90261b879fa4",
+    "person_id": "i-5JKt3JHcrr8pme3Wk6qvJA",
+    "source_id": "0913695315308",
+    "source_birth_year": "1925",
+    "source_latest_year": 2026,
+    "source_surname": "Franck",
+    "source_name": "Hans Göran Franck",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0913695315308&utformat=json",
+    "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0913695315308:309e90261b879fa4:1983",
+      "biography:0913695315308:309e90261b879fa4:1984"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Utrikesutskottet",
+    "role": "Suppleant",
+    "period": "85/86-93/94",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Ers 1982-85. Rdl 1985- Suppl i Konstitutionsutskottet 82/83-84/85, Justitieutskottet 82/83-84/85, Utrikesutskottet 85/86-93/94 och Finansutskottet 91/92. Led av Justitieutskottet 85/86-87/88, Bostadsutskottet 88/89-90/91 och Konstitutionsutskottet 91/92-93/94. Led av Europarådets svenska delegation 92/93-93/94.",
+    "source_clause": "Suppl i Konstitutionsutskottet 82/83-84/85, Justitieutskottet 82/83-84/85, Utrikesutskottet 85/86-93/94 och Finansutskottet 91/92",
+    "period_id": "biography:0913695315308:6eb5ae359010e787",
+    "person_id": "i-5JKt3JHcrr8pme3Wk6qvJA",
+    "source_id": "0913695315308",
+    "source_birth_year": "1925",
+    "source_latest_year": 2026,
+    "source_surname": "Franck",
+    "source_name": "Hans Göran Franck",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0913695315308&utformat=json",
+    "committee_id": "i-DtQppLb6kHuVMpyny7na7b",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0913695315308:6eb5ae359010e787:1986",
+      "biography:0913695315308:6eb5ae359010e787:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Kulturutskottet",
+    "role": "Suppleant",
+    "period": "76/77--81/82",
+    "years": [
+      1980,
+      1981
+    ],
+    "excerpt": "Ers 1976-78. Rdl 1979-82, 1988- Suppl i KrU 76/77--81/82 och 88/89--93/94, FöU 77/78--78/79, JuU 79/80--81/82, FiU 84/85, 85/86 och 87/88, NU 85/86, LU 91/92--93/94 och AU 91/92. Led av LU 88/89--90/91.",
+    "source_clause": "Suppl i KrU 76/77--81/82 och 88/89--93/94, FöU 77/78--78/79, JuU 79/80--81/82, FiU 84/85, 85/86 och 87/88, NU 85/86, LU 91/92--93/94 och AU 91/92",
+    "period_id": "biography:0853366412307:bb149fa57f988377",
+    "person_id": "i-2ymTc21Xu4T5EN7ZiCzTEX",
+    "source_id": "0853366412307",
+    "source_birth_year": "1927",
+    "source_latest_year": 2026,
+    "source_surname": "Eliasson",
+    "source_name": "Stina Eliasson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0853366412307&utformat=json",
+    "committee_id": "i-JpFzihihRcLyd2VqEssAGF",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0853366412307:bb149fa57f988377:1980",
+      "biography:0853366412307:bb149fa57f988377:1981"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Justitieutskottet",
+    "role": "Suppleant",
+    "period": "85/86--87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1979-88. 1989- Suppl i LU 79/80--81/82, FiU 79/80--84/85 och 89/90--90/91, JuU 85/86--87/88 samt BoU 85/86--87/88 och 89/90--90/91. Led av CU 82/83, BoU 83/84--87/88 och LU 91/92--93/94. Suppl i RR 82/83--84/85. Led av RR 85/86--87/88 och 91/92--93/94. -- Led av m-gruppens förtroenderåd 93--94.",
+    "source_clause": "Suppl i LU 79/80--81/82, FiU 79/80--84/85 och 89/90--90/91, JuU 85/86--87/88 samt BoU 85/86--87/88 och 89/90--90/91",
+    "period_id": "biography:0313166627901:99c3315e4f4d41b9",
+    "person_id": "i-6vKru9GdDb8h4rKyAVyRvP",
+    "source_id": "0313166627901",
+    "source_birth_year": "1928",
+    "source_latest_year": 2026,
+    "source_surname": "Gard",
+    "source_name": "Margareta Gard",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0313166627901&utformat=json",
+    "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0313166627901:99c3315e4f4d41b9:1986",
+      "biography:0313166627901:99c3315e4f4d41b9:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Bostadsutskottet",
+    "role": "Suppleant",
+    "period": "85/86--87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1979-88. 1989- Suppl i LU 79/80--81/82, FiU 79/80--84/85 och 89/90--90/91, JuU 85/86--87/88 samt BoU 85/86--87/88 och 89/90--90/91. Led av CU 82/83, BoU 83/84--87/88 och LU 91/92--93/94. Suppl i RR 82/83--84/85. Led av RR 85/86--87/88 och 91/92--93/94. -- Led av m-gruppens förtroenderåd 93--94.",
+    "source_clause": "Suppl i LU 79/80--81/82, FiU 79/80--84/85 och 89/90--90/91, JuU 85/86--87/88 samt BoU 85/86--87/88 och 89/90--90/91",
+    "period_id": "biography:0313166627901:ee78eab34b7a04e0",
+    "person_id": "i-6vKru9GdDb8h4rKyAVyRvP",
+    "source_id": "0313166627901",
+    "source_birth_year": "1928",
+    "source_latest_year": 2026,
+    "source_surname": "Gard",
+    "source_name": "Margareta Gard",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0313166627901&utformat=json",
+    "committee_id": "i-Pe7qrS2HBQEA3mhF4ARDnH",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0313166627901:ee78eab34b7a04e0:1986",
+      "biography:0313166627901:ee78eab34b7a04e0:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Trafikutskottet",
+    "role": "Suppleant",
+    "period": "82/83-84/85",
+    "years": [
+      1983,
+      1984
+    ],
+    "excerpt": "Ers 1977, 1979. Rdl 1982- Suppleant i Kulturutskottet 77/78, Jordbruksutskottet 77/78, Finansutskottet 78/79, Lagutskottet 78/79-79/80, Näringsutskottet 78/79-79/80 och 82/83-84/85, Trafikutskottet 82/83-84/85 och 92/93-93/94 samt Försvarsutskottet 83/84-84/85. Ledamot av Trafikutskottet 85/86-91/92. Suppleant i Lönedelegationen 82/83-84/85 och Nordiska rådets svenska delegation 85/86-91/92. Ledamot av Nordiska rådets svenska delegation 92/93-93/94. Ledamot av riksdagens särskilda nämnd 86-94.",
+    "source_clause": "Suppleant i Kulturutskottet 77/78, Jordbruksutskottet 77/78, Finansutskottet 78/79, Lagutskottet 78/79-79/80, Näringsutskottet 78/79-79/80 och 82/83-84/85, Trafikutskottet 82/83-84/85 och 92/93-93/94 samt Försvarsutskottet 83/84-84/85",
+    "period_id": "biography:0493166969401:521d078455e2aaf5",
+    "person_id": "i-UmGHrbipY4e5SAGvddBkzr",
+    "source_id": "0493166969401",
+    "source_birth_year": "1928",
+    "source_latest_year": 2026,
+    "source_surname": "Bergdahl",
+    "source_name": "Hugo Bergdahl",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0493166969401&utformat=json",
+    "committee_id": "i-3rdmj6fAheVf83bvSTXSg3",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0493166969401:521d078455e2aaf5:1984"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Försvarsutskottet",
+    "role": "Suppleant",
+    "period": "83/84-84/85",
+    "years": [
+      1984
+    ],
+    "excerpt": "Ers 1977, 1979. Rdl 1982- Suppleant i Kulturutskottet 77/78, Jordbruksutskottet 77/78, Finansutskottet 78/79, Lagutskottet 78/79-79/80, Näringsutskottet 78/79-79/80 och 82/83-84/85, Trafikutskottet 82/83-84/85 och 92/93-93/94 samt Försvarsutskottet 83/84-84/85. Ledamot av Trafikutskottet 85/86-91/92. Suppleant i Lönedelegationen 82/83-84/85 och Nordiska rådets svenska delegation 85/86-91/92. Ledamot av Nordiska rådets svenska delegation 92/93-93/94. Ledamot av riksdagens särskilda nämnd 86-94.",
+    "source_clause": "Suppleant i Kulturutskottet 77/78, Jordbruksutskottet 77/78, Finansutskottet 78/79, Lagutskottet 78/79-79/80, Näringsutskottet 78/79-79/80 och 82/83-84/85, Trafikutskottet 82/83-84/85 och 92/93-93/94 samt Försvarsutskottet 83/84-84/85",
+    "period_id": "biography:0493166969401:3b44f050f3c78586",
+    "person_id": "i-UmGHrbipY4e5SAGvddBkzr",
+    "source_id": "0493166969401",
+    "source_birth_year": "1928",
+    "source_latest_year": 2026,
+    "source_surname": "Bergdahl",
+    "source_name": "Hugo Bergdahl",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0493166969401&utformat=json",
+    "committee_id": "i-DaqUKTc3mKCyqY6iZTWLeq",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0493166969401:3b44f050f3c78586:1984"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Skatteutskottet",
+    "role": "Suppleant",
+    "period": "85/86-86/87",
+    "years": [
+      1986
+    ],
+    "excerpt": "Rdl 1974-1994. Statsråd 1976-78. Förste vice talman 1979-91. Talman 1991-1994 Suppleant i Skatteutskottet 74-75/76, 78/79, 85/86-86/87 och 88/89-90/91, Socialutskottet 74-75/76, 78/79 och 88/89-90/91 samt Socialförsäkringsutskottet 85/86-86/87. Ledamot av Skatteutskottet 79/80-84/85 och 87/88. Suppleant i Nordiska rådets svenska delegation 79/80-81/82 och Utrikesnämnden 81/82. Ledamot av Riksdagens revisorer 79/80-81/82, ordförande 79/80-81/82, Talmanskonferensen 79/80-93/94, ordförande 91/92-93/94, Krigsdelegationen 79/80-93/94, ordförande 91/92-93/94, Riksbanksfullmäktige 82/83-84/85 Riksdagens förvaltningsstyrelse 91/92-93/94, ordförande 91/92-93/94, och Utrikesnämnden 91/92-93/94. 1:e vice talman 79/80-90/91, talman 91/92-93/94. Ordförande i riksdagsutredningen 91-94. - Ledamot av av m-gruppens förtroenderåd 79/80-90/91, 3:e vice ordförande 81/82-84/85, 2:e vice ordförande 85/86-90/91.",
+    "source_clause": "Suppleant i Skatteutskottet 74-75/76, 78/79, 85/86-86/87 och 88/89-90/91, Socialutskottet 74-75/76, 78/79 och 88/89-90/91 samt Socialförsäkringsutskottet 85/86-86/87",
+    "period_id": "biography:0925516323103:cc9172ce5d379e1f",
+    "person_id": "i-BkQoi6KA1EKK9EEJhT16Cz",
+    "source_id": "0925516323103",
+    "source_birth_year": "1929",
+    "source_latest_year": 2026,
+    "source_surname": "Troedsson",
+    "source_name": "Ingegerd Troedsson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0925516323103&utformat=json",
+    "committee_id": "i-HjaWxnUoeSJuD8mRt1tgZq",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0925516323103:cc9172ce5d379e1f:1986"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Socialförsäkringsutskottet",
+    "role": "Suppleant",
+    "period": "85/86-86/87",
+    "years": [
+      1986
+    ],
+    "excerpt": "Rdl 1974-1994. Statsråd 1976-78. Förste vice talman 1979-91. Talman 1991-1994 Suppleant i Skatteutskottet 74-75/76, 78/79, 85/86-86/87 och 88/89-90/91, Socialutskottet 74-75/76, 78/79 och 88/89-90/91 samt Socialförsäkringsutskottet 85/86-86/87. Ledamot av Skatteutskottet 79/80-84/85 och 87/88. Suppleant i Nordiska rådets svenska delegation 79/80-81/82 och Utrikesnämnden 81/82. Ledamot av Riksdagens revisorer 79/80-81/82, ordförande 79/80-81/82, Talmanskonferensen 79/80-93/94, ordförande 91/92-93/94, Krigsdelegationen 79/80-93/94, ordförande 91/92-93/94, Riksbanksfullmäktige 82/83-84/85 Riksdagens förvaltningsstyrelse 91/92-93/94, ordförande 91/92-93/94, och Utrikesnämnden 91/92-93/94. 1:e vice talman 79/80-90/91, talman 91/92-93/94. Ordförande i riksdagsutredningen 91-94. - Ledamot av av m-gruppens förtroenderåd 79/80-90/91, 3:e vice ordförande 81/82-84/85, 2:e vice ordförande 85/86-90/91.",
+    "source_clause": "Suppleant i Skatteutskottet 74-75/76, 78/79, 85/86-86/87 och 88/89-90/91, Socialutskottet 74-75/76, 78/79 och 88/89-90/91 samt Socialförsäkringsutskottet 85/86-86/87",
+    "period_id": "biography:0925516323103:cde5ceadf8dbe460",
+    "person_id": "i-BkQoi6KA1EKK9EEJhT16Cz",
+    "source_id": "0925516323103",
+    "source_birth_year": "1929",
+    "source_latest_year": 2026,
+    "source_surname": "Troedsson",
+    "source_name": "Ingegerd Troedsson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0925516323103&utformat=json",
+    "committee_id": "i-VaESSVvWwTht6b4RXARRd9",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0925516323103:cde5ceadf8dbe460:1986"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Utbildningsutskottet",
+    "role": "Suppleant",
+    "period": "79/80-87/88",
+    "years": [
+      1980,
+      1981,
+      1982,
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1970- Suppleant i Utbildningsutskottet 71-73 och 79/80-87/88, Trafikutskottet 71-73 samt Skatteutskottet 88/89-. Ledamot av Utbildningsutskottet 74-78/79 och Finansutksottet 79/80-. Suppleant i Lönedelegationen 82/83-84/85. - Ledamot av styrelsen för Sällskapet politik & näringsliv 79/80-90/91, ordförande 82/83-90/91.",
+    "source_clause": "Suppleant i Utbildningsutskottet 71-73 och 79/80-87/88, Trafikutskottet 71-73 samt Skatteutskottet 88/89-",
+    "period_id": "biography:02127524105:680e2c26f8d12488",
+    "person_id": "i-GiSwrvRSNBMuuGVLLZE3L9",
+    "source_id": "02127524105",
+    "source_birth_year": "1929",
+    "source_latest_year": 2026,
+    "source_surname": "Sundgren",
+    "source_name": "Roland Sundgren",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=02127524105&utformat=json",
+    "committee_id": "i-Aq9p6NWepsUH6zBUZvnASV",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:02127524105:680e2c26f8d12488:1986",
+      "biography:02127524105:680e2c26f8d12488:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Socialförsäkringsutskottet",
+    "role": "Suppleant",
+    "period": "82/83-87/88",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1982- Suppleant i Socialförsäkringsutskottet 82/83-87/88 och Utbildningsutskottet 88/89-93/94. Ledamot av Lagutskottet 85/86-93/94. Suppleant i Valberedningen 91/92-93/94. - Ledamot av s-gruppens styrelse 86-94.",
+    "source_clause": "Suppleant i Socialförsäkringsutskottet 82/83-87/88 och Utbildningsutskottet 88/89-93/94",
+    "period_id": "biography:0575287564902:3c073ac21f23c2af",
+    "person_id": "i-4BuGmqCDdFhTh684p4tLzW",
+    "source_id": "0575287564902",
+    "source_birth_year": "1931",
+    "source_latest_year": 2026,
+    "source_surname": "Hestvik",
+    "source_name": "Inger Hestvik",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0575287564902&utformat=json",
+    "committee_id": "i-VaESSVvWwTht6b4RXARRd9",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0575287564902:3c073ac21f23c2af:1986",
+      "biography:0575287564902:3c073ac21f23c2af:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Bostadsutskottet",
+    "role": "Suppleant",
+    "period": "83/84-87/88",
+    "years": [
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1982- Suppl i Civilutskottet 82/83, Bostadsutskottet 83/84-87/88, Utrikesutskottet 87/88, Justitieutskottet 88/89-90/91 och Arbetsmarknadsutskottet 91/92-93/94. Led av Bostadsutskottet 88/89-90/91 och Justitieutskottet 91/92-93/94.",
+    "source_clause": "Suppl i Civilutskottet 82/83, Bostadsutskottet 83/84-87/88, Utrikesutskottet 87/88, Justitieutskottet 88/89-90/91 och Arbetsmarknadsutskottet 91/92-93/94",
+    "period_id": "biography:0179597134903:d927ffc6bcfe5163",
+    "person_id": "i-EkHKGEpr4tEC2BogFc76Gt",
+    "source_id": "0179597134903",
+    "source_birth_year": "1931",
+    "source_latest_year": 2026,
+    "source_surname": "Nordh",
+    "source_name": "Nils Nordh",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0179597134903&utformat=json",
+    "committee_id": "i-Pe7qrS2HBQEA3mhF4ARDnH",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0179597134903:d927ffc6bcfe5163:1986",
+      "biography:0179597134903:d927ffc6bcfe5163:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Bostadsutskottet",
+    "role": "Suppleant",
+    "period": "83/84-93/94",
+    "years": [
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1979- Suppleant i Trafikutskottet 79/80-81/82, Näringsutskottet 79/80-84/85 och 88/89-90/91, Civilutskottet 79/80 och Bostadsutskottet 83/84-93/94. Ledamot av Näringsutskottet 85/86-87/88, Finansutskottet 88/89-90/91 och Skatteutskottet 91/92-93/94. Suppleant i Riksbanksfullmäktige 91/92-93/94. Ledamot med uppdrag att följa verksamheten vid Procordia AB och Svenska Varv AB 85/86-87/88. - Ledamot av c-gruppens förtroenderåd 91-94.",
+    "source_clause": "Suppleant i Trafikutskottet 79/80-81/82, Näringsutskottet 79/80-84/85 och 88/89-90/91, Civilutskottet 79/80 och Bostadsutskottet 83/84-93/94",
+    "period_id": "biography:034408872004:5d7d9cc2affce42a",
+    "person_id": "i-RM6v9N7kihqrGSRBsWe7g3",
+    "source_id": "034408872004",
+    "source_birth_year": "1932",
+    "source_latest_year": 2026,
+    "source_surname": "Franzén",
+    "source_name": "Ivar Franzén",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=034408872004&utformat=json",
+    "committee_id": "i-Pe7qrS2HBQEA3mhF4ARDnH",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:034408872004:5d7d9cc2affce42a:1986",
+      "biography:034408872004:5d7d9cc2affce42a:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Konstitutionsutskottet",
+    "role": "Suppleant",
+    "period": "85/86--87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Suppl i KU 85/86--87/88 och UbU 85/86--90/91. Led av SfU 88/89--93/94.",
+    "source_clause": "Suppl i KU 85/86--87/88 och UbU 85/86--90/91",
+    "period_id": "biography:0234578153505:5950b0d74a6588e0",
+    "person_id": "i-9msUCw725vKguNSQS4ikv4",
+    "source_id": "0234578153505",
+    "source_birth_year": "1932",
+    "source_latest_year": 2026,
+    "source_surname": "Dau",
+    "source_name": "Hans Dau",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0234578153505&utformat=json",
+    "committee_id": "i-9o9DWwgkrWx48Ur42vZzYE",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0234578153505:5950b0d74a6588e0:1986",
+      "biography:0234578153505:5950b0d74a6588e0:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Utbildningsutskottet",
+    "role": "Suppleant",
+    "period": "85/86--90/91",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Suppl i KU 85/86--87/88 och UbU 85/86--90/91. Led av SfU 88/89--93/94.",
+    "source_clause": "Suppl i KU 85/86--87/88 och UbU 85/86--90/91",
+    "period_id": "biography:0234578153505:e297d140e0ca2817",
+    "person_id": "i-9msUCw725vKguNSQS4ikv4",
+    "source_id": "0234578153505",
+    "source_birth_year": "1932",
+    "source_latest_year": 2026,
+    "source_surname": "Dau",
+    "source_name": "Hans Dau",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0234578153505&utformat=json",
+    "committee_id": "i-Aq9p6NWepsUH6zBUZvnASV",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0234578153505:e297d140e0ca2817:1986",
+      "biography:0234578153505:e297d140e0ca2817:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Socialförsäkringsutskottet",
+    "role": "Suppleant",
+    "period": "82/83-83/84",
+    "years": [
+      1983
+    ],
+    "excerpt": "Ers 1981. Rdl 1982- Suppleant i Socialutskottet 80/81-81/82, Utbildningsutskottet 80/81-81/82, Socialförsäkringsutskottet 82/83-83/84 och 85/86-87/88 samt Arbetsmarknadsutskottet 88/89-90/91. Ledamot av Socialförsäkringsutskottet 84/85 och Försvarsutskottet 85/86-93/94. Suppleant i Riksdagens förvaltningsstyrelse 91/92-93/94. - Ersättare för kvittningsman 88/89-90/91, kvittningsman 91/92-93/94.",
+    "source_clause": "Suppleant i Socialutskottet 80/81-81/82, Utbildningsutskottet 80/81-81/82, Socialförsäkringsutskottet 82/83-83/84 och 85/86-87/88 samt Arbetsmarknadsutskottet 88/89-90/91",
+    "period_id": "biography:0306428620407:336858bc369b609c",
+    "person_id": "i-Wiq5749k7owcARUynxZuX7",
+    "source_id": "0306428620407",
+    "source_birth_year": "1932",
+    "source_latest_year": 2026,
+    "source_surname": "Bolander",
+    "source_name": "Gunhild Bolander",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0306428620407&utformat=json",
+    "committee_id": "i-VaESSVvWwTht6b4RXARRd9",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0306428620407:336858bc369b609c:1983"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Socialförsäkringsutskottet",
+    "role": "Suppleant",
+    "period": "85/86-87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Ers 1981. Rdl 1982- Suppleant i Socialutskottet 80/81-81/82, Utbildningsutskottet 80/81-81/82, Socialförsäkringsutskottet 82/83-83/84 och 85/86-87/88 samt Arbetsmarknadsutskottet 88/89-90/91. Ledamot av Socialförsäkringsutskottet 84/85 och Försvarsutskottet 85/86-93/94. Suppleant i Riksdagens förvaltningsstyrelse 91/92-93/94. - Ersättare för kvittningsman 88/89-90/91, kvittningsman 91/92-93/94.",
+    "source_clause": "Suppleant i Socialutskottet 80/81-81/82, Utbildningsutskottet 80/81-81/82, Socialförsäkringsutskottet 82/83-83/84 och 85/86-87/88 samt Arbetsmarknadsutskottet 88/89-90/91",
+    "period_id": "biography:0306428620407:b6812f471a00c38c",
+    "person_id": "i-Wiq5749k7owcARUynxZuX7",
+    "source_id": "0306428620407",
+    "source_birth_year": "1932",
+    "source_latest_year": 2026,
+    "source_surname": "Bolander",
+    "source_name": "Gunhild Bolander",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0306428620407&utformat=json",
+    "committee_id": "i-VaESSVvWwTht6b4RXARRd9",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0306428620407:b6812f471a00c38c:1986",
+      "biography:0306428620407:b6812f471a00c38c:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Trafikutskottet",
+    "role": "Suppleant",
+    "period": "82/83--87/88",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1982-88, 1991- Suppl i TU 82/83--87/88 och NU 82/83--87/88. Led av NU 91/92--93/94. Suppl i Vpn 82/83--87/88 och RR 91/92--93/94. -- Led med uppdrag att följa verksamheten vid Procordia AB och Sv Varv AB 85/86--87/88.",
+    "source_clause": "Suppl i TU 82/83--87/88 och NU 82/83--87/88",
+    "period_id": "biography:0988598877109:b90b40d730d09518",
+    "person_id": "i-8f78XhQUuZ8RoeUoZAueFm",
+    "source_id": "0988598877109",
+    "source_birth_year": "1933",
+    "source_latest_year": 2026,
+    "source_surname": "Molén",
+    "source_name": "Per-Richard Molén",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0988598877109&utformat=json",
+    "committee_id": "i-3rdmj6fAheVf83bvSTXSg3",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0988598877109:b90b40d730d09518:1986",
+      "biography:0988598877109:b90b40d730d09518:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Näringsutskottet",
+    "role": "Suppleant",
+    "period": "82/83--87/88",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1982-88, 1991- Suppl i TU 82/83--87/88 och NU 82/83--87/88. Led av NU 91/92--93/94. Suppl i Vpn 82/83--87/88 och RR 91/92--93/94. -- Led med uppdrag att följa verksamheten vid Procordia AB och Sv Varv AB 85/86--87/88.",
+    "source_clause": "Suppl i TU 82/83--87/88 och NU 82/83--87/88",
+    "period_id": "biography:0988598877109:afb2310c43b591d2",
+    "person_id": "i-8f78XhQUuZ8RoeUoZAueFm",
+    "source_id": "0988598877109",
+    "source_birth_year": "1933",
+    "source_latest_year": 2026,
+    "source_surname": "Molén",
+    "source_name": "Per-Richard Molén",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0988598877109&utformat=json",
+    "committee_id": "i-QCsXsk2jVA4cSug2bz1tWU",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0988598877109:afb2310c43b591d2:1986",
+      "biography:0988598877109:afb2310c43b591d2:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Justitieutskottet",
+    "role": "Suppleant",
+    "period": "85/86-87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Suppleant i Justitieutskottet 85/86-87/88, Försvarsutskottet 85/86-87/88, Konstitutionsutskottet 88/89-90/91 och Kulturutskottet 92/93-93/94. Ledamot av Justitieutskottet 88/89-91/92 och Försvarsutskottet 92/93-93/94. Suppleant i Riksdagens förvaltningsstyrelse 91/92-93/94. Ledamot av riksdagens lokalkommitté 91-94.",
+    "source_clause": "Suppleant i Justitieutskottet 85/86-87/88, Försvarsutskottet 85/86-87/88, Konstitutionsutskottet 88/89-90/91 och Kulturutskottet 92/93-93/94",
+    "period_id": "biography:085018966209:80789a7f14d3fce6",
+    "person_id": "i-HUx37HrNseoZiFo8yGSqrL",
+    "source_id": "085018966209",
+    "source_birth_year": "1933",
+    "source_latest_year": 2026,
+    "source_surname": "Sundin",
+    "source_name": "Lars Sundin",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=085018966209&utformat=json",
+    "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:085018966209:80789a7f14d3fce6:1986",
+      "biography:085018966209:80789a7f14d3fce6:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Försvarsutskottet",
+    "role": "Suppleant",
+    "period": "85/86-87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Suppleant i Justitieutskottet 85/86-87/88, Försvarsutskottet 85/86-87/88, Konstitutionsutskottet 88/89-90/91 och Kulturutskottet 92/93-93/94. Ledamot av Justitieutskottet 88/89-91/92 och Försvarsutskottet 92/93-93/94. Suppleant i Riksdagens förvaltningsstyrelse 91/92-93/94. Ledamot av riksdagens lokalkommitté 91-94.",
+    "source_clause": "Suppleant i Justitieutskottet 85/86-87/88, Försvarsutskottet 85/86-87/88, Konstitutionsutskottet 88/89-90/91 och Kulturutskottet 92/93-93/94",
+    "period_id": "biography:085018966209:fd0d2e4a7e4f9dd5",
+    "person_id": "i-HUx37HrNseoZiFo8yGSqrL",
+    "source_id": "085018966209",
+    "source_birth_year": "1933",
+    "source_latest_year": 2026,
+    "source_surname": "Sundin",
+    "source_name": "Lars Sundin",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=085018966209&utformat=json",
+    "committee_id": "i-DaqUKTc3mKCyqY6iZTWLeq",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:085018966209:fd0d2e4a7e4f9dd5:1986",
+      "biography:085018966209:fd0d2e4a7e4f9dd5:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Miljö- och jordbruksutskottet",
+    "role": "Suppleant",
+    "period": "85/86-90/91",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1982- Suppl i Jordbruksutskottet 85/86-90/91 och Försvarsutskottet 91/92-93/94. Led av Kulturutskottet 82/83-84/85 och Lagutskottet 85/86-93/94.",
+    "source_clause": "Suppl i Jordbruksutskottet 85/86-90/91 och Försvarsutskottet 91/92-93/94",
+    "period_id": "biography:0149848066801:23ae43ae8a544848",
+    "person_id": "i-DuKowRCZeJcfZANidh4RSE",
+    "source_id": "0149848066801",
+    "source_birth_year": "1933",
+    "source_latest_year": 2026,
+    "source_surname": "Thollander",
+    "source_name": "Gunnar Thollander",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0149848066801&utformat=json",
+    "committee_id": "i-EwnBgLiMakNVPaseHEsxvz",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0149848066801:23ae43ae8a544848:1986",
+      "biography:0149848066801:23ae43ae8a544848:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Miljö- och jordbruksutskottet",
+    "role": "Suppleant",
+    "period": "86/87-90/91",
+    "years": [
+      1987
+    ],
+    "excerpt": "Rdl 1979-85, 1986- Suppleant i Konstitutionsutskottet 79/80-81/82, Finansutskottet 79/80-81/82, Jordbruksutskottet 82/83-84/85 och 86/87-90/91 samt Lagutskottet 86/87. Ledamot av Lagutskottet 82/83-84/85, Arbetsmarknadsutskottet 88/89-90/91 och Jordbruksutskottet 91/92-93/94. Suppleant i Utrikesnämnden och Europarådets svenska delegation 93/94. Ledamot av Krigsdelegationen 91/92-93/94. - Ledamot av m-gruppens förtroenderåd 91/92-93/94, 3:e vice ordförande 91/92-93/94.",
+    "source_clause": "Suppleant i Konstitutionsutskottet 79/80-81/82, Finansutskottet 79/80-81/82, Jordbruksutskottet 82/83-84/85 och 86/87-90/91 samt Lagutskottet 86/87",
+    "period_id": "biography:0110548017702:f7298b5fffa87985",
+    "person_id": "i-VKBXGHy4KWJbExz3QgCuVy",
+    "source_id": "0110548017702",
+    "source_birth_year": "1934",
+    "source_latest_year": 2026,
+    "source_surname": "Saint Cyr",
+    "source_name": "Mona Saint Cyr",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0110548017702&utformat=json",
+    "committee_id": "i-EwnBgLiMakNVPaseHEsxvz",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0110548017702:f7298b5fffa87985:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Arbetsmarknadsutskottet",
+    "role": "Suppleant",
+    "period": "82/83--87/88",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1982- Suppl i SfU 82/83, TU 82/83--84/85, AU 82/83--87/88, JoU 85/86--87/88 och FöU 88/89--90/91. Led av SoU 88/89--90/91 och 92/93--93/94. Suppl i NR 91/92--93/94.",
+    "source_clause": "Suppl i SfU 82/83, TU 82/83--84/85, AU 82/83--87/88, JoU 85/86--87/88 och FöU 88/89--90/91",
+    "period_id": "biography:0882989698904:6d721b85f56dc1fb",
+    "person_id": "i-7EqnaA8N82a8e94n92Ucda",
+    "source_id": "0882989698904",
+    "source_birth_year": "1934",
+    "source_latest_year": 2026,
+    "source_surname": "Hemmingsson",
+    "source_name": "Ingrid Hemmingsson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0882989698904&utformat=json",
+    "committee_id": "i-51jmo4EPqDSPhCt2HsyqeC",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0882989698904:6d721b85f56dc1fb:1986",
+      "biography:0882989698904:6d721b85f56dc1fb:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Miljö- och jordbruksutskottet",
+    "role": "Suppleant",
+    "period": "85/86--87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1982- Suppl i SfU 82/83, TU 82/83--84/85, AU 82/83--87/88, JoU 85/86--87/88 och FöU 88/89--90/91. Led av SoU 88/89--90/91 och 92/93--93/94. Suppl i NR 91/92--93/94.",
+    "source_clause": "Suppl i SfU 82/83, TU 82/83--84/85, AU 82/83--87/88, JoU 85/86--87/88 och FöU 88/89--90/91",
+    "period_id": "biography:0882989698904:e08efdaf91d81520",
+    "person_id": "i-7EqnaA8N82a8e94n92Ucda",
+    "source_id": "0882989698904",
+    "source_birth_year": "1934",
+    "source_latest_year": 2026,
+    "source_surname": "Hemmingsson",
+    "source_name": "Ingrid Hemmingsson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0882989698904&utformat=json",
+    "committee_id": "i-EwnBgLiMakNVPaseHEsxvz",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0882989698904:e08efdaf91d81520:1986",
+      "biography:0882989698904:e08efdaf91d81520:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Trafikutskottet",
+    "role": "Suppleant",
+    "period": "85/86-88/89",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Suppleant i Trafikutskottet 85/86-88/89 och 91/92-93/94 samt Bostadsutskottet 85/86-87/88 och 89/90-93/94. Ledamot av Bostadsutskottet 88/89 och Trafikutskottet 88/89-90/91.",
+    "source_clause": "Suppleant i Trafikutskottet 85/86-88/89 och 91/92-93/94 samt Bostadsutskottet 85/86-87/88 och 89/90-93/94",
+    "period_id": "biography:0475759968705:25a9c1a8b4ac8df4",
+    "person_id": "i-7RcGCGfWkJMjP15ns7TKSq",
+    "source_id": "0475759968705",
+    "source_birth_year": "1934",
+    "source_latest_year": 2026,
+    "source_surname": "Thorén",
+    "source_name": "Rune Thorén",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0475759968705&utformat=json",
+    "committee_id": "i-3rdmj6fAheVf83bvSTXSg3",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0475759968705:25a9c1a8b4ac8df4:1986",
+      "biography:0475759968705:25a9c1a8b4ac8df4:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Bostadsutskottet",
+    "role": "Suppleant",
+    "period": "85/86-87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Suppleant i Trafikutskottet 85/86-88/89 och 91/92-93/94 samt Bostadsutskottet 85/86-87/88 och 89/90-93/94. Ledamot av Bostadsutskottet 88/89 och Trafikutskottet 88/89-90/91.",
+    "source_clause": "Suppleant i Trafikutskottet 85/86-88/89 och 91/92-93/94 samt Bostadsutskottet 85/86-87/88 och 89/90-93/94",
+    "period_id": "biography:0475759968705:a5921633aff59a30",
+    "person_id": "i-7RcGCGfWkJMjP15ns7TKSq",
+    "source_id": "0475759968705",
+    "source_birth_year": "1934",
+    "source_latest_year": 2026,
+    "source_surname": "Thorén",
+    "source_name": "Rune Thorén",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0475759968705&utformat=json",
+    "committee_id": "i-Pe7qrS2HBQEA3mhF4ARDnH",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0475759968705:a5921633aff59a30:1986",
+      "biography:0475759968705:a5921633aff59a30:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Socialutskottet",
+    "role": "Suppleant",
+    "period": "82/83-86/87",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986
+    ],
+    "excerpt": "Rdl 1982- Suppl i Socialutskottet 82/83-86/87, Arbetsmarknadsutskottet 85/86-87/88 Konstitutionsutskottet 88/89-90/91 och Lagutskottet 92/93-93/94. Led av Socialutskottet 86/87-93/94. Suppl i Talmanskonferensen 92/93-93/94. Led av Valberedningen 88/89-93/94, Krigsdelegationen 91/92-93/94 och Talmanskonferensen 91/92. - Led av c-gruppens förtroenderåd 91/92-93/94, 1:e vice gruppordf 91/92-93/94.",
+    "source_clause": "Suppl i Socialutskottet 82/83-86/87, Arbetsmarknadsutskottet 85/86-87/88 Konstitutionsutskottet 88/89-90/91 och Lagutskottet 92/93-93/94",
+    "period_id": "biography:0976559189807:20d307dd6a6b0639",
+    "person_id": "i-UFZGewHDwtGkFra772Gsp6",
+    "source_id": "0976559189807",
+    "source_birth_year": "1935",
+    "source_latest_year": 2026,
+    "source_surname": "Östh",
+    "source_name": "Rosa Östh",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0976559189807&utformat=json",
+    "committee_id": "i-8VfPu3CK6jcVvkrLU19DWY",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0976559189807:20d307dd6a6b0639:1986"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Arbetsmarknadsutskottet",
+    "role": "Suppleant",
+    "period": "79/80-84/85",
+    "years": [
+      1980,
+      1981,
+      1982,
+      1983,
+      1984
+    ],
+    "excerpt": "Rdl 1976-. Arbetsmarknadsmin. 1991- Suppleant i Socialförsäkringsutskotet 76/77-78/79, Socialutksottet 76/77-78/79, Konstitutionsutskottet 78/79 samt Arbetsmarknadsutskottet 79/80-84/85 och 94/95-95/96. Ledamot av Arbetsmarknadsutskotet 85/86-90/91 och EU-nämnden 94/95-95/96. Ledamot av Riksbanksfullmäktige 88/89-90/91. - Ledamot av c-gruppens förtroenderåd 86-91.",
+    "source_clause": "Suppleant i Socialförsäkringsutskotet 76/77-78/79, Socialutksottet 76/77-78/79, Konstitutionsutskottet 78/79 samt Arbetsmarknadsutskottet 79/80-84/85 och 94/95-95/96",
+    "period_id": "biography:0525479453308:e0d2aaa97c861f70",
+    "person_id": "i-F75GdyfEGNRiwZrKbuWUGy",
+    "source_id": "0525479453308",
+    "source_birth_year": "1935",
+    "source_latest_year": 2026,
+    "source_surname": "Hörnlund",
+    "source_name": "Börje Hörnlund",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0525479453308&utformat=json",
+    "committee_id": "i-51jmo4EPqDSPhCt2HsyqeC",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0525479453308:e0d2aaa97c861f70:1980",
+      "biography:0525479453308:e0d2aaa97c861f70:1981",
+      "biography:0525479453308:e0d2aaa97c861f70:1983",
+      "biography:0525479453308:e0d2aaa97c861f70:1984"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Kulturutskottet",
+    "role": "Suppleant",
+    "period": "86/87-87/88",
+    "years": [
+      1987
+    ],
+    "excerpt": "Rdl 1982-85, 1986- Suppleant i Kulturutskottet 82/83 och 86/87-87/88, Socialutskottet 86/87-87/88, Bostadsutskottet 88/89-90/91 och Jordbruksutskottet 88/89-93/94. Ledamot av Kulturutskottet 82/83-84/85 och 88/89-93/94. Suppleant i Nordiska rådets svenska delegation 91/92-93/94 och Valberedningen 91/92-93/94. - Ledamot av c-gruppens förtroenderåd 93/94.",
+    "source_clause": "Suppleant i Kulturutskottet 82/83 och 86/87-87/88, Socialutskottet 86/87-87/88, Bostadsutskottet 88/89-90/91 och Jordbruksutskottet 88/89-93/94",
+    "period_id": "biography:0557059020608:602cbc17bba7ddaf",
+    "person_id": "i-SJZr3KVaqohjfckH9Qag36",
+    "source_id": "0557059020608",
+    "source_birth_year": "1935",
+    "source_latest_year": 2026,
+    "source_surname": "Gustavsson",
+    "source_name": "Stina Gustavsson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0557059020608&utformat=json",
+    "committee_id": "i-JpFzihihRcLyd2VqEssAGF",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0557059020608:602cbc17bba7ddaf:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Socialutskottet",
+    "role": "Suppleant",
+    "period": "86/87-87/88",
+    "years": [
+      1987
+    ],
+    "excerpt": "Rdl 1982-85, 1986- Suppleant i Kulturutskottet 82/83 och 86/87-87/88, Socialutskottet 86/87-87/88, Bostadsutskottet 88/89-90/91 och Jordbruksutskottet 88/89-93/94. Ledamot av Kulturutskottet 82/83-84/85 och 88/89-93/94. Suppleant i Nordiska rådets svenska delegation 91/92-93/94 och Valberedningen 91/92-93/94. - Ledamot av c-gruppens förtroenderåd 93/94.",
+    "source_clause": "Suppleant i Kulturutskottet 82/83 och 86/87-87/88, Socialutskottet 86/87-87/88, Bostadsutskottet 88/89-90/91 och Jordbruksutskottet 88/89-93/94",
+    "period_id": "biography:0557059020608:1dc846799748c79f",
+    "person_id": "i-SJZr3KVaqohjfckH9Qag36",
+    "source_id": "0557059020608",
+    "source_birth_year": "1935",
+    "source_latest_year": 2026,
+    "source_surname": "Gustavsson",
+    "source_name": "Stina Gustavsson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0557059020608&utformat=json",
+    "committee_id": "i-8VfPu3CK6jcVvkrLU19DWY",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0557059020608:1dc846799748c79f:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Utrikesutskottet",
+    "role": "Suppleant",
+    "period": "82/83-90/91",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1965- Suppleant i Civilutskottet 71-75/76, Finansutskottet 74-75/76, Utrikesutskottet 82/83-90/91, Justitieutskottet 91/92 och Bostadsutskottet 93/94. Suppleant i Nordiska rådets svenska delegation 71-75/76. Ledamot av Valberedningen 71-75, Krigsdelegationen 71-93/94, Talmanskonferensen 74-75 och Nordiska rådets svenska delegation 76/77-93/94. Ledamot av utredningen angående en allmän översyn av Riksdagens arbetsformer 73-78. - Ledamot av vpk-gruppens förtroenderåd 67 och 71-93/94, vice ordförande och kassör 71-73, ordförande 76/77-86/87, vice ordförande i gruppen 74, ordförande i gruppen 75-80/81, vice gruppledare 75-76/77.",
+    "source_clause": "Suppleant i Civilutskottet 71-75/76, Finansutskottet 74-75/76, Utrikesutskottet 82/83-90/91, Justitieutskottet 91/92 och Bostadsutskottet 93/94",
+    "period_id": "biography:0856559235708:d676b5c7d90bd9e9",
+    "person_id": "i-5wPAQ1MDLRTsW1XngYcD46",
+    "source_id": "0856559235708",
+    "source_birth_year": "1935",
+    "source_latest_year": 2026,
+    "source_surname": "Werner",
+    "source_name": "Lars Werner",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0856559235708&utformat=json",
+    "committee_id": "i-DtQppLb6kHuVMpyny7na7b",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0856559235708:d676b5c7d90bd9e9:1986",
+      "biography:0856559235708:d676b5c7d90bd9e9:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Lagutskottet",
+    "role": "Suppleant",
+    "period": "85/86-90/91",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985-91. Ers 1991- Suppl i Utbildningsutskottet 82/83, Lagutskottet 85/86-90/91, Socialförsäkringsutksottet 85/86-87/88 och Utrikesutskottet 91/92. Led av Socialförsäkringsutskottet 88/89-90/91.",
+    "source_clause": "Suppl i Utbildningsutskottet 82/83, Lagutskottet 85/86-90/91, Socialförsäkringsutksottet 85/86-87/88 och Utrikesutskottet 91/92",
+    "period_id": "biography:0311009915309:16f2a404fa2a7824",
+    "person_id": "i-8upA7fUmJDG9eshM6xjAMc",
+    "source_id": "0311009915309",
+    "source_birth_year": "1935",
+    "source_latest_year": 2026,
+    "source_surname": "Sandberg",
+    "source_name": "Barbro Sandberg",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0311009915309&utformat=json",
+    "committee_id": "i-Uz9mTjQTUPjWD7iHEQRTZN",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0311009915309:16f2a404fa2a7824:1986",
+      "biography:0311009915309:16f2a404fa2a7824:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Justitieutskottet",
+    "role": "Suppleant",
+    "period": "85/86--87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Suppl i JuU 85/86--87/88, JoU 85/86--86/87 och FiU 89/90--90/91. Led av JoU 87/88--93/94.",
+    "source_clause": "Suppl i JuU 85/86--87/88, JoU 85/86--86/87 och FiU 89/90--90/91",
+    "period_id": "biography:0258169509601:d0e6287288227c6d",
+    "person_id": "i-NJ3F1x3TAusoKGWhKxXUFd",
+    "source_id": "0258169509601",
+    "source_birth_year": "1936",
+    "source_latest_year": 2026,
+    "source_surname": "Rosén",
+    "source_name": "Bengt Rosén",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0258169509601&utformat=json",
+    "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0258169509601:d0e6287288227c6d:1986",
+      "biography:0258169509601:d0e6287288227c6d:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Miljö- och jordbruksutskottet",
+    "role": "Suppleant",
+    "period": "85/86--86/87",
+    "years": [
+      1986
+    ],
+    "excerpt": "Rdl 1985- Suppl i JuU 85/86--87/88, JoU 85/86--86/87 och FiU 89/90--90/91. Led av JoU 87/88--93/94.",
+    "source_clause": "Suppl i JuU 85/86--87/88, JoU 85/86--86/87 och FiU 89/90--90/91",
+    "period_id": "biography:0258169509601:2c3e5ce298d47bb0",
+    "person_id": "i-NJ3F1x3TAusoKGWhKxXUFd",
+    "source_id": "0258169509601",
+    "source_birth_year": "1936",
+    "source_latest_year": 2026,
+    "source_surname": "Rosén",
+    "source_name": "Bengt Rosén",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0258169509601&utformat=json",
+    "committee_id": "i-EwnBgLiMakNVPaseHEsxvz",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0258169509601:2c3e5ce298d47bb0:1986"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Skatteutskottet",
+    "role": "Suppleant",
+    "period": "76/77-87/88",
+    "years": [
+      1980,
+      1981,
+      1982,
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "1971--1990/91 1969--1970 Suppleant i Statsutskottet 69-70, Näringsutskottet 71-78/79 och Skatteutskottet 76/77-87/88. Ledamot av Försvarsutskottet 71-73, Jordbruksutskottet 74-75/76 och Näringsutskottet 79/80-90/91, ordförande 88/89-90/91. Suppleant i Europarådets svenska delegation 73-81/82. Ledamot av Europarådets svenska delegation 82/83-87/88, EFTA-delegationen 85/86-90/91, vice ordförande 85/86-86/87, ordförande 87/88-90/91, och Talmanskonferensen 88/89-90/91. Supplenat i styrelsen för Riksbankens jubileumsfond 71-72. Ledamot av styrelsen för Riksbankens jubileumsfond 72-77. Ledamot av Riksdagens ADB-kommitté 83-88.",
+    "source_clause": "Suppleant i Statsutskottet 69-70, Näringsutskottet 71-78/79 och Skatteutskottet 76/77-87/88",
+    "period_id": "biography:0805469037201:35b81e0158b38470",
+    "person_id": "i-4sZMUTZ58TFSSwfWoaTdDi",
+    "source_id": "0805469037201",
+    "source_birth_year": "1936",
+    "source_latest_year": 2026,
+    "source_surname": "Pettersson",
+    "source_name": "Lennart Pettersson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0805469037201&utformat=json",
+    "committee_id": "i-HjaWxnUoeSJuD8mRt1tgZq",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0805469037201:35b81e0158b38470:1986",
+      "biography:0805469037201:35b81e0158b38470:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Näringsutskottet",
+    "role": "Suppleant",
+    "period": "82/83-93/94",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Ers 1982-85. Rdl 1985- Suppleant i Skatteutskottet 82/83-85/86, Socialförsäkringsutskottet 82/83-84/85 och Näringsutskottet 82/83-93/94. Ledamot av Skatteutskottet 86/87-93/94. Suppleant i Nordiska rådets svenska delegation 88/89-93/94. Ledamot med uppdrag att följa verksamheten vid Procordia AB och Svenska Varv AB 85/86-87/88.",
+    "source_clause": "Suppleant i Skatteutskottet 82/83-85/86, Socialförsäkringsutskottet 82/83-84/85 och Näringsutskottet 82/83-93/94",
+    "period_id": "biography:0167049231801:eb4d950f11760e0f",
+    "person_id": "i-YSrKPAF7dEJGwUuQtYWvjX",
+    "source_id": "0167049231801",
+    "source_birth_year": "1936",
+    "source_latest_year": 2026,
+    "source_surname": "Poromaa",
+    "source_name": "Bruno Poromaa",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0167049231801&utformat=json",
+    "committee_id": "i-QCsXsk2jVA4cSug2bz1tWU",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0167049231801:eb4d950f11760e0f:1983",
+      "biography:0167049231801:eb4d950f11760e0f:1984",
+      "biography:0167049231801:eb4d950f11760e0f:1986",
+      "biography:0167049231801:eb4d950f11760e0f:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Konstitutionsutskottet",
+    "role": "Suppleant",
+    "period": "85/86--87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1971- Suppl i LU 71, TU 77/78--78/79, KU 85/86--87/88 och UU 91/92--93/94. Led av JuU 72--73, KU 74--75/76 och UU 82/83--90/91. Suppl i TK 81/82--90/91 samt RFS 82/83--87/88 och 91/92--93/94. Led av ON 74, VB 82/83--93/94, KD 85/86--90/91, RFS 88/89--90/91, EFTA-delegationen 89/90, TK 91/92--93/94 och EG-Sverige-kommittén 93/94. Led av riksdagsutredningen 90--94. -- Led av vpk/v-gruppens förtroenderåd 82--94, gruppledare 82--94.",
+    "source_clause": "Suppl i LU 71, TU 77/78--78/79, KU 85/86--87/88 och UU 91/92--93/94",
+    "period_id": "biography:0519019074802:1c55aa6ae5c610f1",
+    "person_id": "i-QRDnfz9zaiXo7A1SpAi1dM",
+    "source_id": "0519019074802",
+    "source_birth_year": "1936",
+    "source_latest_year": 2026,
+    "source_surname": "Måbrink",
+    "source_name": "Bertil Måbrink",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0519019074802&utformat=json",
+    "committee_id": "i-9o9DWwgkrWx48Ur42vZzYE",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0519019074802:1c55aa6ae5c610f1:1986",
+      "biography:0519019074802:1c55aa6ae5c610f1:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Miljö- och jordbruksutskottet",
+    "role": "Suppleant",
+    "period": "79/80-86/87",
+    "years": [
+      1980,
+      1981,
+      1982,
+      1983,
+      1984,
+      1985,
+      1986
+    ],
+    "excerpt": "Rdl 1979- Suppleant i Trafikutskottet 79/80-81/82, Jordbruksutskottet 79/80-86/87, Civilutskottet 80/81-81/82 samt Socialutskottet 85/86-86/87 och 88/89-90/91. Ledamot av Socialutskottet 82/83-84/85 och Jordbruksutskottet 87/88-. Suppleant i Nordiska rådets svenska delegation 91/92-93/94 och Riksdagens revisorer 94/95-.",
+    "source_clause": "Suppleant i Trafikutskottet 79/80-81/82, Jordbruksutskottet 79/80-86/87, Civilutskottet 80/81-81/82 samt Socialutskottet 85/86-86/87 och 88/89-90/91",
+    "period_id": "biography:0695579897102:ebc715bc81dceb90",
+    "person_id": "i-NXNY6RqNuERrrfDVTJBFkt",
+    "source_id": "0695579897102",
+    "source_birth_year": "1936",
+    "source_latest_year": 2026,
+    "source_surname": "Eriksson",
+    "source_name": "Ingvar Eriksson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0695579897102&utformat=json",
+    "committee_id": "i-EwnBgLiMakNVPaseHEsxvz",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0695579897102:ebc715bc81dceb90:1986"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Socialutskottet",
+    "role": "Suppleant",
+    "period": "85/86-86/87",
+    "years": [
+      1986
+    ],
+    "excerpt": "Rdl 1979- Suppleant i Trafikutskottet 79/80-81/82, Jordbruksutskottet 79/80-86/87, Civilutskottet 80/81-81/82 samt Socialutskottet 85/86-86/87 och 88/89-90/91. Ledamot av Socialutskottet 82/83-84/85 och Jordbruksutskottet 87/88-. Suppleant i Nordiska rådets svenska delegation 91/92-93/94 och Riksdagens revisorer 94/95-.",
+    "source_clause": "Suppleant i Trafikutskottet 79/80-81/82, Jordbruksutskottet 79/80-86/87, Civilutskottet 80/81-81/82 samt Socialutskottet 85/86-86/87 och 88/89-90/91",
+    "period_id": "biography:0695579897102:7cf77c1582263fe9",
+    "person_id": "i-NXNY6RqNuERrrfDVTJBFkt",
+    "source_id": "0695579897102",
+    "source_birth_year": "1936",
+    "source_latest_year": 2026,
+    "source_surname": "Eriksson",
+    "source_name": "Ingvar Eriksson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0695579897102&utformat=json",
+    "committee_id": "i-8VfPu3CK6jcVvkrLU19DWY",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0695579897102:7cf77c1582263fe9:1986"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Socialutskottet",
+    "role": "Suppleant",
+    "period": "85/86-87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985-88 Suppl i Socialutskottet 85/86-87/88, Utbildningsutskottet 85/86-86/87 och Finansutskottet 86/87-87/88. Suppl i styrelsen för Riksbankens jubileumsfond 85/86-87/88.",
+    "source_clause": "Suppl i Socialutskottet 85/86-87/88, Utbildningsutskottet 85/86-86/87 och Finansutskottet 86/87-87/88",
+    "period_id": "biography:0282360034405:6ac064fe5dcb4bcb",
+    "person_id": "i-BMYEUF5ZqkJVawjRJ2AGUT",
+    "source_id": "0282360034405",
+    "source_birth_year": "1937",
+    "source_latest_year": 2026,
+    "source_surname": "Alsén",
+    "source_name": "Lennart Alsén",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0282360034405&utformat=json",
+    "committee_id": "i-8VfPu3CK6jcVvkrLU19DWY",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0282360034405:6ac064fe5dcb4bcb:1986",
+      "biography:0282360034405:6ac064fe5dcb4bcb:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Utbildningsutskottet",
+    "role": "Suppleant",
+    "period": "85/86-86/87",
+    "years": [
+      1986
+    ],
+    "excerpt": "Rdl 1985-88 Suppl i Socialutskottet 85/86-87/88, Utbildningsutskottet 85/86-86/87 och Finansutskottet 86/87-87/88. Suppl i styrelsen för Riksbankens jubileumsfond 85/86-87/88.",
+    "source_clause": "Suppl i Socialutskottet 85/86-87/88, Utbildningsutskottet 85/86-86/87 och Finansutskottet 86/87-87/88",
+    "period_id": "biography:0282360034405:e8fb44f3ff8a7f31",
+    "person_id": "i-BMYEUF5ZqkJVawjRJ2AGUT",
+    "source_id": "0282360034405",
+    "source_birth_year": "1937",
+    "source_latest_year": 2026,
+    "source_surname": "Alsén",
+    "source_name": "Lennart Alsén",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0282360034405&utformat=json",
+    "committee_id": "i-Aq9p6NWepsUH6zBUZvnASV",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0282360034405:e8fb44f3ff8a7f31:1986"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Finansutskottet",
+    "role": "Suppleant",
+    "period": "86/87-87/88",
+    "years": [
+      1987
+    ],
+    "excerpt": "Rdl 1985-88 Suppl i Socialutskottet 85/86-87/88, Utbildningsutskottet 85/86-86/87 och Finansutskottet 86/87-87/88. Suppl i styrelsen för Riksbankens jubileumsfond 85/86-87/88.",
+    "source_clause": "Suppl i Socialutskottet 85/86-87/88, Utbildningsutskottet 85/86-86/87 och Finansutskottet 86/87-87/88",
+    "period_id": "biography:0282360034405:19246c0ff6b6b1b6",
+    "person_id": "i-BMYEUF5ZqkJVawjRJ2AGUT",
+    "source_id": "0282360034405",
+    "source_birth_year": "1937",
+    "source_latest_year": 2026,
+    "source_surname": "Alsén",
+    "source_name": "Lennart Alsén",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0282360034405&utformat=json",
+    "committee_id": "i-JwnXUyhBV4Gu1ijXpE7jcH",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0282360034405:19246c0ff6b6b1b6:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Socialförsäkringsutskottet",
+    "role": "Suppleant",
+    "period": "79/80-81/82",
+    "years": [
+      1980,
+      1981
+    ],
+    "excerpt": "Rdl 1979- Suppl i Socialförsäkringsutskottet 79/80-81/82, Utbildnignsutskottet 79/80-84/85 och Finansutskottet 88/89-92/93. Led av Utbildningsutskottet 85/86-92/93, vice ordf 88/89-90/91. Suppl i Talmanskonferensen 88/89-90/91 och Biblioteksnämnden 91/92-92/93. - Led av c-gruppens förtroenderåd 88/89-92/93.",
+    "source_clause": "Suppl i Socialförsäkringsutskottet 79/80-81/82, Utbildnignsutskottet 79/80-84/85 och Finansutskottet 88/89-92/93",
+    "period_id": "biography:0583060288605:158895e0a6fbed0c",
+    "person_id": "i-DWeXh4zHCbqRVgtH4QLZC3",
+    "source_id": "0583060288605",
+    "source_birth_year": "1937",
+    "source_latest_year": 2026,
+    "source_surname": "Johansson",
+    "source_name": "Larz Johansson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0583060288605&utformat=json",
+    "committee_id": "i-VaESSVvWwTht6b4RXARRd9",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0583060288605:158895e0a6fbed0c:1980",
+      "biography:0583060288605:158895e0a6fbed0c:1981"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Justitieutskottet",
+    "role": "Suppleant",
+    "period": "79/80-93/94",
+    "years": [
+      1980,
+      1981,
+      1982,
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1979- Suppleant i Justitieutskottet 79/80-93/94 och Kulturutskottet 79/80-81/82. Ledamot av Kulturutskottet 82/83-93/94. Suppleant i Lönedelegationen 82/83-84/85 och Riksdagens revisorer 85/86-90/91. Ledamot av Riksdagens revisorer 91/92-93/94.",
+    "source_clause": "Suppleant i Justitieutskottet 79/80-93/94 och Kulturutskottet 79/80-81/82",
+    "period_id": "biography:0758610200105:6235536eb2a2e8ed",
+    "person_id": "i-9CvkAU1JKjTkULuqucvebo",
+    "source_id": "0758610200105",
+    "source_birth_year": "1937",
+    "source_latest_year": 2026,
+    "source_surname": "Bäckström",
+    "source_name": "Maja Bäckström",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0758610200105&utformat=json",
+    "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0758610200105:6235536eb2a2e8ed:1986",
+      "biography:0758610200105:6235536eb2a2e8ed:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Finansutskottet",
+    "role": "Suppleant",
+    "period": "82/83-90/91",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1971-. Statsråd 1976-78, 1979-82. Miljömin. 1991- Suppleant i Skatteutskottet 71-75/76, Näringsutskottet 78/79 och 86/87, Aarbetsmarknadsutskottet 78/79 och Finansutskottet 82/83-90/91. Ledamot av Civilutskottet 74-75/76, Näringsutskottet 79/80 och 82/83-85/86 samt Finansutskottet 86/87. Suppleant i Löndelegationen 74-75/76 och 82/83-84/85, Talmanskonferensen 79/80, Europarådets svenska delegation 85/86 och 94/95-97/98, Utrikesnämnden 85/86-86/87 och Nordiska rådets svenska delegation 87/88-90/91. Ledamot av Krigsdelegationen 82/83-90/91 och 94/95-97/98, Europarådets svenska delegation 85/86-91/92, Utrikesnämnden 87/88-90/91 och 94/95-97/98 samt Nordiska rådets svenska delegation 94/95-97/98, ordförande 94/95-97/98. Stämmoombud i Statsföretag AB 71-75/76. - Ledamot av c-gruppens förtroenderåd 79/80-80/81, 82/83-90/91 och 94/95-97/98, 2:e vice ordförande 79/80-80/81 och 82/83-84/85, vice ordförande 85/86-86/87, ordförande och gruppledare 87/88-90/91.",
+    "source_clause": "Suppleant i Skatteutskottet 71-75/76, Näringsutskottet 78/79 och 86/87, Aarbetsmarknadsutskottet 78/79 och Finansutskottet 82/83-90/91",
+    "period_id": "biography:059100119006:8e3c79feeb9ad299",
+    "person_id": "i-FrizKF8qiYUeCD64QhzzFt",
+    "source_id": "059100119006",
+    "source_birth_year": "1937",
+    "source_latest_year": 2026,
+    "source_surname": "Johansson",
+    "source_name": "Olof Johansson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=059100119006&utformat=json",
+    "committee_id": "i-JwnXUyhBV4Gu1ijXpE7jcH",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:059100119006:8e3c79feeb9ad299:1986"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Utbildningsutskottet",
+    "role": "Suppleant",
+    "period": "79/80-84/85",
+    "years": [
+      1980,
+      1981,
+      1982,
+      1983,
+      1984
+    ],
+    "excerpt": "Rdl 1979- Suppleant i Socialutskottet 79/80-81/82 och Utbildningsutskottet 79/80-84/85. Ledamot av Socialutskottet 82/83-87/88 och Utbildningsutskottet 88/89-92/93, ordförande 91/92-92/93. Suppleant i Europarådets svenska delegation 89/90-90/91 och Utrikesnämnden 91/92-92/93. Ledamot av Krigsdelegationen 88/89-92/93, Talmanskonferensen 91/92-92/93 och Europarådets svenska delegation 91/92-92/93, ordförande 91/92-92/93. - Ledamot av m-gruppens förtroenderåd 86/87-92/93. - Ledamot av styrelsen för riksdagens interparlamentariska grupp 91/92-92/93.",
+    "source_clause": "Suppleant i Socialutskottet 79/80-81/82 och Utbildningsutskottet 79/80-84/85",
+    "period_id": "biography:0333810623907:642313e2e4a4e44e",
+    "person_id": "i-2BYSzJNcUPXMLvmLd6pE34",
+    "source_id": "0333810623907",
+    "source_birth_year": "1937",
+    "source_latest_year": 2026,
+    "source_surname": "Haglund",
+    "source_name": "Ann-Cathrine Haglund",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0333810623907&utformat=json",
+    "committee_id": "i-Aq9p6NWepsUH6zBUZvnASV",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0333810623907:642313e2e4a4e44e:1983",
+      "biography:0333810623907:642313e2e4a4e44e:1984"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Försvarsutskottet",
+    "role": "Suppleant",
+    "period": "85/86-90/91",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1969- Suppleant i Statsutskottet 69-70, Utrikesutskottet 71-75/76 och 91/92-93/94, Utbildningsutskottet 71-73, Skatteutskottet 74-75/76, Trafikutskottet 76/77-78/79 och Försvarsutskottet 85/86-90/91. Ledamot av Utrikesutskottet 76/77-90/91 och Försvarsutskottet 91/92-93/94, vice ordförande 91/92-93/94. Suppleant i Utrikesnämnden 82/83-87/88, Talmanskonferensen 91/92-93/94 och EG-Sverige-kommittén 93/94. Ledamot av Utrikesnämnden 82/83 och 88/89-90/91 samt Krigsdelegationen 91/92-93/94. - Ledamot av styrelsen för riksdagens utrikespolitiska klubb, kassör 76/77-91, och riksdagens interparlamentariska grupp 74-93/94, ordförande 74-75/76 och 82/83-90/91, vice ordförande 76/77-81/82 och 91/92-93/94.",
+    "source_clause": "Suppleant i Statsutskottet 69-70, Utrikesutskottet 71-75/76 och 91/92-93/94, Utbildningsutskottet 71-73, Skatteutskottet 74-75/76, Trafikutskottet 76/77-78/79 och Försvarsutskottet 85/86-90/91",
+    "period_id": "biography:0413600182607:9f4a4a540cadc7f6",
+    "person_id": "i-Dqwk6WRPNzjzwmqmA18xc1",
+    "source_id": "0413600182607",
+    "source_birth_year": "1937",
+    "source_latest_year": 2026,
+    "source_surname": "Ericson",
+    "source_name": "Sture Ericson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0413600182607&utformat=json",
+    "committee_id": "i-DaqUKTc3mKCyqY6iZTWLeq",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0413600182607:9f4a4a540cadc7f6:1986",
+      "biography:0413600182607:9f4a4a540cadc7f6:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Skatteutskottet",
+    "role": "Suppleant",
+    "period": "85/86--87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Suppl i SkU 85/86--87/88, NU 85/86--86/87 och 91/92, FöU 89/90--93/94 och FiU 93/94. Led av NU 87/88--90/91 och 91/92--93/94. Suppl i EFTA-delegationen 89/90--90/91 och NR 91/92--93/94. Led av VB 88/89--93/94. -- Led av styrelsen för riksdagens nykterhetsgrupp, sekreterare 92/93--.",
+    "source_clause": "Suppl i SkU 85/86--87/88, NU 85/86--86/87 och 91/92, FöU 89/90--93/94 och FiU 93/94",
+    "period_id": "biography:0573810408500:ec291545805a9db9",
+    "person_id": "i-85VtituoXaBtWGEYWBeNQ8",
+    "source_id": "0573810408500",
+    "source_birth_year": "1938",
+    "source_latest_year": 2026,
+    "source_surname": "Norberg",
+    "source_name": "Gudrun Norberg",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0573810408500&utformat=json",
+    "committee_id": "i-HjaWxnUoeSJuD8mRt1tgZq",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0573810408500:ec291545805a9db9:1986",
+      "biography:0573810408500:ec291545805a9db9:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Näringsutskottet",
+    "role": "Suppleant",
+    "period": "85/86--86/87",
+    "years": [
+      1986
+    ],
+    "excerpt": "Rdl 1985- Suppl i SkU 85/86--87/88, NU 85/86--86/87 och 91/92, FöU 89/90--93/94 och FiU 93/94. Led av NU 87/88--90/91 och 91/92--93/94. Suppl i EFTA-delegationen 89/90--90/91 och NR 91/92--93/94. Led av VB 88/89--93/94. -- Led av styrelsen för riksdagens nykterhetsgrupp, sekreterare 92/93--.",
+    "source_clause": "Suppl i SkU 85/86--87/88, NU 85/86--86/87 och 91/92, FöU 89/90--93/94 och FiU 93/94",
+    "period_id": "biography:0573810408500:a643bb32ca7f4dc3",
+    "person_id": "i-85VtituoXaBtWGEYWBeNQ8",
+    "source_id": "0573810408500",
+    "source_birth_year": "1938",
+    "source_latest_year": 2026,
+    "source_surname": "Norberg",
+    "source_name": "Gudrun Norberg",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0573810408500&utformat=json",
+    "committee_id": "i-QCsXsk2jVA4cSug2bz1tWU",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0573810408500:a643bb32ca7f4dc3:1986"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Kulturutskottet",
+    "role": "Suppleant",
+    "period": "85/86-93/94",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Ers 1984-87. Rdl 1987- Suppleant i Utrikesutskottet 84/85, Skatteutskottet 84/85, Konstitutionsutskottet 85/86 och Kulturutskottet 85/86-93/94. Ledamot av Kulturutskottet 85/86 och Konstitutionsutskottet 85/86-93/94.",
+    "source_clause": "Suppleant i Utrikesutskottet 84/85, Skatteutskottet 84/85, Konstitutionsutskottet 85/86 och Kulturutskottet 85/86-93/94",
+    "period_id": "biography:0552300917200:1af74a0373d9b4c2",
+    "person_id": "i-EV8Pts9LgPV9TKVreGG4cG",
+    "source_id": "0552300917200",
+    "source_birth_year": "1938",
+    "source_latest_year": 2026,
+    "source_surname": "Larsson",
+    "source_name": "Torgny Larsson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0552300917200&utformat=json",
+    "committee_id": "i-JpFzihihRcLyd2VqEssAGF",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0552300917200:1af74a0373d9b4c2:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Näringsutskottet",
+    "role": "Suppleant",
+    "period": "86/87-87/88",
+    "years": [
+      1987
+    ],
+    "excerpt": "Rdl 1979-88. 1991-93 (v), 1993- (-) lämnat partiet 930112 Suppleant i Näringsutskottet 86/87-87/88, Lagutskottet 91/92-92/93 och Justitieutskottet 92/93. Ledamot av Jordbruksutskottet 82/83-86/87. Suppleant i Lönedelegationen 82/83-84/85.",
+    "source_clause": "Suppleant i Näringsutskottet 86/87-87/88, Lagutskottet 91/92-92/93 och Justitieutskottet 92/93",
+    "period_id": "biography:0817420987900:1c19dbc248da2315",
+    "person_id": "i-HF1be62hHhvaXoZiyUz2HF",
+    "source_id": "0817420987900",
+    "source_birth_year": "1938",
+    "source_latest_year": 2026,
+    "source_surname": "Andersson",
+    "source_name": "John Andersson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0817420987900&utformat=json",
+    "committee_id": "i-QCsXsk2jVA4cSug2bz1tWU",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0817420987900:1c19dbc248da2315:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Konstitutionsutskottet",
+    "role": "Suppleant",
+    "period": "79/80-93/94",
+    "years": [
+      1980,
+      1981,
+      1982,
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1979- Suppleant i Konstitutionsutskottet 79/80-93/94 och Arbetsmarknadsutskottet 79/80-81/82. Ledamot av Arbetsmarknadsutskottet 82/83-93/94. Suppleant i Nordiska rådets svenska delegation 81/82-84/85. Ledamot av Nordiska rådets svenska delegation 85/86-93/94.",
+    "source_clause": "Suppleant i Konstitutionsutskottet 79/80-93/94 och Arbetsmarknadsutskottet 79/80-81/82",
+    "period_id": "biography:0406670261803:c0bc0fedc39f69d1",
+    "person_id": "i-SftjZkfkccEWbWRMJEbd7c",
+    "source_id": "0406670261803",
+    "source_birth_year": "1939",
+    "source_latest_year": 2026,
+    "source_surname": "Exner",
+    "source_name": "Lahja Exner",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0406670261803&utformat=json",
+    "committee_id": "i-9o9DWwgkrWx48Ur42vZzYE",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0406670261803:c0bc0fedc39f69d1:1986",
+      "biography:0406670261803:c0bc0fedc39f69d1:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Försvarsutskottet",
+    "role": "Suppleant",
+    "period": "86/87--93/94",
+    "years": [
+      1987
+    ],
+    "excerpt": "Rdl 1982- Suppl i JoU 82/83--84/85, FöU 86/87--93/94 och EU 92/93. Led av JoU 85/86--93/94.",
+    "source_clause": "Suppl i JoU 82/83--84/85, FöU 86/87--93/94 och EU 92/93",
+    "period_id": "biography:0365641780005:029a02c9bce0f0ba",
+    "person_id": "i-8p48HpocW16xGw7Q3QmaWR",
+    "source_id": "0365641780005",
+    "source_birth_year": "1939",
+    "source_latest_year": 2026,
+    "source_surname": "Selberg",
+    "source_name": "Åke Selberg",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0365641780005&utformat=json",
+    "committee_id": "i-DaqUKTc3mKCyqY6iZTWLeq",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0365641780005:029a02c9bce0f0ba:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Utrikesutskottet",
+    "role": "Suppleant",
+    "period": "85/86-87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Ers 1977, 1978. Rdl 1979- Suppleant i Lagutskottet 77/78 och 88/89-90/91, Socialförsäkringsutskottet 76/77, Finansutskottet 78/79, Jordbruksutskottet 79/80-81/82, Utrikesutskottet 85/86-87/88 och Socialutskottet 91/92-93/94. Ledamot av Jordbruksutskottet 82/83-91/92, vice ordförande 90/91, EES-utskottet 91/92-92/93 och Skatteutskottet 93/94. Suppleant i Nordiska rådets svenska delegation 86/87-93/94 och Talmanskonferensen 90/91. Stämmoombud hos Statsföretag AB och Svenska Varv AB 82/83-84/85 samt ledamot med uppdrag att följa verksamheten vid Procordia AB och Svenska Varv AB 85/86-87/88.",
+    "source_clause": "Suppleant i Lagutskottet 77/78 och 88/89-90/91, Socialförsäkringsutskottet 76/77, Finansutskottet 78/79, Jordbruksutskottet 79/80-81/82, Utrikesutskottet 85/86-87/88 och Socialutskottet 91/92-93/94",
+    "period_id": "biography:0598571445305:2e3266142a6f7af6",
+    "person_id": "i-Q8WzP8vYdvJL6vzDTwXJ6u",
+    "source_id": "0598571445305",
+    "source_birth_year": "1939",
+    "source_latest_year": 2026,
+    "source_surname": "Fransson",
+    "source_name": "Jan Fransson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0598571445305&utformat=json",
+    "committee_id": "i-DtQppLb6kHuVMpyny7na7b",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0598571445305:2e3266142a6f7af6:1986",
+      "biography:0598571445305:2e3266142a6f7af6:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Arbetsmarknadsutskottet",
+    "role": "Suppleant",
+    "period": "80/81-81/82",
+    "years": [
+      1981
+    ],
+    "excerpt": "Ers 1976-82. Rdl 1985- Suppleant i Jordbruksutskottet 77/78, Utrikesutskottet 78/79, Utbildningsutskottet 78/79 och 80/81, Socialutskottet 79/80 och Arbetsmarknadsutskottet 80/81-81/82. Ledamot av Utrikesutskottet 79/80, Utbildningsutskottet 80/81-81/82 och 85/86-87/88 samt Konstitutionsutskottet 88/89-93/94. Suppleant i Nordiska rådets svenska delegation 85/86-89/90. Ledamot av Valprövningsnämnden 88/89-93/94 och Nordiska rådets svenska delegation 90/91-91/92. Ledamot av EG-Sverige-kommittén 92/93-93/94 och EES/EFTA-delegationen 93/94. - Ledamot av styrelsen för Riksdagens interparlamentariska grupp 89/90 och 91/92-93/94.",
+    "source_clause": "Suppleant i Jordbruksutskottet 77/78, Utrikesutskottet 78/79, Utbildningsutskottet 78/79 och 80/81, Socialutskottet 79/80 och Arbetsmarknadsutskottet 80/81-81/82",
+    "period_id": "biography:0972781465305:f91c234e6408ac80",
+    "person_id": "i-KZRYQXLaqTdR8ZicM7zYRV",
+    "source_id": "0972781465305",
+    "source_birth_year": "1939",
+    "source_latest_year": 2026,
+    "source_surname": "Annerstedt",
+    "source_name": "Ylva Annerstedt",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0972781465305&utformat=json",
+    "committee_id": "i-51jmo4EPqDSPhCt2HsyqeC",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0972781465305:f91c234e6408ac80:1981"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Skatteutskottet",
+    "role": "Suppleant",
+    "period": "86/87-90/91",
+    "years": [
+      1987
+    ],
+    "excerpt": "Rdl 1982-85, 1986- Suppleant i Konstitutionsutskottet 82/83-84/85, Finansutskottet 82/83-84/85 samt Skatteutskottet 85/86 och 86/87-90/91. Ledamot av Bostadsutskottet 88/89-90/91 och Skatteutskottet 91/92-93/94.",
+    "source_clause": "Suppleant i Konstitutionsutskottet 82/83-84/85, Finansutskottet 82/83-84/85 samt Skatteutskottet 85/86 och 86/87-90/91",
+    "period_id": "biography:0194731575606:3255fa4897700074",
+    "person_id": "i-Uv6Pqx7vHszj8MTNigPahL",
+    "source_id": "0194731575606",
+    "source_birth_year": "1940",
+    "source_latest_year": 2026,
+    "source_surname": "Nilsson",
+    "source_name": "Gunnar Nilsson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0194731575606&utformat=json",
+    "committee_id": "i-HjaWxnUoeSJuD8mRt1tgZq",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0194731575606:3255fa4897700074:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Lagutskottet",
+    "role": "Suppleant",
+    "period": "82/83-87/88",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1975- Suppleant i Konstitutionsutskottet 75-75/76, 79/80 och 82/83-84/85, Försvarsutskottet 75-75/76 och 79/80, Lagutskottet 82/83-87/88 och Kulturutskottet 88/89-90/91. Ledamot av Konstitutionsutskottet 76/77-78/79, 79/80-81/82 och 85/86-90/91 samt Lagutskottet 91/92-93/94. Suppleant i Valprövningsnämnden 79/80-90/91, Besvärsnämnden 82/83-84/85, Riksbanksfullmäktige 88/89-91/92 och Talmanskonferensen 91/92. Ledamot av Lönedelegationen 79/80-84/85, Krigsdelegationen 91/92-93/94, Riksbanksfullmäktige 91/92-93/94, Riksdagens förvaltningsstyrelse 91/92-93/94 och Valberedningen 91/92-93/94. Ledamot av riksdagens ADB-kommitté 85-89. - Ledamot av c-gruppens förtroenderåd 91-94, 2:e vice gruppordförande 91-94.",
+    "source_clause": "Suppleant i Konstitutionsutskottet 75-75/76, 79/80 och 82/83-84/85, Försvarsutskottet 75-75/76 och 79/80, Lagutskottet 82/83-87/88 och Kulturutskottet 88/89-90/91",
+    "period_id": "biography:089241104007:28fe6f2bf00fe176",
+    "person_id": "i-7pth3hroNEXFT34XUAtauT",
+    "source_id": "089241104007",
+    "source_birth_year": "1940",
+    "source_latest_year": 2026,
+    "source_surname": "Kindbom",
+    "source_name": "Bengt Kindbom",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=089241104007&utformat=json",
+    "committee_id": "i-Uz9mTjQTUPjWD7iHEQRTZN",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:089241104007:28fe6f2bf00fe176:1986",
+      "biography:089241104007:28fe6f2bf00fe176:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Skatteutskottet",
+    "role": "Ledamot",
+    "period": "85/86-88/89",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Ledamot av Skatteutskottet 85/86-88/89 och Justitieutskottet 89/90-93/94, ordförande 89/90-93/94. Suppleant i Besvärsnämnden 85/86-90/91. Ledamot av Talmanskonferensen 89/90-93/94. - Ledamot av styrelsen för Riksbankens jubileumsfond 86-92.",
+    "source_clause": "Ledamot av Skatteutskottet 85/86-88/89 och Justitieutskottet 89/90-93/94, ordförande 89/90-93/94",
+    "period_id": "biography:0702441395302:a798487ec7487958",
+    "person_id": "i-QhJNCjQN8CrzR8fmdsivU7",
+    "source_id": "0702441395302",
+    "source_birth_year": "1941",
+    "source_latest_year": 2026,
+    "source_surname": "Bjelle",
+    "source_name": "Britta Bjelle",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0702441395302&utformat=json",
+    "committee_id": "i-HjaWxnUoeSJuD8mRt1tgZq",
+    "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT",
+    "claim_ids": [
+      "biography:0702441395302:a798487ec7487958:1986",
+      "biography:0702441395302:a798487ec7487958:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Näringsutskottet",
+    "role": "Suppleant",
+    "period": "85/86-87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Ers 1985-86. Rdl 1986- Suppleant i Konstitutionsutskottet 85/86, Näringsutskottet 85/86-87/88, Kulturutskottet 85/86-87/88 samt Försvarsutskottet 88/89-90/91, 94/95 och 95/96-. Ledamot av Näringsutskottet 88/89-94/95 och 95/96-. Suppleant i Nordiska rådets svenska delegation 89/90-90/91, 94/95 och 95/96-96/97 samt EFTA-delegationen 92/93-93/94. Ledamot av EES/EFTA-delegationen 93/94-94/95, EFTA-delegationen 94/95 och EG-Sverige-kommittén 94/95 och Nordiska rådets svenska delegation 96/97-. - Ledamot av Europaparlamentet 95 (10.1-8.10.1995).",
+    "source_clause": "Suppleant i Konstitutionsutskottet 85/86, Näringsutskottet 85/86-87/88, Kulturutskottet 85/86-87/88 samt Försvarsutskottet 88/89-90/91, 94/95 och 95/96-",
+    "period_id": "biography:0229002789006:4855166eee2cfb22",
+    "person_id": "i-XawAMXosHR6z4JL22muW4x",
+    "source_id": "0229002789006",
+    "source_birth_year": "1942",
+    "source_latest_year": 2026,
+    "source_surname": "Furustrand",
+    "source_name": "Reynoldh Furustrand",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0229002789006&utformat=json",
+    "committee_id": "i-QCsXsk2jVA4cSug2bz1tWU",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0229002789006:4855166eee2cfb22:1986",
+      "biography:0229002789006:4855166eee2cfb22:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Konstitutionsutskottet",
+    "role": "Suppleant",
+    "period": "85/86--87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Ers 1986-90. Rdl 1990- Suppl i KU 85/86--87/88, FiU 85/86--87/88, NU 86/87--90/91 och 94/95-- samt JoU 91/92--93/94. Led av KrU 88/89--.",
+    "source_clause": "Suppl i KU 85/86--87/88, FiU 85/86--87/88, NU 86/87--90/91 och 94/95-- samt JoU 91/92--93/94",
+    "period_id": "biography:080652068106:6a225e57e788dacd",
+    "person_id": "i-Lv4UkR3Qh5Z1mUCTAdeMZo",
+    "source_id": "080652068106",
+    "source_birth_year": "1942",
+    "source_latest_year": 2026,
+    "source_surname": "Persson",
+    "source_name": "Leo Persson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=080652068106&utformat=json",
+    "committee_id": "i-9o9DWwgkrWx48Ur42vZzYE",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:080652068106:6a225e57e788dacd:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Finansutskottet",
+    "role": "Suppleant",
+    "period": "85/86--87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Ers 1986-90. Rdl 1990- Suppl i KU 85/86--87/88, FiU 85/86--87/88, NU 86/87--90/91 och 94/95-- samt JoU 91/92--93/94. Led av KrU 88/89--.",
+    "source_clause": "Suppl i KU 85/86--87/88, FiU 85/86--87/88, NU 86/87--90/91 och 94/95-- samt JoU 91/92--93/94",
+    "period_id": "biography:080652068106:2dc174ce56125908",
+    "person_id": "i-Lv4UkR3Qh5Z1mUCTAdeMZo",
+    "source_id": "080652068106",
+    "source_birth_year": "1942",
+    "source_latest_year": 2026,
+    "source_surname": "Persson",
+    "source_name": "Leo Persson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=080652068106&utformat=json",
+    "committee_id": "i-JwnXUyhBV4Gu1ijXpE7jcH",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:080652068106:2dc174ce56125908:1986",
+      "biography:080652068106:2dc174ce56125908:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Näringsutskottet",
+    "role": "Suppleant",
+    "period": "86/87--90/91",
+    "years": [
+      1987
+    ],
+    "excerpt": "Ers 1986-90. Rdl 1990- Suppl i KU 85/86--87/88, FiU 85/86--87/88, NU 86/87--90/91 och 94/95-- samt JoU 91/92--93/94. Led av KrU 88/89--.",
+    "source_clause": "Suppl i KU 85/86--87/88, FiU 85/86--87/88, NU 86/87--90/91 och 94/95-- samt JoU 91/92--93/94",
+    "period_id": "biography:080652068106:9cd2c5ced5a51518",
+    "person_id": "i-Lv4UkR3Qh5Z1mUCTAdeMZo",
+    "source_id": "080652068106",
+    "source_birth_year": "1942",
+    "source_latest_year": 2026,
+    "source_surname": "Persson",
+    "source_name": "Leo Persson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=080652068106&utformat=json",
+    "committee_id": "i-QCsXsk2jVA4cSug2bz1tWU",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:080652068106:9cd2c5ced5a51518:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Lagutskottet",
+    "role": "Suppleant",
+    "period": "82/83-84/85",
+    "years": [
+      1983,
+      1984
+    ],
+    "excerpt": "Rdl 1983- Suppleant i Lagutskottet 82/83-84/85, Försvarsutskottet 83/84-87/88, Socialförsäkringsutskottet 85/86-87/88 och Bostadsutskottet 88/89-90/91. Ledamot av Trafikutskottet 88/89-93/94 och Bostadsutskottet 94/95-.",
+    "source_clause": "Suppleant i Lagutskottet 82/83-84/85, Försvarsutskottet 83/84-87/88, Socialförsäkringsutskottet 85/86-87/88 och Bostadsutskottet 88/89-90/91",
+    "period_id": "biography:0892012091809:4f196e992b89a9b5",
+    "person_id": "i-84xpErSjuTzEi5hvTA1Jtt",
+    "source_id": "0892012091809",
+    "source_birth_year": "1943",
+    "source_latest_year": 2026,
+    "source_surname": "Andersson",
+    "source_name": "Sten Andersson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0892012091809&utformat=json",
+    "committee_id": "i-Uz9mTjQTUPjWD7iHEQRTZN",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0892012091809:4f196e992b89a9b5:1984"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Försvarsutskottet",
+    "role": "Suppleant",
+    "period": "82/83-87/88",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Ers 1982-86, 1988-91. Rdl 1986-88. 1991- Suppleant i Försvarsutskottet 82/83-87/88 och Bostadsutskottet 88/89-92/93. Ledamot av Försvarsutskottet 88/89-92/93. Ledamot av Krigsdelegatioenn 91/92-92/93.",
+    "source_clause": "Suppleant i Försvarsutskottet 82/83-87/88 och Bostadsutskottet 88/89-92/93",
+    "period_id": "biography:0911372158609:7122665c9dda8bff",
+    "person_id": "i-9q7rZgxi59wWj9sHREqvJT",
+    "source_id": "0911372158609",
+    "source_birth_year": "1943",
+    "source_latest_year": 2026,
+    "source_surname": "Evermo Palmerlund",
+    "source_name": "Barbro Evermo Palmerlund",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0911372158609&utformat=json",
+    "committee_id": "i-DaqUKTc3mKCyqY6iZTWLeq",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0911372158609:7122665c9dda8bff:1983",
+      "biography:0911372158609:7122665c9dda8bff:1984",
+      "biography:0911372158609:7122665c9dda8bff:1986",
+      "biography:0911372158609:7122665c9dda8bff:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Arbetsmarknadsutskottet",
+    "role": "Ledamot",
+    "period": "85/86-90/91",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Ledamot av Arbetsmarknadsutskottet 85/86-90/91 och Kulturutskottet 91/92-93/94, vice ordf 92/93-93/94. Suppleant i Talmanskonferensen 92/93-93/94. Ledamot av Krigsdelegationen 91/92-93/94. - Ledamot av fp-gruppens förtroenderåd 88/89-93/94, vice gruppledare 92/93-93/94.",
+    "source_clause": "Ledamot av Arbetsmarknadsutskottet 85/86-90/91 och Kulturutskottet 91/92-93/94, vice ordf 92/93-93/94",
+    "period_id": "biography:0139582082909:15f719a13e561aea",
+    "person_id": "i-A2jgxgPRi11BxUsPb2uNmM",
+    "source_id": "0139582082909",
+    "source_birth_year": "1943",
+    "source_latest_year": 2026,
+    "source_surname": "Branting",
+    "source_name": "Charlotte Branting",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0139582082909&utformat=json",
+    "committee_id": "i-51jmo4EPqDSPhCt2HsyqeC",
+    "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT",
+    "claim_ids": [
+      "biography:0139582082909:15f719a13e561aea:1986",
+      "biography:0139582082909:15f719a13e561aea:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Socialutskottet",
+    "role": "Suppleant",
+    "period": "76/77-81/82",
+    "years": [
+      1980,
+      1981
+    ],
+    "excerpt": "Rdl 1976- Suppleant i Socialutskottet 76/77-81/82, Kulturutskottet 76/77-78/79, Socialförsäkringsutskottet 79/80-81/82 och Utbildningsutskottet 82/83-93/94. Ledamot av Socialförsäkringsutskottet 82/83-93/94. Suppleant i Nordiska rådets svenska delegation 82/83-84/85. Ledamot av Nordiska rådets svenska delegation 85/86-93/94.",
+    "source_clause": "Suppleant i Socialutskottet 76/77-81/82, Kulturutskottet 76/77-78/79, Socialförsäkringsutskottet 79/80-81/82 och Utbildningsutskottet 82/83-93/94",
+    "period_id": "biography:0455312624903:fd3764427a6b82fd",
+    "person_id": "i-6UrnZSyhA8En3ghbWrejVN",
+    "source_id": "0455312624903",
+    "source_birth_year": "1944",
+    "source_latest_year": 2026,
+    "source_surname": "Öhrsvik",
+    "source_name": "Lena Öhrsvik",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0455312624903&utformat=json",
+    "committee_id": "i-8VfPu3CK6jcVvkrLU19DWY",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0455312624903:fd3764427a6b82fd:1980",
+      "biography:0455312624903:fd3764427a6b82fd:1981"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Socialförsäkringsutskottet",
+    "role": "Suppleant",
+    "period": "79/80-81/82",
+    "years": [
+      1980,
+      1981
+    ],
+    "excerpt": "Rdl 1976- Suppleant i Socialutskottet 76/77-81/82, Kulturutskottet 76/77-78/79, Socialförsäkringsutskottet 79/80-81/82 och Utbildningsutskottet 82/83-93/94. Ledamot av Socialförsäkringsutskottet 82/83-93/94. Suppleant i Nordiska rådets svenska delegation 82/83-84/85. Ledamot av Nordiska rådets svenska delegation 85/86-93/94.",
+    "source_clause": "Suppleant i Socialutskottet 76/77-81/82, Kulturutskottet 76/77-78/79, Socialförsäkringsutskottet 79/80-81/82 och Utbildningsutskottet 82/83-93/94",
+    "period_id": "biography:0455312624903:fd27573fa7dbc838",
+    "person_id": "i-6UrnZSyhA8En3ghbWrejVN",
+    "source_id": "0455312624903",
+    "source_birth_year": "1944",
+    "source_latest_year": 2026,
+    "source_surname": "Öhrsvik",
+    "source_name": "Lena Öhrsvik",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0455312624903&utformat=json",
+    "committee_id": "i-VaESSVvWwTht6b4RXARRd9",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0455312624903:fd27573fa7dbc838:1980",
+      "biography:0455312624903:fd27573fa7dbc838:1981"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Utbildningsutskottet",
+    "role": "Suppleant",
+    "period": "82/83-93/94",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1976- Suppleant i Socialutskottet 76/77-81/82, Kulturutskottet 76/77-78/79, Socialförsäkringsutskottet 79/80-81/82 och Utbildningsutskottet 82/83-93/94. Ledamot av Socialförsäkringsutskottet 82/83-93/94. Suppleant i Nordiska rådets svenska delegation 82/83-84/85. Ledamot av Nordiska rådets svenska delegation 85/86-93/94.",
+    "source_clause": "Suppleant i Socialutskottet 76/77-81/82, Kulturutskottet 76/77-78/79, Socialförsäkringsutskottet 79/80-81/82 och Utbildningsutskottet 82/83-93/94",
+    "period_id": "biography:0455312624903:6490f641f6d0a5de",
+    "person_id": "i-6UrnZSyhA8En3ghbWrejVN",
+    "source_id": "0455312624903",
+    "source_birth_year": "1944",
+    "source_latest_year": 2026,
+    "source_surname": "Öhrsvik",
+    "source_name": "Lena Öhrsvik",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0455312624903&utformat=json",
+    "committee_id": "i-Aq9p6NWepsUH6zBUZvnASV",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0455312624903:6490f641f6d0a5de:1986",
+      "biography:0455312624903:6490f641f6d0a5de:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Bostadsutskottet",
+    "role": "Suppleant",
+    "period": "85/86-90/91",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Suppleant i Justitieutskottet 85/86-87/88, Bostadsutskottet 85/86-90/91, Jordbruksutskottet 88/89- och Utrikesutskottet 91/92-93/94. Ledamot av Utrikesutskottet 94/95-, Utrikes-/Försvarsutskottet 95/96 och 96/97. - Ledamot av styrelsen för föreningen Riksdagsmän och forskare 90-93.",
+    "source_clause": "Suppleant i Justitieutskottet 85/86-87/88, Bostadsutskottet 85/86-90/91, Jordbruksutskottet 88/89- och Utrikesutskottet 91/92-93/94",
+    "period_id": "biography:0610573125306:0f75a807ecf75ee9",
+    "person_id": "i-QMDwkhc4AcuaCPrQxkeYYk",
+    "source_id": "0610573125306",
+    "source_birth_year": "1944",
+    "source_latest_year": 2026,
+    "source_surname": "Ekholm",
+    "source_name": "Berndt Ekholm",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0610573125306&utformat=json",
+    "committee_id": "i-Pe7qrS2HBQEA3mhF4ARDnH",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0610573125306:0f75a807ecf75ee9:1986",
+      "biography:0610573125306:0f75a807ecf75ee9:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Utrikesutskottet",
+    "role": "Suppleant",
+    "period": "79/80-87/88",
+    "years": [
+      1980,
+      1981,
+      1982,
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1974- Suppl i Inrikesutskottet 74-75/76, Näringsutskottet 76/77-78/79, Aarbetsmarknadsutskottet 76/77-78/79, Skatteutskottet 78/79, Utrikesutskottet 79/80-87/88 och Utbildnigsutskottet 88/89-90/91. Led av Arbetsmarknadsutskottet 79/80-81/82, Utbildningsutskottet 82/83-87/88, vice ordf 85/86-87/88, Utrikesutskottet 88/89-93/94, vice ordf 88/89-90/91, och EES-utskottet 92/93. Suppl i Talmanskonferensen 85/86-90/91, EFTA-delegationen 89/90-93/94 och Europarådets svenska delegation 92/93-93/94. Led av Utrikesnämnden 91/92-93/94, ESK-delegationen 92/93-93/94, EES/EFTA-delegationen 93/94 och EG-Sverige-kommittén 92/93-93/94. - Led av c-gruppens förtroenderåd 86/87-93/94.",
+    "source_clause": "Suppl i Inrikesutskottet 74-75/76, Näringsutskottet 76/77-78/79, Aarbetsmarknadsutskottet 76/77-78/79, Skatteutskottet 78/79, Utrikesutskottet 79/80-87/88 och Utbildnigsutskottet 88/89-90/91",
+    "period_id": "biography:0470593486100:456cc46f086d9fdb",
+    "person_id": "i-QD529ywv2NxNf9n1Uh7cuj",
+    "source_id": "0470593486100",
+    "source_birth_year": "1945",
+    "source_latest_year": 2026,
+    "source_surname": "Granstedt",
+    "source_name": "Pär Granstedt",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0470593486100&utformat=json",
+    "committee_id": "i-DtQppLb6kHuVMpyny7na7b",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0470593486100:456cc46f086d9fdb:1986",
+      "biography:0470593486100:456cc46f086d9fdb:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Konstitutionsutskottet",
+    "role": "Suppleant",
+    "period": "82/83-84/85",
+    "years": [
+      1983,
+      1984
+    ],
+    "excerpt": "Ers 1975-76, 1982. Rdl 1983- Suppleant i Trafikutskottet 75/76 och 82/83-90/91, Konstitutionsutskottet 82/83-84/85 och 92/93-93/94, Bostadsutskottet 91/92 och EES-utskottet 92/93. Ledamot av Konstitutionsutskottet 85/86-91/92, Bostadsutskottet 92/93-93/94 och Finansutskottet 94/95-. Suppleant i Riksdagens revisorer 85/86-93/94, Valprövningsnämnden 88/89- Europarådets svenska delegation 94/95-, EG-Sverige-kommittén 94/95, EU-nämnden 94/95-95/96 och Organisationen för samarbete och säkerhet i Europa (OSSE-delegationen) 96/97-. Ledamot av EU-nämnden 95/96-.",
+    "source_clause": "Suppleant i Trafikutskottet 75/76 och 82/83-90/91, Konstitutionsutskottet 82/83-84/85 och 92/93-93/94, Bostadsutskottet 91/92 och EES-utskottet 92/93",
+    "period_id": "biography:0618583795602:4d6a065948e24b51",
+    "person_id": "i-LGQUkpmiQ6oDhxSqppCmq7",
+    "source_id": "0618583795602",
+    "source_birth_year": "1946",
+    "source_latest_year": 2026,
+    "source_surname": "Lekberg",
+    "source_name": "Sören Lekberg",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0618583795602&utformat=json",
+    "committee_id": "i-9o9DWwgkrWx48Ur42vZzYE",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0618583795602:4d6a065948e24b51:1983",
+      "biography:0618583795602:4d6a065948e24b51:1984"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Försvarsutskottet",
+    "role": "Suppleant",
+    "period": "82/83-86/87",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986
+    ],
+    "excerpt": "Rdl 1979-. Statsminister 1991- Suppleant i Utrikesutskottet 79/80-81/82, 86/87-90/91 och 94/95, Civilutskottet 81/82, Försvarsutskottet 82/83-86/87 och Lagutskottet 94/95. Ledamot av Utrikesutskottet 82/83-85/86. Suppleant i EU-nämnden 94/95-95/96. Ledamot av Krigsdelegationen 82/83-90/91 och 92/93-, Utrikesnämnden 82/83-90/91 och 94/95-99/00 samt Nordiska rådets svenska delegation 86/87-90/91 och 94/95. - Ledamot av m-gruppens förtroenderåd 82/83-99/00, ordförande 86/87-99/00, tillika gruppledare 86/87-87/88.",
+    "source_clause": "Suppleant i Utrikesutskottet 79/80-81/82, 86/87-90/91 och 94/95, Civilutskottet 81/82, Försvarsutskottet 82/83-86/87 och Lagutskottet 94/95",
+    "period_id": "biography:0622185335615:706093c02f1cd572",
+    "person_id": "i-AZnaWEAg22YQ3HzVMfNSHR",
+    "source_id": "0622185335615",
+    "source_birth_year": "1949",
+    "source_latest_year": 2026,
+    "source_surname": "Bildt",
+    "source_name": "Carl Bildt",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0622185335615&utformat=json",
+    "committee_id": "i-DaqUKTc3mKCyqY6iZTWLeq",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0622185335615:706093c02f1cd572:1986"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Lagutskottet",
+    "role": "Suppleant",
+    "period": "85/86-93/94",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Suppleant i Lagutskottet 85/86-93/94, Utrikesutskottet 85/86-87/88 och Utbildningsutskottet 88/89-88/89. Ledamot av Utbildningsutskottet 89/90-93/94. Ledamot av Krigsdelegationen 92/93-93/94. Ledamot av EG-Sverige-kommittén 93/94. - Ledamot av s-gruppens styrelse 91-94, 2:e vice gruppledare 91-94. Ledamot av Europaparlamentet 99-.",
+    "source_clause": "Suppleant i Lagutskottet 85/86-93/94, Utrikesutskottet 85/86-87/88 och Utbildningsutskottet 88/89-88/89",
+    "period_id": "biography:033486567915:65dcc739e23983e2",
+    "person_id": "i-uX5Zz8LcvPUw4Ta1Mi8zq",
+    "source_id": "033486567915",
+    "source_birth_year": "1952",
+    "source_latest_year": 2026,
+    "source_surname": "Hedkvist Petersen",
+    "source_name": "Ewa Hedkvist Petersen",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=033486567915&utformat=json",
+    "committee_id": "i-Uz9mTjQTUPjWD7iHEQRTZN",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:033486567915:65dcc739e23983e2:1986",
+      "biography:033486567915:65dcc739e23983e2:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Utrikesutskottet",
+    "role": "Suppleant",
+    "period": "85/86-87/88",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985- Suppleant i Lagutskottet 85/86-93/94, Utrikesutskottet 85/86-87/88 och Utbildningsutskottet 88/89-88/89. Ledamot av Utbildningsutskottet 89/90-93/94. Ledamot av Krigsdelegationen 92/93-93/94. Ledamot av EG-Sverige-kommittén 93/94. - Ledamot av s-gruppens styrelse 91-94, 2:e vice gruppledare 91-94. Ledamot av Europaparlamentet 99-.",
+    "source_clause": "Suppleant i Lagutskottet 85/86-93/94, Utrikesutskottet 85/86-87/88 och Utbildningsutskottet 88/89-88/89",
+    "period_id": "biography:033486567915:e9d38d1d0a1164ed",
+    "person_id": "i-uX5Zz8LcvPUw4Ta1Mi8zq",
+    "source_id": "033486567915",
+    "source_birth_year": "1952",
+    "source_latest_year": 2026,
+    "source_surname": "Hedkvist Petersen",
+    "source_name": "Ewa Hedkvist Petersen",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=033486567915&utformat=json",
+    "committee_id": "i-DtQppLb6kHuVMpyny7na7b",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:033486567915:e9d38d1d0a1164ed:1986",
+      "biography:033486567915:e9d38d1d0a1164ed:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Utrikesutskottet",
+    "role": "Suppleant",
+    "period": "85/86-90/91",
+    "years": [
+      1986,
+      1987
+    ],
+    "excerpt": "Rdl 1985-91 Suppleant i Utrikesutskottet 85/86-90/91 och Socialförsäkringsutskottet 88/89-90/91.",
+    "source_clause": "Suppleant i Utrikesutskottet 85/86-90/91 och Socialförsäkringsutskottet 88/89-90/91",
+    "period_id": "biography:0351107680112:f62d22c4f345847f",
+    "person_id": "i-NTXLkayNLx1xKQsGQibNYd",
+    "source_id": "0351107680112",
+    "source_birth_year": "1956",
+    "source_latest_year": 2026,
+    "source_surname": "Leissner",
+    "source_name": "Maria Leissner",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0351107680112&utformat=json",
+    "committee_id": "i-DtQppLb6kHuVMpyny7na7b",
+    "committee_role_id": "i-3avWs2TJRypNPamwnEewtn",
+    "claim_ids": [
+      "biography:0351107680112:f62d22c4f345847f:1986",
+      "biography:0351107680112:f62d22c4f345847f:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Finansutskottet",
+    "role": "Ledamot",
+    "period": "82/83-90/91",
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Ers 1979-82. Rdl 1965-70, 1972-79, 1982- Suppl i 1:a Lagutskottet 65-70, Näringsutskottet 72-73, Finansutskottet 73, Utrikesutskottet 79/80-80/81, Arbetsmarknadsutskottet 79/80-80/81, Trafikutskottet 81/82 och Lagutskottet 88/89-90/91. Led av Socialförsäkringsutskottet 74-75/76, Arbetsmarknadsutskottet 76/77-78/79, Trafikutskottet 81/82 Finansutskottet 82/83-90/91 och Skatteutskottet 91/92-93/94. Suppl i Nordiska rådets svenska delegation 83/84-93/94.",
+    "source_clause": "Led av Socialförsäkringsutskottet 74-75/76, Arbetsmarknadsutskottet 76/77-78/79, Trafikutskottet 81/82 Finansutskottet 82/83-90/91 och Skatteutskottet 91/92-93/94",
+    "period_id": "biography:0658894113791:cd5cf7d229e85e7d",
+    "person_id": "i-FYyRXPgwp22BpTRV76t6ga",
+    "source_id": "0658894113791",
+    "source_birth_year": "1923",
+    "source_latest_year": 2026,
+    "source_surname": "Fridolfsson",
+    "source_name": "Filip Fridolfsson",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0658894113791&utformat=json",
+    "committee_id": "i-JwnXUyhBV4Gu1ijXpE7jcH",
+    "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT",
+    "claim_ids": [
+      "biography:0658894113791:cd5cf7d229e85e7d:1986",
+      "biography:0658894113791:cd5cf7d229e85e7d:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
+  },
+  {
+    "committee": "Justitieutskottet",
+    "role": "Ledamot",
+    "period": "79/80-87/88",
+    "years": [
+      1980,
+      1981,
+      1982,
+      1983,
+      1984,
+      1985,
+      1986,
+      1987
+    ],
+    "excerpt": "Ers 1976-78. Rdl 1979-89. Suppleant i Justitieutskottet 76/77-77/78 Ledamot av Justitieutskottet 79/80-87/88 och Försvarsutskottet 88/89. Suppleant i Besvärsnämnden 82/83 och Europarådets svenska delegation 85/86-87/88. Ledamot av Besvärsnämnden 83/84-88/89. Ledamot av EFTA-delegationen, vice ordförande 86/87-87/88.",
+    "source_clause": "Ledamot av Justitieutskottet 79/80-87/88 och Försvarsutskottet 88/89",
+    "period_id": "biography:0314783996006:d741af87809529be",
+    "person_id": "i-UdeDQyYWBKwQC4gtSJz6UW",
+    "source_id": "0314783996006",
+    "source_birth_year": "1944",
+    "source_latest_year": 2026,
+    "source_surname": "Körlof",
+    "source_name": "Björn Körlof",
+    "identity_basis": "existing_identifier_name_birth",
+    "url": "https://data.riksdagen.se/personlista/?iid=0314783996006&utformat=json",
+    "committee_id": "i-6qRMZq1CACRDE4Hr5KDQv1",
+    "committee_role_id": "i-R5CtNoXJDbkr6utXtUU8GT",
+    "claim_ids": [
+      "biography:0314783996006:d741af87809529be:1986",
+      "biography:0314783996006:d741af87809529be:1987"
+    ],
+    "source_sha256": "2906eeb8fdd8dd0ad622a21cbff84436517b9d5d1395b754bfb35264295fb46d"
   }
 ]

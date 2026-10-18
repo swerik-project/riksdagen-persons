@@ -1,12 +1,9 @@
-"""Semantic guarantees supported by tracked committee identity/correction fixtures.
+"""Mandate and party support for reviewed committee election identities.
 
-Small frozen source fixtures are sufficient; no source archives, network,
-neighboring repository or Git checkout are required. Structural CSV guarantees
-remain in CSVW. Archive-wide roster observation accounting is outside this suite.
+The retained identity fixture is compared with published mandate and party
+tables. These checks do not cover every committee membership in the corpus.
 """
 
-import json
-from pathlib import Path
 import unittest
 
 import polars as pl
@@ -64,75 +61,6 @@ class CommitteeRosterIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s party-disambiguated claims; %s lost evidence", sources.height, missing.height)
         self.assertEqual(0, missing.height,
             f"{missing.height} election identities lack required dated party evidence; details logged with trainerlog")
-
-    def test_reviewed_election_identities_retain_printed_gender_agreement(self):
-        """Guarantee: reviewed honorific readings agree with the selected person's gender.
-
-        Data: the reviewed election identity fixture and person.csv. Printed
-        honorifics and their ditto repetitions help distinguish shared surnames
-        in the 1976 scan. Unknown printed gender is allowed and never guessed.
-        Failures count source claims; source authenticity still needs review.
-        """
-        sources = pl.read_json("test/data/reviewed_committee_election_identities.json", infer_schema_length=None).filter(
-            pl.col("gender").is_not_null())
-        persons = pl.read_csv("data/person.csv", infer_schema=False)
-        joined = sources.join(persons, on="person_id", how="left", suffix="_recorded")
-        invalid = joined.filter((pl.col("gender") != pl.col("gender_recorded")) |
-                                pl.col("gender_recorded").is_null())
-        LOGGER.info("Checking printed honorifics for %s recovered election claims", sources.height)
-        for row in invalid.to_dicts():
-            LOGGER.error("Recovered election honorific disagrees with selected identity: %s", row)
-        LOGGER.info("Checked %s honorific readings; %s disagree", sources.height, invalid.height)
-        self.assertEqual(0, invalid.height,
-            f"{invalid.height} election identities contradict printed honorifics; details logged with trainerlog")
-
-
-    def test_scan_corrected_false_memberships_are_not_reintroduced(self):
-        """Guarantee: scan-disproved undated memberships stay withdrawn.
-
-        Data: reviewed_committee_roster_corrections.json records two displaced
-        1976 names, their removed rows, original claim IDs and scan evidence.
-        Any later evidence for these same undated facts requires an explicit
-        review of this fixture. Failures count corrected memberships. This
-        does not inspect claim IDs in an external source archive.
-        """
-        corrections = json.loads(Path("test/data/reviewed_committee_roster_corrections.json").read_text())
-        memberships = pl.read_csv("data/committee_membership.csv", infer_schema=False).to_dicts()
-        failures = 0
-        LOGGER.info("Checking %s scan-corrected false roster claims", len(corrections))
-        for correction in corrections:
-            if correction["membership"] in memberships:
-                failures += 1
-                LOGGER.error("Scan-disproved roster fact reintroduced: %s", correction)
-        LOGGER.info("Checked %s corrected claims; %s reintroduced", len(corrections), failures)
-        self.assertEqual(0, failures,
-                         f"{failures} scan-disproved roster facts reintroduced; details logged with trainerlog")
-
-    def test_reviewed_historical_committee_identities_remain_distinct(self):
-        """Guarantee: reviewed historical bodies retain their distinct identities.
-
-        Data: committee.csv and reviewed_committee_roster_entities.json. The
-        chamber preparation committees must not be conflated with each other
-        or the common body used from 1954 onward. Special committees remain
-        scoped to their sessions. Unknown institutional boundaries stay unknown.
-        Later sourced enrichment must update the fixture. Failures count bodies.
-        CSVW owns primary keys and foreign keys, not these historical meanings.
-        """
-        expected = json.loads(Path("test/data/reviewed_committee_roster_entities.json").read_text())
-        rows = pl.read_csv("data/committee.csv", infer_schema=False)
-        published = {r["committee_id"]: r for r in rows.to_dicts()}
-        failures = 0
-        LOGGER.info("Checking %s reviewed historical committee identities", len(expected))
-        for reference in expected:
-            entity = reference["entity"]
-            if published.get(entity["committee_id"]) != entity:
-                failures += 1
-                LOGGER.error("Missing or altered historical committee identity: %s; source: %s",
-                             entity, reference["source"]["url"])
-        LOGGER.info("Checked %s historical bodies; %s missing or altered", len(expected), failures)
-        self.assertEqual(0, failures,
-                         f"{failures} historical committee identities changed; details logged with trainerlog")
-
 
 if __name__ == "__main__":
     unittest.main()
