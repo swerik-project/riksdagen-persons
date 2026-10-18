@@ -13,6 +13,12 @@ Contains metadata on individuals.
 
 Contains integrity tests related to the riksdagen-persons repository and to the estimation of quality and coverage of the data in `data/`.
 
+Integrity tests use the tracked `data/` tables and fixtures in `test/data/`.
+
+Run tests and documentation builds from the repository root. Use
+`python -m pdoc` for documentation so repository-local imports resolve in the
+same way as `python -m unittest`.
+
 
 ## Data
 

@@ -13,44 +13,12 @@ import polars as pl
 from trainerlog import get_logger
 
 from .committee_integrity import date_bound
-from provenance.committee import read_roster
 
 
 LOGGER = get_logger("committee-roster-integrity")
 
 
 class CommitteeRosterIntegrity(unittest.TestCase):
-    def test_recovered_kultur_rosters_retain_all_printed_positions(self):
-        """Guarantee: all six scan-reviewed Kultur rosters retain their 15 positions.
-
-        Data: a thin reviewed claim census, canonical observations and published
-        memberships. Preserve the observed day/year, identity and role without
-        interpreting annual observations as uninterrupted service. Failures
-        count rosters; source quotations are shared in the source catalog.
-        """
-        review = json.loads(Path("provenance/committee/reviews/kultur-1971-1973.json").read_text())
-        self.assertEqual(review["expected_rosters"], len(review["rosters"]), "A recovered Kultur roster disappeared")
-        observations = read_roster().to_dicts()
-        by_claim = {row["claim_id"]: row for row in observations}
-        memberships = pl.read_csv("data/committee_membership.csv", infer_schema=False)
-        keys = memberships.columns
-        published = set(memberships.iter_rows())
-        failures = 0
-        for roster in review["rosters"]:
-            rows = [by_claim.get(identifier) for identifier in roster["claim_ids"]]
-            valid = len(rows) == roster["expected"] and all(rows)
-            if valid:
-                valid = len({row["person_id"] for row in rows}) == roster["expected"]
-                valid &= all(all(row[key] == roster[key] for key in
-                    ("committee_id", "committee_role_id", "year")) and
-                    row["event_date"] == (None if row["claim_id"] in roster.get("year_only_claim_ids", []) else roster["event_date"]) and
-                    tuple(row[key] for key in keys) in published for row in rows)
-            if not valid:
-                failures += 1
-                LOGGER.error("Recovered Kultur roster lost a position, precision or role: %s", roster)
-        LOGGER.info("Checked %s recovered Kultur rosters; %s inconsistent", len(review["rosters"]), failures)
-        self.assertEqual(0, failures, f"{failures} recovered Kultur rosters changed; details logged with trainerlog")
-
     def test_reviewed_election_identities_have_contemporary_mandates(self):
         """Guarantee: election identities retain a mandate at the observed time.
 

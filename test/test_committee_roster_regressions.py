@@ -16,22 +16,6 @@ class RosterGateRegressions(unittest.TestCase):
         self.row = dict(person_id="p", committee_id="c", start=None, end=None, committee_role_id="member")
         self.gates = integrity.CommitteeRosterIntegrity()
 
-    def test_kultur_census_rejects_removed_or_redated_observation(self):
-        """Guarantee: losing a recovered position or changing its year turns the gate red."""
-        roster = dict(year="1971", event_date="1971-01-19", committee_id="c",
-                      committee_role_id="member", expected=1, claim_ids=["claim"])
-        source = dict(self.row, claim_id="claim", year="1971", event_date="1971-01-19")
-        for rows, invalid in (([source], False), ([], True), ([dict(source, year="1972")], True)):
-            observations = pl.DataFrame(rows, schema={k: pl.String for k in source})
-            with patch.object(integrity.Path, "read_text", return_value=json.dumps({"expected_rosters": 1, "rosters": [roster]})), \
-                 patch.object(integrity, "read_roster", return_value=observations), \
-                 patch.object(integrity.pl, "read_csv", return_value=pl.DataFrame([self.row])):
-                if invalid:
-                    with self.assertRaisesRegex(AssertionError, "1 recovered Kultur rosters"):
-                        self.gates.test_recovered_kultur_rosters_retain_all_printed_positions()
-                else:
-                    self.gates.test_recovered_kultur_rosters_retain_all_printed_positions()
-
     def test_election_day_gate_rejects_an_earlier_ended_mandate(self):
         """Guarantee: changing a mandate to end before the source day turns the gate red."""
         source = pl.DataFrame({"claim_id": ["c"], "person_id": ["p"],

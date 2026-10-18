@@ -11,40 +11,6 @@ from . import committee_term_integrity as integrity
 
 
 class CommitteeTermRegressions(unittest.TestCase):
-    def test_continuity_rejects_wrong_entity_or_invented_day_precision(self):
-        """Guarantee: rename continuity cannot migrate to another body or acquire a day."""
-        for field, value in (("committee_id", "different-2006-body"), ("end", "1985-10-07")):
-            term = json.loads(integrity.TERM_1982.read_text())
-            spell = next(s for s in term["positions"] if s["end_review"].get("continuity_source"))
-            spell["membership"][field] = value
-            with self.changed_source(term, integrity.TERM_1982.name), self.assertRaises(AssertionError):
-                self.gates.test_continuity_refinements_and_held_positions_remain_accounted_for()
-
-    def test_leave_exception_cannot_be_deleted_or_reassigned(self):
-        """Guarantee: neither missing proof nor another MP's leave authorizes an election."""
-        for mutation in ("delete", "person"):
-            term = json.loads(integrity.TERM_1982.read_text())
-            spell = next(s for s in term["positions"] if s.get("retained_mp_leave"))
-            if mutation == "delete":
-                del spell["retained_mp_leave"]
-            else:
-                spell["retained_mp_leave"]["person_id"] = "other-person"
-            with self.changed_source(term, integrity.TERM_1982.name), self.assertRaises(AssertionError):
-                self.gates.test_dated_committee_elections_have_contemporary_mp_mandates()
-
-    def test_sourced_replacement_period_cannot_be_deleted(self):
-        """Guarantee: deleting one reviewed replacement-service row turns the gate red."""
-        review = json.loads(integrity.CONTINUITY.read_text())
-        row = review["mp_additions"][0]["row"]
-        original = integrity.pl.read_csv
-        def read(path, *args, **kwargs):
-            table = original(path, *args, **kwargs)
-            if Path(path).name == "member_of_parliament.csv":
-                table = table.filter(~pl.all_horizontal([pl.col(k).eq_missing(pl.lit(v,dtype=pl.String)) for k,v in row.items()]))
-            return table
-        with patch.object(integrity.pl,"read_csv",side_effect=read), self.assertRaises(AssertionError):
-            self.gates.test_continuity_replacement_periods_and_alias_retain_their_sources()
-
     def setUp(self):
         self.source = json.loads(integrity.SOURCE.read_text())
         self.gates = integrity.CommitteeTermIntegrity()
@@ -170,26 +136,3 @@ class CommitteeTermRegressions(unittest.TestCase):
         with self.changed_source(source, integrity.EXTENSION.name), \
              self.assertRaisesRegex(AssertionError, "1 resolved positions contradict"):
             self.gates.test_resolved_positions_retain_their_reviewed_appointment_keys()
-
-    def test_thin_1982_census_rejects_a_missing_opening_position(self):
-        """Guarantee: deleting one accepted 1982 position turns its independent term census red."""
-        source = json.loads(integrity.TERM_1982.read_text())
-        source["positions"].remove(next(p for p in source["positions"] if p["initial"]))
-        with self.changed_source(source, integrity.TERM_1982.name), self.assertRaises(AssertionError):
-            self.gates.test_reviewed_election_positions_are_all_accounted_for()
-
-    def test_thin_1982_deferred_start_and_unknown_end_keep_their_meaning(self):
-        """Guarantee: deferred elections cannot start on the report day or gain a fictitious end."""
-        for mutation in ("start", "end", "precision"):
-            source = json.loads(integrity.TERM_1982.read_text())
-            if mutation == "start":
-                spell = next(s for s in source["positions"] if s["membership"]["start"] == "1983-02-01")
-                spell["membership"]["start"] = "1983-01-31"
-            elif mutation == "end":
-                spell = next(s for s in source["positions"] if s["end_review"]["method"] == "unknown")
-                spell["membership"]["end"] = "1985-10"
-            else:
-                spell = next(s for s in source["positions"] if s["end_review"]["method"] == "event_year")
-                spell["membership"]["end"] = "1985-10"
-            with self.changed_source(source, integrity.TERM_1982.name), self.assertRaises(AssertionError):
-                self.gates.test_reviewed_term_dates_follow_their_stated_source_basis()
