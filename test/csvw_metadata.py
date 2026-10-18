@@ -179,6 +179,34 @@ class Test(unittest.TestCase):
 
         self.assertEqual(0, no_errors, f"{no_errors} format error(s) found")
 
+    def test_start_end(self):
+        """
+        Test that each start and end column pair is coherent (start is earlier or same as end)
+        """
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+        no_errors = 0
+
+        for table in tg.tables:
+            df = pl.read_csv(self.get_data_dir() / str(table.url), infer_schema_length=10000)
+
+            has_start, has_end = "start" in df.columns, "end" in df.columns
+            self.assertEqual(has_start, has_end, f"Problem with column names in {table.url}; start: {has_start}, end: {has_end}")
+            if has_start:
+                df = df.filter(pl.col("start").is_not_null())
+                df = df.filter(pl.col("end").is_not_null())
+
+                charlen = pl.min_horizontal(
+                    pl.col("start").str.len_chars(),
+                    pl.col("end").str.len_chars(),
+                )
+                df_errors = df.filter(pl.col("start").str.head(charlen) > pl.col("end").str.head(charlen))
+
+                if len(df_errors) >= 1:
+                    no_errors += len(df_errors)
+                    LOGGER.error(f"Inconsistent start dates in {table.url}:\n{df_errors}")
+        
+        self.assertEqual(no_errors, 0, f"{no_errors} inconsistent start and end dates found")
+
 
 
 if __name__ == '__main__':
