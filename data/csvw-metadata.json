@@ -225,6 +225,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "start", "role"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
