@@ -21,6 +21,7 @@ jobs:
     - name: Checkout PR source branch
       uses: actions/checkout@v4
       with:
+        ref: ${{ github.head_ref }}
         fetch-depth: 0
         persist-credentials: true
 
@@ -47,9 +48,6 @@ jobs:
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
 
-        git fetch origin ${{ github.head_ref }}
-        git rebase origin/${{ github.head_ref }} || true
-
         if [[ -n "$(git status --porcelain quality/estimates/mp-coverage/ --untracked-files=no)" ]]; then
           git add quality/estimates/mp-coverage/coverage-summary.txt
           git add quality/estimates/mp-coverage/mp-coverage.csv
@@ -62,4 +60,6 @@ jobs:
 
     - name: Push changes
       run: |
+        git fetch origin ${{ github.head_ref }}
+        git rebase origin/${{ github.head_ref }}
         git push origin HEAD:${{ github.head_ref }}

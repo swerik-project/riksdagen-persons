@@ -66,6 +66,9 @@ jobs:
     - name: Test that metadata is properly sorted
       run: |
         python -m unittest test.sort_order
+    - name: Test committee dates, identities and MP record coverage
+      run: |
+        python -m unittest test.committee_integrity
 
   db:
     runs-on: ubuntu-latest
@@ -187,4 +190,4 @@ jobs:
         pip install polars
     - name: Test documentation build
       run: |
-        pdoc -o /tmp/riksdagen-persons-docs --footer-text docs-smoke-test -t docs/dark-mode --logo https://raw.githubusercontent.com/swerik-project/the-swedish-parliament-corpus/refs/heads/main/readme/riksdagshuset.jpg ../riksdagen-persons
+        python -m pdoc -o /tmp/riksdagen-persons-docs --footer-text docs-smoke-test -t docs/dark-mode --logo https://raw.githubusercontent.com/swerik-project/the-swedish-parliament-corpus/refs/heads/main/readme/riksdagshuset.jpg ../riksdagen-persons

@@ -38,6 +38,288 @@
   ],
   "tables": [
     {
+      "url": "committee.csv",
+      "dc:title": "Committees",
+      "dc:description": "Committee entities.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "committee_id",
+            "titles": "committee_id",
+            "dc:description": "Stable SWERIK committee entity identifier. Retained across ordinary name changes, but not across dissolution and reconstitution.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "committee",
+            "titles": "committee",
+            "dc:description": "Committee name.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "committee_type",
+            "titles": "committee_type",
+            "dc:description": "Kind of parliamentary committee.",
+            "datatype": {
+              "base": "string",
+              "format": "^(standing|joint|eu_committee|special|other)$"
+            },
+            "required": true
+          },
+          {
+            "name": "inception",
+            "titles": "inception",
+            "dc:description": "Date of establishment.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "dissolution",
+            "titles": "dissolution",
+            "dc:description": "Date of dissolution.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          }
+        ],
+        "primaryKey": [
+          "committee_id"
+        ]
+      }
+    },
+    {
+      "url": "committee_abbreviation.csv",
+      "dc:title": "Committee abbreviations",
+      "dc:description": "Abbreviations and spelling variants of committees.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "committee_id",
+            "titles": "committee_id",
+            "dc:description": "SWERIK committee entity identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "abbreviation",
+            "titles": "abbreviation",
+            "dc:description": "Abbreviation.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Start date. Blank means unknown.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "End date, including future dates. Blank means not supplied, not necessarily ongoing.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "primary_abbreviation",
+            "titles": "primary_abbreviation",
+            "dc:description": "Whether this is the preferred spelling within the recorded period.",
+            "datatype": "boolean",
+            "required": true
+          }
+        ],
+        "primaryKey": [
+          "committee_id",
+          "abbreviation",
+          "start",
+          "end"
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "committee_id",
+            "reference": {
+              "resource": "committee.csv",
+              "columnReference": "committee_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "committee_role.csv",
+      "dc:title": "Committee roles",
+      "dc:description": "Roles in committee assignments.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "committee_role_id",
+            "titles": "committee_role_id",
+            "dc:description": "Stable identifier for a committee role.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "role",
+            "titles": "role",
+            "dc:description": "Exact role label from Riksdagen.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "role_class",
+            "titles": "role_class",
+            "dc:description": "Functional role. Deputerad is classified as ordinary_member.",
+            "datatype": {
+              "base": "string",
+              "format": "^(chair|vice_chair|ordinary_member|substitute|replacement|other)$"
+            },
+            "required": true
+          },
+          {
+            "name": "role_code",
+            "titles": "role_code",
+            "dc:description": "Riksdagen's official role code.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": [
+          "committee_role_id"
+        ]
+      }
+    },
+    {
+      "url": "committee_membership.csv",
+      "dc:title": "Committee memberships",
+      "dc:description": "Person-to-committee assignments.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "person_id",
+            "titles": "person_id",
+            "dc:description": "Stable SWERIK person identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "committee_id",
+            "titles": "committee_id",
+            "dc:description": "Stable SWERIK committee entity identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Source-supplied start date. Blank means unknown.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "Source-supplied end date. Blank means not supplied, not necessarily ongoing.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+            }
+          },
+          {
+            "name": "committee_role_id",
+            "titles": "committee_role_id",
+            "dc:description": "Stable identifier for a committee role.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": [
+          "person_id",
+          "committee_id",
+          "committee_role_id",
+          "start",
+          "end"
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "person_id",
+            "reference": {
+              "resource": "person.csv",
+              "columnReference": "person_id"
+            }
+          },
+          {
+            "columnReference": "committee_id",
+            "reference": {
+              "resource": "committee.csv",
+              "columnReference": "committee_id"
+            }
+          },
+          {
+            "columnReference": "committee_role_id",
+            "reference": {
+              "resource": "committee_role.csv",
+              "columnReference": "committee_role_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "committee_external_identifiers.csv",
+      "dc:title": "Committee external identifiers",
+      "dc:description": "Committee identifiers kept separately from person identifiers.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "committee_id",
+            "titles": "committee_id",
+            "dc:description": "Stable SWERIK committee entity identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "authority",
+            "titles": "authority",
+            "dc:description": "Identifier authority, such as riksdagen_org_code, wikidata, wikipedia_sv or wikipedia_en.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "identifier",
+            "titles": "identifier",
+            "dc:description": "Exact identifier within the named authority: source code for riksdagen_org_code, QID for wikidata, and full article URL for wikipedia_sv or wikipedia_en.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": [
+          "committee_id",
+          "authority",
+          "identifier"
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "committee_id",
+            "reference": {
+              "resource": "committee.csv",
+              "columnReference": "committee_id"
+            }
+          }
+        ]
+      }
+    },
+    {
       "url": "person.csv",
       "dc:title": "Persons",
       "dc:description": "Person records for actors represented in the corpus metadata.",
