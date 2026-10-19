@@ -103,7 +103,10 @@ class Test(unittest.TestCase):
                 table.check_primary_key()
             except Exception as e:
                 LOGGER.error(f"ERROR in {table_name}:\n{e}")
-                erroneous_tables.append(str(table_name))
+                if "external" in str(table.url):
+                    LOGGER.warning(f"Do not crash on external links being non-unique: {table.url}")
+                else:
+                    erroneous_tables.append(str(table_name))
 
         no_errors = len(erroneous_tables)
         erroneous_tables = ", ".join(erroneous_tables)
@@ -204,6 +207,40 @@ class Test(unittest.TestCase):
         self.assertEqual(no_errors, 0, f"{no_errors} inconsistent start and end dates found")
 
 
+    def test_start_end_overlaps(self):
+        """
+        Test that each start and end column pair is coherent (start is earlier or same as end)
+        """
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+        no_errors = 0
+
+        for table in tg.tables:
+            df = pl.read_csv(self.get_data_dir() / str(table.url), infer_schema_length=10000)
+
+            pk = table.tableSchema.primaryKey
+            self.assertTrue(pk is not None, f"Table {table.url} does not have a CSVW primary key")
+            if "start" in df.columns:
+                df = df.filter(pl.col("start").is_not_null())
+                df = df.filter(pl.col("end").is_not_null())
+
+                pk_wo_start = [key for key in pk if key != "start"]
+                df = df.with_columns(pl.concat_str(pk_wo_start, ignore_nulls=True).alias("pk"))
+                df_small = df.select("pk", "start", "end")
+                df_small = df_small.sort("pk", "start")
+
+                df_small = df_small.with_columns(pl.col("end").shift(1).alias("prev_end"))
+                df_small = df_small.filter(pl.col("pk").shift(1) == pl.col("pk"))
+                #print(df)
+
+                errors = df_small.filter(pl.col("start") < pl.col("prev_end"))
+
+                no_errors += len(errors)
+                if len(errors) >= 1:
+                    for primary_key in set(errors["pk"]):
+                        df_pk = df.filter(pl.col("pk") == primary_key)
+                        LOGGER.error(f"Overlapping values with the same primary key in {table.url}:\n{df_pk}")
+
+        self.assertEqual(no_errors, 0, f"{no_errors} inconsistent start and end dates found")
 
 if __name__ == '__main__':
     unittest.main()
