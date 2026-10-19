@@ -249,6 +249,7 @@
             }
           }
         ],
+        "primaryKey": ["person_id", "start", "swerik_party_id"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -391,6 +392,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "start", "role", "government"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -442,6 +444,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "start"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -529,6 +532,7 @@
             "datatype": "string"
           }
         ],
+        "primaryKey": ["chair_id", "person_id", "parliament_year", "start"],
         "foreignKeys": [
           {
             "columnReference": "chair_id",
@@ -1048,7 +1052,8 @@
             },
             "required": true
           }
-        ]
+        ],
+        "primaryKey": ["parliament_year","specifier","chamber"]
       }
     }
   ],
