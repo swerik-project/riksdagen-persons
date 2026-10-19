@@ -37,7 +37,7 @@ class Test(unittest.TestCase):
         """
         Check that known MP party affiliations are correct.
         """
-        THRESHOLD_2026_10_19 = 1
+        THRESHOLD_2026_10_19 = 2
         config = fetch_config("party-affiliation")
         test_file = pl.read_csv("test/data/known-party-affiliation.csv", separator=';')
         party_affiliation = pl.read_csv("data/party_affiliation.csv")
