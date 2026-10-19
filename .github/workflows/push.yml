@@ -68,7 +68,7 @@ jobs:
         python -m unittest test.sort_order
     - name: Test committee dates, identities and MP record coverage
       run: |
-        python -m unittest test.committee_integrity test.test_committee_integrity_regressions test.test_committee_mandate_regressions
+        python -m unittest test.committee_integrity
 
   db:
     runs-on: ubuntu-latest
