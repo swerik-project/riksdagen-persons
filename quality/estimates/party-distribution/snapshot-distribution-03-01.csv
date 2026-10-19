@@ -19,14 +19,14 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1913,1913,fk,i-VS8ddgxigwL5TceKtXGApS,13
 1914,1914,ak,i-851f4cdfa36f4dbab4b24855a1eb43ce,2
 1914,1914,ak,i-GM695yHGsRXSAorwcFL7x5,4
-1914,1914,ak,i-JmAkiEUKt5ZBgaCKGCMNu2,99
+1914,1914,ak,i-JmAkiEUKt5ZBgaCKGCMNu2,100
 1914,1914,ak,i-NhgK2ujGF5t35o2VjT8Q5U,82
 1914,1914,ak,i-PgZ4noUUgrkZvcF5NuPikj,1
 1914,1914,ak,i-VS8ddgxigwL5TceKtXGApS,73
 1914,1914,fk,i-3kDgsboJBSv4zGqF4zfCsY,87
 1914,1914,fk,i-851f4cdfa36f4dbab4b24855a1eb43ce,3
 1914,1914,fk,i-GM695yHGsRXSAorwcFL7x5,1
-1914,1914,fk,i-JmAkiEUKt5ZBgaCKGCMNu2,49
+1914,1914,fk,i-JmAkiEUKt5ZBgaCKGCMNu2,48
 1914,1914,fk,i-VS8ddgxigwL5TceKtXGApS,13
 1915,1915,ak,i-851f4cdfa36f4dbab4b24855a1eb43ce,6
 1915,1915,ak,i-JmAkiEUKt5ZBgaCKGCMNu2,55
@@ -517,7 +517,7 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1945,1945,ak,i-3A4u29WVtvfu8i1KwuPEeE,20
 1945,1945,ak,i-4nyjRorziqEDtDmp1ZXDoP,14
 1945,1945,ak,i-CJb7bcc1eZcehvGarg8GpB,11
-1945,1945,ak,i-CNbGLyuzdkRJ2sJBBpzJit,25
+1945,1945,ak,i-CNbGLyuzdkRJ2sJBBpzJit,26
 1945,1945,ak,i-F6Stwe8wVnSPa3BbgusszQ,4
 1945,1945,ak,i-FpGjUCojANuvvwqsNXjcuu,24
 1945,1945,ak,i-Kpkv9BSujEEJp1S4rDiDt7,2
@@ -527,11 +527,10 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1945,1945,fk,i-3A4u29WVtvfu8i1KwuPEeE,16
 1945,1945,fk,i-4nyjRorziqEDtDmp1ZXDoP,13
 1945,1945,fk,i-851f4cdfa36f4dbab4b24855a1eb43ce,1
-1945,1945,fk,i-CJb7bcc1eZcehvGarg8GpB,1
-1945,1945,fk,i-CNbGLyuzdkRJ2sJBBpzJit,15
+1945,1945,fk,i-CJb7bcc1eZcehvGarg8GpB,2
+1945,1945,fk,i-CNbGLyuzdkRJ2sJBBpzJit,14
 1945,1945,fk,i-F6Stwe8wVnSPa3BbgusszQ,2
 1945,1945,fk,i-FpGjUCojANuvvwqsNXjcuu,14
-1945,1945,fk,i-TQCUzfkvYhBFrXeQwXoENH,1
 1945,1945,fk,i-UiFZiVNo3YgVfyN93Qigiv,6
 1945,1945,fk,i-VS8ddgxigwL5TceKtXGApS,84
 1946,1946,ak,No SWERIK-id found,3
@@ -603,10 +602,10 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1949,1949,ak,i-CJb7bcc1eZcehvGarg8GpB,7
 1949,1949,ak,i-CNbGLyuzdkRJ2sJBBpzJit,20
 1949,1949,ak,i-F6Stwe8wVnSPa3BbgusszQ,2
-1949,1949,ak,i-FpGjUCojANuvvwqsNXjcuu,53
+1949,1949,ak,i-FpGjUCojANuvvwqsNXjcuu,54
 1949,1949,ak,i-Kpkv9BSujEEJp1S4rDiDt7,4
 1949,1949,ak,i-UiFZiVNo3YgVfyN93Qigiv,10
-1949,1949,ak,i-VS8ddgxigwL5TceKtXGApS,114
+1949,1949,ak,i-VS8ddgxigwL5TceKtXGApS,113
 1949,1949,fk,i-3A4u29WVtvfu8i1KwuPEeE,19
 1949,1949,fk,i-4nyjRorziqEDtDmp1ZXDoP,5
 1949,1949,fk,i-851f4cdfa36f4dbab4b24855a1eb43ce,1
@@ -625,7 +624,7 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1950,1950,ak,i-FpGjUCojANuvvwqsNXjcuu,54
 1950,1950,ak,i-Kpkv9BSujEEJp1S4rDiDt7,4
 1950,1950,ak,i-UiFZiVNo3YgVfyN93Qigiv,11
-1950,1950,ak,i-VS8ddgxigwL5TceKtXGApS,113
+1950,1950,ak,i-VS8ddgxigwL5TceKtXGApS,112
 1950,1950,fk,i-3A4u29WVtvfu8i1KwuPEeE,16
 1950,1950,fk,i-4nyjRorziqEDtDmp1ZXDoP,4
 1950,1950,fk,i-851f4cdfa36f4dbab4b24855a1eb43ce,1
@@ -635,7 +634,7 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1950,1950,fk,i-FpGjUCojANuvvwqsNXjcuu,20
 1950,1950,fk,i-TQCUzfkvYhBFrXeQwXoENH,1
 1950,1950,fk,i-UiFZiVNo3YgVfyN93Qigiv,8
-1950,1950,fk,i-VS8ddgxigwL5TceKtXGApS,81
+1950,1950,fk,i-VS8ddgxigwL5TceKtXGApS,82
 1951,1951,ak,No SWERIK-id found,1
 1951,1951,ak,i-3A4u29WVtvfu8i1KwuPEeE,16
 1951,1951,ak,i-4nyjRorziqEDtDmp1ZXDoP,5
@@ -645,7 +644,7 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1951,1951,ak,i-FpGjUCojANuvvwqsNXjcuu,53
 1951,1951,ak,i-Kpkv9BSujEEJp1S4rDiDt7,4
 1951,1951,ak,i-UiFZiVNo3YgVfyN93Qigiv,11
-1951,1951,ak,i-VS8ddgxigwL5TceKtXGApS,112
+1951,1951,ak,i-VS8ddgxigwL5TceKtXGApS,113
 1951,1951,fk,i-3A4u29WVtvfu8i1KwuPEeE,13
 1951,1951,fk,i-4nyjRorziqEDtDmp1ZXDoP,4
 1951,1951,fk,i-851f4cdfa36f4dbab4b24855a1eb43ce,1
@@ -655,7 +654,7 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1951,1951,fk,i-FpGjUCojANuvvwqsNXjcuu,20
 1951,1951,fk,i-TQCUzfkvYhBFrXeQwXoENH,1
 1951,1951,fk,i-UiFZiVNo3YgVfyN93Qigiv,8
-1951,1951,fk,i-VS8ddgxigwL5TceKtXGApS,82
+1951,1951,fk,i-VS8ddgxigwL5TceKtXGApS,81
 1952,1952,ak,No SWERIK-id found,1
 1952,1952,ak,i-3A4u29WVtvfu8i1KwuPEeE,16
 1952,1952,ak,i-4nyjRorziqEDtDmp1ZXDoP,5
@@ -700,10 +699,10 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1954,1954,ak,i-CJb7bcc1eZcehvGarg8GpB,5
 1954,1954,ak,i-CNbGLyuzdkRJ2sJBBpzJit,14
 1954,1954,ak,i-F6Stwe8wVnSPa3BbgusszQ,2
-1954,1954,ak,i-FpGjUCojANuvvwqsNXjcuu,52
+1954,1954,ak,i-FpGjUCojANuvvwqsNXjcuu,51
 1954,1954,ak,i-Kpkv9BSujEEJp1S4rDiDt7,6
 1954,1954,ak,i-UiFZiVNo3YgVfyN93Qigiv,12
-1954,1954,ak,i-VS8ddgxigwL5TceKtXGApS,112
+1954,1954,ak,i-VS8ddgxigwL5TceKtXGApS,113
 1954,1954,fk,i-3A4u29WVtvfu8i1KwuPEeE,9
 1954,1954,fk,i-4nyjRorziqEDtDmp1ZXDoP,3
 1954,1954,fk,i-851f4cdfa36f4dbab4b24855a1eb43ce,1
@@ -739,19 +738,19 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1956,1956,ak,i-CJb7bcc1eZcehvGarg8GpB,4
 1956,1956,ak,i-CNbGLyuzdkRJ2sJBBpzJit,15
 1956,1956,ak,i-F6Stwe8wVnSPa3BbgusszQ,2
-1956,1956,ak,i-FpGjUCojANuvvwqsNXjcuu,51
-1956,1956,ak,i-Kpkv9BSujEEJp1S4rDiDt7,7
+1956,1956,ak,i-FpGjUCojANuvvwqsNXjcuu,52
+1956,1956,ak,i-Kpkv9BSujEEJp1S4rDiDt7,6
 1956,1956,ak,i-UiFZiVNo3YgVfyN93Qigiv,11
 1956,1956,ak,i-VS8ddgxigwL5TceKtXGApS,112
 1956,1956,fk,i-3A4u29WVtvfu8i1KwuPEeE,8
 1956,1956,fk,i-4nyjRorziqEDtDmp1ZXDoP,3
 1956,1956,fk,i-CJb7bcc1eZcehvGarg8GpB,2
-1956,1956,fk,i-CNbGLyuzdkRJ2sJBBpzJit,13
+1956,1956,fk,i-CNbGLyuzdkRJ2sJBBpzJit,14
 1956,1956,fk,i-F6Stwe8wVnSPa3BbgusszQ,4
 1956,1956,fk,i-FpGjUCojANuvvwqsNXjcuu,28
 1956,1956,fk,i-Kpkv9BSujEEJp1S4rDiDt7,2
 1956,1956,fk,i-TQCUzfkvYhBFrXeQwXoENH,1
-1956,1956,fk,i-UiFZiVNo3YgVfyN93Qigiv,12
+1956,1956,fk,i-UiFZiVNo3YgVfyN93Qigiv,11
 1956,1956,fk,i-VS8ddgxigwL5TceKtXGApS,79
 1957,1957,ak,i-3A4u29WVtvfu8i1KwuPEeE,32
 1957,1957,ak,i-4nyjRorziqEDtDmp1ZXDoP,4
@@ -810,11 +809,11 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1959,1959,fk,i-TQCUzfkvYhBFrXeQwXoENH,1
 1959,1959,fk,i-UiFZiVNo3YgVfyN93Qigiv,16
 1959,1959,fk,i-VS8ddgxigwL5TceKtXGApS,80
-1960,1960,ak,i-3A4u29WVtvfu8i1KwuPEeE,32
+1960,1960,ak,i-3A4u29WVtvfu8i1KwuPEeE,33
 1960,1960,ak,i-4nyjRorziqEDtDmp1ZXDoP,4
 1960,1960,ak,i-CJb7bcc1eZcehvGarg8GpB,4
 1960,1960,ak,i-CNbGLyuzdkRJ2sJBBpzJit,10
-1960,1960,ak,i-F6Stwe8wVnSPa3BbgusszQ,8
+1960,1960,ak,i-F6Stwe8wVnSPa3BbgusszQ,7
 1960,1960,ak,i-FpGjUCojANuvvwqsNXjcuu,33
 1960,1960,ak,i-Kpkv9BSujEEJp1S4rDiDt7,5
 1960,1960,ak,i-UiFZiVNo3YgVfyN93Qigiv,22
@@ -903,12 +902,12 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1964,1964,fk,i-Kpkv9BSujEEJp1S4rDiDt7,2
 1964,1964,fk,i-UiFZiVNo3YgVfyN93Qigiv,16
 1964,1964,fk,i-VS8ddgxigwL5TceKtXGApS,79
-1965,1965,ak,i-3A4u29WVtvfu8i1KwuPEeE,19
+1965,1965,ak,i-3A4u29WVtvfu8i1KwuPEeE,18
 1965,1965,ak,i-4nyjRorziqEDtDmp1ZXDoP,1
 1965,1965,ak,i-ANbQF76SzeSESXQFvzPzFw,1
 1965,1965,ak,i-CJb7bcc1eZcehvGarg8GpB,8
 1965,1965,ak,i-CNbGLyuzdkRJ2sJBBpzJit,4
-1965,1965,ak,i-F6Stwe8wVnSPa3BbgusszQ,13
+1965,1965,ak,i-F6Stwe8wVnSPa3BbgusszQ,14
 1965,1965,ak,i-FpGjUCojANuvvwqsNXjcuu,36
 1965,1965,ak,i-Kpkv9BSujEEJp1S4rDiDt7,6
 1965,1965,ak,i-UiFZiVNo3YgVfyN93Qigiv,29
@@ -986,11 +985,12 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1969,1969,ak,i-Kpkv9BSujEEJp1S4rDiDt7,8
 1969,1969,ak,i-UiFZiVNo3YgVfyN93Qigiv,34
 1969,1969,ak,i-VS8ddgxigwL5TceKtXGApS,125
+1969,1969,fk,No SWERIK-id found,1
 1969,1969,fk,i-3A4u29WVtvfu8i1KwuPEeE,9
 1969,1969,fk,i-CJb7bcc1eZcehvGarg8GpB,1
 1969,1969,fk,i-CNbGLyuzdkRJ2sJBBpzJit,2
 1969,1969,fk,i-F6Stwe8wVnSPa3BbgusszQ,17
-1969,1969,fk,i-FpGjUCojANuvvwqsNXjcuu,20
+1969,1969,fk,i-FpGjUCojANuvvwqsNXjcuu,19
 1969,1969,fk,i-Kpkv9BSujEEJp1S4rDiDt7,6
 1969,1969,fk,i-UiFZiVNo3YgVfyN93Qigiv,17
 1969,1969,fk,i-VS8ddgxigwL5TceKtXGApS,81
@@ -1002,12 +1002,11 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1970,1970,ak,i-Kpkv9BSujEEJp1S4rDiDt7,8
 1970,1970,ak,i-UiFZiVNo3YgVfyN93Qigiv,34
 1970,1970,ak,i-VS8ddgxigwL5TceKtXGApS,125
-1970,1970,fk,No SWERIK-id found,1
 1970,1970,fk,i-3A4u29WVtvfu8i1KwuPEeE,8
 1970,1970,fk,i-CJb7bcc1eZcehvGarg8GpB,1
 1970,1970,fk,i-CNbGLyuzdkRJ2sJBBpzJit,2
 1970,1970,fk,i-F6Stwe8wVnSPa3BbgusszQ,15
-1970,1970,fk,i-FpGjUCojANuvvwqsNXjcuu,20
+1970,1970,fk,i-FpGjUCojANuvvwqsNXjcuu,21
 1970,1970,fk,i-Kpkv9BSujEEJp1S4rDiDt7,6
 1970,1970,fk,i-UiFZiVNo3YgVfyN93Qigiv,18
 1970,1970,fk,i-VS8ddgxigwL5TceKtXGApS,81
@@ -1408,7 +1407,7 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 2024,202324,ek,i-B79rKJX4ZV61ozevGt8JLL,1
 2024,202324,ek,i-BRRSButj7zSqB1u7zD6hod,19
 2024,202324,ek,i-CJb7bcc1eZcehvGarg8GpB,24
-2024,202324,ek,i-Cb6hYmJf4EDxesFRgErquJ,71
+2024,202324,ek,i-Cb6hYmJf4EDxesFRgErquJ,72
 2024,202324,ek,i-F6Stwe8wVnSPa3BbgusszQ,69
 2024,202324,ek,i-Kpkv9BSujEEJp1S4rDiDt7,17
 2024,202324,ek,i-Qha9NerKBigcjJXgoRk4Md,18
