@@ -51,7 +51,7 @@ class Test(unittest.TestCase):
                 Q = Q.filter(pl.col("end").str.head(4) == str(r['end'])[:4])
             if len(Q) == 0:
                 bad_affil.append([r[_] for _ in test_file.columns])
-                LOGGER.error(f"Row: {r} not matched in party_affiliation.csv")
+                LOGGER.error(f"Row: {r} in known-party-affiliation.csv not matched in party_affiliation.csv")
         if len(bad_affil) > 0:
             LOGGER.warning(f"{len(bad_affil)} mismatch(es) between party_affiliation.csv and {len(test_file)} known party affiliations.")
             if config and config["write-party-affil-err"]:
