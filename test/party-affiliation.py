@@ -22,7 +22,7 @@ class Test(unittest.TestCase):
     #@unittest.skip
     def test_independent_mp(self):
         """
-        Make sure known independent MP's are listed as such in the data
+        Guarantee: manually verified independent MP's are listed as such in the data
         """
         config = fetch_config("independent-mp")
         test_file = pl.read_csv("test/data/independent-mp.csv", separator=';')
@@ -35,7 +35,7 @@ class Test(unittest.TestCase):
     #@unittest.skip
     def test_party(self):
         """
-        Check that known MP party affiliations are correct.
+        Guarantee: manually verified MP party affiliations exist in the data, up to an error thresold.
         """
         THRESHOLD_2026_10_19 = 2
         config = fetch_config("party-affiliation")
