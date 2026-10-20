@@ -189,12 +189,12 @@ class Test(unittest.TestCase):
 
     def test_start_end(self):
         """
-        Test that each start and end column pair is coherent
+        Test that each date range column pair is coherent
 
-        1. Start is earlier or same as end
-        2. Same primary key does not contain overlapping time ranges
+        1. For each row, 'start' is earlier or same as 'end'
+        2. For each unique (composite) primary key, the time ranges do not overlap
 
-        These are tested for all columns with dates.
+        These are tested for all tables with dates; for start/end, born/dead and inception/dissolution.
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         no_errors = 0
