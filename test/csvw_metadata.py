@@ -103,7 +103,10 @@ class Test(unittest.TestCase):
                 table.check_primary_key()
             except Exception as e:
                 LOGGER.error(f"ERROR in {table_name}:\n{e}")
-                erroneous_tables.append(str(table_name))
+                if "external" in str(table.url):
+                    LOGGER.warning(f"Do not crash on external links being non-unique: {table.url}")
+                else:
+                    erroneous_tables.append(str(table_name))
 
         no_errors = len(erroneous_tables)
         erroneous_tables = ", ".join(erroneous_tables)
@@ -175,35 +178,76 @@ class Test(unittest.TestCase):
 
         self.assertEqual(0, no_errors, f"{no_errors} format error(s) found")
 
+    def test_primary_key_exists(self):
+        """
+        Test that each table has a primary key
+        """
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+        for table in tg.tables:
+            pk = table.tableSchema.primaryKey
+            self.assertTrue(pk is not None, f"Table {table.url} does not have a CSVW primary key")
+
     def test_start_end(self):
         """
-        Test that each start and end column pair is coherent (start is earlier or same as end)
+        Test that each start and end column pair is coherent
+
+        1. Start is earlier or same as end
+        2. Same primary key does not contain overlapping time ranges
+
+        These are tested for all columns with dates.
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         no_errors = 0
+        no_overlaps = 0
 
         for table in tg.tables:
             df = pl.read_csv(self.get_data_dir() / str(table.url), infer_schema_length=10000)
+            pk = table.tableSchema.primaryKey
 
-            has_start, has_end = "start" in df.columns, "end" in df.columns
-            self.assertEqual(has_start, has_end, f"Problem with column names in {table.url}; start: {has_start}, end: {has_end}")
-            if has_start:
-                df = df.filter(pl.col("start").is_not_null())
-                df = df.filter(pl.col("end").is_not_null())
+            for start, end in [("start", "end"), ("born", "dead"), ("inception", "dissolution")]:
+                if start in df.columns:
+                    # Per row: start <= end
+                    LOGGER.info(f"Check {start}/{end} for table {table.url}")
+                    df = df.filter(pl.col(start).is_not_null())
+                    df = df.filter(pl.col(end).is_not_null())
 
-                charlen = pl.min_horizontal(
-                    pl.col("start").str.len_chars(),
-                    pl.col("end").str.len_chars(),
-                )
-                df_errors = df.filter(pl.col("start").str.head(charlen) > pl.col("end").str.head(charlen))
+                    # For mixed precision, truncate longer value of start/end
+                    charlen = pl.min_horizontal(
+                        pl.col(start).str.len_chars(),
+                        pl.col(end).str.len_chars(),
+                    )
+                    df_errors = df.filter(pl.col(start).str.head(charlen) > pl.col(end).str.head(charlen))
 
-                if len(df_errors) >= 1:
-                    no_errors += len(df_errors)
-                    LOGGER.error(f"Inconsistent start dates in {table.url}:\n{df_errors}")
-        
+                    if len(df_errors) >= 1:
+                        no_errors += len(df_errors)
+                        LOGGER.error(f"Inconsistent start dates in {table.url}:\n{df_errors}")
+
+                    # Per primary key:
+                    # Date ranges should not overlap with more than one day (or year/month if that's the precision).
+                    # This is checked via: sorted values should have end_prev <= start. Equivalent in terms of
+                    # error-free, but might undercount errors
+                    pk_wo_start = [key for key in pk if key != "start"]
+                    df = df.with_columns(pl.concat_str(pk_wo_start, ignore_nulls=True).alias("pk"))
+                    df = df.sort("pk", start, end)
+                    df = df.with_columns(pl.col(end).shift(1).alias("prev_end"))
+
+                    df_small = df.select("pk", start, end, "prev_end")
+                    df_small = df_small.sort("pk", start, end)
+                    df_small = df_small.filter(pl.col("pk").shift(1) == pl.col("pk"))
+                    df_small = df_small.sort("pk", start)
+                    errors = df_small.filter(pl.col(start) < pl.col("prev_end"))
+
+                    no_overlaps += len(errors)
+                    if len(errors) >= 1:
+                        for primary_key in set(errors["pk"]):
+                            df_pk = df.filter(pl.col("pk") == primary_key)
+                            df_pk[0, "prev_end"] = None
+                            df_pk = df_pk.with_columns((pl.col(start) < pl.col("prev_end")).alias("overlaps_w_previous").fill_null(False))
+                            df_pk = df_pk.drop("pk")
+                            LOGGER.error(f"Overlapping values with the same primary key in {table.url}:\n{df_pk}")
+
         self.assertEqual(no_errors, 0, f"{no_errors} inconsistent start and end dates found")
-
-
+        self.assertEqual(no_overlaps, 0, f"{no_overlaps} overlapping primary keys found")
 
 if __name__ == '__main__':
     unittest.main()

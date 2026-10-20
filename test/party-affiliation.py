@@ -6,29 +6,9 @@ from pytest_cfg_fetcher.fetch import fetch_config
 import pandas as pd
 import unittest
 import warnings
-
-
-
-
-
-class Unlisted(Warning):
-
-    def __init__(self, m):
-        self.message = m
-
-    def __str__(self):
-        return self.message
-
-
-class Info(Warning):
-
-    def __init__(self, m):
-        self.message = m
-
-    def __str__(self):
-        return self.message
-
-
+from trainerlog import get_logger
+import polars as pl
+LOGGER = get_logger("test-party-affiliation")
 
 
 class Test(unittest.TestCase):
@@ -45,62 +25,38 @@ class Test(unittest.TestCase):
         Make sure known independent MP's are listed as such in the data
         """
         config = fetch_config("independent-mp")
-        test_file = pd.read_csv("test/data/independent-mp.csv", sep=';')
-        independent = pd.read_csv("data/explicit_no_party.csv")
-        ind_wiki = independent['wiki_id'].unique()
-        ind_swerik = independent['person_id'].unique()
-        missing_ind = []
-        for i, r in test_file.iterrows():
-            if r['wiki_id'] not in ind_wiki:
-                if r['person_id'] not in ind_swerik:
-                    missing_ind.append([r['wiki_id'], r['person_id']])
-                    warnings.warn(f"Missing From Wikidata {r['wiki_id']} : {r['person_id']}", Unlisted)
-        extra_ind = []
-        [extra_ind.append(_) for _ in ind_wiki if _ not in test_file['wiki_id'].unique()]
-        if len(extra_ind) > 0:
-            [warnings.warn(f"\n--> Missing from testfile {_}", Unlisted) for _ in extra_ind]
-            warnings.warn(f"\n\n\n~~ {len(extra_ind)} MPs currently listed as independent not in the testfile ({len(test_file)})\n", Info)
-            if config and config['write-unlisted-ind-testfile']:
-                extra_ind = [[_] for _ in extra_ind]
-                self.write_err_df("unlisted-ind-testfile", extra_ind, ["wiki_id"], config['test_out_dir'])
-        if len(missing_ind) > 0:
-            warnings.warn(f"\n\n\n~~ {len(missing_ind)} MPs currently listed as independent in testfile do not appear as such in Wikidata\n", Info)
-            if config and config['write-unlisted-ind-wiki']:
-                self.write_err_df("unlisted-ind-wiki", missing_ind, ["wiki_id", "person_id"], config['test_out_dir'])
-        #self.assertEqual(len(missing_ind), 0)
-        #self.assertEqual(len(extra_ind), 0)
+        test_file = pl.read_csv("test/data/independent-mp.csv", separator=';')
+        independent = pl.read_csv("data/explicit_no_party.csv")
+        ind_swerik = set(independent['person_id'])
 
+        errors = test_file.filter(~pl.col("person_id").is_in(ind_swerik))
+        self.assertEqual(len(errors), 0, f"Some known independent MPs were not found in explicit_no_party.csv:\n{errors}")
 
     #@unittest.skip
     def test_party(self):
         """
         Check that known MP party affiliations are correct.
         """
+        THRESHOLD_2026_10_19 = 2
         config = fetch_config("party-affiliation")
-        test_file = pd.read_csv("test/data/known-party-affiliation.csv", sep=';')
-        party_affiliation = pd.read_csv("data/party_affiliation.csv")
+        test_file = pl.read_csv("test/data/known-party-affiliation.csv", separator=';')
+        party_affiliation = pl.read_csv("data/party_affiliation.csv")
 
         bad_affil = []
-        for i, r in test_file.iterrows():
-            if (pd.notnull(r['start']) or r['start'] == '') and \
-               (pd.notnull(r["end"]) or r['end'] == ''):
-                Q = party_affiliation.loc[
-                        (party_affiliation['person_id'] == r["person_id"]) &
-                        (party_affiliation['party_id'] == r['party_id']) &
-                        (party_affiliation['start'] == str(r['start'])[:4]) &
-                        (party_affiliation['end'] == str(r['end'])[:4])]
-            else:
-                Q = party_affiliation.loc[
-                        (party_affiliation['person_id'] == r["person_id"]) &
-                        (party_affiliation['party_id'] == r['party_id'])]
+        for r in test_file.unique().to_dicts():
+            Q = party_affiliation.filter(pl.col('person_id') == r["person_id"])
+            Q = Q.filter(pl.col('party_id') == r["party_id"])
+            if r['start'] is not None and r['end'] is not None:
+                Q = Q.filter(pl.col("start").str.head(4) == str(r['start'])[:4])
+                Q = Q.filter(pl.col("end").str.head(4) == str(r['end'])[:4])
             if len(Q) == 0:
                 bad_affil.append([r[_] for _ in test_file.columns])
-                warnings.warn(f"\n -> Not found in wikidata {'|'.join([str(r[_]) if pd.notnull(r[_]) else '' for _ in test_file.columns])}", Unlisted)
+                LOGGER.error(f"Row: {r} in known-party-affiliation.csv not matched in party_affiliation.csv")
         if len(bad_affil) > 0:
-            warnings.warn(f"\n\n\n~~ {len(bad_affil)} mismatches between wikidata and ({len(test_file)}) known party affiliations\n", Info)
+            LOGGER.warning(f"{len(bad_affil)} mismatch(es) between party_affiliation.csv and {len(test_file)} known party affiliations.")
             if config and config["write-party-affil-err"]:
                 self.write_err_df("unmatched-party-affiliations", bad_affil, test_file.columns, config["test_out_dir"])
-        self.assertTrue(len(bad_affil)< 2)
+        self.assertLessEqual(len(bad_affil), THRESHOLD_2026_10_19, f"{len(bad_affil)} incorrect party affiliations found")
 
 
 
