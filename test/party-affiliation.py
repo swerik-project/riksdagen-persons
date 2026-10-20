@@ -42,13 +42,21 @@ class Test(unittest.TestCase):
         test_file = pl.read_csv("test/data/known-party-affiliation.csv", separator=';')
         party_affiliation = pl.read_csv("data/party_affiliation.csv")
 
+        # Convert year ranges to multiple rows with each year
+        test_file = test_file.with_columns(pl.int_ranges("start", pl.col("end") + 1).alias("year"))
+        test_w_year = test_file.filter(pl.col("year").is_not_null())
+        test_w_year = test_w_year.explode("year")
+        test_wo_year = test_file.filter(pl.col("year").is_null()).drop("year")
+        test_file = pl.concat([test_w_year, test_wo_year], how="diagonal")
+        test_file = test_file.drop("start", "end")
+
         bad_affil = []
         for r in test_file.unique().to_dicts():
             Q = party_affiliation.filter(pl.col('person_id') == r["person_id"])
             Q = Q.filter(pl.col('party_id') == r["party_id"])
-            if r['start'] is not None and r['end'] is not None:
-                Q = Q.filter(pl.col("start").str.head(4) == str(r['start'])[:4])
-                Q = Q.filter(pl.col("end").str.head(4) == str(r['end'])[:4])
+            if r['year'] is not None:
+                Q = Q.filter(pl.col("start").str.head(4) <= str(r['year'])[:4])
+                Q = Q.filter(pl.col("end").str.head(4) >= str(r['year'])[:4])
             if len(Q) == 0:
                 bad_affil.append([r[_] for _ in test_file.columns])
                 LOGGER.error(f"Row: {r} in known-party-affiliation.csv not matched in party_affiliation.csv")
