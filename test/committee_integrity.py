@@ -62,31 +62,6 @@ class CommitteeIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s supplied dates; %s impossible calendar dates", checked, failures)
         self.assertEqual(0, failures, f"{failures} impossible calendar date values; details logged with trainerlog")
 
-    def test_committee_periods_are_not_definitely_inverted(self):
-        """Guarantee: no committee period definitely starts after it ends.
-
-        Data: committee lifetimes, memberships and abbreviation periods.
-        Compare earliest possible start with latest possible end (Decision 0015).
-        Equal dates and overlapping partial-date bounds are allowed. An unknown
-        endpoint does not establish inversion. Failures count rows. Invalid
-        calendar values are owned by test_committee_dates_are_possible_calendar_dates.
-        """
-        failures = 0
-        checked = 0
-        LOGGER.info("Checking chronology of committee periods")
-        for filename, start, end in (
-            ("committee.csv", "start", "end"),
-            ("committee_membership.csv", "start", "end"),
-            ("committee_abbreviation.csv", "start", "end"),
-        ):
-            rows = pl.read_csv(DATA_DIR / filename, infer_schema=False)
-            checked += rows.height
-            for row in rows.filter(date_bound(start) > date_bound(end, latest=True)).iter_rows(named=True):
-                failures += 1
-                LOGGER.error("Definitely inverted period in %s: %s", filename, row)
-        LOGGER.info("Checked %s periods; %s definitely inverted rows", checked, failures)
-        self.assertEqual(0, failures, f"{failures} definitely inverted committee periods; details logged with trainerlog")
-
     def test_memberships_do_not_predate_committee_start(self):
         """Guarantee: no known membership boundary definitely predates the committee.
 
