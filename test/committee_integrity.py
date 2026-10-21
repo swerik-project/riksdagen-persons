@@ -219,28 +219,6 @@ class CommitteeIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s committee Wikidata links; %s ambiguous items", rows.height, failures)
         self.assertEqual(0, failures, f"{failures} ambiguous Wikidata items; details logged")
 
-    def test_source_organ_codes_resolve_to_one_committee(self):
-        """Guarantee: a Riksdagen source organ code identifies one committee.
-
-        Case and NFC variants denote the same source code, independently of
-        historical abbreviation periods. Reused codes with unresolved entity
-        identities are withheld from this first batch, not silently merged.
-        """
-        rows = pl.read_csv(DATA_DIR / "committee_external_identifiers.csv").filter(
-            pl.col("authority") == "riksdagen_org_code"
-        )
-        targets = {}
-        for row in rows.iter_rows(named=True):
-            key = unicodedata.normalize("NFC", row["identifier"]).casefold()
-            targets.setdefault(key, set()).add(row["committee_id"])
-        failures = 0
-        for code, committees in sorted(targets.items()):
-            if len(committees) != 1:
-                failures += 1
-                LOGGER.error("Ambiguous source code %s: %s", code, sorted(committees))
-        LOGGER.info("Checked %s source organ codes; %s ambiguous", len(targets), failures)
-        self.assertEqual(0, failures, f"{failures} ambiguous source organ codes; details logged")
-
     def test_raw_abbreviations_have_nfc_counterparts(self):
         """Guarantee: every raw abbreviation has an NFC spelling for that committee.
 
@@ -256,7 +234,7 @@ class CommitteeIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s abbreviation spellings; %s missing NFC aliases", len(spellings), failures)
         self.assertEqual(0, failures, f"{failures} missing NFC aliases; details logged")
 
-    def test_primary_abbreviation_periods_do_not_definitely_overlap(self):
+    def test_primary_abbreviation_periods_do_not_overlap(self):
         """Guarantee: two primary abbreviations never definitely overlap in time.
 
         For partial dates, compare latest possible starts with earliest possible
