@@ -47,7 +47,10 @@
             "name": "committee_id",
             "titles": "committee_id",
             "dc:description": "Stable SWERIK committee entity identifier. Retained across ordinary name changes, but not across dissolution and reconstitution.",
-            "datatype": "string",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[A-Za-z0-9]+$"
+            },
             "required": true
           },
           {
@@ -68,8 +71,8 @@
             "required": true
           },
           {
-            "name": "inception",
-            "titles": "inception",
+            "name": "start",
+            "titles": "start",
             "dc:description": "Date of establishment.",
             "datatype": {
               "base": "string",
@@ -77,8 +80,8 @@
             }
           },
           {
-            "name": "dissolution",
-            "titles": "dissolution",
+            "name": "end",
+            "titles": "end",
             "dc:description": "Date of dissolution.",
             "datatype": {
               "base": "string",
@@ -101,7 +104,10 @@
             "name": "committee_id",
             "titles": "committee_id",
             "dc:description": "SWERIK committee entity identifier.",
-            "datatype": "string",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[A-Za-z0-9]+$"
+            },
             "required": true
           },
           {
@@ -140,8 +146,7 @@
         "primaryKey": [
           "committee_id",
           "abbreviation",
-          "start",
-          "end"
+          "start"
         ],
         "foreignKeys": [
           {
@@ -164,7 +169,10 @@
             "name": "committee_role_id",
             "titles": "committee_role_id",
             "dc:description": "Stable identifier for a committee role.",
-            "datatype": "string",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[A-Za-z0-9]+$"
+            },
             "required": true
           },
           {
@@ -214,7 +222,10 @@
             "name": "committee_id",
             "titles": "committee_id",
             "dc:description": "Stable SWERIK committee entity identifier.",
-            "datatype": "string",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[A-Za-z0-9]+$"
+            },
             "required": true
           },
           {
@@ -239,7 +250,10 @@
             "name": "committee_role_id",
             "titles": "committee_role_id",
             "dc:description": "Stable identifier for a committee role.",
-            "datatype": "string",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[A-Za-z0-9]+$"
+            },
             "required": true
           }
         ],
@@ -285,14 +299,20 @@
             "name": "committee_id",
             "titles": "committee_id",
             "dc:description": "Stable SWERIK committee entity identifier.",
-            "datatype": "string",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[A-Za-z0-9]+$"
+            },
             "required": true
           },
           {
             "name": "authority",
             "titles": "authority",
-            "dc:description": "Identifier authority, such as riksdagen_org_code, wikidata, wikipedia_sv or wikipedia_en.",
-            "datatype": "string",
+            "dc:description": "Identifier authority: riksdagen_org_code, wikidata, wikipedia_sv or wikipedia_en.",
+            "datatype": {
+              "base": "string",
+              "format": "^(riksdagen_org_code|wikidata|wikipedia_sv|wikipedia_en)$"
+            },
             "required": true
           },
           {

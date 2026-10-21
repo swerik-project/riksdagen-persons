@@ -18,6 +18,25 @@ Contains integrity tests related to the riksdagen-persons repository and to the 
 
 The `data/` directory contains a number of csv files in Normal form where the `person_id` served as a primary key.
 
+### Committee metadata
+
+Committee and role identifiers follow the SWERIK pattern `^i-[A-Za-z0-9]+$`.
+Dates retain their supplied year, month or day precision. Blank dates mean
+unknown or not supplied; a blank end does not establish an ongoing period.
+
+| File | Columns |
+| --- | --- |
+| `data/committee.csv` | `committee_id`, `committee`, `committee_type`, `start`, `end` |
+| `data/committee_abbreviation.csv` | `committee_id`, `abbreviation`, `start`, `end`, `primary_abbreviation` |
+| `data/committee_role.csv` | `committee_role_id`, `role`, `role_class`, `role_code` |
+| `data/committee_membership.csv` | `person_id`, `committee_id`, `start`, `end`, `committee_role_id` |
+| `data/committee_external_identifiers.csv` | `committee_id`, `authority`, `identifier` |
+
+Committee `start` and `end` describe establishment and dissolution. An abbreviation
+is identified by its committee, spelling and start date. External authorities are
+`riksdagen_org_code`, `wikidata`, `wikipedia_sv` and `wikipedia_en`.
+The [CSVW metadata](data/csvw-metadata.json) defines keys, required fields and relationships.
+
 ### `data/chair_mp.csv`
 - chair_id
 - parliament_year

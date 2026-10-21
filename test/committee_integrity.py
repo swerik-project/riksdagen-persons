@@ -49,7 +49,7 @@ class CommitteeIntegrity(unittest.TestCase):
         checked = 0
         LOGGER.info("Checking calendar validity of supplied committee dates")
         for filename, columns in (
-            ("committee.csv", ("inception", "dissolution")),
+            ("committee.csv", ("start", "end")),
             ("committee_membership.csv", ("start", "end")),
             ("committee_abbreviation.csv", ("start", "end")),
         ):
@@ -75,7 +75,7 @@ class CommitteeIntegrity(unittest.TestCase):
         checked = 0
         LOGGER.info("Checking chronology of committee periods")
         for filename, start, end in (
-            ("committee.csv", "inception", "dissolution"),
+            ("committee.csv", "start", "end"),
             ("committee_membership.csv", "start", "end"),
             ("committee_abbreviation.csv", "start", "end"),
         ):
@@ -87,47 +87,49 @@ class CommitteeIntegrity(unittest.TestCase):
         LOGGER.info("Checked %s periods; %s definitely inverted rows", checked, failures)
         self.assertEqual(0, failures, f"{failures} definitely inverted committee periods; details logged with trainerlog")
 
-    def test_memberships_do_not_predate_committee_inception(self):
-        """Guarantee: no known membership boundary definitely predates inception.
+    def test_memberships_do_not_predate_committee_start(self):
+        """Guarantee: no known membership boundary definitely predates the committee.
 
         Data: committee_membership.csv joined to committee.csv. A boundary's
-        latest possible day must not precede the earliest possible inception.
+        latest possible day must not precede the earliest possible committee start.
         Check each supplied boundary even if the other is unknown. Missing
-        inception is unknown, not the first observed membership. Failures count
+        committee start is unknown, not the first observed membership. Failures count
         membership rows, not endpoints. CSVW owns foreign-key validation.
         """
         rows = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False).join(
-            pl.read_csv(DATA_DIR / "committee.csv", infer_schema=False), on="committee_id", how="left")
-        LOGGER.info("Checking %s memberships against known committee inception dates", rows.height)
+            pl.read_csv(DATA_DIR / "committee.csv", infer_schema=False).select(
+                "committee_id", pl.col("start").alias("committee_start")), on="committee_id", how="left")
+        LOGGER.info("Checking %s memberships against known committee start dates", rows.height)
         failures = 0
-        before_inception = ((date_bound("start", latest=True) < date_bound("inception")) |
-                            (date_bound("end", latest=True) < date_bound("inception")))
-        for row in rows.filter(before_inception).iter_rows(named=True):
+        before_start = ((date_bound("start", latest=True) < date_bound("committee_start")) |
+                        (date_bound("end", latest=True) < date_bound("committee_start")))
+        for row in rows.filter(before_start).iter_rows(named=True):
             failures += 1
-            LOGGER.error("Membership definitely predates committee inception: %s", row)
-        LOGGER.info("Checked %s memberships; %s predate inception", rows.height, failures)
-        self.assertEqual(0, failures, f"{failures} memberships predate committee inception; details logged with trainerlog")
+            LOGGER.error("Membership definitely predates committee start: %s", row)
+        LOGGER.info("Checked %s memberships; %s predate committee start", rows.height, failures)
+        self.assertEqual(0, failures, f"{failures} memberships predate committee start; details logged with trainerlog")
 
-    def test_memberships_do_not_outlast_committee_dissolution(self):
-        """Guarantee: no known membership boundary definitely follows dissolution.
+    def test_memberships_do_not_outlast_committee_end(self):
+        """Guarantee: no known membership boundary definitely outlasts the committee.
 
         Data: committee_membership.csv joined to committee.csv. Compare earliest
-        possible membership boundaries with latest possible dissolution. A
-        year-only dissolution permits a boundary in that year. Missing dates
+        possible membership boundaries with the latest possible committee end. A
+        year-only end permits a boundary in that year. Missing dates
         remain unknown; one missing endpoint does not hide a contradiction in
         the other. Failures count membership rows. CSVW owns foreign keys.
         """
         rows = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False).join(
-            pl.read_csv(DATA_DIR / "committee.csv", infer_schema=False), on="committee_id", how="left")
-        LOGGER.info("Checking %s memberships against known committee dissolution dates", rows.height)
+            pl.read_csv(DATA_DIR / "committee.csv", infer_schema=False).select(
+                "committee_id", pl.col("end").alias("committee_end")), on="committee_id", how="left")
+        LOGGER.info("Checking %s memberships against known committee end dates", rows.height)
         failures = 0
-        after_dissolution = ((date_bound("start") > date_bound("dissolution", latest=True)) |
-                             (date_bound("end") > date_bound("dissolution", latest=True)))
-        for row in rows.filter(after_dissolution).iter_rows(named=True):
+        after_end = ((date_bound("start") > date_bound("committee_end", latest=True)) |
+                     (date_bound("end") > date_bound("committee_end", latest=True)))
+        for row in rows.filter(after_end).iter_rows(named=True):
             failures += 1
-            LOGGER.error("Membership definitely outlasts committee dissolution: %s", row)
-        LOGGER.info("Checked %s memberships; %s outlast dissolution", rows.height, failures)
-        self.assertEqual(0, failures, f"{failures} memberships outlast committee dissolution; details logged with trainerlog")
+            LOGGER.error("Membership definitely outlasts committee end: %s", row)
+        LOGGER.info("Checked %s memberships; %s outlast committee end", rows.height, failures)
+        self.assertEqual(0, failures, f"{failures} memberships outlast committee end; details logged with trainerlog")
 
     def test_membership_starts_are_not_outside_person_lifetimes(self):
         """Guarantee: membership cannot definitely start before birth or after death.
