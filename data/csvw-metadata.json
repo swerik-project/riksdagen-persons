@@ -261,8 +261,7 @@
           "person_id",
           "committee_id",
           "committee_role_id",
-          "start",
-          "end"
+          "start"
         ],
         "foreignKeys": [
           {
