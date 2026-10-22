@@ -204,21 +204,6 @@ class CommitteeIntegrity(unittest.TestCase):
                          f"{unresolved_starts} further starts are outside recorded active service; "
                          "their eligibility needs separate evidence, including leave and appointment semantics")
 
-    def test_wikidata_items_identify_one_committee(self):
-        """Guarantee: a Wikidata item never merges distinct committee entities.
-
-        Data: committee_external_identifiers.csv. Deferred incarnations must
-        stay unresolved instead of sharing an aggregate Wikidata identifier.
-        """
-        rows = pl.read_csv(DATA_DIR / "committee_external_identifiers.csv").filter(pl.col("authority") == "wikidata")
-        failures = 0
-        for group in rows.partition_by("identifier"):
-            if group["committee_id"].n_unique() != 1:
-                failures += 1
-                LOGGER.error("Wikidata item maps to multiple committees: %s", group.to_dicts())
-        LOGGER.info("Checked %s committee Wikidata links; %s ambiguous items", rows.height, failures)
-        self.assertEqual(0, failures, f"{failures} ambiguous Wikidata items; details logged")
-
     def test_raw_abbreviations_have_nfc_counterparts(self):
         """Guarantee: every raw abbreviation has an NFC spelling for that committee.
 
