@@ -1,0 +1,439 @@
+chair_group_id,chair_seating_plan_id,parent_group_id,group_type,label
+i-2PhyZmAEPEVFzF4cUxz5N5,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:3
+i-3nBxSGC4ndVdFyyRrti91k,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:1
+i-51UMWjJ7pDpnSST1wtRLf2,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:5
+i-6ccpVUf8GVM162PpE9dHKW,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:18
+i-7msQkK147SLzDs3mpKnroH,i-3FcragKXKrbZrZ7AWgiUpb,i-FaSwubs6yZgEHBgaUtPLcj,bank,Local bank 1:1
+i-7va8PnWXjH3qadM4tPPFUR,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:7
+i-8CY5Pp51zZV9JDnASirJkJ,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:15
+i-9qjAVQVdMTRdRdr47Pxsg1,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:14
+i-9vjUQhcfhpwqCcRwZB2kNm,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:9
+i-Av9X4RzDNphJPFBAtbX6gg,i-3FcragKXKrbZrZ7AWgiUpb,i-TBtHqqL6eQqknAWmi7qgAU,section,"inner main seating area, image right to left; gaps between pairs are not classified as physical aisles by this schematic"
+i-B3HwJWSX6Q23kxLfAyWQQN,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:2
+i-B3qmeTa24ibJfPNTn7N5HB,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:6
+i-BHSAE4pw2kBK8HEg7T9eoc,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:13
+i-CLH8wQbte6C7MFjYkmN5a8,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:12
+i-ChrL5vtmyCabMxGjP6pMGC,i-3FcragKXKrbZrZ7AWgiUpb,i-Fv27HTAwnokLof9xrM4MTs,bank,Local bank 1:2
+i-EAnVYni279yZDma6KUM649,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:6
+i-EZXFGHXYopGcEwPpWHQ3qZ,i-3FcragKXKrbZrZ7AWgiUpb,i-ExW9oJPH2raagSjRBQe2Qc,bank,Local bank 1:1
+i-ExW9oJPH2raagSjRBQe2Qc,i-3FcragKXKrbZrZ7AWgiUpb,i-TBtHqqL6eQqknAWmi7qgAU,section,"vice speakers on the podium, image left to right"
+i-FaSwubs6yZgEHBgaUtPLcj,i-3FcragKXKrbZrZ7AWgiUpb,i-TBtHqqL6eQqknAWmi7qgAU,section,"outer debate arc, image right to left; central passage between 37 and 38"
+i-Fv27HTAwnokLof9xrM4MTs,i-3FcragKXKrbZrZ7AWgiUpb,i-TBtHqqL6eQqknAWmi7qgAU,section,"inner debate arc, image right to left; central passage between 14 and 15"
+i-GRTdVQ7qPqLrGuxiQU3BZP,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:8
+i-GyBCEpdVGsWkKMUyjLuDUy,i-3FcragKXKrbZrZ7AWgiUpb,i-FaSwubs6yZgEHBgaUtPLcj,bank,Local bank 1:2
+i-HyXmyPEZbQicRyFp61Vv2K,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:10
+i-KhFJska6e21KpwAsWr28D6,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:9
+i-LZaYee2sYy674yMZ3n8zdH,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:14
+i-M6KzsAwqvefp5kSQtzzDTd,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:3
+i-MF5yysE22wwwFdqJuXWLME,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:11
+i-MrV66bNEafmRRnqkchEuRF,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:2
+i-RC3oAzVdK9favo7BS2aGKh,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:17
+i-RYVYQCt8Dsb4wDjFmFqvqr,i-3FcragKXKrbZrZ7AWgiUpb,i-Fv27HTAwnokLof9xrM4MTs,bank,Local bank 1:1
+i-SikiTWksJ8EDz1gXv733GU,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:4
+i-SrBuXKq1v3XcECZ9CepuY4,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:15
+i-Svgz8C4ncCLKkNN4D1URNQ,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:13
+i-TBtHqqL6eQqknAWmi7qgAU,i-3FcragKXKrbZrZ7AWgiUpb,,chamber,Placing in the chamber for parliamentary session 2026/27; MP seats
+i-TVKLooWnFf3HvZoS6shEMo,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:1
+i-UiCFyr7VdmzVdvcoB9xEJw,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:4
+i-VQG9g37FCYvjgUJTkUJs2N,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:16
+i-VotfjRYq3GDMhaf4TT6wjP,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:5
+i-WKKZrfmt3LzLsLC45HmTuf,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:8
+i-Wg2GPFMTC1pjjGcdqBHfxQ,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:11
+i-X2VzDd8uRFp6KWgV2YYJpp,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:10
+i-XAiFb9TJvJcxRDcsBtWu3b,i-3FcragKXKrbZrZ7AWgiUpb,i-vmNMMTtG5GhAsunDa9G8p,bank,Local bank 1:12
+i-geR42yw5bLyFHQKbPxitD,i-3FcragKXKrbZrZ7AWgiUpb,i-Av9X4RzDNphJPFBAtbX6gg,bank,Local bank 1:7
+i-vmNMMTtG5GhAsunDa9G8p,i-3FcragKXKrbZrZ7AWgiUpb,i-TBtHqqL6eQqknAWmi7qgAU,section,"outer main seating area, image right to left; gaps between pairs are not classified as physical aisles by this schematic"
+i-2hcgPq21EPLeM3P1WyYFmV,i-3rtB4GAECZhiviPupE1Qxs,i-MuGVbhmzNca4vkSqR6kQrm,bank,Bank 4
+i-3A57iASyFCBpqPAmKT5VCV,i-3rtB4GAECZhiviPupE1Qxs,i-MuGVbhmzNca4vkSqR6kQrm,bank,Bank 1
+i-6hUJaWWYDZpJDfQSxRWJ6L,i-3rtB4GAECZhiviPupE1Qxs,i-MuGVbhmzNca4vkSqR6kQrm,bank,Bank 3
+i-7nnQAhTd8CMETSN5zxeWHr,i-3rtB4GAECZhiviPupE1Qxs,i-UyujihUsgCa43owZ3tVcFU,section,left half in source
+i-9UHnaZTZAUwkn6YCxo9u7x,i-3rtB4GAECZhiviPupE1Qxs,i-MuGVbhmzNca4vkSqR6kQrm,bank,Bank 6
+i-9w1Agt5ZuWKDWc2e6SXWx4,i-3rtB4GAECZhiviPupE1Qxs,i-7nnQAhTd8CMETSN5zxeWHr,bank,Bank 8
+i-DRVCU8Mo9x91HcXxwgrGq3,i-3rtB4GAECZhiviPupE1Qxs,i-7nnQAhTd8CMETSN5zxeWHr,bank,Bank 10
+i-DrU6r55afzdS2Cd6jxLjnW,i-3rtB4GAECZhiviPupE1Qxs,i-UyujihUsgCa43owZ3tVcFU,podium,Podium
+i-JsDz2j4F4EYQaibQEXUHEP,i-3rtB4GAECZhiviPupE1Qxs,i-7nnQAhTd8CMETSN5zxeWHr,bank,Bank 9
+i-MuGVbhmzNca4vkSqR6kQrm,i-3rtB4GAECZhiviPupE1Qxs,i-UyujihUsgCa43owZ3tVcFU,section,right half in source
+i-NcpxQVqNNoJXuaymh3BVrR,i-3rtB4GAECZhiviPupE1Qxs,i-MuGVbhmzNca4vkSqR6kQrm,bank,Bank 7
+i-PwMjWcexsjxWTKsgH4HruX,i-3rtB4GAECZhiviPupE1Qxs,i-7nnQAhTd8CMETSN5zxeWHr,bank,Bank 12
+i-S5hijSieER2zYDtK8zTqRf,i-3rtB4GAECZhiviPupE1Qxs,i-MuGVbhmzNca4vkSqR6kQrm,bank,Bank 2
+i-SRA6C4u31L3w6NSLXddDTP,i-3rtB4GAECZhiviPupE1Qxs,i-7nnQAhTd8CMETSN5zxeWHr,bank,Bank 13
+i-T5Kc7oaTMtVR41m97VD5PP,i-3rtB4GAECZhiviPupE1Qxs,i-MuGVbhmzNca4vkSqR6kQrm,bank,Bank 5
+i-TCCZEZwqDqYDz8dWdhPvL2,i-3rtB4GAECZhiviPupE1Qxs,i-7nnQAhTd8CMETSN5zxeWHr,bank,Bank 14
+i-UyujihUsgCa43owZ3tVcFU,i-3rtB4GAECZhiviPupE1Qxs,,chamber,FK1935
+i-Y7xTyKot2BuMQuUcAP91Po,i-3rtB4GAECZhiviPupE1Qxs,i-7nnQAhTd8CMETSN5zxeWHr,bank,Bank 11
+i-4mucwWnpwW8NYq8hGS12TH,i-ASptP5Daqh8yrf5UecQ39v,i-HY1tMVEYzRgYSRjydSqQPX,bank,Bank 1
+i-5MeQEuJhahvkJVmnKSFCuz,i-ASptP5Daqh8yrf5UecQ39v,i-KWyzsYTXx7XgFjgrTCHkRK,bank,Bank 9
+i-6C4uReeUXxAWuGJ5K9NH7i,i-ASptP5Daqh8yrf5UecQ39v,i-KWyzsYTXx7XgFjgrTCHkRK,bank,Bank 12
+i-7yzbG1mCotG38LNaVMNu85,i-ASptP5Daqh8yrf5UecQ39v,i-HY1tMVEYzRgYSRjydSqQPX,bank,Bank 5
+i-Eft8ZBqJrbXb2Z8bCSVJ3Z,i-ASptP5Daqh8yrf5UecQ39v,i-HY1tMVEYzRgYSRjydSqQPX,bank,Bank 7
+i-Fp9UBWu7ZjwQXj88Rvt1S6,i-ASptP5Daqh8yrf5UecQ39v,i-KWyzsYTXx7XgFjgrTCHkRK,bank,Bank 10
+i-G5wxaUiyAkdxKXVdnyrV2q,i-ASptP5Daqh8yrf5UecQ39v,,chamber,FK1961
+i-HY1tMVEYzRgYSRjydSqQPX,i-ASptP5Daqh8yrf5UecQ39v,i-G5wxaUiyAkdxKXVdnyrV2q,section,right half in source
+i-KWyzsYTXx7XgFjgrTCHkRK,i-ASptP5Daqh8yrf5UecQ39v,i-G5wxaUiyAkdxKXVdnyrV2q,section,left half in source
+i-KtiZFKrihN6LmPVqK9Ez6W,i-ASptP5Daqh8yrf5UecQ39v,i-KWyzsYTXx7XgFjgrTCHkRK,bank,Bank 11
+i-Nq912DdV9wG7L6LmxCM9KQ,i-ASptP5Daqh8yrf5UecQ39v,i-KWyzsYTXx7XgFjgrTCHkRK,bank,Bank 13
+i-QRTPR2uZp8xdzt5ofdDA7H,i-ASptP5Daqh8yrf5UecQ39v,i-G5wxaUiyAkdxKXVdnyrV2q,podium,Podium
+i-SnUuq1UyGdxWrVM7MMEbah,i-ASptP5Daqh8yrf5UecQ39v,i-HY1tMVEYzRgYSRjydSqQPX,bank,Bank 2
+i-TXU8qR3ccyKENdDTJN3ve6,i-ASptP5Daqh8yrf5UecQ39v,i-HY1tMVEYzRgYSRjydSqQPX,bank,Bank 6
+i-Uh9okwpyCYmxBjDoJQWNcq,i-ASptP5Daqh8yrf5UecQ39v,i-KWyzsYTXx7XgFjgrTCHkRK,bank,Bank 8
+i-V9PKghU9yCuty1hbw8eM15,i-ASptP5Daqh8yrf5UecQ39v,i-HY1tMVEYzRgYSRjydSqQPX,bank,Bank 4
+i-WKkrJck58ZNgruuHr65Eux,i-ASptP5Daqh8yrf5UecQ39v,i-KWyzsYTXx7XgFjgrTCHkRK,bank,Bank 14
+i-XGgWVTcHeXUgGX9VDyfhdB,i-ASptP5Daqh8yrf5UecQ39v,i-HY1tMVEYzRgYSRjydSqQPX,bank,Bank 3
+i-25Pjtxc67Z19U2BS9mkfJq,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 10
+i-2WYpPKcu4wC8pJ5C53XJnP,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 18
+i-2XsNgNMSdmaj3X3vnPGDH8,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 7
+i-4LLGwcuY9EJbW4fZYt3Uez,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 3
+i-4NUmXZwRhLbabqMwYfrHBk,i-EUJZz132LDwCFWKkKxu3r1,i-7a3b26fXx4tMwxvmQbE3pg,bank,Bank 3
+i-4mokbsS5ytxr2jcokjEp71,i-EUJZz132LDwCFWKkKxu3r1,i-7a3b26fXx4tMwxvmQbE3pg,bank,Bank 2
+i-5GDdBRvzwdtGNyRgvqY1se,i-EUJZz132LDwCFWKkKxu3r1,i-7a3b26fXx4tMwxvmQbE3pg,bank,Bank 6
+i-5dK6KUyrUQvLj8MaSKK5m5,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 14
+i-66YakurazuGfw2zwFjh7yo,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 8
+i-6TDZX1DX4Gv8EGYugYoiga,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 14
+i-6V4YwLru6YYxVDQu8TGUfE,i-EUJZz132LDwCFWKkKxu3r1,i-Sh7UruSC7xshNC1xuADZyD,arc,"Arc 2, inner to outer"
+i-6sfHVAJDX7NL9baWzRQ9Ky,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 4
+i-6vMeEqKM9uCFcJpgZxdSrY,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 15
+i-7a3b26fXx4tMwxvmQbE3pg,i-EUJZz132LDwCFWKkKxu3r1,i-Sh7UruSC7xshNC1xuADZyD,arc,"Arc 1, inner to outer"
+i-7jVJ7m994w9pVRfZtb5XQ1,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 6
+i-8UhPqeUhPncRKtBppEzXKs,i-EUJZz132LDwCFWKkKxu3r1,i-7a3b26fXx4tMwxvmQbE3pg,bank,Bank 1
+i-8gVhbxWrwCeKzwnppvPFmQ,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 8
+i-9YxNqwiFhSjUtRSugdpP63,i-EUJZz132LDwCFWKkKxu3r1,i-Sh7UruSC7xshNC1xuADZyD,arc,"Arc 3, inner to outer"
+i-9cJCrp7VSJtxjy3RW64rtb,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 12
+i-9zKSyq8eFb9dCp86JfCpbt,i-EUJZz132LDwCFWKkKxu3r1,i-7a3b26fXx4tMwxvmQbE3pg,bank,Bank 9
+i-A1nt521gQCqqTJjTzm3vbe,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 6
+i-AJ8C4FDAYwxX19CoQzTcK2,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 2
+i-CGZA8xSweekWQivftAnMLe,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 5
+i-CMbDJyCYR6xbjJdGNcYavH,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 12
+i-D13YGzowBc55RsbGma7hgp,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 9
+i-D9Aveb34nCYwqoumBhMkkU,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 17
+i-GRoeH6EEWQ1jhgW8QknVf4,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 13
+i-Gdepf7C7198voQ1AQ12ejA,i-EUJZz132LDwCFWKkKxu3r1,i-Sh7UruSC7xshNC1xuADZyD,podium,Podium
+i-GmS6jS68gEdC1B8HEqsjxJ,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 11
+i-JcDmsBdKB8gQjy3UTKB2Ev,i-EUJZz132LDwCFWKkKxu3r1,i-7a3b26fXx4tMwxvmQbE3pg,bank,Bank 12
+i-LJCQ6x9KT5EFEQzdqUUYxs,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 2
+i-Lits6uUGbqjPeBPLyVBVDb,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 1
+i-NZkmNksjL4H6YqU2Du7Pja,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 1
+i-Psz3nZpQMYer6pfdyv5ke1,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 4
+i-RNTmwXV1aDVEmUcXNE3J8G,i-EUJZz132LDwCFWKkKxu3r1,i-7a3b26fXx4tMwxvmQbE3pg,bank,Bank 11
+i-Rmeu5F4Y2Bhnb1WkhB6CNc,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 9
+i-Sc3rp63AsU7EkBPLpdSB13,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 11
+i-Sh7UruSC7xshNC1xuADZyD,i-EUJZz132LDwCFWKkKxu3r1,,chamber,EK1985
+i-SsT3EnwiunbcSCschoJUAr,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 13
+i-T7muzqKJ1bybfQbp1sK7s7,i-EUJZz132LDwCFWKkKxu3r1,i-7a3b26fXx4tMwxvmQbE3pg,bank,Bank 8
+i-TpzMXfDeSsXfRfCg7dUkxd,i-EUJZz132LDwCFWKkKxu3r1,i-9YxNqwiFhSjUtRSugdpP63,bank,Bank 16
+i-UDrJao8vfQTxqHN6JW3NJi,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 10
+i-UumQnoiv9QFYG3TrPuN48i,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 15
+i-WFwkLBTTGr25PqTAv6LW3N,i-EUJZz132LDwCFWKkKxu3r1,i-7a3b26fXx4tMwxvmQbE3pg,bank,Bank 7
+i-X4bCJnPM2rDbwWwuyVyD6X,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 7
+i-XRhQ13iM73nJq8zbAfXBJp,i-EUJZz132LDwCFWKkKxu3r1,i-7a3b26fXx4tMwxvmQbE3pg,bank,Bank 10
+i-XZv53BNiNH1JomMLLTSCgU,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 3
+i-XbRiM8GoF9G6WVK3beL14G,i-EUJZz132LDwCFWKkKxu3r1,i-7a3b26fXx4tMwxvmQbE3pg,bank,Bank 4
+i-Y8qhTAnCK6Cz5L3JvqCaG6,i-EUJZz132LDwCFWKkKxu3r1,i-6V4YwLru6YYxVDQu8TGUfE,bank,Bank 5
+i-YWkBABtWYNsRF34ShqLChP,i-EUJZz132LDwCFWKkKxu3r1,i-7a3b26fXx4tMwxvmQbE3pg,bank,Bank 5
+i-3hhkRmdvAwXorxvATMxt7x,i-FBgnKk8wPWPvdbHJXWNDQ9,i-WUHFXcRd6Mpkt3mFJUBpRK,bank,Bank 5
+i-7h7mMxmBv6ta6CbYfVau72,i-FBgnKk8wPWPvdbHJXWNDQ9,i-ARXXoqwcAJ2mccYoNLiunJ,bank,Bank 11
+i-8YQpecRgiHm2HiJE7Rp4na,i-FBgnKk8wPWPvdbHJXWNDQ9,i-WUHFXcRd6Mpkt3mFJUBpRK,bank,Bank 6
+i-ARXXoqwcAJ2mccYoNLiunJ,i-FBgnKk8wPWPvdbHJXWNDQ9,i-Y6mMsuJR3S6CEnAbKc5d8k,section,left half in source
+i-BHMob4bKtM5dvXSe3ZaP5Z,i-FBgnKk8wPWPvdbHJXWNDQ9,i-WUHFXcRd6Mpkt3mFJUBpRK,bank,Bank 2
+i-C1ZBFFFZU1atTEgyJaaQXt,i-FBgnKk8wPWPvdbHJXWNDQ9,i-WUHFXcRd6Mpkt3mFJUBpRK,bank,Bank 1
+i-G7VpftsqdqXWbkeSxmYbtG,i-FBgnKk8wPWPvdbHJXWNDQ9,i-ARXXoqwcAJ2mccYoNLiunJ,bank,Bank 9
+i-GsLNtQD3u1LtvnJwwCTWTD,i-FBgnKk8wPWPvdbHJXWNDQ9,i-WUHFXcRd6Mpkt3mFJUBpRK,bank,Bank 4
+i-JDVRT79nzqvEhoztjm1ji,i-FBgnKk8wPWPvdbHJXWNDQ9,i-WUHFXcRd6Mpkt3mFJUBpRK,bank,Bank 3
+i-KmsdYwUab8eogyswPKXTD2,i-FBgnKk8wPWPvdbHJXWNDQ9,i-Y6mMsuJR3S6CEnAbKc5d8k,podium,Podium
+i-PV7viPrLwCEvMBLoEvnro9,i-FBgnKk8wPWPvdbHJXWNDQ9,i-ARXXoqwcAJ2mccYoNLiunJ,bank,Bank 12
+i-SGtUFGahRQRyZDkQQ3zRnC,i-FBgnKk8wPWPvdbHJXWNDQ9,i-ARXXoqwcAJ2mccYoNLiunJ,bank,Bank 13
+i-ScPn5ziTsftjvv98jkcvxn,i-FBgnKk8wPWPvdbHJXWNDQ9,i-ARXXoqwcAJ2mccYoNLiunJ,bank,Bank 14
+i-V1K4QCvRa2DRxiHHMxHDTc,i-FBgnKk8wPWPvdbHJXWNDQ9,i-ARXXoqwcAJ2mccYoNLiunJ,bank,Bank 8
+i-WUHFXcRd6Mpkt3mFJUBpRK,i-FBgnKk8wPWPvdbHJXWNDQ9,i-Y6mMsuJR3S6CEnAbKc5d8k,section,right half in source
+i-XZNh5k68pqvqMzWiRukec6,i-FBgnKk8wPWPvdbHJXWNDQ9,i-ARXXoqwcAJ2mccYoNLiunJ,bank,Bank 10
+i-Y6mMsuJR3S6CEnAbKc5d8k,i-FBgnKk8wPWPvdbHJXWNDQ9,,chamber,FK1957
+i-eyxPmRr6TWnjvuUJmfoTX,i-FBgnKk8wPWPvdbHJXWNDQ9,i-WUHFXcRd6Mpkt3mFJUBpRK,bank,Bank 7
+i-2WbExG2qWGF4im7U7NrEvi,i-GNicbmMpTVfHEx7zRayCKF,,chamber,"Forsta Kammarens samlingsrum, rectangular plan"
+i-2cYnUpz8UFKgXFRz2mELXk,i-GNicbmMpTVfHEx7zRayCKF,i-RePMAKFncnPeXVG7G76NVT,bank,Local bank 1:3
+i-3BR8hYqD4ThdVuXgtiutt8,i-GNicbmMpTVfHEx7zRayCKF,i-2WbExG2qWGF4im7U7NrEvi,section,podium-side right banks; local rows run vertically in image
+i-8zhRwpYovxfcHfoVg8ZEap,i-GNicbmMpTVfHEx7zRayCKF,i-3BR8hYqD4ThdVuXgtiutt8,bank,Local bank 1:1
+i-B9N15bdSgTSN4CX3EKk24c,i-GNicbmMpTVfHEx7zRayCKF,i-2WbExG2qWGF4im7U7NrEvi,section,"main seating area, image left to right and top to bottom"
+i-BBHVtGWdWNyEZBjjvLH5ra,i-GNicbmMpTVfHEx7zRayCKF,i-B9N15bdSgTSN4CX3EKk24c,bank,Local bank 1:2
+i-CzDQAtgidr4TcnTZciNoBQ,i-GNicbmMpTVfHEx7zRayCKF,i-B9N15bdSgTSN4CX3EKk24c,bank,Local bank 1:4
+i-EegZaVsjyLaLfWxspsFxry,i-GNicbmMpTVfHEx7zRayCKF,i-RePMAKFncnPeXVG7G76NVT,bank,Local bank 1:1
+i-H5NEDpCg5oBda1gmAGTUsc,i-GNicbmMpTVfHEx7zRayCKF,i-B9N15bdSgTSN4CX3EKk24c,bank,Local bank 1:1
+i-J8tqat8F9BgeXL4ARbvDxA,i-GNicbmMpTVfHEx7zRayCKF,i-2WbExG2qWGF4im7U7NrEvi,podium,Speaker (Talman)
+i-RBQxd1tukpFkyt7fQVr5nN,i-GNicbmMpTVfHEx7zRayCKF,i-RePMAKFncnPeXVG7G76NVT,bank,Local bank 1:2
+i-RePMAKFncnPeXVG7G76NVT,i-GNicbmMpTVfHEx7zRayCKF,i-2WbExG2qWGF4im7U7NrEvi,section,podium-side left banks; local rows run vertically in image
+i-TWEpMEsAxZLsEtbYYdqp3,i-GNicbmMpTVfHEx7zRayCKF,i-3BR8hYqD4ThdVuXgtiutt8,bank,Local bank 1:3
+i-WDWSv1aG7pV53FNN8GMKXu,i-GNicbmMpTVfHEx7zRayCKF,i-3BR8hYqD4ThdVuXgtiutt8,bank,Local bank 1:2
+i-gYpMmDCmAYLdBZvaD77wg,i-GNicbmMpTVfHEx7zRayCKF,i-B9N15bdSgTSN4CX3EKk24c,bank,Local bank 1:3
+i-3gpWh6zgR2T1tp7wvnGze8,i-HUQEpZ5Ke93YQ73Rj8DM95,i-FgLeTcqv9RQjWrTdj5Fk5a,bank,Bank 2
+i-5AtwoFRyL5kyXfMqB8L89t,i-HUQEpZ5Ke93YQ73Rj8DM95,i-JYFDNDGp2j1W1SdQD9daDp,bank,Bank 13
+i-8C1dhog6bkbrCm5yMzzYPp,i-HUQEpZ5Ke93YQ73Rj8DM95,i-FgLeTcqv9RQjWrTdj5Fk5a,bank,Bank 5
+i-B1jEhr4ZwFRqr9nkW1dVXt,i-HUQEpZ5Ke93YQ73Rj8DM95,,chamber,AK1965
+i-Ba2ZHwJUMMsUYKAaWuRNdP,i-HUQEpZ5Ke93YQ73Rj8DM95,i-FgLeTcqv9RQjWrTdj5Fk5a,bank,Bank 4
+i-CPd8zei1XWUKGDvhqzj3z3,i-HUQEpZ5Ke93YQ73Rj8DM95,i-JYFDNDGp2j1W1SdQD9daDp,bank,Bank 16
+i-D7QKB8QmTb4HpxdbFQUr5g,i-HUQEpZ5Ke93YQ73Rj8DM95,i-JYFDNDGp2j1W1SdQD9daDp,bank,Bank 11
+i-FgLeTcqv9RQjWrTdj5Fk5a,i-HUQEpZ5Ke93YQ73Rj8DM95,i-B1jEhr4ZwFRqr9nkW1dVXt,section,right half in source
+i-JYFDNDGp2j1W1SdQD9daDp,i-HUQEpZ5Ke93YQ73Rj8DM95,i-B1jEhr4ZwFRqr9nkW1dVXt,section,left half in source
+i-KBLcacJhp8oGAfVbtWD6TM,i-HUQEpZ5Ke93YQ73Rj8DM95,i-FgLeTcqv9RQjWrTdj5Fk5a,bank,Bank 1
+i-KsQNX1eRpUFEMqisgpbVvJ,i-HUQEpZ5Ke93YQ73Rj8DM95,i-JYFDNDGp2j1W1SdQD9daDp,bank,Bank 10
+i-Lwre22kY3s8KMyXH1HHQK2,i-HUQEpZ5Ke93YQ73Rj8DM95,i-FgLeTcqv9RQjWrTdj5Fk5a,bank,Bank 8
+i-PFM4UsMyYCoE2AYbMihyqe,i-HUQEpZ5Ke93YQ73Rj8DM95,i-JYFDNDGp2j1W1SdQD9daDp,bank,Bank 14
+i-PZye3z2Ky91P5HE9PyK34H,i-HUQEpZ5Ke93YQ73Rj8DM95,i-FgLeTcqv9RQjWrTdj5Fk5a,bank,Bank 6
+i-Qzp2CnwoGWSGdPrfe9btp2,i-HUQEpZ5Ke93YQ73Rj8DM95,i-B1jEhr4ZwFRqr9nkW1dVXt,podium,Podium
+i-SsdSSp2Kh3Zkr5xGRHBazX,i-HUQEpZ5Ke93YQ73Rj8DM95,i-JYFDNDGp2j1W1SdQD9daDp,bank,Bank 9
+i-ToW3yduFVoXdRWtZy8mzj7,i-HUQEpZ5Ke93YQ73Rj8DM95,i-FgLeTcqv9RQjWrTdj5Fk5a,bank,Bank 7
+i-VxN3ADBA4Z42LB7V2BHDnD,i-HUQEpZ5Ke93YQ73Rj8DM95,i-JYFDNDGp2j1W1SdQD9daDp,bank,Bank 12
+i-Wrrfj8xoyULD7Jij5viDyz,i-HUQEpZ5Ke93YQ73Rj8DM95,i-JYFDNDGp2j1W1SdQD9daDp,bank,Bank 15
+i-Y96WcDuHMH6Lmeeqq1ATAt,i-HUQEpZ5Ke93YQ73Rj8DM95,i-FgLeTcqv9RQjWrTdj5Fk5a,bank,Bank 3
+i-16t2t9BPYB4gstPSLoKLvq,i-JxF914YvtmgQw5Lvqsge56,i-AdN11z21xGCxiZfh3bFPbh,bank,Local bank 7:1
+i-41pboHoBu2bxiq7twi35Bz,i-JxF914YvtmgQw5Lvqsge56,i-8Lfn2o42U8d335QxTssn2P,section,"right half, read after rotating image 45 degrees counterclockwise"
+i-528xnqA3Mb6hEmo8p7cPqb,i-JxF914YvtmgQw5Lvqsge56,i-41pboHoBu2bxiq7twi35Bz,bank,Local bank 7:1
+i-8Lfn2o42U8d335QxTssn2P,i-JxF914YvtmgQw5Lvqsge56,,chamber,"Andra kammarens plenisal, angled plan printed 1970"
+i-8zUewhn4KAszUkEDRN3Q2u,i-JxF914YvtmgQw5Lvqsge56,i-41pboHoBu2bxiq7twi35Bz,bank,Local bank 4:1
+i-AV9DzhV6JhhFQtvcCAgqpe,i-JxF914YvtmgQw5Lvqsge56,i-AdN11z21xGCxiZfh3bFPbh,bank,Local bank 3:1
+i-AdN11z21xGCxiZfh3bFPbh,i-JxF914YvtmgQw5Lvqsge56,i-8Lfn2o42U8d335QxTssn2P,section,"left half, read after rotating image 45 degrees clockwise"
+i-CNqKSKkBxPWKFX5HpywmC5,i-JxF914YvtmgQw5Lvqsge56,i-41pboHoBu2bxiq7twi35Bz,bank,Local bank 1:1
+i-GW9q7YkPULDyQskgBuy3XN,i-JxF914YvtmgQw5Lvqsge56,i-AdN11z21xGCxiZfh3bFPbh,bank,Local bank 1:1
+i-KaMW7YG2EJ9hmfAYNEsmkK,i-JxF914YvtmgQw5Lvqsge56,i-41pboHoBu2bxiq7twi35Bz,bank,Local bank 6:1
+i-LNR88tD83DngmYFC5wGAJ,i-JxF914YvtmgQw5Lvqsge56,i-41pboHoBu2bxiq7twi35Bz,bank,Local bank 5:1
+i-PsdNDNZqS5NaenriFQFFS,i-JxF914YvtmgQw5Lvqsge56,i-AdN11z21xGCxiZfh3bFPbh,bank,Local bank 5:1
+i-S4ufmycgjQkSxj6mTgsvpQ,i-JxF914YvtmgQw5Lvqsge56,i-41pboHoBu2bxiq7twi35Bz,bank,Local bank 8:1
+i-VMxTtTraeY2dGqh2zpvmAA,i-JxF914YvtmgQw5Lvqsge56,i-AdN11z21xGCxiZfh3bFPbh,bank,Local bank 4:1
+i-Vre2FWNxfHU2eiuzPYCqYJ,i-JxF914YvtmgQw5Lvqsge56,i-41pboHoBu2bxiq7twi35Bz,bank,Local bank 2:1
+i-W3rZomAkw5YnydfDVywFWK,i-JxF914YvtmgQw5Lvqsge56,i-AdN11z21xGCxiZfh3bFPbh,bank,Local bank 2:1
+i-WJhuZ4Wb62SYw5B28Ps3HB,i-JxF914YvtmgQw5Lvqsge56,i-41pboHoBu2bxiq7twi35Bz,bank,Local bank 3:1
+i-WPo8ej7tGGat4NtjuWqCZK,i-JxF914YvtmgQw5Lvqsge56,i-AdN11z21xGCxiZfh3bFPbh,bank,Local bank 8:1
+i-XBEsVtfh4mNzNSt5LuadXn,i-JxF914YvtmgQw5Lvqsge56,i-AdN11z21xGCxiZfh3bFPbh,bank,Local bank 6:1
+i-2DuHVEs6r6SMEonQ2c1sSW,i-JxyaxSiJaTDQWKoaoQptFq,,chamber,AK1935
+i-4vECThbcNDzMQbrZmmyLb8,i-JxyaxSiJaTDQWKoaoQptFq,i-x1kNszZmcEBovG14XFJG8,bank,Bank 13
+i-551BXNYP2sSq5rirYVinLL,i-JxyaxSiJaTDQWKoaoQptFq,i-2DuHVEs6r6SMEonQ2c1sSW,podium,Podium
+i-6znTR5rD59tKLd8ZPonf5T,i-JxyaxSiJaTDQWKoaoQptFq,i-FRQjv8LZeCMhgheUuFead1,bank,Bank 3
+i-7exUrf4UQuJn4tAazQkFNL,i-JxyaxSiJaTDQWKoaoQptFq,i-x1kNszZmcEBovG14XFJG8,bank,Bank 10
+i-8ZLQVpev75pEfW4z2JkEVD,i-JxyaxSiJaTDQWKoaoQptFq,i-FRQjv8LZeCMhgheUuFead1,bank,Bank 8
+i-8uSbXWXavNz5QppBvs9Xdp,i-JxyaxSiJaTDQWKoaoQptFq,i-x1kNszZmcEBovG14XFJG8,bank,Bank 12
+i-BceMW871hByZbio8VnWJND,i-JxyaxSiJaTDQWKoaoQptFq,i-FRQjv8LZeCMhgheUuFead1,bank,Bank 6
+i-FRQjv8LZeCMhgheUuFead1,i-JxyaxSiJaTDQWKoaoQptFq,i-2DuHVEs6r6SMEonQ2c1sSW,section,right half in source
+i-KuhV2z3D664yphsJV8QYuU,i-JxyaxSiJaTDQWKoaoQptFq,i-FRQjv8LZeCMhgheUuFead1,bank,Bank 2
+i-Kwq8s13kPpgkDRJ3DscgWV,i-JxyaxSiJaTDQWKoaoQptFq,i-x1kNszZmcEBovG14XFJG8,bank,Bank 15
+i-MPfe78JCU93aZ7N7JJCna9,i-JxyaxSiJaTDQWKoaoQptFq,i-FRQjv8LZeCMhgheUuFead1,bank,Bank 4
+i-Msm3fdio1um87nRCVr4xtW,i-JxyaxSiJaTDQWKoaoQptFq,i-x1kNszZmcEBovG14XFJG8,bank,Bank 11
+i-NRiAWtgG1DxLDMMaWPXcoa,i-JxyaxSiJaTDQWKoaoQptFq,i-x1kNszZmcEBovG14XFJG8,bank,Bank 9
+i-RiXgf2N8FFn3JxUBV6MWwG,i-JxyaxSiJaTDQWKoaoQptFq,i-x1kNszZmcEBovG14XFJG8,bank,Bank 14
+i-SRPVKX959TNExkLhNkw9e,i-JxyaxSiJaTDQWKoaoQptFq,i-FRQjv8LZeCMhgheUuFead1,bank,Bank 7
+i-Tku88734XxS7s8jZqGBo5M,i-JxyaxSiJaTDQWKoaoQptFq,i-FRQjv8LZeCMhgheUuFead1,bank,Bank 5
+i-VqxCzEpnvJeXvU5rWm9yyq,i-JxyaxSiJaTDQWKoaoQptFq,i-x1kNszZmcEBovG14XFJG8,bank,Bank 16
+i-XxQYPXtRkFULwJ1BbpoMaX,i-JxyaxSiJaTDQWKoaoQptFq,i-FRQjv8LZeCMhgheUuFead1,bank,Bank 1
+i-x1kNszZmcEBovG14XFJG8,i-JxyaxSiJaTDQWKoaoQptFq,i-2DuHVEs6r6SMEonQ2c1sSW,section,left half in source
+i-4Ub19a3AFmsM3XrvrX8NUG,i-LCZR7kWxjvZYY5tRC1z9BL,i-LSmmhTjX8uEChDaPoAyAhd,bank,Local bank 1:2
+i-4asbwB3pY8CRCVXsZvDZCG,i-LCZR7kWxjvZYY5tRC1z9BL,i-WjP4EwsP5e4c2mSP8ueUZS,bank,Local bank 1:4
+i-4eUS9AFf1gdoYXVYPDaQSx,i-LCZR7kWxjvZYY5tRC1z9BL,i-WjP4EwsP5e4c2mSP8ueUZS,bank,Local bank 1:3
+i-9RXQND5BvH4BPpvWGdUK6A,i-LCZR7kWxjvZYY5tRC1z9BL,i-AxHycM4YvquMemV5FZR9RZ,bank,Local bank 1:3
+i-9wFoztaWdwdm7LNzUM8hqg,i-LCZR7kWxjvZYY5tRC1z9BL,i-KXwqdW39f4b2Nx6oB3tPkk,podium,Speaker (Talman)
+i-AxHycM4YvquMemV5FZR9RZ,i-LCZR7kWxjvZYY5tRC1z9BL,i-KXwqdW39f4b2Nx6oB3tPkk,section,podium-side left banks; local rows run vertically in image
+i-BRpS2ceQxw6i4o59A1JsPW,i-LCZR7kWxjvZYY5tRC1z9BL,i-WjP4EwsP5e4c2mSP8ueUZS,bank,Local bank 1:1
+i-FVzugHvL2UHm7tYA6WtzSG,i-LCZR7kWxjvZYY5tRC1z9BL,i-LSmmhTjX8uEChDaPoAyAhd,bank,Local bank 1:4
+i-Ghh7t5aJWyiNDRw3jGa4JK,i-LCZR7kWxjvZYY5tRC1z9BL,i-LSmmhTjX8uEChDaPoAyAhd,bank,Local bank 1:1
+i-KXwqdW39f4b2Nx6oB3tPkk,i-LCZR7kWxjvZYY5tRC1z9BL,,chamber,"Andra Kammarens Samlingsrum, rectangular plan"
+i-LSmmhTjX8uEChDaPoAyAhd,i-LCZR7kWxjvZYY5tRC1z9BL,i-KXwqdW39f4b2Nx6oB3tPkk,section,"main seating area, image left to right and top to bottom"
+i-LkcXjjL8i3BN76uwq32v15,i-LCZR7kWxjvZYY5tRC1z9BL,i-AxHycM4YvquMemV5FZR9RZ,bank,Local bank 1:2
+i-NFm2jR7VYQggR7dcf8ZeEk,i-LCZR7kWxjvZYY5tRC1z9BL,i-AxHycM4YvquMemV5FZR9RZ,bank,Local bank 1:4
+i-SUnGDzESNjojf24JMsBhT2,i-LCZR7kWxjvZYY5tRC1z9BL,i-WjP4EwsP5e4c2mSP8ueUZS,bank,Local bank 1:2
+i-U1sXH5AVukt9E5borxo1Eo,i-LCZR7kWxjvZYY5tRC1z9BL,i-LSmmhTjX8uEChDaPoAyAhd,bank,Local bank 1:3
+i-UcoGjPTnQ5yUNBpH3Duf8t,i-LCZR7kWxjvZYY5tRC1z9BL,i-AxHycM4YvquMemV5FZR9RZ,bank,Local bank 1:1
+i-WjP4EwsP5e4c2mSP8ueUZS,i-LCZR7kWxjvZYY5tRC1z9BL,i-KXwqdW39f4b2Nx6oB3tPkk,section,podium-side right banks; local rows run vertically in image
+i-17JG3sGZNP91f2J1KVbJVN,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:6
+i-2LJUVSwtjbFmtxAgQmxiop,i-RSf9N7EBSrF7SVFSWJvW1i,i-XeYwHHkSivRb8BJL1bmn56,bank,Local bank 1:7
+i-38JPWwSWQw1iVM6EVwpn7i,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:2
+i-3ws43uyC9jUiKRgoyCQNaB,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:11
+i-44tiQVLd7oF9i7XyaJzfBc,i-RSf9N7EBSrF7SVFSWJvW1i,i-XeYwHHkSivRb8BJL1bmn56,bank,Local bank 1:5
+i-47X58ASmP2z3Hst8NK9G69,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:13
+i-4heZxkxpuuBovadYyyWYAu,i-RSf9N7EBSrF7SVFSWJvW1i,i-XeYwHHkSivRb8BJL1bmn56,bank,Local bank 1:1
+i-5VhRqHco5nqY8zQ5TLxJmd,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:12
+i-6PjRXJS8uLd2NfFirunv2q,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:12
+i-7DvbbkQUrnmsePUGo1owhp,i-RSf9N7EBSrF7SVFSWJvW1i,i-XeYwHHkSivRb8BJL1bmn56,bank,Local bank 1:6
+i-7ceKiwpSoyStE4DvPcETh3,i-RSf9N7EBSrF7SVFSWJvW1i,i-XeYwHHkSivRb8BJL1bmn56,bank,Local bank 1:3
+i-9USGWJsubAr1Rg2QJSi9nG,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:2
+i-9sHD6nYkQDSxTU5rmyJzR9,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:14
+i-AtYtRkiAZTZ6y2gB5vjQkS,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:11
+i-AzNEapfwLcufqsfQLhzDQN,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:8
+i-BaTMpe8RLNwprKiDiJJm8H,i-RSf9N7EBSrF7SVFSWJvW1i,i-XeYwHHkSivRb8BJL1bmn56,bank,Local bank 1:8
+i-Bde7i94zmPBnR5asc7T9xf,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:3
+i-C3gqTp52sgh1JRHEnMHMq5,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:4
+i-EvZf1Jh1S9e5pu3Pc9TKyg,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:9
+i-FEnaaUvumi3oQK9C6dipH2,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:3
+i-FSCtkcfBHTyQSDuapK3VB7,i-RSf9N7EBSrF7SVFSWJvW1i,i-MSkLJQdTQkH59XVPQHM5DB,section,"middle arc, right to left from the audience; five rows in thirteen paired banks"
+i-FyijTcmmUFMHZKBtwJCeb6,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:4
+i-GujXvgZRGot8Uknp9tZ6pU,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:5
+i-KQKAY2gJpJGzMVkD661baF,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:1
+i-L8Kr1KEEpxoy4WN69yDwi4,i-RSf9N7EBSrF7SVFSWJvW1i,i-XeYwHHkSivRb8BJL1bmn56,bank,Local bank 1:2
+i-LFMB2LqNQz7BcudJZyw9kJ,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:8
+i-LeZy7hTkXxSKhNP754kXJp,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:6
+i-M4DXD3SD88XCzQ73JLNYoL,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:7
+i-MSkLJQdTQkH59XVPQHM5DB,i-RSf9N7EBSrF7SVFSWJvW1i,,chamber,"Temporary parliament, 350-seat plan (publication date unknown)"
+i-NSiTHLxCTVqBrt2K6G8qLK,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:7
+i-NStj8Z9b5xRdkvyyKiNFZk,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:13
+i-PADh1fvmqsS696S47fpcdF,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:5
+i-QL8gFn8n4cYLwXoxTRgS3W,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:10
+i-RMvUAdA5L2xtNwMouyGaYd,i-RSf9N7EBSrF7SVFSWJvW1i,i-XeYwHHkSivRb8BJL1bmn56,bank,Local bank 1:4
+i-RvJfGHvTrJkBy93ifsjB7J,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:15
+i-Sb9nHYbmo7nWPQVqPSkZg6,i-RSf9N7EBSrF7SVFSWJvW1i,i-MSkLJQdTQkH59XVPQHM5DB,section,"outermost arc, right to left from the audience; five rows in sixteen paired banks"
+i-TF37wYXtFSt8NbUmuBHBFF,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:9
+i-TxGitXLTZaazzdNoq8YtcS,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:1
+i-W5WpJ5vUShH9xn75CcjFrk,i-RSf9N7EBSrF7SVFSWJvW1i,i-Sb9nHYbmo7nWPQVqPSkZg6,bank,Local bank 1:16
+i-XeYwHHkSivRb8BJL1bmn56,i-RSf9N7EBSrF7SVFSWJvW1i,i-MSkLJQdTQkH59XVPQHM5DB,section,"innermost arc, right to left from the audience; four rows, with ministerial cells left unnumbered"
+i-XxfEVS2vbU4vywSUHxrqV5,i-RSf9N7EBSrF7SVFSWJvW1i,i-FSCtkcfBHTyQSDuapK3VB7,bank,Local bank 1:10
+i-3qzfD6n72sZETLmWDZLzQv,i-TFoNmr3o8pHRpupjPgrdYX,i-ALxMzDGgvUgssWg8K2RaF4,podium,Podium
+i-5oF5E83TCNsSWWsPQJKFFs,i-TFoNmr3o8pHRpupjPgrdYX,i-X6wYmY63NWdpuGkLw7GeLZ,bank,Bank 14
+i-9GVEHehqpCf2r3k8FAsAH,i-TFoNmr3o8pHRpupjPgrdYX,i-X6wYmY63NWdpuGkLw7GeLZ,bank,Bank 8
+i-9fScZzaJhdSd6ucxeC2fTB,i-TFoNmr3o8pHRpupjPgrdYX,i-VgLVBgTWu9BM2rnkvd9g2w,bank,Bank 4
+i-ALxMzDGgvUgssWg8K2RaF4,i-TFoNmr3o8pHRpupjPgrdYX,,chamber,FK1965
+i-ARUTDzUxwwP5VLA5ee3Ycz,i-TFoNmr3o8pHRpupjPgrdYX,i-X6wYmY63NWdpuGkLw7GeLZ,bank,Bank 11
+i-DeY7ntDXQreyw8d7qRQmWj,i-TFoNmr3o8pHRpupjPgrdYX,i-VgLVBgTWu9BM2rnkvd9g2w,bank,Bank 1
+i-Eb3hTPBQho19v1ZoyBd4Be,i-TFoNmr3o8pHRpupjPgrdYX,i-VgLVBgTWu9BM2rnkvd9g2w,bank,Bank 3
+i-T8J5LgBHVsC6Lwigc2j88N,i-TFoNmr3o8pHRpupjPgrdYX,i-X6wYmY63NWdpuGkLw7GeLZ,bank,Bank 12
+i-Tuib3s3v7Cs8thzsi3QAGC,i-TFoNmr3o8pHRpupjPgrdYX,i-VgLVBgTWu9BM2rnkvd9g2w,bank,Bank 6
+i-UeFn9a1wPZikyarNXsCSaz,i-TFoNmr3o8pHRpupjPgrdYX,i-X6wYmY63NWdpuGkLw7GeLZ,bank,Bank 9
+i-UkTdjEhgSfSyQNa52Gf65P,i-TFoNmr3o8pHRpupjPgrdYX,i-X6wYmY63NWdpuGkLw7GeLZ,bank,Bank 13
+i-Uo7H7NPPgfJazThsQMEEuL,i-TFoNmr3o8pHRpupjPgrdYX,i-VgLVBgTWu9BM2rnkvd9g2w,bank,Bank 2
+i-VSuhp3B7MDtJeUtuzQgkt9,i-TFoNmr3o8pHRpupjPgrdYX,i-VgLVBgTWu9BM2rnkvd9g2w,bank,Bank 5
+i-VausMkgkGcHR1d1XHcSJbd,i-TFoNmr3o8pHRpupjPgrdYX,i-VgLVBgTWu9BM2rnkvd9g2w,bank,Bank 7
+i-VgLVBgTWu9BM2rnkvd9g2w,i-TFoNmr3o8pHRpupjPgrdYX,i-ALxMzDGgvUgssWg8K2RaF4,section,right half in source
+i-X6wYmY63NWdpuGkLw7GeLZ,i-TFoNmr3o8pHRpupjPgrdYX,i-ALxMzDGgvUgssWg8K2RaF4,section,left half in source
+i-XGJRe1aN18nhQYrpHANPN5,i-TFoNmr3o8pHRpupjPgrdYX,i-X6wYmY63NWdpuGkLw7GeLZ,bank,Bank 10
+i-22wUXjDyVYtb5cLJwfAujM,i-UK3E8SJq48vBSZu2P4wxiD,,chamber,AK1957
+i-2fFUn1g9nkKpkUBK4fzhCb,i-UK3E8SJq48vBSZu2P4wxiD,i-Up4bCD4Qp5rAmf2CekXZBA,bank,Bank 9
+i-4MJbfaLCRGK3vS6JKQacaa,i-UK3E8SJq48vBSZu2P4wxiD,i-TgdfCSUfwxsa2Qea2Vir1h,bank,Bank 1
+i-58QDyWERGbxs8CRMej2Lg9,i-UK3E8SJq48vBSZu2P4wxiD,i-22wUXjDyVYtb5cLJwfAujM,podium,Podium
+i-9dcPW83RZVBgWPWVtZHmoq,i-UK3E8SJq48vBSZu2P4wxiD,i-Up4bCD4Qp5rAmf2CekXZBA,bank,Bank 12
+i-EeDPF9LdtExAkzsV8B4ycK,i-UK3E8SJq48vBSZu2P4wxiD,i-TgdfCSUfwxsa2Qea2Vir1h,bank,Bank 6
+i-HiwEUtiFFfijeg54hhW83U,i-UK3E8SJq48vBSZu2P4wxiD,i-TgdfCSUfwxsa2Qea2Vir1h,bank,Bank 3
+i-JghpyCkZRYT8zAbMqQA53n,i-UK3E8SJq48vBSZu2P4wxiD,i-TgdfCSUfwxsa2Qea2Vir1h,bank,Bank 5
+i-KkMNb4CpoX6Bfr4uycKmgJ,i-UK3E8SJq48vBSZu2P4wxiD,i-Up4bCD4Qp5rAmf2CekXZBA,bank,Bank 16
+i-LMW23Urm25tdZYVKJQUpnu,i-UK3E8SJq48vBSZu2P4wxiD,i-Up4bCD4Qp5rAmf2CekXZBA,bank,Bank 13
+i-Mq5LJacrq7FykmfNTxBNFq,i-UK3E8SJq48vBSZu2P4wxiD,i-Up4bCD4Qp5rAmf2CekXZBA,bank,Bank 14
+i-P8Rao6U75wiFSddhGERCwn,i-UK3E8SJq48vBSZu2P4wxiD,i-TgdfCSUfwxsa2Qea2Vir1h,bank,Bank 2
+i-RTija3HCSsAGfVovViLKca,i-UK3E8SJq48vBSZu2P4wxiD,i-TgdfCSUfwxsa2Qea2Vir1h,bank,Bank 7
+i-TgdfCSUfwxsa2Qea2Vir1h,i-UK3E8SJq48vBSZu2P4wxiD,i-22wUXjDyVYtb5cLJwfAujM,section,right half in source
+i-Up4bCD4Qp5rAmf2CekXZBA,i-UK3E8SJq48vBSZu2P4wxiD,i-22wUXjDyVYtb5cLJwfAujM,section,left half in source
+i-VnG2N4PLqv7APPxa6pxvwB,i-UK3E8SJq48vBSZu2P4wxiD,i-Up4bCD4Qp5rAmf2CekXZBA,bank,Bank 10
+i-VvYYfyii5nUnDrKA42693g,i-UK3E8SJq48vBSZu2P4wxiD,i-Up4bCD4Qp5rAmf2CekXZBA,bank,Bank 11
+i-Wka8ypXSNzcwCU6tW2x8Pm,i-UK3E8SJq48vBSZu2P4wxiD,i-Up4bCD4Qp5rAmf2CekXZBA,bank,Bank 15
+i-XD7aFPxBwRtAuD5Cnt4Hrf,i-UK3E8SJq48vBSZu2P4wxiD,i-TgdfCSUfwxsa2Qea2Vir1h,bank,Bank 4
+i-Y1UXM9zUpXapR7ogQBCSH2,i-UK3E8SJq48vBSZu2P4wxiD,i-TgdfCSUfwxsa2Qea2Vir1h,bank,Bank 8
+i-3TRmhzxwb9PkESjymNY4wF,i-VvkZUB4duvAZf7bqeEiVir,i-JE3TZkbXsbMNnqY2NE9eXN,section,"right half, read after rotating image 45 degrees counterclockwise"
+i-4m23eKVM62Zp2uYigxCQ9d,i-VvkZUB4duvAZf7bqeEiVir,i-C4uNT3L7YNMj3CZdzgN8DG,bank,Local bank 7:1
+i-4tgjze4AQhmzd5aFQ6ZZvj,i-VvkZUB4duvAZf7bqeEiVir,i-3TRmhzxwb9PkESjymNY4wF,bank,Local bank 6:1
+i-56pc742CRALmQwqZ3crJdx,i-VvkZUB4duvAZf7bqeEiVir,i-3TRmhzxwb9PkESjymNY4wF,bank,Local bank 1:1
+i-6i7PQuy9isn7sCV1VR8fSX,i-VvkZUB4duvAZf7bqeEiVir,i-C4uNT3L7YNMj3CZdzgN8DG,bank,Local bank 2:1
+i-C4uNT3L7YNMj3CZdzgN8DG,i-VvkZUB4duvAZf7bqeEiVir,i-JE3TZkbXsbMNnqY2NE9eXN,section,"left half, read after rotating image 45 degrees clockwise"
+i-EzgmTuNXJAXGmen4ybGaaR,i-VvkZUB4duvAZf7bqeEiVir,i-C4uNT3L7YNMj3CZdzgN8DG,bank,Local bank 3:1
+i-G9PVEJ6gCB2Lwe9D3anToU,i-VvkZUB4duvAZf7bqeEiVir,i-3TRmhzxwb9PkESjymNY4wF,bank,Local bank 5:1
+i-GEAjRZfyREggSVi6zE8kjC,i-VvkZUB4duvAZf7bqeEiVir,i-3TRmhzxwb9PkESjymNY4wF,bank,Local bank 3:1
+i-HXRrRrwQ6T1rLpTMMe3KPg,i-VvkZUB4duvAZf7bqeEiVir,i-3TRmhzxwb9PkESjymNY4wF,bank,Local bank 2:1
+i-JE3TZkbXsbMNnqY2NE9eXN,i-VvkZUB4duvAZf7bqeEiVir,,chamber,"Forsta kammarens plenisal, angled plan printed 1970"
+i-KshGKShCo7SfndLrWj7m6A,i-VvkZUB4duvAZf7bqeEiVir,i-C4uNT3L7YNMj3CZdzgN8DG,bank,Local bank 5:1
+i-L86rqnbw5sB88ETShekmp9,i-VvkZUB4duvAZf7bqeEiVir,i-C4uNT3L7YNMj3CZdzgN8DG,bank,Local bank 1:1
+i-QiLXSsrxj8MjGvZjbwZtpt,i-VvkZUB4duvAZf7bqeEiVir,i-C4uNT3L7YNMj3CZdzgN8DG,bank,Local bank 4:1
+i-TqQBN8QfGWGrRxJBUNkGkP,i-VvkZUB4duvAZf7bqeEiVir,i-3TRmhzxwb9PkESjymNY4wF,bank,Local bank 7:1
+i-UL8TAoWaGFLqAY6cHfXnPo,i-VvkZUB4duvAZf7bqeEiVir,i-C4uNT3L7YNMj3CZdzgN8DG,bank,Local bank 6:1
+i-Uj4sAUSkXAWoj8XpXzJiZk,i-VvkZUB4duvAZf7bqeEiVir,i-3TRmhzxwb9PkESjymNY4wF,bank,Local bank 4:1
+i-3994Bw3TpgcTGZ4sKupZ8Z,i-XcjBbJ5Lk7BHeJinhHF3bL,i-N5M2AK5Hc82LJSPaxn8pFc,bank,Bank 3
+i-3dMKtm6oiayhHxh4K8w1gQ,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 16
+i-4c2jgm6E1kspvQye5VYNQy,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 9
+i-5tbo7kHzpV7fYZbjLY288s,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 5
+i-7dwLE1jarsJnUa9LtYLpRh,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 3
+i-87z7hg6XCMVSRRGpkiEpAC,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 4
+i-8CC8J7rCuJmxnUVpTvrdxL,i-XcjBbJ5Lk7BHeJinhHF3bL,i-N5M2AK5Hc82LJSPaxn8pFc,bank,Bank 8
+i-8vUTrqKbbwEkRpknfChbmi,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 15
+i-A93DoGt6hqbi3X1c9oSKPa,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 13
+i-AqxcKtiBwqnisV4fQuUqCN,i-XcjBbJ5Lk7BHeJinhHF3bL,i-N5M2AK5Hc82LJSPaxn8pFc,bank,Bank 5
+i-BJCKQRagSxPoE8asuTjov8,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 10
+i-BYeoa9rDwe7y7pyx7G9qzF,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 12
+i-C4vmHDgHvcQbxq5b4QQGN7,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 13
+i-CPq2kobcE2BzxRSgjmmcvN,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 8
+i-CgXWBY4C1SN23qvs9hPkwL,i-XcjBbJ5Lk7BHeJinhHF3bL,i-N5M2AK5Hc82LJSPaxn8pFc,bank,Bank 7
+i-DqXkHGxGKrCjSMmsogqgjt,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 9
+i-EYrbP9y6ay8k9kbjdLqVuX,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 1
+i-FVftFvteHH5BMpM8KZnWrY,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 7
+i-FkiiWNbyTxecwCqP5bLdrC,i-XcjBbJ5Lk7BHeJinhHF3bL,i-N5M2AK5Hc82LJSPaxn8pFc,bank,Bank 9
+i-Ft3BELiLLoc7jz61njYs1Y,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 11
+i-HeTX11x46BvugXwoSRr4YR,i-XcjBbJ5Lk7BHeJinhHF3bL,i-NNs13J2V1h4azDqx7h3ncG,podium,Podium
+i-HyuaMoW4VUbkKDaN1wUy3p,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 14
+i-J49fqcqwHrg6uFmU5LdPA5,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 2
+i-KDDyUFSjSAsk8bu6XKKn2R,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 12
+i-KEVJxpDAmAsvHgUEWEBuxM,i-XcjBbJ5Lk7BHeJinhHF3bL,i-NNs13J2V1h4azDqx7h3ncG,arc,"Arc 3, inner to outer"
+i-KxMDpxwnH9RbdNDbvXHzsa,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 7
+i-LFbA8bNA9jLdZAUSJq8hea,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 6
+i-MDPvXcuM3ysMT5fXcmaWqy,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 8
+i-MKjzCKhGW4APtCoEGwDhFu,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 2
+i-MQ3kqw543wRNoMLqFx29eX,i-XcjBbJ5Lk7BHeJinhHF3bL,i-N5M2AK5Hc82LJSPaxn8pFc,bank,Bank 1
+i-N5M2AK5Hc82LJSPaxn8pFc,i-XcjBbJ5Lk7BHeJinhHF3bL,i-NNs13J2V1h4azDqx7h3ncG,arc,"Arc 1, inner to outer"
+i-NNs13J2V1h4azDqx7h3ncG,i-XcjBbJ5Lk7BHeJinhHF3bL,,chamber,EK1971
+i-QKXatLqRadi1JtzBf8wHsu,i-XcjBbJ5Lk7BHeJinhHF3bL,i-NNs13J2V1h4azDqx7h3ncG,arc,"Arc 2, inner to outer"
+i-RFXyquCgNbNmcLdueM6QwM,i-XcjBbJ5Lk7BHeJinhHF3bL,i-N5M2AK5Hc82LJSPaxn8pFc,bank,Bank 2
+i-TeAuApWqecaKEBZuvXqNdH,i-XcjBbJ5Lk7BHeJinhHF3bL,i-N5M2AK5Hc82LJSPaxn8pFc,bank,Bank 10
+i-TkRFfoj2SAvvAKrvByW7oF,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 3
+i-TtAqd9Tu5RthcrJb7Tv6vw,i-XcjBbJ5Lk7BHeJinhHF3bL,i-N5M2AK5Hc82LJSPaxn8pFc,bank,Bank 4
+i-TzjJEZxUDmGPmrSVgmR35F,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 5
+i-UASRZMypsg1Zg2h9NPDfaP,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 4
+i-UEcJTLfDB5apNfV7277pzf,i-XcjBbJ5Lk7BHeJinhHF3bL,i-N5M2AK5Hc82LJSPaxn8pFc,bank,Bank 6
+i-V7oUR3WR36e1LSvi6Eh56z,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 6
+i-XBrDsMq1LRmkTkGKwSDves,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 10
+i-Y3qdZEfJyVVpckrSMFkuJP,i-XcjBbJ5Lk7BHeJinhHF3bL,i-QKXatLqRadi1JtzBf8wHsu,bank,Bank 1
+i-qAau3LysFeXY1roKA8gux,i-XcjBbJ5Lk7BHeJinhHF3bL,i-KEVJxpDAmAsvHgUEWEBuxM,bank,Bank 11
+i-2kx2ZJo1kyRd5ysCzGjvhE,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 6
+i-367Uru74jauf5QrUZtZE5D,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 1
+i-3PHGJc5rAWQbEBFqZ17ewn,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 1
+i-5UXGirTVb6kP7NPaVqLQhd,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 13
+i-6UYV4FYVDnyY4vM5YSu3Sy,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 13
+i-6vfs3SnjJD28AV3NED3fMJ,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 6
+i-7XJqCmQFCjJxaf3P2piEaW,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 8
+i-7uAszeQ15AsKARJr9fxxXy,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 3
+i-AwTruGQ7pisVKDPhJ6Ddx3,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 18
+i-By8m26hH5hDUTdzvevq4S3,i-YZfmCJtMxNJyK9CtT7VLPs,i-VSr291PTzgCWWaderbmyAy,podium,Podium
+i-CaV8ZjubSefHHwebtSDMDe,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 16
+i-Co4MwRptzbnVJNMfrdcARg,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 2
+i-DnijNpiChrnWPTW8KEcCLC,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 5
+i-EQa2dMncroM3nDxm5XmaLV,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 10
+i-FQFzc7BPBVbSF6jp1runrt,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 12
+i-GBa3siiRT3pV9es2LH7Tc3,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 15
+i-HN3EzEqQnL1vpiueFwwkyP,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 4
+i-LZ1puRLvWtxTdpeJsBUYzA,i-YZfmCJtMxNJyK9CtT7VLPs,i-VSr291PTzgCWWaderbmyAy,arc,"Arc 2, inner to outer"
+i-LkndzyQFFmDxrBiTw5xB1R,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 14
+i-MzjDxtg2k3eQqw5s97o5CD,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 9
+i-Na3EtpTJpUWsARKWJLBjxp,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 8
+i-NaLGTXHjoJHUp4wzpDfVMs,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 15
+i-PjJ1JWrhvH7kgybS134FBZ,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 11
+i-Q2smQ9rAdk4wfcfcu8UiRT,i-YZfmCJtMxNJyK9CtT7VLPs,i-VSr291PTzgCWWaderbmyAy,row,Debate row 1
+i-QEt6W3SHa7DyR9v6Fxsk4n,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 7
+i-QeXwnx6DP9VTTfWbCeX4PY,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 12
+i-RVyBRoz7gqJqjebMyhibDd,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 5
+i-ToaQRQQZfp1msTgqaLNiJf,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 10
+i-UFnNMHZSQWFyPADtiuWXmJ,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 9
+i-VS5XEe8Gtyy5HkdYJWUPaD,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 4
+i-VSr291PTzgCWWaderbmyAy,i-YZfmCJtMxNJyK9CtT7VLPs,,chamber,EK20072008
+i-VZmWyNh3zmcKHVPnXxMccE,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 2
+i-VokYKeDQWs7yccyWHAe5HH,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 11
+i-WZZmprG55f5Rd86XwrnqXu,i-YZfmCJtMxNJyK9CtT7VLPs,i-VSr291PTzgCWWaderbmyAy,row,Debate row 2
+i-WfSJd397aJZHgKwrio9f9h,i-YZfmCJtMxNJyK9CtT7VLPs,i-XTTQ5o7u3M2UmpRctjUhPk,bank,Bank 3
+i-XGqKwnmpegJhcPUVRQmfbP,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 14
+i-XTTQ5o7u3M2UmpRctjUhPk,i-YZfmCJtMxNJyK9CtT7VLPs,i-VSr291PTzgCWWaderbmyAy,arc,"Arc 1, inner to outer"
+i-XcvCUH7FP53Q2YC6kmTZbS,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 7
+i-sw6f6PiTmTcE4BPEJDMqP,i-YZfmCJtMxNJyK9CtT7VLPs,i-LZ1puRLvWtxTdpeJsBUYzA,bank,Bank 17
+i-2vgsDTmG3u5CkxhqW6sQqX,i-dMjmS6tcCzXffqvhsaFZD,i-HVU8WyzvT71sZJqgVzWBmh,bank,Bank 13
+i-4tdV82Nvizz8j4YGQGCDCg,i-dMjmS6tcCzXffqvhsaFZD,i-XVyGVYb2GBHNWbp5g4d7HZ,bank,Bank 2
+i-66DfbmANRNR25uhzC4QAQM,i-dMjmS6tcCzXffqvhsaFZD,i-XVyGVYb2GBHNWbp5g4d7HZ,bank,Bank 8
+i-BF1gvV3pxdktPmW2nL6e5S,i-dMjmS6tcCzXffqvhsaFZD,i-XVyGVYb2GBHNWbp5g4d7HZ,bank,Bank 3
+i-C2YcbhDfQaCw78YyGJPTcb,i-dMjmS6tcCzXffqvhsaFZD,i-HVU8WyzvT71sZJqgVzWBmh,bank,Bank 15
+i-F7u3tof2NA5U2fRnx6sPrS,i-dMjmS6tcCzXffqvhsaFZD,i-HVU8WyzvT71sZJqgVzWBmh,bank,Bank 12
+i-FsSuxuSkksER1mHvGmePpR,i-dMjmS6tcCzXffqvhsaFZD,i-HVU8WyzvT71sZJqgVzWBmh,bank,Bank 9
+i-Gjjh3SiySt22hVxPUMiK23,i-dMjmS6tcCzXffqvhsaFZD,i-MqUzCUcAB9sSvZAcYA3f5c,podium,Podium
+i-HVU8WyzvT71sZJqgVzWBmh,i-dMjmS6tcCzXffqvhsaFZD,i-MqUzCUcAB9sSvZAcYA3f5c,section,left half in source
+i-MUvoA7ptp4KCdqx3jgRnNM,i-dMjmS6tcCzXffqvhsaFZD,i-HVU8WyzvT71sZJqgVzWBmh,bank,Bank 11
+i-MqUzCUcAB9sSvZAcYA3f5c,i-dMjmS6tcCzXffqvhsaFZD,,chamber,AK1961
+i-RRvXNQc7AfR6shHBhcUs5b,i-dMjmS6tcCzXffqvhsaFZD,i-HVU8WyzvT71sZJqgVzWBmh,bank,Bank 16
+i-SNYhj3pMByZ3MPUcXjaiGe,i-dMjmS6tcCzXffqvhsaFZD,i-XVyGVYb2GBHNWbp5g4d7HZ,bank,Bank 1
+i-SUkgfzYyenUVnzdxmyxYFA,i-dMjmS6tcCzXffqvhsaFZD,i-XVyGVYb2GBHNWbp5g4d7HZ,bank,Bank 5
+i-StgzMuaX8yUxdsTwit9xec,i-dMjmS6tcCzXffqvhsaFZD,i-XVyGVYb2GBHNWbp5g4d7HZ,bank,Bank 6
+i-UwVJimBgF2qUBHSEnGTFfZ,i-dMjmS6tcCzXffqvhsaFZD,i-XVyGVYb2GBHNWbp5g4d7HZ,bank,Bank 4
+i-VH5Z1Q1ixrBFR1V8jdMexG,i-dMjmS6tcCzXffqvhsaFZD,i-XVyGVYb2GBHNWbp5g4d7HZ,bank,Bank 7
+i-XVyGVYb2GBHNWbp5g4d7HZ,i-dMjmS6tcCzXffqvhsaFZD,i-MqUzCUcAB9sSvZAcYA3f5c,section,right half in source
+i-XxP4cvfoky1r2aRKAVGrkK,i-dMjmS6tcCzXffqvhsaFZD,i-HVU8WyzvT71sZJqgVzWBmh,bank,Bank 10
+i-dfKvL1dWc57LU39o8f2gU,i-dMjmS6tcCzXffqvhsaFZD,i-HVU8WyzvT71sZJqgVzWBmh,bank,Bank 14
