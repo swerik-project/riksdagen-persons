@@ -32,7 +32,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pyriksdagen
+        pip install pyriksdagen==2.0.0rc1
 
     - name: Estimate MP coverage
       run: |
