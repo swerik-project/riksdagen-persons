@@ -75,8 +75,8 @@ class Test(unittest.TestCase):
         corpus_meta = corpus_meta.to_pandas()
         mp_meta = corpus_meta[corpus_meta['source'] == 'member_of_parliament']
         mp_meta = mp_meta[mp_meta.start.notnull()]
-        mp_meta['start'] = mp_meta['start'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='ignore'))
-        mp_meta['end'] = mp_meta['end'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='ignore'))
+        mp_meta['start'] = mp_meta['start'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='coerce'))
+        mp_meta['end'] = mp_meta['end'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='coerce'))
         return mp_meta
 
     def expand_dates_df(self, dates, baseline_df):

@@ -27,7 +27,6 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pyriksdagen
         pip install pyriksdagen==2.0.0rc1
         pip install pytest-cfg-fetcher
         pip install pandas==2.3.3
@@ -54,7 +53,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install csvw
-        pip install pyriksdagen
         pip install pyriksdagen==2.0.0rc1
         pip install pytest-cfg-fetcher
         pip install pandas==2.3.3
@@ -84,7 +82,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pyriksdagen
+        pip install pyriksdagen==2.0.0rc1
         pip install pytest-cfg-fetcher
     - name: Test metadata integrity
       run: |
@@ -112,7 +110,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pyriksdagen
+        pip install pyriksdagen==2.0.0rc1
         pip install pytest-cfg-fetcher
     - name: Test manually curated mandate dates do not change
       run: |
@@ -135,7 +133,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pyriksdagen
+        pip install pyriksdagen==2.0.0rc1
         pip install pytest-cfg-fetcher
     - name: Test MPs agains manually curated data
       run: |
@@ -181,10 +179,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install csvw
-        pip install pyriksdagen
+        pip install pyriksdagen==2.0.0rc1
         pip install pytest-cfg-fetcher
         pip install pdoc
-        pip install polars
     - name: Test documentation build
       run: |
         pdoc -o /tmp/riksdagen-persons-docs --footer-text docs-smoke-test -t docs/dark-mode --logo https://raw.githubusercontent.com/swerik-project/the-swedish-parliament-corpus/refs/heads/main/readme/riksdagshuset.jpg ../riksdagen-persons
