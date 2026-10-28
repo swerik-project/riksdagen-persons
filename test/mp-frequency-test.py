@@ -48,7 +48,7 @@ class Test(unittest.TestCase):
         y = row['year']
         c = row['chamber']
         fdf = baseline_df.loc[(baseline_df['year'] == y) & (baseline_df['chamber'] == c)].copy()
-        fdf.reset_index(inplace=True)
+        fdf = fdf.reset_index()
         return fdf.at[0, "n_mps"]
 
     def get_ch(self, protocol_path):
