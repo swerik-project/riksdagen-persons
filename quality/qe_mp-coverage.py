@@ -73,7 +73,7 @@ def get_baseline(row, baseline_df):
     y = row['year']
     c = row['chamber']
     fdf = baseline_df.loc[(baseline_df['year'] == y) & (baseline_df['chamber'] == c)].copy()
-    fdf.reset_index(inplace=True)
+    fdf = fdf.reset_index()
     return fdf.at[0, "n_mps"]
 
 
@@ -102,11 +102,12 @@ def main(args):
     dates['baseline_N'] = dates.apply(get_baseline, args=(baseline_df,), axis=1)
 
     corpus_meta = load_Corpus_metadata(metadata_folder='data')
+    corpus_meta = corpus_meta.to_pandas()
     mp_meta = corpus_meta[corpus_meta['source'] == 'member_of_parliament']
     mp_meta = mp_meta[mp_meta.start.notnull()]
 
-    mp_meta['start'] = mp_meta['start'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='ignore'))
-    mp_meta['end'] = mp_meta['end'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='ignore'))
+    mp_meta['start'] = mp_meta['start'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='coerce'))
+    mp_meta['end'] = mp_meta['end'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='coerce'))
 
     print(mp_meta[['start', 'end']].describe())
 
