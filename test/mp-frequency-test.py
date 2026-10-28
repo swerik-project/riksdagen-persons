@@ -72,6 +72,7 @@ class Test(unittest.TestCase):
 
     def preprocess_Corpus_metadata(self):
         corpus_meta = load_Corpus_metadata(metadata_folder='data')
+        corpus_meta = corpus_meta.to_pandas()
         mp_meta = corpus_meta[corpus_meta['source'] == 'member_of_parliament']
         mp_meta = mp_meta[mp_meta.start.notnull()]
         mp_meta['start'] = mp_meta['start'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='ignore'))
