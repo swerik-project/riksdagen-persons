@@ -115,7 +115,7 @@ def main(args):
 
     shouldnt_happen = 0
 
-    with tqdm(total=len(dates)) as prgbr:
+    with tqdm(total=len(dates), disable=None, mininterval=1.0) as prgbr:
         for i, r in dates.iterrows():
             N_MP = 0
             chamber = r['chamber']
@@ -123,7 +123,7 @@ def main(args):
             if not pd.isna(chamber):
                 parliament_day = r['date']
                 baseline = r['baseline_N']
-                prgbr.set_postfix_str(f"{chamber} / {r['parliament_year']} / {shouldnt_happen}")
+                prgbr.set_postfix_str(f"{chamber} / {r['parliament_year']} / {shouldnt_happen}", refresh=False)
 
                 if len(parliament_day) == 10:
                     #print(r['date'], type(r['date']))
