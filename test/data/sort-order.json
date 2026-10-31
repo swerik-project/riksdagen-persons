@@ -5,6 +5,8 @@
     "place_of_birth.csv": ["person_id", "place"],
     "place_of_death.csv": ["person_id", "place"],
     "chairs.csv": {"columns": ["chair_nr", "chamber"], "ascending": true},
+    "constituency.csv": ["chamber", "start_date", "name"],
+    "constituency_mandates.csv": ["constituency_id", "start_date"],
     "person.csv": ["person_id"],
     "party_abbreviation.csv": ["abbreviation", "party"],
     "wiki_id.csv": ["wiki_id"],
