@@ -572,7 +572,7 @@
           {
             "name": "start_date",
             "titles": "start_date",
-            "dc:description": "Date when the constituency active period starts.",
+            "dc:description": "First day of the constituency active period, inclusive.",
             "datatype": {
               "base": "date",
               "format": "yyyy-MM-dd"
@@ -582,7 +582,7 @@
           {
             "name": "end_date",
             "titles": "end_date",
-            "dc:description": "Date when the constituency active period ends.",
+            "dc:description": "Last day of the constituency active period, inclusive.",
             "datatype": {
               "base": "date",
               "format": "yyyy-MM-dd"
@@ -616,7 +616,7 @@
           {
             "name": "start_date",
             "titles": "start_date",
-            "dc:description": "Date when the mandate count starts applying.",
+            "dc:description": "First day on which the mandate count applies, inclusive.",
             "datatype": {
               "base": "date",
               "format": "yyyy-MM-dd"
@@ -626,7 +626,7 @@
           {
             "name": "end_date",
             "titles": "end_date",
-            "dc:description": "Date when the mandate count stops applying.",
+            "dc:description": "Last day on which the mandate count applies, inclusive.",
             "datatype": {
               "base": "date",
               "format": "yyyy-MM-dd"
