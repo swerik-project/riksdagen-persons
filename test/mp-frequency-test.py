@@ -9,20 +9,17 @@ from pyriksdagen.utils import (
     get_data_location,
 )
 from pytest_cfg_fetcher.fetch import fetch_config
+from trainerlog import get_logger
 from tqdm import tqdm
 import datetime as dt
 import pandas as pd
-import unittest, warnings
+import unittest
 
 
 
-class Info(Warning):
-    def __init__(self, m):
-        self.message = m
-    def __str__(self):
-        return self.message
+LOGGER = get_logger("test-mp-frequency")
 
-class Test(unittest.TestCase):
+class TestMPFrequency(unittest.TestCase):
 
     def write_err_df(self, name_str, df, outdir):
         now = dt.datetime.now().strftime('%Y%m%d-%H%M%S')
@@ -48,8 +45,7 @@ class Test(unittest.TestCase):
         y = row['year']
         c = row['chamber']
         fdf = baseline_df.loc[(baseline_df['year'] == y) & (baseline_df['chamber'] == c)].copy()
-        fdf.reset_index(inplace=True)
-        return fdf.at[0, "n_mps"]
+        return fdf['n_mps'].iloc[0]
 
     def get_ch(self, protocol_path):
         chamber = None
@@ -73,9 +69,9 @@ class Test(unittest.TestCase):
     def preprocess_Corpus_metadata(self):
         corpus_meta = load_Corpus_metadata(metadata_folder='data')
         mp_meta = corpus_meta[corpus_meta['source'] == 'member_of_parliament']
-        mp_meta = mp_meta[mp_meta.start.notnull()]
-        mp_meta['start'] = mp_meta['start'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='ignore'))
-        mp_meta['end'] = mp_meta['end'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='ignore'))
+        mp_meta = mp_meta[mp_meta.start.notnull()].copy()
+        mp_meta['start'] = pd.to_datetime(mp_meta['start'], format='%Y-%m-%d', errors='raise')
+        mp_meta['end'] = pd.to_datetime(mp_meta['end'], format='%Y-%m-%d', errors='raise')
         return mp_meta
 
     def expand_dates_df(self, dates, baseline_df):
@@ -94,7 +90,7 @@ class Test(unittest.TestCase):
 
     def test_mp_frequency(self):
         """
-        Test daily frequencies.
+        Guarantee: More than 95% of parliament days have an MP count within tolerance.
         """
         config = fetch_config("mp-freq-test")
         baseline_df = pd.read_csv(f"./test/data/baseline-n-mps-year.csv")
@@ -115,7 +111,7 @@ class Test(unittest.TestCase):
 
         shouldnt_happen = 0
 
-        with tqdm(total=len(dates)) as prgbr:
+        with tqdm(total=len(dates), disable=None, mininterval=1.0) as prgbr:
             for i, r in dates.iterrows():
                 N_MP = 0
                 chamber = r['chamber']
@@ -123,7 +119,7 @@ class Test(unittest.TestCase):
                 if not pd.isna(chamber):
                     parliament_day = r['date']
                     baseline = r['baseline_N']
-                    prgbr.set_postfix_str(f"{chamber} / {r['parliament_year']} / {shouldnt_happen}")
+                    prgbr.set_postfix_str(f"{chamber} / {r['parliament_year']} / {shouldnt_happen}", refresh=False)
 
                     if len(parliament_day) == 10:
                         #print(r['date'], type(r['date']))
@@ -166,11 +162,13 @@ class Test(unittest.TestCase):
                 no_passdf = dates.loc[dates['almost_passes_test'] == False]
                 self.write_err_df("mp-freq-oor", no_passdf, config["test_out_dir"])
 
-        warnings.warn(f"\n\n\n --> of {total} Parliament days, {total_almost} almost have the correct number of MPs (+/-10%) {total_almost/total}\n", Info)
+        LOGGER.info(f"{total_almost}/{total} parliament days have an MP count within tolerance ({total_almost/total:.2%}).")
 
-        warnings.warn(f"\n\n\n --> of {total} Parliament days, {total_passed} have exactly the correct number of MPs (+/-10%) {total_passed/total}\n", Info)
+        LOGGER.info(f"{total_passed}/{total} parliament days have exactly the expected MP count ({total_passed/total:.2%}).")
 
-        self.assertTrue(total_almost/total > 0.95)
+        self.assertGreater(total_almost/total, 0.95,
+                           f"Only {total_almost}/{total} parliament days have an MP count within tolerance; "
+                           "more than 95% is required. Counts were logged above.")
 
 
 

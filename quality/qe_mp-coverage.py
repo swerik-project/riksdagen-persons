@@ -73,8 +73,7 @@ def get_baseline(row, baseline_df):
     y = row['year']
     c = row['chamber']
     fdf = baseline_df.loc[(baseline_df['year'] == y) & (baseline_df['chamber'] == c)].copy()
-    fdf.reset_index(inplace=True)
-    return fdf.at[0, "n_mps"]
+    return fdf['n_mps'].iloc[0]
 
 
 
@@ -103,10 +102,10 @@ def main(args):
 
     corpus_meta = load_Corpus_metadata(metadata_folder='data')
     mp_meta = corpus_meta[corpus_meta['source'] == 'member_of_parliament']
-    mp_meta = mp_meta[mp_meta.start.notnull()]
+    mp_meta = mp_meta[mp_meta.start.notnull()].copy()
 
-    mp_meta['start'] = mp_meta['start'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='ignore'))
-    mp_meta['end'] = mp_meta['end'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='ignore'))
+    mp_meta['start'] = pd.to_datetime(mp_meta['start'], format='%Y-%m-%d', errors='raise')
+    mp_meta['end'] = pd.to_datetime(mp_meta['end'], format='%Y-%m-%d', errors='raise')
 
     print(mp_meta[['start', 'end']].describe())
 
@@ -116,7 +115,7 @@ def main(args):
 
     shouldnt_happen = 0
 
-    with tqdm(total=len(dates)) as prgbr:
+    with tqdm(total=len(dates), disable=None, mininterval=1.0) as prgbr:
         for i, r in dates.iterrows():
             N_MP = 0
             chamber = r['chamber']
@@ -124,7 +123,7 @@ def main(args):
             if not pd.isna(chamber):
                 parliament_day = r['date']
                 baseline = r['baseline_N']
-                prgbr.set_postfix_str(f"{chamber} / {r['parliament_year']} / {shouldnt_happen}")
+                prgbr.set_postfix_str(f"{chamber} / {r['parliament_year']} / {shouldnt_happen}", refresh=False)
 
                 if len(parliament_day) == 10:
                     #print(r['date'], type(r['date']))
