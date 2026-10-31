@@ -109,6 +109,13 @@ class Test(unittest.TestCase):
         erroneous_tables = ", ".join(erroneous_tables)
         self.assertEqual(0, no_errors, f"Non-unique primary keys found in {no_errors} table(s): {erroneous_tables}.")
 
+    def test_foreign_keys(self):
+        """
+        test that all primary keys are unique
+        """
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+
+        tg.check_referential_integrity()
 
     def test_validate_schema(self):
         """
