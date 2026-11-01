@@ -38,6 +38,23 @@ def date_bound(column, latest=False):
 
 
 class CommitteeIntegrity(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        """Load the shared membership-to-committee date table once."""
+        memberships = pl.read_csv(
+            DATA_DIR / "committee_membership.csv", infer_schema=False
+        )
+        committees = pl.read_csv(
+            DATA_DIR / "committee.csv", infer_schema=False
+        ).select(
+            "committee_id",
+            pl.col("start").alias("committee_start"),
+            pl.col("end").alias("committee_end"),
+        )
+        cls.memberships_with_committee_dates = memberships.join(
+            committees, on="committee_id", how="left"
+        )
+
     def test_committee_dates_are_possible_calendar_dates(self):
         """Guarantee: every supplied committee date denotes a real calendar date.
 
@@ -71,9 +88,7 @@ class CommitteeIntegrity(unittest.TestCase):
         committee start is unknown, not the first observed membership. Failures count
         membership rows, not endpoints. CSVW owns foreign-key validation.
         """
-        rows = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False).join(
-            pl.read_csv(DATA_DIR / "committee.csv", infer_schema=False).select(
-                "committee_id", pl.col("start").alias("committee_start")), on="committee_id", how="left")
+        rows = self.memberships_with_committee_dates
         LOGGER.info("Checking %s memberships against known committee start dates", rows.height)
         failures = 0
         before_start = ((date_bound("start", latest=True) < date_bound("committee_start")) |
@@ -93,9 +108,7 @@ class CommitteeIntegrity(unittest.TestCase):
         remain unknown; one missing endpoint does not hide a contradiction in
         the other. Failures count membership rows. CSVW owns foreign keys.
         """
-        rows = pl.read_csv(DATA_DIR / "committee_membership.csv", infer_schema=False).join(
-            pl.read_csv(DATA_DIR / "committee.csv", infer_schema=False).select(
-                "committee_id", pl.col("end").alias("committee_end")), on="committee_id", how="left")
+        rows = self.memberships_with_committee_dates
         LOGGER.info("Checking %s memberships against known committee end dates", rows.height)
         failures = 0
         after_end = ((date_bound("start") > date_bound("committee_end", latest=True)) |
