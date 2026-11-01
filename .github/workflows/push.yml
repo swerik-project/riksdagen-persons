@@ -178,4 +178,4 @@ jobs:
         pip install polars
     - name: Test documentation build
       run: |
-        python -m pdoc -o /tmp/riksdagen-persons-docs --footer-text docs-smoke-test -t docs/dark-mode --logo https://raw.githubusercontent.com/swerik-project/the-swedish-parliament-corpus/refs/heads/main/readme/riksdagshuset.jpg ../riksdagen-persons
+        pdoc -o /tmp/riksdagen-persons-docs --footer-text docs-smoke-test -t docs/dark-mode --logo https://raw.githubusercontent.com/swerik-project/the-swedish-parliament-corpus/refs/heads/main/readme/riksdagshuset.jpg ../riksdagen-persons
