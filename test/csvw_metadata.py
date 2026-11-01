@@ -127,7 +127,7 @@ class Test(unittest.TestCase):
 
 
     def test_column_formats(self):
-        """Guarantee: released values satisfy their CSVW formats and scalar types.
+        """Guarantee: satisfy CSVW formats and scalar types.
 
         Read declared strings as strings so numeric-looking partial dates and
         identifiers retain their lexical representation for regex validation.
