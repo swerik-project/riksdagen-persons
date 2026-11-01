@@ -42,9 +42,8 @@ Contains legacy test documentation. Do not add or maintain separate integrity
 guarantee documentation here; move useful content into the relevant test file
 before removing the legacy document.
 
-### `result/` and `results/`
+### `results/`
 
-Contain diagnostic outputs, not test inputs. `result/` includes a few tracked
-legacy outputs; no files under `results/` are currently tracked. Some tests write
-diagnostics to these paths, while others use a configured output directory.
+Contains diagnostic outputs, not test inputs. Use `test/results/` for all test
+diagnostics. 
 Logging and assertion messages identify failures; not every test writes a file.
