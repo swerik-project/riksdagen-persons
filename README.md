@@ -24,6 +24,11 @@ Committee and role identifiers follow the SWERIK pattern `^i-[A-Za-z0-9]+$`.
 Dates retain their supplied year, month or day precision. Blank dates mean
 unknown or not supplied; a blank end does not establish an ongoing period.
 
+Committee types are `standing`, `joint`, `eu_committee`, `special`, `temporary`
+and `other`. The `temporary` category identifies the First and Second Chambers'
+`tillfälliga utskott`; `special` identifies `särskilda utskott`. The `other`
+category retains committee bodies whose classification has not been refined.
+
 | File | Columns |
 | --- | --- |
 | `data/committee.csv` | `committee_id`, `committee`, `committee_type`, `start`, `end` |
