@@ -104,15 +104,15 @@ def main(args):
 
     print("plotting quality of MP coverage")
     mp_coverage_df = pd.read_csv("quality/estimates/mp-coverage/mp-coverage.csv")
-    mp_coverage_df.set_index('year', inplace=True)
+    mp_coverage_df = mp_coverage_df.set_index('year')
 
     if args.version != "v99.99.99":
         for c in ["v99.99.99", "v0.0.0"]:
             if c in mp_coverage_df.columns:
-                mp_coverage_df.drop(columns=[c], inplace=True)
+                mp_coverage_df = mp_coverage_df.drop(columns=[c])
 
     for s in skip:
-        df.drop(df[df['protocol']==s].index, inplace=True)
+        df = df.drop(df[df['protocol']==s].index)
 
     df['parliament_year'] = df['parliament_year'].apply(lambda x: int(x[:4]))
     pyears = df['parliament_year'].unique()
