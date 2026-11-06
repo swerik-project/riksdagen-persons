@@ -392,7 +392,7 @@ class Test(unittest.TestCase):
         chair_mp = self.get_chair_mp()
         chair_mp = pl.from_pandas(chair_mp)
         chair_mp = chair_mp.filter(pl.col("person_id").is_not_null())
-        
+
         # Fill out nulls for printing
         chair_mp_imputed = chair_mp.with_columns(pl.col("start").fill_null("N/A").alias("start_str"))
         chair_mp_imputed = chair_mp_imputed.with_columns(pl.col("end").fill_null("N/A").alias("end_str"))
@@ -406,7 +406,7 @@ class Test(unittest.TestCase):
             pl.when(pl.col.start.str.len_chars() == 4)
             .then(pl.concat_str("start", pl.lit("-01-01")))
             .otherwise("start"))
-        
+
         # Since one-day overlap is allowed, move the start dates (artificially) one day forward
         chair_mp_imputed = chair_mp_imputed.with_columns((
             pl.col("start").str.to_datetime()
@@ -417,7 +417,7 @@ class Test(unittest.TestCase):
         for parliament_year in tqdm.tqdm(sorted(set(chair_mp.get_column("parliament_year")))):
             chair_mp_imputed_year = chair_mp_imputed.filter(pl.col("parliament_year") == parliament_year)
 
-            # Test separately for each date where seating might change: 
+            # Test separately for each date where seating might change:
             # Year start, year end, and every time somebody changes seats
             dates = set(chair_mp_imputed_year.get_column("start")).union(set(chair_mp_imputed_year.get_column("end")))
             chairhog_error_messages, knamp_error_messages = [], []
