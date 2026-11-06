@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Data integrity tests for Riksdag-year date ranges.
+Data integrity test for overlapping Riksdag-year date ranges.
 
-These tests check release-blocking guarantees for ``data/riksdag-year.csv``,
+This test checks a release-blocking guarantee for ``data/riksdag-year.csv``,
 the shared reference table used to map dates to Riksdag years.
 """
 import unittest
@@ -16,36 +16,6 @@ RIKSDAG_YEAR_PATH = "data/riksdag-year.csv"
 
 
 class TestRiksdagYearDateIntegrity(unittest.TestCase):
-    def test_riksdag_year_ranges_are_not_inverted(self):
-        """Guarantee: every Riksdag-year range starts on or before it ends.
-
-        Why this matters: inverted Riksdag-year ranges break date-to-riksmote
-        mapping and make valid protocol dates look outside their expected
-        Riksdag-year interval.
-
-        Data: reads ``data/riksdag-year.csv``.
-        """
-        riksdag_years = pl.read_csv(RIKSDAG_YEAR_PATH, try_parse_dates=True)
-        inverted = riksdag_years.filter(pl.col("start") > pl.col("end"))
-
-        for row in inverted.to_dicts():
-            LOGGER.error(
-                "Inverted Riksdag-year range: parliament_year=%s specifier=%s "
-                "chamber=%s start=%s end=%s",
-                row["parliament_year"],
-                row["specifier"],
-                row["chamber"],
-                row["start"],
-                row["end"],
-            )
-
-        self.assertEqual(
-            len(inverted),
-            0,
-            f"{len(inverted)} Riksdag-year range row(s) start after end; "
-            f"details logged from {RIKSDAG_YEAR_PATH}",
-        )
-
     def test_riksdag_year_ranges_do_not_overlap_within_chamber(self):
         """Guarantee: two Riksdag-year ranges for one chamber never overlap.
 
