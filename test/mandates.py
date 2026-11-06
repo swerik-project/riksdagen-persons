@@ -47,7 +47,7 @@ class MandateDateIntegrityTest(unittest.TestCase):
             )
             .sort(["person_id", "type", "date"])
         )
-        missing_count = missing_dates.height
+        missing_count = len(missing_dates)
 
         if missing_count:
             LOGGER.error(
