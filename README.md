@@ -89,6 +89,9 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - party_id
 
 ### `data/party_leaders.csv`
+
+This initial table includes leadership periods that clearly overlap a period when the party was represented in parliament. The leader need not personally have been an MP. Retained periods keep their recorded dates, including portions outside parliamentary representation; uncertain boundary cases are deferred.
+
 - person_id
 - name
 - start_date
