@@ -49,16 +49,11 @@ class MandateDateIntegrityTest(unittest.TestCase):
         )
         missing_count = len(missing_dates)
 
-        if missing_count:
+        for row in missing_dates.iter_rows(named=True):
             LOGGER.error(
-                f"{missing_count} manually verified mandate date(s) "
-                "are missing from data/member_of_parliament.csv"
+                f"Missing {row['type']} mandate date {row['date']} "
+                f"for {row['person_id']}"
             )
-            for row in missing_dates.iter_rows(named=True):
-                LOGGER.error(
-                    f"Missing {row['type']} mandate date {row['date']} "
-                    f"for {row['person_id']}"
-                )
 
         self.assertEqual(
             missing_count,
