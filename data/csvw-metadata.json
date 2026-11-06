@@ -390,6 +390,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["party_id", "start_date", "name"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
