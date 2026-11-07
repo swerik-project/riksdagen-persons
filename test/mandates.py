@@ -3,7 +3,6 @@ Test that known MP start/end dates that have been manually verified do not chang
 """
 from datetime import datetime
 from pytest_cfg_fetcher.fetch import fetch_config
-import json
 import pandas as pd
 import unittest
 import warnings
@@ -31,8 +30,16 @@ class Test(unittest.TestCase):
 
 
     def test_manually_checked_mandates(self):
-        """
-        Find each manual mandate in the data... make sure dates are same.
+        """Guarantee: manually checked MP start and end dates are preserved.
+
+        Each date in test/data/mandate-dates.csv must appear as a start or end
+        date for the same person in data/member_of_parliament.csv. Separate
+        references may belong to different periods of service.
+
+        Bager's 1981-1982 dates come from Enkammarriksdagen, volume 2, pages 79
+        and 503, and the first session day in protocol 1981/82:1. Allgulander's
+        February-March 1982 dates are confirmed by volume 2, page 498 and the
+        chamber's notices of his leave and return.
         """
         mep = self.fetch_mep_meta()
         df = self.fetch_known_mandate_dates()

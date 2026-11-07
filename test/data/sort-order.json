@@ -1,4 +1,9 @@
 {
+    "committee.csv": ["committee_id"],
+    "committee_abbreviation.csv": ["committee_id", "abbreviation", "start", "end"],
+    "committee_role.csv": ["committee_role_id"],
+    "committee_membership.csv": ["person_id", "committee_id", "committee_role_id", "start", "end"],
+    "committee_external_identifiers.csv": ["committee_id", "authority", "identifier"],
     "name.csv": ["person_id", "name"],
     "government.csv": ["start"],
     "chair_mp.csv": ["parliament_year", "person_id", "chair_id", "start"],
