@@ -81,12 +81,27 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - abbreviation
 - ocr_correction
 
+### `data/party.csv`
+- party_id
+- party
+- inception
+- inception_precision
+- dissolution
+- dissolution_precision
+- successor_id (deprecated)
+- swerik_party_id
+- swerik_successor (deprecated)
+
 ### `data/party_affiliation.csv`
 - person_id
 - start
 - end
 - party
 - party_id
+
+### `data/party_successor.csv`
+- party_id
+- successor_party_id
 
 ### `data/person.csv`
 - person_id
@@ -128,7 +143,7 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - end
 - role
 
-### `data/twitter.csv`
+### `data/twitter.csv` (deprecated)
 - person_id
 - twitter
  

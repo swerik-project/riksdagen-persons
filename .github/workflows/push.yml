@@ -139,10 +139,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyriksdagen
         pip install pytest-cfg-fetcher
+        pip install polars networkx
     - name: Test MPs agains manually curated data
       run: |
         python -m unittest test.party-affiliation
         python -m unittest test.party-name
+        python -m unittest test.party_successor
 
   frequency-distr:
     runs-on: ubuntu-latest
@@ -186,7 +188,7 @@ jobs:
         pip install pyriksdagen
         pip install pytest-cfg-fetcher
         pip install pdoc
-        pip install polars
+        pip install polars networkx
     - name: Test documentation build
       run: |
         pdoc -o /tmp/riksdagen-persons-docs --footer-text docs-smoke-test -t docs/dark-mode --logo https://raw.githubusercontent.com/swerik-project/the-swedish-parliament-corpus/refs/heads/main/readme/riksdagshuset.jpg ../riksdagen-persons
