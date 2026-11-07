@@ -72,9 +72,8 @@ def get_ch(protocol_path):
 def get_baseline(row, baseline_df):
     y = row['year']
     c = row['chamber']
-    fdf = baseline_df.loc[(baseline_df['year'] == y) & (baseline_df['chamber'] == c)].copy()
-    fdf.reset_index(inplace=True)
-    return fdf.at[0, "n_mps"]
+    fdf = baseline_df.loc[(baseline_df['year'] == y) & (baseline_df['chamber'] == c)]
+    return fdf['n_mps'].iloc[0]
 
 
 
@@ -104,9 +103,6 @@ def main(args):
     corpus_meta = load_Corpus_metadata(metadata_folder='data')
     mp_meta = corpus_meta[corpus_meta['source'] == 'member_of_parliament']
     mp_meta = mp_meta[mp_meta.start.notnull()]
-
-    mp_meta['start'] = mp_meta['start'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='ignore'))
-    mp_meta['end'] = mp_meta['end'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='ignore'))
 
     print(mp_meta[['start', 'end']].describe())
 
