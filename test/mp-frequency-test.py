@@ -9,17 +9,20 @@ from pyriksdagen.utils import (
     get_data_location,
 )
 from pytest_cfg_fetcher.fetch import fetch_config
-from trainerlog import get_logger
 from tqdm import tqdm
 import datetime as dt
 import pandas as pd
-import unittest
+import unittest, warnings
 
 
 
-LOGGER = get_logger("test-mp-frequency")
+class Info(Warning):
+    def __init__(self, m):
+        self.message = m
+    def __str__(self):
+        return self.message
 
-class TestMPFrequency(unittest.TestCase):
+class Test(unittest.TestCase):
 
     def write_err_df(self, name_str, df, outdir):
         now = dt.datetime.now().strftime('%Y%m%d-%H%M%S')
@@ -115,7 +118,7 @@ class TestMPFrequency(unittest.TestCase):
 
         shouldnt_happen = 0
 
-        with tqdm(total=len(dates), disable=None, mininterval=1.0) as prgbr:
+        with tqdm(total=len(dates)) as prgbr:
             for i, r in dates.iterrows():
                 N_MP = 0
                 chamber = r['chamber']
@@ -123,7 +126,7 @@ class TestMPFrequency(unittest.TestCase):
                 if not pd.isna(chamber):
                     parliament_day = r['date']
                     baseline = r['baseline_N']
-                    prgbr.set_postfix_str(f"{chamber} / {r['parliament_year']} / {shouldnt_happen}", refresh=False)
+                    prgbr.set_postfix_str(f"{chamber} / {r['parliament_year']} / {shouldnt_happen}")
 
                     if len(parliament_day) == 10:
                         #print(r['date'], type(r['date']))
@@ -166,13 +169,11 @@ class TestMPFrequency(unittest.TestCase):
                 no_passdf = dates.loc[dates['almost_passes_test'] == False]
                 self.write_err_df("mp-freq-oor", no_passdf, config["test_out_dir"])
 
-        LOGGER.info(f"{total_almost}/{total} parliament days have an MP count within tolerance ({total_almost/total:.2%}).")
+        warnings.warn(f"\n\n\n --> of {total} Parliament days, {total_almost} almost have the correct number of MPs (+/-10%) {total_almost/total}\n", Info)
 
-        LOGGER.info(f"{total_passed}/{total} parliament days have exactly the expected MP count ({total_passed/total:.2%}).")
+        warnings.warn(f"\n\n\n --> of {total} Parliament days, {total_passed} have exactly the correct number of MPs (+/-10%) {total_passed/total}\n", Info)
 
-        self.assertGreater(total_almost/total, 0.95,
-                           f"Only {total_almost}/{total} parliament days have an MP count within tolerance; "
-                           "more than 95% is required. Counts were logged above.")
+        self.assertTrue(total_almost/total > 0.95)
 
 
 

@@ -102,7 +102,7 @@ def main(args):
 
     corpus_meta = load_Corpus_metadata(metadata_folder='data')
     mp_meta = corpus_meta[corpus_meta['source'] == 'member_of_parliament']
-    mp_meta = mp_meta[mp_meta.start.notnull()].copy()
+    mp_meta = mp_meta[mp_meta.start.notnull()]
 
     print(mp_meta[['start', 'end']].describe())
 
@@ -112,7 +112,7 @@ def main(args):
 
     shouldnt_happen = 0
 
-    with tqdm(total=len(dates), disable=None, mininterval=1.0) as prgbr:
+    with tqdm(total=len(dates)) as prgbr:
         for i, r in dates.iterrows():
             N_MP = 0
             chamber = r['chamber']
@@ -120,7 +120,7 @@ def main(args):
             if not pd.isna(chamber):
                 parliament_day = r['date']
                 baseline = r['baseline_N']
-                prgbr.set_postfix_str(f"{chamber} / {r['parliament_year']} / {shouldnt_happen}", refresh=False)
+                prgbr.set_postfix_str(f"{chamber} / {r['parliament_year']} / {shouldnt_happen}")
 
                 if len(parliament_day) == 10:
                     #print(r['date'], type(r['date']))
