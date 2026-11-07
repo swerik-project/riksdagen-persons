@@ -147,7 +147,7 @@ class ChairSeatingIntegrity(unittest.TestCase):
         joined = joined.join(numbering.select("chair_seat_position_id", "chair_seating_plan_id"), on="chair_seat_position_id", suffix="_numbering")
         errors = joined.filter((pl.col("chair_seating_plan_id") != pl.col("chair_seating_plan_id_group")) |
                                (pl.col("chair_seating_plan_id") != pl.col("chair_seating_plan_id_numbering")))
-        if errors.height:
+        if not errors.is_empty():
             LOGGER.error(f"Cross-plan position/group/numbering links:\n{errors}")
         self.assertEqual(errors.height, 0, f"{errors.height} cross-plan positions; details logged with trainerlog")
 
@@ -157,7 +157,7 @@ class ChairSeatingIntegrity(unittest.TestCase):
         numbering = pl.read_csv(DATA / "chair_seat_numbering.csv")
         counts = numbering.group_by("chair_seat_position_id").len()
         errors = positions.join(counts, on="chair_seat_position_id", how="left").filter(pl.col("len").is_null() | (pl.col("len") != 1))
-        if errors.height:
+        if not errors.is_empty():
             LOGGER.error(f"Missing or multiple numbering states:\n{errors}")
         self.assertEqual(errors.height, 0, f"{errors.height} positions lack one numbering state; details logged with trainerlog")
 
@@ -166,7 +166,7 @@ class ChairSeatingIntegrity(unittest.TestCase):
         numbering = pl.read_csv(DATA / "chair_seat_numbering.csv")
         errors = numbering.filter(((pl.col("status") == "numbered") & pl.col("label").is_null()) |
                                   ((pl.col("status") != "numbered") & (pl.col("label").is_not_null() | pl.col("chair_id").is_not_null())))
-        if errors.height:
+        if not errors.is_empty():
             LOGGER.error(f"Inconsistent drawing states:\n{errors}")
         self.assertEqual(errors.height, 0, f"{errors.height} inconsistent states; details logged with trainerlog")
 
@@ -175,7 +175,7 @@ class ChairSeatingIntegrity(unittest.TestCase):
         numbering = pl.read_csv(DATA / "chair_seat_numbering.csv")
         counts = numbering.filter(pl.col("label").is_not_null()).group_by("chair_seating_plan_id", "label").len()
         errors = counts.filter(pl.col("len") > 1)
-        if errors.height:
+        if not errors.is_empty():
             LOGGER.error(f"Repeated numbered labels:\n{errors}")
         self.assertEqual(errors.height, 0, f"{errors.height} repeated plan/label pairs; details logged with trainerlog")
 
@@ -220,7 +220,7 @@ class ChairSeatingIntegrity(unittest.TestCase):
         positions = pl.read_csv(DATA / "chair_seat_positions.csv", infer_schema_length=None).join(pl.read_csv(DATA / "chair_seating_plans.csv"), on="chair_seating_plan_id")
         keys = ["x", "y", "orientation"]
         errors = positions.filter((pl.col("coordinate_system") == "local_grid") & pl.any_horizontal(pl.col(keys).is_not_null()))
-        if errors.height:
+        if not errors.is_empty():
             LOGGER.error(f"Local grids with unsupported geometry:\n{errors}")
         self.assertEqual(errors.height, 0, f"{errors.height} local-grid positions claim geometry; details logged with trainerlog")
 
