@@ -187,7 +187,7 @@ jobs:
         pip install pyriksdagen
         pip install pytest-cfg-fetcher
         pip install pdoc
-        pip install polars
+        pip install polars networkx
     - name: Test documentation build
       run: |
         pdoc -o /tmp/riksdagen-persons-docs --footer-text docs-smoke-test -t docs/dark-mode --logo https://raw.githubusercontent.com/swerik-project/the-swedish-parliament-corpus/refs/heads/main/readme/riksdagshuset.jpg ../riksdagen-persons
