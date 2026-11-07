@@ -38,8 +38,6 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - `data/chair_seat_positions.csv`: plan-local positions, orientation, dimensions and local row/column.
 - `data/chair_seat_numbering.csv`: source labels, drawing states and links to existing numbered MP chairs.
 
-See [Chamber layouts and seating plans](docs/chamber-layouts.md) for sources,
-coordinate conventions, limitations, joins and image reconstruction commands.
 Schematic coordinates are not measured distances. Position IDs do not assert
 physical continuity across years, and unnumbered or hidden slots do not assert
 vacancy. The former `chair_neighbours.csv` is no longer part of the data model.
