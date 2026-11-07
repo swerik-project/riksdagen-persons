@@ -74,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.13]
     steps:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/checkout
@@ -89,6 +89,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyriksdagen
         pip install pytest-cfg-fetcher
+        pip install polars
     - name: Test metadata integrity
       run: |
         echo "Test that there are no duplicates in the DB"
@@ -97,12 +98,13 @@ jobs:
         python -m unittest test.db
         python -m unittest test.person_id_integrity
         python -m unittest test.minister_date_integrity
+        python -m unittest test.riksdag_year_date_integrity
 
   mandates:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.13]
     steps:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/checkout
@@ -125,7 +127,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-       python-version: [3.8]
+       python-version: [3.13]
     steps:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/checkout
@@ -149,7 +151,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.13]
     steps:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/checkout
@@ -172,7 +174,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.13]
     steps:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/checkout
