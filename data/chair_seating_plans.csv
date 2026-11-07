@@ -1,0 +1,18 @@
+chair_seating_plan_id,chamber_layout_id,parliament_year,start,end,label,coordinate_system
+i-LCZR7kWxjvZYY5tRC1z9BL,i-5df4usQFbNhAqQ6ByuQY53,,,,"Andra Kammarens Samlingsrum, rectangular plan: SWERIK schematic",schematic
+i-JxF914YvtmgQw5Lvqsge56,i-95JkfhSMZtjngqkjoZURD,,,,"Andra kammarens plenisal, angled plan printed 1970",local_grid
+i-GNicbmMpTVfHEx7zRayCKF,i-CYnGkhLk8qvRjB1hqU2MZs,,,,"Forsta Kammarens samlingsrum, rectangular plan: SWERIK schematic",schematic
+i-VvkZUB4duvAZf7bqeEiVir,i-QdciffNczuaFBHaeme1Vwb,,,,"Forsta kammarens plenisal, angled plan printed 1970",local_grid
+i-RSf9N7EBSrF7SVFSWJvW1i,i-Rwjf4XwqWstRkSzQ2dvSDM,,,,"Temporary parliament, 350-seat plan (publication date unknown)",local_grid
+i-JxyaxSiJaTDQWKoaoQptFq,i-95JkfhSMZtjngqkjoZURD,1935,1935-01-10,1935-06-18,AK1935: SWERIK schematic,schematic
+i-3rtB4GAECZhiviPupE1Qxs,i-QdciffNczuaFBHaeme1Vwb,1935,1935-01-10,1935-06-18,FK1935: SWERIK schematic,schematic
+i-UK3E8SJq48vBSZu2P4wxiD,i-95JkfhSMZtjngqkjoZURD,1957,1957-01-10,1957-12-18,AK1957: SWERIK schematic,schematic
+i-FBgnKk8wPWPvdbHJXWNDQ9,i-QdciffNczuaFBHaeme1Vwb,1957,1957-01-10,1957-12-18,FK1957: SWERIK schematic,schematic
+i-dMjmS6tcCzXffqvhsaFZD,i-95JkfhSMZtjngqkjoZURD,1961,1961-01-10,1961-12-15,AK1961: SWERIK schematic,schematic
+i-ASptP5Daqh8yrf5UecQ39v,i-QdciffNczuaFBHaeme1Vwb,1961,1961-01-10,1961-12-15,FK1961: SWERIK schematic,schematic
+i-HUQEpZ5Ke93YQ73Rj8DM95,i-95JkfhSMZtjngqkjoZURD,1965,1965-01-11,1965-12-16,AK1965: SWERIK schematic,schematic
+i-TFoNmr3o8pHRpupjPgrdYX,i-QdciffNczuaFBHaeme1Vwb,1965,1965-01-11,1965-12-16,FK1965: SWERIK schematic,schematic
+i-XcjBbJ5Lk7BHeJinhHF3bL,i-Rwjf4XwqWstRkSzQ2dvSDM,1971,1971-01-11,1971-12-17,EK1971: SWERIK schematic,schematic
+i-EUJZz132LDwCFWKkKxu3r1,i-GyxTDbgqzLZihKQQ4sKrBG,198586,1985-09-30,1986-06-06,EK1985: SWERIK schematic,schematic
+i-YZfmCJtMxNJyK9CtT7VLPs,i-WsM9PALfgoSj8ctji4c1TW,200708,2007-09-18,2008-09-16,EK20072008: SWERIK schematic,schematic
+i-3FcragKXKrbZrZ7AWgiUpb,i-WsM9PALfgoSj8ctji4c1TW,202627,,,Placing in the chamber for parliamentary session 2026/27; MP seats,local_grid

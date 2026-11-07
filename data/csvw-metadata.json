@@ -484,6 +484,367 @@
       }
     },
     {
+      "url": "chamber_layouts.csv",
+      "dc:title": "Chamber Layouts",
+      "dc:description": "Identified chamber seating layouts, buildings, and historical chamber-use periods stored as start and end. These periods do not establish that numbered seating remained unchanged. Blank dates mean unknown, not unbounded validity. Sources and qualifications are in docs/chamber-layouts.md and references/chamber-layouts/transcription.json.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chamber_layout_id",
+            "titles": "chamber_layout_id",
+            "dc:description": "Stable identifier of a chamber seating layout.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "chamber",
+            "titles": "chamber",
+            "dc:description": "Parliamentary chamber code.",
+            "datatype": {"base": "string", "format": "^(ak|fk|ek)$"},
+            "required": true
+          },
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Start of the historical chamber-use period assigned to this layout. Precision follows the date text: YYYY, YYYY-MM, or YYYY-MM-DD. Exact dates are inclusive; blank means unknown. Not proof that all numbered seats were unchanged throughout the period.",
+            "datatype": {"base": "string", "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"}
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "End of the historical chamber-use period assigned to this layout. Precision follows the date text: YYYY, YYYY-MM, or YYYY-MM-DD. Exact dates are inclusive; blank means unknown, not an unlimited future interval. Not a furniture-removal date.",
+            "datatype": {"base": "string", "format": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"}
+          },
+          {
+            "name": "building",
+            "titles": "building",
+            "dc:description": "Name of the building containing the chamber. The rectangular plans are provisionally identified as Riksens ständers hus on Riddarholmen.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": "chamber_layout_id"
+      }
+    },
+    {
+      "url": "chair_seating_plans.csv",
+      "dc:title": "Chair Seating Plans",
+      "dc:description": "Source-specific observations of seating geometry and numbering, not assertions of validity throughout the chamber-use period. Schematic coordinates are not metres; local grids have no global coordinates.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chair_seating_plan_id",
+            "titles": "chair_seating_plan_id",
+            "dc:description": "Stable identifier of one source-specific plan.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "chamber_layout_id",
+            "titles": "chamber_layout_id",
+            "dc:description": "Broad chamber-use layout containing this observation.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "parliament_year",
+            "titles": "parliament_year",
+            "dc:description": "Parliament year asserted by the source: YYYY or YYYYYY. Unknown remains blank; publication year alone is not used.",
+            "datatype": "integer"
+          },
+          {
+            "name": "start",
+            "titles": "start",
+            "dc:description": "Earliest recorded session start for this parliament_year and chamber in riksdag-year.csv, inclusive. Blank when the year or session dates are unknown. Describes the parliamentary session, not confirmed continuous use of the seating arrangement.",
+            "datatype": "date"
+          },
+          {
+            "name": "end",
+            "titles": "end",
+            "dc:description": "Latest recorded session end for this parliament_year and chamber in riksdag-year.csv, inclusive. Blank when the year or session dates are unknown. Multiple sessions form a date envelope, not an assertion of continuous sitting or unchanged seating.",
+            "datatype": "date"
+          },
+          {
+            "name": "label",
+            "titles": "label",
+            "dc:description": "Human-readable source-plan label. Source files, locators and checksums are preserved separately under references/chamber-layouts/; see docs/chamber-layouts.md.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "coordinate_system",
+            "titles": "coordinate_system",
+            "dc:description": "Schematic uses seat-sized units, x right and y down; local_grid preserves topology without global geometry.",
+            "datatype": {
+              "base": "string",
+              "format": "^(schematic|local_grid)$"
+            },
+            "required": true
+          }
+        ],
+        "primaryKey": "chair_seating_plan_id",
+        "foreignKeys": [
+          {
+            "columnReference": "chamber_layout_id",
+            "reference": {
+              "resource": "chamber_layouts.csv",
+              "columnReference": "chamber_layout_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "chair_groups.csv",
+      "dc:title": "Chair Groups",
+      "dc:description": "Plan-local hierarchy of chamber, sections, arcs, banks, rows and podium positions. Group boundaries do not assert an aisle.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chair_group_id",
+            "titles": "chair_group_id",
+            "dc:description": "Stable plan-local group identifier.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "chair_seating_plan_id",
+            "titles": "chair_seating_plan_id",
+            "dc:description": "Plan containing the group.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "parent_group_id",
+            "titles": "parent_group_id",
+            "dc:description": "Containing group in the same plan; blank only for the chamber root.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            }
+          },
+          {
+            "name": "group_type",
+            "titles": "group_type",
+            "dc:description": "Structural type of group.",
+            "datatype": {
+              "base": "string",
+              "format": "^(chamber|section|arc|bank|row|podium)$"
+            },
+            "required": true
+          },
+          {
+            "name": "label",
+            "titles": "label",
+            "dc:description": "Source-relative group description.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": "chair_group_id",
+        "foreignKeys": [
+          {
+            "columnReference": "chair_seating_plan_id",
+            "reference": {
+              "resource": "chair_seating_plans.csv",
+              "columnReference": "chair_seating_plan_id"
+            }
+          },
+          {
+            "columnReference": "parent_group_id",
+            "reference": {
+              "resource": "chair_groups.csv",
+              "columnReference": "chair_group_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "chair_seat_positions.csv",
+      "dc:title": "Chair Seat Positions",
+      "dc:description": "Plan-local positions including hidden and unknown slots. IDs identify model locations, not furniture or proven physical continuity across years. Coordinates are absent for local-grid observations.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chair_seat_position_id",
+            "titles": "chair_seat_position_id",
+            "dc:description": "Stable identifier seeded from plan, group and local row/column, not coordinates or chair number.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "chair_seating_plan_id",
+            "titles": "chair_seating_plan_id",
+            "dc:description": "Plan containing this position.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "chair_group_id",
+            "titles": "chair_group_id",
+            "dc:description": "Leaf group containing this position.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "row",
+            "titles": "row",
+            "dc:description": "One-based local row along the group's seating depth.",
+            "datatype": {
+              "base": "integer",
+              "minimum": 1
+            },
+            "required": true
+          },
+          {
+            "name": "column",
+            "titles": "column",
+            "dc:description": "One-based local column across the group's seating direction.",
+            "datatype": {
+              "base": "integer",
+              "minimum": 1
+            },
+            "required": true
+          },
+          {
+            "name": "x",
+            "titles": "x",
+            "dc:description": "Centre x-coordinate in schematic units; positive to the right.",
+            "datatype": "double"
+          },
+          {
+            "name": "y",
+            "titles": "y",
+            "dc:description": "Centre y-coordinate in schematic units; positive down the rendered page.",
+            "datatype": "double"
+          },
+          {
+            "name": "orientation",
+            "titles": "orientation",
+            "dc:description": "Drawing rotation of the chair's local x-axis, clockwise from page +x in degrees [0,360). Samlingsrum banks use only 0/90/180/270 degrees: main banks face the Speaker end and side banks face inward by convention, not measured historic angles. Not observed bodily orientation.",
+            "datatype": "double"
+          }
+        ],
+        "primaryKey": "chair_seat_position_id",
+        "foreignKeys": [
+          {
+            "columnReference": "chair_seating_plan_id",
+            "reference": {
+              "resource": "chair_seating_plans.csv",
+              "columnReference": "chair_seating_plan_id"
+            }
+          },
+          {
+            "columnReference": "chair_group_id",
+            "reference": {
+              "resource": "chair_groups.csv",
+              "columnReference": "chair_group_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "chair_seat_numbering.csv",
+      "dc:title": "Chair Seat Numbering",
+      "dc:description": "Source-specific labels and optional numbered-MP-chair mappings. Unnumbered, hidden and unknown are distinct drawing states, not occupancy assertions. Special non-MP labels remain unlinked.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chair_seating_plan_id",
+            "titles": "chair_seating_plan_id",
+            "dc:description": "Plan in which this numbering is observed.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "chair_seat_position_id",
+            "titles": "chair_seat_position_id",
+            "dc:description": "Position receiving this label or state.",
+            "datatype": {
+              "base": "string",
+              "format": "^i-[1-9A-HJ-NP-Za-km-z]+$"
+            },
+            "required": true
+          },
+          {
+            "name": "chair_id",
+            "titles": "chair_id",
+            "dc:description": "Existing numbered MP-chair ID in the matching chamber. Blank for special non-MP chairs or positions without a known label.",
+            "datatype": "string"
+          },
+          {
+            "name": "label",
+            "titles": "label",
+            "dc:description": "Displayed source label, including special labels outside the MP-chair registry.",
+            "datatype": "string"
+          },
+          {
+            "name": "status",
+            "titles": "status",
+            "dc:description": "Numbered means a label is present; unnumbered is a drawn unlabeled chair; hidden is an omitted Swift slot; unknown is an unresolved image-transcription cell.",
+            "datatype": {
+              "base": "string",
+              "format": "^(numbered|unnumbered|hidden|unknown)$"
+            },
+            "required": true
+          }
+        ],
+        "primaryKey": [
+          "chair_seating_plan_id",
+          "chair_seat_position_id"
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "chair_seating_plan_id",
+            "reference": {
+              "resource": "chair_seating_plans.csv",
+              "columnReference": "chair_seating_plan_id"
+            }
+          },
+          {
+            "columnReference": "chair_seat_position_id",
+            "reference": {
+              "resource": "chair_seat_positions.csv",
+              "columnReference": "chair_seat_position_id"
+            }
+          },
+          {
+            "columnReference": "chair_id",
+            "reference": {
+              "resource": "chairs.csv",
+              "columnReference": "chair_id"
+            }
+          }
+        ]
+      }
+    },
+    {
       "url": "chair_mp.csv",
       "dc:title": "Chair Occupancy",
       "dc:description": "Mappings between parliamentary chairs, parliament years, and persons.",
