@@ -6,6 +6,7 @@ WARN on upstream errors
 from datetime import datetime
 from lxml import etree
 from pathlib import Path
+import re
 from pyriksdagen.db import load_metadata
 from pyriksdagen.utils import (
     get_doc_dates,
@@ -19,7 +20,59 @@ import unittest
 import warnings
 import yaml
 
-from test.date_integrity_helpers import parse_date_interval
+UNICAMERAL_DEPUTY_SPEAKER_ROLES = {
+    "Sveriges riksdags förste vice talman",
+    "Sveriges riksdags andre vice talman",
+    "Sveriges riksdags tredje vice talman",
+}
+
+CURRENT_UNICAMERAL_SPEAKER_ROLES = {
+    "Sveriges riksdags talman",
+    *UNICAMERAL_DEPUTY_SPEAKER_ROLES,
+}
+
+
+DATE_RE = re.compile(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$")
+
+
+def parse_date_interval(value, is_end):
+    """
+    Parse partial date strings as interval boundaries for integrity checks.
+
+    Start dates are expanded to the first possible day. End dates are expanded
+    to the exclusive upper bound after the last possible day.
+    """
+    if pd.isna(value) or str(value).strip() == "":
+        if is_end:
+            return pd.Timestamp.max.normalize(), None, "blank"
+        return None, None, "blank"
+
+    value = str(value).strip()
+    match = DATE_RE.match(value)
+    if match is None:
+        return None, None, "malformed"
+
+    year = int(match.group(1))
+    month = int(match.group(2)) if match.group(2) else None
+    day = int(match.group(3)) if match.group(3) else None
+
+    try:
+        if month is None:
+            if is_end:
+                return pd.Timestamp(year + 1, 1, 1), "year", None
+            return pd.Timestamp(year, 1, 1), "year", None
+
+        if day is None:
+            if is_end:
+                if month == 12:
+                    return pd.Timestamp(year + 1, 1, 1), "month", None
+                return pd.Timestamp(year, month + 1, 1), "month", None
+            return pd.Timestamp(year, month, 1), "month", None
+
+        return pd.Timestamp(year, month, day), "day", None
+    except ValueError:
+        return None, None, "malformed"
+
 
 class DuplicateWarning(Warning):
     def __init__(self, duplicate_df):
@@ -119,6 +172,22 @@ class Test(unittest.TestCase):
         """
         now = datetime.now().strftime('%Y%m%d-%H%M%S')
         errs.to_csv(f"{outpath}/{now}_db_{df_name}.csv", sep=';', index=False)
+
+    def parse_speaker_date(self, value):
+        """
+        Parse speaker.csv's coarse YYYY dates and exact YYYY-MM-DD dates.
+        """
+        if pd.isna(value) or value == "":
+            return None
+
+        value = str(value)
+        for date_format in ("%Y-%m-%d", "%Y"):
+            try:
+                return datetime.strptime(value, date_format)
+            except ValueError:
+                pass
+
+        raise ValueError(value)
 
     #
     # ---> Tests
@@ -342,7 +411,7 @@ class Test(unittest.TestCase):
 
     def test_speaker_dates_are_present(self):
         """
-        Test that only the current speaker row is open-ended.
+        Test that only current unicameral speaker roles are open-ended.
         """
         speaker = self.get_meta_df("speaker").fillna("").copy()
         speaker["start"] = speaker["start"].astype(str)
@@ -355,25 +424,36 @@ class Test(unittest.TestCase):
             & speaker["start_date"].isna()
         ].copy()
 
-        latest_start = speaker["start_date"].max()
         open_ended = speaker[speaker["end"] == ""].copy()
-        # Speaker intervals should be closed historical facts. The only open
-        # interval should be the current speaker, represented by the latest
-        # start date in speaker.csv.
-        unexpected_open_ended = open_ended[
-            open_ended["start_date"] != latest_start
+        open_ended_role_counts = open_ended["role"].value_counts()
+        duplicate_open_ended_roles = open_ended[
+            open_ended.duplicated("role", keep=False)
         ].copy()
+        unexpected_open_ended = open_ended[
+            ~open_ended["role"].isin(CURRENT_UNICAMERAL_SPEAKER_ROLES)
+        ].copy()
+        missing_open_ended_roles = (
+            CURRENT_UNICAMERAL_SPEAKER_ROLES - set(open_ended["role"])
+        )
 
         self.assertTrue(missing_start.empty, f"Speaker rows missing start dates:\n{missing_start}")
         self.assertTrue(invalid_start.empty, f"Speaker rows with unparseable start dates:\n{invalid_start}")
         self.assertTrue(
             unexpected_open_ended.empty,
-            f"Only the speaker row with latest start date ({latest_start.date()}) may be open-ended:\n{unexpected_open_ended}"
+            f"Only current unicameral speaker roles may be open-ended:\n{unexpected_open_ended}"
         )
         self.assertEqual(
-            len(open_ended),
-            1,
-            f"Expected exactly one open-ended current speaker row; found {len(open_ended)}:\n{open_ended}"
+            missing_open_ended_roles,
+            set(),
+            (
+                "Expected one open-ended row for each current unicameral "
+                f"speaker role. Missing roles: {missing_open_ended_roles}\n"
+                f"Open-ended role counts:\n{open_ended_role_counts}"
+            )
+        )
+        self.assertTrue(
+            duplicate_open_ended_roles.empty,
+            f"Expected at most one open-ended row per speaker role:\n{duplicate_open_ended_roles}"
         )
 
 
@@ -426,6 +506,46 @@ class Test(unittest.TestCase):
                 f"Overlapping row pairs: {len(overlaps)}\n{overlaps_df}"
             )
         )
+
+    def test_speaker_light_integrity(self):
+        """
+        Test light integrity constraints for speaker.csv.
+        """
+        speaker = pd.read_csv("data/speaker.csv", dtype=str, keep_default_na=False)
+        person = pd.read_csv("data/person.csv", dtype=str, keep_default_na=False)
+
+        speaker_person_ids = set(speaker["person_id"])
+        known_person_ids = set(person["person_id"])
+        missing_person_ids = sorted(speaker_person_ids - known_person_ids)
+        self.assertEqual(missing_person_ids, [])
+
+        date_errors = []
+        for i, row in speaker.iterrows():
+            for column in ["start", "end"]:
+                try:
+                    self.parse_speaker_date(row[column])
+                except ValueError:
+                    date_errors.append(
+                        {
+                            "line": i + 2,
+                            "person_id": row["person_id"],
+                            "role": row["role"],
+                            "column": column,
+                            "value": row[column],
+                        }
+                    )
+
+        self.assertEqual(date_errors, [])
+
+        duplicate_columns = ["person_id", "start", "end", "role"]
+        duplicate_rows = speaker[speaker.duplicated(duplicate_columns, keep=False)]
+        self.assertTrue(duplicate_rows.empty, duplicate_rows)
+
+        post_1971 = speaker[
+            speaker["start"].apply(self.parse_speaker_date) >= datetime(1971, 1, 1)
+        ]
+        missing_roles = UNICAMERAL_DEPUTY_SPEAKER_ROLES - set(post_1971["role"])
+        self.assertEqual(missing_roles, set())
 
 
     def test_twitter(self):
