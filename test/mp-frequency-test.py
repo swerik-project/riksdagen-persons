@@ -44,7 +44,7 @@ class TestMPFrequency(unittest.TestCase):
     def get_baseline(self, row, baseline_df):
         y = row['year']
         c = row['chamber']
-        fdf = baseline_df.loc[(baseline_df['year'] == y) & (baseline_df['chamber'] == c)].copy()
+        fdf = baseline_df.loc[(baseline_df['year'] == y) & (baseline_df['chamber'] == c)]
         return fdf['n_mps'].iloc[0]
 
     def get_ch(self, protocol_path):
@@ -67,11 +67,10 @@ class TestMPFrequency(unittest.TestCase):
             return False, ratio
 
     def preprocess_Corpus_metadata(self):
+        """Use the dates already parsed by load_Corpus_metadata."""
         corpus_meta = load_Corpus_metadata(metadata_folder='data')
         mp_meta = corpus_meta[corpus_meta['source'] == 'member_of_parliament']
-        mp_meta = mp_meta[mp_meta.start.notnull()].copy()
-        mp_meta['start'] = pd.to_datetime(mp_meta['start'], format='%Y-%m-%d', errors='raise')
-        mp_meta['end'] = pd.to_datetime(mp_meta['end'], format='%Y-%m-%d', errors='raise')
+        mp_meta = mp_meta[mp_meta.start.notnull()]
         return mp_meta
 
     def expand_dates_df(self, dates, baseline_df):
@@ -89,8 +88,13 @@ class TestMPFrequency(unittest.TestCase):
         return dates
 
     def test_mp_frequency(self):
-        """
-        Guarantee: More than 95% of parliament days have an MP count within tolerance.
+        """Guarantee: more than 95% of sitting-date rows meet the MP-count tolerance.
+
+        Data: session-dates.csv and baseline-n-mps-year.csv under test/data,
+        with parliamentary service loaded by pyriksdagen from data/. Count
+        distinct MPs by chamber using the existing start-inclusive,
+        end-exclusive service intervals. A row passes when the count divided
+        by its baseline is greater than 0.9 and at most 1.1.
         """
         config = fetch_config("mp-freq-test")
         baseline_df = pd.read_csv(f"./test/data/baseline-n-mps-year.csv")
