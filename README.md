@@ -76,6 +76,14 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - name
 - primary_name
 
+### `data/nobility.csv`
+Nobility titles of people such as _greve_ (count) or _friherre_ (baron). The `title` values are normalized to their modern spellings.
+
+- person_id
+- start
+- end
+- title
+
 ### `data/party_abbreviation.csv`
 - party
 - abbreviation
