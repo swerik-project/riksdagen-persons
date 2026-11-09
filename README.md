@@ -77,7 +77,7 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - primary_name
 
 ### `data/nobility.csv`
-Person-level noble-title metadata. The `title` value is normalized; protocol spellings such as `Grefve` and `Friherre` should be handled by resolver code.
+Nobility titles of people such as _greve_ (count) or _friherre_ (baron). The `title` values are normalized to their modern spellings.
 
 - person_id
 - start
