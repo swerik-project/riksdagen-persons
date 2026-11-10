@@ -77,8 +77,6 @@ def get_baseline(row, baseline_df):
     return fdf.at[0, "n_mps"]
 
 
-
-
 def main(args):
 
     print("checking MP coverage...")

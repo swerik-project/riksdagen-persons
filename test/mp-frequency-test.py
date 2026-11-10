@@ -71,6 +71,7 @@ class Test(unittest.TestCase):
             return False, ratio
 
     def preprocess_Corpus_metadata(self):
+        """Use the dates already parsed by load_Corpus_metadata."""
         corpus_meta = load_Corpus_metadata(metadata_folder='data')
         corpus_meta = corpus_meta.to_pandas()
         mp_meta = corpus_meta[corpus_meta['source'] == 'member_of_parliament']
@@ -94,8 +95,13 @@ class Test(unittest.TestCase):
         return dates
 
     def test_mp_frequency(self):
-        """
-        Test daily frequencies.
+        """Guarantee: more than 95% of sitting-date rows meet the MP-count tolerance.
+
+        Data: session-dates.csv and baseline-n-mps-year.csv under test/data,
+        with parliamentary service loaded by pyriksdagen from data/. Count
+        distinct MPs by chamber using the existing start-inclusive,
+        end-exclusive service intervals. A row passes when the count divided
+        by its baseline is greater than 0.9 and at most 1.1.
         """
         config = fetch_config("mp-freq-test")
         baseline_df = pd.read_csv(f"./test/data/baseline-n-mps-year.csv")

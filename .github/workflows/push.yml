@@ -92,6 +92,7 @@ jobs:
         python -m unittest test.db
         python -m unittest test.person_id_integrity
         python -m unittest test.minister_date_integrity
+        python -m unittest test.riksdag_year_date_integrity
 
   mandates:
     runs-on: ubuntu-latest
