@@ -112,6 +112,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id","name"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -225,6 +226,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "start", "role"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -305,6 +307,7 @@
             }
           }
         ],
+        "primaryKey": ["person_id", "start", "swerik_party_id"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -447,6 +450,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "start", "role", "government"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -498,6 +502,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "start"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -585,6 +590,7 @@
             "datatype": "string"
           }
         ],
+        "primaryKey": ["chair_id", "person_id", "parliament_year", "start"],
         "foreignKeys": [
           {
             "columnReference": "chair_id",
@@ -673,7 +679,8 @@
             "datatype": "boolean",
             "required": true
           }
-        ]
+        ],
+        "primaryKey": ["party", "abbreviation"]
       }
     },
     {
@@ -704,6 +711,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "authority"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -736,6 +744,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -774,6 +783,7 @@
             "datatype": "string"
           }
         ],
+        "primaryKey": ["person_id","source","volume"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -820,6 +830,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "bibtex_key", "page"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -873,6 +884,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "ref", "pages", "vol"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -905,6 +917,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id","location"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -944,6 +957,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "place"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -983,6 +997,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "place"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -1015,6 +1030,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "portrait"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -1047,6 +1063,7 @@
             "required": true
           }
         ],
+        "primaryKey": ["person_id", "twitter"],
         "foreignKeys": [
           {
             "columnReference": "person_id",
@@ -1104,7 +1121,8 @@
             },
             "required": true
           }
-        ]
+        ],
+        "primaryKey": ["parliament_year","specifier","chamber"]
       }
     }
   ],
