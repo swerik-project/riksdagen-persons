@@ -15,14 +15,8 @@ class MandateDateIntegrityTest(unittest.TestCase):
         Data: compares ``test/data/mandate-dates.csv`` with
         ``data/member_of_parliament.csv``.
         """
-        manually_checked_dates = pl.read_csv(
-            "test/data/mandate-dates.csv",
-            separator=";",
-        )
-        recorded_mandates = pl.read_csv(
-            "data/member_of_parliament.csv",
-            columns=["person_id", "start", "end"],
-        )
+        manually_checked_dates = pl.read_csv("test/data/mandate-dates.csv")
+        recorded_mandates = pl.read_csv("data/member_of_parliament.csv")
 
         recorded_dates = pl.concat(
             [
@@ -59,8 +53,7 @@ class MandateDateIntegrityTest(unittest.TestCase):
             missing_count,
             0,
             f"{missing_count} manually verified MP mandate date(s) "
-            "are missing from data/member_of_parliament.csv. Details were "
-            "logged with trainerlog.",
+            "are missing from data/member_of_parliament.csv.",
         )
 
 
