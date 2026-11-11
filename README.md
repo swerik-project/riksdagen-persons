@@ -96,6 +96,16 @@ Nobility titles of people such as _greve_ (count) or _friherre_ (baron). The `ti
 - party
 - party_id
 
+### `data/party_leaders.csv`
+
+This initial table includes leadership periods that clearly overlap a period when the party was represented in parliament. The leader need not personally have been an MP. Retained periods keep their recorded dates, including portions outside parliamentary representation; uncertain boundary cases are deferred.
+
+- person_id
+- name
+- start_date
+- end_date
+- party_id
+
 ### `data/person.csv`
 - person_id
 - born
