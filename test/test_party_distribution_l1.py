@@ -32,7 +32,7 @@ class TestPartyDistributionL1(unittest.TestCase):
         "10-01": "quality/estimates/party-distribution/snapshot-10-01-l1.csv",
     }
 
-    OUTPUT_DIR = "test/result"
+    OUTPUT_DIR = "test/results"
 
     THRESHOLD_REL = 0.05   # 5% relative deterioration
     THRESHOLD_ABS = 5      # 5 seats of absolute teterioration
