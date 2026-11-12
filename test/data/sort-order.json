@@ -6,6 +6,7 @@
     "place_of_death.csv": ["person_id", "place"],
     "chairs.csv": {"columns": ["chair_nr", "chamber"], "ascending": true},
     "person.csv": ["person_id"],
+    "nobility.csv": ["person_id", "title"],
     "party_abbreviation.csv": ["abbreviation", "party"],
     "wiki_id.csv": ["wiki_id"],
     "riksdag-year.csv": ["parliament_year", "start", "chamber", "specifier"],
@@ -21,5 +22,6 @@
     "party.csv": ["party", "inception"],
     "party_successor.csv": ["party_id", "successor_party_id"],
     "external_identifiers.csv": ["person_id", "authority", "identifier"],
-    "references_map.csv": ["person_id", "bibtex_key", "page"]
+    "references_map.csv": ["person_id", "bibtex_key", "page"],
+    "party_leaders.csv": ["party_id", "start_date", "name"]
 }

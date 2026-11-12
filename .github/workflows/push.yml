@@ -28,13 +28,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pyriksdagen
-        pip install pyriksdagen==1.10.0
         pip install pytest-cfg-fetcher
         pip install pandas==2.3.3
         pip install polars pyarrow
-    - name: Test chars and chair-mp mapping metadata
+    - name: Test chairs and chair-mp mapping metadata
       run: |
         python -m unittest test.chairs
+        python -m unittest test.chair_role
 
   csvw:
     runs-on: ubuntu-latest
@@ -55,7 +55,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install csvw
         pip install pyriksdagen
-        pip install pyriksdagen==1.10.0
         pip install pytest-cfg-fetcher
         pip install pandas==2.3.3
         pip install polars
@@ -85,7 +84,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pyriksdagen
-        pip install pytest-cfg-fetcher
+        pip install pytest-cfg-fetcher pandas
         pip install polars
     - name: Test metadata integrity
       run: |
@@ -95,6 +94,7 @@ jobs:
         python -m unittest test.db
         python -m unittest test.person_id_integrity
         python -m unittest test.minister_date_integrity
+        python -m unittest test.riksdag_year_date_integrity
 
   mandates:
     runs-on: ubuntu-latest
@@ -114,7 +114,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pyriksdagen
-        pip install pytest-cfg-fetcher
+        pip install pytest-cfg-fetcher pandas
     - name: Test manually curated mandate dates do not change
       run: |
         python -m unittest test.mandates
@@ -137,7 +137,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pyriksdagen
-        pip install pytest-cfg-fetcher
+        pip install pytest-cfg-fetcher pandas
         pip install polars networkx
     - name: Test MPs agains manually curated data
       run: |
@@ -163,7 +163,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pyriksdagen
-        pip install pytest-cfg-fetcher
+        pip install pytest-cfg-fetcher pandas pyarrow
     - name: Test at least 95% of parliament days have the correct N MPs (+-10%)
       run: |
         python -m unittest test.mp-frequency-test
@@ -186,7 +186,7 @@ jobs:
         pip install csvw
         pip install pyriksdagen
         pip install pytest-cfg-fetcher
-        pip install pdoc
+        pip install pdoc pandas
         pip install polars networkx
     - name: Test documentation build
       run: |
