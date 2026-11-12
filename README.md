@@ -100,6 +100,14 @@ The [CSVW metadata](data/csvw-metadata.json) defines keys, required fields and r
 - name
 - primary_name
 
+### `data/nobility.csv`
+Nobility titles of people such as _greve_ (count) or _friherre_ (baron). The `title` values are normalized to their modern spellings.
+
+- person_id
+- start
+- end
+- title
+
 ### `data/party_abbreviation.csv`
 - party
 - abbreviation
@@ -110,6 +118,16 @@ The [CSVW metadata](data/csvw-metadata.json) defines keys, required fields and r
 - start
 - end
 - party
+- party_id
+
+### `data/party_leaders.csv`
+
+This initial table includes leadership periods that clearly overlap a period when the party was represented in parliament. The leader need not personally have been an MP. Retained periods keep their recorded dates, including portions outside parliamentary representation; uncertain boundary cases are deferred.
+
+- person_id
+- name
+- start_date
+- end_date
 - party_id
 
 ### `data/person.csv`
