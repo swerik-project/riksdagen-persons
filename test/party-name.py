@@ -121,7 +121,5 @@ class Test(unittest.TestCase):
         self.assertTrue(len(unlisted_parties)<360)
 
 
-
-
 if __name__ == '__main__':
     unittest.main()

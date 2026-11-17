@@ -47,8 +47,9 @@ class Test(unittest.TestCase):
     def get_baseline(self, row, baseline_df):
         y = row['year']
         c = row['chamber']
-        fdf = baseline_df.loc[(baseline_df['year'] == y) & (baseline_df['chamber'] == c)]
-        return fdf['n_mps'].iloc[0]
+        fdf = baseline_df.loc[(baseline_df['year'] == y) & (baseline_df['chamber'] == c)].copy()
+        fdf = fdf.reset_index()
+        return fdf.at[0, "n_mps"]
 
     def get_ch(self, protocol_path):
         chamber = None
@@ -72,8 +73,11 @@ class Test(unittest.TestCase):
     def preprocess_Corpus_metadata(self):
         """Use the dates already parsed by load_Corpus_metadata."""
         corpus_meta = load_Corpus_metadata(metadata_folder='data')
+        corpus_meta = corpus_meta.to_pandas()
         mp_meta = corpus_meta[corpus_meta['source'] == 'member_of_parliament']
         mp_meta = mp_meta[mp_meta.start.notnull()]
+        mp_meta['start'] = mp_meta['start'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='coerce'))
+        mp_meta['end'] = mp_meta['end'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d', errors='coerce'))
         return mp_meta
 
     def expand_dates_df(self, dates, baseline_df):

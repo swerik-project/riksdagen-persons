@@ -111,7 +111,7 @@ class Test(unittest.TestCase):
 
     def test_foreign_keys(self):
         """
-        test that all primary keys are unique
+        test that all CSVW foreign-key references point to existing rows
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
 
@@ -174,6 +174,61 @@ class Test(unittest.TestCase):
                         no_errors += len(matched)
 
         self.assertEqual(0, no_errors, f"{no_errors} format error(s) found")
+
+    def test_date_values_are_valid_calendar_dates(self):
+        """Guarantee: every populated date cell represents a real calendar date.
+
+        Data: scans CSVW date, gYear, and gYearMonth columns, plus the partial
+        date columns born, dead, start, and end. Missing dates are allowed.
+        Year and month values are checked using the first day of their period
+        only for parsing; their stored precision is preserved. Interval ordering
+        is checked separately by test_start_end. Failures count date cells.
+        """
+        LOGGER.info("Checking calendar validity of populated date cells")
+        no_errors = 0
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+
+        for table in tg.tables:
+            date_columns = [
+                column.name for column in table.tableSchema.columns
+                if column.datatype.base in ("date", "gYear", "gYearMonth")
+                or column.name in ("born", "dead", "start", "end")
+            ]
+            if not date_columns:
+                continue
+
+            dates = pl.read_csv(
+                self.get_data_dir() / str(table.url),
+                columns=date_columns,
+                schema_overrides={column: pl.String for column in date_columns},
+            ).with_row_index("csv_row", offset=2)
+
+            for column in date_columns:
+                value = pl.col(column)
+                calendar_date = (
+                    pl.when(value.str.len_chars() == 4)
+                    .then(value + "-01-01")
+                    .when(value.str.len_chars() == 7)
+                    .then(value + "-01")
+                    .otherwise(value)
+                    .str.to_date(format="%Y-%m-%d", strict=False)
+                )
+                invalid = dates.filter(
+                    value.is_not_null()
+                    & (calendar_date.is_null() | (calendar_date.dt.year() < 1))
+                )
+                no_errors += len(invalid)
+                for row in invalid.select("csv_row", column).iter_rows(named=True):
+                    LOGGER.error(
+                        f"{table.url}, CSV row {row['csv_row']}, "
+                        f"{column}={row[column]!r}: invalid calendar date"
+                    )
+
+        LOGGER.info(f"Found {no_errors} invalid calendar date cell(s)")
+        self.assertEqual(
+            0, no_errors,
+            f"Found {no_errors} invalid calendar date cell(s); details logged with trainerlog",
+        )
 
     def test_start_end(self):
         """
