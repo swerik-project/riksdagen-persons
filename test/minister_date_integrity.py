@@ -17,7 +17,7 @@ from trainerlog import get_logger
 
 LOGGER = get_logger("minister-date-integrity")
 DATA_DIR = Path("data")
-RESULT_DIR = Path("test/result")
+RESULT_DIR = Path("test/results")
 DATE_RE = re.compile(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$")
 
 
