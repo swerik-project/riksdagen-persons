@@ -1,6 +1,8 @@
 {
     "name.csv": ["person_id", "name"],
     "government.csv": ["start"],
+    "mandate_period.csv": ["mandate_period_id"],
+    "mandate_period_year.csv": ["mandate_period_id", "parliament_year"],
     "chair_mp.csv": ["parliament_year", "person_id", "chair_id", "start"],
     "place_of_birth.csv": ["person_id", "place"],
     "place_of_death.csv": ["person_id", "place"],

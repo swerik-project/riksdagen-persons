@@ -65,6 +65,9 @@ jobs:
     - name: Test that metadata is properly sorted
       run: |
         python -m unittest test.sort_order
+    - name: Test institutional mandate periods and parliamentary-year assignments
+      run: |
+        python -m unittest test.test_mandate_period_integrity
 
   db:
     runs-on: ubuntu-latest
