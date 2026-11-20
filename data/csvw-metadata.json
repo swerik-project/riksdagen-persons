@@ -682,7 +682,7 @@
           {
             "name": "successor_id",
             "titles": "successor_id",
-            "dc:description": "External identifier or pipe-separated identifiers for successor parties, where known.",
+            "dc:description": "Deprecated compatibility column. External identifier or pipe-separated identifiers for successor parties, where known. Use party_successor.csv for normalized successor relations.",
             "datatype": "string"
           },
           {
@@ -695,11 +695,54 @@
           {
             "name": "swerik_successor",
             "titles": "swerik_successor",
-            "dc:description": "SWERIK party identifier or pipe-separated identifiers for successor parties, where known.",
+            "dc:description": "Deprecated compatibility column. SWERIK party identifier or pipe-separated identifiers for successor parties, where known. Use party_successor.csv for normalized successor relations.",
             "datatype": "string"
           }
         ],
         "primaryKey": "swerik_party_id"
+      }
+    },
+    {
+      "url": "party_successor.csv",
+      "dc:title": "Party Successors",
+      "dc:description": "Normalized party succession relations. Each row links one SWERIK party record to one successor SWERIK party record.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "party_id",
+            "titles": "party_id",
+            "dc:description": "Stable SWERIK party identifier for the predecessor party.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "successor_party_id",
+            "titles": "successor_party_id",
+            "dc:description": "Stable SWERIK party identifier for the successor party.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": [
+          "party_id",
+          "successor_party_id"
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "party_id",
+            "reference": {
+              "resource": "party.csv",
+              "columnReference": "swerik_party_id"
+            }
+          },
+          {
+            "columnReference": "successor_party_id",
+            "reference": {
+              "resource": "party.csv",
+              "columnReference": "swerik_party_id"
+            }
+          }
+        ]
       }
     },
     {
@@ -964,6 +1007,112 @@
             "reference": {
               "resource": "person.csv",
               "columnReference": "person_id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "constituency.csv",
+      "dc:title": "Constituencies",
+      "dc:description": "Electoral constituencies by chamber and recorded parliamentary-session coverage. Constituency identifiers are stable SWERIK UUIDs.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "constituency_id",
+            "titles": "constituency_id",
+            "dc:description": "Stable SWERIK constituency identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "chamber",
+            "titles": "chamber",
+            "dc:description": "Parliamentary chamber code.",
+            "datatype": {
+              "base": "string",
+              "format": "^(fk|ak|ek)$"
+            },
+            "required": true
+          },
+          {
+            "name": "start_date",
+            "titles": "start_date",
+            "dc:description": "Start calendar-date boundary of the constituency's recorded parliamentary-session coverage.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "end_date",
+            "titles": "end_date",
+            "dc:description": "End calendar-date boundary of the constituency's recorded parliamentary-session coverage. A following period may start on the same date.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "name",
+            "titles": "name",
+            "dc:description": "Constituency name.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": "constituency_id"
+      }
+    },
+    {
+      "url": "constituency_mandates.csv",
+      "dc:title": "Constituency Mandates",
+      "dc:description": "Total mandates by constituency and recorded parliamentary-session coverage. Counts include adjustment mandates where applicable. Consecutive periods may share a boundary date because time of day is not encoded.",
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "constituency_id",
+            "titles": "constituency_id",
+            "dc:description": "Stable SWERIK constituency identifier.",
+            "datatype": "string",
+            "required": true
+          },
+          {
+            "name": "start_date",
+            "titles": "start_date",
+            "dc:description": "Start calendar-date boundary of the mandate-count period for the constituency's chamber.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "end_date",
+            "titles": "end_date",
+            "dc:description": "End calendar-date boundary of the mandate-count periodr. A following period may start on the same date.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          },
+          {
+            "name": "mandates_total",
+            "titles": "mandates_total",
+            "dc:description": "Total number of mandates for the constituency during the date range, including adjustment mandates where applicable.",
+            "datatype": "integer",
+            "required": true
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "constituency_id",
+            "reference": {
+              "resource": "constituency.csv",
+              "columnReference": "constituency_id"
             }
           }
         ]

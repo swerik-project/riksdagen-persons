@@ -54,6 +54,23 @@ The [CSVW metadata](data/csvw-metadata.json) defines keys, required fields and r
 - chamber
 - chair_nr
 
+### `data/constituency.csv`
+
+- constituency_id
+- chamber
+- start_date
+- end_date
+- name
+
+### `data/constituency_mandates.csv`
+
+- constituency_id
+- start_date
+- end_date
+- mandates_total
+
+Mandate counts include adjustment mandates (`utjämningsmandat`) where applicable.
+
 ### `data/described_by_source.csv`
 - person_id
 - source
@@ -113,12 +130,27 @@ Nobility titles of people such as _greve_ (count) or _friherre_ (baron). The `ti
 - abbreviation
 - ocr_correction
 
+### `data/party.csv`
+- party_id
+- party
+- inception
+- inception_precision
+- dissolution
+- dissolution_precision
+- successor_id (deprecated)
+- swerik_party_id
+- swerik_successor (deprecated)
+
 ### `data/party_affiliation.csv`
 - person_id
 - start
 - end
 - party
 - party_id
+
+### `data/party_successor.csv`
+- party_id
+- successor_party_id
 
 ### `data/party_leaders.csv`
 
@@ -170,7 +202,7 @@ This initial table includes leadership periods that clearly overlap a period whe
 - end
 - role
 
-### `data/twitter.csv`
+### `data/twitter.csv` (deprecated)
 - person_id
 - twitter
  

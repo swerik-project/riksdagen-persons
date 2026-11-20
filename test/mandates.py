@@ -1,68 +1,61 @@
-"""
-Test that known MP start/end dates that have been manually verified do not change in the metadata.
-"""
-from datetime import datetime
-from pytest_cfg_fetcher.fetch import fetch_config
-import pandas as pd
+"""Data integrity checks for manually verified MP mandate dates."""
 import unittest
-import warnings
+
+import polars as pl
+from trainerlog import get_logger
 
 
+LOGGER = get_logger(name="mandate-date-integrity")
 
 
-class DateErrorWarning(Warning):
-    def __init__(self, date_error):
-        self.message = f"Date Error: {date_error}"
-
-    def __str__(self):
-        return self.message
-
-
-
-class Test(unittest.TestCase):
-
-    def fetch_known_mandate_dates(self):
-        return pd.read_csv("test/data/mandate-dates.csv", sep=';')
-
-
-    def fetch_mep_meta(self):
-        return pd.read_csv("data/member_of_parliament.csv")
-
-
+class MandateDateIntegrityTest(unittest.TestCase):
     def test_manually_checked_mandates(self):
-        """Guarantee: manually checked MP start and end dates are preserved.
+        """Guarantee: manually verified MP mandate dates remain in the metadata.
 
-        Each date in test/data/mandate-dates.csv must appear as a start or end
-        date for the same person in data/member_of_parliament.csv. Separate
-        references may belong to different periods of service.
-
-        Bager's 1981-1982 dates come from Enkammarriksdagen, volume 2, pages 79
-        and 503, and the first session day in protocol 1981/82:1. Allgulander's
-        February-March 1982 dates are confirmed by volume 2, page 498 and the
-        chamber's notices of his leave and return.
+        Data: compares ``test/data/mandate-dates.csv`` with
+        ``data/member_of_parliament.csv``.
         """
-        mep = self.fetch_mep_meta()
-        df = self.fetch_known_mandate_dates()
-        config = fetch_config("mandates")
-        counter = 0
-        rows = []
-        cols = ["person_id", "date", "type"]
-        for i, r in df.iterrows():
-            fil = mep.loc[(mep['person_id'] == r["person_id"]) & (mep[r["type"].lower()] == r['date'])]
-            if fil.empty:
-                counter += 1
-                rows.append([r["person_id"], r["date"], r["type"]])
-                warnings.warn(f"({r['type']}): {r['date']}, {r['person_id']}" , DateErrorWarning)
-        if len(rows) > 0:
-            if config and config['write_errors']:
-                now = datetime.now().strftime("%Y%m%d-%H%M")
-                out = pd.DataFrame(rows, columns=cols)
-                out.to_csv(f"{config['test_out_dir']}{now}_mandates-test.csv", index=False)
+        manually_checked_dates = pl.read_csv("test/data/mandate-dates.csv")
+        recorded_mandates = pl.read_csv("data/member_of_parliament.csv")
 
-        self.assertEqual(counter, 0)
+        recorded_dates = pl.concat(
+            [
+                recorded_mandates.select(
+                    "person_id",
+                    pl.col("start").alias("date"),
+                    pl.lit("START").alias("type"),
+                ),
+                recorded_mandates.select(
+                    "person_id",
+                    pl.col("end").alias("date"),
+                    pl.lit("END").alias("type"),
+                ),
+            ],
+        )
+
+        missing_dates = (
+            manually_checked_dates.join(
+                recorded_dates,
+                on=["person_id", "date", "type"],
+                how="anti",
+            )
+            .sort(["person_id", "type", "date"])
+        )
+        missing_count = len(missing_dates)
+
+        for row in missing_dates.iter_rows(named=True):
+            LOGGER.error(
+                f"Missing {row['type']} mandate date {row['date']} "
+                f"for {row['person_id']}"
+            )
+
+        self.assertEqual(
+            missing_count,
+            0,
+            f"{missing_count} manually verified MP mandate date(s) "
+            "are missing from data/member_of_parliament.csv.",
+        )
 
 
-
-
-if __name__ == '__main__':
-    unittest.test()
+if __name__ == "__main__":
+    unittest.main()
