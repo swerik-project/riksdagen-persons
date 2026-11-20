@@ -1320,6 +1320,104 @@
           }
         ]
       }
+    },
+    {
+      "url": "mandate_period.csv",
+      "dc:title": "Institutional Mandate Periods",
+      "dc:description": "An institutional term of an elected unicameral Swedish Riksdag (mandatperiod/valperiod), determined by the constitutional rules in force at the time. It is distinct from an individual member's service and from a government's tenure. Under the 1974 Instrument of Government, a term runs from the newly elected Riksdag's first assembly until the next elected Riksdag assembles; the terms beginning in 1971 and 1974 instead began at the calendar-year boundary under the earlier rules. This initial table covers the terms represented by the existing unicameral parliamentary years, from 1971-1973 through 2022-2026. Election dates are polling dates, not term boundaries.",
+      "dc:source": [
+        {
+          "@id": "https://data.riksdagen.se/dokument/sfs-1974-152.html"
+        },
+        {
+          "@id": "https://data.riksdagen.se/dokument/FX0335"
+        },
+        {
+          "@id": "../test/data/mandate_period_elections.csv"
+        }
+      ],
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "mandate_period_id",
+            "titles": "mandate_period_id",
+            "dc:description": "Stable institutional-term identifier using its historical year label, such as 1971-1973. The label is not an exact date interval; the election may precede its first year.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}-[0-9]{4}$"
+            },
+            "required": true
+          },
+          {
+            "name": "chamber",
+            "titles": "chamber",
+            "dc:description": "Chamber to which the institutional term applies. This initial table covers only the unicameral Riksdag, coded ek.",
+            "datatype": {
+              "base": "string",
+              "format": "^ek$"
+            },
+            "required": true
+          },
+          {
+            "name": "election_date",
+            "titles": "election_date",
+            "dc:description": "Polling date of the ordinary general election to the Riksdag that produced the elected parliament for this term, recorded at day precision. This is not the first sitting, the date the result was certified, or the start of an individual member's service.",
+            "datatype": {
+              "base": "date",
+              "format": "yyyy-MM-dd"
+            },
+            "required": true
+          }
+        ],
+        "primaryKey": "mandate_period_id"
+      }
+    },
+    {
+      "url": "mandate_period_year.csv",
+      "dc:title": "Mandate Period Parliamentary Years",
+      "dc:description": "Assignments of existing unicameral parliamentary-year identifiers to institutional mandate periods. Join mandate_period_id to mandate_period.csv for the chamber, then join parliament_year and chamber to riksdag-year.csv. The assignment applies to every spring or autumn row sharing that year and chamber. The extraordinary session identified as 1980 is retained separately. Every existing unicameral parliamentary year belongs to exactly one term; these assignments do not define exact term boundaries or individual service dates.",
+      "dc:source": [
+        {
+          "@id": "https://data.riksdagen.se/sv/koder/?typ=riksmote&utformat=json"
+        },
+        {
+          "@id": "../test/data/mandate_period_years.csv"
+        }
+      ],
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "mandate_period_id",
+            "titles": "mandate_period_id",
+            "dc:description": "Institutional term containing this parliamentary year; references mandate_period.csv.",
+            "datatype": {
+              "base": "string",
+              "format": "^[0-9]{4}-[0-9]{4}$"
+            },
+            "required": true
+          },
+          {
+            "name": "parliament_year",
+            "titles": "parliament_year",
+            "dc:description": "Existing SWERIK parliamentary-year identifier, retained exactly as stored in riksdag-year.csv, including 197576, extraordinary session 1980, and 19992000. It is an identifier, not a calendar year or date.",
+            "datatype": "string",
+            "required": true
+          }
+        ],
+        "primaryKey": [
+          "mandate_period_id",
+          "parliament_year"
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "mandate_period_id",
+            "reference": {
+              "resource": "mandate_period.csv",
+              "columnReference": "mandate_period_id"
+            }
+          }
+        ]
+      }
     }
   ],
   "swerik:notes": [
