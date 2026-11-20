@@ -74,6 +74,18 @@ Mandate counts include adjustment mandates (`utjämningsmandat`) where applicabl
 - person_id
 - location
 
+### `data/mandate_period.csv`
+
+- mandate_period_id
+- chamber
+- election_date
+
+
+### `data/mandate_period_year.csv`
+
+- mandate_period_id
+- parliament_year
+
 ### `data/member_of_parliament.csv`
 - person_id
 - start

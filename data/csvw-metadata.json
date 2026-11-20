@@ -1331,9 +1331,6 @@
         },
         {
           "@id": "https://data.riksdagen.se/dokument/FX0335"
-        },
-        {
-          "@id": "../test/data/mandate_period_elections.csv"
         }
       ],
       "tableSchema": {
@@ -1379,9 +1376,6 @@
       "dc:source": [
         {
           "@id": "https://data.riksdagen.se/sv/koder/?typ=riksmote&utformat=json"
-        },
-        {
-          "@id": "../test/data/mandate_period_years.csv"
         }
       ],
       "tableSchema": {
