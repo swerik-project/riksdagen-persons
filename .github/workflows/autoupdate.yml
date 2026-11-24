@@ -29,7 +29,7 @@ jobs:
         git clone -b parliament_year https://github.com/swerik-project/pyriksdagen.git
         pip install ./pyriksdagen
         pip install sample-git-diffs
-        pip install pandas==2.3.3
+        pip install pandas
     - name: Clone scripts repo
       run: |
         git clone -b parliament_year https://github.com/swerik-project/scripts.git
