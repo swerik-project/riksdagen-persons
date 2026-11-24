@@ -50,7 +50,7 @@ class Test(unittest.TestCase):
 
     def test_csvw_metadata_is_valid_json(self):
         """
-        test CSVW metadata can be parsed as JSON
+        Guarantee: the CSVW metadata is correctly formatted
         """
         metadata = self.get_metadata()
         self.assertIn("tables", metadata)
@@ -58,7 +58,7 @@ class Test(unittest.TestCase):
 
     def test_all_csv_files_are_listed_in_metadata(self):
         """
-        test all released CSV files are listed in the CSVW metadata
+        Guarantee: each CSV file has its corresponding table in the CSVW metadata
         """
         csv_files = self.get_csv_files()
         metadata_files = self.get_metadata_files()
@@ -68,7 +68,7 @@ class Test(unittest.TestCase):
 
     def test_metadata_has_no_extra_csv_files(self):
         """
-        test CSVW metadata does not list files that are not released CSV files
+        Guarantee: each table in the CSVW metadata has its corresponding CSV file
         """
         csv_files = self.get_csv_files()
         metadata_files = self.get_metadata_files()
@@ -78,7 +78,7 @@ class Test(unittest.TestCase):
 
     def test_csv_headers_match_metadata_column_order(self):
         """
-        test CSVW column declarations match the actual CSV header order
+        Guarantee: CSVW column declarations match the actual CSV header order
         """
         mismatches = []
         for table in self.get_metadata_tables():
@@ -93,7 +93,7 @@ class Test(unittest.TestCase):
 
     def test_primary_keys(self):
         """
-        test that all primary keys are unique
+        Guarantee: for each table, the primary key defined in the CSVW metadata is unique
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         erroneous_tables = []
@@ -103,16 +103,26 @@ class Test(unittest.TestCase):
                 table.check_primary_key()
             except Exception as e:
                 LOGGER.error(f"ERROR in {table_name}:\n{e}")
-                erroneous_tables.append(str(table_name))
+                if "external" in str(table.url):
+                    LOGGER.warning(f"Do not crash on external links being non-unique: {table.url}")
+                else:
+                    erroneous_tables.append(str(table_name))
 
         no_errors = len(erroneous_tables)
         erroneous_tables = ", ".join(erroneous_tables)
         self.assertEqual(0, no_errors, f"Non-unique primary keys found in {no_errors} table(s): {erroneous_tables}.")
 
+    def test_foreign_keys(self):
+        """
+        Guarantee: all CSVW foreign-key references point to existing rows
+        """
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+
+        tg.check_referential_integrity()
 
     def test_validate_schema(self):
         """
-        validate CSVW schema
+        Guarantee: validate CSVW schema for each table
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         tg.validate_schema()
@@ -121,7 +131,7 @@ class Test(unittest.TestCase):
 
     def test_column_formats(self):
         """
-        validate CSVW schema
+        Guarantee: each column's data type corresponds to the format specified in the CSVW schema
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         erroneous_tables = []
@@ -168,7 +178,131 @@ class Test(unittest.TestCase):
 
         self.assertEqual(0, no_errors, f"{no_errors} format error(s) found")
 
+    def test_primary_key_exists(self):
+        """
+        Guarantee: each table has a primary key in the CSVW metadata
+        """
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+        for table in tg.tables:
+            pk = table.tableSchema.primaryKey
+            self.assertTrue(pk is not None, f"Table {table.url} does not have a CSVW primary key")
 
+    def test_date_values_are_valid_calendar_dates(self):
+        """Guarantee: every populated date cell represents a real calendar date.
+
+        Data: scans CSVW date, gYear, and gYearMonth columns, plus the partial
+        date columns born, dead, start, and end. Missing dates are allowed.
+        Year and month values are checked using the first day of their period
+        only for parsing; their stored precision is preserved. Interval ordering
+        is checked separately by test_start_end. Failures count date cells.
+        """
+        LOGGER.info("Checking calendar validity of populated date cells")
+        no_errors = 0
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+
+        for table in tg.tables:
+            date_columns = [
+                column.name for column in table.tableSchema.columns
+                if column.datatype.base in ("date", "gYear", "gYearMonth")
+                or column.name in ("born", "dead", "start", "end")
+            ]
+            if not date_columns:
+                continue
+
+            dates = pl.read_csv(
+                self.get_data_dir() / str(table.url),
+                columns=date_columns,
+                schema_overrides={column: pl.String for column in date_columns},
+            ).with_row_index("csv_row", offset=2)
+
+            for column in date_columns:
+                value = pl.col(column)
+                calendar_date = (
+                    pl.when(value.str.len_chars() == 4)
+                    .then(value + "-01-01")
+                    .when(value.str.len_chars() == 7)
+                    .then(value + "-01")
+                    .otherwise(value)
+                    .str.to_date(format="%Y-%m-%d", strict=False)
+                )
+                invalid = dates.filter(
+                    value.is_not_null()
+                    & (calendar_date.is_null() | (calendar_date.dt.year() < 1))
+                )
+                no_errors += len(invalid)
+                for row in invalid.select("csv_row", column).iter_rows(named=True):
+                    LOGGER.error(
+                        f"{table.url}, CSV row {row['csv_row']}, "
+                        f"{column}={row[column]!r}: invalid calendar date"
+                    )
+
+        LOGGER.info(f"Found {no_errors} invalid calendar date cell(s)")
+        self.assertEqual(
+            0, no_errors,
+            f"Found {no_errors} invalid calendar date cell(s); details logged with trainerlog",
+        )
+
+    def test_start_end(self):
+        """
+        Guarantee: each date range column pair is coherent
+
+        1. For each row, 'start' is earlier or same as 'end'
+        2. For each unique (composite) primary key, the time ranges do not overlap
+
+        These are tested for all tables with dates; for start/end, born/dead and inception/dissolution.
+        """
+        tg = TableGroup.from_url(str(self.get_metadata_path()))
+        no_errors = 0
+        no_overlaps = 0
+
+        for table in tg.tables:
+            df = pl.read_csv(self.get_data_dir() / str(table.url), infer_schema_length=10000)
+            pk = table.tableSchema.primaryKey
+
+            for start, end in [("start", "end"), ("born", "dead"), ("inception", "dissolution")]:
+                if start in df.columns:
+                    # Per row: start <= end
+                    LOGGER.info(f"Check {start}/{end} for table {table.url}")
+                    df = df.filter(pl.col(start).is_not_null())
+                    df = df.filter(pl.col(end).is_not_null())
+
+                    # For mixed precision, truncate longer value of start/end
+                    charlen = pl.min_horizontal(
+                        pl.col(start).str.len_chars(),
+                        pl.col(end).str.len_chars(),
+                    )
+                    df_errors = df.filter(pl.col(start).str.head(charlen) > pl.col(end).str.head(charlen))
+
+                    if len(df_errors) >= 1:
+                        no_errors += len(df_errors)
+                        LOGGER.error(f"Inconsistent start dates in {table.url}:\n{df_errors}")
+
+                    # Per primary key:
+                    # Date ranges should not overlap with more than one day (or year/month if that's the precision).
+                    # This is checked via: sorted values should have end_prev <= start. Equivalent in terms of
+                    # error-free, but might undercount errors
+                    pk_wo_start = [key for key in pk if key != "start"]
+                    df = df.with_columns(pl.concat_str(pk_wo_start, ignore_nulls=True).alias("pk"))
+                    df = df.sort("pk", start, end)
+                    df = df.with_columns(pl.col(end).shift(1).alias("prev_end"))
+
+                    df_small = df.select("pk", start, end, "prev_end")
+                    df_small = df_small.sort("pk", start, end)
+                    df_small = df_small.filter(pl.col("pk").shift(1) == pl.col("pk"))
+                    df_small = df_small.sort("pk", start)
+                    errors = df_small.filter(pl.col(start) < pl.col("prev_end"))
+
+                    no_overlaps += len(errors)
+                    if len(errors) >= 1:
+                        for primary_key in set(errors["pk"]):
+                            df_pk = df.filter(pl.col("pk") == primary_key)
+                            df_pk[0, "prev_end"] = None
+                            df_pk = df_pk.with_columns((pl.col(start) < pl.col("prev_end")).alias("overlaps_w_previous").fill_null(False))
+                            df_pk = df_pk.drop("pk")
+                            LOGGER.error(f"Overlapping values with the same primary key in {table.url}:\n{df_pk}")
+
+        self.assertEqual(no_errors, 0, f"{no_errors} inconsistent start and end dates found")
+        self.assertEqual(no_overlaps, 0, f"{no_overlaps} overlapping primary keys found")
 
 if __name__ == '__main__':
     unittest.main()

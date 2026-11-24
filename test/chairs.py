@@ -107,16 +107,21 @@ class Test(unittest.TestCase):
     #  Out of range chair for specific years
     def get_oor_year(self):
         oor_year = {
-            '1957':
-                    [    # until 1957 -- if year < 1957
+            'before_1957':
+                    [    # before 1957 -- if year < 1957
                     '814127872a174909bd6ecaeaf59290fe',  # a231
                     'd423710cb9e64b17b93484e120f07e66',  # a232
                     'c77cdeebf789416e98cf8afb05b75a23',  # a233
                     '34ad45b358764a388b53c45ae1ce3681'   # f151
                     ],
-            '1959':
-                    [    # until 1959 -- elif year < 1959
-                    '814127872a174909bd6ecaeaf59290fe',  # a231
+            '1957':
+                    [    # 1957
+                    'd423710cb9e64b17b93484e120f07e66',  # a232
+                    'c77cdeebf789416e98cf8afb05b75a23',  # a233
+                    '34ad45b358764a388b53c45ae1ce3681'   # f151
+                    ],
+            '1958':
+                    [    # 1958
                     'd423710cb9e64b17b93484e120f07e66',  # a232
                     'c77cdeebf789416e98cf8afb05b75a23'   # a233
                     ],
@@ -268,10 +273,12 @@ class Test(unittest.TestCase):
             ].unique()
             excludes = []
             if y < 1971:
-                if y <= 1957:
+                if y < 1957:
+                    excludes = oor_year['before_1957']
+                elif y == 1957:
                     excludes = oor_year['1957']
-                elif y < 1959:
-                    excludes = oor_year['1959']
+                elif y == 1958:
+                    excludes = oor_year['1958']
                 elif y < 1961:
                     excludes = oor_year['1961']
                 elif y < 1965:
@@ -385,7 +392,7 @@ class Test(unittest.TestCase):
         chair_mp = self.get_chair_mp()
         chair_mp = pl.from_pandas(chair_mp)
         chair_mp = chair_mp.filter(pl.col("person_id").is_not_null())
-        
+
         # Fill out nulls for printing
         chair_mp_imputed = chair_mp.with_columns(pl.col("start").fill_null("N/A").alias("start_str"))
         chair_mp_imputed = chair_mp_imputed.with_columns(pl.col("end").fill_null("N/A").alias("end_str"))
@@ -399,7 +406,7 @@ class Test(unittest.TestCase):
             pl.when(pl.col.start.str.len_chars() == 4)
             .then(pl.concat_str("start", pl.lit("-01-01")))
             .otherwise("start"))
-        
+
         # Since one-day overlap is allowed, move the start dates (artificially) one day forward
         chair_mp_imputed = chair_mp_imputed.with_columns((
             pl.col("start").str.to_datetime()
@@ -410,7 +417,7 @@ class Test(unittest.TestCase):
         for parliament_year in tqdm.tqdm(sorted(set(chair_mp.get_column("parliament_year")))):
             chair_mp_imputed_year = chair_mp_imputed.filter(pl.col("parliament_year") == parliament_year)
 
-            # Test separately for each date where seating might change: 
+            # Test separately for each date where seating might change:
             # Year start, year end, and every time somebody changes seats
             dates = set(chair_mp_imputed_year.get_column("start")).union(set(chair_mp_imputed_year.get_column("end")))
             chairhog_error_messages, knamp_error_messages = [], []

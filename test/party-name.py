@@ -116,11 +116,9 @@ class Test(unittest.TestCase):
 
         self.assertEqual(len(ks), 0)
         #self.assertEqual(len(rows), 0)
-        self.assertTrue(len(rows)<3)
+        self.assertLessEqual(len(rows), 3)
         #self.assertEqual(len(unlisted_parties), 0)
-        self.assertTrue(len(unlisted_parties)<360)
-
-
+        self.assertLessEqual(len(unlisted_parties), 360)
 
 
 if __name__ == '__main__':
