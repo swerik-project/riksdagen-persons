@@ -50,7 +50,7 @@ class Test(unittest.TestCase):
 
     def test_csvw_metadata_is_valid_json(self):
         """
-        test CSVW metadata can be parsed as JSON
+        Guarantee: the CSVW metadata is correctly formatted
         """
         metadata = self.get_metadata()
         self.assertIn("tables", metadata)
@@ -58,7 +58,7 @@ class Test(unittest.TestCase):
 
     def test_all_csv_files_are_listed_in_metadata(self):
         """
-        test all released CSV files are listed in the CSVW metadata
+        Guarantee: each CSV file has its corresponding table in the CSVW metadata
         """
         csv_files = self.get_csv_files()
         metadata_files = self.get_metadata_files()
@@ -68,7 +68,7 @@ class Test(unittest.TestCase):
 
     def test_metadata_has_no_extra_csv_files(self):
         """
-        test CSVW metadata does not list files that are not released CSV files
+        Guarantee: each table in the CSVW metadata has its corresponding CSV file
         """
         csv_files = self.get_csv_files()
         metadata_files = self.get_metadata_files()
@@ -78,7 +78,7 @@ class Test(unittest.TestCase):
 
     def test_csv_headers_match_metadata_column_order(self):
         """
-        test CSVW column declarations match the actual CSV header order
+        Guarantee: CSVW column declarations match the actual CSV header order
         """
         mismatches = []
         for table in self.get_metadata_tables():
@@ -93,7 +93,7 @@ class Test(unittest.TestCase):
 
     def test_primary_keys(self):
         """
-        test that all primary keys are unique
+        Guarantee: for each table, the primary key defined in the CSVW metadata is unique
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         erroneous_tables = []
@@ -114,7 +114,7 @@ class Test(unittest.TestCase):
 
     def test_foreign_keys(self):
         """
-        test that all CSVW foreign-key references point to existing rows
+        Guarantee: all CSVW foreign-key references point to existing rows
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
 
@@ -122,7 +122,7 @@ class Test(unittest.TestCase):
 
     def test_validate_schema(self):
         """
-        validate CSVW schema
+        Guarantee: validate CSVW schema for each table
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         tg.validate_schema()
@@ -131,7 +131,7 @@ class Test(unittest.TestCase):
 
     def test_column_formats(self):
         """
-        validate CSVW schema
+        Guarantee: each column's data type corresponds to the format specified in the CSVW schema
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         erroneous_tables = []
@@ -180,7 +180,7 @@ class Test(unittest.TestCase):
 
     def test_primary_key_exists(self):
         """
-        Test that each table has a primary key
+        Guarantee: each table has a primary key in the CSVW metadata
         """
         tg = TableGroup.from_url(str(self.get_metadata_path()))
         for table in tg.tables:
@@ -244,7 +244,7 @@ class Test(unittest.TestCase):
 
     def test_start_end(self):
         """
-        Test that each date range column pair is coherent
+        Guarantee: each date range column pair is coherent
 
         1. For each row, 'start' is earlier or same as 'end'
         2. For each unique (composite) primary key, the time ranges do not overlap
