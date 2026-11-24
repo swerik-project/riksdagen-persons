@@ -30,6 +30,23 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - chamber
 - chair_nr
 
+### `data/constituency.csv`
+
+- constituency_id
+- chamber
+- start_date
+- end_date
+- name
+
+### `data/constituency_mandates.csv`
+
+- constituency_id
+- start_date
+- end_date
+- mandates_total
+
+Mandate counts include adjustment mandates (`utjämningsmandat`) where applicable.
+
 ### `data/described_by_source.csv`
 - person_id
 - source
@@ -76,16 +93,49 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - name
 - primary_name
 
+### `data/nobility.csv`
+Nobility titles of people such as _greve_ (count) or _friherre_ (baron). The `title` values are normalized to their modern spellings.
+
+- person_id
+- start
+- end
+- title
+
 ### `data/party_abbreviation.csv`
 - party
 - abbreviation
 - ocr_correction
+
+### `data/party.csv`
+- party_id
+- party
+- inception
+- inception_precision
+- dissolution
+- dissolution_precision
+- successor_id (deprecated)
+- swerik_party_id
+- swerik_successor (deprecated)
 
 ### `data/party_affiliation.csv`
 - person_id
 - start
 - end
 - party
+- party_id
+
+### `data/party_successor.csv`
+- party_id
+- successor_party_id
+
+### `data/party_leaders.csv`
+
+This initial table includes leadership periods that clearly overlap a period when the party was represented in parliament. The leader need not personally have been an MP. Retained periods keep their recorded dates, including portions outside parliamentary representation; uncertain boundary cases are deferred.
+
+- person_id
+- name
+- start_date
+- end_date
 - party_id
 
 ### `data/person.csv`
@@ -128,7 +178,7 @@ The `data/` directory contains a number of csv files in Normal form where the `p
 - end
 - role
 
-### `data/twitter.csv`
+### `data/twitter.csv` (deprecated)
 - person_id
 - twitter
  
