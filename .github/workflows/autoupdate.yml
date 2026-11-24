@@ -26,7 +26,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        git clone -b parliament_year https://github.com/swerik-project/pyriksdagen.git
+        git clone https://github.com/swerik-project/pyriksdagen.git
+        cd pyriksdagen
+        git checkout parliament_year
+        git branch
+        cd ..
         pip install ./pyriksdagen
         pip install sample-git-diffs
         pip install pandas
