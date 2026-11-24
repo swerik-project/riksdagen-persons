@@ -922,7 +922,7 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1965,1965,fk,i-Kpkv9BSujEEJp1S4rDiDt7,3
 1965,1965,fk,i-UiFZiVNo3YgVfyN93Qigiv,17
 1965,1965,fk,i-VS8ddgxigwL5TceKtXGApS,78
-1966,1966,ak,i-3A4u29WVtvfu8i1KwuPEeE,17
+1966,1966,ak,i-3A4u29WVtvfu8i1KwuPEeE,16
 1966,1966,ak,i-4nyjRorziqEDtDmp1ZXDoP,1
 1966,1966,ak,i-ANbQF76SzeSESXQFvzPzFw,1
 1966,1966,ak,i-CJb7bcc1eZcehvGarg8GpB,8
@@ -937,10 +937,10 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1966,1966,fk,i-CJb7bcc1eZcehvGarg8GpB,2
 1966,1966,fk,i-CNbGLyuzdkRJ2sJBBpzJit,2
 1966,1966,fk,i-F6Stwe8wVnSPa3BbgusszQ,13
-1966,1966,fk,i-FpGjUCojANuvvwqsNXjcuu,24
+1966,1966,fk,i-FpGjUCojANuvvwqsNXjcuu,23
 1966,1966,fk,i-Kpkv9BSujEEJp1S4rDiDt7,2
 1966,1966,fk,i-UiFZiVNo3YgVfyN93Qigiv,16
-1966,1966,fk,i-VS8ddgxigwL5TceKtXGApS,80
+1966,1966,fk,i-VS8ddgxigwL5TceKtXGApS,81
 1967,1967,ak,i-3A4u29WVtvfu8i1KwuPEeE,17
 1967,1967,ak,i-4nyjRorziqEDtDmp1ZXDoP,1
 1967,1967,ak,i-ANbQF76SzeSESXQFvzPzFw,1
@@ -1021,7 +1021,7 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1972,1972,ek,i-F6Stwe8wVnSPa3BbgusszQ,41
 1972,1972,ek,i-FpGjUCojANuvvwqsNXjcuu,62
 1972,1972,ek,i-UiFZiVNo3YgVfyN93Qigiv,74
-1972,1972,ek,i-VS8ddgxigwL5TceKtXGApS,163
+1972,1972,ek,i-VS8ddgxigwL5TceKtXGApS,162
 1973,1973,ek,i-2SVXJYpXaRHXxbWRcbRd5N,17
 1973,1973,ek,i-F6Stwe8wVnSPa3BbgusszQ,41
 1973,1973,ek,i-FpGjUCojANuvvwqsNXjcuu,62
@@ -1092,7 +1092,7 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 1985,198586,ek,i-F6Stwe8wVnSPa3BbgusszQ,77
 1985,198586,ek,i-FpGjUCojANuvvwqsNXjcuu,53
 1985,198586,ek,i-UiFZiVNo3YgVfyN93Qigiv,48
-1985,198586,ek,i-VS8ddgxigwL5TceKtXGApS,161
+1985,198586,ek,i-VS8ddgxigwL5TceKtXGApS,160
 1986,198586,ek,i-2SVXJYpXaRHXxbWRcbRd5N,19
 1986,198586,ek,i-F6Stwe8wVnSPa3BbgusszQ,77
 1986,198586,ek,i-FpGjUCojANuvvwqsNXjcuu,53
@@ -1338,7 +1338,7 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 2016,201617,ek,i-B79rKJX4ZV61ozevGt8JLL,1
 2016,201617,ek,i-BRRSButj7zSqB1u7zD6hod,16
 2016,201617,ek,i-CJb7bcc1eZcehvGarg8GpB,21
-2016,201617,ek,i-Cb6hYmJf4EDxesFRgErquJ,49
+2016,201617,ek,i-Cb6hYmJf4EDxesFRgErquJ,50
 2016,201617,ek,i-F6Stwe8wVnSPa3BbgusszQ,85
 2016,201617,ek,i-Kpkv9BSujEEJp1S4rDiDt7,19
 2016,201617,ek,i-Qha9NerKBigcjJXgoRk4Md,25
@@ -1347,7 +1347,7 @@ calendar_year,parliament_year,chamber,swerik_party_id,nr_seats
 2017,201718,ek,i-B79rKJX4ZV61ozevGt8JLL,1
 2017,201718,ek,i-BRRSButj7zSqB1u7zD6hod,16
 2017,201718,ek,i-CJb7bcc1eZcehvGarg8GpB,21
-2017,201718,ek,i-Cb6hYmJf4EDxesFRgErquJ,49
+2017,201718,ek,i-Cb6hYmJf4EDxesFRgErquJ,50
 2017,201718,ek,i-F6Stwe8wVnSPa3BbgusszQ,84
 2017,201718,ek,i-Kpkv9BSujEEJp1S4rDiDt7,19
 2017,201718,ek,i-Qha9NerKBigcjJXgoRk4Md,25
