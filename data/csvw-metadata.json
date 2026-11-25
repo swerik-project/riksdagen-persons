@@ -1384,10 +1384,7 @@
             "required": true
           }
         ],
-        "primaryKey": [
-          "mandate_period_id",
-          "chamber"
-        ],
+        "primaryKey": ["mandate_period_id", "chamber"]
       }
     },
     {
