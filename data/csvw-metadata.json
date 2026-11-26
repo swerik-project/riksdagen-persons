@@ -820,7 +820,8 @@
               "columnReference": "constituency_id"
             }
           }
-        ]
+        ],
+        "primaryKey": ["constituency_id","start_date"]
       }
     },
     {
