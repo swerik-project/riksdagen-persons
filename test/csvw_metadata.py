@@ -138,7 +138,9 @@ class Test(unittest.TestCase):
         no_errors = 0
         for table in tg.tables:
             table_name = table.url
-            df = pl.read_csv(self.get_data_dir() / str(table_name), infer_schema_length=10000)
+            string_columns = {col.name: pl.String for col in table.tableSchema.columns if col.datatype.base == "string"}
+            df = pl.read_csv(self.get_data_dir() / str(table_name), infer_schema_length=10000,
+                             schema_overrides=string_columns)
             for col in table.tableSchema.columns:
                 pl_col = df.get_column(col.name)
                 datatype = col.datatype
@@ -256,6 +258,10 @@ class Test(unittest.TestCase):
         no_overlaps = 0
 
         for table in tg.tables:
+
+            #string_columns = {col.name: pl.String for col in table.tableSchema.columns if col.datatype.base == "string"}
+            #df = pl.read_csv(self.get_data_dir() / str(table.url), infer_schema_length=10000,
+            #                 schema_overrides=string_columns)
             df = pl.read_csv(self.get_data_dir() / str(table.url), infer_schema_length=10000)
             pk = table.tableSchema.primaryKey
 
@@ -264,7 +270,11 @@ class Test(unittest.TestCase):
                     # Per row: start <= end
                     LOGGER.info(f"Check {start}/{end} for table {table.url}")
                     df = df.filter(pl.col(start).is_not_null())
+                    print(df)
                     df = df.filter(pl.col(end).is_not_null())
+                    print(df)
+                    df = df.with_columns(pl.col(start).cast(pl.String))
+                    df = df.with_columns(pl.col(end).cast(pl.String))
 
                     # For mixed precision, truncate longer value of start/end
                     charlen = pl.min_horizontal(

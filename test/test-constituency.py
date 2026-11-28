@@ -19,7 +19,7 @@ logger = get_logger(name="constituency test")
 
 
 CONSTITUENCY_COUNT_THRESHOLD = 437
-RESULTS_DIR = Path("test/result")
+RESULTS_DIR = Path("test/results")
 
 
 
